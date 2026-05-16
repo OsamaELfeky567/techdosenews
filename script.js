@@ -1,5 +1,21 @@
 const articles = [
   {
+    id: 1778958104788,
+    title: "Data readiness for agentic AI in financial services",
+    excerpt: "",
+    category: "ذكاء اصطناعي",
+    image: "https://images.pexels.com/photos/15863044/pexels-photo-15863044.jpeg?auto=compress&cs=tinysrgb&h=350",
+    date: "منذ لحظات",
+    readTime: "2 دقائق",
+    views: "1",
+    hasEgyptImpact: true,
+    featured: false,
+    body: "<p>{</p>\n<p>\"title_ar\": \"استعداد البيانات لتقنيات الذكاء الاصطناعي في خدمات Financial services\",</p>\n<p>\"body\": \"تعتبر شركات Financial services من بين الشركات التي تحتاج إلى تقنيات الذكاء الاصطناعي بشكل فريد. تعمل هذه الشركات في واحدة من أكثر القطاعات تنظيماً، وتستجيب لأحداث خارجية يتم تحديثها كل ثانية. ونتيجة لذلك، يعتمد نجاح تقنيات الذكاء الاصطناعي في خدمات Financial services أقل على تعقيد النظام وأكثر على جاهزية البيانات. حيث أن البيانات تلعب دوراً حاسماً في نجاح هذه التقنيات، وتعتبر جاهزية البيانات هي المفتاح لتحقيق النجاح في هذا القطاع. وتعتبر شركات Financial services من بين الشركات التي تحتاج إلى تقنيات الذكاء الاصطناعي بشكل فريد، حيث تعمل في واحدة من أكثر القطاعات تنظيماً، وتستجيب لأحداث خارجية يتم تحديثها كل ثانية. ولهذا، يعتمد نجاح تقنيات الذكاء الاصطناعي في خدمات Financial services على جاهزية البيانات، حيث أن البيانات تلعب دوراً حاسماً في نجاح هذه التقنيات.\",</p>\n<p>\"egypt\": \"• يمكن أن يساهم نجاح تقنيات الذكاء الاصطناعي في خدمات Financial services في تحسين الخدمات المالية في مصر والعرب.</p>\n<p>• يمكن أن يساعد ذلك في تعزيز الثقة في النظام المالي وزيادة الاستثمارات في المنطقة.\",</p>\n<p>\"excerpt\": \"جاهزية البيانات هي المفتاح لنجاح تقنيات الذكاء الاصطناعي في خدمات Financial services. يمكن أن يساهم نجاح هذه التقنيات في تحسين الخدمات المالية في مصر والعرب.\"</p>\n<p>}</p>",
+    egyptImpact: "",
+    source: "https://www.technologyreview.com/2026/05/14/1137034/data-readiness-for-agentic-ai-in-financial-services/",
+    link: "https://osamaelfeky567.github.io/techdosenews/article.html?id=1778958104788"
+  },
+  {
     id: 1778958097163,
     title: "Cybercriminal Twins Caught After They Forgot to Turn Off Microsoft Teams Recording",
     excerpt: "",

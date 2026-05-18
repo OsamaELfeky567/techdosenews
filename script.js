@@ -1,85 +1,4 @@
-const articles = [
-  {
-    id: 1778958726792,
-    title: "The US is betting on AI to catch insider trading in prediction markets",
-    excerpt: "",
-    category: "ذكاء اصطناعي",
-    image: "https://images.pexels.com/photos/15863044/pexels-photo-15863044.jpeg?auto=compress&cs=tinysrgb&h=350",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p>{</p>\n<p>\"title_ar\": \"الولايات المتحدة تضع رهاناتها على الذكاء الاصطناعي لمكافحة التداول الداخلي في أسواق التنبؤ\",</p>\n<p>\"body\": \"تود لجنة التداول في السلع المستقبلية أن نعلم أنهم يأخذون هذا الأمر على محمل الجد للغاية. حيث أن لجنة التداول في السلع المستقبلية تريد أن تظهر أنهم يأخذون هذا الأمر على محمل الجد للغاية، وهذا يعني أنهم يعتزمون استخدام الذكاء الاصطناعي لمكافحة التداول الداخلي في أسواق التنبؤ. هذا يأتي في سياق الجهود المتزايدة لمكافحة التداول الداخلي في الأسواق المالية. حيث أن التداول الداخلي يمكن أن يؤدي إلى خسائر مالية كبيرة للمستثمرين، ويمكن أن يؤثر على ثقة السوق. وبالتالي، فإن استخدام الذكاء الاصطناعي يمكن أن يساعد في اكتشاف هذه الأنشطة الغير مشروعة. وفيما يلي بعض التفاصيل حول هذا الموضوع، حيث أن لجنة التداول في السلع المستقبلية تهدف إلى استخدام الذكاء الاصطناعي لتحليل البيانات وتحديد الأنماط التي قد تشير إلى التداول الداخلي. هذا يمكن أن يساعد في اكتشاف الأنشطة الغير مشروعة في وقت مبكر، وبالتالي يمكن أن يساعد في منع الخسائر المالية للمستثمرين. وفي السياق نفسه، فإن استخدام الذكاء الاصطناعي في أسواق التنبؤ يمكن أن يساعد في تحسين دقة التنبؤات، وبالتالي يمكن أن يساعد في تقليل المخاطر المرتبطة بالتداول. وفيما يخص ما القادم، فإن استخدام الذكاء الاصطناعي في أسواق التنبؤ يمكن أن يؤدي إلى تطورات جديدة في مجال التداول، حيث أن الذكاء الاصطناعي يمكن أن يساعد في تحليل البيانات وتحديد الفرص الاستثمارية. وبالتالي، فإن المستثمرين يمكن أن يتوقعون فرص استثمارية جديدة ومبتكرة في الأسواق المالية.\",</p>\n<p>\"egypt\": \"• يمكن أن يؤثر استخدام الذكاء الاصطناعي في أسواق التنبؤ على مصر والعرب من خلال توفير فرص استثمارية جديدة ومبتكرة،</p>\n<p>• يمكن أن يساعد استخدام الذكاء الاصطناعي في اكتشاف الأنشطة الغير مشروعة في الأسواق المالية على حماية المستثمرين العرب من الخسائر المالية.\",</p>\n<p>\"excerpt\": \"تستخدم لجنة التداول في السلع المستقبلية الذكاء الاصطناعي لمكافحة التداول الداخلي في أسواق التنبؤ، هذا يمكن أن يؤدي إلى تحسين دقة التنبؤات و تقليل المخاطر المرتبطة بالتداول. استخدام الذكاء الاصطناعي يمكن أن يؤدي إلى تطورات جديدة في مجال التداول.\"</p>\n<p>}</p>",
-    egyptImpact: "",
-    source: "https://arstechnica.com/tech-policy/2026/05/the-us-is-betting-on-ai-to-catch-insider-trading-in-prediction-markets/",
-    link: "https://osamaelfeky567.github.io/techdosenews/article.html?id=1778958726792"
-  },
-  {
-    id: 1778958117683,
-    title: "The Download: China’s AI drama factory and the WHO’s missing health targets",
-    excerpt: "",
-    category: "ذكاء اصطناعي",
-    image: "https://images.pexels.com/photos/15863044/pexels-photo-15863044.jpeg?auto=compress&cs=tinysrgb&h=350",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p>{</p>\n<p>\"title_ar\": \"الصين تصنع مسلسلات دراما قصيرة بواسطة الذكاء الاصطناعي\",</p>\n<p>\"body\": \"في عالم التكنولوجيا، تطور الصين صناعة مسلسلات الدراما القصيرة بشكل كبير، حيث أصبحت هذه المسلسلات مصنوعة بالكامل بواسطة الذكاء الاصطناعي. هذه المسلسلات القصيرة التي تتميز بالدراما والمشاعر القوية، صممت لتناسب استخدام الهواتف الذكية. وتعتمد هذه المسلسلات على تقنيات الذكاء الاصطناعي لإنشاء محتوى جذاب وملفت. وفي هذا السياق، تعتبر الصين رائدة في استخدام التكنولوجيا لصناعة المحتوى الترفيهي. وفيما يخص الصحة، فإن منظمة الصحة العالمية WHO تواجه تحديات في تحقيق أهدافها الصحية، حيث تعاني من نقص في التمويل والمناهج غير الفعالة. وفي هذا السياق، تعتبر التكنولوجيا أداة مهمة لتحسين الصحة العامة. وفي المستقبل، من المتوقع أن تلعب التكنولوجيا دوراً أكبر في تحسين الصحة العامة وتطوير صناعة الترفيه.\",</p>\n<p>\"egypt\": \"• يمكن أن يكون تأثير هذه التكنولوجيا على مصر هو تحسين صناعة الترفيه المحلية وتطويرها لتناسب احتياجات الجمهور المصري.</p>\n<p>• يمكن أن تسهم التكنولوجيا في تحسين الصحة العامة في مصر من خلال توفير حلول مبتكرة لتحديات الصحة\",</p>\n<p>\"excerpt\": \"تطور الصين صناعة مسلسلات الدراما القصيرة بواسطة الذكاء الاصطناعي، وتواجه منظمة الصحة العالمية تحديات في تحقيق أهدافها الصحية. التكنولوجيا تلعب دوراً هاماً في تحسين الصحة العامة وتطوير صناعة الترفيه.\"</p>\n<p>}</p>",
-    egyptImpact: "",
-    source: "https://www.technologyreview.com/2026/05/15/1137341/the-download-china-short-drama-ai-who-health-targets/",
-    link: "https://osamaelfeky567.github.io/techdosenews/article.html?id=1778958117683"
-  },
-  {
-    id: 1778958104788,
-    title: "Data readiness for agentic AI in financial services",
-    excerpt: "",
-    category: "ذكاء اصطناعي",
-    image: "https://images.pexels.com/photos/15863044/pexels-photo-15863044.jpeg?auto=compress&cs=tinysrgb&h=350",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p>{</p>\n<p>\"title_ar\": \"استعداد البيانات لتقنيات الذكاء الاصطناعي في خدمات Financial services\",</p>\n<p>\"body\": \"تعتبر شركات Financial services من بين الشركات التي تحتاج إلى تقنيات الذكاء الاصطناعي بشكل فريد. تعمل هذه الشركات في واحدة من أكثر القطاعات تنظيماً، وتستجيب لأحداث خارجية يتم تحديثها كل ثانية. ونتيجة لذلك، يعتمد نجاح تقنيات الذكاء الاصطناعي في خدمات Financial services أقل على تعقيد النظام وأكثر على جاهزية البيانات. حيث أن البيانات تلعب دوراً حاسماً في نجاح هذه التقنيات، وتعتبر جاهزية البيانات هي المفتاح لتحقيق النجاح في هذا القطاع. وتعتبر شركات Financial services من بين الشركات التي تحتاج إلى تقنيات الذكاء الاصطناعي بشكل فريد، حيث تعمل في واحدة من أكثر القطاعات تنظيماً، وتستجيب لأحداث خارجية يتم تحديثها كل ثانية. ولهذا، يعتمد نجاح تقنيات الذكاء الاصطناعي في خدمات Financial services على جاهزية البيانات، حيث أن البيانات تلعب دوراً حاسماً في نجاح هذه التقنيات.\",</p>\n<p>\"egypt\": \"• يمكن أن يساهم نجاح تقنيات الذكاء الاصطناعي في خدمات Financial services في تحسين الخدمات المالية في مصر والعرب.</p>\n<p>• يمكن أن يساعد ذلك في تعزيز الثقة في النظام المالي وزيادة الاستثمارات في المنطقة.\",</p>\n<p>\"excerpt\": \"جاهزية البيانات هي المفتاح لنجاح تقنيات الذكاء الاصطناعي في خدمات Financial services. يمكن أن يساهم نجاح هذه التقنيات في تحسين الخدمات المالية في مصر والعرب.\"</p>\n<p>}</p>",
-    egyptImpact: "",
-    source: "https://www.technologyreview.com/2026/05/14/1137034/data-readiness-for-agentic-ai-in-financial-services/",
-    link: "https://osamaelfeky567.github.io/techdosenews/article.html?id=1778958104788"
-  },
-  {
-    id: 1778958097163,
-    title: "Cybercriminal Twins Caught After They Forgot to Turn Off Microsoft Teams Recording",
-    excerpt: "",
-    category: "أمن سيبراني",
-    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p>{</p>\n<p>\"title_ar\": \"الأخوان المجرمين الإلكترونيين يقعون في الفخ بعد نسيانهم إيقاف تسجيل Microsoft Teams\",</p>\n<p>\"body\": \"في أحدث التطورات في عالم الجريمة الإلكترونية، تم القبض على أخوان مجرمين إلكترونيين بعد أن نسيا إيقاف تسجيل Microsoft Teams، مما أدى إلى كشف هويتهما. هذا الحادث يأتي في وقت يشهده عالم التكنولوجيا تحديات متزايدة في مجال الأمن السيبراني. وفي خبر آخر، أعلنت Instructure عن إنهاء أزمة الرansomware التي أصابت منصة Canvas، مما يبعث على الأمل في khảية الشركات للتغلب على هذه التحديات. بالإضافة إلى ذلك، تم القبض على زعيم سوق مظلم على الإنترنت، مما يُظهر التزام السلطات بمكافحة الجريمة الإلكترونية. كما تعرض موظفو OpenAI لهجوم على سلسلة التوريد، مما يُظهر أن حتى الشركات الكبيرة لا تتحصن من هذه الهجمات. فيما يلي تفاصيل هذه الأحداث وسياقها، مع التركيز على تأثيرها على عالم التكنولوجيا والأمن السيبراني. يُظهر هذا التطور أن الجريمة الإلكترونية لا تهدد فقط الأفراد، ولكن أيضًا الشركات والمنظمات الكبيرة، مما يُضيف أهمية إلى تعزيز الأمن السيبراني.\",</p>\n<p>\"egypt\": \"• قد يؤثر هذا التطور على الشركات المصرية التي تعتمد على منصات مثل Microsoft Teams في عملها اليومي، مما يُضيف أهمية إلى تعزيز الأمن السيبراني في هذه الشركات.</p>\n<p>• قد يؤدي هذا إلى زيادة الوعي بأهمية الأمن السيبراني في مصر والعرب، مما قد يؤدي إلى تطوير استراتيجيات新的 لمكافحة الجريمة الإلكترونية.\",</p>\n<p>\"excerpt\": \"الأخوان المجرمين الإلكترونيين يقعون في الفخ بعد نسيانهم إيقاف تسجيل Microsoft Teams، فيما تعرض موظفو OpenAI لهجوم على سلسلة التوريد، مما يُظهر أن الجريمة الإلكترونية لا تهدد فقط الأفراد، ولكن أيضًا الشركات الكبيرة.\"</p>\n<p>}</p>",
-    egyptImpact: "",
-    source: "https://www.wired.com/story/security-news-this-week-cybercriminal-twins-caught-after-they-forgot-to-turn-off-microsoft-teams-recording/",
-    link: "https://osamaelfeky567.github.io/techdosenews/article.html?id=1778958097163"
-  },
-  {
-    id: 1778958087561,
-    title: "NPR’s Manoush Zomorodi talks about living with too much tech",
-    excerpt: "",
-    category: "إلكترونيات",
-    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p>{</p>\n<p>\"title_ar\": \"مانوش زومورоди تتحدث عن العيش مع التكنولوجيا الزائدة\",</p>\n<p>\"body\": \"مانوش زومورоди هي صحفية ومتخصصة في التكنولوجيا، وقد كتبت كتابها الجديد بعنوان \"Body Electric\"، والذي يبحث في تأثير التكنولوجيا على صحتنا الجسدية. هذا الكتاب هو عبارة عن تعاون بين NPR ومركز كولومبيا الطبي، ويتابع ما بدأته في كتابها السابق \"Bored and Brilliant\"، والذي نظر في كيفية تأثير التكنولوجيا على صحتنا النفسية. يُعتبر هذا الكتاب مكملاً لكتابها الأول، حيث يبحث في كيفية تأثير التكنولوجيا على جسدينا. بعد أن قادت برنامج \"Note To Self\" على WNYC، انتقلت زومورоди إلى استضافة برنامج \"TED Radio Hour\" على NPR. يُعتبر كتابها الجديد جزءاً من عملها الواسع في مجال البودكاست. يُوصي الكتاب لأي شخص يشعر أن التكنولوجيا تؤثر على طاقته وإبداعه، حيث يبحث في كيفية تحسين صحتنا الجسدية في عالم مليء بالتكنولوجيا. يُظهر الكتاب كيف يمكن للتكنولوجيا أن تؤثر على جسدينا، ويقدم حلولاً لمواجهة هذه التأثيرات. يُعتبر هذا الكتاب جزءاً من سلسلة من الكتب التي تبحث في تأثير التكنولوجيا على حياتنا، حيث يُظهر كيف يمكننا تحسين صحتنا الجسدية والنفسية في عالم يتغير بسرعة.\",</p>\n<p>\"egypt\": \"• يمكن لمصر أن تستفيد من كتاب \"Body Electric\" في فهم تأثير التكنولوجيا على صحتها الجسدية،</p>\n<p>• يمكن للعرب أن يستفيدوا من الكتاب في تحسين صحتهم الجسدية والنفسية في عالم مليء بالتكنولوجيا\",</p>\n<p>\"excerpt\": \"مانوش زومورоди تكتب عن تأثير التكنولوجيا على جسدينا، وكيف يمكننا تحسين صحتنا الجسدية في عالم مليء بالتكنولوجيا. كتابها الجديد \"Body Electric\" يبحث في كيفية تأثير التكنولوجيا على جسدينا، ويقدم حلولاً لمواجهة هذه التأثيرات.\"</p>\n<p>}</p>",
-    egyptImpact: "",
-    source: "https://www.theverge.com/report/930171/manoush-zomorodi-body-electric-npr-questionnaire",
-    link: "https://osamaelfeky567.github.io/techdosenews/article.html?id=1778958087561"
-  },
-];
+
 /* =========================================================
    Tech Dose News — script.js
    Vanilla JS, no dependencies
@@ -681,6 +600,42 @@ function initArticlePage() {
   }
 
   setEl('articleCaption', `صورة: ${article.title}`);
+
+  setEl('articleBody', '');
+  const bodyEl = document.getElementById('articleBody');
+  if (bodyEl && article.body) bodyEl.innerHTML = article.body;
+
+  const egyptBox = document.getElementById('egyptImpactBox');
+  if (egyptBox && article.egyptImpact) {
+    const body = egyptBox.querySelector('.egypt-impact-body');
+    if (body) body.innerHTML = article.egyptImpact;
+    egyptBox.style.display = '';
+  } else if (egyptBox) {
+    egyptBox.style.display = 'none';
+  }
+
+  const sourceEl = document.querySelector('.article-source span');
+  if (sourceEl && article.source) {
+    sourceEl.innerHTML = 'المصدر: <a href="' + escapeHtml(article.source) + '" target="_blank" rel="noopener noreferrer" style="color:var(--blue)">' + escapeHtml(new URL(article.source).hostname) + '</a> | أُعيدت كتابته بواسطة <strong>Tech Dose News</strong>';
+  }
+
+  const pageUrl = encodeURIComponent(window.location.href);
+  const pageTitle = encodeURIComponent(article.title);
+  const fb = document.getElementById('shareFacebook');
+  if (fb) fb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + pageUrl;
+  const tg = document.getElementById('shareTelegram');
+  if (tg) tg.href = 'https://t.me/share/url?url=' + pageUrl + '&text=' + pageTitle;
+  const wa = document.getElementById('shareWhatsapp');
+  if (wa) wa.href = 'https://wa.me/?text=' + pageTitle + '%20' + pageUrl;
+  const copy = document.getElementById('shareCopy');
+  if (copy) {
+    copy.onclick = function(e) {
+      e.preventDefault();
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        showToast('تم نسخ الرابط');
+      });
+    };
+  }
 
   renderRelated(article);
 

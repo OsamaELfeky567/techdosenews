@@ -1,24 +1,24 @@
 /* =========================================================
-   Tech Dose News — script.js
+   Tech Dose News â€” script.js
    Vanilla JS, no dependencies
    ========================================================= */
 
 'use strict';
 
 /* =========================================================
-   DATETIME BAR — ميلادي + هجري + ساعة
+   DATETIME BAR â€” Ù…ÙŠÙ„Ø§Ø¯ÙŠ + Ù‡Ø¬Ø±ÙŠ + Ø³Ø§Ø¹Ø©
    ========================================================= */
 function initDatetimeBar() {
   function updateClock() {
     const now = new Date();
 
-    // ===== ميلادي =====
+    // ===== Ù…ÙŠÙ„Ø§Ø¯ÙŠ =====
     const miladiOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const miladi = now.toLocaleDateString('ar-EG', miladiOptions);
     const miladiEl = document.getElementById('miladiDate');
     if (miladiEl) miladiEl.textContent = miladi;
 
-    // ===== هجري =====
+    // ===== Ù‡Ø¬Ø±ÙŠ =====
     const hijriOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', calendar: 'islamic' };
     try {
       const hijri = now.toLocaleDateString('ar-SA-u-ca-islamic', hijriOptions);
@@ -34,11 +34,11 @@ function initDatetimeBar() {
       if (dtHijri) dtHijri.style.display = 'none';
     }
 
-    // ===== ساعة 12 صباحاً/مساءً =====
+    // ===== Ø³Ø§Ø¹Ø© 12 ØµØ¨Ø§Ø­Ø§Ù‹/Ù…Ø³Ø§Ø¡Ù‹ =====
     let hours = now.getHours();
     const minutes = String(now.getMinutes()).padStart(2, '0');
     const seconds = String(now.getSeconds()).padStart(2, '0');
-    const ampm = hours >= 12 ? 'م' : 'ص';
+    const ampm = hours >= 12 ? 'Ù…' : 'Øµ';
     hours = hours % 12 || 12;
     const timeStr = `${hours}:${minutes}:${seconds} ${ampm}`;
     const clockEl = document.getElementById('clockTime');
@@ -50,7 +50,7 @@ function initDatetimeBar() {
 }
 
 /* =========================================================
-   RELATIVE DATE — تحويل timestamp لوقت نسبي دقيق
+   RELATIVE DATE â€” ØªØ­ÙˆÙŠÙ„ timestamp Ù„ÙˆÙ‚Øª Ù†Ø³Ø¨ÙŠ Ø¯Ù‚ÙŠÙ‚
    ========================================================= */
 function getRelativeTime(articleId) {
   if (!articleId || isNaN(articleId) || articleId < 1000000) return null;
@@ -61,22 +61,22 @@ function getRelativeTime(articleId) {
   const hours = Math.floor(diff / 3600000);
   const days = Math.floor(diff / 86400000);
 
-  if (minutes < 2) return 'منذ لحظات';
-  if (minutes < 60) return `منذ ${minutes} دقيقة`;
-  if (hours === 1) return 'منذ ساعة';
-  if (hours === 2) return 'منذ ساعتين';
-  if (hours < 11) return `منذ ${hours} ساعات`;
-  if (hours < 24) return `منذ ${hours} ساعة`;
-  if (days === 1) return 'أمس';
-  if (days === 2) return 'منذ يومين';
-  if (days < 7) return `منذ ${days} أيام`;
-  if (days < 14) return 'منذ أسبوع';
-  if (days < 30) return 'منذ أسبوعين';
-  return `منذ ${Math.floor(days/30)} شهر`;
+  if (minutes < 2) return 'Ù…Ù†Ø° Ù„Ø­Ø¸Ø§Øª';
+  if (minutes < 60) return `Ù…Ù†Ø° ${minutes} Ø¯Ù‚ÙŠÙ‚Ø©`;
+  if (hours === 1) return 'Ù…Ù†Ø° Ø³Ø§Ø¹Ø©';
+  if (hours === 2) return 'Ù…Ù†Ø° Ø³Ø§Ø¹ØªÙŠÙ†';
+  if (hours < 11) return `Ù…Ù†Ø° ${hours} Ø³Ø§Ø¹Ø§Øª`;
+  if (hours < 24) return `Ù…Ù†Ø° ${hours} Ø³Ø§Ø¹Ø©`;
+  if (days === 1) return 'Ø£Ù…Ø³';
+  if (days === 2) return 'Ù…Ù†Ø° ÙŠÙˆÙ…ÙŠÙ†';
+  if (days < 7) return `Ù…Ù†Ø° ${days} Ø£ÙŠØ§Ù…`;
+  if (days < 14) return 'Ù…Ù†Ø° Ø£Ø³Ø¨ÙˆØ¹';
+  if (days < 30) return 'Ù…Ù†Ø° Ø£Ø³Ø¨ÙˆØ¹ÙŠÙ†';
+  return `Ù…Ù†Ø° ${Math.floor(days/30)} Ø´Ù‡Ø±`;
 }
 
 
-/* ── View Tracking (localStorage) ── */
+/* â”€â”€ View Tracking (localStorage) â”€â”€ */
 function getViewCounts() {
   try { return JSON.parse(localStorage.getItem('tdn_views') || '{}'); } catch { return {}; }
 }
@@ -87,27 +87,27 @@ function incrementView(id) {
   localStorage.setItem('tdn_views', JSON.stringify(counts));
 }
 
-/* ── Get display date from multiple sources ── */
+/* â”€â”€ Get display date from multiple sources â”€â”€ */
 function getArticleDateDisplay(article) {
   const rt = getRelativeTime(article.id);
   if (rt) return rt;
-  if (article.date && !article.date.includes('منذ')) return article.date;
+  if (article.date && !article.date.includes('Ù…Ù†Ø°')) return article.date;
   if (article.publishedAt) {
     const ts = new Date(article.publishedAt).getTime();
     const rt2 = getRelativeTime(ts);
     if (rt2) return rt2;
   }
   if (article.date) return article.date;
-  return 'منذ لحظات';
+  return 'Ù…Ù†Ø° Ù„Ø­Ø¸Ø§Øª';
 }
 
-/* ── Live Refresh ── */
+/* â”€â”€ Live Refresh â”€â”€ */
 function refreshLiveUI() {
   document.querySelectorAll('.rt-date').forEach(el => {
     const id = parseInt(el.dataset.articleId, 10);
     const article = articles.find(a => a.id === id);
     if (id && article) el.textContent = getArticleDateDisplay(article);
-    else if (id) el.textContent = getRelativeTime(id) || 'منذ لحظات';
+    else if (id) el.textContent = getRelativeTime(id) || 'Ù…Ù†Ø° Ù„Ø­Ø¸Ø§Øª';
   });
   document.querySelectorAll('.rt-view').forEach(el => {
     const id = parseInt(el.dataset.articleId, 10);
@@ -119,258 +119,173 @@ function refreshLiveUI() {
   renderTrending();
 }
 
-/* ── Sample Data ── */
-const articles = [
-  {
-    id: 1778226355884,
-    title: "الHackers يضايقون المزيد من الساخن في الذكاء الاصطناعي",
-    excerpt: "شكراً جزيلاً على هذا التقييم التفصيلي والإعادة الاحترافية، نحن فخورون بجهودكم في تحسين النص.",
-    category: "ذكاء اصطناعي",
-    image: "https://images.pexels.com/photos/18510427/pexels-photo-18510427.jpeg?auto=compress&cs=tinysrgb&h=350",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p>شكراً جزيلاً على هذا التقييم التفصيلي وإعادة الصياغة الاحترافية. لقد كان عملكم مميزًا وفعالاً في تحقيق الأهداف المطلوبة. أقدر جهودكم المبذولة في إعادة هيكلة النص وتجنب الأسلوب الآلي، مع الحفاظ على جميع المعلومات الهامة.</p>",
-    egyptImpact: "<p>أثر التقييم الإيجابي على معالجة مشاعر المراجعين من خلال تحسين جودة النص.</p><p>ساهم التقييم في تعزيز المصداقية والاحترافية في عملية إعادة صياغة النص.</p>",
-    source: "https://www.wired.com/story/cybercriminals-are-complaining-about-ai-slop-flooding-their-forums/"
-  },
-  {
-    id: 1778226050173,
-    title: "Canvas يعاني من توقف بسبب تهديد شيني هانتر بتسريب بيانات المدارس.",
-    excerpt: "هجوم سيبراني يهدد مستقبل التعليم في الهند.\n\nInstructure تشن حملة احترازية مكثفة لمواجهة التهديد.",
-    category: "ذكاء اصطناعي",
-    image: "https://images.pexels.com/photos/31903938/pexels-photo-31903938.jpeg?auto=compress&cs=tinysrgb&h=350",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p>## Instructure تواجه هجومًا سيبرانيًا من مجموعة ShinyHunters</p><p><strong>نيودلهي، الهند –</strong> تعرضت منصة تعليمية للجامعات الهندية، Instructure، لهجوم حاسوبي مُحفّز من قبل مجموعة متطرفة تُدعى ShinyHunters. بدأ الهجوم في يوم الخميس، 16 مايو، عندما أرسلت المجموعة رسالة إلى الطلاب الذين يحاولون الوصول إلى النظام، زعمت فيها أنها تحاول اختراق النظام وربما تسريب بياناتهم.</p><p>Instructure، وهي شركة مسجلة في الهند، تعتبر من بين أكبر مُقدمي خدمات التعليم في البلاد، حيث تخدم أكثر من 6.5 مليون طالب في مجموعة متنوعة من الجامعات.  تمحور الهجوم، وفقًا للمعلومات المتوفرة، حول تعطيل العمليات التعليمية، إلا أنه لم يتسبب حتى الآن في خسائر مالية كبيرة.</p><p>يشهد سوق تعليم التعليم العالي في الهند منافسة شرسة، يواجهها Instructure من لاعبين كبار مثل Udemy، التي تقدم مجموعة واسعة من الدورات التدريبية، و Coursera، المتخصصة في الدورات الدراسية عبر الإنترنت.  كما تتنافس Instructure مع شركات ناشئة مثل BYJU’s، والتي تستهدف جمهورًا أصغر حجمًا ولكنها تتمتع بقاعدة عملاء متنامية.</p><p>من المتوقع أن تتخذ Instructure إجراءات احترازية قوية للردع، بما في ذلك الاستعانة بخدمات الأمن السيبراني المتخصصة، بالإضافة إلى إجراء تقييم شامل لنقاط الضعف الأمنية المحتملة في نظامها.  هدف هذه الخطوات هو استعادة النظام بشكل كامل ومنع تكرار هذه الهجمات في المستقبل.</p><p>أكدت Instructure في بيان رسمي أنها تعمل بجد لتحديد مصدر الهجوم، مع التركيز على استعادة الخدمات وضمان سلامة بيانات الطلاب. وذكرت الشركة أنها ستعلن عن تفاصيل إضافية بمجرد اكتمال التحقيقات خلال القمة التقنية القادمة.</p>",
-    egyptImpact: "<p>**تأثرت Instructure، وهي شركة تعليمية مهمة في الهند، بالهجوم السيبراني، مما أدى إلى تعطيل العمليات التعليمية.**</p><p>**ستتخذ Instructure إجراءات احترازية قوية، بما في ذلك الاستعانة بخدمات الأمن السيبراني، لمعالجة الهجوم والاستعادة الكاملة للنظام.**</p>",
-    source: "https://www.theverge.com/tech/926458/canvas-shinyhunters-breach"
-  },
-  {
-    id: 1778225011116,
-    title: "تخلف DHS عن إنشاء قاعدة بيانات DNA واسعة لتتبع Kritik لجهات الأمن.",
-    excerpt: "بالتأكيد، يرجى تزويدي بالنص الأصلي.",
-    category: "ذكاء اصطناعي",
-    image: "https://images.pexels.com/photos/36022196/pexels-photo-36022196.jpeg?auto=compress&cs=tinysrgb&h=350",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p>يرجى تزويدي بالنص الأصلي الذي تريدني أن أعيد كتابته. بمجرد أن أحصل عليه، سأقوم بإعادة صياغته وفقًا للقواعد والتعليمات التي حددتها بعناية.</p>",
-    egyptImpact: "<p>يرجى تزويدي بالنص الأصلي.</p>",
-    source: "https://arstechnica.com/tech-policy/2026/05/ice-protesters-sue-to-stop-dhs-from-seizing-dna-samples/"
-  },
-  {
-    id: 1778223942806,
-    title: "حملة الرسم اللامع هي عقبة جديدة في مشهد برامج الرقمنة",
-    excerpt: "هنا جملتان تشويقيتان باللغة العربية:\n\n   ميكروسوفت 365، في حالة خيانة، تتحول إلى ساحة حروب.\n   النظام الذي كان يبدو آمناً، قد فقد عرينه.",
-    category: "ذكاء اصطناعي",
-    image: "https://images.pexels.com/photos/5475752/pexels-photo-5475752.jpeg?auto=compress&cs=tinysrgb&h=350",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p>بالتأكيد، إليك إعادة صياغة للنص بناءً على التقييم المقدم، مع الالتزام بالقواعد المحددة:</p><p><strong>توقف فوري لخدمة \"ميكروسوفت 365\" بعد اختراق بيانات المستخدمين</strong></p><p>أعلنت شركة \"Instructure\" اليوم عن توقف فوري لخدمة \"ميكروسوفت 365\" كإجراء احترازي بعد اكتشاف خرق أمني واسع النطاق.  وقالت الشركة في بيان رسمي: \"نحن نعتبر هذا الحادث أولوية قصوى ونعمل بجد لتحديد حجم الضرر الكامل وتقليمه\".</p><p>وأكدت \"ميكروسوفت 365\" أنها تتعاون بشكل وثيق مع خبراء الأمن السيبراني للتحقيق في الواقعة.  ويشير التحقيق الأولي إلى تورط مجموعة من المخترقين، يُعرفون بـ \"Hackers\"، في عملية اختراق البيانات.</p><p>وأظهرت التحقيقات الأولية أن المخترقين تمكنوا من الوصول إلى بيانات المستخدمين، بما في ذلك أسماء المستخدمين وكلمات المرور، بالإضافة إلى بعض المعلومات الحساسة المتعلقة بالعمليات التجارية للشركات التي تعتمد على \"ميكروسوفت 365\".</p><p>من جانبه، أوضح المتحدث باسم \"Instructure\" أن الشركة قد بدأت إجراءات تحقيق شاملة لتحديد الأسباب التي أدت إلى هذا الاختراق وتطبيق تدابير وقائية جديدة.  كما تعتزم الشركة تقديم تعويضات للمستخدمين المتضررين، وسيتم تحديد الشروط والبنود لاحقًا.</p><p>وتعمل \"ميكروسوفت 365\" حالياً على إصلاح الثغرات الأمنية وتطبيق إجراءات أمنية أكثر صرامة لضمان حماية بيانات المستخدمين في المستقبل.  وتشير الشركة إلى أن العمل جارٍ على استعادة الخدمة في أقرب وقت ممكن بعد الانتهاء من التحقيق الكامل وإجراء التعديلات اللازمة.</p><p><strong>ملاحظة:</strong> (Hackers, Instructure, Microsoft 365)</p><p>آمل أن تكون هذه النسخة الجديدة مناسبة للغرض المنشود.  هل تود تعديلات إضافية؟</p>",
-    egyptImpact: "<p>بالتأكيد، إليك نقطتين مختصرتين عن تأثيره على مصر والعرب، مع الالتزام بالقواعد المحددة:</p><p>**مصر:** سيؤدي هذا الحادث إلى تفعيل إجراءات أمنية صارمة على مستوى الحكومة المصرية لتعزيز الأمن السيبراني، مما قد يؤثر على ثقة الشركات المحلية في خدمات الإنترنت والبريد الإلكتروني، وربما يتطلب استثمارات كبيرة في تحديث البنية التحتية الحالية.</p><p>**العرب:**  سيعاني الأفراد والمؤسسات في الدول العربية من خطر كبير على بياناتهم الشخصية، مما قد يؤدي إلى مشاكل قانونية وسمعية كبيرة، بالإضافة إلى إضعاف الثقة في استخدام الخدمات الرقمية، وربما يؤثر على الاقتصاد الذي يعتمد بشكل كبير على التجارة الإلكترونية.</p>",
-    source: "https://www.wired.com/story/canvas-hack-shinyhunters-ransomware-instructure/"
-  },
-  {
-    id: 1778223646687,
-    title: "لا يمكن لأي طبيب دائمًا الاتصال بك.",
-    excerpt: "أنت لم تقدم النص! يرجى تزويدي بالنص العربي الذي تريد إعادة كتابته. بمجرد أن أحصل عليه، سأقوم بإعادة صياغته وفقًا للقواعد المحددة التي ذكرتها.",
-    category: "ذكاء اصطناعي",
-    image: "https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&h=350",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p>يرجى تزويدي بالنص الذي تريد إعادة كتابته. بمجرد أن أحصل عليه، سأقوم بإعادة صياغته وفقًا للقواعد المحددة التي ذكرتها، مع الحرص على تقديم خبر صحفي عربي احترافي وبأسلوب طبيعي وجذاب.</p>",
-    egyptImpact: "<p>يرجى تزويدي بالخبر.</p>",
-    source: "https://techcrunch.com/2026/05/07/the-back-office-problem-that-explains-why-specialists-never-call-you-back/"
-  },
-  {
-    id: 1778220704207,
-    title: "لا يمكن لأي طبيب أن يرجعك إلى المستشفى.",
-    excerpt: "إليك الجملتين التشويقتين:\n\n1.  تحتضن Basata مستقبل العمل، وتحتضن التحديات التي تفرضها الأتمتة، من خلال استثمارها المحدود في تطوير الكفاءات البشرية.\n2.",
-    category: "ذكاء اصطناعي",
-    image: "https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&h=350",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p><strong>الشركات تلجأ إلى تدابير للتعامل مع التحديات المتصورة من الأتمتة.</strong></p><p>أعلنت شركة Basata، وهي رائدة في مجال تحسين العمليات الصناعية، عن مخاوف متزايدة بشأن تأثير الأتمتة المتسارعة على وظائفها البشرية، بحسب ما ورد. وفقاً لبيانات الشركة، تتوقع Basata أن تؤدي التحسينات التكنولوجية القائمة على الذكاء الاصطناعي إلى فقدان عدد كبير من الوظائف، بحسب التقديرات المالية للشركة.</p><p>الشركة تعترف بأن التحدي يكمن في كيفية إيجاد حلول مبتكرة تحافظ على استدامة الأعمال، مع استقطاب وتدريب الموظفين الجدد في الدورات التدريبية الجديدة التي تُركز على التكنولوجيا. يرى القادة التنفيذيين أن Basata تهدف إلى تبني سياسات جديدة تعزز التعاون بين البشر والذكاء الاصطناعي، بدلًا من الاعتماد على التكنولوجيا كبديل كامل.</p><p>تُعد شركة Basata محط أنظار المنافسين، وخاصة شركات تصنيع الروبوتات، التي تُظهر اهتمامًا كبيرًا بتطوير حلول أتمتة متقدمة. تستعرض سوق التوظيف في المنطقة العربية تحولاً كبيراً في الصناعة، وتُشير التقديرات إلى أن 30% من الوظائف في قطاع التصنيع ستُتأثر بالتكنولوجيا المتقدمة في السنوات القليلة القادمة.</p><p>تأمل Basata في استثمار كبير في تطوير برامج تدريبية مستمرة، والتعاون مع المؤسسات التعليمية لتأهيل الموظفين للوظائف الجديدة التي تظهر في سوق العمل في المستقبل القريب. تعتقد الشركة أن مستقبل العمل يكمن في دمج التكنولوجيا مع بشرتها البشرية.</p><p>التقر بهذه التحديات، تعلن Basata عن خططها لزيادة عدد الموظفين في الربع القادم لتواكب التطورات التكنولوجية.</p>",
-    egyptImpact: "<p>هنا 3 نقاط تحليلية حول تأثير هذا الخبر على مصر والعرب:</p><p>1.  **فرص العمل والمهارات:** ستُظهر مصر والعرب زيادة في الطلب على مهارات في مجالات التكنولوجيا (ذكاء اصطناعي، تحليل بيانات) والتكنولوجيا المتقدمة، مع التركيز على التدريب المستمر للموظفين الحاليين، مما يزيد من فرص العمل في قطاع التكنولوجيا.</p><p>2.  **الفرص الاقتصادية:**  تشير التقديرات إلى أن فقدان الوظائف في قطاع التصنيع (خاصة في مصر والعرب) سيؤثر سلبًا على الاقتصاد المحلي، حيث يقلل من القدرة الإنتاجية والنمو، مما يتطلب استثمارات في التوير والتكيف.</p><p>3.  **التوصية العملية:** يجب على مصر والعرب الاستثمار بشكل كبير في برامج تدريب وتطوير مهارات الموظفين الحاليين، خاصة في المجالات المرتبطة بالتكنولوجيا، لضمان بقاءهم قادرين على المنافسة في سوق العمل المتغير، وتطبيق سياسات تعاون بشرية-ذكاء اصطناعي.</p>",
-    source: "https://techcrunch.com/2026/05/07/the-back-office-problem-that-explains-why-specialists-never-call-you-back/"
-  },
+/* â”€â”€ Sample Data â”€â”€ */
+let articles = [];
+
+/* â”€â”€ Fallback sample data (used if articles/index.json fetch fails) â”€â”€ */
+const FALLBACK_ARTICLES = [
   {
     id: 1,
-    title: "OpenAI تطلق GPT-5 بقدرات تفوق توقعات الخبراء",
-    excerpt: "كشفت شركة OpenAI النقاب عن الجيل الخامس من نموذجها الشهير بمزايا غير مسبوقة تتجاوز كل التوقعات التي أطلقها خبراء الذكاء الاصطناعي حول العالم.",
-    category: "ذكاء اصطناعي",
+    title: "OpenAI ØªØ·Ù„Ù‚ GPT-5 Ø¨Ù‚Ø¯Ø±Ø§Øª ØªÙÙˆÙ‚ ØªÙˆÙ‚Ø¹Ø§Øª Ø§Ù„Ø®Ø¨Ø±Ø§Ø¡",
+    excerpt: "ÙƒØ´ÙØª Ø´Ø±ÙƒØ© OpenAI Ø§Ù„Ù†Ù‚Ø§Ø¨ Ø¹Ù† Ø§Ù„Ø¬ÙŠÙ„ Ø§Ù„Ø®Ø§Ù…Ø³ Ù…Ù† Ù†Ù…ÙˆØ°Ø¬Ù‡Ø§ Ø§Ù„Ø´Ù‡ÙŠØ± Ø¨Ù…Ø²Ø§ÙŠØ§ ØºÙŠØ± Ù…Ø³Ø¨ÙˆÙ‚Ø© ØªØªØ¬Ø§ÙˆØ² ÙƒÙ„ Ø§Ù„ØªÙˆÙ‚Ø¹Ø§Øª Ø§Ù„ØªÙŠ Ø£Ø·Ù„Ù‚Ù‡Ø§ Ø®Ø¨Ø±Ø§Ø¡ Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ Ø­ÙˆÙ„ Ø§Ù„Ø¹Ø§Ù„Ù….",
+    category: "Ø°ÙƒØ§Ø¡ Ø§ØµØ·Ù†Ø§Ø¹ÙŠ",
     image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
-    date: "منذ ساعتين",
-    readTime: "4 دقائق",
-    views: "2,341",
+    date: "Ù…Ù†Ø° Ø³Ø§Ø¹ØªÙŠÙ†",
+    readTime: "4 Ø¯Ù‚Ø§Ø¦Ù‚",
     hasEgyptImpact: true,
     featured: true
   },
   {
     id: 2,
-    title: "سامسونج تكشف عن Galaxy S25 بشاشة أكثر إشراقاً",
-    excerpt: "أعلنت سامسونج رسمياً عن هاتف Galaxy S25 الجديد بمعالج Snapdragon 8 Elite وكاميرا محسّنة بالذكاء الاصطناعي.",
-    category: "هواتف ذكية",
+    title: "Ø³Ø§Ù…Ø³ÙˆÙ†Ø¬ ØªÙƒØ´Ù Ø¹Ù† Galaxy S25 Ø¨Ø´Ø§Ø´Ø© Ø£ÙƒØ«Ø± Ø¥Ø´Ø±Ø§Ù‚Ø§Ù‹",
+    excerpt: "Ø£Ø¹Ù„Ù†Øª Ø³Ø§Ù…Ø³ÙˆÙ†Ø¬ Ø±Ø³Ù…ÙŠØ§Ù‹ Ø¹Ù† Ù‡Ø§ØªÙ Galaxy S25 Ø§Ù„Ø¬Ø¯ÙŠØ¯ Ø¨Ù…Ø¹Ø§Ù„Ø¬ Snapdragon 8 Elite ÙˆÙƒØ§Ù…ÙŠØ±Ø§ Ù…Ø­Ø³Ù‘Ù†Ø© Ø¨Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ.",
+    category: "Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©",
     image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=800&q=80",
-    date: "منذ 5 ساعات",
-    readTime: "3 دقائق",
-    views: "1,892",
+    date: "Ù…Ù†Ø° 5 Ø³Ø§Ø¹Ø§Øª",
+    readTime: "3 Ø¯Ù‚Ø§Ø¦Ù‚",
     hasEgyptImpact: true,
     featured: false
   },
   {
     id: 3,
-    title: "ثغرة أمنية خطيرة تهدد ملايين مستخدمي أندرويد",
-    excerpt: "اكتشف باحثو الأمن السيبراني ثغرة خطيرة في نظام أندرويد تؤثر على أكثر من مليار جهاز حول العالم.",
-    category: "أمن سيبراني",
+    title: "Ø«ØºØ±Ø© Ø£Ù…Ù†ÙŠØ© Ø®Ø·ÙŠØ±Ø© ØªÙ‡Ø¯Ø¯ Ù…Ù„Ø§ÙŠÙŠÙ† Ù…Ø³ØªØ®Ø¯Ù…ÙŠ Ø£Ù†Ø¯Ø±ÙˆÙŠØ¯",
+    excerpt: "Ø§ÙƒØªØ´Ù Ø¨Ø§Ø­Ø«Ùˆ Ø§Ù„Ø£Ù…Ù† Ø§Ù„Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ Ø«ØºØ±Ø© Ø®Ø·ÙŠØ±Ø© ÙÙŠ Ù†Ø¸Ø§Ù… Ø£Ù†Ø¯Ø±ÙˆÙŠØ¯ ØªØ¤Ø«Ø± Ø¹Ù„Ù‰ Ø£ÙƒØ«Ø± Ù…Ù† Ù…Ù„ÙŠØ§Ø± Ø¬Ù‡Ø§Ø² Ø­ÙˆÙ„ Ø§Ù„Ø¹Ø§Ù„Ù….",
+    category: "Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ",
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
-    date: "منذ 8 ساعات",
-    readTime: "5 دقائق",
-    views: "3,120",
+    date: "Ù…Ù†Ø° 8 Ø³Ø§Ø¹Ø§Øª",
+    readTime: "5 Ø¯Ù‚Ø§Ø¦Ù‚",
     hasEgyptImpact: false,
     featured: false
   },
   {
     id: 4,
-    title: "جوجل تستثمر 10 مليار دولار في البنية التحتية للذكاء الاصطناعي",
-    excerpt: "أعلنت شركة جوجل عن خطة استثمارية ضخمة لتوسيع بنيتها التحتية لخدمات الذكاء الاصطناعي خلال العام الجاري.",
-    category: "شركات التقنية",
+    title: "Ø¬ÙˆØ¬Ù„ ØªØ³ØªØ«Ù…Ø± 10 Ù…Ù„ÙŠØ§Ø± Ø¯ÙˆÙ„Ø§Ø± ÙÙŠ Ø§Ù„Ø¨Ù†ÙŠØ© Ø§Ù„ØªØ­ØªÙŠØ© Ù„Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ",
+    excerpt: "Ø£Ø¹Ù„Ù†Øª Ø´Ø±ÙƒØ© Ø¬ÙˆØ¬Ù„ Ø¹Ù† Ø®Ø·Ø© Ø§Ø³ØªØ«Ù…Ø§Ø±ÙŠØ© Ø¶Ø®Ù…Ø© Ù„ØªÙˆØ³ÙŠØ¹ Ø¨Ù†ÙŠØªÙ‡Ø§ Ø§Ù„ØªØ­ØªÙŠØ© Ù„Ø®Ø¯Ù…Ø§Øª Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ Ø®Ù„Ø§Ù„ Ø§Ù„Ø¹Ø§Ù… Ø§Ù„Ø¬Ø§Ø±ÙŠ.",
+    category: "Ø´Ø±ÙƒØ§Øª Ø§Ù„ØªÙ‚Ù†ÙŠØ©",
     image: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=800&q=80",
-    date: "أمس",
-    readTime: "6 دقائق",
-    views: "987",
+    date: "Ø£Ù…Ø³",
+    readTime: "6 Ø¯Ù‚Ø§Ø¦Ù‚",
     hasEgyptImpact: false,
     featured: false
   },
   {
     id: 5,
-    title: "مصر تطلق أول منصة حكومية للذكاء الاصطناعي",
-    excerpt: "أطلقت الحكومة المصرية منصتها الرقمية الجديدة المدعومة بالذكاء الاصطناعي لتحسين الخدمات الحكومية.",
-    category: "مصر والتقنية",
+    title: "Ù…ØµØ± ØªØ·Ù„Ù‚ Ø£ÙˆÙ„ Ù…Ù†ØµØ© Ø­ÙƒÙˆÙ…ÙŠØ© Ù„Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ",
+    excerpt: "Ø£Ø·Ù„Ù‚Øª Ø§Ù„Ø­ÙƒÙˆÙ…Ø© Ø§Ù„Ù…ØµØ±ÙŠØ© Ù…Ù†ØµØªÙ‡Ø§ Ø§Ù„Ø±Ù‚Ù…ÙŠØ© Ø§Ù„Ø¬Ø¯ÙŠØ¯Ø© Ø§Ù„Ù…Ø¯Ø¹ÙˆÙ…Ø© Ø¨Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ Ù„ØªØ­Ø³ÙŠÙ† Ø§Ù„Ø®Ø¯Ù…Ø§Øª Ø§Ù„Ø­ÙƒÙˆÙ…ÙŠØ©.",
+    category: "Ù…ØµØ± ÙˆØ§Ù„ØªÙ‚Ù†ÙŠØ©",
     image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&q=80",
-    date: "منذ يومين",
-    readTime: "4 دقائق",
-    views: "4,560",
+    date: "Ù…Ù†Ø° ÙŠÙˆÙ…ÙŠÙ†",
+    readTime: "4 Ø¯Ù‚Ø§Ø¦Ù‚",
     hasEgyptImpact: true,
     featured: false
   },
   {
     id: 6,
-    title: "أبل تختبر ميزة الشحن اللاسلكي الفائق السرعة في iPhone 17",
-    excerpt: "تكشف التسريبات الأخيرة أن أبل تعمل على تقنية شحن لاسلكي بقدرة 50 واط في جيل iPhone القادم.",
-    category: "هواتف ذكية",
+    title: "Ø£Ø¨Ù„ ØªØ®ØªØ¨Ø± Ù…ÙŠØ²Ø© Ø§Ù„Ø´Ø­Ù† Ø§Ù„Ù„Ø§Ø³Ù„ÙƒÙŠ Ø§Ù„ÙØ§Ø¦Ù‚ Ø§Ù„Ø³Ø±Ø¹Ø© ÙÙŠ iPhone 17",
+    excerpt: "ØªÙƒØ´Ù Ø§Ù„ØªØ³Ø±ÙŠØ¨Ø§Øª Ø§Ù„Ø£Ø®ÙŠØ±Ø© Ø£Ù† Ø£Ø¨Ù„ ØªØ¹Ù…Ù„ Ø¹Ù„Ù‰ ØªÙ‚Ù†ÙŠØ© Ø´Ø­Ù† Ù„Ø§Ø³Ù„ÙƒÙŠ Ø¨Ù‚Ø¯Ø±Ø© 50 ÙˆØ§Ø· ÙÙŠ Ø¬ÙŠÙ„ iPhone Ø§Ù„Ù‚Ø§Ø¯Ù….",
+    category: "Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©",
     image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&q=80",
-    date: "منذ 3 أيام",
-    readTime: "3 دقائق",
-    views: "2,100",
+    date: "Ù…Ù†Ø° 3 Ø£ÙŠØ§Ù…",
+    readTime: "3 Ø¯Ù‚Ø§Ø¦Ù‚",
     hasEgyptImpact: false,
     featured: false
   },
   {
     id: 7,
-    title: "تسلا تكشف عن روبوت Optimus الجديد بقدرات مذهلة",
-    excerpt: "عرضت شركة تسلا الجيل الثاني من روبوتها الإنساني Optimus الذي يستطيع أداء مهام منزلية معقدة باستقلالية عالية.",
-    category: "سيارات كهربائية",
+    title: "ØªØ³Ù„Ø§ ØªÙƒØ´Ù Ø¹Ù† Ø±ÙˆØ¨ÙˆØª Optimus Ø§Ù„Ø¬Ø¯ÙŠØ¯ Ø¨Ù‚Ø¯Ø±Ø§Øª Ù…Ø°Ù‡Ù„Ø©",
+    excerpt: "Ø¹Ø±Ø¶Øª Ø´Ø±ÙƒØ© ØªØ³Ù„Ø§ Ø§Ù„Ø¬ÙŠÙ„ Ø§Ù„Ø«Ø§Ù†ÙŠ Ù…Ù† Ø±ÙˆØ¨ÙˆØªÙ‡Ø§ Ø§Ù„Ø¥Ù†Ø³Ø§Ù†ÙŠ Optimus Ø§Ù„Ø°ÙŠ ÙŠØ³ØªØ·ÙŠØ¹ Ø£Ø¯Ø§Ø¡ Ù…Ù‡Ø§Ù… Ù…Ù†Ø²Ù„ÙŠØ© Ù…Ø¹Ù‚Ø¯Ø© Ø¨Ø§Ø³ØªÙ‚Ù„Ø§Ù„ÙŠØ© Ø¹Ø§Ù„ÙŠØ©.",
+    category: "Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©",
     image: "https://images.unsplash.com/photo-1561144257-e32e8506e647?w=800&q=80",
-    date: "منذ 4 أيام",
-    readTime: "5 دقائق",
-    views: "1,734",
+    date: "Ù…Ù†Ø° 4 Ø£ÙŠØ§Ù…",
+    readTime: "5 Ø¯Ù‚Ø§Ø¦Ù‚",
     hasEgyptImpact: false,
     featured: false
   },
   {
     id: 8,
-    title: "ميكروسوفت تدمج الذكاء الاصطناعي في كل منتجاتها خلال 2025",
-    excerpt: "أعلنت شركة ميكروسوفت عن خطتها الشاملة لدمج نماذج الذكاء الاصطناعي في جميع تطبيقاتها بما فيها Office وWindows.",
-    category: "شركات التقنية",
+    title: "Ù…ÙŠÙƒØ±ÙˆØ³ÙˆÙØª ØªØ¯Ù…Ø¬ Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ ÙÙŠ ÙƒÙ„ Ù…Ù†ØªØ¬Ø§ØªÙ‡Ø§ Ø®Ù„Ø§Ù„ 2025",
+    excerpt: "Ø£Ø¹Ù„Ù†Øª Ø´Ø±ÙƒØ© Ù…ÙŠÙƒØ±ÙˆØ³ÙˆÙØª Ø¹Ù† Ø®Ø·ØªÙ‡Ø§ Ø§Ù„Ø´Ø§Ù…Ù„Ø© Ù„Ø¯Ù…Ø¬ Ù†Ù…Ø§Ø°Ø¬ Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ ÙÙŠ Ø¬Ù…ÙŠØ¹ ØªØ·Ø¨ÙŠÙ‚Ø§ØªÙ‡Ø§ Ø¨Ù…Ø§ ÙÙŠÙ‡Ø§ Office ÙˆWindows.",
+    category: "Ø´Ø±ÙƒØ§Øª Ø§Ù„ØªÙ‚Ù†ÙŠØ©",
     image: "https://images.unsplash.com/photo-1642952469120-eed4b65104be?w=800&q=80",
-    date: "منذ 5 أيام",
-    readTime: "4 دقائق",
-    views: "1,456",
+    date: "Ù…Ù†Ø° 5 Ø£ÙŠØ§Ù…",
+    readTime: "4 Ø¯Ù‚Ø§Ø¦Ù‚",
     hasEgyptImpact: false,
     featured: false
   },
   {
     id: 9,
-    title: "تقرير: مبيعات الهواتف الذكية ترتفع 12% في مصر عام 2024",
-    excerpt: "كشف تقرير حديث عن ارتفاع ملحوظ في مبيعات الهواتف الذكية في السوق المصرية خلال العام الماضي رغم التحديات الاقتصادية.",
-    category: "مصر والتقنية",
+    title: "ØªÙ‚Ø±ÙŠØ±: Ù…Ø¨ÙŠØ¹Ø§Øª Ø§Ù„Ù‡ÙˆØ§ØªÙ Ø§Ù„Ø°ÙƒÙŠØ© ØªØ±ØªÙØ¹ 12% ÙÙŠ Ù…ØµØ± Ø¹Ø§Ù… 2024",
+    excerpt: "ÙƒØ´Ù ØªÙ‚Ø±ÙŠØ± Ø­Ø¯ÙŠØ« Ø¹Ù† Ø§Ø±ØªÙØ§Ø¹ Ù…Ù„Ø­ÙˆØ¸ ÙÙŠ Ù…Ø¨ÙŠØ¹Ø§Øª Ø§Ù„Ù‡ÙˆØ§ØªÙ Ø§Ù„Ø°ÙƒÙŠØ© ÙÙŠ Ø§Ù„Ø³ÙˆÙ‚ Ø§Ù„Ù…ØµØ±ÙŠØ© Ø®Ù„Ø§Ù„ Ø§Ù„Ø¹Ø§Ù… Ø§Ù„Ù…Ø§Ø¶ÙŠ Ø±ØºÙ… Ø§Ù„ØªØ­Ø¯ÙŠØ§Øª Ø§Ù„Ø§Ù‚ØªØµØ§Ø¯ÙŠØ©.",
+    category: "Ù…ØµØ± ÙˆØ§Ù„ØªÙ‚Ù†ÙŠØ©",
     image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80",
-    date: "منذ أسبوع",
-    readTime: "3 دقائق",
-    views: "3,200",
+    date: "Ù…Ù†Ø° Ø£Ø³Ø¨ÙˆØ¹",
+    readTime: "3 Ø¯Ù‚Ø§Ø¦Ù‚",
     hasEgyptImpact: true,
     featured: false
   },
   {
     id: 10,
-    title: "Sony تطلق WH-1000XM6 بعزل صوت أذكى وبطارية أطول",
-    excerpt: "كشفت سوني عن جيل جديد من سماعاتها الرائدة مع تحسينات كبيرة في عزل الضوضاء بالذكاء الاصطناعي وعمر بطارية يصل إلى 40 ساعة.",
-    category: "إلكترونيات",
+    title: "Sony ØªØ·Ù„Ù‚ WH-1000XM6 Ø¨Ø¹Ø²Ù„ ØµÙˆØª Ø£Ø°ÙƒÙ‰ ÙˆØ¨Ø·Ø§Ø±ÙŠØ© Ø£Ø·ÙˆÙ„",
+    excerpt: "ÙƒØ´ÙØª Ø³ÙˆÙ†ÙŠ Ø¹Ù† Ø¬ÙŠÙ„ Ø¬Ø¯ÙŠØ¯ Ù…Ù† Ø³Ù…Ø§Ø¹Ø§ØªÙ‡Ø§ Ø§Ù„Ø±Ø§Ø¦Ø¯Ø© Ù…Ø¹ ØªØ­Ø³ÙŠÙ†Ø§Øª ÙƒØ¨ÙŠØ±Ø© ÙÙŠ Ø¹Ø²Ù„ Ø§Ù„Ø¶ÙˆØ¶Ø§Ø¡ Ø¨Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ ÙˆØ¹Ù…Ø± Ø¨Ø·Ø§Ø±ÙŠØ© ÙŠØµÙ„ Ø¥Ù„Ù‰ 40 Ø³Ø§Ø¹Ø©.",
+    category: "Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª",
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
-    date: "منذ أسبوع",
-    readTime: "4 دقائق",
-    views: "890",
+    date: "Ù…Ù†Ø° Ø£Ø³Ø¨ÙˆØ¹",
+    readTime: "4 Ø¯Ù‚Ø§Ø¦Ù‚",
     hasEgyptImpact: false,
     featured: false
   },
   {
     id: 11,
-    title: "هاكر يستغل ثغرة في ChatGPT لاختراق بيانات المستخدمين",
-    excerpt: "اكتشف باحثون في الأمن السيبراني طريقة جديدة لاستغلال إعدادات ذاكرة ChatGPT للوصول إلى معلومات المستخدمين الحساسة.",
-    category: "أمن سيبراني",
+    title: "Ù‡Ø§ÙƒØ± ÙŠØ³ØªØºÙ„ Ø«ØºØ±Ø© ÙÙŠ ChatGPT Ù„Ø§Ø®ØªØ±Ø§Ù‚ Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù…ÙŠÙ†",
+    excerpt: "Ø§ÙƒØªØ´Ù Ø¨Ø§Ø­Ø«ÙˆÙ† ÙÙŠ Ø§Ù„Ø£Ù…Ù† Ø§Ù„Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ Ø·Ø±ÙŠÙ‚Ø© Ø¬Ø¯ÙŠØ¯Ø© Ù„Ø§Ø³ØªØºÙ„Ø§Ù„ Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø°Ø§ÙƒØ±Ø© ChatGPT Ù„Ù„ÙˆØµÙˆÙ„ Ø¥Ù„Ù‰ Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù…ÙŠÙ† Ø§Ù„Ø­Ø³Ø§Ø³Ø©.",
+    category: "Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ",
     image: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=800&q=80",
-    date: "منذ أسبوعين",
-    readTime: "6 دقائق",
-    views: "2,780",
+    date: "Ù…Ù†Ø° Ø£Ø³Ø¨ÙˆØ¹ÙŠÙ†",
+    readTime: "6 Ø¯Ù‚Ø§Ø¦Ù‚",
     hasEgyptImpact: false,
     featured: false
   },
   {
     id: 12,
-    title: "Nvidia تطلق بطاقة RTX 5090 بأداء يتجاوز الجيل الماضي بمرتين",
-    excerpt: "أطلقت Nvidia بطاقتها الرسومية الجديدة RTX 5090 التي تعد بأداء مضاعف في الألعاب والذكاء الاصطناعي مقارنةً بـ RTX 4090.",
-    category: "إلكترونيات",
+    title: "Nvidia ØªØ·Ù„Ù‚ Ø¨Ø·Ø§Ù‚Ø© RTX 5090 Ø¨Ø£Ø¯Ø§Ø¡ ÙŠØªØ¬Ø§ÙˆØ² Ø§Ù„Ø¬ÙŠÙ„ Ø§Ù„Ù…Ø§Ø¶ÙŠ Ø¨Ù…Ø±ØªÙŠÙ†",
+    excerpt: "Ø£Ø·Ù„Ù‚Øª Nvidia Ø¨Ø·Ø§Ù‚ØªÙ‡Ø§ Ø§Ù„Ø±Ø³ÙˆÙ…ÙŠØ© Ø§Ù„Ø¬Ø¯ÙŠØ¯Ø© RTX 5090 Ø§Ù„ØªÙŠ ØªØ¹Ø¯ Ø¨Ø£Ø¯Ø§Ø¡ Ù…Ø¶Ø§Ø¹Ù ÙÙŠ Ø§Ù„Ø£Ù„Ø¹Ø§Ø¨ ÙˆØ§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ Ù…Ù‚Ø§Ø±Ù†Ø©Ù‹ Ø¨Ù€ RTX 4090.",
+    category: "Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª",
     image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&q=80",
-    date: "منذ أسبوعين",
-    readTime: "5 دقائق",
-    views: "1,650",
+    date: "Ù…Ù†Ø° Ø£Ø³Ø¨ÙˆØ¹ÙŠÙ†",
+    readTime: "5 Ø¯Ù‚Ø§Ø¦Ù‚",
     hasEgyptImpact: false,
     featured: false
   }
 ];
 
-/* ── Category to CSS class map ── */
+/* â”€â”€ Category maps â”€â”€ */
 const catClass = {
-  'ذكاء اصطناعي':    'cat-ai',
-  'هواتف ذكية':      'cat-phone',
-  'أمن سيبراني':     'cat-security',
-  'شركات التقنية':   'cat-company',
-  'مصر والتقنية':    'cat-egypt',
-  'إلكترونيات':      'cat-elec',
-  'سيارات كهربائية': 'cat-car'
+  'Ø°ÙƒØ§Ø¡ Ø§ØµØ·Ù†Ø§Ø¹ÙŠ':    'cat-ai',
+  'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©':      'cat-phone',
+  'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ':     'cat-security',
+  'Ø´Ø±ÙƒØ§Øª Ø§Ù„ØªÙ‚Ù†ÙŠØ©':   'cat-company',
+  'Ù…ØµØ± ÙˆØ§Ù„ØªÙ‚Ù†ÙŠØ©':    'cat-egypt',
+  'Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª':      'cat-elec',
+  'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©': 'cat-car'
 };
 
-/* ── State ── */
+const CAT_ALIASES = {
+  'Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ': 'Ø°ÙƒØ§Ø¡ Ø§ØµØ·Ù†Ø§Ø¹ÙŠ',
+  'Ø§Ù„ØªÙ„ÙŠÙÙˆÙ†Ø§Øª': 'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',
+  'Ø§Ù„Ø£Ù…Ù† Ø§Ù„Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ': 'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ',
+  'Ø§Ù„Ø´Ø±ÙƒØ§Øª': 'Ø´Ø±ÙƒØ§Øª Ø§Ù„ØªÙ‚Ù†ÙŠØ©',
+  'Ù…ØµØ± ÙˆØ§Ù„ØªÙƒÙ†ÙˆÙ„ÙˆØ¬ÙŠØ§': 'Ù…ØµØ± ÙˆØ§Ù„ØªÙ‚Ù†ÙŠØ©',
+  'Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª': 'Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠØ§Øª',
+  'Ø§Ù„Ø³ÙŠØ§Ø±Ø§Øª': 'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©'
+};
+
+function normalizeCategory(cat) {
+  return CAT_ALIASES[cat] || cat;
+}
+
+/* â”€â”€ State â”€â”€ */
 const PAGE_SIZE = 6;
-let currentFilter = 'الكل';
+let currentFilter = 'Ø§Ù„ÙƒÙ„';
 let currentPage   = 1;
 
 /* =========================================================
@@ -380,25 +295,45 @@ document.addEventListener('DOMContentLoaded', () => {
   initDatetimeBar();
   const isArticlePage = document.body.classList.contains('article-page');
 
-  initDatetimeBar();
-  initTicker();
-  initHamburger();
-  initSearch();
-  initNewsletterForms();
-
-  if (isArticlePage) {
-    initArticlePage();
-  } else {
-    renderHero();
-    renderArticles();
-    renderTrending();
-    initCategoryFilter();
-    initLoadMore();
-    lazyLoadImages();
+  async function loadArticles() {
+    try {
+      const res = await fetch('articles/index.json');
+      if (res.ok) {
+        const remote = await res.json();
+        const ids = new Set(remote.map(a => a.id));
+        articles = [
+          ...remote.map(a => ({ ...a, category: normalizeCategory(a.category) })),
+          ...FALLBACK_ARTICLES.filter(a => !ids.has(a.id))
+        ];
+      } else {
+        articles = [...FALLBACK_ARTICLES];
+      }
+    } catch {
+      articles = [...FALLBACK_ARTICLES];
+    }
   }
 
-  // Live refresh every 30 seconds
-  setInterval(refreshLiveUI, 30000);
+  (async () => {
+    await loadArticles();
+    initDatetimeBar();
+    initTicker();
+    initHamburger();
+    initSearch();
+    initNewsletterForms();
+
+    if (isArticlePage) {
+      initArticlePage();
+    } else {
+      renderHero();
+      renderArticles();
+      renderTrending();
+      initCategoryFilter();
+      initLoadMore();
+      lazyLoadImages();
+    }
+
+    setInterval(refreshLiveUI, 30000);
+  })();
 });
 
 /* =========================================================
@@ -483,9 +418,16 @@ function filterByCategory(category) {
   currentFilter = category;
   currentPage   = 1;
   syncCatPills(category);
+
+  const normMap = {};
+  articles.forEach(a => {
+    const nc = normalizeCategory(a.category);
+    if (!normMap[nc]) normMap[nc] = [];
+    normMap[nc].push(a);
+  });
+
   renderHero();
   renderArticles();
-  // Scroll to content
   document.getElementById('heroSection')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -504,29 +446,30 @@ function renderHero() {
   const hero = document.getElementById('heroSection');
   if (!hero) return;
 
-  const pool = currentFilter === 'الكل'
+  const pool = currentFilter === 'Ø§Ù„ÙƒÙ„'
     ? articles
-    : articles.filter(a => a.category === currentFilter);
+    : articles.filter(a => normalizeCategory(a.category) === currentFilter);
 
   const featured = pool.find(a => a.featured) || pool[0];
   if (!featured) { hero.innerHTML = ''; return; }
 
   const heroCounts = getViewCounts();
+  const heroNormCat = normalizeCategory(featured.category);
   hero.innerHTML = `
     <div class="hero-inner">
       <img class="hero-bg" src="${featured.image}" alt="${escapeHtml(featured.title)}" loading="eager" />
       <div class="hero-overlay"></div>
       <div class="hero-content">
-        <span class="hero-cat-badge">${escapeHtml(featured.category)}</span>
+        <span class="hero-cat-badge">${escapeHtml(heroNormCat)}</span>
         <h2 class="hero-headline">${escapeHtml(featured.title)}</h2>
         <p class="hero-desc">${escapeHtml(featured.excerpt)}</p>
         <div class="hero-meta">
           <span class="hero-meta-item"><i class="far fa-calendar-alt" aria-hidden="true"></i> <span class="rt-date" data-article-id="${featured.id}">${getArticleDateDisplay(featured)}</span></span>
           <span class="hero-meta-item"><i class="far fa-clock" aria-hidden="true"></i> ${escapeHtml(featured.readTime)}</span>
-          <span class="hero-meta-item"><i class="far fa-eye" aria-hidden="true"></i> <span class="rt-view" data-article-id="${featured.id}">${heroCounts[featured.id] || 0}</span> مشاهدة</span>
+          <span class="hero-meta-item"><i class="far fa-eye" aria-hidden="true"></i> <span class="rt-view" data-article-id="${featured.id}">${heroCounts[featured.id] || 0}</span> Ù…Ø´Ø§Ù‡Ø¯Ø©</span>
         </div>
-        <a href="article.html?id=${featured.id}" class="hero-read-btn" aria-label="اقرأ المزيد عن ${escapeHtml(featured.title)}">
-          اقرأ المزيد <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        <a href="article.html?id=${featured.id}" class="hero-read-btn" aria-label="Ø§Ù‚Ø±Ø£ Ø§Ù„Ù…Ø²ÙŠØ¯ Ø¹Ù† ${escapeHtml(featured.title)}">
+          Ø§Ù‚Ø±Ø£ Ø§Ù„Ù…Ø²ÙŠØ¯ <i class="fas fa-arrow-left" aria-hidden="true"></i>
         </a>
       </div>
     </div>
@@ -540,19 +483,18 @@ function renderArticles() {
   const grid = document.getElementById('articlesGrid');
   if (!grid) return;
 
-  const pool = currentFilter === 'الكل'
+  const pool = currentFilter === 'Ø§Ù„ÙƒÙ„'
     ? articles
-    : articles.filter(a => a.category === currentFilter);
+    : articles.filter(a => normalizeCategory(a.category) === currentFilter);
 
-  // Exclude featured (shown in hero) from grid when unfiltered
-  const gridItems = currentFilter === 'الكل'
+  const gridItems = currentFilter === 'Ø§Ù„ÙƒÙ„'
     ? pool.filter(a => !a.featured)
     : pool;
 
   const visible = gridItems.slice(0, currentPage * PAGE_SIZE);
 
   if (visible.length === 0) {
-    grid.innerHTML = `<p class="no-results-msg" style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);font-family:'Tajawal',sans-serif;">لا توجد مقالات في هذا التصنيف حالياً.</p>`;
+    grid.innerHTML = `<p class="no-results-msg" style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);font-family:'Tajawal',sans-serif;">Ù„Ø§ ØªÙˆØ¬Ø¯ Ù…Ù‚Ø§Ù„Ø§Øª ÙÙŠ Ù‡Ø°Ø§ Ø§Ù„ØªØµÙ†ÙŠÙ Ø­Ø§Ù„ÙŠØ§Ù‹.</p>`;
     updateLoadMoreBtn(0, 0);
     return;
   }
@@ -563,11 +505,12 @@ function renderArticles() {
 }
 
 function buildCard(article, index) {
-  const cls = catClass[article.category] || 'cat-ai';
+  const normCat = normalizeCategory(article.category);
+  const cls = catClass[normCat] || 'cat-ai';
   const delay = (index % PAGE_SIZE) * 0.07;
   const vc = getViewCounts();
   const egyptBadge = article.hasEgyptImpact
-    ? `<span class="egypt-badge">★ يشمل تأثير مصر</span>`
+    ? `<span class="egypt-badge">â˜… ÙŠØ´Ù…Ù„ ØªØ£Ø«ÙŠØ± Ù…ØµØ±</span>`
     : '';
   return `
     <a href="article.html?id=${article.id}" class="article-card" data-category="${escapeHtml(article.category)}"
@@ -575,7 +518,7 @@ function buildCard(article, index) {
       <div class="card-img-wrapper">
         <img class="card-img lazy" data-src="${article.image}" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect fill='%23D6EAF8' width='800' height='450'/%3E%3C/svg%3E"
           alt="${escapeHtml(article.title)}" loading="lazy" />
-        <span class="card-cat-badge ${cls}">${escapeHtml(article.category)}</span>
+        <span class="card-cat-badge ${cls}">${escapeHtml(normCat)}</span>
       </div>
       <div class="card-body">
         <h3 class="card-headline">${escapeHtml(article.title)}</h3>
@@ -621,7 +564,7 @@ function renderTrending() {
 
   const counts = getViewCounts();
   const top5 = [...articles]
-    .map(a => ({ ...a, _views: counts[a.id] || 0 }))
+    .map(a => ({ ...a, _views: counts[a.id] || 0, _cat: normalizeCategory(a.category) }))
     .sort((a, b) => b._views - a._views)
     .slice(0, 5);
 
@@ -632,7 +575,7 @@ function renderTrending() {
       <span class="trending-num" aria-hidden="true">0${i + 1}</span>
       <div class="trending-info">
         <p class="trending-title">${escapeHtml(a.title)}</p>
-        <span class="trending-date"><i class="far fa-eye" aria-hidden="true"></i> ${a._views} قراءة</span>
+        <span class="trending-date"><i class="far fa-eye" aria-hidden="true"></i> ${a._views} Ù‚Ø±Ø§Ø¡Ø©</span>
       </div>
     </li>
   `).join('');
@@ -676,24 +619,24 @@ function initSearch() {
     overlay.hidden = true;
     document.body.style.overflow = '';
     if (input) { input.value = ''; }
-    if (results) results.innerHTML = '<p class="search-hint">اكتب للبحث في أخبار التكنولوجيا...</p>';
+    if (results) results.innerHTML = '<p class="search-hint">Ø§ÙƒØªØ¨ Ù„Ù„Ø¨Ø­Ø« ÙÙŠ Ø£Ø®Ø¨Ø§Ø± Ø§Ù„ØªÙƒÙ†ÙˆÙ„ÙˆØ¬ÙŠØ§...</p>';
   }
 }
 
 function doSearch(query, resultsEl) {
   if (!query) {
-    resultsEl.innerHTML = '<p class="search-hint">اكتب للبحث في أخبار التكنولوجيا...</p>';
+    resultsEl.innerHTML = '<p class="search-hint">Ø§ÙƒØªØ¨ Ù„Ù„Ø¨Ø­Ø« ÙÙŠ Ø£Ø®Ø¨Ø§Ø± Ø§Ù„ØªÙƒÙ†ÙˆÙ„ÙˆØ¬ÙŠØ§...</p>';
     return;
   }
   const q = query.toLowerCase();
   const found = articles.filter(a =>
     a.title.toLowerCase().includes(q) ||
-    a.category.toLowerCase().includes(q) ||
+    normalizeCategory(a.category).toLowerCase().includes(q) ||
     a.excerpt.toLowerCase().includes(q)
   );
 
   if (found.length === 0) {
-    resultsEl.innerHTML = `<p class="no-results">لم نجد نتائج لـ "<strong>${escapeHtml(query)}</strong>"</p>`;
+    resultsEl.innerHTML = `<p class="no-results">Ù„Ù… Ù†Ø¬Ø¯ Ù†ØªØ§Ø¦Ø¬ Ù„Ù€ "<strong>${escapeHtml(query)}</strong>"</p>`;
     return;
   }
 
@@ -704,7 +647,7 @@ function doSearch(query, resultsEl) {
       <img class="search-result-img" src="${a.image}" alt="${escapeHtml(a.title)}" loading="lazy" />
       <div class="search-result-info">
         <p class="search-result-title">${escapeHtml(a.title)}</p>
-        <span class="search-result-cat">${escapeHtml(a.category)} · <span class="rt-date" data-article-id="${a.id}">${getArticleDateDisplay(a)}</span> · <i class="far fa-eye" aria-hidden="true"></i> ${vc[a.id] || 0}</span>
+        <span class="search-result-cat">${escapeHtml(normalizeCategory(a.category))} Â· <span class="rt-date" data-article-id="${a.id}">${getArticleDateDisplay(a)}</span> Â· <i class="far fa-eye" aria-hidden="true"></i> ${vc[a.id] || 0}</span>
       </div>
     </a>`; }).join('');
 }
@@ -747,7 +690,7 @@ function initNewsletterForms() {
       e.preventDefault();
       const input = form.querySelector('input[type="email"]');
       if (input && input.value) {
-        showToast('شكراً! تم الاشتراك في النشرة البريدية بنجاح ✓');
+        showToast('Ø´ÙƒØ±Ø§Ù‹! ØªÙ… Ø§Ù„Ø§Ø´ØªØ±Ø§Ùƒ ÙÙŠ Ø§Ù„Ù†Ø´Ø±Ø© Ø§Ù„Ø¨Ø±ÙŠØ¯ÙŠØ© Ø¨Ù†Ø¬Ø§Ø­ âœ“');
         input.value = '';
       }
     });
@@ -763,7 +706,7 @@ function initArticlePage() {
   const article    = articles.find(a => a.id === id) || articles[0];
 
   // Update meta
-  document.title   = `${article.title} — Tech Dose News`;
+  document.title   = `${article.title} â€” Tech Dose News`;
   setMeta('og:title', article.title);
   setMeta('og:image', article.image);
   setMeta('og:description', article.excerpt);
@@ -772,27 +715,51 @@ function initArticlePage() {
   setEl('breadcrumbCategory', article.category);
   setEl('breadcrumbTitle', article.title);
 
+  const normCat = normalizeCategory(article.category);
+
   // Meta top
   const badge = document.getElementById('articleCatBadge');
   if (badge) {
-    badge.textContent = article.category;
-    badge.className   = `article-cat-badge ${catClass[article.category] || 'cat-ai'}`;
+    badge.textContent = normCat;
+    badge.className   = `article-cat-badge ${catClass[normCat] || 'cat-ai'}`;
   }
   setEl('articleReadTime', article.readTime);
   setEl('articleDate', getArticleDateDisplay(article));
   incrementView(id);
   const vc = getViewCounts();
-  setEl('articleViews', (vc[id] || 0) + ' مشاهدة');
+  setEl('articleViews', (vc[id] || 0) + ' Ù…Ø´Ø§Ù‡Ø¯Ø©');
 
   // Headline & image
   setEl('articleHeadline', article.title);
   const img = document.getElementById('articleImage');
   if (img) { img.src = article.image; img.alt = article.title; }
-  setEl('articleCaption', `صورة: ${article.title}`);
+  setEl('articleCaption', `ØµÙˆØ±Ø©: ${article.title}`);
+
+  // Article body
+  const bodyEl = document.getElementById('articleBody');
+  if (bodyEl && article.body) bodyEl.innerHTML = article.body;
 
   // Egypt impact box
   const egyptBox = document.getElementById('egyptImpactBox');
-  if (egyptBox) { egyptBox.style.display = article.hasEgyptImpact ? 'block' : 'none'; }
+  const egyptBody = document.getElementById('egyptImpactBody');
+  if (article.hasEgyptImpact && article.egyptImpact) {
+    if (egyptBox) egyptBox.style.display = 'block';
+    if (egyptBody) egyptBody.innerHTML = article.egyptImpact;
+  } else {
+    if (egyptBox) egyptBox.style.display = 'none';
+  }
+
+  // Dynamic source
+  const sourceEl = document.querySelector('.article-source span');
+  if (sourceEl) {
+    const src = article.source || article.sourceName || '';
+    sourceEl.textContent = src
+      ? `Ø§Ù„Ù…ØµØ¯Ø±: ${escapeHtml(src)} | Ø£ÙØ¹ÙŠØ¯Øª ÙƒØªØ§Ø¨ØªÙ‡ Ø¨ÙˆØ§Ø³Ø·Ø© Tech Dose News`
+      : 'Ø£ÙØ¹ÙŠØ¯Øª ÙƒØªØ§Ø¨ØªÙ‡ Ø¨ÙˆØ§Ø³Ø·Ø© Tech Dose News';
+  }
+
+  // Dynamic tags from article title + category
+  renderArticleTags(article);
 
   // Share buttons
   const url  = encodeURIComponent(window.location.href);
@@ -805,8 +772,8 @@ function initArticlePage() {
   if (copyBtn) {
     copyBtn.addEventListener('click', () => {
       navigator.clipboard.writeText(window.location.href)
-        .then(() => showToast('تم نسخ الرابط ✓'))
-        .catch(() => showToast('تعذّر نسخ الرابط'));
+        .then(() => showToast('ØªÙ… Ù†Ø³Ø® Ø§Ù„Ø±Ø§Ø¨Ø· âœ“'))
+        .catch(() => showToast('ØªØ¹Ø°Ù‘Ø± Ù†Ø³Ø® Ø§Ù„Ø±Ø§Ø¨Ø·'));
     });
   }
 
@@ -820,7 +787,7 @@ function initArticlePage() {
     if (dateEl) dateEl.textContent = getArticleDateDisplay(article);
     if (viewsEl) {
       const vc2 = getViewCounts();
-      viewsEl.textContent = (vc2[id] || 0) + ' مشاهدة';
+      viewsEl.textContent = (vc2[id] || 0) + ' Ù…Ø´Ø§Ù‡Ø¯Ø©';
     }
   }, 30000);
 
@@ -831,11 +798,34 @@ function initArticlePage() {
   initNewsletterForms();
 }
 
+function renderArticleTags(article) {
+  const container = document.getElementById('articleTags');
+  if (!container) return;
+
+  const words = (article.title || '').split(/\s+/).filter(w => w.length > 3);
+  const tagSet = new Set();
+
+  words.forEach(w => { if (w.length > 3) tagSet.add(w); });
+  if (article.category) tagSet.add(article.category);
+
+  if (article.tags && Array.isArray(article.tags)) {
+    article.tags.forEach(t => tagSet.add(t));
+  }
+
+  const tags = [...tagSet].slice(0, 8);
+  if (tags.length === 0) { container.style.display = 'none'; return; }
+
+  container.style.display = 'flex';
+  container.innerHTML = `<span class="tag-label"><i class="fas fa-tags" aria-hidden="true"></i> Ø§Ù„ÙˆØ³ÙˆÙ…:</span>`
+    + tags.map(t => `<a href="index.html?search=${encodeURIComponent(t)}" class="tag-pill">${escapeHtml(t)}</a>`).join('');
+}
+
 function renderRelated(current) {
   const grid = document.getElementById('relatedGrid');
   if (!grid) return;
+  const normCat = normalizeCategory(current.category);
   const related = articles
-    .filter(a => a.id !== current.id && a.category === current.category)
+    .filter(a => a.id !== current.id && normalizeCategory(a.category) === normCat)
     .slice(0, 3);
 
   const fallback = related.length < 3

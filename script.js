@@ -34,6 +34,7 @@ async function loadArticles() {
       initCategoryFilter();
       initLoadMore();
       lazyLoadImages();
+      initScrollReveal();
     }
 
   } catch (error) {
@@ -66,6 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initHamburger();
   initSearch();
   initNewsletterForms();
+  initDateTime();
+  initScrollReveal();
 
   loadArticles();
 
@@ -191,7 +194,7 @@ function renderHero() {
   }
 
   hero.innerHTML = `
-    <div class="hero-inner">
+    <div class="hero-inner fade-up">
       <img class="hero-bg" src="${featured.image}" alt="${escapeHtml(featured.title)}" loading="eager" />
       <div class="hero-overlay"></div>
 
@@ -275,7 +278,7 @@ function buildCard(article, index) {
 
   return `
     <a href="article.html?id=${article.id}"
-       class="article-card"
+       class="article-card reveal"
        data-category="${escapeHtml(article.category)}"
        style="animation-delay:${delay}s">
 
@@ -614,9 +617,17 @@ function initArticlePage() {
     egyptBox.style.display = 'none';
   }
 
-  const sourceEl = document.querySelector('.article-source span');
-  if (sourceEl && article.source) {
-    sourceEl.innerHTML = 'المصدر: <a href="' + escapeHtml(article.source) + '" target="_blank" rel="noopener noreferrer" style="color:var(--blue)">' + escapeHtml(new URL(article.source).hostname) + '</a> | أُعيدت كتابته بواسطة <strong>Tech Dose News</strong>';
+  const sourceDiv = document.querySelector('.article-source');
+  if (sourceDiv) {
+    if (article.source) {
+      sourceDiv.style.display = '';
+      const sourceEl = sourceDiv.querySelector('span');
+      if (sourceEl) {
+        sourceEl.innerHTML = 'المصدر: <a href="' + escapeHtml(article.source) + '" target="_blank" rel="noopener noreferrer" style="color:var(--blue)">' + escapeHtml(new URL(article.source).hostname) + '</a> | أُعيدت كتابته بواسطة <strong>Tech Dose News</strong>';
+      }
+    } else {
+      sourceDiv.style.display = 'none';
+    }
   }
 
   const pageUrl = encodeURIComponent(window.location.href);
@@ -643,6 +654,8 @@ function initArticlePage() {
   initHamburger();
   initSearch();
   initNewsletterForms();
+  initDateTime();
+  initScrollReveal();
 }
 
 function renderRelated(current) {
@@ -658,6 +671,63 @@ function renderRelated(current) {
   grid.innerHTML = related.map((a, i) => buildCard(a, i)).join('');
 
   lazyLoadImages();
+}
+
+/* =========================================================
+   12. DATE/TIME CLOCK
+   ========================================================= */
+function initDateTime() {
+  const timeEl = document.getElementById('dtTime');
+  const gregEl = document.getElementById('dtGreg');
+  const hijriEl = document.getElementById('dtHijri');
+  const dayEl = document.getElementById('dtDay');
+  if (!timeEl) return;
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function update() {
+    const now = new Date();
+    const egypt = new Date(now.toLocaleString('en-US', { timeZone: 'Africa/Cairo' }));
+    timeEl.textContent = pad(egypt.getHours()) + ':' + pad(egypt.getMinutes());
+
+    if (gregEl) {
+      const d = egypt.getDate();
+      const m = ['يناير','فبراير','مارس','إبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+      gregEl.textContent = d + ' ' + m[egypt.getMonth()] + ' ' + egypt.getFullYear();
+    }
+    if (hijriEl) {
+      try {
+        const h = new Intl.DateTimeFormat('ar-SA-u-ca-islamic', { day:'numeric', month:'long', year:'numeric' }).format(egypt);
+        hijriEl.textContent = h;
+      } catch(e) {
+        hijriEl.textContent = '';
+      }
+    }
+    if (dayEl) {
+      const days = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+      dayEl.textContent = days[egypt.getDay()];
+    }
+  }
+
+  update();
+  setInterval(update, 1000);
+}
+
+/* =========================================================
+   13. SCROLL REVEAL
+   ========================================================= */
+function initScrollReveal() {
+  if (!('IntersectionObserver' in window)) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
 /* =========================================================

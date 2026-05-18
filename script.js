@@ -208,7 +208,7 @@ function renderHero() {
         <div class="hero-meta">
           <span class="hero-meta-item">
             <i class="far fa-calendar-alt"></i>
-            ${escapeHtml(featured.date)}
+            ${escapeHtml(getTimeDisplay(featured))}
           </span>
 
           <span class="hero-meta-item">
@@ -312,7 +312,7 @@ function buildCard(article, index) {
 
             <span class="card-meta-item">
               <i class="far fa-calendar-alt"></i>
-              ${escapeHtml(article.date)}
+              ${escapeHtml(getTimeDisplay(article))}
             </span>
 
             <span class="card-meta-item">
@@ -383,7 +383,7 @@ function renderTrending() {
 
         <span class="trending-date">
           <i class="far fa-calendar-alt"></i>
-          ${escapeHtml(a.date)}
+          ${escapeHtml(getTimeDisplay(a))}
         </span>
 
       </div>
@@ -590,7 +590,7 @@ function initArticlePage() {
   }
 
   setEl('articleReadTime', article.readTime);
-  setEl('articleDate', article.date);
+  setEl('articleDate', article.publishedAt ? formatPublishedDate(article.publishedAt) : (article.date || ''));
   setEl('articleViews', article.views);
 
   setEl('articleHeadline', article.title);
@@ -728,6 +728,40 @@ function initScrollReveal() {
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+/* =========================================================
+   14. DYNAMIC TIME HELPERS
+   ========================================================= */
+function timeAgo(dateStr) {
+  if (!dateStr) return '';
+  const diff = Date.now() - new Date(dateStr).getTime();
+  const seconds = Math.floor(diff / 1000);
+  if (seconds < 10) return '\u0627\u0644\u0622\u0646';
+  if (seconds < 60) return '\u0645\u0646\u0630 ' + seconds + ' \u062B\u0627\u0646\u064A\u0629';
+  const minutes = Math.floor(seconds / 60);
+  if (minutes < 2) return '\u0645\u0646\u0630 \u062F\u0642\u064A\u0642\u0629';
+  if (minutes < 60) return '\u0645\u0646\u0630 ' + minutes + ' \u062F\u0642\u0627\u0626\u0642';
+  const hours = Math.floor(minutes / 60);
+  if (hours < 2) return '\u0645\u0646\u0630 \u0633\u0627\u0639\u0629';
+  if (hours < 24) return '\u0645\u0646\u0630 ' + hours + ' \u0633\u0627\u0639\u0629';
+  const days = Math.floor(hours / 24);
+  if (days < 2) return '\u0645\u0646\u0630 \u064A\u0648\u0645';
+  if (days < 30) return '\u0645\u0646\u0630 ' + days + ' \u064A\u0648\u0645';
+  const months = Math.floor(days / 30);
+  return '\u0645\u0646\u0630 ' + months + ' \u0634\u0647\u0631';
+}
+function formatPublishedDate(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr);
+  const months = ['يناير','فبراير','مارس','إبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  const days = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  return days[d.getDay()] + '، ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear() + ' | ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+}
+function getTimeDisplay(article) {
+  if (article.publishedAt) return timeAgo(article.publishedAt);
+  return article.date || '';
 }
 
 /* =========================================================

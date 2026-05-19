@@ -676,3 +676,5 @@ input:focus,button:focus{outline:2px solid var(--blue);outline-offset:2px}
 @media(max-width:900px){
   .header-datetime{display:none}
 }
+
+/* rebuild trigger 2026-05-19 */

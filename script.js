@@ -120,97 +120,10 @@ function refreshLiveUI() {
 }
 
 /* ── Sample Data ── */
-const articles = [
-  {
-    id: 1778226355884,
-    title: "الHackers يضايقون المزيد من الساخن في الذكاء الاصطناعي",
-    excerpt: "شكراً جزيلاً على هذا التقييم التفصيلي والإعادة الاحترافية، نحن فخورون بجهودكم في تحسين النص.",
-    category: "ذكاء اصطناعي",
-    image: "https://images.pexels.com/photos/18510427/pexels-photo-18510427.jpeg?auto=compress&cs=tinysrgb&h=350",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p>شكراً جزيلاً على هذا التقييم التفصيلي وإعادة الصياغة الاحترافية. لقد كان عملكم مميزًا وفعالاً في تحقيق الأهداف المطلوبة. أقدر جهودكم المبذولة في إعادة هيكلة النص وتجنب الأسلوب الآلي، مع الحفاظ على جميع المعلومات الهامة.</p>",
-    egyptImpact: "<p>أثر التقييم الإيجابي على معالجة مشاعر المراجعين من خلال تحسين جودة النص.</p><p>ساهم التقييم في تعزيز المصداقية والاحترافية في عملية إعادة صياغة النص.</p>",
-    source: "https://www.wired.com/story/cybercriminals-are-complaining-about-ai-slop-flooding-their-forums/"
-  },
-  {
-    id: 1778226050173,
-    title: "Canvas يعاني من توقف بسبب تهديد شيني هانتر بتسريب بيانات المدارس.",
-    excerpt: "هجوم سيبراني يهدد مستقبل التعليم في الهند.\n\nInstructure تشن حملة احترازية مكثفة لمواجهة التهديد.",
-    category: "ذكاء اصطناعي",
-    image: "https://images.pexels.com/photos/31903938/pexels-photo-31903938.jpeg?auto=compress&cs=tinysrgb&h=350",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p>## Instructure تواجه هجومًا سيبرانيًا من مجموعة ShinyHunters</p><p><strong>نيودلهي، الهند –</strong> تعرضت منصة تعليمية للجامعات الهندية، Instructure، لهجوم حاسوبي مُحفّز من قبل مجموعة متطرفة تُدعى ShinyHunters. بدأ الهجوم في يوم الخميس، 16 مايو، عندما أرسلت المجموعة رسالة إلى الطلاب الذين يحاولون الوصول إلى النظام، زعمت فيها أنها تحاول اختراق النظام وربما تسريب بياناتهم.</p><p>Instructure، وهي شركة مسجلة في الهند، تعتبر من بين أكبر مُقدمي خدمات التعليم في البلاد، حيث تخدم أكثر من 6.5 مليون طالب في مجموعة متنوعة من الجامعات.  تمحور الهجوم، وفقًا للمعلومات المتوفرة، حول تعطيل العمليات التعليمية، إلا أنه لم يتسبب حتى الآن في خسائر مالية كبيرة.</p><p>يشهد سوق تعليم التعليم العالي في الهند منافسة شرسة، يواجهها Instructure من لاعبين كبار مثل Udemy، التي تقدم مجموعة واسعة من الدورات التدريبية، و Coursera، المتخصصة في الدورات الدراسية عبر الإنترنت.  كما تتنافس Instructure مع شركات ناشئة مثل BYJU’s، والتي تستهدف جمهورًا أصغر حجمًا ولكنها تتمتع بقاعدة عملاء متنامية.</p><p>من المتوقع أن تتخذ Instructure إجراءات احترازية قوية للردع، بما في ذلك الاستعانة بخدمات الأمن السيبراني المتخصصة، بالإضافة إلى إجراء تقييم شامل لنقاط الضعف الأمنية المحتملة في نظامها.  هدف هذه الخطوات هو استعادة النظام بشكل كامل ومنع تكرار هذه الهجمات في المستقبل.</p><p>أكدت Instructure في بيان رسمي أنها تعمل بجد لتحديد مصدر الهجوم، مع التركيز على استعادة الخدمات وضمان سلامة بيانات الطلاب. وذكرت الشركة أنها ستعلن عن تفاصيل إضافية بمجرد اكتمال التحقيقات خلال القمة التقنية القادمة.</p>",
-    egyptImpact: "<p>**تأثرت Instructure، وهي شركة تعليمية مهمة في الهند، بالهجوم السيبراني، مما أدى إلى تعطيل العمليات التعليمية.**</p><p>**ستتخذ Instructure إجراءات احترازية قوية، بما في ذلك الاستعانة بخدمات الأمن السيبراني، لمعالجة الهجوم والاستعادة الكاملة للنظام.**</p>",
-    source: "https://www.theverge.com/tech/926458/canvas-shinyhunters-breach"
-  },
-  {
-    id: 1778225011116,
-    title: "تخلف DHS عن إنشاء قاعدة بيانات DNA واسعة لتتبع Kritik لجهات الأمن.",
-    excerpt: "بالتأكيد، يرجى تزويدي بالنص الأصلي.",
-    category: "ذكاء اصطناعي",
-    image: "https://images.pexels.com/photos/36022196/pexels-photo-36022196.jpeg?auto=compress&cs=tinysrgb&h=350",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p>يرجى تزويدي بالنص الأصلي الذي تريدني أن أعيد كتابته. بمجرد أن أحصل عليه، سأقوم بإعادة صياغته وفقًا للقواعد والتعليمات التي حددتها بعناية.</p>",
-    egyptImpact: "<p>يرجى تزويدي بالنص الأصلي.</p>",
-    source: "https://arstechnica.com/tech-policy/2026/05/ice-protesters-sue-to-stop-dhs-from-seizing-dna-samples/"
-  },
-  {
-    id: 1778223942806,
-    title: "حملة الرسم اللامع هي عقبة جديدة في مشهد برامج الرقمنة",
-    excerpt: "هنا جملتان تشويقيتان باللغة العربية:\n\n   ميكروسوفت 365، في حالة خيانة، تتحول إلى ساحة حروب.\n   النظام الذي كان يبدو آمناً، قد فقد عرينه.",
-    category: "ذكاء اصطناعي",
-    image: "https://images.pexels.com/photos/5475752/pexels-photo-5475752.jpeg?auto=compress&cs=tinysrgb&h=350",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p>بالتأكيد، إليك إعادة صياغة للنص بناءً على التقييم المقدم، مع الالتزام بالقواعد المحددة:</p><p><strong>توقف فوري لخدمة \"ميكروسوفت 365\" بعد اختراق بيانات المستخدمين</strong></p><p>أعلنت شركة \"Instructure\" اليوم عن توقف فوري لخدمة \"ميكروسوفت 365\" كإجراء احترازي بعد اكتشاف خرق أمني واسع النطاق.  وقالت الشركة في بيان رسمي: \"نحن نعتبر هذا الحادث أولوية قصوى ونعمل بجد لتحديد حجم الضرر الكامل وتقليمه\".</p><p>وأكدت \"ميكروسوفت 365\" أنها تتعاون بشكل وثيق مع خبراء الأمن السيبراني للتحقيق في الواقعة.  ويشير التحقيق الأولي إلى تورط مجموعة من المخترقين، يُعرفون بـ \"Hackers\"، في عملية اختراق البيانات.</p><p>وأظهرت التحقيقات الأولية أن المخترقين تمكنوا من الوصول إلى بيانات المستخدمين، بما في ذلك أسماء المستخدمين وكلمات المرور، بالإضافة إلى بعض المعلومات الحساسة المتعلقة بالعمليات التجارية للشركات التي تعتمد على \"ميكروسوفت 365\".</p><p>من جانبه، أوضح المتحدث باسم \"Instructure\" أن الشركة قد بدأت إجراءات تحقيق شاملة لتحديد الأسباب التي أدت إلى هذا الاختراق وتطبيق تدابير وقائية جديدة.  كما تعتزم الشركة تقديم تعويضات للمستخدمين المتضررين، وسيتم تحديد الشروط والبنود لاحقًا.</p><p>وتعمل \"ميكروسوفت 365\" حالياً على إصلاح الثغرات الأمنية وتطبيق إجراءات أمنية أكثر صرامة لضمان حماية بيانات المستخدمين في المستقبل.  وتشير الشركة إلى أن العمل جارٍ على استعادة الخدمة في أقرب وقت ممكن بعد الانتهاء من التحقيق الكامل وإجراء التعديلات اللازمة.</p><p><strong>ملاحظة:</strong> (Hackers, Instructure, Microsoft 365)</p><p>آمل أن تكون هذه النسخة الجديدة مناسبة للغرض المنشود.  هل تود تعديلات إضافية؟</p>",
-    egyptImpact: "<p>بالتأكيد، إليك نقطتين مختصرتين عن تأثيره على مصر والعرب، مع الالتزام بالقواعد المحددة:</p><p>**مصر:** سيؤدي هذا الحادث إلى تفعيل إجراءات أمنية صارمة على مستوى الحكومة المصرية لتعزيز الأمن السيبراني، مما قد يؤثر على ثقة الشركات المحلية في خدمات الإنترنت والبريد الإلكتروني، وربما يتطلب استثمارات كبيرة في تحديث البنية التحتية الحالية.</p><p>**العرب:**  سيعاني الأفراد والمؤسسات في الدول العربية من خطر كبير على بياناتهم الشخصية، مما قد يؤدي إلى مشاكل قانونية وسمعية كبيرة، بالإضافة إلى إضعاف الثقة في استخدام الخدمات الرقمية، وربما يؤثر على الاقتصاد الذي يعتمد بشكل كبير على التجارة الإلكترونية.</p>",
-    source: "https://www.wired.com/story/canvas-hack-shinyhunters-ransomware-instructure/"
-  },
-  {
-    id: 1778223646687,
-    title: "لا يمكن لأي طبيب دائمًا الاتصال بك.",
-    excerpt: "أنت لم تقدم النص! يرجى تزويدي بالنص العربي الذي تريد إعادة كتابته. بمجرد أن أحصل عليه، سأقوم بإعادة صياغته وفقًا للقواعد المحددة التي ذكرتها.",
-    category: "ذكاء اصطناعي",
-    image: "https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&h=350",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p>يرجى تزويدي بالنص الذي تريد إعادة كتابته. بمجرد أن أحصل عليه، سأقوم بإعادة صياغته وفقًا للقواعد المحددة التي ذكرتها، مع الحرص على تقديم خبر صحفي عربي احترافي وبأسلوب طبيعي وجذاب.</p>",
-    egyptImpact: "<p>يرجى تزويدي بالخبر.</p>",
-    source: "https://techcrunch.com/2026/05/07/the-back-office-problem-that-explains-why-specialists-never-call-you-back/"
-  },
-  {
-    id: 1778220704207,
-    title: "لا يمكن لأي طبيب أن يرجعك إلى المستشفى.",
-    excerpt: "إليك الجملتين التشويقتين:\n\n1.  تحتضن Basata مستقبل العمل، وتحتضن التحديات التي تفرضها الأتمتة، من خلال استثمارها المحدود في تطوير الكفاءات البشرية.\n2.",
-    category: "ذكاء اصطناعي",
-    image: "https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&h=350",
-    date: "منذ لحظات",
-    readTime: "2 دقائق",
-    views: "1",
-    hasEgyptImpact: true,
-    featured: false,
-    body: "<p><strong>الشركات تلجأ إلى تدابير للتعامل مع التحديات المتصورة من الأتمتة.</strong></p><p>أعلنت شركة Basata، وهي رائدة في مجال تحسين العمليات الصناعية، عن مخاوف متزايدة بشأن تأثير الأتمتة المتسارعة على وظائفها البشرية، بحسب ما ورد. وفقاً لبيانات الشركة، تتوقع Basata أن تؤدي التحسينات التكنولوجية القائمة على الذكاء الاصطناعي إلى فقدان عدد كبير من الوظائف، بحسب التقديرات المالية للشركة.</p><p>الشركة تعترف بأن التحدي يكمن في كيفية إيجاد حلول مبتكرة تحافظ على استدامة الأعمال، مع استقطاب وتدريب الموظفين الجدد في الدورات التدريبية الجديدة التي تُركز على التكنولوجيا. يرى القادة التنفيذيين أن Basata تهدف إلى تبني سياسات جديدة تعزز التعاون بين البشر والذكاء الاصطناعي، بدلًا من الاعتماد على التكنولوجيا كبديل كامل.</p><p>تُعد شركة Basata محط أنظار المنافسين، وخاصة شركات تصنيع الروبوتات، التي تُظهر اهتمامًا كبيرًا بتطوير حلول أتمتة متقدمة. تستعرض سوق التوظيف في المنطقة العربية تحولاً كبيراً في الصناعة، وتُشير التقديرات إلى أن 30% من الوظائف في قطاع التصنيع ستُتأثر بالتكنولوجيا المتقدمة في السنوات القليلة القادمة.</p><p>تأمل Basata في استثمار كبير في تطوير برامج تدريبية مستمرة، والتعاون مع المؤسسات التعليمية لتأهيل الموظفين للوظائف الجديدة التي تظهر في سوق العمل في المستقبل القريب. تعتقد الشركة أن مستقبل العمل يكمن في دمج التكنولوجيا مع بشرتها البشرية.</p><p>التقر بهذه التحديات، تعلن Basata عن خططها لزيادة عدد الموظفين في الربع القادم لتواكب التطورات التكنولوجية.</p>",
-    egyptImpact: "<p>هنا 3 نقاط تحليلية حول تأثير هذا الخبر على مصر والعرب:</p><p>1.  **فرص العمل والمهارات:** ستُظهر مصر والعرب زيادة في الطلب على مهارات في مجالات التكنولوجيا (ذكاء اصطناعي، تحليل بيانات) والتكنولوجيا المتقدمة، مع التركيز على التدريب المستمر للموظفين الحاليين، مما يزيد من فرص العمل في قطاع التكنولوجيا.</p><p>2.  **الفرص الاقتصادية:**  تشير التقديرات إلى أن فقدان الوظائف في قطاع التصنيع (خاصة في مصر والعرب) سيؤثر سلبًا على الاقتصاد المحلي، حيث يقلل من القدرة الإنتاجية والنمو، مما يتطلب استثمارات في التوير والتكيف.</p><p>3.  **التوصية العملية:** يجب على مصر والعرب الاستثمار بشكل كبير في برامج تدريب وتطوير مهارات الموظفين الحاليين، خاصة في المجالات المرتبطة بالتكنولوجيا، لضمان بقاءهم قادرين على المنافسة في سوق العمل المتغير، وتطبيق سياسات تعاون بشرية-ذكاء اصطناعي.</p>",
-    source: "https://techcrunch.com/2026/05/07/the-back-office-problem-that-explains-why-specialists-never-call-you-back/"
-  },
+let articles = [];
+
+/* ── Fallback sample data (used if articles/index.json fetch fails) ── */
+const FALLBACK_ARTICLES = [
   {
     id: 1,
     title: "OpenAI تطلق GPT-5 بقدرات تفوق توقعات الخبراء",
@@ -357,6 +270,21 @@ const articles = [
   }
 ];
 
+/* ── Category alias maps for normalization ── */
+const CAT_ALIASES = {
+  'الذكاء الاصطناعي': 'ذكاء اصطناعي',
+  'التليفونات': 'هواتف ذكية',
+  'الأمن السيبراني': 'أمن سيبراني',
+  'الشركات': 'شركات التقنية',
+  'مصر والتكنولوجيا': 'مصر والتقنية',
+  'الإلكترونيات': 'إلكترونيات',
+  'السيارات': 'سيارات كهربائية'
+};
+
+function normalizeCategory(cat) {
+  return CAT_ALIASES[cat] || cat;
+}
+
 /* ── Category to CSS class map ── */
 const catClass = {
   'ذكاء اصطناعي':    'cat-ai',
@@ -380,25 +308,44 @@ document.addEventListener('DOMContentLoaded', () => {
   initDatetimeBar();
   const isArticlePage = document.body.classList.contains('article-page');
 
-  initDatetimeBar();
-  initTicker();
-  initHamburger();
-  initSearch();
-  initNewsletterForms();
-
-  if (isArticlePage) {
-    initArticlePage();
-  } else {
-    renderHero();
-    renderArticles();
-    renderTrending();
-    initCategoryFilter();
-    initLoadMore();
-    lazyLoadImages();
+  async function loadArticles() {
+    try {
+      const res = await fetch('articles/index.json');
+      if (res.ok) {
+        const remote = await res.json();
+        const ids = new Set(remote.map(a => a.id));
+        articles = [
+          ...remote.map(a => ({ ...a, category: normalizeCategory(a.category) })),
+          ...FALLBACK_ARTICLES.filter(a => !ids.has(a.id))
+        ];
+      } else {
+        articles = [...FALLBACK_ARTICLES];
+      }
+    } catch {
+      articles = [...FALLBACK_ARTICLES];
+    }
   }
 
-  // Live refresh every 30 seconds
-  setInterval(refreshLiveUI, 30000);
+  (async () => {
+    await loadArticles();
+    initTicker();
+    initHamburger();
+    initSearch();
+    initNewsletterForms();
+
+    if (isArticlePage) {
+      initArticlePage();
+    } else {
+      renderHero();
+      renderArticles();
+      renderTrending();
+      initCategoryFilter();
+      initLoadMore();
+      lazyLoadImages();
+    }
+
+    setInterval(refreshLiveUI, 30000);
+  })();
 });
 
 /* =========================================================
@@ -485,7 +432,6 @@ function filterByCategory(category) {
   syncCatPills(category);
   renderHero();
   renderArticles();
-  // Scroll to content
   document.getElementById('heroSection')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -506,18 +452,19 @@ function renderHero() {
 
   const pool = currentFilter === 'الكل'
     ? articles
-    : articles.filter(a => a.category === currentFilter);
+    : articles.filter(a => normalizeCategory(a.category) === currentFilter);
 
   const featured = pool.find(a => a.featured) || pool[0];
   if (!featured) { hero.innerHTML = ''; return; }
 
   const heroCounts = getViewCounts();
+  const heroNormCat = normalizeCategory(featured.category);
   hero.innerHTML = `
     <div class="hero-inner">
       <img class="hero-bg" src="${featured.image}" alt="${escapeHtml(featured.title)}" loading="eager" />
       <div class="hero-overlay"></div>
       <div class="hero-content">
-        <span class="hero-cat-badge">${escapeHtml(featured.category)}</span>
+        <span class="hero-cat-badge">${escapeHtml(heroNormCat)}</span>
         <h2 class="hero-headline">${escapeHtml(featured.title)}</h2>
         <p class="hero-desc">${escapeHtml(featured.excerpt)}</p>
         <div class="hero-meta">
@@ -542,7 +489,7 @@ function renderArticles() {
 
   const pool = currentFilter === 'الكل'
     ? articles
-    : articles.filter(a => a.category === currentFilter);
+    : articles.filter(a => normalizeCategory(a.category) === currentFilter);
 
   // Exclude featured (shown in hero) from grid when unfiltered
   const gridItems = currentFilter === 'الكل'
@@ -563,19 +510,20 @@ function renderArticles() {
 }
 
 function buildCard(article, index) {
-  const cls = catClass[article.category] || 'cat-ai';
+  const normCat = normalizeCategory(article.category);
+  const cls = catClass[normCat] || 'cat-ai';
   const delay = (index % PAGE_SIZE) * 0.07;
   const vc = getViewCounts();
   const egyptBadge = article.hasEgyptImpact
     ? `<span class="egypt-badge">★ يشمل تأثير مصر</span>`
     : '';
   return `
-    <a href="article.html?id=${article.id}" class="article-card" data-category="${escapeHtml(article.category)}"
+    <a href="article.html?id=${article.id}" class="article-card" data-category="${escapeHtml(normCat)}"
        style="animation-delay:${delay}s" aria-label="${escapeHtml(article.title)}">
       <div class="card-img-wrapper">
         <img class="card-img lazy" data-src="${article.image}" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect fill='%23D6EAF8' width='800' height='450'/%3E%3C/svg%3E"
           alt="${escapeHtml(article.title)}" loading="lazy" />
-        <span class="card-cat-badge ${cls}">${escapeHtml(article.category)}</span>
+        <span class="card-cat-badge ${cls}">${escapeHtml(normCat)}</span>
       </div>
       <div class="card-body">
         <h3 class="card-headline">${escapeHtml(article.title)}</h3>
@@ -688,7 +636,7 @@ function doSearch(query, resultsEl) {
   const q = query.toLowerCase();
   const found = articles.filter(a =>
     a.title.toLowerCase().includes(q) ||
-    a.category.toLowerCase().includes(q) ||
+    normalizeCategory(a.category).toLowerCase().includes(q) ||
     a.excerpt.toLowerCase().includes(q)
   );
 
@@ -704,7 +652,7 @@ function doSearch(query, resultsEl) {
       <img class="search-result-img" src="${a.image}" alt="${escapeHtml(a.title)}" loading="lazy" />
       <div class="search-result-info">
         <p class="search-result-title">${escapeHtml(a.title)}</p>
-        <span class="search-result-cat">${escapeHtml(a.category)} · <span class="rt-date" data-article-id="${a.id}">${getArticleDateDisplay(a)}</span> · <i class="far fa-eye" aria-hidden="true"></i> ${vc[a.id] || 0}</span>
+        <span class="search-result-cat">${escapeHtml(normalizeCategory(a.category))} · <span class="rt-date" data-article-id="${a.id}">${getArticleDateDisplay(a)}</span> · <i class="far fa-eye" aria-hidden="true"></i> ${vc[a.id] || 0}</span>
       </div>
     </a>`; }).join('');
 }
@@ -762,21 +710,19 @@ function initArticlePage() {
   const id         = parseInt(params.get('id') || '1', 10);
   const article    = articles.find(a => a.id === id) || articles[0];
 
-  // Update meta
   document.title   = `${article.title} — Tech Dose News`;
   setMeta('og:title', article.title);
   setMeta('og:image', article.image);
   setMeta('og:description', article.excerpt);
 
-  // Breadcrumb
   setEl('breadcrumbCategory', article.category);
   setEl('breadcrumbTitle', article.title);
 
-  // Meta top
+  const normCat = normalizeCategory(article.category);
   const badge = document.getElementById('articleCatBadge');
   if (badge) {
-    badge.textContent = article.category;
-    badge.className   = `article-cat-badge ${catClass[article.category] || 'cat-ai'}`;
+    badge.textContent = normCat;
+    badge.className   = `article-cat-badge ${catClass[normCat] || 'cat-ai'}`;
   }
   setEl('articleReadTime', article.readTime);
   setEl('articleDate', getArticleDateDisplay(article));
@@ -784,17 +730,33 @@ function initArticlePage() {
   const vc = getViewCounts();
   setEl('articleViews', (vc[id] || 0) + ' مشاهدة');
 
-  // Headline & image
   setEl('articleHeadline', article.title);
   const img = document.getElementById('articleImage');
   if (img) { img.src = article.image; img.alt = article.title; }
   setEl('articleCaption', `صورة: ${article.title}`);
 
-  // Egypt impact box
-  const egyptBox = document.getElementById('egyptImpactBox');
-  if (egyptBox) { egyptBox.style.display = article.hasEgyptImpact ? 'block' : 'none'; }
+  const bodyEl = document.getElementById('articleBody');
+  if (bodyEl && article.body) bodyEl.innerHTML = article.body;
 
-  // Share buttons
+  const egyptBox = document.getElementById('egyptImpactBox');
+  const egyptBody = document.getElementById('egyptImpactBody');
+  if (article.hasEgyptImpact && article.egyptImpact) {
+    if (egyptBox) egyptBox.style.display = 'block';
+    if (egyptBody) egyptBody.innerHTML = article.egyptImpact;
+  } else {
+    if (egyptBox) egyptBox.style.display = 'none';
+  }
+
+  const sourceEl = document.querySelector('.article-source span');
+  if (sourceEl) {
+    const src = article.source || article.sourceName || '';
+    sourceEl.textContent = src
+      ? `المصدر: ${escapeHtml(src)} | أُعيدت كتابته بواسطة Tech Dose News`
+      : 'أُعيدت كتابته بواسطة Tech Dose News';
+  }
+
+  renderArticleTags(article);
+
   const url  = encodeURIComponent(window.location.href);
   const text = encodeURIComponent(article.title);
   setHref('shareFacebook',  `https://facebook.com/sharer/sharer.php?u=${url}`);
@@ -810,10 +772,8 @@ function initArticlePage() {
     });
   }
 
-  // Related articles (same category, exclude current)
   renderRelated(article);
 
-  // Refresh date & views every 30 seconds
   const dateEl = document.getElementById('articleDate');
   const viewsEl = document.getElementById('articleViews');
   setInterval(() => {
@@ -824,18 +784,40 @@ function initArticlePage() {
     }
   }, 30000);
 
-  // Init search & hamburger
   initTicker();
   initHamburger();
   initSearch();
   initNewsletterForms();
 }
 
+function renderArticleTags(article) {
+  const container = document.getElementById('articleTags');
+  if (!container) return;
+
+  const words = (article.title || '').split(/\s+/).filter(w => w.length > 3);
+  const tagSet = new Set();
+
+  words.forEach(w => { if (w.length > 3) tagSet.add(w); });
+  if (article.category) tagSet.add(article.category);
+
+  if (article.tags && Array.isArray(article.tags)) {
+    article.tags.forEach(t => tagSet.add(t));
+  }
+
+  const tags = [...tagSet].slice(0, 8);
+  if (tags.length === 0) { container.style.display = 'none'; return; }
+
+  container.style.display = 'flex';
+  container.innerHTML = `<span class="tag-label"><i class="fas fa-tags" aria-hidden="true"></i> الوسوم:</span>`
+    + tags.map(t => `<a href="index.html?search=${encodeURIComponent(t)}" class="tag-pill">${escapeHtml(t)}</a>`).join('');
+}
+
 function renderRelated(current) {
   const grid = document.getElementById('relatedGrid');
   if (!grid) return;
+  const normCat = normalizeCategory(current.category);
   const related = articles
-    .filter(a => a.id !== current.id && a.category === current.category)
+    .filter(a => a.id !== current.id && normalizeCategory(a.category) === normCat)
     .slice(0, 3);
 
   const fallback = related.length < 3

@@ -1142,13 +1142,7 @@ async function saveSettings() {
 
   if (newToken) {
     GH_TOKEN = newToken;
-    CONFIG.ghToken = newToken;
-    saveSession();
-    // Reload data with new token
-    try { await loadDb(); } catch {}
-    try { await loadIndex(); } catch {}
-    renderDashboard();
-    renderArticles();
+    saveSession(); // stored in localStorage only (GitHub blocks tokens in files)
   }
   if (newWebhook) CONFIG.webhookUrl = newWebhook;
   if (newPass) CONFIG.passwordHash = await sha256(newPass);
@@ -1195,7 +1189,7 @@ async function afterLogin() {
   // If no token, prompt user to set it
   if (!GH_TOKEN) {
     document.getElementById('dashboardArticles').innerHTML =
-      '<div class="empty-state"><i class="fas fa-key"></i><p>يرجى إدخال GitHub Token في صفحة الإعدادات أولاً</p></div>';
+      '<div class="empty-state"><i class="fas fa-key"></i><p>لأول مرة؟ اروح <strong>الإعدادات</strong> وحط GitHub Token (اسأل المطور عن التوكن)</p></div>';
     document.getElementById('statTotal').textContent = '?';
     document.getElementById('statPublished').textContent = '?';
     document.getElementById('statToday').textContent = '?';

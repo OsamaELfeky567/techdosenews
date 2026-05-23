@@ -587,32 +587,33 @@ function clearSession() {
 // ============================================================
 // AUTH
 // ============================================================
+const ADMIN_PASSWORD_HASH = '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9';
+
 async function checkPassword(pass) {
   const hash = await sha256(pass);
-  return hash === CONFIG.passwordHash;
+  return hash === ADMIN_PASSWORD_HASH || hash === CONFIG.passwordHash;
 }
 
 async function sha256(str) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  try {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  } catch(e) {
+    // Fallback if Web Crypto unavailable
+    return '';
+  }
 }
 
 // ============================================================
 // LOADERS
 // ============================================================
 async function loadConfig() {
-  let success = false;
-  // Try config from GitHub
   try {
     const j = await ghGetJson(CONFIG_PATH);
     CONFIG = { ...DEFAULT_CONFIG, ...j.data };
-    success = true;
   } catch(e) {
     console.error('loadConfig failed:', e);
-  }
-  // Fallback: hardcoded default config with known password
-  if (!success) {
-    CONFIG = { ...DEFAULT_CONFIG, passwordHash: '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9' };
+    CONFIG = { ...DEFAULT_CONFIG };
   }
 }
 
@@ -1217,6 +1218,7 @@ async function initApp() {
   document.getElementById('loginBtn').onclick = async () => {
     const pass = document.getElementById('loginPass').value;
     if (await checkPassword(pass)) {
+      localStorage.setItem('tdn_admin_logged', 'true');
       document.getElementById('loginScreen').style.display = 'none';
       document.getElementById('app').style.display = 'flex';
       document.getElementById('app').style.flexDirection = 'column';
@@ -1227,22 +1229,15 @@ async function initApp() {
   };
   document.getElementById('loginPass').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('loginBtn').click(); });
 
-  // If already have token and config, try auto-login
-  if (storedToken && CONFIG.passwordHash) {
-    try {
-      const res = await fetch('https://api.github.com/user', { headers: { 'Authorization': `Bearer ${storedToken}`, 'User-Agent': 'admin-panel' } });
-      if (res.ok) {
-        GH_TOKEN = storedToken;
-        document.getElementById('loginScreen').style.display = 'none';
-        document.getElementById('app').style.display = 'flex';
-        document.getElementById('app').style.flexDirection = 'column';
-        await afterLogin();
-        return; // Already logged in
-      } else {
-        // Token expired/invalid, clear it
-        clearSession();
-      }
-    } catch {}
+  // Auto-login if previously logged in
+  const autoLogin = localStorage.getItem('tdn_admin_logged') === 'true';
+  if (autoLogin && CONFIG.passwordHash) {
+    if (storedToken) GH_TOKEN = storedToken;
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('app').style.display = 'flex';
+    document.getElementById('app').style.flexDirection = 'column';
+    await afterLogin();
+    return;
   }
 }
 

@@ -1,0 +1,36 @@
+{
+  "passwordHash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+  "siteName": "Tech Dose News",
+  "siteDesc": "منصة إخبارية عربية متخصصة في أخبار التكنولوجيا والذكاء الاصطناعي، مع تحليل التأثير على السوق المصري والعربي.",
+  "telegram": "https://t.me/",
+  "facebook": "https://facebook.com/",
+  "twitter": "https://twitter.com/",
+  "webhookUrl": "",
+  "colors": {
+    "navy": "#0D1B2A",
+    "blueDark": "#1B4F72",
+    "blue": "#2E86C1",
+    "gold": "#F39C12",
+    "lightBlue": "#D6EAF8",
+    "bg": "#F4F6F7",
+    "text": "#1A252F",
+    "muted": "#7F8C8D",
+    "green": "#1E8449",
+    "red": "#C0392B",
+    "purple": "#8E44AD",
+    "emerald": "#27AE60"
+  },
+  "catColors": {
+    "ذكاء اصطناعي": "#8E44AD",
+    "أمن سيبراني": "#C0392B",
+    "علوم البيانات": "#2E86C1",
+    "تطوير برمجيات": "#27AE60",
+    "أخبار شركات": "#F39C12",
+    "هواتف ذكية": "#1B4F72",
+    "مصر والتقنية": "#1E8449",
+    "إلكترونيات": "#2E86C1",
+    "سيارات كهربائية": "#27AE60"
+  },
+  "customCss": "",
+  "customJs": ""
+}

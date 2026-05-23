@@ -183,6 +183,8 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
   <header class="app-header">
     <div class="logo"><i class="fas fa-bolt" style="color:var(--primary)"></i> Tech<span>Dose</span> News</div>
     <div class="header-actions">
+      <span id="headerClock" style="font-size:.8rem;color:var(--text2);direction:ltr;font-family:monospace;padding:4px 10px;background:var(--bg2);border-radius:6px">--:--:--</span>
+      <span id="headerDate" style="font-size:.8rem;color:var(--text2);padding:4px 10px;background:var(--bg2);border-radius:6px">--</span>
       <span class="user-badge"><i class="fas fa-user-shield"></i> Admin</span>
       <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> خروج</button>
     </div>
@@ -213,6 +215,38 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
           <div class="stat-card"><div class="stat-label">اليوم</div><div class="stat-value" id="statToday">-</div><div class="stat-sub">مقال جديد</div></div>
           <div class="stat-card"><div class="stat-label">آخر تحديث</div><div class="stat-value" id="statLastUpdate" style="font-size:1rem">-</div><div class="stat-sub">الموقع</div></div>
         </div>
+        <!-- Insights -->
+        <div class="page-title" style="font-size:1rem;margin-bottom:12px;margin-top:24px">تحليلات متقدمة <span class="sub">من بيانات الموقع</span></div>
+        <div class="stats-grid" id="insightsGrid">
+          <div class="stat-card"><div class="stat-label">المقالات البارزة (Featured)</div><div class="stat-value" id="insightFeatured">-</div></div>
+          <div class="stat-card"><div class="stat-label">عدد التصنيفات</div><div class="stat-value" id="insightCats">-</div></div>
+          <div class="stat-card"><div class="stat-label">المصادر المختلفة</div><div class="stat-value" id="insightSources">-</div></div>
+          <div class="stat-card"><div class="stat-label">معدل النشر</div><div class="stat-value" id="insightRate" style="font-size:1.1rem">-</div><div class="stat-sub">مقال/يوم</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+          <div style="background:var(--surface);border-radius:var(--radius);border:1px solid var(--bg3);padding:16px">
+            <h4 style="font-size:.85rem;color:var(--text2);margin-bottom:10px"><i class="fas fa-chart-pie"></i> توزيع التصنيفات</h4>
+            <div id="insightCatChart"></div>
+          </div>
+          <div style="background:var(--surface);border-radius:var(--radius);border:1px solid var(--bg3);padding:16px">
+            <h4 style="font-size:.85rem;color:var(--text2);margin-bottom:10px"><i class="fas fa-calendar-alt"></i> النشر حسب الشهر</h4>
+            <div id="insightTimeline"></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+          <div style="background:var(--surface);border-radius:var(--radius);border:1px solid var(--bg3);padding:16px">
+            <h4 style="font-size:.85rem;color:var(--text2);margin-bottom:10px"><i class="fas fa-eye"></i> إحصائيات المشاهدات</h4>
+            <div id="insightViews">
+              <p style="color:var(--text3);font-size:.8rem">بيانات المشاهدات الحقيقية تظهر عند تفعيل GoatCounter/tracking</p>
+              <p style="color:var(--text3);font-size:.8rem;margin-top:4px" id="insightLocalViews">المشاهدات المحلية (localStorage): تحتاج فتح الموقع في متصفح آخر</p>
+            </div>
+          </div>
+          <div style="background:var(--surface);border-radius:var(--radius);border:1px solid var(--bg3);padding:16px">
+            <h4 style="font-size:.85rem;color:var(--text2);margin-bottom:10px"><i class="fas fa-link"></i> توزيع المصادر</h4>
+            <div id="insightSourceChart"></div>
+          </div>
+        </div>
+
         <div class="page-title" style="font-size:1rem;margin-bottom:12px">آخر المقالات المنشورة</div>
         <div id="dashboardArticles" class="table-wrap"></div>
       </section>
@@ -633,6 +667,107 @@ function navigateTo(page) {
 // ============================================================
 // RENDER FUNCTIONS
 // ============================================================
+
+/* Clock update */
+function initHeaderClock() {
+  function update() {
+    const now = new Date();
+    document.getElementById('headerClock').textContent = now.toLocaleTimeString('ar-EG', { hour12: false });
+    const opts = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
+    document.getElementById('headerDate').textContent = now.toLocaleDateString('ar-EG', opts);
+  }
+  update();
+  setInterval(update, 1000);
+}
+
+/* Insights */
+function renderInsights() {
+  if (!DB.length) return;
+
+  // Featured count
+  document.getElementById('insightFeatured').textContent = INDEX.filter(a => a.featured).length;
+
+  // Category count
+  const cats = new Set(DB.map(a => a.category).filter(Boolean));
+  document.getElementById('insightCats').textContent = cats.size;
+
+  // Sources
+  const sources = new Set(DB.map(a => (a.source_name||a.source||'')).filter(Boolean));
+  document.getElementById('insightSources').textContent = sources.size;
+
+  // Publishing rate (articles per day over last 30 days)
+  const now = Date.now();
+  const thirtyDays = 30 * 86400000;
+  const recent = DB.filter(a => a.created_at && (now - new Date(a.created_at).getTime()) < thirtyDays);
+  const rate = (recent.length / 30).toFixed(1);
+  document.getElementById('insightRate').textContent = rate;
+
+  // Category chart (bar chart)
+  const catCounts = {};
+  DB.forEach(a => { const c = a.category || 'أخرى'; catCounts[c] = (catCounts[c]||0) + 1; });
+  const catEntries = Object.entries(catCounts).sort((a,b) => b[1]-a[1]);
+  const maxCat = Math.max(...catEntries.map(e => e[1]), 1);
+  const catChart = document.getElementById('insightCatChart');
+  catChart.innerHTML = catEntries.map(([cat, count]) => {
+    const pct = (count / maxCat * 100).toFixed(0);
+    const color = CAT_COLORS[cat] || '#3b82f6';
+    return `<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+      <span style="width:100px;font-size:.75rem;color:var(--text2);text-overflow:ellipsis;overflow:hidden;white-space:nowrap">${esc(cat)}</span>
+      <div style="flex:1;height:16px;background:var(--bg3);border-radius:8px;overflow:hidden">
+        <div style="width:${pct}%;height:100%;background:${color};border-radius:8px;transition:.5s"></div>
+      </div>
+      <span style="font-size:.75rem;color:var(--text);min-width:24px;text-align:left">${count}</span>
+    </div>`;
+  }).join('');
+
+  // Timeline (articles per month)
+  const monthCounts = {};
+  DB.forEach(a => {
+    if (!a.created_at) return;
+    const d = new Date(a.created_at);
+    const key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0');
+    monthCounts[key] = (monthCounts[key]||0) + 1;
+  });
+  const monthEntries = Object.entries(monthCounts).sort();
+  const maxMonth = Math.max(...monthEntries.map(e => e[1]), 1);
+  const timeline = document.getElementById('insightTimeline');
+  timeline.innerHTML = monthEntries.map(([month, count]) => {
+    const pct = (count / maxMonth * 100).toFixed(0);
+    const names = { '2026-05':'مايو 2026','2026-04':'أبريل 2026','2026-03':'مارس 2026','2026-06':'يونيو 2026' };
+    return `<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
+      <span style="width:72px;font-size:.7rem;color:var(--text3)">${names[month]||month}</span>
+      <div style="flex:1;height:12px;background:var(--bg3);border-radius:6px;overflow:hidden">
+        <div style="width:${pct}%;height:100%;background:var(--primary);border-radius:6px;transition:.5s"></div>
+      </div>
+      <span style="font-size:.7rem;color:var(--text);min-width:20px;text-align:left">${count}</span>
+    </div>`;
+  }).join('');
+
+  // Source chart
+  const sourceCounts = {};
+  DB.forEach(a => { const s = a.source_name||a.source||'غير معروف'; sourceCounts[s] = (sourceCounts[s]||0) + 1; });
+  const srcEntries = Object.entries(sourceCounts).sort((a,b) => b[1]-a[1]).slice(0, 8);
+  const maxSrc = Math.max(...srcEntries.map(e => e[1]), 1);
+  const srcChart = document.getElementById('insightSourceChart');
+  srcChart.innerHTML = srcEntries.map(([src, count]) => {
+    const pct = (count / maxSrc * 100).toFixed(0);
+    return `<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
+      <span style="width:80px;font-size:.7rem;color:var(--text2);text-overflow:ellipsis;overflow:hidden;white-space:nowrap">${esc(src)}</span>
+      <div style="flex:1;height:12px;background:var(--bg3);border-radius:6px;overflow:hidden">
+        <div style="width:${pct}%;height:100%;background:var(--green);border-radius:6px;transition:.5s"></div>
+      </div>
+      <span style="font-size:.7rem;color:var(--text);min-width:20px;text-align:left">${count}</span>
+    </div>`;
+  }).join('');
+
+  // Local views info
+  const localViews = document.getElementById('insightLocalViews');
+  try {
+    const stored = JSON.parse(localStorage.getItem('tdn_views') || '{}');
+    const total = Object.values(stored).reduce((a,b) => a + b, 0);
+    localViews.innerHTML = `<i class="fas fa-database"></i> المشاهدات المحلية (هذا الجهاز): <strong>${total}</strong> مشاهدة عبر <strong>${Object.keys(stored).length}</strong> مقال`;
+  } catch { localViews.textContent = 'لا توجد بيانات مشاهدة محلية'; }
+}
 
 /* Dashboard */
 async function renderDashboard() {
@@ -1100,6 +1235,9 @@ async function afterLogin() {
   document.getElementById('editCustomCss').value = CONFIG.customCss || '';
   document.getElementById('editCustomJs').value = CONFIG.customJs || '';
 
+  // Start clock
+  initHeaderClock();
+
   // Sidebar navigation
   document.querySelectorAll('.nav-item').forEach(item => {
     item.addEventListener('click', () => {
@@ -1110,7 +1248,7 @@ async function afterLogin() {
       }
       navigateTo(page);
       // Refresh data on page switch
-      if (page === 'dashboard') renderDashboard();
+      if (page === 'dashboard') { renderDashboard(); renderInsights(); }
       if (page === 'articles') renderArticles();
       if (page === 'categories') renderCategories();
       if (page === 'themes') renderThemes();
@@ -1238,6 +1376,7 @@ async function afterLogin() {
 
   // Initial render
   renderDashboard();
+  renderInsights();
   renderArticles();
   renderCategories();
   renderThemes();

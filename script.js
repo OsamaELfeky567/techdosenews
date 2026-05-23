@@ -713,6 +713,22 @@ function initNewsletterForms() {
 }
 
 /* =========================================================
+   VIEW TRACKER — n8n + GoatCounter
+   ========================================================= */
+function pingViewTracker(articleId) {
+  // 1. Ping n8n tracking endpoint (silent fail if unreachable)
+  try {
+    const ua = encodeURIComponent(navigator.userAgent.substring(0, 100));
+    const ref = encodeURIComponent(document.referrer.substring(0, 200));
+    const img = new Image();
+    img.src = 'https://localhost:5678/webhook/tdn-track?id=' + articleId + '&ref=' + ref + '&ua=' + ua + '&t=' + Date.now();
+  } catch(e) { /* silent */ }
+
+  // 2. GoatCounter — uncomment and add your code when signed up
+  // if (window.goatcounter) { goatcounter.count({ path: '/article.html?id=' + articleId }); }
+}
+
+/* =========================================================
    11. ARTICLE PAGE
    ========================================================= */
 function initArticlePage() {
@@ -737,6 +753,7 @@ function initArticlePage() {
   setEl('articleReadTime', article.readTime);
   setEl('articleDate', getArticleDateDisplay(article));
   incrementView(id);
+  pingViewTracker(id);
   const vc = getViewCounts();
   setEl('articleViews', (vc[id] || 0) + ' مشاهدة');
 

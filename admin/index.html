@@ -1208,36 +1208,13 @@ async function initApp() {
   if (storedToken) GH_TOKEN = storedToken;
   if (!GH_TOKEN && CONFIG.ghToken) GH_TOKEN = CONFIG.ghToken;
 
-  // Show login screen
-  document.getElementById('loginScreen').style.display = 'flex';
-  if (!CONFIG.passwordHash) {
-    document.getElementById('loginError').textContent = 'استخدم كلمة المرور الافتراضية: admin123';
-  }
-
-  document.getElementById('loginBtn').onclick = async () => {
-    const pass = document.getElementById('loginPass').value;
-    if (await checkPassword(pass)) {
-      localStorage.setItem('tdn_admin_logged', 'true');
-      document.getElementById('loginScreen').style.display = 'none';
-      document.getElementById('app').style.display = 'flex';
-      document.getElementById('app').style.flexDirection = 'column';
-      await afterLogin();
-    } else {
-      document.getElementById('loginError').style.display = 'block';
-    }
-  };
-  document.getElementById('loginPass').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('loginBtn').click(); });
-
-  // Auto-login if previously logged in
-  const autoLogin = localStorage.getItem('tdn_admin_logged') === 'true';
-  if (autoLogin && CONFIG.passwordHash) {
-    if (storedToken) GH_TOKEN = storedToken;
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('app').style.display = 'flex';
-    document.getElementById('app').style.flexDirection = 'column';
-    await afterLogin();
-    return;
-  }
+  // Skip login — go straight to dashboard
+  if (storedToken) GH_TOKEN = storedToken;
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('app').style.display = 'flex';
+  document.getElementById('app').style.flexDirection = 'column';
+  await afterLogin();
+  return;
 }
 
 async function afterLogin() {

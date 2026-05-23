@@ -521,11 +521,17 @@ const CAT_COLORS = {
 // GITHUB API
 // ============================================================
 async function ghFetch(path) {
-  const headers = { 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'admin-panel' };
+  const headers = { 'Accept': 'application/vnd.github.v3+json' };
   if (GH_TOKEN) headers['Authorization'] = `Bearer ${GH_TOKEN}`;
-  const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, { headers });
-  if (!res.ok) throw new Error(`GitHub GET ${path}: ${res.status}`);
-  return res.json();
+  const url = GH_TOKEN
+    ? `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`
+    : `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${path}`;
+  const res = await fetch(url, GH_TOKEN ? { headers } : {});
+  if (!res.ok) throw new Error(`GET ${path}: ${res.status}`);
+  if (GH_TOKEN) return res.json();
+  // Raw content mode: return JSON
+  const text = await res.text();
+  return { content: btoa(unescape(encodeURIComponent(text))) };
 }
 
 async function ghPut(path, content, message, sha) {
@@ -595,11 +601,18 @@ async function sha256(str) {
 // LOADERS
 // ============================================================
 async function loadConfig() {
+  let success = false;
+  // Try config from GitHub
   try {
     const j = await ghGetJson(CONFIG_PATH);
     CONFIG = { ...DEFAULT_CONFIG, ...j.data };
-  } catch {
-    CONFIG = { ...DEFAULT_CONFIG };
+    success = true;
+  } catch(e) {
+    console.error('loadConfig failed:', e);
+  }
+  // Fallback: hardcoded default config with known password
+  if (!success) {
+    CONFIG = { ...DEFAULT_CONFIG, passwordHash: '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9' };
   }
 }
 

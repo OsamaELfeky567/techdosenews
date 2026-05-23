@@ -12,37 +12,36 @@ function initDatetimeBar() {
   function updateClock() {
     const now = new Date();
 
-    // ===== ميلادي =====
-    const miladiOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const miladi = now.toLocaleDateString('ar-EG', miladiOptions);
-    const miladiEl = document.getElementById('miladiDate');
-    if (miladiEl) miladiEl.textContent = miladi;
-
-    // ===== هجري =====
-    const hijriOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', calendar: 'islamic' };
-    try {
-      const hijri = now.toLocaleDateString('ar-SA-u-ca-islamic', hijriOptions);
-      const hijriEl = document.getElementById('hijriDate');
-      if (hijriEl) hijriEl.textContent = hijri;
-    } catch(e) {
-      // fallback if islamic calendar not supported
-      const hijriEl = document.getElementById('hijriDate');
-      if (hijriEl) hijriEl.textContent = '';
-      const sep = document.querySelectorAll('.datetime-sep');
-      if (sep[0]) sep[0].style.display = 'none';
-      const dtHijri = document.getElementById('dtHijri');
-      if (dtHijri) dtHijri.style.display = 'none';
-    }
-
-    // ===== ساعة 12 صباحاً/مساءً =====
+    // ===== الوقت (ساعة) =====
     let hours = now.getHours();
     const minutes = String(now.getMinutes()).padStart(2, '0');
     const seconds = String(now.getSeconds()).padStart(2, '0');
     const ampm = hours >= 12 ? 'م' : 'ص';
     hours = hours % 12 || 12;
-    const timeStr = `${hours}:${minutes}:${seconds} ${ampm}`;
-    const clockEl = document.getElementById('clockTime');
+    const timeStr = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+    const clockEl = document.getElementById('dtTime');
     if (clockEl) clockEl.textContent = timeStr;
+
+    // ===== التاريخ ميلادي =====
+    const gregOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const greg = now.toLocaleDateString('ar-EG', gregOptions);
+    const gregEl = document.getElementById('dtGreg');
+    if (gregEl) gregEl.textContent = greg;
+
+    // ===== التاريخ هجري =====
+    try {
+      const hijri = now.toLocaleDateString('ar-SA-u-ca-islamic', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      const hijriEl = document.getElementById('dtHijri');
+      if (hijriEl) hijriEl.textContent = hijri;
+    } catch(e) {
+      const hijriEl = document.getElementById('dtHijri');
+      if (hijriEl) hijriEl.style.display = 'none';
+    }
+
+    // ===== اليوم =====
+    const dayNames = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
+    const dayEl = document.getElementById('dtDay');
+    if (dayEl) dayEl.textContent = dayNames[now.getDay()];
   }
 
   updateClock();

@@ -487,9 +487,9 @@ const CAT_COLORS = {
 // GITHUB API
 // ============================================================
 async function ghFetch(path) {
-  const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
-    headers: { 'Authorization': `Bearer ${GH_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'admin-panel' }
-  });
+  const headers = { 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'admin-panel' };
+  if (GH_TOKEN) headers['Authorization'] = `Bearer ${GH_TOKEN}`;
+  const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, { headers });
   if (!res.ok) throw new Error(`GitHub GET ${path}: ${res.status}`);
   return res.json();
 }
@@ -994,6 +994,11 @@ async function saveSettings() {
     GH_TOKEN = newToken;
     CONFIG.ghToken = newToken;
     saveSession();
+    // Reload data with new token
+    try { await loadDb(); } catch {}
+    try { await loadIndex(); } catch {}
+    renderDashboard();
+    renderArticles();
   }
   if (newWebhook) CONFIG.webhookUrl = newWebhook;
   if (newPass) CONFIG.passwordHash = await sha256(newPass);
@@ -1027,10 +1032,9 @@ async function testGhConnection() {
 async function initApp() {
   // Load config
   await loadConfig();
-
-  // Check stored session
   const storedToken = loadSession();
   if (storedToken) GH_TOKEN = storedToken;
+  if (!GH_TOKEN && CONFIG.ghToken) GH_TOKEN = CONFIG.ghToken;
 
   // Show login if no password is set, or if token not authenticated
   if (!CONFIG.passwordHash) {
@@ -1052,7 +1056,7 @@ async function initApp() {
   };
   document.getElementById('loginPass').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('loginBtn').click(); });
 
-  // If already have token and config, go straight in
+  // If already have token and config, try auto-login
   if (storedToken && CONFIG.passwordHash) {
     try {
       const res = await fetch('https://api.github.com/user', { headers: { 'Authorization': `Bearer ${storedToken}`, 'User-Agent': 'admin-panel' } });
@@ -1062,18 +1066,31 @@ async function initApp() {
         document.getElementById('app').style.display = 'flex';
         document.getElementById('app').style.flexDirection = 'column';
         await afterLogin();
+        return; // Already logged in
+      } else {
+        // Token expired/invalid, clear it
+        clearSession();
       }
     } catch {}
   }
 }
 
 async function afterLogin() {
-  // Load data
-  await loadDb();
-  await loadIndex();
+  // Load data (works without token for public repos)
+  try { await loadDb(); } catch {}
+  try { await loadIndex(); } catch {}
+
+  // If no token, prompt user to set it
+  if (!GH_TOKEN) {
+    document.getElementById('dashboardArticles').innerHTML =
+      '<div class="empty-state"><i class="fas fa-key"></i><p>يرجى إدخال GitHub Token في صفحة الإعدادات أولاً</p></div>';
+    document.getElementById('statTotal').textContent = '?';
+    document.getElementById('statPublished').textContent = '?';
+    document.getElementById('statToday').textContent = '?';
+  }
 
   // Populate settings
-  document.getElementById('editGhToken').value = GH_TOKEN || '';
+  document.getElementById('editGhToken').value = GH_TOKEN || CONFIG.ghToken || '';
   document.getElementById('editWebhookUrl').value = CONFIG.webhookUrl || '';
   document.getElementById('editSiteName').value = CONFIG.siteName || '';
   document.getElementById('editSiteDesc').value = CONFIG.siteDesc || '';

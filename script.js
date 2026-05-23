@@ -304,6 +304,7 @@ let currentPage   = 1;
    INIT
    ========================================================= */
 document.addEventListener('DOMContentLoaded', () => {
+  initGoatCounter();
   initDatetimeBar();
   const isArticlePage = document.body.classList.contains('article-page');
 
@@ -713,19 +714,28 @@ function initNewsletterForms() {
 }
 
 /* =========================================================
-   VIEW TRACKER — n8n + GoatCounter
+   VIEW TRACKER — GoatCounter + n8n
    ========================================================= */
+function initGoatCounter() {
+  if (document.querySelector('script[data-goatcounter]')) return; // already loaded
+  const s = document.createElement('script');
+  s.setAttribute('data-goatcounter', 'https://techdosenews.goatcounter.com/count');
+  s.src = 'https://gc.zgo.at/count.js';
+  s.async = true;
+  document.head.appendChild(s);
+}
+
 function pingViewTracker(articleId) {
-  // 1. Ping n8n tracking endpoint (silent fail if unreachable)
+  // GoatCounter already loaded globally — count article view
+  try { if (window.goatcounter) goatcounter.count({ path: '/article.html?id=' + articleId }); } catch {}
+
+  // n8n tracking endpoint (silent fail if unreachable)
   try {
     const ua = encodeURIComponent(navigator.userAgent.substring(0, 100));
     const ref = encodeURIComponent(document.referrer.substring(0, 200));
     const img = new Image();
     img.src = 'https://localhost:5678/webhook/tdn-track?id=' + articleId + '&ref=' + ref + '&ua=' + ua + '&t=' + Date.now();
-  } catch(e) { /* silent */ }
-
-  // 2. GoatCounter — uncomment and add your code when signed up
-  // if (window.goatcounter) { goatcounter.count({ path: '/article.html?id=' + articleId }); }
+  } catch {}
 }
 
 /* =========================================================

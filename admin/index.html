@@ -1182,9 +1182,10 @@ async function initApp() {
 }
 
 async function afterLogin() {
+  try {
   // Load data (works without token for public repos)
-  try { await loadDb(); } catch {}
-  try { await loadIndex(); } catch {}
+  try { await loadDb(); } catch (e) { console.error('loadDb:', e); }
+  try { await loadIndex(); } catch (e) { console.error('loadIndex:', e); }
 
   // If no token, prompt user to set it
   if (!GH_TOKEN) {
@@ -1351,6 +1352,7 @@ async function afterLogin() {
   renderArticles();
   renderCategories();
   renderThemes();
+  } catch(e) { console.error('afterLogin error:', e); }
 }
 
 // Startup

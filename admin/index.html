@@ -22,16 +22,6 @@
 body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
 a{color:var(--primary);text-decoration:none}
 input,select,textarea,button{font-family:inherit;font-size:.95rem}
-/* Login */
-.login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
-.login-box{background:var(--surface);padding:40px;border-radius:var(--radius);box-shadow:var(--shadow);width:100%;max-width:400px;text-align:center}
-.login-box h1{font-size:1.5rem;margin-bottom:6px;color:var(--text)}
-.login-box p{color:var(--text2);font-size:.85rem;margin-bottom:24px}
-.login-box input{width:100%;padding:12px 14px;border:1px solid var(--bg3);border-radius:8px;background:var(--bg2);color:var(--text);margin-bottom:14px;direction:ltr;text-align:left}
-.login-box input:focus{outline:none;border-color:var(--primary)}
-.login-box .login-btn{width:100%;padding:12px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;transition:.2s}
-.login-box .login-btn:hover{background:var(--primary-hover)}
-.login-error{color:var(--red);font-size:.85rem;margin-top:8px;display:none}
 /* Layout */
 .app{display:none}
 .app-header{background:var(--surface);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bg3);position:sticky;top:0;z-index:100}
@@ -164,20 +154,8 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
 </head>
 <body>
 
-<!-- ===== LOGIN ===== -->
-<div class="login-screen" id="loginScreen">
-  <div class="login-box">
-    <div style="font-size:2rem;margin-bottom:8px">⚙️</div>
-    <h1>لوحة التحكم</h1>
-    <p>Tech Dose News — إدارة المحتوى والإعدادات</p>
-    <input type="password" id="loginPass" placeholder="كلمة المرور" autocomplete="current-password">
-    <button class="login-btn" id="loginBtn">تسجيل الدخول</button>
-    <div class="login-error" id="loginError">كلمة المرور غير صحيحة</div>
-  </div>
-</div>
-
 <!-- ===== APP ===== -->
-<div class="app" id="app">
+<div class="app" id="app" style="display:flex;flex-direction:column">
 
   <!-- Header -->
   <header class="app-header">
@@ -1202,19 +1180,11 @@ async function testGhConnection() {
 // INIT
 // ============================================================
 async function initApp() {
-  // Load config
   await loadConfig();
   const storedToken = loadSession();
   if (storedToken) GH_TOKEN = storedToken;
   if (!GH_TOKEN && CONFIG.ghToken) GH_TOKEN = CONFIG.ghToken;
-
-  // Skip login — go straight to dashboard
-  if (storedToken) GH_TOKEN = storedToken;
-  document.getElementById('loginScreen').style.display = 'none';
-  document.getElementById('app').style.display = 'flex';
-  document.getElementById('app').style.flexDirection = 'column';
   await afterLogin();
-  return;
 }
 
 async function afterLogin() {

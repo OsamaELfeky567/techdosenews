@@ -767,6 +767,29 @@ function renderInsights() {
     const total = Object.values(stored).reduce((a,b) => a + b, 0);
     localViews.innerHTML = `<i class="fas fa-database"></i> المشاهدات المحلية (هذا الجهاز): <strong>${total}</strong> مشاهدة عبر <strong>${Object.keys(stored).length}</strong> مقال`;
   } catch { localViews.textContent = 'لا توجد بيانات مشاهدة محلية'; }
+
+  // Views from views_db.json (n8n tracking)
+  try {
+    if (GH_TOKEN) {
+      const vdb = await ghGetJson('views_db.json').catch(() => null);
+      if (vdb && vdb.data) {
+        const views = vdb.data;
+        const totalViews = Object.values(views).reduce((sum, v) => sum + (v.count||0), 0);
+        const totalArticles = Object.keys(views).length;
+        const viewBox = document.getElementById('insightViews');
+        viewBox.innerHTML = `
+          <p style="color:var(--green);font-size:.85rem;margin-bottom:8px"><i class="fas fa-check-circle"></i> إجمالي المشاهدات المسجلة: <strong>${totalViews}</strong></p>
+          <p style="color:var(--text2);font-size:.8rem;margin-bottom:8px">عبر ${totalArticles} مقال</p>
+          <div style="max-height:200px;overflow-y:auto">${Object.entries(views).sort((a,b) => b[1].count - a[1].count).slice(0,10).map(([id, v]) => {
+            const art = DB.find(a => String(a.id) === String(id)) || INDEX.find(a => String(a.id) === String(id));
+            const title = art ? (art.title_ar||art.title||'') : '#'+id;
+            return '<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--bg3);font-size:.8rem">' +
+              '<span style="color:var(--text2);text-overflow:ellipsis;overflow:hidden;white-space:nowrap;max-width:200px">' + esc(title.substring(0,40)) + '</span>' +
+              '<span style="color:var(--text);font-weight:600;direction:ltr">' + v.count + '</span></div>';
+          }).join('')}</div>`;
+      }
+    }
+  } catch {}
 }
 
 /* Dashboard */

@@ -351,12 +351,23 @@ document.addEventListener('DOMContentLoaded', () => {
    1. TICKER
    ========================================================= */
 function initTicker() {
+  const wrapper = document.querySelector('.ticker-wrapper');
   const content = document.getElementById('tickerContent');
-  if (!content) return;
-  // Clone for seamless loop
-  const clone = content.cloneNode(true);
-  clone.setAttribute('aria-hidden', 'true');
-  content.parentNode.appendChild(clone);
+  if (!wrapper || !content) return;
+
+  // Populate with latest 5 articles (sorted newest first)
+  const sorted = [...articles].sort((a, b) => (b.id || 0) - (a.id || 0));
+  const latest5 = sorted.slice(0, 5);
+  if (latest5.length > 0) {
+    content.innerHTML = latest5.map(a => a.title).join(' &nbsp;●&nbsp; ');
+  }
+
+  // Clone for seamless loop (only once)
+  if (wrapper.querySelectorAll('.ticker-content').length < 2) {
+    const clone = content.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    wrapper.appendChild(clone);
+  }
 }
 
 /* =========================================================

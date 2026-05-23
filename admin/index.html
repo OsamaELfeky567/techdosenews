@@ -1208,11 +1208,10 @@ async function initApp() {
   if (storedToken) GH_TOKEN = storedToken;
   if (!GH_TOKEN && CONFIG.ghToken) GH_TOKEN = CONFIG.ghToken;
 
-  // Show login if no password is set, or if token not authenticated
+  // Show login screen
+  document.getElementById('loginScreen').style.display = 'flex';
   if (!CONFIG.passwordHash) {
-    document.getElementById('loginScreen').style.display = 'flex';
-    document.getElementById('loginError').textContent = 'لا توجد كلمة مرور. الرجاء تعيين كلمة مرور جديدة.';
-    return;
+    document.getElementById('loginError').textContent = 'استخدم كلمة المرور الافتراضية: admin123';
   }
 
   document.getElementById('loginBtn').onclick = async () => {

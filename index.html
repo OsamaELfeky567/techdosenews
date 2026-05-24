@@ -21,6 +21,7 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
     <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -30,12 +31,7 @@
     <div class="breaking-bar" role="marquee" aria-label="أخبار عاجلة">
         <span class="breaking-label" aria-label="عاجل">عاجل</span>
         <div class="ticker-wrapper">
-            <div class="ticker-content" id="tickerContent">
-                OpenAI تطلق GPT-5 رسمياً بقدرات غير مسبوقة &nbsp;●&nbsp; سامسونج تعلن Galaxy S25 Ultra بكاميرا 200
-                ميجابكسل &nbsp;●&nbsp; مصر تطلق منصة حكومية للذكاء الاصطناعي &nbsp;●&nbsp; جوجل تستثمر 10 مليارات في
-                الذكاء الاصطناعي &nbsp;●&nbsp; ثغرة خطيرة تهدد ملايين مستخدمي أندرويد &nbsp;●&nbsp; أبل تختبر شحن لاسلكي
-                50 واط في iPhone 17
-            </div>
+            <div class="ticker-content" id="tickerContent"></div>
         </div>
     </div>
 
@@ -259,7 +255,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 Tech Dose News — جميع الحقوق محفوظة</p>
+            <p>© <span id="footerYear">2025</span> Tech Dose News — جميع الحقوق محفوظة</p>
         </div>
     </footer>
 

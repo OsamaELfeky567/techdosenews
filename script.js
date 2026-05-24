@@ -61,6 +61,8 @@ function getRelativeTime(articleId) {
   const days = Math.floor(diff / 86400000);
 
   if (minutes < 2) return 'منذ لحظات';
+  if (minutes < 3) return 'منذ دقيقتين';
+  if (minutes < 11) return `منذ ${minutes} دقائق`;
   if (minutes < 60) return `منذ ${minutes} دقيقة`;
   if (hours === 1) return 'منذ ساعة';
   if (hours === 2) return 'منذ ساعتين';
@@ -294,6 +296,7 @@ const catClass = {
   'إلكترونيات':      'cat-elec',
   'سيارات كهربائية': 'cat-car'
 };
+const normCats = Object.keys(catClass);
 
 /* ── State ── */
 const PAGE_SIZE = 6;
@@ -332,6 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initHamburger();
     initSearch();
     initNewsletterForms();
+    initFooterYear();
 
     if (isArticlePage) {
       initArticlePage();
@@ -342,6 +346,23 @@ document.addEventListener('DOMContentLoaded', () => {
       initCategoryFilter();
       initLoadMore();
       lazyLoadImages();
+    }
+
+    // Handle URL params (search and filter from article.html navigation)
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('search');
+    const filterQuery = urlParams.get('filter');
+    if (searchQuery) {
+      const overlay = document.getElementById('searchOverlay');
+      if (overlay) { overlay.hidden = false; document.body.style.overflow = 'hidden'; }
+      const input = document.getElementById('searchInput');
+      if (input) { input.value = searchQuery; doSearch(searchQuery, document.getElementById('searchResults')); }
+    } else if (filterQuery && normCats.includes(filterQuery)) {
+      currentFilter = filterQuery;
+      currentPage = 1;
+      renderArticles();
+      // Update category pills
+      document.querySelectorAll('.cat-pill').forEach(p => p.classList.toggle('active', p.dataset.category === filterQuery));
     }
 
     setInterval(refreshLiveUI, 30000);
@@ -773,13 +794,13 @@ function initArticlePage() {
   setEl('articleCaption', `صورة: ${article.title}`);
 
   const bodyEl = document.getElementById('articleBody');
-  if (bodyEl && article.body) bodyEl.innerHTML = article.body;
+  if (bodyEl && article.body) bodyEl.innerHTML = DOMPurify ? DOMPurify.sanitize(article.body) : article.body;
 
   const egyptBox = document.getElementById('egyptImpactBox');
   const egyptBody = document.getElementById('egyptImpactBody');
   if (article.hasEgyptImpact && article.egyptImpact) {
     if (egyptBox) egyptBox.style.display = 'block';
-    if (egyptBody) egyptBody.innerHTML = article.egyptImpact;
+    if (egyptBody) egyptBody.innerHTML = DOMPurify ? DOMPurify.sanitize(article.egyptImpact || '') : (article.egyptImpact || '');
   } else {
     if (egyptBox) egyptBox.style.display = 'none';
   }
@@ -847,6 +868,11 @@ function renderArticleTags(article) {
   container.style.display = 'flex';
   container.innerHTML = `<span class="tag-label"><i class="fas fa-tags" aria-hidden="true"></i> الوسوم:</span>`
     + tags.map(t => `<a href="index.html?search=${encodeURIComponent(t)}" class="tag-pill">${escapeHtml(t)}</a>`).join('');
+}
+
+function initFooterYear() {
+  const el = document.getElementById('footerYear');
+  if (el) el.textContent = new Date().getFullYear();
 }
 
 function renderRelated(current) {

@@ -1,7 +1,7 @@
 {
-  "locked": false,
-  "started_at": null,
-  "execution_id": null,
+  "locked": true,
+  "started_at": "2026-05-25T18:00:38.469Z",
+  "execution_id": "v51-1779732038086-bdrb",
   "workflow": "TDN-Orchestrator",
   "version": "5.1"
 }

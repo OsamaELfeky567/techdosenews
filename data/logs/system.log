@@ -405,5 +405,15 @@
     "execution_id": "v53-1779748998745-2d1t",
     "source": "TechCrunch",
     "pubDate": "Thu, 04 Dec 2025 05:37:00 +0000"
+  },
+  {
+    "timestamp": "2026-05-25T22:43:27.811Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "STALE_REJECTED",
+    "title": "Top 10 AI Tools That Will Transform Your Content Creation in 2025",
+    "execution_id": "v53-1779748998745-2d1t",
+    "source": "TechCrunch",
+    "pubDate": "Thu, 02 Jan 2025 09:26:00 +0000"
   }
 ]

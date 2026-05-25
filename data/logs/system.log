@@ -193,5 +193,16 @@
     "source": "TechCrunch",
     "category": "ذكاء اصطناعي",
     "dequeue": true
+  },
+  {
+    "timestamp": "2026-05-25T20:00:59.248Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_PUBLISHED",
+    "title": "كيف أحرز حركة مرور مجانية من ChatGPT في 2025 (AIO مقابل SEO)",
+    "execution_id": "v51-1779739253364",
+    "score": 78,
+    "slug": "كيف-احرز-حركه-مرور-مجانيه",
+    "category": "ذكاء اصطناعي"
   }
 ]

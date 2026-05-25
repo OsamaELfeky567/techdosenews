@@ -475,5 +475,15 @@
     "execution_id": "v53-1779748998745-2d1t",
     "source": "TechCrunch",
     "pubDate": "Wed, 01 Jun 2022 13:03:00 +0000"
+  },
+  {
+    "timestamp": "2026-05-25T22:43:41.095Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "STALE_REJECTED",
+    "title": "What is Blockchain: Everything You Need to Know (2022)",
+    "execution_id": "v53-1779748998745-2d1t",
+    "source": "TechCrunch",
+    "pubDate": "Mon, 18 Apr 2022 05:49:00 +0000"
   }
 ]

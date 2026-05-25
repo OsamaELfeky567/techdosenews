@@ -715,5 +715,15 @@
     "title": "Citing Gandalf, Pope Leo says we must \"disarm\" AI",
     "execution_id": "v53-1779749466667-6x3k",
     "source": "Ars Technica"
+  },
+  {
+    "timestamp": "2026-05-25T22:53:04.131Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_VERIFIED",
+    "title": "تسلا تسلّم شاحنات سايبرتراك الكهربائية: حدث التسليم يثير اهتمامًا جديدًا بالشاحنات الكهربائية",
+    "execution_id": "v52-1779749581594",
+    "slug": "تسلا-تسلّم-شاحنات-سايبرتراك-الكهربائيه",
+    "sha": ""
   }
 ]

@@ -126,5 +126,21 @@
     },
     "queued_at": "2026-05-24T21:30:57.563Z",
     "processing_started": "2026-05-25T08:01:00.105Z"
+  },
+  {
+    "id": "q-1779658257192-4gr59r",
+    "title": "How I Get Free Traffic from ChatGPT in 2025 (AIO vs SEO)",
+    "content": "",
+    "sourceName": "TechCrunch",
+    "sourceLink": "",
+    "video_url": "",
+    "category": "ذكاء اصطناعي",
+    "confidence": 0.22,
+    "lifecycle": {
+      "state": "generating",
+      "entered_at": "2026-05-24T21:30:57.192Z"
+    },
+    "queued_at": "2026-05-24T21:30:57.563Z",
+    "processing_started": "2026-05-25T08:16:00.317Z"
   }
 ]

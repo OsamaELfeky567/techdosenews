@@ -642,5 +642,61 @@
     "hash": "vee7te",
     "status": "pending",
     "queued_at": "2026-05-25T20:00:30.696Z"
+  },
+  {
+    "id": "q-1779739245137-qufpw3",
+    "title": "First-generation Chromecast users stressed by devices suddenly failing",
+    "link": "https://arstechnica.com/gadgets/2026/05/original-chromecast-lives-devices-back-on-after-mysteriously-breaking-this-week/",
+    "contentSnippet": "",
+    "sourceName": "Ars Technica",
+    "sourceLink": "https://arstechnica.com/gadgets/2026/05/original-chromecast-lives-devices-back-on-after-mysteriously-breaking-this-week/",
+    "video_url": "",
+    "category": "سيارات كهربائية",
+    "confidence": 0.14,
+    "hash": "q8gy80",
+    "status": "pending",
+    "queued_at": "2026-05-25T20:00:45.137Z"
+  },
+  {
+    "id": "q-1779739245137-ufpwcz",
+    "title": "Texas AG sues Meta over claims that WhatsApp doesn't provide end-to-end encryption",
+    "link": "https://arstechnica.com/security/2026/05/texas-ag-sues-meta-over-claims-that-whatsapp-doesnt-provide-end-to-end-encryption/",
+    "contentSnippet": "",
+    "sourceName": "Ars Technica",
+    "sourceLink": "https://arstechnica.com/security/2026/05/texas-ag-sues-meta-over-claims-that-whatsapp-doesnt-provide-end-to-end-encryption/",
+    "video_url": "",
+    "category": "ذكاء اصطناعي",
+    "confidence": 0.11,
+    "hash": "eanrn6",
+    "status": "pending",
+    "queued_at": "2026-05-25T20:00:45.137Z"
+  },
+  {
+    "id": "q-1779739245137-04x2o4",
+    "title": "Marketer that claimed it could tap devices for ad targeting will pay $880K settlement",
+    "link": "https://arstechnica.com/tech-policy/2026/05/marketer-that-claimed-it-could-tap-devices-for-ad-targeting-will-pay-880k-settlement/",
+    "contentSnippet": "",
+    "sourceName": "Ars Technica",
+    "sourceLink": "https://arstechnica.com/tech-policy/2026/05/marketer-that-claimed-it-could-tap-devices-for-ad-targeting-will-pay-880k-settlement/",
+    "video_url": "",
+    "category": "سيارات كهربائية",
+    "confidence": 0.14,
+    "hash": "4dvtg0",
+    "status": "pending",
+    "queued_at": "2026-05-25T20:00:45.137Z"
+  },
+  {
+    "id": "q-1779739245137-98n55i",
+    "title": "Trump abruptly cancels EO signing event after top AI firm CEOs declined to go",
+    "link": "https://arstechnica.com/tech-policy/2026/05/trump-canceled-ai-safety-testing-eo-after-snub-from-tech-ceos/",
+    "contentSnippet": "",
+    "sourceName": "Ars Technica",
+    "sourceLink": "https://arstechnica.com/tech-policy/2026/05/trump-canceled-ai-safety-testing-eo-after-snub-from-tech-ceos/",
+    "video_url": "",
+    "category": "سيارات كهربائية",
+    "confidence": 0.14,
+    "hash": "z992n5",
+    "status": "pending",
+    "queued_at": "2026-05-25T20:00:45.137Z"
   }
 ]

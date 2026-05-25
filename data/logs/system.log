@@ -455,5 +455,15 @@
     "execution_id": "v53-1779748998745-2d1t",
     "source": "TechCrunch",
     "pubDate": "Sat, 10 Sep 2022 08:57:00 +0000"
+  },
+  {
+    "timestamp": "2026-05-25T22:43:37.196Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "STALE_REJECTED",
+    "title": "TOP 11 AI MARKETING TOOLS YOU SHOULD USE (Updated 2022)",
+    "execution_id": "v53-1779748998745-2d1t",
+    "source": "TechCrunch",
+    "pubDate": "Wed, 13 Jul 2022 15:25:00 +0000"
   }
 ]

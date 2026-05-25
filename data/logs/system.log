@@ -58,5 +58,17 @@
     "source": "TechCrunch",
     "category": "ذكاء اصطناعي",
     "dequeue": true
+  },
+  {
+    "timestamp": "2026-05-25T18:00:46.904Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "ARTICLE_QUEUED",
+    "article_id": "q-1779731764907-np6dd3",
+    "title": "LimeWire AI Studio Review 2023: Details, Pricing &amp; Features",
+    "execution_id": "v51-1779732038086-bdrb",
+    "source": "TechCrunch",
+    "category": "سيارات كهربائية",
+    "dequeue": true
   }
 ]

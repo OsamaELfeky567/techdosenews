@@ -272,5 +272,15 @@
     "score": 82,
     "slug": "استوديو-limewire-ai-مراجعه-عام",
     "category": "ذكاء اصطناعي"
+  },
+  {
+    "timestamp": "2026-05-25T22:38:27.243Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "ARTICLE_SELECTED",
+    "article_id": "sicxc9",
+    "title": "How I Get Free Traffic from ChatGPT in 2025 (AIO vs SEO)",
+    "execution_id": "v52-1779748704609-3zqv",
+    "source": "TechCrunch"
   }
 ]

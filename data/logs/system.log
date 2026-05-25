@@ -226,5 +226,17 @@
     "execution_id": "v51-1779742824537",
     "error": "Article file: Request failed with status code 409",
     "slug": "كيف-احصل-علي-حركه-مرور"
+  },
+  {
+    "timestamp": "2026-05-25T21:00:35.065Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "ARTICLE_QUEUED",
+    "article_id": "q-1779739216118-dd9v3l",
+    "title": "Top 10 AI Tools That Will Transform Your Content Creation in 2025",
+    "execution_id": "v51-1779742829843-63wv",
+    "source": "TechCrunch",
+    "category": "ذكاء اصطناعي",
+    "dequeue": true
   }
 ]

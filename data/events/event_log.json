@@ -446,5 +446,16 @@
     "execution_id": "v5-1779731464806-o0ep",
     "version": "5.0",
     "queue_action": "dequeue"
+  },
+  {
+    "event": "ARTICLE_INGESTED",
+    "timestamp": "2026-05-25T17:54:26.899Z",
+    "article_id": "q-1779731663280-k4c2vq",
+    "title": "How I Get Free Traffic from ChatGPT in 2025 (AIO vs SEO)",
+    "workflow": "TDN-Orchestrator",
+    "execution_id": "v5-1779731662409-n6y3",
+    "version": "5.0",
+    "source": "TechCrunch",
+    "classification": 0.22
   }
 ]

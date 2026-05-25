@@ -46,5 +46,17 @@
     "source": "TechCrunch",
     "category": "ذكاء اصطناعي",
     "dequeue": true
+  },
+  {
+    "timestamp": "2026-05-25T18:00:32.270Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "ARTICLE_QUEUED",
+    "article_id": "q-1779731764907-gxs7xh",
+    "title": "Top 10 AI Tools That Will Transform Your Content Creation in 2025",
+    "execution_id": "v51-1779732027330-vdmo",
+    "source": "TechCrunch",
+    "category": "ذكاء اصطناعي",
+    "dequeue": true
   }
 ]

@@ -238,5 +238,16 @@
     "source": "TechCrunch",
     "category": "ذكاء اصطناعي",
     "dequeue": true
+  },
+  {
+    "timestamp": "2026-05-25T21:00:45.559Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_PUBLISHED",
+    "title": "أدوات الذكاء الاصطناعي العشر الأفضل التي ستغير طريقة创ATION المحتوى في 2025",
+    "execution_id": "v51-1779742839815",
+    "score": 80,
+    "slug": "ادوات-الذكاء-الاصطناعي-العشر-الافضل",
+    "category": "ذكاء اصطناعي"
   }
 ]

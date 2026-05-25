@@ -70,5 +70,17 @@
     "source": "TechCrunch",
     "category": "سيارات كهربائية",
     "dequeue": true
+  },
+  {
+    "timestamp": "2026-05-25T18:03:20.257Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "ARTICLE_QUEUED",
+    "article_id": "q-1779732197521-5e5mue",
+    "title": "How I Get Free Traffic from ChatGPT in 2025 (AIO vs SEO)",
+    "execution_id": "v51-1779732195536-vng9",
+    "source": "TechCrunch",
+    "category": "ذكاء اصطناعي",
+    "dequeue": true
   }
 ]

@@ -737,5 +737,26 @@
     "slug": "تسلا-تسلّم-شاحنات-سايبرتراك-الكهربائيه",
     "category": "ذكاء اصطناعي",
     "verified": true
+  },
+  {
+    "timestamp": "2026-05-25T22:55:03.431Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "SCAN_SUMMARY",
+    "title": null,
+    "execution_id": "v53c-1779749701011-vh0v",
+    "source": "TechCrunch",
+    "stale": 21,
+    "nontech": 0,
+    "dup": 0
+  },
+  {
+    "timestamp": "2026-05-25T22:55:03.956Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "ARTICLE_SELECTED",
+    "title": "Citing Gandalf, Pope Leo says we must \"disarm\" AI",
+    "execution_id": "v53c-1779749701011-vh0v",
+    "source": "Ars Technica"
   }
 ]

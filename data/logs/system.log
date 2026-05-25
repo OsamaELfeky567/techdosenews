@@ -790,5 +790,17 @@
     "execution_id": "v52-1779750864894",
     "slug": "حفل-تسليم-سياره-tesla-cybertruck",
     "sha": ""
+  },
+  {
+    "timestamp": "2026-05-25T23:14:33.835Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_PUBLISHED",
+    "title": "حفل تسليم سيارة Tesla Cybertruck",
+    "execution_id": "v52-1779750864894",
+    "score": 82,
+    "slug": "حفل-تسليم-سياره-tesla-cybertruck",
+    "category": "ذكاء اصطناعي",
+    "verified": true
   }
 ]

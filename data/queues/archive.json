@@ -26,5 +26,12 @@
     "status": "failed",
     "reason": "Article file: Request failed with status code 409",
     "failed_at": "2026-05-25T20:00:26.767Z"
+  },
+  {
+    "id": 1779739238463,
+    "title": "كيف أحصل على حركة مرور مجانية من ChatGPT في 2025 (AIO مقابل SEO)",
+    "status": "failed",
+    "reason": "Article file: Request failed with status code 409",
+    "failed_at": "2026-05-25T20:00:41.615Z"
   }
 ]

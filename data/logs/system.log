@@ -856,5 +856,17 @@
     "execution_id": "v52-1779750985016",
     "slug": "فيراري-لوتشي-الكهربائيه-هنا",
     "sha": ""
+  },
+  {
+    "timestamp": "2026-05-25T23:16:34.639Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_PUBLISHED",
+    "title": "فيراري لوتشي الكهربائية终于 هنا",
+    "execution_id": "v52-1779750985016",
+    "score": 82,
+    "slug": "فيراري-لوتشي-الكهربائيه-هنا",
+    "category": "ذكاء اصطناعي",
+    "verified": true
   }
 ]

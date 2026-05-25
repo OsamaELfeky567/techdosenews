@@ -204,5 +204,17 @@
     "score": 78,
     "slug": "كيف-احرز-حركه-مرور-مجانيه",
     "category": "ذكاء اصطناعي"
+  },
+  {
+    "timestamp": "2026-05-25T21:00:19.488Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "ARTICLE_QUEUED",
+    "article_id": "q-1779739216117-5teyh3",
+    "title": "How I Get Free Traffic from ChatGPT in 2025 (AIO vs SEO)",
+    "execution_id": "v51-1779742814068-gp8p",
+    "source": "TechCrunch",
+    "category": "ذكاء اصطناعي",
+    "dequeue": true
   }
 ]

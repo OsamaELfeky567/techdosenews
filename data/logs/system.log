@@ -802,5 +802,15 @@
     "slug": "حفل-تسليم-سياره-tesla-cybertruck",
     "category": "ذكاء اصطناعي",
     "verified": true
+  },
+  {
+    "timestamp": "2026-05-25T23:14:42.687Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_VERIFIED",
+    "title": "حفل تسليم سيارة تسلا سايبر تراك",
+    "execution_id": "v52-1779750880054",
+    "slug": "حفل-تسليم-سياره-تسلا-سايبر",
+    "sha": ""
   }
 ]

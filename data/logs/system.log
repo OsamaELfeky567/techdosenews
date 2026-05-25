@@ -495,5 +495,15 @@
     "execution_id": "v53-1779748998745-2d1t",
     "source": "TechCrunch",
     "pubDate": "Sun, 13 Mar 2022 15:04:00 +0000"
+  },
+  {
+    "timestamp": "2026-05-25T22:43:44.825Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "STALE_REJECTED",
+    "title": "Sellfy Review 2022: How Good Is This Ecommerce Platform?",
+    "execution_id": "v53-1779748998745-2d1t",
+    "source": "TechCrunch",
+    "pubDate": "Sat, 12 Mar 2022 11:54:00 +0000"
   }
 ]

@@ -324,5 +324,17 @@
     "execution_id": "v52-1779748734450",
     "slug": "فيراري-لوسي-الكهربائيه-اخيرًا-هنا",
     "sha": ""
+  },
+  {
+    "timestamp": "2026-05-25T22:39:05.267Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_PUBLISHED",
+    "title": "فيراري لوسي الكهربائية أخيرًا هنا",
+    "execution_id": "v52-1779748734450",
+    "score": 82,
+    "slug": "فيراري-لوسي-الكهربائيه-اخيرًا-هنا",
+    "category": "ذكاء اصطناعي",
+    "verified": true
   }
 ]

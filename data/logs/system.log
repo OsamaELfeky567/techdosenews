@@ -314,5 +314,15 @@
     "title": "The Electric Ferrari Luce Is Finally Here",
     "execution_id": "v52-1779748725437-pdhd",
     "source": "Wired"
+  },
+  {
+    "timestamp": "2026-05-25T22:38:57.330Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_VERIFIED",
+    "title": "فيراري لوسي الكهربائية أخيرًا هنا",
+    "execution_id": "v52-1779748734450",
+    "slug": "فيراري-لوسي-الكهربائيه-اخيرًا-هنا",
+    "sha": ""
   }
 ]

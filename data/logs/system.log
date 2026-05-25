@@ -249,5 +249,17 @@
     "score": 80,
     "slug": "ادوات-الذكاء-الاصطناعي-العشر-الافضل",
     "category": "ذكاء اصطناعي"
+  },
+  {
+    "timestamp": "2026-05-25T21:00:53.668Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "ARTICLE_QUEUED",
+    "article_id": "q-1779739216118-rv9v92",
+    "title": "LimeWire AI Studio Review 2023: Details, Pricing &amp; Features",
+    "execution_id": "v51-1779742848030-o8rn",
+    "source": "TechCrunch",
+    "category": "سيارات كهربائية",
+    "dequeue": true
   }
 ]

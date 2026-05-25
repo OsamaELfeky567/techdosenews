@@ -846,5 +846,15 @@
     "slug": "كيف-احصل-علي-حركه-مرور",
     "category": "ذكاء اصطناعي",
     "verified": true
+  },
+  {
+    "timestamp": "2026-05-25T23:16:27.579Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_VERIFIED",
+    "title": "فيراري لوتشي الكهربائية终于 هنا",
+    "execution_id": "v52-1779750985016",
+    "slug": "فيراري-لوتشي-الكهربائيه-هنا",
+    "sha": ""
   }
 ]

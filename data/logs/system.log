@@ -216,5 +216,15 @@
     "source": "TechCrunch",
     "category": "ذكاء اصطناعي",
     "dequeue": true
+  },
+  {
+    "timestamp": "2026-05-25T21:00:26.267Z",
+    "level": "info",
+    "module": "publish",
+    "event": "PUBLISH_FAILED",
+    "title": "كيف أحصل على حركة مرور مجانية من ChatGPT في 2025 (AIO vs SEO)",
+    "execution_id": "v51-1779742824537",
+    "error": "Article file: Request failed with status code 409",
+    "slug": "كيف-احصل-علي-حركه-مرور"
   }
 ]

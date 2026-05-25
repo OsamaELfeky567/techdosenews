@@ -115,5 +115,17 @@
     "execution_id": "v51-1779732224967",
     "error": "Article file: Request failed with status code 409",
     "slug": "كيف-احصل-علي-حركه-مرور"
+  },
+  {
+    "timestamp": "2026-05-25T18:03:53.461Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "ARTICLE_QUEUED",
+    "article_id": "q-1779732197521-5e5mue",
+    "title": "How I Get Free Traffic from ChatGPT in 2025 (AIO vs SEO)",
+    "execution_id": "v51-1779732228834-872p",
+    "source": "TechCrunch",
+    "category": "ذكاء اصطناعي",
+    "dequeue": true
   }
 ]

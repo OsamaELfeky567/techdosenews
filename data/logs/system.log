@@ -304,5 +304,15 @@
     "slug": "كيف-احصل-علي-حركه-مرور",
     "category": "ذكاء اصطناعي",
     "verified": true
+  },
+  {
+    "timestamp": "2026-05-25T22:38:48.320Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "ARTICLE_SELECTED",
+    "article_id": "yloph7",
+    "title": "The Electric Ferrari Luce Is Finally Here",
+    "execution_id": "v52-1779748725437-pdhd",
+    "source": "Wired"
   }
 ]

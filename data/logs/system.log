@@ -643,5 +643,14 @@
     "execution_id": "v53-1779748998745-2d1t",
     "source": "Ars Technica",
     "count": 20
+  },
+  {
+    "timestamp": "2026-05-25T22:44:16.246Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "ARTICLE_SELECTED",
+    "title": "Citing Gandalf, Pope Leo says we must \"disarm\" AI",
+    "execution_id": "v53-1779748998745-2d1t",
+    "source": "Ars Technica"
   }
 ]

@@ -834,5 +834,17 @@
     "execution_id": "v52-1779750966343",
     "slug": "كيف-احصل-علي-حركه-مرور",
     "sha": "c4b752aa728f0a4335ed5d4b8ab83dc907bf2811"
+  },
+  {
+    "timestamp": "2026-05-25T23:16:18.517Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_PUBLISHED",
+    "title": "كيف أحصل على حركة مرور مجانية من ChatGPT في 2025 (AIO مقابل SEO)",
+    "execution_id": "v52-1779750966343",
+    "score": 78,
+    "slug": "كيف-احصل-علي-حركه-مرور",
+    "category": "ذكاء اصطناعي",
+    "verified": true
   }
 ]

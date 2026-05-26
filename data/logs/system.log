@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "timestamp": "2026-05-26T20:01:14.588Z",
+    "level": "info",
+    "module": "reviewer",
+    "event": "REVIEWER_ERROR",
+    "title": "كيف نشأت الغلاف الجوي الغني بالأكسجين على الأرض؟",
+    "error": "Unexpected token 'A', \"After revi\"... is not valid JSON"
+  }
+]

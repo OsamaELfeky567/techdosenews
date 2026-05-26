@@ -114,5 +114,17 @@
     "execution_id": "sp-1779826588800",
     "id": 1779826586228,
     "indexSize": 1
+  },
+  {
+    "timestamp": "2026-05-26T20:16:41.527Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_PUBLISHED",
+    "title": "كيف تكوّن الغلاف الجوي الغني بالأكسجين؟",
+    "execution_id": "sp-1779826588800",
+    "score": 47,
+    "slug": "كيف-تكوّن-الغلاف-الجوي-الغني",
+    "category": "تطوير",
+    "url": "https://osamaelfeky567.github.io/techdosenews/article.html?id=1779826586228"
   }
 ]

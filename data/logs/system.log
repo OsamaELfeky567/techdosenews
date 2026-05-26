@@ -74,5 +74,16 @@
     "title": "كيف تشكلت الغلاف الجوي للأرض؟",
     "score": 40,
     "reason": "stale topic / no real news value / low originality"
+  },
+  {
+    "timestamp": "2026-05-26T20:14:58.152Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_REJECTED_QUALITY",
+    "title": "كيف تشكلت الغلاف الجوي للأرض؟",
+    "execution_id": "sp-1779826497736",
+    "errors": [
+      "stale topic / no real news value / low originality"
+    ]
   }
 ]

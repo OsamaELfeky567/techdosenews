@@ -126,5 +126,28 @@
     "slug": "كيف-تكوّن-الغلاف-الجوي-الغني",
     "category": "تطوير",
     "url": "https://osamaelfeky567.github.io/techdosenews/article.html?id=1779826586228"
+  },
+  {
+    "timestamp": "2026-05-26T20:16:43.447Z",
+    "level": "info",
+    "module": "publish",
+    "event": "EXECUTION_SUMMARY",
+    "source": "",
+    "title": "كيف تكوّن الغلاف الجوي الغني بالأكسجين؟",
+    "reviewer": {
+      "decision": "APPROVED",
+      "reason": "",
+      "newsworthiness": 88,
+      "reader_value": 82,
+      "clarity": 85,
+      "originality": 78,
+      "reader_curiosity": 80,
+      "spam_risk": 10,
+      "ai_generic": 15
+    },
+    "published": true,
+    "category": "تطوير",
+    "slug": "كيف-تكوّن-الغلاف-الجوي-الغني",
+    "execution_duration": ""
   }
 ]

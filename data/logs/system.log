@@ -868,5 +868,15 @@
     "slug": "فيراري-لوتشي-الكهربائيه-هنا",
     "category": "ذكاء اصطناعي",
     "verified": true
+  },
+  {
+    "timestamp": "2026-05-26T00:00:19.477Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_VERIFIED",
+    "title": "كيف أحصل على حركة مرور مجانية من ChatGPT في عام 2025 (AIO مقابل SEO)",
+    "execution_id": "v52-1779753616803",
+    "slug": "كيف-احصل-علي-حركه-مرور",
+    "sha": "24770b7a7ee6ba99222e67d4f2829236879c504b"
   }
 ]

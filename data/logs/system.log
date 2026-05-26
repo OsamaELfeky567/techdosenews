@@ -6,5 +6,16 @@
     "event": "REVIEWER_ERROR",
     "title": "كيف نشأت الغلاف الجوي الغني بالأكسجين على الأرض؟",
     "error": "Unexpected token 'A', \"After revi\"... is not valid JSON"
+  },
+  {
+    "timestamp": "2026-05-26T20:01:16.218Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_REJECTED_QUALITY",
+    "title": "كيف نشأت الغلاف الجوي الغني بالأكسجين على الأرض؟",
+    "execution_id": "sp-1779825675756",
+    "errors": [
+      "reviewer error: Unexpected token 'A', \"After revi\"... is not valid JSON"
+    ]
   }
 ]

@@ -171,5 +171,14 @@
     "telegram_status": "SKIPPED",
     "execution_duration": "",
     "rejection_reason": "URL verification failed: status=200 titleMatch=false"
+  },
+  {
+    "timestamp": "2026-05-26T21:00:20.199Z",
+    "level": "info",
+    "module": "reviewer",
+    "event": "REVIEW_APPROVED",
+    "title": "ما الذي يهدد ملايين وكلاء الذكاء الاصطناعي؟",
+    "score": 92,
+    "reason": ""
   }
 ]

@@ -36,5 +36,14 @@
     "errors": [
       "Could not parse Groq response: ```\n{\n  \"title_ar\": \"كيف يمكن لجو المريخ أن يصبح مشابهاً لجو الأرض؟\",\n  \"excerpt_ar\": \"دراسة جديدة ت"
     ]
+  },
+  {
+    "timestamp": "2026-05-26T20:13:43.579Z",
+    "level": "info",
+    "module": "reviewer",
+    "event": "REVIEW_APPROVED",
+    "title": "كيف يمكن للحضارة أن تحتفظ بجو غني بالأكسجين؟",
+    "score": 88,
+    "reason": ""
   }
 ]

@@ -257,5 +257,14 @@
     "telegram_status": "SKIPPED",
     "execution_duration": "",
     "rejection_reason": "URL verification failed: status=0 titleMatch=undefined"
+  },
+  {
+    "timestamp": "2026-05-26T21:27:58.873Z",
+    "level": "info",
+    "module": "reviewer",
+    "event": "ARTICLE_REJECTED_QUALITY",
+    "title": "ما الذي تعنيه الثغرة الأمنية في Starlette للآلاف من الوكلاء الذكاء الاصطناعي؟",
+    "score": 30,
+    "reason": "duplicate topic / recent publication"
   }
 ]

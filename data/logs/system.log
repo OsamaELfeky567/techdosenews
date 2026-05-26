@@ -1143,5 +1143,16 @@
     "errors": [
       "reviewer error: Request failed with status code 401"
     ]
+  },
+  {
+    "timestamp": "2026-05-26T07:20:41.300Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_REJECTED_QUALITY",
+    "title": "فيَراري لوسي الكهربائية",
+    "execution_id": "sp-1779780040733",
+    "errors": [
+      "reviewer error: Request failed with status code 429"
+    ]
   }
 ]

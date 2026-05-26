@@ -190,5 +190,15 @@
     "execution_id": "sp-1779829221172",
     "slug": "ما-الذي-يهدد-ملايين-وكلاء",
     "verification": "public"
+  },
+  {
+    "timestamp": "2026-05-26T21:00:29.637Z",
+    "level": "info",
+    "module": "publish",
+    "event": "INDEX_UPDATED",
+    "title": "ما الذي يهدد ملايين وكلاء الذكاء الاصطناعي؟",
+    "execution_id": "sp-1779829221172",
+    "id": 1779829218818,
+    "indexSize": 2
   }
 ]

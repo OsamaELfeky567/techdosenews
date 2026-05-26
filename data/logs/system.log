@@ -17,5 +17,13 @@
     "errors": [
       "reviewer error: Unexpected token 'A', \"After revi\"... is not valid JSON"
     ]
+  },
+  {
+    "timestamp": "2026-05-26T20:07:52.863Z",
+    "level": "info",
+    "module": "reviewer",
+    "event": "ARTICLE_REJECTED_QUALITY",
+    "title": "Could not parse Groq response: ```\n{\n  \"title_ar\": \"كيف يمكن لجو المريخ أن يصبح مشابهاً لجو الأرض؟\",\n  \"excerpt_ar\": \"دراسة جديدة ت",
+    "reason": "no valid article input"
   }
 ]

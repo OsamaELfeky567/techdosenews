@@ -212,5 +212,28 @@
     "slug": "ما-الذي-يهدد-ملايين-وكلاء",
     "category": "الأمن السيبراني",
     "url": "https://osamaelfeky567.github.io/techdosenews/article.html?id=1779829218818"
+  },
+  {
+    "timestamp": "2026-05-26T21:00:35.134Z",
+    "level": "info",
+    "module": "publish",
+    "event": "EXECUTION_SUMMARY",
+    "source": "",
+    "title": "ما الذي يهدد ملايين وكلاء الذكاء الاصطناعي؟",
+    "reviewer": {
+      "decision": "APPROVED",
+      "reason": "",
+      "newsworthiness": 92,
+      "reader_value": 88,
+      "clarity": 90,
+      "originality": 85,
+      "reader_curiosity": 85,
+      "spam_risk": 5,
+      "ai_generic": 10
+    },
+    "published": true,
+    "category": "الأمن السيبراني",
+    "slug": "ما-الذي-يهدد-ملايين-وكلاء",
+    "execution_duration": ""
   }
 ]

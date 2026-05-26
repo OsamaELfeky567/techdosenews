@@ -85,5 +85,14 @@
     "errors": [
       "stale topic / no real news value / low originality"
     ]
+  },
+  {
+    "timestamp": "2026-05-26T20:16:27.634Z",
+    "level": "info",
+    "module": "reviewer",
+    "event": "REVIEW_APPROVED",
+    "title": "كيف تكوّن الغلاف الجوي الغني بالأكسجين؟",
+    "score": 88,
+    "reason": ""
   }
 ]

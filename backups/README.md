@@ -1,1 +1,0 @@
-# Backups\n\nDaily snapshots of articles_db.json, index.json, and config.\n\nFormat: /backups/YYYY-MM-DD/

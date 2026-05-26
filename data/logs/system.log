@@ -1121,5 +1121,16 @@
     "title": "فيراري لوسي الكهربائية",
     "execution_id": "sp-1779779337087",
     "slug": "فيراري-لوسي-الكهربائيه"
+  },
+  {
+    "timestamp": "2026-05-26T07:09:10.528Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_PUBLISHED",
+    "title": "فيراري لوسي الكهربائية",
+    "execution_id": "sp-1779779337087",
+    "score": 57,
+    "slug": "فيراري-لوسي-الكهربائيه",
+    "category": "سيارات كهربائية"
   }
 ]

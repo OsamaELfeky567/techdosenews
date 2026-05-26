@@ -286,5 +286,15 @@
     "title": "هل انتهك الجيش الأمريكي قواعد استخدامه لخدمة Starlink؟",
     "score": 82,
     "reason": ""
+  },
+  {
+    "timestamp": "2026-05-26T21:46:30.172Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_VERIFIED",
+    "title": "هل انتهك الجيش الأمريكي قواعد استخدامه لخدمة Starlink؟",
+    "execution_id": "sp-1779831985952",
+    "slug": "هل-انتهك-الجيش-الامريكي-قواعد",
+    "verification": "public"
   }
 ]

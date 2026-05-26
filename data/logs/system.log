@@ -341,5 +341,15 @@
     "category": "شركات تقنية",
     "slug": "هل-انتهك-الجيش-الامريكي-قواعد",
     "execution_duration": ""
+  },
+  {
+    "timestamp": "2026-05-26T21:46:45.726Z",
+    "level": "info",
+    "module": "telegram",
+    "event": "TELEGRAM_URL",
+    "title": "هل انتهك الجيش الأمريكي قواعد استخدامه لخدمة Starlink؟",
+    "url": "https://osamaelfeky567.github.io/techdosenews/article.html?id=1779831983701",
+    "message_id": 136,
+    "status": "SENT"
   }
 ]

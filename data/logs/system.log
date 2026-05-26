@@ -372,5 +372,16 @@
     "event": "REVIEWER_ERROR",
     "title": "ماذا عن استخدام الطائرات WITHOUT PILOTS الأمريكية لخدمة Starlink؟",
     "error": "Request failed with status code 429"
+  },
+  {
+    "timestamp": "2026-05-26T21:47:06.906Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_REJECTED_QUALITY",
+    "title": "ماذا عن استخدام الطائرات WITHOUT PILOTS الأمريكية لخدمة Starlink؟",
+    "execution_id": "sp-1779832026483",
+    "errors": [
+      "reviewer error: Request failed with status code 429"
+    ]
   }
 ]

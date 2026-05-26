@@ -149,5 +149,14 @@
     "category": "تطوير",
     "slug": "كيف-تكوّن-الغلاف-الجوي-الغني",
     "execution_duration": ""
+  },
+  {
+    "timestamp": "2026-05-26T20:16:48.677Z",
+    "level": "info",
+    "module": "telegram",
+    "event": "TELEGRAM_URL_FAILED",
+    "title": "كيف تكوّن الغلاف الجوي الغني بالأكسجين؟",
+    "url": "https://osamaelfeky567.github.io/techdosenews/article.html?id=1779826586228",
+    "reason": "status=200 titleMatch=false slugMatch=true"
   }
 ]

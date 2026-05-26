@@ -94,5 +94,15 @@
     "title": "كيف تكوّن الغلاف الجوي الغني بالأكسجين؟",
     "score": 88,
     "reason": ""
+  },
+  {
+    "timestamp": "2026-05-26T20:16:33.581Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_VERIFIED",
+    "title": "كيف تكوّن الغلاف الجوي الغني بالأكسجين؟",
+    "execution_id": "sp-1779826588800",
+    "slug": "كيف-تكوّن-الغلاف-الجوي-الغني",
+    "verification": "public"
   }
 ]

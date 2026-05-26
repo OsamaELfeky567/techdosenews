@@ -200,5 +200,17 @@
     "execution_id": "sp-1779829221172",
     "id": 1779829218818,
     "indexSize": 2
+  },
+  {
+    "timestamp": "2026-05-26T21:00:33.303Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_PUBLISHED",
+    "title": "ما الذي يهدد ملايين وكلاء الذكاء الاصطناعي؟",
+    "execution_id": "sp-1779829221172",
+    "score": 44,
+    "slug": "ما-الذي-يهدد-ملايين-وكلاء",
+    "category": "الأمن السيبراني",
+    "url": "https://osamaelfeky567.github.io/techdosenews/article.html?id=1779829218818"
   }
 ]

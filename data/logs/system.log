@@ -244,5 +244,18 @@
     "title": "ما الذي يهدد ملايين وكلاء الذكاء الاصطناعي؟",
     "url": "https://osamaelfeky567.github.io/techdosenews/article.html?id=1779829218818",
     "reason": "status=0 titleMatch=undefined slugMatch=undefined"
+  },
+  {
+    "timestamp": "2026-05-26T21:01:01.608Z",
+    "level": "info",
+    "module": "telegram",
+    "event": "EXECUTION_SUMMARY",
+    "title": "ما الذي يهدد ملايين وكلاء الذكاء الاصطناعي؟",
+    "source": "",
+    "reviewer_scores": {},
+    "publish_status": "FAILED",
+    "telegram_status": "SKIPPED",
+    "execution_duration": "",
+    "rejection_reason": "URL verification failed: status=0 titleMatch=undefined"
   }
 ]

@@ -306,5 +306,17 @@
     "execution_id": "sp-1779831985952",
     "id": 1779831983701,
     "indexSize": 3
+  },
+  {
+    "timestamp": "2026-05-26T21:46:38.346Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_PUBLISHED",
+    "title": "هل انتهك الجيش الأمريكي قواعد استخدامه لخدمة Starlink؟",
+    "execution_id": "sp-1779831985952",
+    "score": 47,
+    "slug": "هل-انتهك-الجيش-الامريكي-قواعد",
+    "category": "شركات تقنية",
+    "url": "https://osamaelfeky567.github.io/techdosenews/article.html?id=1779831983701"
   }
 ]

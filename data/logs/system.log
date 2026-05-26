@@ -158,5 +158,18 @@
     "title": "كيف تكوّن الغلاف الجوي الغني بالأكسجين؟",
     "url": "https://osamaelfeky567.github.io/techdosenews/article.html?id=1779826586228",
     "reason": "status=200 titleMatch=false slugMatch=true"
+  },
+  {
+    "timestamp": "2026-05-26T20:16:49.979Z",
+    "level": "info",
+    "module": "telegram",
+    "event": "EXECUTION_SUMMARY",
+    "title": "كيف تكوّن الغلاف الجوي الغني بالأكسجين؟",
+    "source": "",
+    "reviewer_scores": {},
+    "publish_status": "FAILED",
+    "telegram_status": "SKIPPED",
+    "execution_duration": "",
+    "rejection_reason": "URL verification failed: status=200 titleMatch=false"
   }
 ]

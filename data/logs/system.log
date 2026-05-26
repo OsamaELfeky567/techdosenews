@@ -296,5 +296,15 @@
     "execution_id": "sp-1779831985952",
     "slug": "هل-انتهك-الجيش-الامريكي-قواعد",
     "verification": "public"
+  },
+  {
+    "timestamp": "2026-05-26T21:46:34.430Z",
+    "level": "info",
+    "module": "publish",
+    "event": "INDEX_UPDATED",
+    "title": "هل انتهك الجيش الأمريكي قواعد استخدامه لخدمة Starlink؟",
+    "execution_id": "sp-1779831985952",
+    "id": 1779831983701,
+    "indexSize": 3
   }
 ]

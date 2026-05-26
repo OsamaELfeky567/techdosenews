@@ -104,5 +104,15 @@
     "execution_id": "sp-1779826588800",
     "slug": "كيف-تكوّن-الغلاف-الجوي-الغني",
     "verification": "public"
+  },
+  {
+    "timestamp": "2026-05-26T20:16:37.620Z",
+    "level": "info",
+    "module": "publish",
+    "event": "INDEX_UPDATED",
+    "title": "كيف تكوّن الغلاف الجوي الغني بالأكسجين؟",
+    "execution_id": "sp-1779826588800",
+    "id": 1779826586228,
+    "indexSize": 1
   }
 ]

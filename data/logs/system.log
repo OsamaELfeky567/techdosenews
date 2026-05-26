@@ -180,5 +180,15 @@
     "title": "ما الذي يهدد ملايين وكلاء الذكاء الاصطناعي؟",
     "score": 92,
     "reason": ""
+  },
+  {
+    "timestamp": "2026-05-26T21:00:25.559Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_VERIFIED",
+    "title": "ما الذي يهدد ملايين وكلاء الذكاء الاصطناعي؟",
+    "execution_id": "sp-1779829221172",
+    "slug": "ما-الذي-يهدد-ملايين-وكلاء",
+    "verification": "public"
   }
 ]

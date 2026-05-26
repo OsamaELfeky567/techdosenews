@@ -266,5 +266,16 @@
     "title": "ما الذي تعنيه الثغرة الأمنية في Starlette للآلاف من الوكلاء الذكاء الاصطناعي؟",
     "score": 30,
     "reason": "duplicate topic / recent publication"
+  },
+  {
+    "timestamp": "2026-05-26T21:28:00.826Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_REJECTED_QUALITY",
+    "title": "ما الذي تعنيه الثغرة الأمنية في Starlette للآلاف من الوكلاء الذكاء الاصطناعي؟",
+    "execution_id": "sp-1779830880370",
+    "errors": [
+      "duplicate topic / recent publication"
+    ]
   }
 ]

@@ -277,5 +277,14 @@
     "errors": [
       "duplicate topic / recent publication"
     ]
+  },
+  {
+    "timestamp": "2026-05-26T21:46:24.929Z",
+    "level": "info",
+    "module": "reviewer",
+    "event": "REVIEW_APPROVED",
+    "title": "هل انتهك الجيش الأمريكي قواعد استخدامه لخدمة Starlink؟",
+    "score": 82,
+    "reason": ""
   }
 ]

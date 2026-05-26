@@ -383,5 +383,13 @@
     "errors": [
       "reviewer error: Request failed with status code 429"
     ]
+  },
+  {
+    "timestamp": "2026-05-26T23:00:19.169Z",
+    "level": "info",
+    "module": "reviewer",
+    "event": "ARTICLE_REJECTED_QUALITY",
+    "title": "Could not parse Groq response: ```\n{\n  \"title_ar\": \"هل يستهدف البابا ليوناردو بيتر ثيل بالتلميح إلى غاندالف؟\",\n  \"excerpt_ar\": \"ت appearance غير متوقعة لشخصية غاندالف في وثيقة بابوية مهمة حول الذكاء الاصطناعي وتكنولوجيا المعلومات\",",
+    "reason": "no valid article input"
   }
 ]

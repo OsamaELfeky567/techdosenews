@@ -25,5 +25,16 @@
     "event": "ARTICLE_REJECTED_QUALITY",
     "title": "Could not parse Groq response: ```\n{\n  \"title_ar\": \"كيف يمكن لجو المريخ أن يصبح مشابهاً لجو الأرض؟\",\n  \"excerpt_ar\": \"دراسة جديدة ت",
     "reason": "no valid article input"
+  },
+  {
+    "timestamp": "2026-05-26T20:07:54.285Z",
+    "level": "info",
+    "module": "publish",
+    "event": "ARTICLE_REJECTED_QUALITY",
+    "title": "unknown",
+    "execution_id": "sp-1779826073860",
+    "errors": [
+      "Could not parse Groq response: ```\n{\n  \"title_ar\": \"كيف يمكن لجو المريخ أن يصبح مشابهاً لجو الأرض؟\",\n  \"excerpt_ar\": \"دراسة جديدة ت"
+    ]
   }
 ]

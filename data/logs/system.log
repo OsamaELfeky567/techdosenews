@@ -364,5 +364,13 @@
     "telegram_status": "SENT",
     "execution_duration": "",
     "rejection_reason": ""
+  },
+  {
+    "timestamp": "2026-05-26T21:47:05.270Z",
+    "level": "info",
+    "module": "reviewer",
+    "event": "REVIEWER_ERROR",
+    "title": "ماذا عن استخدام الطائرات WITHOUT PILOTS الأمريكية لخدمة Starlink؟",
+    "error": "Request failed with status code 429"
   }
 ]

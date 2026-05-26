@@ -65,5 +65,14 @@
     "execution_id": "sp-1779826424824",
     "error": "INDEX_UPDATED failed: article id not found in index after write",
     "slug": "كيف-يمكن-للحضاره-ان-تحتفظ"
+  },
+  {
+    "timestamp": "2026-05-26T20:14:56.425Z",
+    "level": "info",
+    "module": "reviewer",
+    "event": "ARTICLE_REJECTED_QUALITY",
+    "title": "كيف تشكلت الغلاف الجوي للأرض؟",
+    "score": 40,
+    "reason": "stale topic / no real news value / low originality"
   }
 ]

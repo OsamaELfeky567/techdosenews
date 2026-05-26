@@ -318,5 +318,28 @@
     "slug": "هل-انتهك-الجيش-الامريكي-قواعد",
     "category": "شركات تقنية",
     "url": "https://osamaelfeky567.github.io/techdosenews/article.html?id=1779831983701"
+  },
+  {
+    "timestamp": "2026-05-26T21:46:40.363Z",
+    "level": "info",
+    "module": "publish",
+    "event": "EXECUTION_SUMMARY",
+    "source": "",
+    "title": "هل انتهك الجيش الأمريكي قواعد استخدامه لخدمة Starlink؟",
+    "reviewer": {
+      "decision": "APPROVED",
+      "reason": "",
+      "newsworthiness": 82,
+      "reader_value": 78,
+      "clarity": 90,
+      "originality": 85,
+      "reader_curiosity": 85,
+      "spam_risk": 20,
+      "ai_generic": 10
+    },
+    "published": true,
+    "category": "شركات تقنية",
+    "slug": "هل-انتهك-الجيش-الامريكي-قواعد",
+    "execution_duration": ""
   }
 ]

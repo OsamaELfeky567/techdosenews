@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadArticles() {
     try {
-      const res = await fetch('articles/index.json');
+      const res = await fetch('data/articles/index.json');
       if (res.ok) {
         const remote = await res.json();
         const ids = new Set(remote.map(a => a.id));

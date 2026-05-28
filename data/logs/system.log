@@ -411,5 +411,16 @@
     "title": "إيلون ماسك: الطائرات المسيّرة الأمريكية التي تُستخدم في الغارات الانتحارية استخدمت خدمة Starlink بتعدي على قواعد سبايس إكس",
     "execution_id": "sp-1779839342211",
     "errors": []
+  },
+  {
+    "timestamp": "2026-05-28T21:40:22.257Z",
+    "level": "info",
+    "module": "publish",
+    "event": "EXECUTION_SUMMARY",
+    "title": "",
+    "execution_id": "sp-1780004419693",
+    "outcome": "EXECUTION_SKIPPED_LOCKED",
+    "reason": "Lock held by another execution",
+    "execution_duration": ""
   }
 ]

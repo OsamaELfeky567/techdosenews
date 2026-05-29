@@ -708,5 +708,16 @@
     "outcome": "EXECUTION_SKIPPED_LOCKED",
     "reason": "Lock held by another execution",
     "execution_duration": ""
+  },
+  {
+    "timestamp": "2026-05-29T09:40:22.692Z",
+    "level": "info",
+    "module": "publish",
+    "event": "EXECUTION_SUMMARY",
+    "title": "",
+    "execution_id": "sp-1780047618341",
+    "outcome": "EXECUTION_SKIPPED_LOCKED",
+    "reason": "Lock held by another execution",
+    "execution_duration": ""
   }
 ]

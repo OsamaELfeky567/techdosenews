@@ -1792,5 +1792,23 @@
     "title": "غوغل ديب مايند تواجه تحديات في بناء وكلاء الذكاء الاصطناعي",
     "source": "Google News",
     "reason": "quota_exhausted"
+  },
+  {
+    "timestamp": "2026-05-30T21:20:23.151Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "EXECUTION_SUMMARY",
+    "title": "",
+    "execution_id": "773",
+    "workflow_version": "5.7",
+    "outcome": "GROQ_QUOTA_EXHAUSTED",
+    "stage": "reviewer",
+    "writer_success": 1,
+    "writer_parse_failed": 0,
+    "reviewer_entered": 1,
+    "review_approved": 0,
+    "publish_attempt": 0,
+    "article_published": 0,
+    "telegram_sent": 0
   }
 ]

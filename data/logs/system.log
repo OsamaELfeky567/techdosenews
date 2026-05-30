@@ -719,5 +719,13 @@
     "outcome": "EXECUTION_SKIPPED_LOCKED",
     "reason": "Lock held by another execution",
     "execution_duration": ""
+  },
+  {
+    "timestamp": "2026-05-30T07:00:18.505Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "WRITER_PARSE_FAILED",
+    "title": "AI tools and data privacy: A University of Utah primer - The University of Utah",
+    "source": "Google News"
   }
 ]

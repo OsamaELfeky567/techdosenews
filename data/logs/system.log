@@ -1096,5 +1096,14 @@
     "event": "WRITER_PARSE_FAILED",
     "title": "AI tools and data privacy: A University of Utah primer - The University of Utah",
     "source": "Google News"
+  },
+  {
+    "timestamp": "2026-05-30T12:40:19.532Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "WRITER_ERROR",
+    "title": "Fanuc, Google advance industrial robotics as part of recent AI deals - Manufacturing Dive",
+    "source": "Google News",
+    "error": "Request failed with status code 429"
   }
 ]

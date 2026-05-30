@@ -767,5 +767,14 @@
     "event": "WRITER_PARSE_FAILED",
     "title": "Strengthening societal resilience with Rosalind Biodefense - OpenAI",
     "source": "Google News"
+  },
+  {
+    "timestamp": "2026-05-30T07:00:40.588Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "WRITER_ERROR",
+    "title": "Meta’s Massive Layoffs Are the Latest Sign Mark Zuckerberg Is All In on AI Overhaul - MarketWise",
+    "source": "Google News",
+    "error": "Request failed with status code 429"
   }
 ]

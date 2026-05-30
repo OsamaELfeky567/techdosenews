@@ -1700,5 +1700,15 @@
     "publish_attempt": 0,
     "article_published": 0,
     "telegram_sent": 0
+  },
+  {
+    "timestamp": "2026-05-30T20:40:17.989Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "WRITER_SUCCESS",
+    "title": "غوغل ديب مايند تواجه تحديات في بناء وكلاء الذكاء الاصطناعي",
+    "category": "ذكاء اصطناعي",
+    "source": "Google News",
+    "body_length": 1295
   }
 ]

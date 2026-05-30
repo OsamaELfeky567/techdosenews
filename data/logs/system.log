@@ -1265,5 +1265,14 @@
     "event": "WRITER_PARSE_FAILED",
     "title": "AI tools and data privacy: A University of Utah primer - The University of Utah",
     "source": "Google News"
+  },
+  {
+    "timestamp": "2026-05-30T15:40:21.252Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "WRITER_ERROR",
+    "title": "Take our I/O 2026 quiz, vibe coded in Google AI Studio. - blog.google",
+    "source": "Google News",
+    "error": "Request failed with status code 429"
   }
 ]

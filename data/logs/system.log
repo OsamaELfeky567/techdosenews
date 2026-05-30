@@ -1380,5 +1380,15 @@
     "publish_attempt": 0,
     "article_published": 0,
     "telegram_sent": 0
+  },
+  {
+    "timestamp": "2026-05-30T17:20:17.914Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "WRITER_SUCCESS",
+    "title": "جامعة يوتا تصدر دليلًا حول أدوات الذكاء الاصطناعي وخصوصية البيانات",
+    "category": "ذكاء اصطناعي",
+    "source": "Google News",
+    "body_length": 1158
   }
 ]

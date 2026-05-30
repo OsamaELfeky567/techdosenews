@@ -1618,5 +1618,23 @@
     "publish_attempt": 0,
     "article_published": 0,
     "telegram_sent": 0
+  },
+  {
+    "timestamp": "2026-05-30T19:40:15.875Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "EXECUTION_SUMMARY",
+    "title": "",
+    "execution_id": "768",
+    "workflow_version": "5.7",
+    "outcome": "GROQ_QUOTA_EXHAUSTED",
+    "stage": "writer",
+    "writer_success": 0,
+    "writer_parse_failed": 0,
+    "reviewer_entered": 0,
+    "review_approved": 0,
+    "publish_attempt": 0,
+    "article_published": 0,
+    "telegram_sent": 0
   }
 ]

@@ -1847,5 +1847,14 @@
     "title": "غوغل ديب مايند تواجه تحديات في بناء وكلاء الذكاء الاصطناعي",
     "category": "ذكاء اصطناعي",
     "source": "Google News"
+  },
+  {
+    "timestamp": "2026-05-30T22:20:21.485Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "REVIEWER_FAIL",
+    "title": "غوغل ديب مايند تواجه تحديات في بناء وكلاء الذكاء الاصطناعي",
+    "source": "Google News",
+    "reason": "quota_exhausted"
   }
 ]

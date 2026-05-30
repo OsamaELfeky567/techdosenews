@@ -1113,5 +1113,14 @@
     "event": "EXECUTION_SUMMARY",
     "title": "",
     "outcome": "ORCHESTRATOR_EMPTY"
+  },
+  {
+    "timestamp": "2026-05-30T13:00:17.140Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "WRITER_ERROR",
+    "title": "AI tools and data privacy: A University of Utah primer - The University of Utah",
+    "source": "Google News",
+    "error": "Request failed with status code 429"
   }
 ]

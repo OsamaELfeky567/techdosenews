@@ -1037,5 +1037,14 @@
     "event": "EXECUTION_SUMMARY",
     "title": "",
     "outcome": "ORCHESTRATOR_EMPTY"
+  },
+  {
+    "timestamp": "2026-05-30T11:40:18.040Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "REVIEWER_API_ERROR",
+    "title": "جامعة يوتا تدشن دليلًا لآداة الذكاء الاصطناعي",
+    "source": "Google News",
+    "error": "Request failed with status code 429"
   }
 ]

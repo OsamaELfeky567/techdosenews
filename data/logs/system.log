@@ -1206,5 +1206,14 @@
     "event": "EXECUTION_SUMMARY",
     "title": "",
     "outcome": "ORCHESTRATOR_EMPTY"
+  },
+  {
+    "timestamp": "2026-05-30T14:40:19.224Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "REVIEWER_API_ERROR",
+    "title": "جامعة يوتا تسلط الضوء على أدوات الذكاء الاصطناعي وخصوصية البيانات",
+    "source": "Google News",
+    "error": "Request failed with status code 429"
   }
 ]

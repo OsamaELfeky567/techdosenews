@@ -800,5 +800,14 @@
     "event": "WRITER_PARSE_FAILED",
     "title": "Fanuc, Google advance industrial robotics as part of recent AI deals - Manufacturing Dive",
     "source": "Google News"
+  },
+  {
+    "timestamp": "2026-05-30T07:20:24.502Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "WRITER_ERROR",
+    "title": "Exclusive: Microsoft is building a super app that combines coding, chat, and other Copilot AI tools - Fortune",
+    "source": "Google News",
+    "error": "Request failed with status code 429"
   }
 ]

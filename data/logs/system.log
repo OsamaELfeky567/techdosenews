@@ -751,5 +751,13 @@
     "event": "WRITER_PARSE_FAILED",
     "title": "Take our I/O 2026 quiz, vibe coded in Google AI Studio. - blog.google",
     "source": "Google News"
+  },
+  {
+    "timestamp": "2026-05-30T07:00:34.116Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "WRITER_PARSE_FAILED",
+    "title": "Google's controversial AI changes are the reason why Gemini isn't worth recommending anymore - XDA",
+    "source": "Google News"
   }
 ]

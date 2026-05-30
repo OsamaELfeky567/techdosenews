@@ -743,5 +743,13 @@
     "event": "WRITER_PARSE_FAILED",
     "title": "Exclusive: Microsoft is building a super app that combines coding, chat, and other Copilot AI tools - Fortune",
     "source": "Google News"
+  },
+  {
+    "timestamp": "2026-05-30T07:00:30.361Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "WRITER_PARSE_FAILED",
+    "title": "Take our I/O 2026 quiz, vibe coded in Google AI Studio. - blog.google",
+    "source": "Google News"
   }
 ]

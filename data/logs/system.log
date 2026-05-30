@@ -1646,5 +1646,14 @@
     "category": "ذكاء اصطناعي",
     "source": "Google News",
     "body_length": 1389
+  },
+  {
+    "timestamp": "2026-05-30T20:00:19.819Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "REVIEWER_ENTERED",
+    "title": "غوغل ديب مايند تواجه تحديات في بناء وكلاء الذكاء الاصطناعي",
+    "category": "ذكاء اصطناعي",
+    "source": "Google News"
   }
 ]

@@ -1518,5 +1518,14 @@
     "category": "ذكاء اصطناعي",
     "source": "Google News",
     "body_length": 1130
+  },
+  {
+    "timestamp": "2026-05-30T18:40:19.568Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "REVIEWER_ENTERED",
+    "title": "جامعة يوتا تصدر دليل حول أدوات الذكاء الاصطناعي وخصوصية البيانات",
+    "category": "ذكاء اصطناعي",
+    "source": "Google News"
   }
 ]

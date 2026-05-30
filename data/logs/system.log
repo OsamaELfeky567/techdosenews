@@ -1147,5 +1147,13 @@
     "event": "EXECUTION_SUMMARY",
     "title": "",
     "outcome": "ORCHESTRATOR_EMPTY"
+  },
+  {
+    "timestamp": "2026-05-30T13:40:19.663Z",
+    "level": "info",
+    "module": "orchestrator",
+    "event": "WRITER_PARSE_FAILED",
+    "title": "AI tools and data privacy: A University of Utah primer - The University of Utah",
+    "source": "Google News"
   }
 ]

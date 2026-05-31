@@ -5,6 +5,14 @@
 
 'use strict';
 
+/* === Telegram Funnel Config === */
+const TELEGRAM_FUNNEL_URL = 'https://omg10.com/4/10858737';
+const TELEGRAM_REAL_CHANNEL = 'https://t.me/techdosenewsonline';
+let popup_views = 0;
+let popup_clicks = 0;
+let banner_clicks = 0;
+
+
 /* =========================================================
    DATETIME BAR — ميلادي + هجري + ساعة
    ========================================================= */
@@ -369,6 +377,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setInterval(refreshLiveUI, 30000);
+  // === Telegram Funnel: Sticky Banner on load ===
+  setTimeout(injectTelegramBanner, 2000);
+
+  // === Telegram Funnel: Popup on 40% scroll ===
+  (function() {
+    var shown = false;
+    window.addEventListener("scroll", function() {
+      if (!shown && window.scrollY > document.body.scrollHeight * 0.4) {
+        shown = true;
+        setTimeout(showTelegramPopup, 1500);
+      }
+    }, { once: true });
+  })();
+
   })();
 });
 
@@ -624,6 +646,54 @@ function renderTrending() {
 /* =========================================================
    8. SEARCH OVERLAY
    ========================================================= */
+
+/* === Telegram Funnel: Popup CTA === */
+function showTelegramPopup() {
+  popup_views++;
+  var overlay = document.createElement("div");
+  overlay.id = "tgFunnelOverlay";
+  overlay.style.cssText = "position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:10000;display:flex;align-items:center;justify-content:center";
+  overlay.innerHTML = '<div style="background:var(--navy,#0D1B2A);color:#fff;padding:40px 30px;border-radius:16px;text-align:center;max-width:380px;width:90%;font-family:\\'Cairo\\',sans-serif;box-shadow:0 10px 40px rgba(0,0,0,0.5);position:relative">' +
+    '<button onclick="closeTelegramPopup()" style="position:absolute;top:10px;right:15px;background:none;border:none;color:#888;font-size:24px;cursor:pointer" aria-label="\u0625\u063a\u0644\u0627\u0642">&times;</button>' +
+    '<div style="font-size:48px;margin-bottom:15px">\ud83d\udce3</div>' +
+    '<h2 style="margin:0 0 10px;font-size:1.3rem;line-height:1.4">\u0627\u0646\u0636\u0645 \u0644\u0642\u0646\u0627\u062a\u0646\u0627 \u0639\u0644\u0649 \u062a\u064a\u0644\u062c\u0631\u0627\u0645</h2>' +
+    '<p style="color:#bbb;margin:0 0 20px;font-size:.95rem;line-height:1.5">\u0627\u062d\u0635\u0644 \u0639\u0644\u0649 \u0622\u062e\u0631 \u0623\u062e\u0628\u0627\u0631 \u0627\u0644\u062a\u0643\u0646\u0648\u0644\u0648\u062c\u064a\u0627 \u0648\u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064a \u0641\u0648\u0631 \u0646\u0634\u0631\u0647\u0627</p>' +
+    '<a href="https://omg10.com/4/10858737" target="_blank" rel="noopener noreferrer" onclick="trackPopupClick()" style="display:inline-block;background:#2E86C1;color:#fff;padding:12px 30px;border-radius:30px;text-decoration:none;font-size:1rem;font-weight:600">\u0627\u0646\u0636\u0645 \u0627\u0644\u0622\u0646</a>' +
+    '<p style="margin:15px 0 0;font-size:.8rem;color:#666"><a href="https://t.me/techdosenewsonline" target="_blank" rel="noopener noreferrer" style="color:#888;text-decoration:underline">\u0623\u0648 \u0632\u0648\u0631 \u0627\u0644\u0642\u0646\u0627\u0629 \u0645\u0628\u0627\u0634\u0631\u0629</a></p>' +
+    '</div>';
+  document.body.appendChild(overlay);
+}
+
+function closeTelegramPopup() {
+  var el = document.getElementById("tgFunnelOverlay");
+  if (el) el.remove();
+}
+
+function trackPopupClick() { popup_clicks++; }
+function trackBannerClick() { banner_clicks++; }
+
+/* === Telegram Funnel: Sticky Banner === */
+function injectTelegramBanner() {
+  if (document.getElementById("tgStickyBanner")) return;
+  var banner = document.createElement("div");
+  banner.id = "tgStickyBanner";
+  banner.style.cssText = "position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#0D1B2A,#1B2838);color:#fff;z-index:9999;padding:12px 15px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:\\'Cairo\\',sans-serif;box-shadow:0 -4px 20px rgba(0,0,0,0.3);flex-wrap:wrap";
+  banner.innerHTML = '<span style="font-size:.9rem;line-height:1.4">\ud83d\udce3 <strong>\u0627\u0646\u0636\u0645 \u0644\u0623\u0643\u0628\u0631 \u0645\u062c\u062a\u0645\u0639 \u062a\u0642\u0646\u064a \u0639\u0631\u0628\u064a</strong></span>' +
+    '<div style="display:flex;gap:8px;align-items:center">' +
+    '<a href="https://omg10.com/4/10858737" target="_blank" rel="noopener noreferrer" onclick="trackBannerClick()" style="background:#2E86C1;color:#fff;padding:8px 20px;border-radius:20px;text-decoration:none;font-size:.85rem;font-weight:600;white-space:nowrap">\u0627\u0646\u0636\u0645 \u0627\u0644\u0622\u0646</a>' +
+    '<button onclick="this.parentElement.parentElement.remove()" style="background:none;border:none;color:#666;font-size:18px;cursor:pointer;padding:4px;line-height:1" aria-label="\u0625\u063a\u0644\u0627\u0642">&times;</button>' +
+    '</div>';
+  document.body.appendChild(banner);
+}
+
+/* === Telegram Funnel: Inject CSS Animations === */
+(function injectFunnelStyles() {
+  var s = document.createElement("style");
+  s.textContent = "@keyframes funnelFadeIn{from{opacity:0}to{opacity:1}}@keyframes funnelSlideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}";
+  s.id = "funnelStyles";
+  document.head.appendChild(s);
+})();
+
 function initSearch() {
   const overlay  = document.getElementById('searchOverlay');
   const toggle   = document.getElementById('searchToggle');

@@ -114,7 +114,7 @@ function refreshLiveUI() {
     else if (id) el.textContent = getRelativeTime(id) || 'منذ لحظات';
   });
   document.querySelectorAll('.rt-view').forEach(el => {
-    const id = parseInt(el.dataset.articleId, 10);
+    const id = el.dataset.articleId;
     if (id) {
       const vc = getViewCounts();
       el.textContent = vc[id] || 0;

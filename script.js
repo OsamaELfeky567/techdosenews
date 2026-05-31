@@ -764,7 +764,7 @@ function pingViewTracker(articleId) {
    ========================================================= */
 function initArticlePage() {
   const params     = new URLSearchParams(window.location.search);
-  const id         = parseInt(params.get('id') || '1', 10);
+  const id         = params.get('id') || articles[0]?.id || '1';
   const article    = articles.find(a => a.id === id) || articles[0];
 
   document.title   = `${article.title} — Tech Dose News`;

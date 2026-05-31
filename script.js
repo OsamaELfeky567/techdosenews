@@ -52,7 +52,10 @@ function initDatetimeBar() {
    RELATIVE DATE — تحويل timestamp لوقت نسبي دقيق
    ========================================================= */
 function getRelativeTime(articleId) {
-  if (!articleId || isNaN(articleId) || articleId < 1000000) return null;
+  if (!articleId) return null;
+  const ts = parseInt(articleId.toString().replace(/^art-/,''), 10);
+  if (isNaN(ts) || ts < 1000000) return null;
+  articleId = ts;
   const now = Date.now();
   if (articleId > now + 86400000) return null;
   const diff = now - articleId;
@@ -105,7 +108,7 @@ function getArticleDateDisplay(article) {
 /* ── Live Refresh ── */
 function refreshLiveUI() {
   document.querySelectorAll('.rt-date').forEach(el => {
-    const id = parseInt(el.dataset.articleId, 10);
+    const id = el.dataset.articleId;
     const article = articles.find(a => a.id === id);
     if (id && article) el.textContent = getArticleDateDisplay(article);
     else if (id) el.textContent = getRelativeTime(id) || 'منذ لحظات';

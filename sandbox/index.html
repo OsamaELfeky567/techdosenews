@@ -1,38 +1,282 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tech Dose News — Sandbox</title>
-<meta name="robots" content="noindex,nofollow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech Dose News — جرعتك اليومية من أخبار التكنولوجيا</title>
+    <meta name="description"
+        content="منصة إخبارية عربية متخصصة في أخبار التكنولوجيا والذكاء الاصطناعي، مع تحليل التأثير على السوق المصري والعربي." />
+    <meta property="og:title" content="Tech Dose News — جرعتك اليومية من أخبار التكنولوجيا" />
+    <meta property="og:description" content="منصة إخبارية عربية متخصصة في أخبار التكنولوجيا والذكاء الاصطناعي." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tech Dose News" />
+    <meta name="twitter:description" content="جرعتك اليومية من أخبار التكنولوجيا" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-<header class="sb-header">
-<div class="sb-container">
-<a href="index.html" class="sb-logo">Tech Dose <span>Sandbox</span></a>
-<nav class="sb-nav">
-<a href="index.html" class="active">الرئيسية</a>
-<a href="#" class="sb-badge sb-badge-red">تجريبي</a>
-</nav>
-</div>
-</header>
-<main class="sb-main">
-<div class="sb-container">
-<div class="sb-alert">
-<strong>⚠ بيئة تجريبية</strong> — هذا الموقع للتجارب فقط. لا يعكس الإنتاج الفعلي.
-</div>
-<div class="sb-hero" id="sbHero"></div>
-<div class="sb-grid" id="sbGrid"></div>
-</div>
-</main>
-<footer class="sb-footer">
-<div class="sb-container">
-<p>Tech Dose News Sandbox © 2026 — جميع الحقوق تجريبية</p>
-</div>
-</footer>
-<script src="script.js"></script>
+
+    <!-- ===== BREAKING NEWS TICKER ===== -->
+    <div class="breaking-bar" role="marquee" aria-label="أخبار عاجلة">
+        <span class="breaking-label" aria-label="عاجل">عاجل</span>
+        <div class="ticker-wrapper">
+            <div class="ticker-content" id="tickerContent"></div>
+        </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner container">
+
+            <!-- Logo -->
+            <a href="index.html" class="logo" aria-label="Tech Dose News الرئيسية">
+                <svg class="logo-pill" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <rect width="40" height="20" rx="10" fill="#F39C12" />
+                    <rect x="21" width="19" height="20" rx="10" fill="#2E86C1" />
+                    <circle cx="13" cy="10" r="3" fill="#0D1B2A" />
+                    <circle cx="20" cy="10" r="3" fill="#0D1B2A" />
+                    <circle cx="27" cy="10" r="3" fill="#0D1B2A" />
+                </svg>
+                <span class="logo-text">
+                    <span class="lt-tech">Tech</span><span class="lt-dose">Dose</span><span class="lt-news">News</span>
+                </span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="main-nav" id="mainNav" aria-label="التنقل الرئيسي">
+                <a href="index.html" class="nav-link active">الرئيسية</a>
+                <a href="#" class="nav-link" data-filter="ذكاء اصطناعي">ذكاء اصطناعي</a>
+                <a href="#" class="nav-link" data-filter="هواتف ذكية">هواتف</a>
+                <a href="#" class="nav-link" data-filter="شركات التقنية">شركات</a>
+                <a href="#" class="nav-link" data-filter="مصر والتقنية">مصر والتقنية</a>
+                <a href="#" class="nav-link">فيديو</a>
+            </nav>
+
+            <!-- Date/Time -->
+            <div class="header-datetime" id="headerDatetime">
+                <div class="dt-row dt-time-row">
+                    <i class="fas fa-clock dt-icon" aria-hidden="true"></i>
+                    <span class="dt-time" id="dtTime">--:--</span>
+                    <span class="dt-tz">GMT+3</span>
+                </div>
+                <div class="dt-row dt-date-row">
+                    <span class="dt-greg" id="dtGreg">--</span>
+                    <span class="dt-dot">•</span>
+                    <span class="dt-hijri" id="dtHijri">--</span>
+                    <span class="dt-dot">•</span>
+                    <span class="dt-day" id="dtDay">--</span>
+                </div>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <button class="icon-btn" id="searchToggle" aria-label="فتح البحث" title="بحث">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </button>
+                <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="icon-btn"
+                    aria-label="قناة تيليجرام">
+                    <i class="fab fa-telegram-plane" aria-hidden="true"></i>
+                </a>
+                <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" class="icon-btn"
+                    aria-label="صفحة فيسبوك">
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                </a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="فتح قائمة التنقل" aria-expanded="false"
+                    aria-controls="mobileNav">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav -->
+        <nav class="mobile-nav" id="mobileNav" aria-label="قائمة الجوال" aria-hidden="true">
+            <a href="index.html" class="mobile-nav-link active">الرئيسية</a>
+            <a href="#" class="mobile-nav-link" data-filter="ذكاء اصطناعي">ذكاء اصطناعي</a>
+            <a href="#" class="mobile-nav-link" data-filter="هواتف ذكية">هواتف</a>
+            <a href="#" class="mobile-nav-link" data-filter="شركات التقنية">شركات</a>
+            <a href="#" class="mobile-nav-link" data-filter="مصر والتقنية">مصر والتقنية</a>
+            <a href="#" class="mobile-nav-link">فيديو</a>
+        </nav>
+    </header>
+
+    <!-- ===== CATEGORY NAV BAR ===== -->
+    <div class="category-bar" role="navigation" aria-label="تصنيفات الأخبار">
+        <div class="category-inner">
+            <button class="cat-pill active" data-category="الكل" aria-pressed="true">الكل</button>
+            <button class="cat-pill" data-category="ذكاء اصطناعي" aria-pressed="false">ذكاء اصطناعي</button>
+            <button class="cat-pill" data-category="هواتف ذكية" aria-pressed="false">هواتف ذكية</button>
+            <button class="cat-pill" data-category="أمن سيبراني" aria-pressed="false">أمن سيبراني</button>
+            <button class="cat-pill" data-category="شركات التقنية" aria-pressed="false">شركات التقنية</button>
+            <button class="cat-pill" data-category="مصر والتقنية" aria-pressed="false">مصر والتقنية</button>
+            <button class="cat-pill" data-category="إلكترونيات" aria-pressed="false">إلكترونيات</button>
+            <button class="cat-pill" data-category="سيارات كهربائية" aria-pressed="false">سيارات كهربائية</button>
+        </div>
+    </div>
+
+    <!-- ===== MAIN ===== -->
+    <main id="mainContent">
+
+        <!-- Hero Section -->
+        <section class="hero-section" id="heroSection" aria-label="الخبر المميز">
+            <!-- Populated by JS -->
+        </section>
+
+        <!-- Content + Sidebar -->
+        <div class="content-wrapper container">
+
+            <!-- Articles Grid -->
+            <section class="articles-section" aria-label="آخر الأخبار">
+                <div class="articles-grid" id="articlesGrid">
+                    <!-- Cards by JS -->
+                </div>
+                <div class="load-more-wrapper">
+                    <button class="load-more-btn" id="loadMoreBtn" aria-label="تحميل المزيد من الأخبار">
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        تحميل المزيد
+                    </button>
+                </div>
+            </section>
+
+            <!-- Sidebar -->
+            <aside class="sidebar" aria-label="الشريط الجانبي">
+
+                <!-- Trending Widget -->
+                <div class="sidebar-widget trending-widget">
+                    <div class="widget-header">
+                        <i class="fas fa-fire" aria-hidden="true"></i>
+                        <span>الأكثر قراءة</span>
+                    </div>
+                    <ol class="trending-list" id="trendingList" aria-label="الأخبار الأكثر قراءة">
+                        <!-- Populated by JS -->
+                    </ol>
+                </div>
+
+                <!-- Telegram CTA -->
+                <div class="sidebar-widget telegram-widget">
+                    <div class="telegram-icon-big" aria-hidden="true"><i class="fab fa-telegram-plane"></i></div>
+                    <h3>انضم لقناتنا على تيليجرام</h3>
+                    <p>احصل على آخر أخبار التكنولوجيا فور صدورها مباشرة على هاتفك</p>
+                    <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="telegram-join-btn"
+                        aria-label="انضم لقناة تيليجرام">
+                        <i class="fab fa-telegram-plane" aria-hidden="true"></i>
+                        انضم الآن
+                    </a>
+                </div>
+
+                <!-- Newsletter Widget -->
+                <div class="sidebar-widget newsletter-widget">
+                    <div class="widget-header">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <span>النشرة الأسبوعية</span>
+                    </div>
+                    <p class="newsletter-desc">اشترك واستقبل أبرز أخبار التكنولوجيا كل أسبوع في بريدك</p>
+                    <form class="newsletter-form" id="newsletterForm" novalidate
+                        aria-label="الاشتراك في النشرة البريدية">
+                        <input type="email" class="newsletter-input" placeholder="بريدك الإلكتروني"
+                            aria-label="البريد الإلكتروني" required />
+                        <button type="submit" class="newsletter-btn">اشترك الآن</button>
+                    </form>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-inner container">
+            <div class="footer-grid">
+
+                <!-- Column 1: About -->
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo" aria-label="Tech Dose News">
+                        <svg class="logo-pill" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            width="36" height="18" aria-hidden="true">
+                            <rect width="40" height="20" rx="10" fill="#F39C12" />
+                            <rect x="21" width="19" height="20" rx="10" fill="#2E86C1" />
+                            <circle cx="13" cy="10" r="3" fill="#0D1B2A" />
+                            <circle cx="20" cy="10" r="3" fill="#0D1B2A" />
+                            <circle cx="27" cy="10" r="3" fill="#0D1B2A" />
+                        </svg>
+                        <span class="logo-text small">
+                            <span class="lt-tech">Tech</span><span class="lt-dose">Dose</span><span
+                                class="lt-news">News</span>
+                        </span>
+                    </a>
+                    <p class="footer-about">منصة إخبارية عربية متخصصة في أخبار التكنولوجيا والذكاء الاصطناعي، مع تحليل
+                        التأثير على السوق المصري والعربي.</p>
+                    <div class="footer-socials">
+                        <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="footer-social-link"
+                            aria-label="تيليجرام"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a>
+                        <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer"
+                            class="footer-social-link" aria-label="فيسبوك"><i class="fab fa-facebook-f"
+                                aria-hidden="true"></i></a>
+                        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"
+                            class="footer-social-link" aria-label="تويتر X"><i class="fab fa-x-twitter"
+                                aria-hidden="true"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div class="footer-col">
+                    <h3 class="footer-col-title">روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="#" class="footer-cat-link" data-filter="ذكاء اصطناعي">ذكاء اصطناعي</a></li>
+                        <li><a href="#" class="footer-cat-link" data-filter="مصر والتقنية">مصر والتقنية</a></li>
+                        <li><a href="#">تواصل معنا</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Newsletter -->
+                <div class="footer-col">
+                    <h3 class="footer-col-title">النشرة البريدية</h3>
+                    <p class="footer-newsletter-desc">اشترك لتصلك أبرز الأخبار التقنية أسبوعياً</p>
+                    <form class="footer-newsletter-form" novalidate aria-label="الاشتراك في النشرة عبر الفوتر">
+                        <input type="email" class="footer-newsletter-input" placeholder="بريدك الإلكتروني"
+                            aria-label="البريد الإلكتروني" required />
+                        <button type="submit" class="footer-newsletter-btn">اشترك</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© <span id="footerYear">2025</span> Tech Dose News — جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <!-- ===== SEARCH OVERLAY ===== -->
+    <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="البحث" hidden>
+        <div class="search-overlay-content">
+            <button class="search-close-btn" id="searchClose" aria-label="إغلاق البحث">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <div class="search-input-wrapper">
+                <i class="fas fa-search search-icon-inner" aria-hidden="true"></i>
+                <input type="search" class="search-input" id="searchInput" placeholder="ابحث في Tech Dose News..."
+                    aria-label="ابحث في الموقع" autocomplete="off" />
+            </div>
+            <div class="search-results" id="searchResults" aria-live="polite" aria-atomic="true">
+                <p class="search-hint">اكتب للبحث في أخبار التكنولوجيا...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
+
 </html>

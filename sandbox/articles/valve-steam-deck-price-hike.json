@@ -1,0 +1,31 @@
+{
+  "id": "valve-steam-deck-price-hike",
+  "title": "فالف ترفع أسعار Steam Deck بأكثر من 40٪",
+  "title_en": "Valve hikes Steam Deck prices by more than 40%, blaming rising costs",
+  "excerpt": "أعلنت شركة فالف عن رفع أسعار جهاز Steam Deck بسبب زيادة ال��كاليف",
+  "body": "أعلنت شركة فالف عن رفع أسعار جهاز Steam Deck بأكثر من 40٪. وأشارت إلى أن السبب هو زيادة تكاليف المكونات. يبلغ سعر نموذج الشاشة LCD الآن 449 دولارًا، بزيادة عن 319 دولارًا. كما ارتفع سعر نموذج الشاشة OLED من 549 دولارًا إلى 799 دولارًا. وقالت فالف إن رفع الأسعار كان ضروريًا بسبب الضغوطات على سلسلة التوريد العالمية وزيادة المصاريف الإنتاجية.",
+  "telegram_summary": "فالف ترفع أسعار Steam Deck بأكثر من 40٪",
+  "category": "تقنية",
+  "tags": [
+    "تقنية"
+  ],
+  "fact_count": 7,
+  "quality_score": 100,
+  "quality_details": {
+    "score": 100,
+    "reasons": [],
+    "arabicRatio": 0.875886524822695,
+    "fillerCount": 0,
+    "wordCount": 60
+  },
+  "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
+  "image_source": "category",
+  "source": "BBC News",
+  "source_url": "https://www.bbc.com/news/articles/cz725d5d1x7o",
+  "source_title": "Valve hikes Steam Deck prices by more than 40%, blaming rising costs",
+  "source_word_count": 65,
+  "target_range": "80-150",
+  "date": "2026-05-28",
+  "body_word_count": 60,
+  "bot_id": "sandbox_test_sm9nte"
+}

@@ -1,24 +1,14 @@
 {
-  "updated": "2026-06-01T12:19:45.218Z",
+  "updated": "2026-06-02T04:29:44.833Z",
   "articles": [
-    {
-      "id": "valve-steam-deck-price-hike",
-      "title": "فالف ترفع أسعار Steam Deck بأكثر من 40٪",
-      "excerpt": "أعلنت شركة فالف عن رفع أسعار جهاز Steam Deck بسبب زيادة ال��كاليف",
-      "category": "تقنية",
-      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
-      "date": "2026-05-28",
-      "source": "BBC News",
-      "quality_score": 100
-    },
     {
       "id": "anthropic-tops-openai-valuation",
       "title": "أنثروبك تتفوق على أوبن آي آي لت trởة أکبر شركة بدأه ذکاء اصطناعي في العالم",
       "excerpt": "أعلنت ش��كة أنثروبك عن جمع 65 مليار دولار في جولة تمويل جديدة، مما رفع قيمتها إلى 900 مليار دولار",
       "category": "تقنية",
       "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
-      "date": "2026-05-28",
-      "source": "New York Times",
+      "date": "",
+      "source": "",
       "quality_score": 90
     },
     {
@@ -27,9 +17,19 @@
       "excerpt": "تستهدف آبل تحويل سو�� النظارات بشكل كامل، وفقًا لما ذكر مارك غورمان من بلومبرغ. عندما أطلقت آبل ساعة آبل، لم تكن تتنافس فقط مع بيبلز وموتورولا، ولكن أيضًا مع سويتش، فوسيل، وسييكو.",
       "category": "تقنية",
       "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
-      "date": "2026-05-31",
-      "source": "The Verge",
+      "date": "",
+      "source": "",
       "quality_score": 90
+    },
+    {
+      "id": "valve-steam-deck-price-hike",
+      "title": "فالف ترفع أسعار Steam Deck بأكثر من 40٪",
+      "excerpt": "أعلنت شركة فالف عن رفع أسعار جهاز Steam Deck بسبب زيادة ال��كاليف",
+      "category": "تقنية",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
+      "date": "",
+      "source": "",
+      "quality_score": 100
     }
   ]
 }

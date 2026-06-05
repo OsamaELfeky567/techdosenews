@@ -1,0 +1,25 @@
+{
+  "name": "Tech Dose News",
+  "short_name": "TDN",
+  "description": "جرعتك اليومية من أخبار التكنولوجيا",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0D1B2A",
+  "theme_color": "#2E86C1",
+  "orientation": "portrait-primary",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=192&q=80",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=512&q=80",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ],
+  "gcm_sender_id": "482941778795"
+}

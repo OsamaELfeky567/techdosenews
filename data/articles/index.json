@@ -1,5 +1,27 @@
 [
   {
+    "id": "art-1780785020711-yq4ytq",
+    "title": "جوجل تطلق واجهة سطر الأوامر الجديدة Colab CLI لمطوري التطبيقات ووكلاء الذكاء الاصطناعي",
+    "excerpt": "تتيح واجهة سطر الأوامر الجديدة Colab CLI لمطوري التطبيقات ووكلاء الذكاء الاصطناعي تشغيل لغة بايثون على وحدات معالجة الرسومات البعيدة Colab GPUs ووحدات معالجة التنسور البعيدة Colab TPUs من خلال الطرفية",
+    "category": "تكنولوجيا",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
+    "date": "2026-06-06T22:30:23.993Z",
+    "readTime": "1 min read",
+    "views": "0",
+    "hasEgyptImpact": false,
+    "featured": false,
+    "source": "MarkTechPost",
+    "body": "<p>أعلنت جوجل عن إطلاق واجهة سطر الأوامر الجديدة Colab CLI، والتي تتيح لمطوري التطبيقات ووكلاء الذكاء الاصطناعي تشغيل لغة بايثون على وحدات معالجة الرسومات البعيدة Colab GPUs ووحدات معالجة التنسور البعيدة Colab TPUs من خلال الطرفية. هذه الميزة الجديدة تتيح للمطورين تشغيل البرامج النصية البايثونية على وحدات المعالجة البعيدة دون الحاجة إلى استخدام واجهة المستخدم الرسومية. يمكن للمطورين الآن استخدام واجهة سطر الأوامر لتشغيل البرامج النصية البايثونية على وحدات المعالجة البعيدة، مما يتيح لهم مزيدًا من المرونة والموثوقية في عمليات التطوير. وتأتي هذه الخطوة في إطار جهود جوجل لتحسين تجربة المطورين وتوفير أدوات أكثر فاعلية لهم. واجهة سطر الأوامر الجديدة Colab CLI هي خطوة مهمة نحو تعزيز قدرات مطوري التطبيقات ووكلاء الذكاء الاصطناعي في استخدام تقنيات الحوسبة البعيدة.</p>",
+    "tags": [
+      "جوجل",
+      "Colab CLI",
+      "تكنولوجيا",
+      "ذكاء اصطناعي"
+    ],
+    "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQaV9UdW1Ja1I2c2ZSTzdUQmFGUl94a3Q3ZDV0RVN4TzZFLVBYMjVVcDdscDFmSXd3TEYyRFY3WkZhNzZNQUZBS1NHbXJiMGJyZlpnaWNEbjdObGZqU0tJMkhTcU5nSzF1eFpUZE1MZy1wU3U1MTJYYl9UOE9FRGw5Qk03aTlhZ09LUEZ6cUlKQVZzSHVObEk5M1F5R3BJMklyMXBNZjNuNkx6Mkh3bExoM1U4Rk1WNXlOWTV0VXhoekk1Vmw2dzY4OXNYcEFqOGFJaHNQYlh6QVZja08waTFRSWdSVl9nUQ?oc=5",
+    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780785020711-yq4ytq"
+  },
+  {
     "id": "art-1780783221195-01sn9z",
     "title": "مدير تنفيذي في جوجل يُشير إلى تجربة الأدوات الذكية",
     "excerpt": "أشار مدير تنفيذي في جوجل إلى أن الشركة تجري تجارب مع أدوات الذكاء الاصطناعي",

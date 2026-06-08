@@ -1,4 +1,4 @@
-﻿const BASE = 'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/sandbox';
+const BASE = 'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/sandbox';
 let allArticles = [];
 let filteredArticles = [];
 
@@ -53,10 +53,10 @@ function getCategoryKey(article) {
 
 async function loadIndex() {
   try {
-    const res = await fetch(BASE + '/index.json');
+    const res = await fetch(BASE + '/articles/index.json');
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
-    allArticles = data.articles || [];
+    allArticles = Array.isArray(data) ? data : (data.articles || []);
     if (allArticles.length === 0) throw new Error('No articles');
     for (const a of allArticles) {
       a.categoryAr = getArticleCategory(a);
@@ -313,9 +313,18 @@ async function loadArticle() {
   const id = params.get('id');
   if (!id) { main.innerHTML = '<div class="sb-container"><div class="sb-loading">⚠ معرف المقال غير موجود</div></div>'; return; }
   try {
-    const res = await fetch(BASE + '/articles/' + encodeURIComponent(id) + '.json');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const a = await res.json();
+    if (allArticles.length === 0) {
+      const res = await fetch(BASE + '/articles/index.json');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      allArticles = Array.isArray(data) ? data : (data.articles || []);
+      for (const a of allArticles) {
+        a.categoryAr = getArticleCategory(a);
+        a.categoryKey = getCategoryKey(a);
+      }
+    }
+    const a = allArticles.find(art => art.id === id);
+    if (!a) throw new Error('لم يتم العثور على المقال');
     document.title = a.title + ' — TD بالعربي';
     document.querySelector('[property="og:title"]') && (document.querySelector('[property="og:title"]').content = a.title + ' — TD بالعربي');
     document.querySelector('[property="og:description"]') && (document.querySelector('[property="og:description"]').content = a.excerpt || '');

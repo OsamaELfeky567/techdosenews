@@ -1,4 +1,4 @@
-﻿const BASE = '.';
+﻿const BASE = 'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/sandbox';
 let allArticles = [];
 let filteredArticles = [];
 

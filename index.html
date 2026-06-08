@@ -25,6 +25,10 @@
   <div class="sb-container">
     <button class="sb-menu-btn" onclick="toggleMenu()" aria-label="القائمة">☰</button>
     <a href="index.html" class="sb-logo">TD <span>بالعربي</span> <span class="sb-label-badge">تجريبي</span></a>
+    <div class="sb-header-info">
+      <span class="sb-header-date" id="sbLastUpdate"></span>
+      <span class="sb-header-time" id="sbHeaderTime"></span>
+    </div>
     <nav class="sb-nav" id="sbNav">
       <a href="index.html" class="active" data-cat="all">الرئيسية</a>
       <a href="#" data-cat="ai">الذكاء الاصطناعي</a>
@@ -33,6 +37,7 @@
       <a href="#" data-cat="business">الأعمال</a>
       <a href="#" data-cat="research">الأبحاث</a>
       <a href="#" data-cat="consumer">تقنيات المستهلك</a>
+      <a href="#" data-cat="bigtech">الشركات الكبرى</a>
     </nav>
     <button class="sb-search-btn" onclick="toggleSearch()" aria-label="بحث">🔍</button>
   </div>
@@ -47,30 +52,28 @@
 
 <main class="sb-main">
   <div class="sb-container">
-    <!-- Hero + Newsletter row -->
     <div class="sb-hero-row">
       <div class="sb-hero" id="sbHero"></div>
       <aside class="sb-sidebar sb-sidebar-top">
         <div class="sb-newsletter-box">
           <h3>النشرة البريدية</h3>
-          <p>خلاصة أهم أخبار التقنية يومياً في بريدك.</p>
+          <p>خلاصة أهم أخبار التقنية يوميًا في بريدك.</p>
           <form onsubmit="return false" class="sb-newsletter-form">
             <input type="email" placeholder="بريدك الإلكتروني" required>
-            <button type="submit">اشترك</button>
+            <button type="submit">اشترِك</button>
           </form>
         </div>
         <div class="sb-ad-box sb-ad-300x250">
           <div class="sb-ad-label">إعلان</div>
-          <div class="sb-ad-placeholder">300 x 250</div>
+          <div class="sb-ad-placeholder">300 × 250</div>
         </div>
       </aside>
     </div>
 
-    <!-- Trending + Latest News row -->
     <div class="sb-content-row">
       <section class="sb-trending" id="sbTrending">
         <div class="sb-section-header">
-          <h2>الأكثر رواجاً</h2>
+          <h2>الأكثر رواجًا</h2>
           <a href="#" class="sb-view-all" onclick="filterCategory('all'); return false;">عرض الكل</a>
         </div>
         <div class="sb-trending-list" id="sbTrendingList"></div>
@@ -83,13 +86,11 @@
       </section>
     </div>
 
-    <!-- Ad Banner -->
     <div class="sb-ad-box sb-ad-728x90">
       <div class="sb-ad-label">إعلان</div>
-      <div class="sb-ad-placeholder">728 x 90</div>
+      <div class="sb-ad-placeholder">728 × 90</div>
     </div>
 
-    <!-- Sidebar + Market row -->
     <div class="sb-content-row sb-content-row-reverse">
       <aside class="sb-sidebar">
         <div class="sb-market-pulse" id="sbMarketPulse">
@@ -127,11 +128,10 @@
         </div>
         <div class="sb-ad-box sb-ad-300x600">
           <div class="sb-ad-label">إعلان</div>
-          <div class="sb-ad-placeholder">300 x 600</div>
+          <div class="sb-ad-placeholder">300 × 600</div>
         </div>
       </aside>
       <div class="sb-content-main">
-        <!-- Category Browser -->
         <section class="sb-section">
           <div class="sb-section-header">
             <h2>تصفّح حسب التصنيف</h2>
@@ -139,7 +139,6 @@
           <div class="sb-categories-grid" id="sbCategoriesGrid"></div>
         </section>
 
-        <!-- Editor's Picks -->
         <section class="sb-section" id="sbEditorsSection">
           <div class="sb-section-header">
             <h2>اختيارات المحررين</h2>
@@ -147,7 +146,6 @@
           <div class="sb-editors-grid" id="sbEditorsGrid"></div>
         </section>
 
-        <!-- All Articles Grid -->
         <section class="sb-section">
           <div class="sb-section-header">
             <h2>جميع المقالات</h2>
@@ -157,12 +155,11 @@
       </div>
     </div>
 
-    <!-- Telegram CTA -->
     <section class="sb-telegram-cta">
       <div class="sb-telegram-content">
-        <h3>انضم لقناة TD بالعربي على تيليجرام</h3>
-        <p>أهم أخبار التقنية والذكاء الاصطناعي تصلك أولاً، وبدقة احترافية.</p>
-        <a href="https://t.me/tdsandboxtest" class="sb-telegram-btn" target="_blank" rel="noopener">📱 انضم للقناة الآن</a>
+        <h3>انضم إلى قناة TD بالعربي على تيليجرام</h3>
+        <p>أهم أخبار التقنية والذكاء الاصطناعي تصلك أولًا، وبدقة احترافية.</p>
+        <a href="https://t.me/tdsandboxtest" class="sb-telegram-btn" target="_blank" rel="noopener">📱 انضم إلى القناة الآن</a>
         <span class="sb-label-badge sb-label-badge-sm">قناة تجريبية</span>
       </div>
     </section>
@@ -175,7 +172,7 @@
       <div class="sb-footer-col">
         <div class="sb-footer-logo">TD <span>بالعربي</span> <span class="sb-label-badge">تجريبي</span></div>
         <p>منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي والشركات الناشئة، بمعايير صحفية احترافية وتحرير دقيق.</p>
-        <a href="https://t.me/tdsandboxtest" class="sb-footer-tg-link" target="_blank" rel="noopener">📱 انضم لقناة TD بالعربي</a>
+        <a href="https://t.me/tdsandboxtest" class="sb-footer-tg-link" target="_blank" rel="noopener">📱 انضم إلى قناة TD بالعربي</a>
       </div>
       <div class="sb-footer-col">
         <h4>التصنيفات</h4>

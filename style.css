@@ -1,4 +1,4 @@
-﻿*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#f8fafc;--surface:#fff;--text:#1e293b;--muted:#64748b;--accent:#2563eb;--accent-dark:#1e40af;--border:#e2e8f0;--radius:12px;--radius-sm:8px;--shadow:0 1px 3px rgba(0,0,0,.08);--shadow-hover:0 8px 25px rgba(0,0,0,.12);--navy:#0f172a;--hero-h:420px;--font:'Cairo',system-ui,sans-serif}
 html{scroll-behavior:smooth}
 body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
@@ -46,14 +46,15 @@ a{text-decoration:none;color:inherit}
 
 /* === SIDEBAR TOP === */
 .sb-sidebar-top{display:flex;flex-direction:column;gap:20px}
-.sb-newsletter-box{background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:var(--radius);padding:24px}
-.sb-newsletter-box h3{font-size:1.1rem;font-weight:800;margin-bottom:6px;color:var(--accent-dark)}
-.sb-newsletter-box p{font-size:.85rem;color:var(--muted);margin-bottom:14px}
-.sb-newsletter-form{display:flex;flex-direction:column;gap:8px}
-.sb-newsletter-form input{padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font);font-size:.9rem;outline:none}
-.sb-newsletter-form input:focus{border-color:var(--accent)}
-.sb-newsletter-form button{background:var(--accent);color:#fff;border:none;padding:10px;border-radius:var(--radius-sm);cursor:pointer;font-family:var(--font);font-weight:700;font-size:.9rem;transition:background .2s}
-.sb-newsletter-form button:hover{background:var(--accent-dark)}
+.sb-telegram-box{background:linear-gradient(135deg,#1e3a5f,#0F172A);border-radius:var(--radius);padding:24px;text-align:center;border:1px solid rgba(37,99,235,.2)}
+.sb-telegram-icon{font-size:2rem;margin-bottom:8px}
+.sb-telegram-box h3{font-size:1rem;font-weight:800;margin-bottom:8px;color:#fff}
+.sb-telegram-desc{font-size:.82rem;color:rgba(255,255,255,.7);margin-bottom:12px;line-height:1.5}
+.sb-telegram-benefits{list-style:none;padding:0;margin:0 0 16px;text-align:right}
+.sb-telegram-benefits li{font-size:.82rem;color:rgba(255,255,255,.8);padding:4px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.sb-telegram-benefits li:last-child{border-bottom:none}
+.sb-telegram-btn{display:inline-block;background:#2563EB;color:#fff;padding:10px 20px;border-radius:var(--radius-sm);text-decoration:none;font-weight:700;font-size:.85rem;transition:background .2s;width:100%;box-sizing:border-box}
+.sb-telegram-btn:hover{background:#1d4ed8}
 
 /* === CONTENT ROW === */
 .sb-content-row{display:grid;grid-template-columns:1fr 2fr;gap:24px;margin:24px 0}

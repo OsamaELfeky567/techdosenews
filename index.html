@@ -31,13 +31,13 @@
     </div>
     <nav class="sb-nav" id="sbNav">
       <a href="index.html" class="active" data-cat="all">الرئيسية</a>
-      <a href="#" data-cat="ai">الذكاء الاصطناعي</a>
-      <a href="#" data-cat="startups">الشركات الناشئة</a>
-      <a href="#" data-cat="cybersecurity">الأمن السيبراني</a>
-      <a href="#" data-cat="business">الأعمال</a>
-      <a href="#" data-cat="research">الأبحاث</a>
-      <a href="#" data-cat="consumer">تقنيات المستهلك</a>
-      <a href="#" data-cat="bigtech">الشركات الكبرى</a>
+      <a href="category.html?cat=ai" data-cat="ai">الذكاء الاصطناعي</a>
+      <a href="category.html?cat=startups" data-cat="startups">الشركات الناشئة</a>
+      <a href="category.html?cat=cybersecurity" data-cat="cybersecurity">الأمن السيبراني</a>
+      <a href="category.html?cat=business" data-cat="business">الأعمال</a>
+      <a href="category.html?cat=research" data-cat="research">الأبحاث</a>
+      <a href="category.html?cat=consumer" data-cat="consumer">تقنيات المستهلك</a>
+      <a href="category.html?cat=bigtech" data-cat="bigtech">الشركات الكبرى</a>
     </nav>
     <button class="sb-search-btn" onclick="toggleSearch()" aria-label="بحث">🔍</button>
   </div>
@@ -151,10 +151,10 @@
         </section>
 
         <section class="sb-section">
-          <div class="sb-section-header">
-            <h2>جميع المقالات</h2>
-          </div>
-          <div class="sb-grid" id="sbGrid"></div>
+    <div class="sb-section-header">
+          <h2>جميع المقالات <span id="sbSearchCount" class="sb-search-count"></span></h2>
+        </div>
+        <div class="sb-grid" id="sbGrid"></div>
         </section>
       </div>
     </div>

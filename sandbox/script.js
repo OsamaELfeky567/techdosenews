@@ -2,6 +2,29 @@ const BASE = 'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main
 let allArticles = [];
 let filteredArticles = [];
 
+const AD_CONFIG = {
+  enabled: false,
+  adsterraCodes: {
+    '300x250': '',
+    '300x600': '',
+    '728x90': '',
+    '336x280': '',
+  }
+};
+
+const GA4_ID = '';
+const isProd = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+if (GA4_ID && isProd) {
+  const s = document.createElement('script');
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
+  s.async = true;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', GA4_ID);
+}
+
 const CATEGORY_MAP = {
   ai:'الذكاء الاصطناعي',startups:'الشركات الناشئة',cybersecurity:'الأمن السيبراني',
   business:'الأعمال',research:'الأبحاث',consumer:'تقنيات المستهلك',
@@ -357,6 +380,21 @@ function renderRelatedArticles(article) {
   container.innerHTML = '<section class="sb-related-section"><h2>مقالات ذات صلة</h2><div class="sb-related-grid">' + html + '</div></section>';
 }
 
+function renderAd(containerId, size) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  if (AD_CONFIG.enabled && AD_CONFIG.adsterraCodes[size]) {
+    container.innerHTML = AD_CONFIG.adsterraCodes[size];
+  }
+}
+
+function renderStaticAd(html, size) {
+  if (AD_CONFIG.enabled && AD_CONFIG.adsterraCodes[size]) {
+    return AD_CONFIG.adsterraCodes[size];
+  }
+  return html;
+}
+
 function injectAdsIntoBody(bodyHtml) {
   if (!bodyHtml) return '';
   const pRegex = /<p[^>]*>[\s\S]*?<\/p>/gi;
@@ -366,11 +404,11 @@ function injectAdsIntoBody(bodyHtml) {
   for (let i = 0; i < paragraphs.length; i++) {
     result += paragraphs[i];
     if (i === 2) {
-      result += '<div class="sb-ad-inarticle sb-ad-after-p3"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">336 × 280</div></div>';
+      result += renderStaticAd('<div class="sb-ad-inarticle sb-ad-after-p3"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">336 × 280</div></div>', '336x280');
     } else if (i === Math.floor(paragraphs.length / 2)) {
-      result += '<div class="sb-ad-inarticle sb-ad-middle"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">336 × 280</div></div>';
+      result += renderStaticAd('<div class="sb-ad-inarticle sb-ad-middle"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">336 × 280</div></div>', '336x280');
     } else if (i === paragraphs.length - 2) {
-      result += '<div class="sb-ad-inarticle sb-ad-before-end"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">728 × 90</div></div>';
+      result += renderStaticAd('<div class="sb-ad-inarticle sb-ad-before-end"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">728 × 90</div></div>', '728x90');
     }
   }
   return result;
@@ -466,6 +504,62 @@ async function initCategoryPage() {
   }
 }
 
+const ANALYTICS_KEY = 'td_analytics';
+function trackEvent(category, action, label) {
+  try {
+    let data = JSON.parse(localStorage.getItem(ANALYTICS_KEY) || '[]');
+    data.push({ cat: category, action: action, label: label, ts: Date.now() });
+    if (data.length > 10000) data = data.slice(-5000);
+    localStorage.setItem(ANALYTICS_KEY, JSON.stringify(data));
+  } catch(e) {}
+}
+function trackAdImpression(size) { trackEvent('Ad', 'impression', size); }
+function trackAdClick(size) { trackEvent('Ad', 'click', size); }
+function trackPageView(page) { trackEvent('Page', 'view', page); }
+function trackArticleView(id, title) { trackEvent('Article', 'view', id); }
+
+function initAnalytics() {
+  trackPageView(window.location.pathname);
+  document.addEventListener('click', function(e) {
+    const adEl = e.target.closest('[data-ad-click]');
+    if (adEl) trackAdClick(adEl.dataset.adClick);
+  });
+}
+
+function initAnalyticsDashboard() {
+  const container = document.getElementById('sbAnalyticsDashboard');
+  if (!container) return;
+  try {
+    const raw = JSON.parse(localStorage.getItem(ANALYTICS_KEY) || '[]');
+    const totalViews = raw.filter(e => e.cat === 'Page' && e.action === 'view').length;
+    const articleViews = raw.filter(e => e.cat === 'Article').length;
+    const adImpressions = raw.filter(e => e.action === 'impression').length;
+    const adClicks = raw.filter(e => e.action === 'click').length;
+    const ctr = adImpressions > 0 ? ((adClicks / adImpressions) * 100).toFixed(2) : '0.00';
+    const estRevenue = (adImpressions * 0.002).toFixed(2);
+    const rpm = totalViews > 0 ? ((estRevenue / totalViews) * 1000).toFixed(2) : '0.00';
+    container.innerHTML =
+      '<div class="sb-analytics-grid">' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + totalViews + '</span><span class="sb-analytics-label">مشاهدة الصفحات</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + articleViews + '</span><span class="sb-analytics-label">مشاهدة المقالات</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + adImpressions + '</span><span class="sb-analytics-label">ظهور الإعلانات</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + adClicks + '</span><span class="sb-analytics-label">نقرات الإعلانات</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + ctr + '%</span><span class="sb-analytics-label">نسبة النقر (CTR)</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">$' + estRevenue + '</span><span class="sb-analytics-label">الإيرادات المقدرة</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">$' + rpm + '</span><span class="sb-analytics-label"> RPM</span></div>' +
+      '</div>';
+    const recent = raw.slice(-20).reverse();
+    if (recent.length > 0) {
+      container.innerHTML += '<div class="sb-analytics-log"><h3>آخر الأحداث</h3>' +
+        recent.map(e => '<div class="sb-analytics-entry"><span>' + e.cat + '</span><span>' + e.action + '</span><span class="sb-analytics-ago">' + Math.floor((Date.now() - e.ts) / 60000) + ' دقائق</span></div>').join('') +
+        '</div>';
+    }
+  } catch(e) {
+    container.innerHTML = '<div class="sb-loading">⚠ تعذر تحميل التحليلات</div>';
+  }
+}
+
 if (document.getElementById('sbGrid')) { loadIndex(); setInterval(updateLastUpdate, 60000); updateLastUpdate(); }
-if (document.getElementById('sbArticleMain')) loadArticle();
-if (document.getElementById('sbCategoryMain')) initCategoryPage();
+if (document.getElementById('sbArticleMain')) { loadArticle(); initAnalytics(); }
+if (document.getElementById('sbCategoryMain')) { initCategoryPage(); initAnalytics(); }
+if (document.getElementById('sbAnalyticsDashboard')) { initAnalyticsDashboard(); }

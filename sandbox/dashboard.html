@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة التحليلات — TD بالعربي</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230F172A'/%3E%3Ctext x='50' y='68' font-family='Cairo,sans-serif' font-size='48' font-weight='900' fill='%232563EB' text-anchor='middle'%3ETD%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="sb-header">
+  <div class="sb-container">
+    <a href="index.html" class="sb-logo">TD <span>بالعربي</span> <span class="sb-label-badge">تجريبي</span></a>
+    <nav class="sb-nav" style="position:static;background:transparent;flex-direction:row;padding:0;height:auto;width:auto">
+      <a href="index.html">الرئيسية</a>
+      <a href="dashboard.html" style="color:#fff">لوحة التحليلات</a>
+    </nav>
+  </div>
+</header>
+<main class="sb-analytics-main">
+  <div class="sb-container">
+    <h1 class="sb-analytics-title">لوحة التحليلات</h1>
+    <div id="sbAnalyticsDashboard"><div class="sb-loading">جاري تحميل البيانات...</div></div>
+    <div style="margin-top:24px;padding:16px;background:var(--surface);border-radius:var(--radius);text-align:center">
+      <p style="color:var(--muted);font-size:.85rem">CTR = نقرات / ظهور × 100 • RPM = (إيرادات / مشاهدات) × 1000 • الإيرادات تقديرية بمتوسط $2 CPM</p>
+      <button onclick="localStorage.removeItem('td_analytics');location.reload()" style="margin-top:8px;padding:6px 16px;background:#dc2626;color:#fff;border:none;border-radius:6px;cursor:pointer;font-family:var(--font)">مسح البيانات</button>
+    </div>
+  </div>
+</main>
+<footer class="sb-footer">
+  <div class="sb-container">
+    <div class="sb-footer-bottom" style="border-top:none">
+      <p>© 2026 TD بالعربي — جميع الحقوق محفوظة.</p>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

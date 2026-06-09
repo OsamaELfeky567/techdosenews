@@ -95,14 +95,7 @@ a{text-decoration:none;color:inherit}
 
 /* === SIDEBAR === */
 .sb-sidebar{display:flex;flex-direction:column;gap:20px}
-.sb-market-pulse h3,.sb-trending-companies h3,.sb-most-read h3{font-size:1rem;font-weight:800;color:var(--navy);margin-bottom:12px}
-.sb-pulse-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.sb-pulse-card{background:var(--surface);border-radius:var(--radius-sm);padding:12px;box-shadow:var(--shadow)}
-.sb-pulse-label{display:block;font-size:.72rem;color:var(--muted);margin-bottom:4px;line-height:1.2}
-.sb-pulse-value{display:block;font-size:1.5rem;font-weight:900;color:var(--navy)}
-.sb-pulse-change{font-size:.72rem;font-weight:700}
-.sb-pulse-change.up{color:#16a34a}
-.sb-pulse-change.down{color:#dc2626}
+.sb-trending-companies h3,.sb-most-read h3{font-size:1rem;font-weight:800;color:var(--navy);margin-bottom:12px}
 .sb-company-item{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:.85rem}
 .sb-company-item:last-child{border-bottom:none}
 .sb-company-logo{width:28px;height:28px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.7rem;flex-shrink:0}
@@ -271,8 +264,7 @@ a{text-decoration:none;color:inherit}
   .sb-article{padding:20px}
   .sb-article h1{font-size:1.3rem}
   .sb-related-grid{grid-template-columns:1fr}
-  .sb-pulse-grid{grid-template-columns:1fr 1fr}
-}
+  }
 @media(max-width:480px){
   .sb-hero img{height:220px}
   .sb-hero-overlay h2{font-size:1rem}

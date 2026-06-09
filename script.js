@@ -127,7 +127,6 @@ function renderAll() {
   renderCompanies();
   renderMostRead();
   renderFooterCats();
-  updatePulse();
   updateLastUpdate();
 }
 
@@ -241,13 +240,6 @@ function renderFooterCats() {
   list.innerHTML = Object.entries(mainCats).map(([key, name]) =>
     '<li><a href="category.html?cat=' + key + '">' + name + '</a></li>'
   ).join('');
-}
-
-function updatePulse() {
-  document.getElementById('pulseAI') && (document.getElementById('pulseAI').textContent = Math.floor(Math.random() * 30) + 35);
-  document.getElementById('pulseFunding') && (document.getElementById('pulseFunding').textContent = Math.floor(Math.random() * 15) + 15);
-  document.getElementById('pulsePapers') && (document.getElementById('pulsePapers').textContent = Math.floor(Math.random() * 80) + 100);
-  document.getElementById('pulseReleases') && (document.getElementById('pulseReleases').textContent = Math.floor(Math.random() * 10) + 12);
 }
 
 function updateLastUpdate() {

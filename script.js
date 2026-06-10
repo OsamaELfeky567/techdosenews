@@ -180,14 +180,21 @@ function renderGrid() {
     grid.innerHTML = '<div class="sb-loading">لا توجد مقالات متطابقة</div>';
     return;
   }
-  grid.innerHTML = items.map(a => {
-    return '<div class="sb-card" onclick="goto(\'' + escId(a.id) + '\')">' +
+  const ad = '<div class="sb-ad-box" style="min-height:250px;margin:0 0 20px;grid-column:1/-1"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 250</div></div>';
+  let html = '';
+  for (let i = 0; i < items.length; i++) {
+    const a = items[i];
+    html += '<div class="sb-card" onclick="goto(\'' + escId(a.id) + '\')">' +
       (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
       '<div class="sb-card-body"><div class="sb-card-cat">' + esc(a.categoryAr) + '</div>' +
       '<h3>' + esc(a.title) + '</h3>' +
       (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +
       '<div class="sb-card-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + formatDate(a.date) + '</span></div></div></div>';
-  }).join('');
+    if ((i + 1) % 6 === 0 && i + 1 < items.length) {
+      html += ad;
+    }
+  }
+  grid.innerHTML = html;
 }
 
 function renderCategories() {
@@ -229,13 +236,19 @@ function renderFooterCats() {
   ).join('');
 }
 
+function getHijriDate(date) {
+  try {
+    return new Intl.DateTimeFormat('ar-SA-u-ca-islamic', {day:'numeric',month:'long',year:'numeric'}).format(date);
+  } catch(e) { return ''; }
+}
+
 function updateLastUpdate() {
-  const el = document.getElementById('sbLastUpdate');
-  if (!el) return;
   const now = new Date();
-  const d = ARABIC_DAYS[now.getDay()];
   const month = ARABIC_MONTHS[now.getMonth()];
-  el.textContent = d + '، ' + now.getDate() + ' ' + month + ' ' + now.getFullYear();
+  const el = document.getElementById('sbLastUpdate');
+  if (el) {
+    el.textContent = now.getDate() + ' ' + month + ' ' + now.getFullYear() + ' | ' + getHijriDate(now);
+  }
   const timeEl = document.getElementById('sbHeaderTime');
   if (timeEl) {
     const h = String(now.getHours()).padStart(2, '0');
@@ -394,7 +407,7 @@ function injectAdsIntoBody(bodyHtml) {
     } else if (i === Math.floor(paragraphs.length / 2)) {
       result += renderStaticAd('<div class="sb-ad-inarticle sb-ad-middle"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">336 × 280</div></div>', '336x280');
     } else if (i === paragraphs.length - 2) {
-      result += renderStaticAd('<div class="sb-ad-inarticle sb-ad-before-end"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">728 × 90</div></div>', '728x90');
+      result += renderStaticAd('<div class="sb-ad-inarticle sb-ad-before-end"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">336 × 280</div></div>', '336x280');
     }
   }
   return result;
@@ -423,6 +436,7 @@ async function loadArticle() {
     document.querySelector('[property="og:title"]') && (document.querySelector('[property="og:title"]').content = a.title + ' — TD بالعربي');
     document.querySelector('[property="og:description"]') && (document.querySelector('[property="og:description"]').content = a.excerpt || '');
     document.querySelector('[property="og:image"]') && (document.querySelector('[property="og:image"]').content = a.image || '');
+    document.querySelector('[property="og:url"]') && (document.querySelector('[property="og:url"]').content = 'https://osamaelfeky567.github.io/techdosenews/article.html?id=' + a.id);
     document.querySelector('[name="twitter:image"]') && (document.querySelector('[name="twitter:image"]').content = a.image || '');
     const tagsHtml = (a.tags || []).map(t => '<span>' + esc(t) + '</span>').join('');
     a.categoryAr = getArticleCategory(a);
@@ -437,9 +451,12 @@ async function loadArticle() {
       (a.excerpt ? '<div class="sb-article-body"><p><strong>' + esc(a.excerpt) + '</strong></p></div>' : '') +
       (bodyWithAds ? '<div class="sb-article-body">' + bodyWithAds + '</div>' : '') +
       (tagsHtml ? '<div class="sb-article-tags">' + tagsHtml + '</div>' : '') +
+      '<div class="sb-ad-box sb-ad-728x90" style="margin:24px 0 0"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">728 × 90</div></div>' +
+      '<div class="sb-ad-box" style="min-height:250px;margin:24px 0"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 250</div></div>' +
       '<div id="sbRelatedArticles"></div>' +
       '<div class="sb-article-nav"><a href="index.html">← الرجوع للرئيسية</a><a href="category.html?cat=' + escId(a.categoryKey) + '">' + esc(a.categoryAr) + ' ←</a></div>' +
-      '</article><aside class="sb-article-sidebar"><div class="sb-ad-box sb-ad-300x250"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 250</div></div></aside></div>';
+      '</article><aside class="sb-article-sidebar"><div class="sb-ad-box sb-ad-300x250"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 250</div></div>' +
+      '<div class="sb-ad-sticky"><div class="sb-ad-box sb-ad-300x600"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 600</div></div></div></aside></div>';
     renderRelatedArticles(a);
   } catch(e) {
     main.innerHTML = '<div class="sb-container"><div class="sb-loading">⚠ تعذر تحميل المقال — ' + e.message + '</div></div>';
@@ -471,20 +488,31 @@ async function initCategoryPage() {
     const chips = Object.entries(mainCats).map(([key, name]) =>
       '<div class="sb-cat-chip' + (key === catKey ? ' sb-cat-chip-active' : '') + '" onclick="location.href=\'category.html?cat=' + key + '\'">' + name + '</div>'
     ).join('');
-    const gridHtml = catArticles.length === 0
-      ? '<div class="sb-loading">لا توجد مقالات في هذا التصنيف</div>'
-      : catArticles.slice(0, 20).map(a =>
-        '<div class="sb-card" onclick="goto(\'' + escId(a.id) + '\')">' +
-        (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
-        '<div class="sb-card-body"><div class="sb-card-cat">' + esc(a.categoryAr) + '</div>' +
-        '<h3>' + esc(a.title) + '</h3>' +
-        (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +
-        '<div class="sb-card-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + formatDateShort(a.date) + '</span></div></div></div>'
-      ).join('');
-    main.innerHTML = '<div class="sb-container"><div class="sb-category-header"><h1>' + esc(catName) + '</h1><span class="sb-category-count">' + count + ' مقال</span></div>' +
+    const adFeed = '<div class="sb-ad-box" style="min-height:250px;margin:0 0 20px;grid-column:1/-1"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 250</div></div>';
+    let gridHtml = '';
+    if (catArticles.length === 0) {
+      gridHtml = '<div class="sb-loading">لا توجد مقالات في هذا التصنيف</div>';
+    } else {
+      const items = catArticles.slice(0, 20);
+      for (let i = 0; i < items.length; i++) {
+        const a = items[i];
+        gridHtml += '<div class="sb-card" onclick="goto(\'' + escId(a.id) + '\')">' +
+          (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
+          '<div class="sb-card-body"><div class="sb-card-cat">' + esc(a.categoryAr) + '</div>' +
+          '<h3>' + esc(a.title) + '</h3>' +
+          (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +
+          '<div class="sb-card-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + formatDateShort(a.date) + '</span></div></div></div>';
+        if ((i + 1) % 8 === 0 && i + 1 < items.length) {
+          gridHtml += adFeed;
+        }
+      }
+    }
+    main.innerHTML = '<div class="sb-container">' +
+      '<div class="sb-ad-box sb-ad-728x90"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">728 × 90</div></div>' +
+      '<div class="sb-category-header"><h1>' + esc(catName) + '</h1><span class="sb-category-count">' + count + ' مقال</span></div>' +
       '<div class="sb-category-chips">' + chips + '</div>' +
-      (catArticles.length > 20 ? '<div class="sb-category-pagination">عرض أول 20 من أصل ' + count + ' مقال</div>' : '') +
-      '<div class="sb-grid">' + gridHtml + '</div></div>';
+      '<div class="sb-grid">' + gridHtml + '</div>' +
+      '<div class="sb-ad-box sb-ad-728x90"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">728 × 90</div></div></div>';
   } catch(e) {
     main.innerHTML = '<div class="sb-container"><div class="sb-loading">⚠ تعذر تحميل التصنيف — ' + e.message + '</div></div>';
   }

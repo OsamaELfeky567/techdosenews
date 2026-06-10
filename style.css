@@ -251,6 +251,10 @@ a{text-decoration:none;color:inherit}
   .sb-article h1{font-size:1.3rem}
   .sb-related-grid{grid-template-columns:1fr}
   }
+.sb-load-more-btn{display:inline-flex;align-items:center;justify-content:center;width:100%;max-width:400px;height:52px;padding:0 32px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);font-family:var(--font);font-size:1rem;font-weight:700;cursor:pointer;transition:background .2s,transform .2s;letter-spacing:.3px}
+.sb-load-more-btn:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.sb-load-more-btn:active{transform:translateY(0)}
+@keyframes sbFadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:480px){
   .sb-hero img{height:220px}
   .sb-hero-overlay h2{font-size:1rem}

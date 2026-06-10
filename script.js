@@ -1,6 +1,8 @@
 const BASE = 'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/sandbox';
 let allArticles = [];
 let filteredArticles = [];
+const PAGE_SIZE = 9;
+let gridRenderedCount = 0;
 
 const AD_CONFIG = {
   enabled: false,
@@ -174,27 +176,74 @@ function renderEditorsPicks() {
 
 function renderGrid() {
   const grid = document.getElementById('sbGrid');
+  const loadMoreContainer = document.getElementById('sbLoadMoreContainer');
   if (!grid) return;
   const items = filteredArticles;
   if (items.length === 0) {
     grid.innerHTML = '<div class="sb-loading">لا توجد مقالات متطابقة</div>';
+    if (loadMoreContainer) loadMoreContainer.innerHTML = '';
     return;
   }
+  gridRenderedCount = 0;
+  grid.innerHTML = '';
+  if (loadMoreContainer) loadMoreContainer.innerHTML = '';
+  appendGridItems();
+}
+
+function appendGridItems() {
+  const grid = document.getElementById('sbGrid');
+  const loadMoreContainer = document.getElementById('sbLoadMoreContainer');
+  if (!grid) return;
+  const items = filteredArticles;
+  if (items.length === 0) return;
+  const frag = document.createDocumentFragment();
+  const start = gridRenderedCount;
+  const end = Math.min(start + PAGE_SIZE, items.length);
   const ad = '<div class="sb-ad-box" style="min-height:250px;margin:0 0 20px;grid-column:1/-1"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 250</div></div>';
-  let html = '';
-  for (let i = 0; i < items.length; i++) {
+  for (let i = start; i < end; i++) {
     const a = items[i];
-    html += '<div class="sb-card" onclick="goto(\'' + escId(a.id) + '\')">' +
-      (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
-      '<div class="sb-card-body"><div class="sb-card-cat">' + esc(a.categoryAr) + '</div>' +
+    const card = document.createElement('div');
+    card.className = 'sb-card';
+    card.style.animation = 'sbFadeIn 0.3s ease';
+    card.onclick = function() { goto(a.id); };
+    let cardHtml = '';
+    if (a.image) cardHtml += '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">';
+    cardHtml += '<div class="sb-card-body"><div class="sb-card-cat">' + esc(a.categoryAr) + '</div>' +
       '<h3>' + esc(a.title) + '</h3>' +
       (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +
-      '<div class="sb-card-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + formatDate(a.date) + '</span></div></div></div>';
-    if ((i + 1) % 6 === 0 && i + 1 < items.length) {
-      html += ad;
+      '<div class="sb-card-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + formatDate(a.date) + '</span></div></div>';
+    card.innerHTML = cardHtml;
+    frag.appendChild(card);
+    const globalIndex = i;
+    if ((globalIndex + 1) % 6 === 0 && globalIndex + 1 < items.length) {
+      const adDiv = document.createElement('div');
+      adDiv.innerHTML = ad;
+      frag.appendChild(adDiv.firstChild || adDiv);
     }
   }
-  grid.innerHTML = html;
+  grid.appendChild(frag);
+  gridRenderedCount = end;
+  if (loadMoreContainer) {
+    if (end < items.length) {
+      loadMoreContainer.innerHTML = '<button class="sb-load-more-btn" onclick="loadMore()">المزيد من الأخبار</button>';
+    } else {
+      loadMoreContainer.innerHTML = '';
+    }
+  }
+}
+
+function loadMore() {
+  appendGridItems();
+  const btn = document.querySelector('.sb-load-more-btn');
+  if (btn) {
+    btn.textContent = 'جارٍ التحميل...';
+    setTimeout(function() {
+      const container = document.getElementById('sbLoadMoreContainer');
+      if (container) {
+        container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }, 100);
+  }
 }
 
 function renderCategories() {

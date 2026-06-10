@@ -99,6 +99,7 @@ async function loadIndex() {
       a.categoryAr = getArticleCategory(a);
       a.categoryKey = getCategoryKey(a);
     }
+    allArticles.sort(function(a, b) { return new Date(getPubDate(b) || 0) - new Date(getPubDate(a) || 0); });
     filteredArticles = [...allArticles];
     renderAll();
   } catch(e) {
@@ -110,28 +111,40 @@ async function loadIndex() {
 
 function renderAll() {
   renderHero();
-  renderTrending();
   renderLatest();
+  renderTrending();
   renderEditorsPicks();
-  renderGrid();
   renderCategories();
+  renderGrid();
   renderCompanies();
   renderMostRead();
   renderFooterCats();
   updateLastUpdate();
+  renderRelativeTimes();
 }
 
 function renderHero() {
   const hero = document.getElementById('sbHero');
   if (!hero || allArticles.length === 0) return;
-  const featured = allArticles.filter(a => a.featured);
-  const a = featured.length > 0 ? featured[0] : allArticles[0];
+  const sorted = [...allArticles].sort(function(a, b) {
+    return new Date(getPubDate(b) || 0) - new Date(getPubDate(a) || 0);
+  });
+  let a = null;
+  for (const candidate of sorted) {
+    if (candidate.image && candidate.categoryAr && candidate.categoryAr !== 'التقنية' && candidate.categoryAr !== 'عام') {
+      a = candidate;
+      break;
+    }
+  }
+  if (!a) a = sorted[0];
+  const pubDate = getPubDate(a);
   hero.innerHTML = '<div onclick="goto(\'' + escId(a.id) + '\')">' +
     (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
     '<div class="sb-hero-overlay"><div class="sb-cat-badge">' + esc(a.categoryAr) + '</div>' +
+    getFreshnessBadge(pubDate) +
     '<h2>' + esc(a.title) + '</h2>' +
     (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +
-    '<div class="sb-hero-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + formatDate(a.date) + '</span></div></div></div>';
+    '<div class="sb-hero-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + getRelativeTimeHtml(pubDate) + '</span></div></div></div>';
 }
 
 function renderTrending() {
@@ -144,7 +157,7 @@ function renderTrending() {
       '<span class="sb-trending-num">' + num + '</span>' +
       '<div class="sb-trending-info"><span class="sb-trending-cat">' + esc(a.categoryAr) + '</span>' +
       '<h4>' + esc(a.title) + '</h4>' +
-      '<span class="sb-trending-views">' + (a.readTime || 'قراءة دقيقة') + '</span></div></div>';
+      '<span class="sb-trending-time">' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
   }).join('');
 }
 
@@ -157,20 +170,23 @@ function renderLatest() {
       (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
       '<div class="sb-latest-info"><span class="sb-latest-cat">' + esc(a.categoryAr) + '</span>' +
       '<h4>' + esc(a.title) + '</h4>' +
-      '<span class="sb-latest-date">' + formatDate(a.date) + '</span></div></div>';
+      '<span class="sb-latest-date">' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
   }).join('');
 }
 
 function renderEditorsPicks() {
   const grid = document.getElementById('sbEditorsGrid');
   if (!grid || allArticles.length < 3) return;
-  const scored = [...allArticles].sort((a, b) => (b.quality_score || 0) - (a.quality_score || 0));
+  const scored = [...allArticles].sort(function(a, b) {
+    return (b.quality_score || 0) - (a.quality_score || 0);
+  });
   const items = scored.slice(0, 3);
   grid.innerHTML = items.map(a => {
     return '<div class="sb-editor-card" onclick="goto(\'' + escId(a.id) + '\')">' +
       (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
       '<div class="sb-editor-body"><span class="sb-editor-cat">' + esc(a.categoryAr) + '</span>' +
-      '<h3>' + esc(a.title) + '</h3></div></div>';
+      '<h3>' + esc(a.title) + '</h3>' +
+      '<span class="sb-editor-time">' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
   }).join('');
 }
 
@@ -211,7 +227,7 @@ function appendGridItems() {
     cardHtml += '<div class="sb-card-body"><div class="sb-card-cat">' + esc(a.categoryAr) + '</div>' +
       '<h3>' + esc(a.title) + '</h3>' +
       (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +
-      '<div class="sb-card-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + formatDate(a.date) + '</span></div></div>';
+      '<div class="sb-card-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
     card.innerHTML = cardHtml;
     frag.appendChild(card);
     const globalIndex = i;
@@ -283,6 +299,13 @@ function renderFooterCats() {
   list.innerHTML = Object.entries(mainCats).map(([key, name]) =>
     '<li><a href="category.html?cat=' + key + '">' + name + '</a></li>'
   ).join('');
+}
+
+function renderRelativeTimes() {
+  document.querySelectorAll('.sb-relative-time').forEach(function(el) {
+    var pub = el.getAttribute('data-pub');
+    if (pub) el.textContent = formatRelativeTime(pub);
+  });
 }
 
 function getHijriDate(date) {
@@ -384,6 +407,86 @@ function formatDateShort(d) {
     const dt = new Date(d);
     return dt.getDate() + ' ' + ARABIC_MONTHS[dt.getMonth()];
   } catch(e) { return d; }
+}
+
+function getPubDate(a) { return a.published_at || a.date || a.created_at || ''; }
+
+function formatRelativeTime(dateStr) {
+  if (!dateStr) return '';
+  const now = Date.now();
+  const pub = new Date(dateStr).getTime();
+  if (isNaN(pub)) return '';
+  const diffMs = now - pub;
+  if (diffMs < 0) return 'الآن';
+  const mins = Math.floor(diffMs / 60000);
+  if (mins < 1) return 'الآن';
+  if (mins < 60) {
+    if (mins === 1) return 'منذ دقيقة';
+    if (mins === 2) return 'منذ دقيقتين';
+    if (mins <= 10) return 'منذ ' + mins + ' دقائق';
+    return 'منذ ' + mins + ' دقيقة';
+  }
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) {
+    if (hours === 1) return 'منذ ساعة';
+    if (hours === 2) return 'منذ ساعتين';
+    if (hours <= 10) return 'منذ ' + hours + ' ساعات';
+    return 'منذ ' + hours + ' ساعة';
+  }
+  const days = Math.floor(hours / 24);
+  if (days < 7) {
+    if (days === 1) return 'منذ يوم';
+    if (days === 2) return 'منذ يومين';
+    if (days <= 10) return 'منذ ' + days + ' أيام';
+    return 'منذ ' + days + ' يومًا';
+  }
+  const weeks = Math.floor(days / 7);
+  if (weeks < 5) {
+    if (weeks === 1) return 'منذ أسبوع';
+    if (weeks === 2) return 'منذ أسبوعين';
+    if (weeks <= 10) return 'منذ ' + weeks + ' أسابيع';
+    return 'منذ ' + weeks + ' أسبوعًا';
+  }
+  const months = Math.floor(days / 30);
+  if (months < 12) {
+    if (months === 1) return 'منذ شهر';
+    if (months === 2) return 'منذ شهرين';
+    if (months <= 10) return 'منذ ' + months + ' أشهر';
+    return 'منذ ' + months + ' شهرًا';
+  }
+  const years = Math.floor(months / 12);
+  if (years === 1) return 'منذ سنة';
+  if (years === 2) return 'منذ سنتين';
+  if (years <= 10) return 'منذ ' + years + ' سنوات';
+  return 'منذ ' + years + ' سنة';
+}
+
+function formatExactDateTime(dateStr) {
+  if (!dateStr) return '';
+  try {
+    const dt = new Date(dateStr);
+    if (isNaN(dt.getTime())) return dateStr;
+    const h = String(dt.getHours()).padStart(2, '0');
+    const m = String(dt.getMinutes()).padStart(2, '0');
+    return dt.getDate() + ' ' + ARABIC_MONTHS[dt.getMonth()] + ' ' + dt.getFullYear() + ' • ' + h + ':' + m;
+  } catch(e) { return dateStr; }
+}
+
+function getRelativeTimeHtml(dateStr) {
+  if (!dateStr) return '';
+  return '<span class="sb-relative-time" data-pub="' + dateStr + '">' + formatRelativeTime(dateStr) + '</span>';
+}
+
+function getFreshnessBadge(dateStr) {
+  if (!dateStr) return '';
+  const now = Date.now();
+  const pub = new Date(dateStr).getTime();
+  if (isNaN(pub)) return '';
+  const diffMs = now - pub;
+  const hours = Math.floor(diffMs / 3600000);
+  if (hours < 1) return '<span class="sb-freshness-badge">جديد</span>';
+  if (hours < 24) return '<span class="sb-freshness-badge sb-freshness-recent">' + formatRelativeTime(dateStr) + '</span>';
+  return '';
 }
 
 function goto(id) { window.location.href = 'article.html?id=' + escId(id); }
@@ -495,8 +598,9 @@ async function loadArticle() {
       (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '">' : '') +
       catBadge +
       '<h1>' + esc(a.title) + '</h1>' +
+      '<div class="sb-article-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + (a.readTime || 'قراءة دقيقة') + '</span></div>' +
+      '<div class="sb-article-datetime">' + formatExactDateTime(getPubDate(a)) + ' <span class="sb-article-relative">' + getRelativeTimeHtml(getPubDate(a)) + '</span></div>' +
       '<div class="sb-ad-inarticle sb-ad-after-title"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">728 × 90</div></div>' +
-      '<div class="sb-article-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + formatDate(a.date || a.created_at) + '</span><span>' + (a.readTime || 'قراءة دقيقة') + '</span></div>' +
       (a.excerpt ? '<div class="sb-article-body"><p><strong>' + esc(a.excerpt) + '</strong></p></div>' : '') +
       (bodyWithAds ? '<div class="sb-article-body">' + bodyWithAds + '</div>' : '') +
       (tagsHtml ? '<div class="sb-article-tags">' + tagsHtml + '</div>' : '') +
@@ -550,7 +654,7 @@ async function initCategoryPage() {
           '<div class="sb-card-body"><div class="sb-card-cat">' + esc(a.categoryAr) + '</div>' +
           '<h3>' + esc(a.title) + '</h3>' +
           (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +
-          '<div class="sb-card-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + formatDateShort(a.date) + '</span></div></div></div>';
+          '<div class="sb-card-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div></div>';
         if ((i + 1) % 8 === 0 && i + 1 < items.length) {
           gridHtml += adFeed;
         }
@@ -618,7 +722,7 @@ function initAnalyticsDashboard() {
   }
 }
 
-if (document.getElementById('sbGrid')) { loadIndex(); setInterval(updateLastUpdate, 60000); updateLastUpdate(); }
+if (document.getElementById('sbGrid')) { loadIndex(); setInterval(function() { updateLastUpdate(); renderRelativeTimes(); }, 60000); updateLastUpdate(); }
 if (document.getElementById('sbArticleMain')) { loadArticle(); initAnalytics(); }
 if (document.getElementById('sbCategoryMain')) { initCategoryPage(); initAnalytics(); }
 if (document.getElementById('sbAnalyticsDashboard')) { initAnalyticsDashboard(); }

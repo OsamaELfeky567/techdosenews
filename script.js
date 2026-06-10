@@ -12,18 +12,7 @@ const AD_CONFIG = {
   }
 };
 
-const GA4_ID = '';
-const isProd = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
-if (GA4_ID && isProd) {
-  const s = document.createElement('script');
-  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
-  s.async = true;
-  document.head.appendChild(s);
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', GA4_ID);
-}
+
 
 const CATEGORY_MAP = {
   ai:'الذكاء الاصطناعي',companies:'شركات',cybersecurity:'أمن سيبراني',
@@ -62,12 +51,12 @@ const ARABIC_DAYS = ['الأحد','الإثنين','الثلاثاء','الأر�
 const ARABIC_MONTHS = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
 
 const COMPANIES = [
-  {sym:'أوب',name:'أوبن‌إيه‌آي',mentions:142,change:18},
-  {sym:'إن‌ف',name:'إنفيديا',mentions:128,change:24},
-  {sym:'أن',name:'أنثروبيك',mentions:96,change:31},
-  {sym:'جوج',name:'جوجل',mentions:87,change:9},
-  {sym:'ميك',name:'مايكروسوفت',mentions:81,change:12},
-  {sym:'ميت',name:'ميتا',mentions:64,change:6}
+  {sym:'أوب',name:'أوبن‌إيه‌آي'},
+  {sym:'إن‌ف',name:'إنفيديا'},
+  {sym:'أن',name:'أنثروبيك'},
+  {sym:'جوج',name:'جوجل'},
+  {sym:'ميك',name:'مايكروسوفت'},
+  {sym:'ميت',name:'ميتا'}
 ];
 
 function getArticleCategory(article) {
@@ -215,9 +204,7 @@ function renderCompanies() {
   if (!list) return;
   list.innerHTML = COMPANIES.map(c =>
     '<div class="sb-company-item"><div class="sb-company-logo">' + c.sym + '</div>' +
-    '<span class="sb-company-name">' + c.name + '</span>' +
-    '<span class="sb-company-mentions">' + c.mentions + ' ذكرًا</span>' +
-    '<span class="sb-company-change up">+' + c.change + '%</span></div>'
+    '<span class="sb-company-name">' + c.name + '</span></div>'
   ).join('');
 }
 
@@ -452,8 +439,7 @@ async function loadArticle() {
       (tagsHtml ? '<div class="sb-article-tags">' + tagsHtml + '</div>' : '') +
       '<div id="sbRelatedArticles"></div>' +
       '<div class="sb-article-nav"><a href="index.html">← الرجوع للرئيسية</a><a href="category.html?cat=' + escId(a.categoryKey) + '">' + esc(a.categoryAr) + ' ←</a></div>' +
-      '<div class="sb-article-telegram"><h3>📢 انضم إلى قناة TD بالعربي</h3><p>أهم أخبار التقنية والذكاء الاصطناعي تصلك أولًا على تيليجرام.</p><a href="https://t.me/tdsandboxtest" target="_blank" rel="noopener" class="sb-telegram-btn">انضم الآن</a></div>' +
-      '</article><aside class="sb-article-sidebar"><div class="sb-ad-box sb-ad-300x250"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 250</div></div><div class="sb-ad-box sb-ad-300x600" style="position:sticky;top:80px"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 600</div></div></aside></div>';
+      '</article><aside class="sb-article-sidebar"><div class="sb-ad-box sb-ad-300x250"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 250</div></div></aside></div>';
     renderRelatedArticles(a);
   } catch(e) {
     main.innerHTML = '<div class="sb-container"><div class="sb-loading">⚠ تعذر تحميل المقال — ' + e.message + '</div></div>';
@@ -520,10 +506,6 @@ function trackArticleView(id, title) { trackEvent('Article', 'view', id); }
 
 function initAnalytics() {
   trackPageView(window.location.pathname);
-  document.addEventListener('click', function(e) {
-    const adEl = e.target.closest('[data-ad-click]');
-    if (adEl) trackAdClick(adEl.dataset.adClick);
-  });
 }
 
 function initAnalyticsDashboard() {

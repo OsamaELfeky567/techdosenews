@@ -1,5 +1,27 @@
 [
   {
+    "id": "art-1781287221495-wqyho7",
+    "title": "جوجل تطلق Colab CLI لمطوري البرمجيات والتحكم الآلي ووكلاء الذكاء الاصطناعي",
+    "excerpt": "أعلنت جوجل عن إطلاق Colab CLI لمطوري البرمجيات والتحكم الآلي ووكلاء الذكاء الاصطناعي، مما يتيح لهم إنشاء وتشغيل تطبيقاتهم بسهولة أكبر.",
+    "category": "تكنولوجيا",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
+    "date": "2026-06-12T18:00:23.354Z",
+    "readTime": "1 min read",
+    "views": "0",
+    "hasEgyptImpact": false,
+    "featured": false,
+    "source": "infoq.com",
+    "body": "<p>أعلنت جوجل عن إطلاق Colab CLI لمطوري البرmjيات والتحكم الآلي ووكلاء الذكاء الاصطناعي، مما يتيح لهم إنشاء وتشغيل تطبيقاتهم بسهولة أكبر. يهدف Colab CLI إلى توفير بيئة عمل أكثر مرونة وموثوقية لمطوري البرمجيات، حيث يمكنهم استخدام أوامر بسيطة لتشغيل تطبيقاتهم وتحليل البيانات. كما يتيح Colab CLI للتحكم الآلي ووكلاء الذكاء الاصطناعي تشغيل التطبيقات وتحليل البيانات بسهولة أكبر، مما يزيد من كفاءة العمل ويتحقق أهداف العمل بفعالية أكبر. يُعتبر Colab CLI خطوة importante في تطوير تكنولوجيا الذكاء الاصطناعي وتحليل البيانات، حيث يتيح للمطورين والمحللين استخدام أدوات قوية وسهلة الاستخدام لتحليل البيانات وتطوير التطبيقات. ويتوافق Colab CLI مع معظم أنظمة التشغيل، بما في ذلك Windows و Linux و macOS، مما يتيح للمطورين والمحللين استخدام الأداة بسهولة أكبر.</p>",
+    "tags": [
+      "جوجل",
+      "Colab CLI",
+      "تكنولوجيا",
+      "ذكاء اصطناعي"
+    ],
+    "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE4wcElhbTVpSHN3Mk4tclpMUXJNUnllZWVqLTN1bjM5TTJMUW5Ia3ZscGpSblRPdVMwb0xLQzZQQU5zUHEtSUhtU0MxUjc0dzFJUXJzZG1sbks2bDZBOXM0MFNB?oc=5",
+    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781287221495-wqyho7"
+  },
+  {
     "id": "art-1781281820401-ocypok",
     "title": "Palantir تتعاون مع Google Cloud لتكامل أدوات Gemini الذكية",
     "excerpt": "اتفاقية تعاون بين Palantir و Google Cloud لتكامل أدوات Gemini الذكية",

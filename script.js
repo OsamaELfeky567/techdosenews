@@ -1,4 +1,4 @@
-﻿const BASE = 'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/sandbox';
+const BASE = 'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/sandbox';
 let allArticles = [];
 let filteredArticles = [];
 const PAGE_SIZE = 9;
@@ -27,7 +27,7 @@ const CATEGORY_MAP = {
   Security:'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ',Startups:'Ø´Ø±ÙƒØ§Øª',
   Mobile:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',Hardware:'Ø´Ø±ÙƒØ§Øª',Gaming:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',
   Science:'Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ',Business:'Ø´Ø±ÙƒØ§Øª',Cloud:'Ø´Ø±ÙƒØ§Øª',
-  ØªÙƒÙ†ÙˆÙ„ÙˆØ¬ÙŠØ§:'Ø´Ø±ÙƒØ§Øª',ØªÙ‚Ù†ÙŠØ©:'Ø´Ø±ÙƒØ§Øª',EV:'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©',ev:'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©'
+  'ØªÙƒÙ†ÙˆÙ„ÙˆØ¬ÙŠØ§':'Ø´Ø±ÙƒØ§Øª','ØªÙ‚Ù†ÙŠØ©':'Ø´Ø±ÙƒØ§Øª',EV:'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©',ev:'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©'
 };
 
 const TAG_CATEGORY_MAP = {

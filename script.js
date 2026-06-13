@@ -1,947 +1,750 @@
-/* =========================================================
-   Tech Dose News — script.js
-   Vanilla JS, no dependencies
-   ========================================================= */
+﻿const BASE = 'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/sandbox';
+let allArticles = [];
+let filteredArticles = [];
+const PAGE_SIZE = 9;
+let gridRenderedCount = 0;
 
-'use strict';
-
-/* =========================================================
-   DATETIME BAR — ميلادي + هجري + ساعة
-   ========================================================= */
-function initDatetimeBar() {
-  function updateClock() {
-    const now = new Date();
-
-    // ===== الوقت (ساعة) =====
-    let hours = now.getHours();
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    const ampm = hours >= 12 ? 'م' : 'ص';
-    hours = hours % 12 || 12;
-    const timeStr = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
-    const clockEl = document.getElementById('dtTime');
-    if (clockEl) clockEl.textContent = timeStr;
-
-    // ===== التاريخ ميلادي =====
-    const gregOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const greg = now.toLocaleDateString('ar-EG', gregOptions);
-    const gregEl = document.getElementById('dtGreg');
-    if (gregEl) gregEl.textContent = greg;
-
-    // ===== التاريخ هجري =====
-    try {
-      const hijri = now.toLocaleDateString('ar-SA-u-ca-islamic', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-      const hijriEl = document.getElementById('dtHijri');
-      if (hijriEl) hijriEl.textContent = hijri;
-    } catch(e) {
-      const hijriEl = document.getElementById('dtHijri');
-      if (hijriEl) hijriEl.style.display = 'none';
-    }
-
-    // ===== اليوم =====
-    const dayNames = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
-    const dayEl = document.getElementById('dtDay');
-    if (dayEl) dayEl.textContent = dayNames[now.getDay()];
+const AD_CONFIG = {
+  enabled: false,
+  adsterraCodes: {
+    '300x250': '',
+    '300x600': '',
+    '728x90': '',
+    '336x280': '',
   }
-
-  updateClock();
-  setInterval(updateClock, 1000);
-}
-
-/* =========================================================
-   RELATIVE DATE — تحويل timestamp لوقت نسبي دقيق
-   ========================================================= */
-function getRelativeTime(articleId) {
-  if (!articleId) return null;
-  const ts = parseInt(articleId.toString().replace(/^art-/,''), 10);
-  if (isNaN(ts) || ts < 1000000) return null;
-  articleId = ts;
-  const now = Date.now();
-  if (articleId > now + 86400000) return null;
-  const diff = now - articleId;
-  const minutes = Math.floor(diff / 60000);
-  const hours = Math.floor(diff / 3600000);
-  const days = Math.floor(diff / 86400000);
-
-  if (minutes < 2) return 'منذ لحظات';
-  if (minutes < 3) return 'منذ دقيقتين';
-  if (minutes < 11) return `منذ ${minutes} دقائق`;
-  if (minutes < 60) return `منذ ${minutes} دقيقة`;
-  if (hours === 1) return 'منذ ساعة';
-  if (hours === 2) return 'منذ ساعتين';
-  if (hours < 11) return `منذ ${hours} ساعات`;
-  if (hours < 24) return `منذ ${hours} ساعة`;
-  if (days === 1) return 'أمس';
-  if (days === 2) return 'منذ يومين';
-  if (days < 7) return `منذ ${days} أيام`;
-  if (days < 14) return 'منذ أسبوع';
-  if (days < 30) return 'منذ أسبوعين';
-  return `منذ ${Math.floor(days/30)} شهر`;
-}
+};
 
 
-/* ── View Tracking (localStorage) ── */
-function getViewCounts() {
-  try { return JSON.parse(localStorage.getItem('tdn_views') || '{}'); } catch { return {}; }
-}
 
-function incrementView(id) {
-  const counts = getViewCounts();
-  counts[id] = (counts[id] || 0) + 1;
-  localStorage.setItem('tdn_views', JSON.stringify(counts));
-}
+const CATEGORY_MAP = {
+  ai:'Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ',companies:'Ø´Ø±ÙƒØ§Øª',cybersecurity:'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ',
+  mobile:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',ev:'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©',
+  security:'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ',business:'Ø´Ø±ÙƒØ§Øª',startups:'Ø´Ø±ÙƒØ§Øª',
+  bigtech:'Ø´Ø±ÙƒØ§Øª',software:'Ø´Ø±ÙƒØ§Øª',cloud:'Ø´Ø±ÙƒØ§Øª',
+  hardware:'Ø´Ø±ÙƒØ§Øª',consumer:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',gaming:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',
+  AI:'Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ',AI_ar:'Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ',
+  'Big-Tech':'Ø´Ø±ÙƒØ§Øª','big-tech':'Ø´Ø±ÙƒØ§Øª',BigTech:'Ø´Ø±ÙƒØ§Øª',
+  Security:'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ',Startups:'Ø´Ø±ÙƒØ§Øª',
+  Mobile:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',Hardware:'Ø´Ø±ÙƒØ§Øª',Gaming:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',
+  Science:'Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ',Business:'Ø´Ø±ÙƒØ§Øª',Cloud:'Ø´Ø±ÙƒØ§Øª',
+  ØªÙƒÙ†ÙˆÙ„ÙˆØ¬ÙŠØ§:'Ø´Ø±ÙƒØ§Øª',ØªÙ‚Ù†ÙŠØ©:'Ø´Ø±ÙƒØ§Øª',EV:'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©',ev:'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©'
+};
 
-/* ── Get display date from multiple sources ── */
-function getArticleDateDisplay(article) {
-  const rt = getRelativeTime(article.id);
-  if (rt) return rt;
-  if (article.date && !article.date.includes('منذ')) return article.date;
-  if (article.publishedAt) {
-    const ts = new Date(article.publishedAt).getTime();
-    const rt2 = getRelativeTime(ts);
-    if (rt2) return rt2;
-  }
-  if (article.date) return article.date;
-  return 'منذ لحظات';
-}
+const TAG_CATEGORY_MAP = {
+  'ØªÙƒÙ†ÙˆÙ„ÙˆØ¬ÙŠØ§':'companies','ØªÙ‚Ù†ÙŠØ©':'companies','Ø°ÙƒØ§Ø¡ Ø§ØµØ·Ù†Ø§Ø¹ÙŠ':'ai',
+  'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ':'cybersecurity','Ø£Ù…Ø§Ù†':'cybersecurity',
+  'Ù‡ÙˆØ§ØªÙ':'mobile','mobile':'mobile','Mobile':'mobile',
+  'Ø£Ø¹Ù…Ø§Ù„':'companies','business':'companies','Business':'companies',
+  'Ø´Ø±ÙƒØ§Øª':'companies','startups':'companies','Startups':'companies',
+  'Ø¨Ø±Ù…Ø¬ÙŠØ§Øª':'companies','software':'companies',
+  'Ø³Ø­Ø§Ø¨Ø©':'companies','cloud':'companies',
+  'Ø¹ØªØ§Ø¯':'companies','hardware':'companies',
+  'Ø³ÙŠØ§Ø±Ø§Øª':'ev','EV':'ev','Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©':'ev',
+  'ai':'ai','AI':'ai','security':'cybersecurity',
+  'Security':'cybersecurity','cybersecurity':'cybersecurity',
+  'gaming':'mobile','Gaming':'mobile',
+  'science':'ai','Science':'ai',
+  'Ø±ÙˆØ¨ÙˆØªØ§Øª':'ai','robotics':'ai','ÙØ¶Ø§Ø¡':'ai',
+  'bigtech':'companies','big-tech':'companies','BigTech':'companies',
+  'Big-Tech':'companies','Ø£Ø¨Ø­Ø§Ø«':'ai','research':'ai'
+};
 
-/* ── Live Refresh ── */
-function refreshLiveUI() {
-  document.querySelectorAll('.rt-date').forEach(el => {
-    const id = el.dataset.articleId;
-    const article = articles.find(a => a.id === id);
-    if (id && article) el.textContent = getArticleDateDisplay(article);
-    else if (id) el.textContent = getRelativeTime(id) || 'منذ لحظات';
-  });
-  document.querySelectorAll('.rt-view').forEach(el => {
-    const id = el.dataset.articleId;
-    if (id) {
-      const vc = getViewCounts();
-      el.textContent = vc[id] || 0;
-    }
-  });
-  renderTrending();
-}
+const ARABIC_DAYS = ['Ø§Ù„Ø£Ø­Ø¯','Ø§Ù„Ø¥Ø«Ù†ÙŠÙ†','Ø§Ù„Ø«Ù„Ø§Ø«Ø§Ø¡','Ø§Ù„Ø£Ø±Ø¨Ø¹Ø§Ø¡','Ø§Ù„Ø®Ù…ÙŠØ³','Ø§Ù„Ø¬Ù…Ø¹Ø©','Ø§Ù„Ø³Ø¨Øª'];
+const ARABIC_MONTHS = ['ÙŠÙ†Ø§ÙŠØ±','ÙØ¨Ø±Ø§ÙŠØ±','Ù…Ø§Ø±Ø³','Ø£Ø¨Ø±ÙŠÙ„','Ù…Ø§ÙŠÙˆ','ÙŠÙˆÙ†ÙŠÙˆ','ÙŠÙˆÙ„ÙŠÙˆ','Ø£ØºØ³Ø·Ø³','Ø³Ø¨ØªÙ…Ø¨Ø±','Ø£ÙƒØªÙˆØ¨Ø±','Ù†ÙˆÙÙ…Ø¨Ø±','Ø¯ÙŠØ³Ù…Ø¨Ø±'];
 
-/* ── Sample Data ── */
-let articles = [];
-
-/* ── Fallback sample data (used if articles/index.json fetch fails) ── */
-const FALLBACK_ARTICLES = [
-  {
-    id: 1,
-    title: "OpenAI تطلق GPT-5 بقدرات تفوق توقعات الخبراء",
-    excerpt: "كشفت شركة OpenAI النقاب عن الجيل الخامس من نموذجها الشهير بمزايا غير مسبوقة تتجاوز كل التوقعات التي أطلقها خبراء الذكاء الاصطناعي حول العالم.",
-    category: "ذكاء اصطناعي",
-    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
-    date: "منذ ساعتين",
-    readTime: "4 دقائق",
-    views: "2,341",
-    hasEgyptImpact: true,
-    featured: true
-  },
-  {
-    id: 2,
-    title: "سامسونج تكشف عن Galaxy S25 بشاشة أكثر إشراقاً",
-    excerpt: "أعلنت سامسونج رسمياً عن هاتف Galaxy S25 الجديد بمعالج Snapdragon 8 Elite وكاميرا محسّنة بالذكاء الاصطناعي.",
-    category: "هواتف ذكية",
-    image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=800&q=80",
-    date: "منذ 5 ساعات",
-    readTime: "3 دقائق",
-    views: "1,892",
-    hasEgyptImpact: true,
-    featured: false
-  },
-  {
-    id: 3,
-    title: "ثغرة أمنية خطيرة تهدد ملايين مستخدمي أندرويد",
-    excerpt: "اكتشف باحثو الأمن السيبراني ثغرة خطيرة في نظام أندرويد تؤثر على أكثر من مليار جهاز حول العالم.",
-    category: "أمن سيبراني",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
-    date: "منذ 8 ساعات",
-    readTime: "5 دقائق",
-    views: "3,120",
-    hasEgyptImpact: false,
-    featured: false
-  },
-  {
-    id: 4,
-    title: "جوجل تستثمر 10 مليار دولار في البنية التحتية للذكاء الاصطناعي",
-    excerpt: "أعلنت شركة جوجل عن خطة استثمارية ضخمة لتوسيع بنيتها التحتية لخدمات الذكاء الاصطناعي خلال العام الجاري.",
-    category: "شركات التقنية",
-    image: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=800&q=80",
-    date: "أمس",
-    readTime: "6 دقائق",
-    views: "987",
-    hasEgyptImpact: false,
-    featured: false
-  },
-  {
-    id: 5,
-    title: "مصر تطلق أول منصة حكومية للذكاء الاصطناعي",
-    excerpt: "أطلقت الحكومة المصرية منصتها الرقمية الجديدة المدعومة بالذكاء الاصطناعي لتحسين الخدمات الحكومية.",
-    category: "مصر والتقنية",
-    image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&q=80",
-    date: "منذ يومين",
-    readTime: "4 دقائق",
-    views: "4,560",
-    hasEgyptImpact: true,
-    featured: false
-  },
-  {
-    id: 6,
-    title: "أبل تختبر ميزة الشحن اللاسلكي الفائق السرعة في iPhone 17",
-    excerpt: "تكشف التسريبات الأخيرة أن أبل تعمل على تقنية شحن لاسلكي بقدرة 50 واط في جيل iPhone القادم.",
-    category: "هواتف ذكية",
-    image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&q=80",
-    date: "منذ 3 أيام",
-    readTime: "3 دقائق",
-    views: "2,100",
-    hasEgyptImpact: false,
-    featured: false
-  },
-  {
-    id: 7,
-    title: "تسلا تكشف عن روبوت Optimus الجديد بقدرات مذهلة",
-    excerpt: "عرضت شركة تسلا الجيل الثاني من روبوتها الإنساني Optimus الذي يستطيع أداء مهام منزلية معقدة باستقلالية عالية.",
-    category: "سيارات كهربائية",
-    image: "https://images.unsplash.com/photo-1561144257-e32e8506e647?w=800&q=80",
-    date: "منذ 4 أيام",
-    readTime: "5 دقائق",
-    views: "1,734",
-    hasEgyptImpact: false,
-    featured: false
-  },
-  {
-    id: 8,
-    title: "ميكروسوفت تدمج الذكاء الاصطناعي في كل منتجاتها خلال 2025",
-    excerpt: "أعلنت شركة ميكروسوفت عن خطتها الشاملة لدمج نماذج الذكاء الاصطناعي في جميع تطبيقاتها بما فيها Office وWindows.",
-    category: "شركات التقنية",
-    image: "https://images.unsplash.com/photo-1642952469120-eed4b65104be?w=800&q=80",
-    date: "منذ 5 أيام",
-    readTime: "4 دقائق",
-    views: "1,456",
-    hasEgyptImpact: false,
-    featured: false
-  },
-  {
-    id: 9,
-    title: "تقرير: مبيعات الهواتف الذكية ترتفع 12% في مصر عام 2024",
-    excerpt: "كشف تقرير حديث عن ارتفاع ملحوظ في مبيعات الهواتف الذكية في السوق المصرية خلال العام الماضي رغم التحديات الاقتصادية.",
-    category: "مصر والتقنية",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80",
-    date: "منذ أسبوع",
-    readTime: "3 دقائق",
-    views: "3,200",
-    hasEgyptImpact: true,
-    featured: false
-  },
-  {
-    id: 10,
-    title: "Sony تطلق WH-1000XM6 بعزل صوت أذكى وبطارية أطول",
-    excerpt: "كشفت سوني عن جيل جديد من سماعاتها الرائدة مع تحسينات كبيرة في عزل الضوضاء بالذكاء الاصطناعي وعمر بطارية يصل إلى 40 ساعة.",
-    category: "إلكترونيات",
-    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
-    date: "منذ أسبوع",
-    readTime: "4 دقائق",
-    views: "890",
-    hasEgyptImpact: false,
-    featured: false
-  },
-  {
-    id: 11,
-    title: "هاكر يستغل ثغرة في ChatGPT لاختراق بيانات المستخدمين",
-    excerpt: "اكتشف باحثون في الأمن السيبراني طريقة جديدة لاستغلال إعدادات ذاكرة ChatGPT للوصول إلى معلومات المستخدمين الحساسة.",
-    category: "أمن سيبراني",
-    image: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=800&q=80",
-    date: "منذ أسبوعين",
-    readTime: "6 دقائق",
-    views: "2,780",
-    hasEgyptImpact: false,
-    featured: false
-  },
-  {
-    id: 12,
-    title: "Nvidia تطلق بطاقة RTX 5090 بأداء يتجاوز الجيل الماضي بمرتين",
-    excerpt: "أطلقت Nvidia بطاقتها الرسومية الجديدة RTX 5090 التي تعد بأداء مضاعف في الألعاب والذكاء الاصطناعي مقارنةً بـ RTX 4090.",
-    category: "إلكترونيات",
-    image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&q=80",
-    date: "منذ أسبوعين",
-    readTime: "5 دقائق",
-    views: "1,650",
-    hasEgyptImpact: false,
-    featured: false
-  }
+const COMPANIES = [
+  {sym:'Ø£ÙˆØ¨',name:'Ø£ÙˆØ¨Ù†â€ŒØ¥ÙŠÙ‡â€ŒØ¢ÙŠ'},
+  {sym:'Ø¥Ù†â€ŒÙ',name:'Ø¥Ù†ÙÙŠØ¯ÙŠØ§'},
+  {sym:'Ø£Ù†',name:'Ø£Ù†Ø«Ø±ÙˆØ¨ÙŠÙƒ'},
+  {sym:'Ø¬ÙˆØ¬',name:'Ø¬ÙˆØ¬Ù„'},
+  {sym:'Ù…ÙŠÙƒ',name:'Ù…Ø§ÙŠÙƒØ±ÙˆØ³ÙˆÙØª'},
+  {sym:'Ù…ÙŠØª',name:'Ù…ÙŠØªØ§'}
 ];
 
-/* ── Category alias maps for normalization ── */
-const CAT_ALIASES = {
-  'الذكاء الاصطناعي': 'ذكاء اصطناعي',
-  'التليفونات': 'هواتف ذكية',
-  'الأمن السيبراني': 'أمن سيبراني',
-  'الشركات': 'شركات التقنية',
-  'مصر والتكنولوجيا': 'مصر والتقنية',
-  'الإلكترونيات': 'إلكترونيات',
-  'السيارات': 'سيارات كهربائية'
-};
-
-function normalizeCategory(cat) {
-  return CAT_ALIASES[cat] || cat;
-}
-
-/* ── Category to CSS class map ── */
-const catClass = {
-  'ذكاء اصطناعي':    'cat-ai',
-  'هواتف ذكية':      'cat-phone',
-  'أمن سيبراني':     'cat-security',
-  'شركات التقنية':   'cat-company',
-  'مصر والتقنية':    'cat-egypt',
-  'إلكترونيات':      'cat-elec',
-  'سيارات كهربائية': 'cat-car'
-};
-const normCats = Object.keys(catClass);
-
-/* ── State ── */
-const PAGE_SIZE = 6;
-let currentFilter = 'الكل';
-let currentPage   = 1;
-
-/* =========================================================
-   INIT
-   ========================================================= */
-document.addEventListener('DOMContentLoaded', () => {
-  initGoatCounter();
-  initDatetimeBar();
-  const isArticlePage = document.body.classList.contains('article-page');
-
-  async function loadArticles() {
-    try {
-      const res = await fetch('data/articles/index.json');
-      if (res.ok) {
-        const remote = await res.json();
-        const ids = new Set(remote.map(a => a.id));
-        articles = [
-          ...remote.map(a => ({ ...a, category: normalizeCategory(a.category) })),
-          ...FALLBACK_ARTICLES.filter(a => !ids.has(a.id))
-        ];
-      } else {
-        articles = [...FALLBACK_ARTICLES];
-      }
-    } catch {
-      articles = [...FALLBACK_ARTICLES];
+function getArticleCategory(article) {
+  if (article.category && CATEGORY_MAP[article.category]) {
+    return CATEGORY_MAP[article.category];
+  }
+  if (article.tags && article.tags.length > 0) {
+    for (const tag of article.tags) {
+      const mappedKey = TAG_CATEGORY_MAP[tag];
+      if (mappedKey && CATEGORY_MAP[mappedKey]) return CATEGORY_MAP[mappedKey];
     }
   }
+  return 'Ø§Ù„ØªÙ‚Ù†ÙŠØ©';
+}
 
-  (async () => {
-    await loadArticles();
-    initTicker();
-    initHamburger();
-    initSearch();
-    initNewsletterForms();
-    initFooterYear();
-
-    if (isArticlePage) {
-      initArticlePage();
-    } else {
-      renderHero();
-      renderArticles();
-      renderTrending();
-      initCategoryFilter();
-      initLoadMore();
-      lazyLoadImages();
+function getCategoryKey(article) {
+  const arName = getArticleCategory(article);
+  for (const [key, val] of Object.entries(CATEGORY_MAP)) {
+    if (val === arName) return key;
+  }
+  if (article.tags && article.tags.length > 0) {
+    for (const tag of article.tags) {
+      const mappedKey = TAG_CATEGORY_MAP[tag];
+      if (mappedKey && mappedKey !== tag) return mappedKey;
     }
-
-    // Handle URL params (search and filter from article.html navigation)
-    const urlParams = new URLSearchParams(window.location.search);
-    const searchQuery = urlParams.get('search');
-    const filterQuery = urlParams.get('filter');
-    if (searchQuery) {
-      const overlay = document.getElementById('searchOverlay');
-      if (overlay) { overlay.hidden = false; document.body.style.overflow = 'hidden'; }
-      const input = document.getElementById('searchInput');
-      if (input) { input.value = searchQuery; doSearch(searchQuery, document.getElementById('searchResults')); }
-    } else if (filterQuery && normCats.includes(filterQuery)) {
-      currentFilter = filterQuery;
-      currentPage = 1;
-      renderArticles();
-      // Update category pills
-      document.querySelectorAll('.cat-pill').forEach(p => p.classList.toggle('active', p.dataset.category === filterQuery));
-    }
-
-    setInterval(refreshLiveUI, 30000);
-  })();
-});
-
-/* =========================================================
-   1. TICKER
-   ========================================================= */
-function initTicker() {
-  const wrapper = document.querySelector('.ticker-wrapper');
-  const content = document.getElementById('tickerContent');
-  if (!wrapper || !content) return;
-
-  // Populate with latest 5 articles (sorted newest first)
-  const sorted = [...articles].sort((a, b) => (b.id || 0) - (a.id || 0));
-  const latest5 = sorted.slice(0, 5);
-  if (latest5.length > 0) {
-    content.innerHTML = latest5.map(a => a.title).join(' &nbsp;●&nbsp; ');
   }
-
-  // Clone for seamless loop (only once)
-  if (wrapper.querySelectorAll('.ticker-content').length < 2) {
-    const clone = content.cloneNode(true);
-    clone.setAttribute('aria-hidden', 'true');
-    wrapper.appendChild(clone);
-  }
+  return 'ØªÙ‚Ù†ÙŠØ©';
 }
 
-/* =========================================================
-   2. HAMBURGER
-   ========================================================= */
-function initHamburger() {
-  const btn = document.getElementById('hamburgerBtn');
-  const nav = document.getElementById('mobileNav');
-  if (!btn || !nav) return;
-
-  btn.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen);
-    nav.setAttribute('aria-hidden', !isOpen);
-    btn.querySelector('i').className = isOpen ? 'fas fa-times' : 'fas fa-bars';
-  });
-
-  // Close on outside click
-  document.addEventListener('click', (e) => {
-    if (!btn.contains(e.target) && !nav.contains(e.target) && nav.classList.contains('open')) {
-      nav.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      nav.setAttribute('aria-hidden', 'true');
-      btn.querySelector('i').className = 'fas fa-bars';
-    }
-  });
-
-  // Close on link click & handle nav filter
-  nav.querySelectorAll('.mobile-nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      nav.setAttribute('aria-hidden', 'true');
-      btn.querySelector('i').className = 'fas fa-bars';
-
-      const filter = link.dataset.filter;
-      if (filter) {
-        filterByCategory(filter);
-        // Sync desktop cat pills
-        syncCatPills(filter);
-      }
-    });
-  });
-
-  // Desktop nav links with data-filter
-  document.querySelectorAll('.nav-link[data-filter]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      filterByCategory(link.dataset.filter);
-      syncCatPills(link.dataset.filter);
-      // Scroll to articles
-      document.getElementById('articlesGrid')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-}
-
-/* =========================================================
-   3. CATEGORY FILTER
-   ========================================================= */
-function initCategoryFilter() {
-  document.querySelectorAll('.cat-pill').forEach(pill => {
-    pill.addEventListener('click', () => {
-      const cat = pill.dataset.category;
-      filterByCategory(cat);
-    });
-  });
-}
-
-function filterByCategory(category) {
-  currentFilter = category;
-  currentPage   = 1;
-  syncCatPills(category);
-  renderHero();
-  renderArticles();
-  document.getElementById('heroSection')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function syncCatPills(category) {
-  document.querySelectorAll('.cat-pill').forEach(p => {
-    const isActive = p.dataset.category === category;
-    p.classList.toggle('active', isActive);
-    p.setAttribute('aria-pressed', isActive);
-  });
-}
-
-/* =========================================================
-   4. HERO SECTION
-   ========================================================= */
-function renderHero() {
-  const hero = document.getElementById('heroSection');
-  if (!hero) return;
-
-  const pool = currentFilter === 'الكل'
-    ? articles
-    : articles.filter(a => normalizeCategory(a.category) === currentFilter);
-
-  const featured = pool.find(a => a.featured) || pool[0];
-  if (!featured) { hero.innerHTML = ''; return; }
-
-  const heroCounts = getViewCounts();
-  const heroNormCat = normalizeCategory(featured.category);
-  hero.innerHTML = `
-    <div class="hero-inner">
-      <img class="hero-bg" src="${featured.image}" alt="${escapeHtml(featured.title)}" loading="eager" />
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <span class="hero-cat-badge">${escapeHtml(heroNormCat)}</span>
-        <h2 class="hero-headline">${escapeHtml(featured.title)}</h2>
-        <p class="hero-desc">${escapeHtml(featured.excerpt)}</p>
-        <div class="hero-meta">
-          <span class="hero-meta-item"><i class="far fa-calendar-alt" aria-hidden="true"></i> <span class="rt-date" data-article-id="${featured.id}">${getArticleDateDisplay(featured)}</span></span>
-          <span class="hero-meta-item"><i class="far fa-clock" aria-hidden="true"></i> ${escapeHtml(featured.readTime)}</span>
-          <span class="hero-meta-item"><i class="far fa-eye" aria-hidden="true"></i> <span class="rt-view" data-article-id="${featured.id}">${heroCounts[featured.id] || 0}</span> مشاهدة</span>
-        </div>
-        <a href="article.html?id=${featured.id}" class="hero-read-btn" aria-label="اقرأ المزيد عن ${escapeHtml(featured.title)}">
-          اقرأ المزيد <i class="fas fa-arrow-left" aria-hidden="true"></i>
-        </a>
-      </div>
-    </div>
-  `;
-}
-
-/* =========================================================
-   5. ARTICLES GRID
-   ========================================================= */
-function renderArticles() {
-  const grid = document.getElementById('articlesGrid');
-  if (!grid) return;
-
-  const pool = currentFilter === 'الكل'
-    ? articles
-    : articles.filter(a => normalizeCategory(a.category) === currentFilter);
-
-  // Exclude featured (shown in hero) from grid when unfiltered
-  const gridItems = currentFilter === 'الكل'
-    ? pool.filter(a => !a.featured)
-    : pool;
-
-  const visible = gridItems.slice(0, currentPage * PAGE_SIZE);
-
-  if (visible.length === 0) {
-    grid.innerHTML = `<p class="no-results-msg" style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);font-family:'Tajawal',sans-serif;">لا توجد مقالات في هذا التصنيف حالياً.</p>`;
-    updateLoadMoreBtn(0, 0);
-    return;
-  }
-
-  grid.innerHTML = visible.map((a, i) => buildCard(a, i)).join('');
-  updateLoadMoreBtn(visible.length, gridItems.length);
-  lazyLoadImages();
-}
-
-function buildCard(article, index) {
-  const normCat = normalizeCategory(article.category);
-  const cls = catClass[normCat] || 'cat-ai';
-  const delay = (index % PAGE_SIZE) * 0.07;
-  const vc = getViewCounts();
-  const egyptBadge = article.hasEgyptImpact
-    ? `<span class="egypt-badge">★ يشمل تأثير مصر</span>`
-    : '';
-  return `
-    <a href="article.html?id=${article.id}" class="article-card" data-category="${escapeHtml(normCat)}"
-       style="animation-delay:${delay}s" aria-label="${escapeHtml(article.title)}">
-      <div class="card-img-wrapper">
-        <img class="card-img lazy" data-src="${article.image}" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect fill='%23D6EAF8' width='800' height='450'/%3E%3C/svg%3E"
-          alt="${escapeHtml(article.title)}" loading="lazy" />
-        <span class="card-cat-badge ${cls}">${escapeHtml(normCat)}</span>
-      </div>
-      <div class="card-body">
-        <h3 class="card-headline">${escapeHtml(article.title)}</h3>
-        <p class="card-excerpt">${escapeHtml(article.excerpt)}</p>
-        <div class="card-footer">
-          <div class="card-meta">
-            <span class="card-meta-item"><i class="far fa-calendar-alt" aria-hidden="true"></i> <span class="rt-date" data-article-id="${article.id}">${getArticleDateDisplay(article)}</span></span>
-            <span class="card-meta-item"><i class="far fa-clock" aria-hidden="true"></i> ${escapeHtml(article.readTime)}</span>
-            <span class="card-meta-item"><i class="far fa-eye" aria-hidden="true"></i> <span class="rt-view" data-article-id="${article.id}">${vc[article.id] || 0}</span></span>
-          </div>
-          ${egyptBadge}
-        </div>
-      </div>
-    </a>
-  `;
-}
-
-/* =========================================================
-   6. LOAD MORE
-   ========================================================= */
-function initLoadMore() {
-  const btn = document.getElementById('loadMoreBtn');
-  if (!btn) return;
-  btn.addEventListener('click', () => {
-    currentPage++;
-    renderArticles();
-    btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  });
-}
-
-function updateLoadMoreBtn(shown, total) {
-  const btn = document.getElementById('loadMoreBtn');
-  if (!btn) return;
-  btn.classList.toggle('hidden', shown >= total);
-}
-
-/* =========================================================
-   7. TRENDING SIDEBAR
-   ========================================================= */
-function renderTrending() {
-  const list = document.getElementById('trendingList');
-  if (!list) return;
-
-  const counts = getViewCounts();
-  const top5 = [...articles]
-    .map(a => ({ ...a, _views: counts[a.id] || 0 }))
-    .sort((a, b) => b._views - a._views)
-    .slice(0, 5);
-
-  list.innerHTML = top5.map((a, i) => `
-    <li class="trending-item" onclick="location.href='article.html?id=${a.id}'" role="button" tabindex="0"
-        aria-label="${escapeHtml(a.title)}"
-        onkeydown="if(event.key==='Enter')location.href='article.html?id=${a.id}'">
-      <span class="trending-num" aria-hidden="true">0${i + 1}</span>
-      <div class="trending-info">
-        <p class="trending-title">${escapeHtml(a.title)}</p>
-        <span class="trending-date"><i class="far fa-eye" aria-hidden="true"></i> ${a._views} قراءة</span>
-      </div>
-    </li>
-  `).join('');
-}
-
-/* =========================================================
-   8. SEARCH OVERLAY
-   ========================================================= */
-function initSearch() {
-  const overlay  = document.getElementById('searchOverlay');
-  const toggle   = document.getElementById('searchToggle');
-  const closeBtn = document.getElementById('searchClose');
-  const input    = document.getElementById('searchInput');
-  const results  = document.getElementById('searchResults');
-  if (!overlay || !toggle) return;
-
-  toggle.addEventListener('click', openSearch);
-  closeBtn?.addEventListener('click', closeSearch);
-
-  // Close on overlay backdrop click
-  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeSearch(); });
-
-  // Close on Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !overlay.hidden) closeSearch();
-  });
-
-  let debounceTimer;
-  input?.addEventListener('input', () => {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(() => doSearch(input.value.trim(), results), 300);
-  });
-
-  function openSearch() {
-    overlay.hidden = false;
-    document.body.style.overflow = 'hidden';
-    setTimeout(() => input?.focus(), 50);
-  }
-
-  function closeSearch() {
-    overlay.hidden = true;
-    document.body.style.overflow = '';
-    if (input) { input.value = ''; }
-    if (results) results.innerHTML = '<p class="search-hint">اكتب للبحث في أخبار التكنولوجيا...</p>';
-  }
-}
-
-function doSearch(query, resultsEl) {
-  if (!query) {
-    resultsEl.innerHTML = '<p class="search-hint">اكتب للبحث في أخبار التكنولوجيا...</p>';
-    return;
-  }
-  const q = query.toLowerCase();
-  const found = articles.filter(a =>
-    a.title.toLowerCase().includes(q) ||
-    normalizeCategory(a.category).toLowerCase().includes(q) ||
-    a.excerpt.toLowerCase().includes(q)
-  );
-
-  if (found.length === 0) {
-    resultsEl.innerHTML = `<p class="no-results">لم نجد نتائج لـ "<strong>${escapeHtml(query)}</strong>"</p>`;
-    return;
-  }
-
-  resultsEl.innerHTML = found.map(a => {
-    const vc = getViewCounts();
-    return `
-    <a href="article.html?id=${a.id}" class="search-result-card">
-      <img class="search-result-img" src="${a.image}" alt="${escapeHtml(a.title)}" loading="lazy" />
-      <div class="search-result-info">
-        <p class="search-result-title">${escapeHtml(a.title)}</p>
-        <span class="search-result-cat">${escapeHtml(normalizeCategory(a.category))} · <span class="rt-date" data-article-id="${a.id}">${getArticleDateDisplay(a)}</span> · <i class="far fa-eye" aria-hidden="true"></i> ${vc[a.id] || 0}</span>
-      </div>
-    </a>`; }).join('');
-}
-
-/* =========================================================
-   9. LAZY LOAD IMAGES
-   ========================================================= */
-function lazyLoadImages() {
-  if (!('IntersectionObserver' in window)) {
-    // Fallback: load all
-    document.querySelectorAll('img.lazy').forEach(img => {
-      if (img.dataset.src) { img.src = img.dataset.src; img.classList.remove('lazy'); }
-    });
-    return;
-  }
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        if (img.dataset.src) {
-          img.src = img.dataset.src;
-          img.removeAttribute('data-src');
-          img.classList.remove('lazy');
-        }
-        obs.unobserve(img);
-      }
-    });
-  }, { rootMargin: '200px 0px' });
-
-  document.querySelectorAll('img.lazy').forEach(img => observer.observe(img));
-}
-
-/* =========================================================
-   10. NEWSLETTER FORMS
-   ========================================================= */
-function initNewsletterForms() {
-  document.querySelectorAll('.newsletter-form, .footer-newsletter-form').forEach(form => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const input = form.querySelector('input[type="email"]');
-      if (input && input.value) {
-        showToast('شكراً! تم الاشتراك في النشرة البريدية بنجاح ✓');
-        input.value = '';
-      }
-    });
-  });
-}
-
-/* =========================================================
-   VIEW TRACKER — GoatCounter + n8n
-   ========================================================= */
-function initGoatCounter() {
-  if (document.querySelector('script[data-goatcounter]')) return; // already loaded
-  const s = document.createElement('script');
-  s.setAttribute('data-goatcounter', 'https://techdosenews.goatcounter.com/count');
-  s.src = 'https://gc.zgo.at/count.js';
-  s.async = true;
-  document.head.appendChild(s);
-}
-
-function pingViewTracker(articleId) {
-  // GoatCounter already loaded globally — count article view
-  try { if (window.goatcounter) goatcounter.count({ path: '/article.html?id=' + articleId }); } catch {}
-
-  // n8n tracking endpoint (silent fail if unreachable)
+async function loadIndex() {
   try {
-    const ua = encodeURIComponent(navigator.userAgent.substring(0, 100));
-    const ref = encodeURIComponent(document.referrer.substring(0, 200));
-    const img = new Image();
-    img.src = 'https://localhost:5678/webhook/tdn-track?id=' + articleId + '&ref=' + ref + '&ua=' + ua + '&t=' + Date.now();
-  } catch {}
-}
-
-/* =========================================================
-   11. ARTICLE PAGE
-   ========================================================= */
-function initArticlePage() {
-  const params     = new URLSearchParams(window.location.search);
-  const id         = params.get('id') || articles[0]?.id || '1';
-  const article    = articles.find(a => a.id === id) || articles[0];
-
-  document.title   = `${article.title} — Tech Dose News`;
-  setMeta('og:title', article.title);
-  setMeta('og:image', article.image);
-  setMeta('og:description', article.excerpt);
-
-  setEl('breadcrumbCategory', article.category);
-  setEl('breadcrumbTitle', article.title);
-
-  const normCat = normalizeCategory(article.category);
-  const badge = document.getElementById('articleCatBadge');
-  if (badge) {
-    badge.textContent = normCat;
-    badge.className   = `article-cat-badge ${catClass[normCat] || 'cat-ai'}`;
-  }
-  setEl('articleReadTime', article.readTime);
-  setEl('articleDate', getArticleDateDisplay(article));
-  incrementView(id);
-  pingViewTracker(id);
-  const vc = getViewCounts();
-  setEl('articleViews', (vc[id] || 0) + ' مشاهدة');
-
-  setEl('articleHeadline', article.title);
-  const img = document.getElementById('articleImage');
-  if (img) { img.src = article.image; img.alt = article.title; }
-  setEl('articleCaption', `صورة: ${article.title}`);
-
-  const bodyEl = document.getElementById('articleBody');
-  if (bodyEl && article.body) bodyEl.innerHTML = DOMPurify ? DOMPurify.sanitize(article.body) : article.body;
-
-  const egyptBox = document.getElementById('egyptImpactBox');
-  const egyptBody = document.getElementById('egyptImpactBody');
-  if (article.hasEgyptImpact && article.egyptImpact) {
-    if (egyptBox) egyptBox.style.display = 'block';
-    if (egyptBody) egyptBody.innerHTML = DOMPurify ? DOMPurify.sanitize(article.egyptImpact || '') : (article.egyptImpact || '');
-  } else {
-    if (egyptBox) egyptBox.style.display = 'none';
-  }
-
-  const sourceEl = document.querySelector('.article-source span');
-  if (sourceEl) {
-    const src = article.source || article.sourceName || '';
-    sourceEl.textContent = src
-      ? `المصدر: ${escapeHtml(src)} | أُعيدت كتابته بواسطة Tech Dose News`
-      : 'أُعيدت كتابته بواسطة Tech Dose News';
-  }
-
-  renderArticleTags(article);
-
-  const url  = encodeURIComponent(window.location.href);
-  const text = encodeURIComponent(article.title);
-  setHref('shareFacebook',  `https://facebook.com/sharer/sharer.php?u=${url}`);
-  setHref('shareTelegram',  `https://t.me/share/url?url=${url}&text=${text}`);
-  setHref('shareWhatsapp',  `https://wa.me/?text=${text}%20${url}`);
-
-  const copyBtn = document.getElementById('shareCopy');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText(window.location.href)
-        .then(() => showToast('تم نسخ الرابط ✓'))
-        .catch(() => showToast('تعذّر نسخ الرابط'));
+    const res = await fetch(BASE + '/articles/index.json');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    allArticles = Array.isArray(data) ? data : (data.articles || []);
+    if (allArticles.length === 0) throw new Error('No articles');
+    for (const a of allArticles) {
+      a.categoryAr = getArticleCategory(a);
+      a.categoryKey = getCategoryKey(a);
+    }
+    allArticles.sort(function(a, b) { return new Date(getPubDate(b) || 0) - new Date(getPubDate(a) || 0); });
+    filteredArticles = [...allArticles];
+    renderAll();
+  } catch(e) {
+    document.querySelectorAll('.sb-loading, #sbGrid, #sbHero, #sbTrendingList, #sbLatestList').forEach(el => {
+      if (el) el.innerHTML = '<div class="sb-loading">âš  ØªØ¹Ø°Ø± ØªØ­Ù…ÙŠÙ„ Ø§Ù„Ù…Ù‚Ø§Ù„Ø§Øª â€” ' + e.message + '</div>';
     });
   }
+}
 
-  renderRelated(article);
+function renderAll() {
+  renderHero();
+  renderLatest();
+  renderTrending();
+  renderEditorsPicks();
+  renderCategories();
+  renderGrid();
+  renderCompanies();
+  renderMostRead();
+  renderFooterCats();
+  updateLastUpdate();
+  renderRelativeTimes();
+}
 
-  const dateEl = document.getElementById('articleDate');
-  const viewsEl = document.getElementById('articleViews');
-  setInterval(() => {
-    if (dateEl) dateEl.textContent = getArticleDateDisplay(article);
-    if (viewsEl) {
-      const vc2 = getViewCounts();
-      viewsEl.textContent = (vc2[id] || 0) + ' مشاهدة';
+function renderHero() {
+  const hero = document.getElementById('sbHero');
+  if (!hero || allArticles.length === 0) return;
+  const sorted = [...allArticles].sort(function(a, b) {
+    return new Date(getPubDate(b) || 0) - new Date(getPubDate(a) || 0);
+  });
+  let a = null;
+  for (const candidate of sorted) {
+    if (candidate.image && candidate.categoryAr && candidate.categoryAr !== 'Ø§Ù„ØªÙ‚Ù†ÙŠØ©' && candidate.categoryAr !== 'Ø¹Ø§Ù…') {
+      a = candidate;
+      break;
     }
-  }, 30000);
-
-  initTicker();
-  initHamburger();
-  initSearch();
-  initNewsletterForms();
-}
-
-function renderArticleTags(article) {
-  const container = document.getElementById('articleTags');
-  if (!container) return;
-
-  const words = (article.title || '').split(/\s+/).filter(w => w.length > 3);
-  const tagSet = new Set();
-
-  words.forEach(w => { if (w.length > 3) tagSet.add(w); });
-  if (article.category) tagSet.add(article.category);
-
-  if (article.tags && Array.isArray(article.tags)) {
-    article.tags.forEach(t => tagSet.add(t));
   }
-
-  const tags = [...tagSet].slice(0, 8);
-  if (tags.length === 0) { container.style.display = 'none'; return; }
-
-  container.style.display = 'flex';
-  container.innerHTML = `<span class="tag-label"><i class="fas fa-tags" aria-hidden="true"></i> الوسوم:</span>`
-    + tags.map(t => `<a href="index.html?search=${encodeURIComponent(t)}" class="tag-pill">${escapeHtml(t)}</a>`).join('');
+  if (!a) a = sorted[0];
+  const pubDate = getPubDate(a);
+  hero.innerHTML = '<div onclick="goto(\'' + escId(a.id) + '\')">' +
+    (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
+    '<div class="sb-hero-overlay"><div class="sb-cat-badge">' + esc(a.categoryAr) + '</div>' +
+    getFreshnessBadge(pubDate) +
+    '<h2>' + esc(a.title) + '</h2>' +
+    (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +
+    '<div class="sb-hero-meta"><span>' + esc(a.source_name || a.source || 'TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ') + '</span><span>' + getRelativeTimeHtml(pubDate) + '</span></div></div></div>';
 }
 
-function initFooterYear() {
-  const el = document.getElementById('footerYear');
-  if (el) el.textContent = new Date().getFullYear();
+function renderTrending() {
+  const list = document.getElementById('sbTrendingList');
+  if (!list) return;
+  const items = allArticles.slice(0, 5);
+  list.innerHTML = items.map((a, i) => {
+    const num = String(i + 1).padStart(2, '0');
+    return '<div class="sb-trending-item" onclick="goto(\'' + escId(a.id) + '\')">' +
+      '<span class="sb-trending-num">' + num + '</span>' +
+      '<div class="sb-trending-info"><span class="sb-trending-cat">' + esc(a.categoryAr) + '</span>' +
+      '<h4>' + esc(a.title) + '</h4>' +
+      '<span class="sb-trending-time">' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
+  }).join('');
 }
 
-function renderRelated(current) {
-  const grid = document.getElementById('relatedGrid');
+function renderLatest() {
+  const list = document.getElementById('sbLatestList');
+  if (!list) return;
+  const items = allArticles.slice(1, 7);
+  list.innerHTML = items.map(a => {
+    return '<div class="sb-latest-item" onclick="goto(\'' + escId(a.id) + '\')">' +
+      (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
+      '<div class="sb-latest-info"><span class="sb-latest-cat">' + esc(a.categoryAr) + '</span>' +
+      '<h4>' + esc(a.title) + '</h4>' +
+      '<span class="sb-latest-date">' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
+  }).join('');
+}
+
+function renderEditorsPicks() {
+  const grid = document.getElementById('sbEditorsGrid');
+  if (!grid || allArticles.length < 3) return;
+  const scored = [...allArticles].sort(function(a, b) {
+    return (b.quality_score || 0) - (a.quality_score || 0);
+  });
+  const items = scored.slice(0, 3);
+  grid.innerHTML = items.map(a => {
+    return '<div class="sb-editor-card" onclick="goto(\'' + escId(a.id) + '\')">' +
+      (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
+      '<div class="sb-editor-body"><span class="sb-editor-cat">' + esc(a.categoryAr) + '</span>' +
+      '<h3>' + esc(a.title) + '</h3>' +
+      '<span class="sb-editor-time">' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
+  }).join('');
+}
+
+function renderGrid() {
+  const grid = document.getElementById('sbGrid');
+  const loadMoreContainer = document.getElementById('sbLoadMoreContainer');
   if (!grid) return;
-  const normCat = normalizeCategory(current.category);
-  const related = articles
-    .filter(a => a.id !== current.id && normalizeCategory(a.category) === normCat)
-    .slice(0, 3);
-
-  const fallback = related.length < 3
-    ? articles.filter(a => a.id !== current.id && !related.includes(a)).slice(0, 3 - related.length)
-    : [];
-
-  const all = [...related, ...fallback].slice(0, 3);
-  grid.innerHTML = all.map((a, i) => buildCard(a, i)).join('');
-  lazyLoadImages();
+  const items = filteredArticles;
+  if (items.length === 0) {
+    grid.innerHTML = '<div class="sb-loading">Ù„Ø§ ØªÙˆØ¬Ø¯ Ù…Ù‚Ø§Ù„Ø§Øª Ù…ØªØ·Ø§Ø¨Ù‚Ø©</div>';
+    if (loadMoreContainer) loadMoreContainer.innerHTML = '';
+    return;
+  }
+  gridRenderedCount = 0;
+  grid.innerHTML = '';
+  if (loadMoreContainer) loadMoreContainer.innerHTML = '';
+  appendGridItems();
 }
 
-/* =========================================================
-   HELPERS
-   ========================================================= */
-function escapeHtml(str) {
-  if (!str) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
+function appendGridItems() {
+  const grid = document.getElementById('sbGrid');
+  const loadMoreContainer = document.getElementById('sbLoadMoreContainer');
+  if (!grid) return;
+  const items = filteredArticles;
+  if (items.length === 0) return;
+  const frag = document.createDocumentFragment();
+  const start = gridRenderedCount;
+  const end = Math.min(start + PAGE_SIZE, items.length);
+  const ad = '<div class="sb-ad-box" style="min-height:250px;margin:0 0 20px;grid-column:1/-1"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">300 Ã— 250</div></div>';
+  for (let i = start; i < end; i++) {
+    const a = items[i];
+    const card = document.createElement('div');
+    card.className = 'sb-card';
+    card.style.animation = 'sbFadeIn 0.3s ease';
+    card.onclick = function() { goto(a.id); };
+    let cardHtml = '';
+    if (a.image) cardHtml += '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">';
+    cardHtml += '<div class="sb-card-body"><div class="sb-card-cat">' + esc(a.categoryAr) + '</div>' +
+      '<h3>' + esc(a.title) + '</h3>' +
+      (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +
+      '<div class="sb-card-meta"><span>' + esc(a.source_name || a.source || 'TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ') + '</span><span>' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
+    card.innerHTML = cardHtml;
+    frag.appendChild(card);
+    const globalIndex = i;
+    if ((globalIndex + 1) % 6 === 0 && globalIndex + 1 < items.length) {
+      const adDiv = document.createElement('div');
+      adDiv.innerHTML = ad;
+      frag.appendChild(adDiv.firstChild || adDiv);
+    }
+  }
+  grid.appendChild(frag);
+  gridRenderedCount = end;
+  if (loadMoreContainer) {
+    if (end < items.length) {
+      loadMoreContainer.innerHTML = '<button class="sb-load-more-btn" onclick="loadMore()">Ø§Ù„Ù…Ø²ÙŠØ¯ Ù…Ù† Ø§Ù„Ø£Ø®Ø¨Ø§Ø±</button>';
+    } else {
+      loadMoreContainer.innerHTML = '';
+    }
+  }
 }
 
-function setEl(id, text) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = text;
+function loadMore() {
+  appendGridItems();
+  const btn = document.querySelector('.sb-load-more-btn');
+  if (btn) {
+    btn.textContent = 'Ø¬Ø§Ø±Ù Ø§Ù„ØªØ­Ù…ÙŠÙ„...';
+    setTimeout(function() {
+      const container = document.getElementById('sbLoadMoreContainer');
+      if (container) {
+        container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }, 100);
+  }
 }
 
-function setHref(id, href) {
-  const el = document.getElementById(id);
-  if (el) el.href = href;
+function renderCategories() {
+  const grid = document.getElementById('sbCategoriesGrid');
+  if (!grid) return;
+  const mainCats = {ai:'Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ',companies:'Ø´Ø±ÙƒØ§Øª',cybersecurity:'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ',mobile:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',ev:'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©'};
+  grid.innerHTML = Object.entries(mainCats).map(([key, name]) =>
+    '<div class="sb-cat-chip" onclick="location.href=\'category.html?cat=' + key + '\'">' + name + '</div>'
+  ).join('');
 }
 
-function setMeta(property, content) {
-  let el = document.querySelector(`meta[property="${property}"]`);
-  if (!el) { el = document.createElement('meta'); el.setAttribute('property', property); document.head.appendChild(el); }
-  el.setAttribute('content', content);
+function renderCompanies() {
+  const list = document.getElementById('sbCompanyList');
+  if (!list) return;
+  list.innerHTML = COMPANIES.map(c =>
+    '<div class="sb-company-item"><div class="sb-company-logo">' + c.sym + '</div>' +
+    '<span class="sb-company-name">' + c.name + '</span></div>'
+  ).join('');
 }
 
-function showToast(msg) {
-  const existing = document.getElementById('tdnToast');
-  if (existing) existing.remove();
-
-  const toast = document.createElement('div');
-  toast.id = 'tdnToast';
-  toast.setAttribute('role', 'alert');
-  toast.setAttribute('aria-live', 'polite');
-  toast.style.cssText = `
-    position:fixed;bottom:24px;right:24px;z-index:9999;
-    background:var(--navy);color:#fff;
-    font-family:'Cairo',sans-serif;font-size:.95rem;font-weight:600;
-    padding:14px 22px;border-radius:10px;
-    box-shadow:0 6px 20px rgba(0,0,0,0.25);
-    animation:fadeInUp .3s ease both;
-    max-width:320px;line-height:1.5;
-  `;
-  toast.textContent = msg;
-  document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 3500);
+function renderMostRead() {
+  const list = document.getElementById('sbMostReadList');
+  if (!list) return;
+  const items = allArticles.slice(0, 5);
+  list.innerHTML = items.map((a, i) => {
+    return '<div class="sb-most-read-item" onclick="goto(\'' + escId(a.id) + '\')">' +
+      '<span class="sb-most-read-num">' + (i + 1) + '</span>' +
+      '<div class="sb-most-read-info"><span class="sb-most-read-cat">' + esc(a.categoryAr) + '</span>' +
+      '<h4>' + esc(a.title) + '</h4></div></div>';
+  }).join('');
 }
+
+function renderFooterCats() {
+  const list = document.getElementById('sbFooterCategories');
+  if (!list) return;
+  const mainCats = {ai:'Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ',companies:'Ø´Ø±ÙƒØ§Øª',cybersecurity:'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ',mobile:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',ev:'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©'};
+  list.innerHTML = Object.entries(mainCats).map(([key, name]) =>
+    '<li><a href="category.html?cat=' + key + '">' + name + '</a></li>'
+  ).join('');
+}
+
+function renderRelativeTimes() {
+  document.querySelectorAll('.sb-relative-time').forEach(function(el) {
+    var pub = el.getAttribute('data-pub');
+    if (pub) el.textContent = formatRelativeTime(pub);
+  });
+}
+
+function getHijriDate(date) {
+  try {
+    return new Intl.DateTimeFormat('ar-SA-u-ca-islamic', {day:'numeric',month:'long',year:'numeric'}).format(date);
+  } catch(e) { return ''; }
+}
+
+function updateLastUpdate() {
+  const now = new Date();
+  const month = ARABIC_MONTHS[now.getMonth()];
+  const el = document.getElementById('sbLastUpdate');
+  if (el) {
+    el.textContent = now.getDate() + ' ' + month + ' ' + now.getFullYear() + ' | ' + getHijriDate(now);
+  }
+  const timeEl = document.getElementById('sbHeaderTime');
+  if (timeEl) {
+    const h = String(now.getHours()).padStart(2, '0');
+    const m = String(now.getMinutes()).padStart(2, '0');
+    timeEl.textContent = h + ':' + m;
+  }
+}
+
+function filterCategory(cat) {
+  if (cat === 'all') {
+    filteredArticles = [...allArticles];
+  } else {
+    const catName = CATEGORY_MAP[cat] || cat;
+    filteredArticles = allArticles.filter(a =>
+      a.categoryAr === catName || a.categoryKey === cat ||
+      (a.tags && a.tags.some(t => TAG_CATEGORY_MAP[t] === cat || t === catName))
+    );
+  }
+  document.querySelectorAll('.sb-nav a').forEach(el => {
+    el.classList.toggle('active', el.dataset.cat === cat);
+  });
+  renderGrid();
+  closeMenu();
+  window.scrollTo({top: document.getElementById('sbGrid')?.offsetTop - 80 || 0, behavior: 'smooth'});
+}
+
+function filterSearch(query) {
+  if (!query.trim()) {
+    filteredArticles = [...allArticles];
+  } else {
+    const q = query.trim().toLowerCase();
+    filteredArticles = allArticles.filter(a =>
+      (a.title && a.title.toLowerCase().includes(q)) ||
+      (a.excerpt && a.excerpt.toLowerCase().includes(q)) ||
+      (a.categoryAr && a.categoryAr.toLowerCase().includes(q)) ||
+      (a.tags && a.tags.some(t => t.toLowerCase().includes(q)))
+    );
+  }
+  renderGrid();
+  const countEl = document.getElementById('sbSearchCount');
+  if (countEl) {
+    countEl.textContent = filteredArticles.length === allArticles.length ? '' : 'Ù†ØªØ§Ø¦Ø¬ Ø§Ù„Ø¨Ø­Ø«: ' + filteredArticles.length + ' Ù…Ù‚Ø§Ù„';
+  }
+}
+
+function toggleMenu() {
+  document.getElementById('sbNav').classList.toggle('open');
+  document.getElementById('sbOverlay').classList.toggle('show');
+}
+
+function closeMenu() {
+  document.getElementById('sbNav').classList.remove('open');
+  document.getElementById('sbOverlay').classList.remove('show');
+}
+
+function toggleSearch() {
+  const bar = document.getElementById('sbSearchBar');
+  bar.classList.toggle('show');
+  if (bar.classList.contains('show')) {
+    setTimeout(() => document.getElementById('sbSearchInput').focus(), 100);
+  }
+}
+
+function closeSearch() {
+  document.getElementById('sbSearchBar').classList.remove('show');
+  document.getElementById('sbSearchInput').value = '';
+  filterSearch('');
+}
+
+function esc(s) { if (!s) return ''; var d = document.createElement('div'); d.appendChild(document.createTextNode(s)); return d.innerHTML; }
+function escId(id) { return encodeURIComponent(id || ''); }
+
+function formatDate(d) {
+  if (!d) return '';
+  try {
+    const dt = new Date(d);
+    return ARABIC_DAYS[dt.getDay()] + 'ØŒ ' + dt.getDate() + ' ' + ARABIC_MONTHS[dt.getMonth()] + ' ' + dt.getFullYear();
+  } catch(e) { return d; }
+}
+
+function formatDateShort(d) {
+  if (!d) return '';
+  try {
+    const dt = new Date(d);
+    return dt.getDate() + ' ' + ARABIC_MONTHS[dt.getMonth()];
+  } catch(e) { return d; }
+}
+
+function getPubDate(a) { return a.published_at || a.date || a.created_at || ''; }
+
+function formatRelativeTime(dateStr) {
+  if (!dateStr) return '';
+  const now = Date.now();
+  const pub = new Date(dateStr).getTime();
+  if (isNaN(pub)) return '';
+  const diffMs = now - pub;
+  if (diffMs < 0) return 'Ø§Ù„Ø¢Ù†';
+  const mins = Math.floor(diffMs / 60000);
+  if (mins < 1) return 'Ø§Ù„Ø¢Ù†';
+  if (mins < 60) {
+    if (mins === 1) return 'Ù…Ù†Ø° Ø¯Ù‚ÙŠÙ‚Ø©';
+    if (mins === 2) return 'Ù…Ù†Ø° Ø¯Ù‚ÙŠÙ‚ØªÙŠÙ†';
+    if (mins <= 10) return 'Ù…Ù†Ø° ' + mins + ' Ø¯Ù‚Ø§Ø¦Ù‚';
+    return 'Ù…Ù†Ø° ' + mins + ' Ø¯Ù‚ÙŠÙ‚Ø©';
+  }
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) {
+    if (hours === 1) return 'Ù…Ù†Ø° Ø³Ø§Ø¹Ø©';
+    if (hours === 2) return 'Ù…Ù†Ø° Ø³Ø§Ø¹ØªÙŠÙ†';
+    if (hours <= 10) return 'Ù…Ù†Ø° ' + hours + ' Ø³Ø§Ø¹Ø§Øª';
+    return 'Ù…Ù†Ø° ' + hours + ' Ø³Ø§Ø¹Ø©';
+  }
+  const days = Math.floor(hours / 24);
+  if (days < 7) {
+    if (days === 1) return 'Ù…Ù†Ø° ÙŠÙˆÙ…';
+    if (days === 2) return 'Ù…Ù†Ø° ÙŠÙˆÙ…ÙŠÙ†';
+    if (days <= 10) return 'Ù…Ù†Ø° ' + days + ' Ø£ÙŠØ§Ù…';
+    return 'Ù…Ù†Ø° ' + days + ' ÙŠÙˆÙ…Ù‹Ø§';
+  }
+  const weeks = Math.floor(days / 7);
+  if (weeks < 5) {
+    if (weeks === 1) return 'Ù…Ù†Ø° Ø£Ø³Ø¨ÙˆØ¹';
+    if (weeks === 2) return 'Ù…Ù†Ø° Ø£Ø³Ø¨ÙˆØ¹ÙŠÙ†';
+    if (weeks <= 10) return 'Ù…Ù†Ø° ' + weeks + ' Ø£Ø³Ø§Ø¨ÙŠØ¹';
+    return 'Ù…Ù†Ø° ' + weeks + ' Ø£Ø³Ø¨ÙˆØ¹Ù‹Ø§';
+  }
+  const months = Math.floor(days / 30);
+  if (months < 12) {
+    if (months === 1) return 'Ù…Ù†Ø° Ø´Ù‡Ø±';
+    if (months === 2) return 'Ù…Ù†Ø° Ø´Ù‡Ø±ÙŠÙ†';
+    if (months <= 10) return 'Ù…Ù†Ø° ' + months + ' Ø£Ø´Ù‡Ø±';
+    return 'Ù…Ù†Ø° ' + months + ' Ø´Ù‡Ø±Ù‹Ø§';
+  }
+  const years = Math.floor(months / 12);
+  if (years === 1) return 'Ù…Ù†Ø° Ø³Ù†Ø©';
+  if (years === 2) return 'Ù…Ù†Ø° Ø³Ù†ØªÙŠÙ†';
+  if (years <= 10) return 'Ù…Ù†Ø° ' + years + ' Ø³Ù†ÙˆØ§Øª';
+  return 'Ù…Ù†Ø° ' + years + ' Ø³Ù†Ø©';
+}
+
+function formatExactDateTime(dateStr) {
+  if (!dateStr) return '';
+  try {
+    const dt = new Date(dateStr);
+    if (isNaN(dt.getTime())) return dateStr;
+    const h = String(dt.getHours()).padStart(2, '0');
+    const m = String(dt.getMinutes()).padStart(2, '0');
+    return dt.getDate() + ' ' + ARABIC_MONTHS[dt.getMonth()] + ' ' + dt.getFullYear() + ' â€¢ ' + h + ':' + m;
+  } catch(e) { return dateStr; }
+}
+
+function getRelativeTimeHtml(dateStr) {
+  if (!dateStr) return '';
+  return '<span class="sb-relative-time" data-pub="' + dateStr + '">' + formatRelativeTime(dateStr) + '</span>';
+}
+
+function getFreshnessBadge(dateStr) {
+  if (!dateStr) return '';
+  const now = Date.now();
+  const pub = new Date(dateStr).getTime();
+  if (isNaN(pub)) return '';
+  const diffMs = now - pub;
+  const hours = Math.floor(diffMs / 3600000);
+  if (hours < 1) return '<span class="sb-freshness-badge">Ø¬Ø¯ÙŠØ¯</span>';
+  if (hours < 24) return '<span class="sb-freshness-badge sb-freshness-recent">' + formatRelativeTime(dateStr) + '</span>';
+  return '';
+}
+
+function goto(id) { window.location.href = 'article.html?id=' + escId(id); }
+
+function getRelatedArticles(article, count) {
+  count = count || 4;
+  let related = [];
+  if (article.tags && article.tags.length > 0) {
+    const tagHits = {};
+    for (const a of allArticles) {
+      if (a.id === article.id) continue;
+      if (!a.tags) continue;
+      let score = 0;
+      if (a.categoryKey === article.categoryKey || a.categoryAr === article.categoryAr) score += 3;
+      for (const tag of article.tags) {
+        if (a.tags.some(t => t.toLowerCase() === tag.toLowerCase())) score += 2;
+        if (a.tags.some(t => t.toLowerCase().includes(tag.toLowerCase()) || tag.toLowerCase().includes(t.toLowerCase()))) score += 1;
+      }
+      if (score > 0) tagHits[a.id] = { article: a, score: score };
+    }
+    related = Object.values(tagHits).sort((x, y) => y.score - x.score).slice(0, count).map(x => x.article);
+  }
+  if (related.length < count) {
+    const more = allArticles.filter(a => a.id !== article.id && !related.some(r => r.id === a.id));
+    more.sort(() => Math.random() - 0.5);
+    related = related.concat(more.slice(0, count - related.length));
+  }
+  return related;
+}
+
+function renderRelatedArticles(article) {
+  const container = document.getElementById('sbRelatedArticles');
+  if (!container) return '';
+  const related = getRelatedArticles(article, 4);
+  if (related.length === 0) return '';
+  const html = related.map(a =>
+    '<div class="sb-related-item" onclick="goto(\'' + escId(a.id) + '\')">' +
+    (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
+    '<div class="sb-related-info"><span class="sb-related-cat">' + esc(a.categoryAr) + '</span>' +
+    '<h4>' + esc(a.title) + '</h4></div></div>'
+  ).join('');
+  container.innerHTML = '<section class="sb-related-section"><h2>Ù…Ù‚Ø§Ù„Ø§Øª Ø°Ø§Øª ØµÙ„Ø©</h2><div class="sb-related-grid">' + html + '</div></section>';
+}
+
+function renderAd(containerId, size) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  if (AD_CONFIG.enabled && AD_CONFIG.adsterraCodes[size]) {
+    container.innerHTML = AD_CONFIG.adsterraCodes[size];
+  }
+}
+
+function renderStaticAd(html, size) {
+  if (AD_CONFIG.enabled && AD_CONFIG.adsterraCodes[size]) {
+    return AD_CONFIG.adsterraCodes[size];
+  }
+  return html;
+}
+
+function injectAdsIntoBody(bodyHtml) {
+  if (!bodyHtml) return '';
+  const pRegex = /<p[^>]*>[\s\S]*?<\/p>/gi;
+  const paragraphs = bodyHtml.match(pRegex);
+  if (!paragraphs || paragraphs.length < 3) return bodyHtml;
+  let result = '';
+  for (let i = 0; i < paragraphs.length; i++) {
+    result += paragraphs[i];
+    if (i === 2) {
+      result += renderStaticAd('<div class="sb-ad-inarticle sb-ad-after-p3"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">336 Ã— 280</div></div>', '336x280');
+    } else if (i === Math.floor(paragraphs.length / 2)) {
+      result += renderStaticAd('<div class="sb-ad-inarticle sb-ad-middle"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">336 Ã— 280</div></div>', '336x280');
+    } else if (i === paragraphs.length - 2) {
+      result += renderStaticAd('<div class="sb-ad-inarticle sb-ad-before-end"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">336 Ã— 280</div></div>', '336x280');
+    }
+  }
+  return result;
+}
+
+async function loadArticle() {
+  const main = document.getElementById('sbArticleMain');
+  if (!main) return;
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  if (!id) { main.innerHTML = '<div class="sb-container"><div class="sb-loading">âš  Ù…Ø¹Ø±Ù Ø§Ù„Ù…Ù‚Ø§Ù„ ØºÙŠØ± Ù…ÙˆØ¬ÙˆØ¯</div></div>'; return; }
+  try {
+    if (allArticles.length === 0) {
+      const res = await fetch(BASE + '/articles/index.json');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      allArticles = Array.isArray(data) ? data : (data.articles || []);
+      for (const a of allArticles) {
+        a.categoryAr = getArticleCategory(a);
+        a.categoryKey = getCategoryKey(a);
+      }
+    }
+    const a = allArticles.find(art => art.id === id);
+    if (!a) throw new Error('Ù„Ù… ÙŠØªÙ… Ø§Ù„Ø¹Ø«ÙˆØ± Ø¹Ù„Ù‰ Ø§Ù„Ù…Ù‚Ø§Ù„');
+    document.title = a.title + ' â€” TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ';
+    document.querySelector('[property="og:title"]') && (document.querySelector('[property="og:title"]').content = a.title + ' â€” TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ');
+    document.querySelector('[property="og:description"]') && (document.querySelector('[property="og:description"]').content = a.excerpt || '');
+    document.querySelector('[property="og:image"]') && (document.querySelector('[property="og:image"]').content = a.image || '');
+    document.querySelector('[property="og:url"]') && (document.querySelector('[property="og:url"]').content = 'https://osamaelfeky567.github.io/techdosenews/article.html?id=' + a.id);
+    document.querySelector('[name="twitter:image"]') && (document.querySelector('[name="twitter:image"]').content = a.image || '');
+    const tagsHtml = (a.tags || []).map(t => '<span>' + esc(t) + '</span>').join('');
+    a.categoryAr = getArticleCategory(a);
+    const catBadge = '<a href="category.html?cat=' + escId(a.categoryKey) + '" style="display:inline-block;background:#e0e7ff;color:var(--accent);padding:2px 10px;border-radius:4px;font-size:.75rem;font-weight:700;margin-bottom:8px;text-decoration:none">' + esc(a.categoryAr) + '</a>';
+    const bodyWithAds = a.body ? injectAdsIntoBody(a.body) : '';
+    main.innerHTML = '<div class="sb-container"><article class="sb-article">' +
+      (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '">' : '') +
+      catBadge +
+      '<h1>' + esc(a.title) + '</h1>' +
+      '<div class="sb-article-meta"><span>' + esc(a.source_name || a.source || 'TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ') + '</span><span>' + (a.readTime || 'Ù‚Ø±Ø§Ø¡Ø© Ø¯Ù‚ÙŠÙ‚Ø©') + '</span></div>' +
+      '<div class="sb-article-datetime">' + formatExactDateTime(getPubDate(a)) + ' <span class="sb-article-relative">' + getRelativeTimeHtml(getPubDate(a)) + '</span></div>' +
+      '<div class="sb-ad-inarticle sb-ad-after-title"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">728 Ã— 90</div></div>' +
+      (a.excerpt ? '<div class="sb-article-body"><p><strong>' + esc(a.excerpt) + '</strong></p></div>' : '') +
+      (bodyWithAds ? '<div class="sb-article-body">' + bodyWithAds + '</div>' : '') +
+      (tagsHtml ? '<div class="sb-article-tags">' + tagsHtml + '</div>' : '') +
+      '<div class="sb-ad-box sb-ad-728x90" style="margin:24px 0 0"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">728 Ã— 90</div></div>' +
+      '<div class="sb-ad-box" style="min-height:250px;margin:24px 0"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">300 Ã— 250</div></div>' +
+      '<div id="sbRelatedArticles"></div>' +
+      '<div class="sb-article-nav"><a href="index.html">â† Ø§Ù„Ø±Ø¬ÙˆØ¹ Ù„Ù„Ø±Ø¦ÙŠØ³ÙŠØ©</a><a href="category.html?cat=' + escId(a.categoryKey) + '">' + esc(a.categoryAr) + ' â†</a></div>' +
+      '</article><aside class="sb-article-sidebar"><div class="sb-ad-box sb-ad-300x250"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">300 Ã— 250</div></div>' +
+      '<div class="sb-ad-sticky"><div class="sb-ad-box sb-ad-300x600"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">300 Ã— 600</div></div></div></aside></div>';
+    renderRelatedArticles(a);
+    injectNewsArticleSchema(a);
+  } catch(e) {
+    main.innerHTML = '<div class="sb-container"><div class="sb-loading">âš  ØªØ¹Ø°Ø± ØªØ­Ù…ÙŠÙ„ Ø§Ù„Ù…Ù‚Ø§Ù„ â€” ' + e.message + '</div></div>';
+  }
+}
+
+function injectNewsArticleSchema(a) {
+  const pubDate = getPubDate(a) || new Date().toISOString();
+  const url = 'https://osamaelfeky567.github.io/techdosenews/article.html?id=' + escId(a.id);
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: a.title,
+    description: (a.excerpt || '').substring(0, 300),
+    image: a.image || 'https://osamaelfeky567.github.io/techdosenews/sandbox/og-image.png',
+    author: { '@type': 'Organization', name: 'TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ' },
+    publisher: { '@type': 'Organization', name: 'TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ', logo: { '@type': 'ImageObject', url: 'https://osamaelfeky567.github.io/techdosenews/sandbox/og-image.png' } },
+    datePublished: pubDate,
+    dateModified: pubDate,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url }
+  };
+  const el = document.createElement('script');
+  el.type = 'application/ld+json';
+  el.textContent = JSON.stringify(schema, null, 2);
+  document.head.appendChild(el);
+}
+
+async function initCategoryPage() {
+  const main = document.getElementById('sbCategoryMain');
+  if (!main) return;
+  const params = new URLSearchParams(window.location.search);
+  const catKey = params.get('cat') || 'all';
+  const catName = CATEGORY_MAP[catKey] || 'Ø§Ù„ØªÙ‚Ù†ÙŠØ©';
+  document.title = catName + ' â€” TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ';
+  try {
+    const res = await fetch(BASE + '/articles/index.json');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    allArticles = Array.isArray(data) ? data : (data.articles || []);
+    for (const a of allArticles) {
+      a.categoryAr = getArticleCategory(a);
+      a.categoryKey = getCategoryKey(a);
+    }
+    const catArticles = catKey === 'all' ? allArticles : allArticles.filter(a =>
+      a.categoryKey === catKey || a.categoryAr === catName ||
+      (a.tags && a.tags.some(t => TAG_CATEGORY_MAP[t] === catKey || t === catName))
+    );
+    const count = catArticles.length;
+    const mainCats = {ai:'Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ',companies:'Ø´Ø±ÙƒØ§Øª',cybersecurity:'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ',mobile:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',ev:'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©'};
+    const chips = Object.entries(mainCats).map(([key, name]) =>
+      '<div class="sb-cat-chip' + (key === catKey ? ' sb-cat-chip-active' : '') + '" onclick="location.href=\'category.html?cat=' + key + '\'">' + name + '</div>'
+    ).join('');
+    const adFeed = '<div class="sb-ad-box" style="min-height:250px;margin:0 0 20px;grid-column:1/-1"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">300 Ã— 250</div></div>';
+    let gridHtml = '';
+    if (catArticles.length === 0) {
+      gridHtml = '<div class="sb-loading">Ù„Ø§ ØªÙˆØ¬Ø¯ Ù…Ù‚Ø§Ù„Ø§Øª ÙÙŠ Ù‡Ø°Ø§ Ø§Ù„ØªØµÙ†ÙŠÙ</div>';
+    } else {
+      const items = catArticles.slice(0, 20);
+      for (let i = 0; i < items.length; i++) {
+        const a = items[i];
+        gridHtml += '<div class="sb-card" onclick="goto(\'' + escId(a.id) + '\')">' +
+          (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
+          '<div class="sb-card-body"><div class="sb-card-cat">' + esc(a.categoryAr) + '</div>' +
+          '<h3>' + esc(a.title) + '</h3>' +
+          (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +
+          '<div class="sb-card-meta"><span>' + esc(a.source_name || a.source || 'TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ') + '</span><span>' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div></div>';
+        if ((i + 1) % 8 === 0 && i + 1 < items.length) {
+          gridHtml += adFeed;
+        }
+      }
+    }
+    main.innerHTML = '<div class="sb-container">' +
+      '<div class="sb-ad-box sb-ad-728x90"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">728 Ã— 90</div></div>' +
+      '<div class="sb-category-header"><h1>' + esc(catName) + '</h1><span class="sb-category-count">' + count + ' Ù…Ù‚Ø§Ù„</span></div>' +
+      '<div class="sb-category-chips">' + chips + '</div>' +
+      '<div class="sb-grid">' + gridHtml + '</div>' +
+      '<div class="sb-ad-box sb-ad-728x90"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">728 Ã— 90</div></div></div>';
+  } catch(e) {
+    main.innerHTML = '<div class="sb-container"><div class="sb-loading">âš  ØªØ¹Ø°Ø± ØªØ­Ù…ÙŠÙ„ Ø§Ù„ØªØµÙ†ÙŠÙ â€” ' + e.message + '</div></div>';
+  }
+}
+
+const ANALYTICS_KEY = 'td_analytics';
+function trackEvent(category, action, label) {
+  try {
+    let data = JSON.parse(localStorage.getItem(ANALYTICS_KEY) || '[]');
+    data.push({ cat: category, action: action, label: label, ts: Date.now() });
+    if (data.length > 10000) data = data.slice(-5000);
+    localStorage.setItem(ANALYTICS_KEY, JSON.stringify(data));
+  } catch(e) {}
+}
+function trackAdImpression(size) { trackEvent('Ad', 'impression', size); }
+function trackAdClick(size) { trackEvent('Ad', 'click', size); }
+function trackPageView(page) { trackEvent('Page', 'view', page); }
+function trackArticleView(id, title) { trackEvent('Article', 'view', id); }
+
+function initAnalytics() {
+  trackPageView(window.location.pathname);
+}
+
+function initAnalyticsDashboard() {
+  const container = document.getElementById('sbAnalyticsDashboard');
+  if (!container) return;
+  try {
+    const raw = JSON.parse(localStorage.getItem(ANALYTICS_KEY) || '[]');
+    const totalViews = raw.filter(e => e.cat === 'Page' && e.action === 'view').length;
+    const articleViews = raw.filter(e => e.cat === 'Article').length;
+    const adImpressions = raw.filter(e => e.action === 'impression').length;
+    const adClicks = raw.filter(e => e.action === 'click').length;
+    const ctr = adImpressions > 0 ? ((adClicks / adImpressions) * 100).toFixed(2) : '0.00';
+    const estRevenue = (adImpressions * 0.002).toFixed(2);
+    const rpm = totalViews > 0 ? ((estRevenue / totalViews) * 1000).toFixed(2) : '0.00';
+    container.innerHTML =
+      '<div class="sb-analytics-grid">' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + totalViews + '</span><span class="sb-analytics-label">Ù…Ø´Ø§Ù‡Ø¯Ø© Ø§Ù„ØµÙØ­Ø§Øª</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + articleViews + '</span><span class="sb-analytics-label">Ù…Ø´Ø§Ù‡Ø¯Ø© Ø§Ù„Ù…Ù‚Ø§Ù„Ø§Øª</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + adImpressions + '</span><span class="sb-analytics-label">Ø¸Ù‡ÙˆØ± Ø§Ù„Ø¥Ø¹Ù„Ø§Ù†Ø§Øª</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + adClicks + '</span><span class="sb-analytics-label">Ù†Ù‚Ø±Ø§Øª Ø§Ù„Ø¥Ø¹Ù„Ø§Ù†Ø§Øª</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + ctr + '%</span><span class="sb-analytics-label">Ù†Ø³Ø¨Ø© Ø§Ù„Ù†Ù‚Ø± (CTR)</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">$' + estRevenue + '</span><span class="sb-analytics-label">Ø§Ù„Ø¥ÙŠØ±Ø§Ø¯Ø§Øª Ø§Ù„Ù…Ù‚Ø¯Ø±Ø©</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">$' + rpm + '</span><span class="sb-analytics-label"> RPM</span></div>' +
+      '</div>';
+    const recent = raw.slice(-20).reverse();
+    if (recent.length > 0) {
+      container.innerHTML += '<div class="sb-analytics-log"><h3>Ø¢Ø®Ø± Ø§Ù„Ø£Ø­Ø¯Ø§Ø«</h3>' +
+        recent.map(e => '<div class="sb-analytics-entry"><span>' + e.cat + '</span><span>' + e.action + '</span><span class="sb-analytics-ago">' + Math.floor((Date.now() - e.ts) / 60000) + ' Ø¯Ù‚Ø§Ø¦Ù‚</span></div>').join('') +
+        '</div>';
+    }
+  } catch(e) {
+    container.innerHTML = '<div class="sb-loading">âš  ØªØ¹Ø°Ø± ØªØ­Ù…ÙŠÙ„ Ø§Ù„ØªØ­Ù„ÙŠÙ„Ø§Øª</div>';
+  }
+}
+
+if (document.getElementById('sbGrid')) { loadIndex(); setInterval(function() { updateLastUpdate(); renderRelativeTimes(); }, 60000); updateLastUpdate(); }
+if (document.getElementById('sbArticleMain')) { loadArticle(); initAnalytics(); }
+if (document.getElementById('sbCategoryMain')) { initCategoryPage(); initAnalytics(); }
+if (document.getElementById('sbAnalyticsDashboard')) { initAnalyticsDashboard(); }

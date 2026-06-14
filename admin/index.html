@@ -603,7 +603,7 @@ async function loadDb() {
 
 async function loadIndex() {
   try {
-    const j = await ghGetJson('articles/index.json');
+    const j = await ghGetJson('data/articles/index.json');
     INDEX = j.data;
   } catch { INDEX = []; }
 }
@@ -807,7 +807,7 @@ async function renderDashboard() {
     return;
   }
   container.innerHTML = `<table><thead><tr><th>العنوان</th><th>التصنيف</th><th>التاريخ</th></tr></thead><tbody>${recent.map(a => `
-    <tr style="cursor:pointer" onclick="editArticle(${a.id})">
+    <tr style="cursor:pointer" onclick="editArticle('${esc(a.id)}')">
       <td>${esc(a.title).substring(0,60)}</td>
       <td><span class="badge badge-published">${esc(a.category)}</span></td>
       <td style="font-size:.8rem;color:var(--text3)">${a.publishedAt ? new Date(a.publishedAt).toLocaleDateString('ar-EG') : '-'}</td>
@@ -1049,12 +1049,12 @@ async function saveArticle(formData) {
   // Save to GitHub
   let dbSha = '', idxSha = '';
   try { const j = await ghFetch('articles_db.json'); dbSha = j.sha; } catch {}
-  try { const j = await ghFetch('articles/index.json'); idxSha = j.sha; } catch {}
+  try { const j = await ghFetch('data/articles/index.json'); idxSha = j.sha; } catch {}
 
   await ghPut('articles_db.json', JSON.stringify(DB, null, 2), isNew ? 'إضافة مقال جديد' : 'تحديث مقال: ' + article.title_ar, dbSha);
 
   if (formData.status === 'published') {
-    await ghPut('articles/index.json', JSON.stringify(INDEX, null, 2), 'تحديث فهرس المقالات', idxSha);
+    await ghPut('data/articles/index.json', JSON.stringify(INDEX, null, 2), 'تحديث فهرس المقالات', idxSha);
   }
 
   showToast(isNew ? 'تم إضافة المقال بنجاح' : 'تم تحديث المقال بنجاح', 'success');
@@ -1070,10 +1070,10 @@ async function deleteArticle(id) {
 
       let dbSha = '', idxSha = '';
       try { const j = await ghFetch('articles_db.json'); dbSha = j.sha; } catch {}
-      try { const j = await ghFetch('articles/index.json'); idxSha = j.sha; } catch {}
+      try { const j = await ghFetch('data/articles/index.json'); idxSha = j.sha; } catch {}
 
       await ghPut('articles_db.json', JSON.stringify(DB, null, 2), 'حذف مقال من قاعدة البيانات', dbSha);
-      await ghPut('articles/index.json', JSON.stringify(INDEX, null, 2), 'حذف مقال من الفهرس', idxSha);
+      await ghPut('data/articles/index.json', JSON.stringify(INDEX, null, 2), 'حذف مقال من الفهرس', idxSha);
 
       showToast('تم حذف المقال', 'success');
       renderArticles();

@@ -3,15 +3,10 @@
   <url><loc>https://osamaelfeky567.github.io/techdosenews/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
   <url><loc>https://osamaelfeky567.github.io/techdosenews/category.html?cat=ai</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://osamaelfeky567.github.io/techdosenews/category.html?cat=companies</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://osamaelfeky567.github.io/techdosenews/category.html?cat=cybersecurity</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://osamaelfeky567.github.io/techdosenews/category.html?cat=security</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://osamaelfeky567.github.io/techdosenews/category.html?cat=mobile</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://osamaelfeky567.github.io/techdosenews/category.html?cat=electric-vehicles</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://osamaelfeky567.github.io/techdosenews/dashboard.html</loc><changefreq>weekly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://osamaelfeky567.github.io/techdosenews/about.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://osamaelfeky567.github.io/techdosenews/contact.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://osamaelfeky567.github.io/techdosenews/privacy.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://osamaelfeky567.github.io/techdosenews/terms.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://osamaelfeky567.github.io/techdosenews/disclaimer.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://osamaelfeky567.github.io/techdosenews/category.html?cat=ev</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://osamaelfeky567.github.io/techdosenews/404.html</loc><changefreq>monthly</changefreq><priority>0.1</priority></url>
   <url><loc>https://osamaelfeky567.github.io/techdosenews/editorial-policy.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025991965-1-Ope</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025993047-2-%D8%BA%D9%88%D8%BA</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>

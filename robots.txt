@@ -1,4 +1,4 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
 
 Sitemap: https://osamaelfeky567.github.io/techdosenews/sitemap.xml

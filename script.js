@@ -17,48 +17,48 @@ const AD_CONFIG = {
 
 
 const CATEGORY_MAP = {
-  ai:'Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ',companies:'Ø´Ø±ÙƒØ§Øª',cybersecurity:'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ',
-  mobile:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',ev:'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©',
-  security:'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ',business:'Ø´Ø±ÙƒØ§Øª',startups:'Ø´Ø±ÙƒØ§Øª',
-  bigtech:'Ø´Ø±ÙƒØ§Øª',software:'Ø´Ø±ÙƒØ§Øª',cloud:'Ø´Ø±ÙƒØ§Øª',
-  hardware:'Ø´Ø±ÙƒØ§Øª',consumer:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',gaming:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',
-  AI:'Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ',AI_ar:'Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ',
-  'Big-Tech':'Ø´Ø±ÙƒØ§Øª','big-tech':'Ø´Ø±ÙƒØ§Øª',BigTech:'Ø´Ø±ÙƒØ§Øª',
-  Security:'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ',Startups:'Ø´Ø±ÙƒØ§Øª',
-  Mobile:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',Hardware:'Ø´Ø±ÙƒØ§Øª',Gaming:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',
-  Science:'Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ',Business:'Ø´Ø±ÙƒØ§Øª',Cloud:'Ø´Ø±ÙƒØ§Øª',
-  'ØªÙƒÙ†ÙˆÙ„ÙˆØ¬ÙŠØ§':'Ø´Ø±ÙƒØ§Øª','ØªÙ‚Ù†ÙŠØ©':'Ø´Ø±ÙƒØ§Øª',EV:'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©',ev:'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©'
+  ai:'الذكاء الاصطناعي',companies:'شركات',cybersecurity:'أمن سيبراني',
+  mobile:'هواتف ذكية',ev:'سيارات كهربائية',
+  security:'أمن سيبراني',business:'شركات',startups:'شركات',
+  bigtech:'شركات',software:'شركات',cloud:'شركات',
+  hardware:'شركات',consumer:'هواتف ذكية',gaming:'هواتف ذكية',
+  AI:'الذكاء الاصطناعي',AI_ar:'الذكاء الاصطناعي',
+  'Big-Tech':'شركات','big-tech':'شركات',BigTech:'شركات',
+  Security:'أمن سيبراني',Startups:'شركات',
+  Mobile:'هواتف ذكية',Hardware:'شركات',Gaming:'هواتف ذكية',
+  Science:'الذكاء الاصطناعي',Business:'شركات',Cloud:'شركات',
+  'تكنولوجيا':'شركات','تقنية':'شركات',EV:'سيارات كهربائية',ev:'سيارات كهربائية'
 };
 
 const TAG_CATEGORY_MAP = {
-  'ØªÙƒÙ†ÙˆÙ„ÙˆØ¬ÙŠØ§':'companies','ØªÙ‚Ù†ÙŠØ©':'companies','Ø°ÙƒØ§Ø¡ Ø§ØµØ·Ù†Ø§Ø¹ÙŠ':'ai',
-  'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ':'cybersecurity','Ø£Ù…Ø§Ù†':'cybersecurity',
-  'Ù‡ÙˆØ§ØªÙ':'mobile','mobile':'mobile','Mobile':'mobile',
-  'Ø£Ø¹Ù…Ø§Ù„':'companies','business':'companies','Business':'companies',
-  'Ø´Ø±ÙƒØ§Øª':'companies','startups':'companies','Startups':'companies',
-  'Ø¨Ø±Ù…Ø¬ÙŠØ§Øª':'companies','software':'companies',
-  'Ø³Ø­Ø§Ø¨Ø©':'companies','cloud':'companies',
-  'Ø¹ØªØ§Ø¯':'companies','hardware':'companies',
-  'Ø³ÙŠØ§Ø±Ø§Øª':'ev','EV':'ev','Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©':'ev',
+  'تكنولوجيا':'companies','تقنية':'companies','ذكاء اصطناعي':'ai',
+  'أمن سيبراني':'cybersecurity','أمان':'cybersecurity',
+  'هواتف':'mobile','mobile':'mobile','Mobile':'mobile',
+  'أعمال':'companies','business':'companies','Business':'companies',
+  'شركات':'companies','startups':'companies','Startups':'companies',
+  'برمجيات':'companies','software':'companies',
+  'سحابة':'companies','cloud':'companies',
+  'عتاد':'companies','hardware':'companies',
+  'سيارات':'ev','EV':'ev','سيارات كهربائية':'ev',
   'ai':'ai','AI':'ai','security':'cybersecurity',
   'Security':'cybersecurity','cybersecurity':'cybersecurity',
   'gaming':'mobile','Gaming':'mobile',
   'science':'ai','Science':'ai',
-  'Ø±ÙˆØ¨ÙˆØªØ§Øª':'ai','robotics':'ai','ÙØ¶Ø§Ø¡':'ai',
+  'روبوتات':'ai','robotics':'ai','فضاء':'ai',
   'bigtech':'companies','big-tech':'companies','BigTech':'companies',
-  'Big-Tech':'companies','Ø£Ø¨Ø­Ø§Ø«':'ai','research':'ai'
+  'Big-Tech':'companies','أبحاث':'ai','research':'ai'
 };
 
-const ARABIC_DAYS = ['Ø§Ù„Ø£Ø­Ø¯','Ø§Ù„Ø¥Ø«Ù†ÙŠÙ†','Ø§Ù„Ø«Ù„Ø§Ø«Ø§Ø¡','Ø§Ù„Ø£Ø±Ø¨Ø¹Ø§Ø¡','Ø§Ù„Ø®Ù…ÙŠØ³','Ø§Ù„Ø¬Ù…Ø¹Ø©','Ø§Ù„Ø³Ø¨Øª'];
-const ARABIC_MONTHS = ['ÙŠÙ†Ø§ÙŠØ±','ÙØ¨Ø±Ø§ÙŠØ±','Ù…Ø§Ø±Ø³','Ø£Ø¨Ø±ÙŠÙ„','Ù…Ø§ÙŠÙˆ','ÙŠÙˆÙ†ÙŠÙˆ','ÙŠÙˆÙ„ÙŠÙˆ','Ø£ØºØ³Ø·Ø³','Ø³Ø¨ØªÙ…Ø¨Ø±','Ø£ÙƒØªÙˆØ¨Ø±','Ù†ÙˆÙÙ…Ø¨Ø±','Ø¯ÙŠØ³Ù…Ø¨Ø±'];
+const ARABIC_DAYS = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+const ARABIC_MONTHS = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
 
 const COMPANIES = [
-  {sym:'Ø£ÙˆØ¨',name:'Ø£ÙˆØ¨Ù†â€ŒØ¥ÙŠÙ‡â€ŒØ¢ÙŠ'},
-  {sym:'Ø¥Ù†â€ŒÙ',name:'Ø¥Ù†ÙÙŠØ¯ÙŠØ§'},
-  {sym:'Ø£Ù†',name:'Ø£Ù†Ø«Ø±ÙˆØ¨ÙŠÙƒ'},
-  {sym:'Ø¬ÙˆØ¬',name:'Ø¬ÙˆØ¬Ù„'},
-  {sym:'Ù…ÙŠÙƒ',name:'Ù…Ø§ÙŠÙƒØ±ÙˆØ³ÙˆÙØª'},
-  {sym:'Ù…ÙŠØª',name:'Ù…ÙŠØªØ§'}
+  {sym:'أوب',name:'أوبن‌إيه‌آي'},
+  {sym:'إن‌ف',name:'إنفيديا'},
+  {sym:'أن',name:'أنثروبيك'},
+  {sym:'جوج',name:'جوجل'},
+  {sym:'ميك',name:'مايكروسوفت'},
+  {sym:'ميت',name:'ميتا'}
 ];
 
 function getArticleCategory(article) {
@@ -71,7 +71,7 @@ function getArticleCategory(article) {
       if (mappedKey && CATEGORY_MAP[mappedKey]) return CATEGORY_MAP[mappedKey];
     }
   }
-  return 'Ø§Ù„ØªÙ‚Ù†ÙŠØ©';
+  return 'التقنية';
 }
 
 function getCategoryKey(article) {
@@ -85,7 +85,7 @@ function getCategoryKey(article) {
       if (mappedKey && mappedKey !== tag) return mappedKey;
     }
   }
-  return 'ØªÙ‚Ù†ÙŠØ©';
+  return 'تقنية';
 }
 
 async function loadIndex() {
@@ -104,7 +104,7 @@ async function loadIndex() {
     renderAll();
   } catch(e) {
     document.querySelectorAll('.sb-loading, #sbGrid, #sbHero, #sbTrendingList, #sbLatestList').forEach(el => {
-      if (el) el.innerHTML = '<div class="sb-loading">âš  ØªØ¹Ø°Ø± ØªØ­Ù…ÙŠÙ„ Ø§Ù„Ù…Ù‚Ø§Ù„Ø§Øª â€” ' + e.message + '</div>';
+      if (el) el.innerHTML = '<div class="sb-loading">⚠ تعذر تحميل المقالات — ' + e.message + '</div>';
     });
   }
 }
@@ -131,7 +131,7 @@ function renderHero() {
   });
   let a = null;
   for (const candidate of sorted) {
-    if (candidate.image && candidate.categoryAr && candidate.categoryAr !== 'Ø§Ù„ØªÙ‚Ù†ÙŠØ©' && candidate.categoryAr !== 'Ø¹Ø§Ù…') {
+    if (candidate.image && candidate.categoryAr && candidate.categoryAr !== 'التقنية' && candidate.categoryAr !== 'عام') {
       a = candidate;
       break;
     }
@@ -144,7 +144,7 @@ function renderHero() {
     getFreshnessBadge(pubDate) +
     '<h2>' + esc(a.title) + '</h2>' +
     (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +
-    '<div class="sb-hero-meta"><span>' + esc(a.source_name || a.source || 'TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ') + '</span><span>' + getRelativeTimeHtml(pubDate) + '</span></div></div></div>';
+    '<div class="sb-hero-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + getRelativeTimeHtml(pubDate) + '</span></div></div></div>';
 }
 
 function renderTrending() {
@@ -196,7 +196,7 @@ function renderGrid() {
   if (!grid) return;
   const items = filteredArticles;
   if (items.length === 0) {
-    grid.innerHTML = '<div class="sb-loading">Ù„Ø§ ØªÙˆØ¬Ø¯ Ù…Ù‚Ø§Ù„Ø§Øª Ù…ØªØ·Ø§Ø¨Ù‚Ø©</div>';
+    grid.innerHTML = '<div class="sb-loading">لا توجد مقالات متطابقة</div>';
     if (loadMoreContainer) loadMoreContainer.innerHTML = '';
     return;
   }
@@ -215,7 +215,7 @@ function appendGridItems() {
   const frag = document.createDocumentFragment();
   const start = gridRenderedCount;
   const end = Math.min(start + PAGE_SIZE, items.length);
-  const ad = '<div class="sb-ad-box" style="min-height:250px;margin:0 0 20px;grid-column:1/-1"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">300 Ã— 250</div></div>';
+  const ad = '<div class="sb-ad-box" style="min-height:250px;margin:0 0 20px;grid-column:1/-1"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 250</div></div>';
   for (let i = start; i < end; i++) {
     const a = items[i];
     const card = document.createElement('div');
@@ -227,7 +227,7 @@ function appendGridItems() {
     cardHtml += '<div class="sb-card-body"><div class="sb-card-cat">' + esc(a.categoryAr) + '</div>' +
       '<h3>' + esc(a.title) + '</h3>' +
       (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +
-      '<div class="sb-card-meta"><span>' + esc(a.source_name || a.source || 'TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ') + '</span><span>' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
+      '<div class="sb-card-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
     card.innerHTML = cardHtml;
     frag.appendChild(card);
     const globalIndex = i;
@@ -241,7 +241,7 @@ function appendGridItems() {
   gridRenderedCount = end;
   if (loadMoreContainer) {
     if (end < items.length) {
-      loadMoreContainer.innerHTML = '<button class="sb-load-more-btn" onclick="loadMore()">Ø§Ù„Ù…Ø²ÙŠØ¯ Ù…Ù† Ø§Ù„Ø£Ø®Ø¨Ø§Ø±</button>';
+      loadMoreContainer.innerHTML = '<button class="sb-load-more-btn" onclick="loadMore()">المزيد من الأخبار</button>';
     } else {
       loadMoreContainer.innerHTML = '';
     }
@@ -252,7 +252,7 @@ function loadMore() {
   appendGridItems();
   const btn = document.querySelector('.sb-load-more-btn');
   if (btn) {
-    btn.textContent = 'Ø¬Ø§Ø±Ù Ø§Ù„ØªØ­Ù…ÙŠÙ„...';
+    btn.textContent = 'جارٍ التحميل...';
     setTimeout(function() {
       const container = document.getElementById('sbLoadMoreContainer');
       if (container) {
@@ -265,7 +265,7 @@ function loadMore() {
 function renderCategories() {
   const grid = document.getElementById('sbCategoriesGrid');
   if (!grid) return;
-  const mainCats = {ai:'Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ',companies:'Ø´Ø±ÙƒØ§Øª',cybersecurity:'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ',mobile:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',ev:'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©'};
+  const mainCats = {ai:'الذكاء الاصطناعي',companies:'شركات',cybersecurity:'أمن سيبراني',mobile:'هواتف ذكية',ev:'سيارات كهربائية'};
   grid.innerHTML = Object.entries(mainCats).map(([key, name]) =>
     '<div class="sb-cat-chip" onclick="location.href=\'category.html?cat=' + key + '\'">' + name + '</div>'
   ).join('');
@@ -295,7 +295,7 @@ function renderMostRead() {
 function renderFooterCats() {
   const list = document.getElementById('sbFooterCategories');
   if (!list) return;
-  const mainCats = {ai:'Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ',companies:'Ø´Ø±ÙƒØ§Øª',cybersecurity:'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ',mobile:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',ev:'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©'};
+  const mainCats = {ai:'الذكاء الاصطناعي',companies:'شركات',cybersecurity:'أمن سيبراني',mobile:'هواتف ذكية',ev:'سيارات كهربائية'};
   list.innerHTML = Object.entries(mainCats).map(([key, name]) =>
     '<li><a href="category.html?cat=' + key + '">' + name + '</a></li>'
   ).join('');
@@ -362,7 +362,7 @@ function filterSearch(query) {
   renderGrid();
   const countEl = document.getElementById('sbSearchCount');
   if (countEl) {
-    countEl.textContent = filteredArticles.length === allArticles.length ? '' : 'Ù†ØªØ§Ø¦Ø¬ Ø§Ù„Ø¨Ø­Ø«: ' + filteredArticles.length + ' Ù…Ù‚Ø§Ù„';
+    countEl.textContent = filteredArticles.length === allArticles.length ? '' : 'نتائج البحث: ' + filteredArticles.length + ' مقال';
   }
 }
 
@@ -397,7 +397,7 @@ function formatDate(d) {
   if (!d) return '';
   try {
     const dt = new Date(d);
-    return ARABIC_DAYS[dt.getDay()] + 'ØŒ ' + dt.getDate() + ' ' + ARABIC_MONTHS[dt.getMonth()] + ' ' + dt.getFullYear();
+    return ARABIC_DAYS[dt.getDay()] + '، ' + dt.getDate() + ' ' + ARABIC_MONTHS[dt.getMonth()] + ' ' + dt.getFullYear();
   } catch(e) { return d; }
 }
 
@@ -417,48 +417,48 @@ function formatRelativeTime(dateStr) {
   const pub = new Date(dateStr).getTime();
   if (isNaN(pub)) return '';
   const diffMs = now - pub;
-  if (diffMs < 0) return 'Ø§Ù„Ø¢Ù†';
+  if (diffMs < 0) return 'الآن';
   const mins = Math.floor(diffMs / 60000);
-  if (mins < 1) return 'Ø§Ù„Ø¢Ù†';
+  if (mins < 1) return 'الآن';
   if (mins < 60) {
-    if (mins === 1) return 'Ù…Ù†Ø° Ø¯Ù‚ÙŠÙ‚Ø©';
-    if (mins === 2) return 'Ù…Ù†Ø° Ø¯Ù‚ÙŠÙ‚ØªÙŠÙ†';
-    if (mins <= 10) return 'Ù…Ù†Ø° ' + mins + ' Ø¯Ù‚Ø§Ø¦Ù‚';
-    return 'Ù…Ù†Ø° ' + mins + ' Ø¯Ù‚ÙŠÙ‚Ø©';
+    if (mins === 1) return 'منذ دقيقة';
+    if (mins === 2) return 'منذ دقيقتين';
+    if (mins <= 10) return 'منذ ' + mins + ' دقائق';
+    return 'منذ ' + mins + ' دقيقة';
   }
   const hours = Math.floor(mins / 60);
   if (hours < 24) {
-    if (hours === 1) return 'Ù…Ù†Ø° Ø³Ø§Ø¹Ø©';
-    if (hours === 2) return 'Ù…Ù†Ø° Ø³Ø§Ø¹ØªÙŠÙ†';
-    if (hours <= 10) return 'Ù…Ù†Ø° ' + hours + ' Ø³Ø§Ø¹Ø§Øª';
-    return 'Ù…Ù†Ø° ' + hours + ' Ø³Ø§Ø¹Ø©';
+    if (hours === 1) return 'منذ ساعة';
+    if (hours === 2) return 'منذ ساعتين';
+    if (hours <= 10) return 'منذ ' + hours + ' ساعات';
+    return 'منذ ' + hours + ' ساعة';
   }
   const days = Math.floor(hours / 24);
   if (days < 7) {
-    if (days === 1) return 'Ù…Ù†Ø° ÙŠÙˆÙ…';
-    if (days === 2) return 'Ù…Ù†Ø° ÙŠÙˆÙ…ÙŠÙ†';
-    if (days <= 10) return 'Ù…Ù†Ø° ' + days + ' Ø£ÙŠØ§Ù…';
-    return 'Ù…Ù†Ø° ' + days + ' ÙŠÙˆÙ…Ù‹Ø§';
+    if (days === 1) return 'منذ يوم';
+    if (days === 2) return 'منذ يومين';
+    if (days <= 10) return 'منذ ' + days + ' أيام';
+    return 'منذ ' + days + ' يومًا';
   }
   const weeks = Math.floor(days / 7);
   if (weeks < 5) {
-    if (weeks === 1) return 'Ù…Ù†Ø° Ø£Ø³Ø¨ÙˆØ¹';
-    if (weeks === 2) return 'Ù…Ù†Ø° Ø£Ø³Ø¨ÙˆØ¹ÙŠÙ†';
-    if (weeks <= 10) return 'Ù…Ù†Ø° ' + weeks + ' Ø£Ø³Ø§Ø¨ÙŠØ¹';
-    return 'Ù…Ù†Ø° ' + weeks + ' Ø£Ø³Ø¨ÙˆØ¹Ù‹Ø§';
+    if (weeks === 1) return 'منذ أسبوع';
+    if (weeks === 2) return 'منذ أسبوعين';
+    if (weeks <= 10) return 'منذ ' + weeks + ' أسابيع';
+    return 'منذ ' + weeks + ' أسبوعًا';
   }
   const months = Math.floor(days / 30);
   if (months < 12) {
-    if (months === 1) return 'Ù…Ù†Ø° Ø´Ù‡Ø±';
-    if (months === 2) return 'Ù…Ù†Ø° Ø´Ù‡Ø±ÙŠÙ†';
-    if (months <= 10) return 'Ù…Ù†Ø° ' + months + ' Ø£Ø´Ù‡Ø±';
-    return 'Ù…Ù†Ø° ' + months + ' Ø´Ù‡Ø±Ù‹Ø§';
+    if (months === 1) return 'منذ شهر';
+    if (months === 2) return 'منذ شهرين';
+    if (months <= 10) return 'منذ ' + months + ' أشهر';
+    return 'منذ ' + months + ' شهرًا';
   }
   const years = Math.floor(months / 12);
-  if (years === 1) return 'Ù…Ù†Ø° Ø³Ù†Ø©';
-  if (years === 2) return 'Ù…Ù†Ø° Ø³Ù†ØªÙŠÙ†';
-  if (years <= 10) return 'Ù…Ù†Ø° ' + years + ' Ø³Ù†ÙˆØ§Øª';
-  return 'Ù…Ù†Ø° ' + years + ' Ø³Ù†Ø©';
+  if (years === 1) return 'منذ سنة';
+  if (years === 2) return 'منذ سنتين';
+  if (years <= 10) return 'منذ ' + years + ' سنوات';
+  return 'منذ ' + years + ' سنة';
 }
 
 function formatExactDateTime(dateStr) {
@@ -468,7 +468,7 @@ function formatExactDateTime(dateStr) {
     if (isNaN(dt.getTime())) return dateStr;
     const h = String(dt.getHours()).padStart(2, '0');
     const m = String(dt.getMinutes()).padStart(2, '0');
-    return dt.getDate() + ' ' + ARABIC_MONTHS[dt.getMonth()] + ' ' + dt.getFullYear() + ' â€¢ ' + h + ':' + m;
+    return dt.getDate() + ' ' + ARABIC_MONTHS[dt.getMonth()] + ' ' + dt.getFullYear() + ' • ' + h + ':' + m;
   } catch(e) { return dateStr; }
 }
 
@@ -484,7 +484,7 @@ function getFreshnessBadge(dateStr) {
   if (isNaN(pub)) return '';
   const diffMs = now - pub;
   const hours = Math.floor(diffMs / 3600000);
-  if (hours < 1) return '<span class="sb-freshness-badge">Ø¬Ø¯ÙŠØ¯</span>';
+  if (hours < 1) return '<span class="sb-freshness-badge">جديد</span>';
   if (hours < 24) return '<span class="sb-freshness-badge sb-freshness-recent">' + formatRelativeTime(dateStr) + '</span>';
   return '';
 }
@@ -528,7 +528,7 @@ function renderRelatedArticles(article) {
     '<div class="sb-related-info"><span class="sb-related-cat">' + esc(a.categoryAr) + '</span>' +
     '<h4>' + esc(a.title) + '</h4></div></div>'
   ).join('');
-  container.innerHTML = '<section class="sb-related-section"><h2>Ù…Ù‚Ø§Ù„Ø§Øª Ø°Ø§Øª ØµÙ„Ø©</h2><div class="sb-related-grid">' + html + '</div></section>';
+  container.innerHTML = '<section class="sb-related-section"><h2>مقالات ذات صلة</h2><div class="sb-related-grid">' + html + '</div></section>';
 }
 
 function renderAd(containerId, size) {
@@ -555,11 +555,11 @@ function injectAdsIntoBody(bodyHtml) {
   for (let i = 0; i < paragraphs.length; i++) {
     result += paragraphs[i];
     if (i === 2) {
-      result += renderStaticAd('<div class="sb-ad-inarticle sb-ad-after-p3"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">336 Ã— 280</div></div>', '336x280');
+      result += renderStaticAd('<div class="sb-ad-inarticle sb-ad-after-p3"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">336 × 280</div></div>', '336x280');
     } else if (i === Math.floor(paragraphs.length / 2)) {
-      result += renderStaticAd('<div class="sb-ad-inarticle sb-ad-middle"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">336 Ã— 280</div></div>', '336x280');
+      result += renderStaticAd('<div class="sb-ad-inarticle sb-ad-middle"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">336 × 280</div></div>', '336x280');
     } else if (i === paragraphs.length - 2) {
-      result += renderStaticAd('<div class="sb-ad-inarticle sb-ad-before-end"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">336 Ã— 280</div></div>', '336x280');
+      result += renderStaticAd('<div class="sb-ad-inarticle sb-ad-before-end"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">336 × 280</div></div>', '336x280');
     }
   }
   return result;
@@ -570,7 +570,7 @@ async function loadArticle() {
   if (!main) return;
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
-  if (!id) { main.innerHTML = '<div class="sb-container"><div class="sb-loading">âš  Ù…Ø¹Ø±Ù Ø§Ù„Ù…Ù‚Ø§Ù„ ØºÙŠØ± Ù…ÙˆØ¬ÙˆØ¯</div></div>'; return; }
+  if (!id) { main.innerHTML = '<div class="sb-container"><div class="sb-loading">⚠ معرف المقال غير موجود</div></div>'; return; }
   try {
     if (allArticles.length === 0) {
       const res = await fetch(BASE + '/articles/index.json');
@@ -583,9 +583,9 @@ async function loadArticle() {
       }
     }
     const a = allArticles.find(art => art.id === id);
-    if (!a) throw new Error('Ù„Ù… ÙŠØªÙ… Ø§Ù„Ø¹Ø«ÙˆØ± Ø¹Ù„Ù‰ Ø§Ù„Ù…Ù‚Ø§Ù„');
-    document.title = a.title + ' â€” TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ';
-    document.querySelector('[property="og:title"]') && (document.querySelector('[property="og:title"]').content = a.title + ' â€” TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ');
+    if (!a) throw new Error('لم يتم العثور على المقال');
+    document.title = a.title + ' — TD بالعربي';
+    document.querySelector('[property="og:title"]') && (document.querySelector('[property="og:title"]').content = a.title + ' — TD بالعربي');
     document.querySelector('[property="og:description"]') && (document.querySelector('[property="og:description"]').content = a.excerpt || '');
     document.querySelector('[property="og:image"]') && (document.querySelector('[property="og:image"]').content = a.image || '');
     document.querySelector('[property="og:url"]') && (document.querySelector('[property="og:url"]').content = 'https://osamaelfeky567.github.io/techdosenews/article.html?id=' + a.id);
@@ -598,22 +598,22 @@ async function loadArticle() {
       (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '">' : '') +
       catBadge +
       '<h1>' + esc(a.title) + '</h1>' +
-      '<div class="sb-article-meta"><span>' + esc(a.source_name || a.source || 'TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ') + '</span><span>' + (a.readTime || 'Ù‚Ø±Ø§Ø¡Ø© Ø¯Ù‚ÙŠÙ‚Ø©') + '</span></div>' +
+      '<div class="sb-article-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + (a.readTime || 'قراءة دقيقة') + '</span></div>' +
       '<div class="sb-article-datetime">' + formatExactDateTime(getPubDate(a)) + ' <span class="sb-article-relative">' + getRelativeTimeHtml(getPubDate(a)) + '</span></div>' +
-      '<div class="sb-ad-inarticle sb-ad-after-title"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">728 Ã— 90</div></div>' +
+      '<div class="sb-ad-inarticle sb-ad-after-title"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">728 × 90</div></div>' +
       (a.excerpt ? '<div class="sb-article-body"><p><strong>' + esc(a.excerpt) + '</strong></p></div>' : '') +
       (bodyWithAds ? '<div class="sb-article-body">' + bodyWithAds + '</div>' : '') +
       (tagsHtml ? '<div class="sb-article-tags">' + tagsHtml + '</div>' : '') +
-      '<div class="sb-ad-box sb-ad-728x90" style="margin:24px 0 0"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">728 Ã— 90</div></div>' +
-      '<div class="sb-ad-box" style="min-height:250px;margin:24px 0"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">300 Ã— 250</div></div>' +
+      '<div class="sb-ad-box sb-ad-728x90" style="margin:24px 0 0"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">728 × 90</div></div>' +
+      '<div class="sb-ad-box" style="min-height:250px;margin:24px 0"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 250</div></div>' +
       '<div id="sbRelatedArticles"></div>' +
-      '<div class="sb-article-nav"><a href="index.html">â† Ø§Ù„Ø±Ø¬ÙˆØ¹ Ù„Ù„Ø±Ø¦ÙŠØ³ÙŠØ©</a><a href="category.html?cat=' + escId(a.categoryKey) + '">' + esc(a.categoryAr) + ' â†</a></div>' +
-      '</article><aside class="sb-article-sidebar"><div class="sb-ad-box sb-ad-300x250"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">300 Ã— 250</div></div>' +
-      '<div class="sb-ad-sticky"><div class="sb-ad-box sb-ad-300x600"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">300 Ã— 600</div></div></div></aside></div>';
+      '<div class="sb-article-nav"><a href="index.html">← الرجوع للرئيسية</a><a href="category.html?cat=' + escId(a.categoryKey) + '">' + esc(a.categoryAr) + ' ←</a></div>' +
+      '</article><aside class="sb-article-sidebar"><div class="sb-ad-box sb-ad-300x250"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 250</div></div>' +
+      '<div class="sb-ad-sticky"><div class="sb-ad-box sb-ad-300x600"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 600</div></div></div></aside></div>';
     renderRelatedArticles(a);
     injectNewsArticleSchema(a);
   } catch(e) {
-    main.innerHTML = '<div class="sb-container"><div class="sb-loading">âš  ØªØ¹Ø°Ø± ØªØ­Ù…ÙŠÙ„ Ø§Ù„Ù…Ù‚Ø§Ù„ â€” ' + e.message + '</div></div>';
+    main.innerHTML = '<div class="sb-container"><div class="sb-loading">⚠ تعذر تحميل المقال — ' + e.message + '</div></div>';
   }
 }
 
@@ -626,8 +626,8 @@ function injectNewsArticleSchema(a) {
     headline: a.title,
     description: (a.excerpt || '').substring(0, 300),
     image: a.image || 'https://osamaelfeky567.github.io/techdosenews/sandbox/og-image.png',
-    author: { '@type': 'Organization', name: 'TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ' },
-    publisher: { '@type': 'Organization', name: 'TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ', logo: { '@type': 'ImageObject', url: 'https://osamaelfeky567.github.io/techdosenews/sandbox/og-image.png' } },
+    author: { '@type': 'Organization', name: 'TD بالعربي' },
+    publisher: { '@type': 'Organization', name: 'TD بالعربي', logo: { '@type': 'ImageObject', url: 'https://osamaelfeky567.github.io/techdosenews/sandbox/og-image.png' } },
     datePublished: pubDate,
     dateModified: pubDate,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url }
@@ -643,8 +643,8 @@ async function initCategoryPage() {
   if (!main) return;
   const params = new URLSearchParams(window.location.search);
   const catKey = params.get('cat') || 'all';
-  const catName = CATEGORY_MAP[catKey] || 'Ø§Ù„ØªÙ‚Ù†ÙŠØ©';
-  document.title = catName + ' â€” TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ';
+  const catName = CATEGORY_MAP[catKey] || 'التقنية';
+  document.title = catName + ' — TD بالعربي';
   try {
     const res = await fetch(BASE + '/articles/index.json');
     if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -659,14 +659,14 @@ async function initCategoryPage() {
       (a.tags && a.tags.some(t => TAG_CATEGORY_MAP[t] === catKey || t === catName))
     );
     const count = catArticles.length;
-    const mainCats = {ai:'Ø§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ',companies:'Ø´Ø±ÙƒØ§Øª',cybersecurity:'Ø£Ù…Ù† Ø³ÙŠØ¨Ø±Ø§Ù†ÙŠ',mobile:'Ù‡ÙˆØ§ØªÙ Ø°ÙƒÙŠØ©',ev:'Ø³ÙŠØ§Ø±Ø§Øª ÙƒÙ‡Ø±Ø¨Ø§Ø¦ÙŠØ©'};
+    const mainCats = {ai:'الذكاء الاصطناعي',companies:'شركات',cybersecurity:'أمن سيبراني',mobile:'هواتف ذكية',ev:'سيارات كهربائية'};
     const chips = Object.entries(mainCats).map(([key, name]) =>
       '<div class="sb-cat-chip' + (key === catKey ? ' sb-cat-chip-active' : '') + '" onclick="location.href=\'category.html?cat=' + key + '\'">' + name + '</div>'
     ).join('');
-    const adFeed = '<div class="sb-ad-box" style="min-height:250px;margin:0 0 20px;grid-column:1/-1"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">300 Ã— 250</div></div>';
+    const adFeed = '<div class="sb-ad-box" style="min-height:250px;margin:0 0 20px;grid-column:1/-1"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 250</div></div>';
     let gridHtml = '';
     if (catArticles.length === 0) {
-      gridHtml = '<div class="sb-loading">Ù„Ø§ ØªÙˆØ¬Ø¯ Ù…Ù‚Ø§Ù„Ø§Øª ÙÙŠ Ù‡Ø°Ø§ Ø§Ù„ØªØµÙ†ÙŠÙ</div>';
+      gridHtml = '<div class="sb-loading">لا توجد مقالات في هذا التصنيف</div>';
     } else {
       const items = catArticles.slice(0, 20);
       for (let i = 0; i < items.length; i++) {
@@ -676,20 +676,20 @@ async function initCategoryPage() {
           '<div class="sb-card-body"><div class="sb-card-cat">' + esc(a.categoryAr) + '</div>' +
           '<h3>' + esc(a.title) + '</h3>' +
           (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +
-          '<div class="sb-card-meta"><span>' + esc(a.source_name || a.source || 'TD Ø¨Ø§Ù„Ø¹Ø±Ø¨ÙŠ') + '</span><span>' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div></div>';
+          '<div class="sb-card-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div></div>';
         if ((i + 1) % 8 === 0 && i + 1 < items.length) {
           gridHtml += adFeed;
         }
       }
     }
     main.innerHTML = '<div class="sb-container">' +
-      '<div class="sb-ad-box sb-ad-728x90"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">728 Ã— 90</div></div>' +
-      '<div class="sb-category-header"><h1>' + esc(catName) + '</h1><span class="sb-category-count">' + count + ' Ù…Ù‚Ø§Ù„</span></div>' +
+      '<div class="sb-ad-box sb-ad-728x90"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">728 × 90</div></div>' +
+      '<div class="sb-category-header"><h1>' + esc(catName) + '</h1><span class="sb-category-count">' + count + ' مقال</span></div>' +
       '<div class="sb-category-chips">' + chips + '</div>' +
       '<div class="sb-grid">' + gridHtml + '</div>' +
-      '<div class="sb-ad-box sb-ad-728x90"><div class="sb-ad-label">Ø¥Ø¹Ù„Ø§Ù†</div><div class="sb-ad-placeholder">728 Ã— 90</div></div></div>';
+      '<div class="sb-ad-box sb-ad-728x90"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">728 × 90</div></div></div>';
   } catch(e) {
-    main.innerHTML = '<div class="sb-container"><div class="sb-loading">âš  ØªØ¹Ø°Ø± ØªØ­Ù…ÙŠÙ„ Ø§Ù„ØªØµÙ†ÙŠÙ â€” ' + e.message + '</div></div>';
+    main.innerHTML = '<div class="sb-container"><div class="sb-loading">⚠ تعذر تحميل التصنيف — ' + e.message + '</div></div>';
   }
 }
 
@@ -725,22 +725,22 @@ function initAnalyticsDashboard() {
     const rpm = totalViews > 0 ? ((estRevenue / totalViews) * 1000).toFixed(2) : '0.00';
     container.innerHTML =
       '<div class="sb-analytics-grid">' +
-      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + totalViews + '</span><span class="sb-analytics-label">Ù…Ø´Ø§Ù‡Ø¯Ø© Ø§Ù„ØµÙØ­Ø§Øª</span></div>' +
-      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + articleViews + '</span><span class="sb-analytics-label">Ù…Ø´Ø§Ù‡Ø¯Ø© Ø§Ù„Ù…Ù‚Ø§Ù„Ø§Øª</span></div>' +
-      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + adImpressions + '</span><span class="sb-analytics-label">Ø¸Ù‡ÙˆØ± Ø§Ù„Ø¥Ø¹Ù„Ø§Ù†Ø§Øª</span></div>' +
-      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + adClicks + '</span><span class="sb-analytics-label">Ù†Ù‚Ø±Ø§Øª Ø§Ù„Ø¥Ø¹Ù„Ø§Ù†Ø§Øª</span></div>' +
-      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + ctr + '%</span><span class="sb-analytics-label">Ù†Ø³Ø¨Ø© Ø§Ù„Ù†Ù‚Ø± (CTR)</span></div>' +
-      '<div class="sb-analytics-card"><span class="sb-analytics-num">$' + estRevenue + '</span><span class="sb-analytics-label">Ø§Ù„Ø¥ÙŠØ±Ø§Ø¯Ø§Øª Ø§Ù„Ù…Ù‚Ø¯Ø±Ø©</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + totalViews + '</span><span class="sb-analytics-label">مشاهدة الصفحات</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + articleViews + '</span><span class="sb-analytics-label">مشاهدة المقالات</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + adImpressions + '</span><span class="sb-analytics-label">ظهور الإعلانات</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + adClicks + '</span><span class="sb-analytics-label">نقرات الإعلانات</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">' + ctr + '%</span><span class="sb-analytics-label">نسبة النقر (CTR)</span></div>' +
+      '<div class="sb-analytics-card"><span class="sb-analytics-num">$' + estRevenue + '</span><span class="sb-analytics-label">الإيرادات المقدرة</span></div>' +
       '<div class="sb-analytics-card"><span class="sb-analytics-num">$' + rpm + '</span><span class="sb-analytics-label"> RPM</span></div>' +
       '</div>';
     const recent = raw.slice(-20).reverse();
     if (recent.length > 0) {
-      container.innerHTML += '<div class="sb-analytics-log"><h3>Ø¢Ø®Ø± Ø§Ù„Ø£Ø­Ø¯Ø§Ø«</h3>' +
-        recent.map(e => '<div class="sb-analytics-entry"><span>' + e.cat + '</span><span>' + e.action + '</span><span class="sb-analytics-ago">' + Math.floor((Date.now() - e.ts) / 60000) + ' Ø¯Ù‚Ø§Ø¦Ù‚</span></div>').join('') +
+      container.innerHTML += '<div class="sb-analytics-log"><h3>آخر الأحداث</h3>' +
+        recent.map(e => '<div class="sb-analytics-entry"><span>' + e.cat + '</span><span>' + e.action + '</span><span class="sb-analytics-ago">' + Math.floor((Date.now() - e.ts) / 60000) + ' دقائق</span></div>').join('') +
         '</div>';
     }
   } catch(e) {
-    container.innerHTML = '<div class="sb-loading">âš  ØªØ¹Ø°Ø± ØªØ­Ù…ÙŠÙ„ Ø§Ù„ØªØ­Ù„ÙŠÙ„Ø§Øª</div>';
+    container.innerHTML = '<div class="sb-loading">⚠ تعذر تحميل التحليلات</div>';
   }
 }
 

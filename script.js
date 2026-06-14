@@ -123,7 +123,7 @@ function getArticleCategory(article) {
   if (article.category && CATEGORY_MAP[article.category]) {
     return CATEGORY_MAP[article.category];
   }
-  if (article.tags && article.tags.length > 0) {
+  if (Array.isArray(article.tags) && article.tags.length > 0) {
     for (const tag of article.tags) {
       const mappedKey = TAG_CATEGORY_MAP[tag];
       if (mappedKey && CATEGORY_MAP[mappedKey]) return CATEGORY_MAP[mappedKey];
@@ -137,7 +137,7 @@ function getCategoryKey(article) {
   for (const [key, val] of Object.entries(CATEGORY_MAP)) {
     if (val === arName) return key;
   }
-  if (article.tags && article.tags.length > 0) {
+  if (Array.isArray(article.tags) && article.tags.length > 0) {
     for (const tag of article.tags) {
       const mappedKey = TAG_CATEGORY_MAP[tag];
       if (mappedKey && mappedKey !== tag) return mappedKey;
@@ -397,7 +397,7 @@ function filterCategory(cat) {
     const catName = CATEGORY_MAP[cat] || cat;
     filteredArticles = allArticles.filter(a =>
       a.categoryAr === catName || a.categoryKey === cat ||
-      (a.tags && a.tags.some(t => TAG_CATEGORY_MAP[t] === cat || t === catName))
+      (Array.isArray(a.tags) && a.tags.some(t => TAG_CATEGORY_MAP[t] === cat || t === catName))
     );
   }
   document.querySelectorAll('.sb-nav a').forEach(el => {

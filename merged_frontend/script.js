@@ -89,7 +89,8 @@ const ENTITY_KEYWORDS = [
 ];
 function resolveImage(a) {
   if (!a) return ENTITY_IMAGES.default;
-  const text = ((a.title||'')+' '+(a.source||'')+' '+(a.source_name||'')+' '+(a.tags||[]).join(' ')).toLowerCase();
+  const tagsStr = Array.isArray(a.tags) ? a.tags.join(' ') : (typeof a.tags === 'string' ? a.tags.replace(/,/g,' ') : '');
+  const text = ((a.title||'')+' '+(a.source||'')+' '+(a.source_name||'')+' '+tagsStr).toLowerCase();
   for (const [keywords,entity] of ENTITY_KEYWORDS) {
     for (const kw of keywords) {
       if (text.includes(kw)) return ENTITY_IMAGES[entity];
@@ -238,7 +239,7 @@ function renderEditorsPicks() {
     return (b.quality_score || 0) - (a.quality_score || 0);
   });
   const items = scored.slice(0, 3);
-  list.innerHTML = items.map(a => {
+  grid.innerHTML = items.map(a => {
     return '<div class="sb-latest-item" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
       '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' +
       '<div class="sb-latest-info"><span class="sb-latest-cat">' + esc(a.categoryAr) + '</span>' +
@@ -419,7 +420,7 @@ function filterSearch(query) {
         (a.title && a.title.toLowerCase().includes(q)) ||
         (a.excerpt && a.excerpt.toLowerCase().includes(q)) ||
         (a.categoryAr && a.categoryAr.toLowerCase().includes(q)) ||
-        (a.tags && a.tags.some(t => t.toLowerCase().includes(q)))
+        (Array.isArray(a.tags) && a.tags.some(t => t.toLowerCase().includes(q)))
       );
     }
     renderGrid();
@@ -576,16 +577,18 @@ function goto(id) { window.location.href = 'article.html?id=' + escId(id); }
 function getRelatedArticles(article, count) {
   count = count || 4;
   let related = [];
-  if (article.tags && article.tags.length > 0) {
+  const articleTags = Array.isArray(article.tags) ? article.tags : [];
+  if (articleTags.length > 0) {
     const tagHits = {};
     for (const a of allArticles) {
       if (a.id === article.id) continue;
-      if (!a.tags) continue;
+      const aTags = Array.isArray(a.tags) ? a.tags : [];
+      if (aTags.length === 0) continue;
       let score = 0;
       if (a.categoryKey === article.categoryKey || a.categoryAr === article.categoryAr) score += 3;
-      for (const tag of article.tags) {
-        if (a.tags.some(t => t.toLowerCase() === tag.toLowerCase())) score += 2;
-        if (a.tags.some(t => t.toLowerCase().includes(tag.toLowerCase()) || tag.toLowerCase().includes(t.toLowerCase()))) score += 1;
+      for (const tag of articleTags) {
+        if (aTags.some(t => t.toLowerCase() === tag.toLowerCase())) score += 2;
+        if (aTags.some(t => t.toLowerCase().includes(tag.toLowerCase()) || tag.toLowerCase().includes(t.toLowerCase()))) score += 1;
       }
       if (score > 0) tagHits[a.id] = { article: a, score: score };
     }
@@ -672,7 +675,8 @@ async function loadArticle() {
     document.querySelector('[property="og:image"]') && (document.querySelector('[property="og:image"]').content = a.image || '');
     document.querySelector('[property="og:url"]') && (document.querySelector('[property="og:url"]').content = 'https://osamaelfeky567.github.io/techdosenews/article.html?id=' + a.id);
     document.querySelector('[name="twitter:image"]') && (document.querySelector('[name="twitter:image"]').content = a.image || '');
-    const tagsHtml = (a.tags || []).map(t => '<span>' + esc(t) + '</span>').join('');
+    const tagsArr = Array.isArray(a.tags) ? a.tags : [];
+    const tagsHtml = tagsArr.map(t => '<span>' + esc(t) + '</span>').join('');
     a.categoryAr = getArticleCategory(a);
     const catBadge = '<a href="category.html?cat=' + escId(a.categoryKey) + '" style="display:inline-block;background:#e0e7ff;color:var(--accent);padding:2px 10px;border-radius:4px;font-size:.75rem;font-weight:700;margin-bottom:8px;text-decoration:none">' + esc(a.categoryAr) + '</a>';
     const bodyWithAds = a.body ? injectAdsIntoBody(a.body) : '';
@@ -738,7 +742,7 @@ async function initCategoryPage() {
     }
     const catArticles = catKey === 'all' ? allArticles : allArticles.filter(a =>
       a.categoryKey === catKey || a.categoryAr === catName ||
-      (a.tags && a.tags.some(t => TAG_CATEGORY_MAP[t] === catKey || t === catName))
+      (Array.isArray(a.tags) && a.tags.some(t => TAG_CATEGORY_MAP[t] === catKey || t === catName))
     );
     const count = catArticles.length;
     const mainCats = {ai:'الذكاء الاصطناعي',companies:'شركات',cybersecurity:'أمن سيبراني',mobile:'هواتف ذكية',ev:'سيارات كهربائية'};

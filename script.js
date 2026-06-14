@@ -142,8 +142,8 @@ function renderHero() {
   }
   if (!a) a = sorted[0];
   const pubDate = getPubDate(a);
-  hero.innerHTML = '<div onclick="goto(\'' + escId(a.id) + '\')">' +
-    (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
+  hero.innerHTML = '<div tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
+    (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
     '<div class="sb-hero-overlay"><div class="sb-cat-badge">' + esc(a.categoryAr) + '</div>' +
     getFreshnessBadge(pubDate) +
     '<h2>' + esc(a.title) + '</h2>' +
@@ -157,7 +157,7 @@ function renderTrending() {
   const items = allArticles.slice(0, 5);
   list.innerHTML = items.map((a, i) => {
     const num = String(i + 1).padStart(2, '0');
-    return '<div class="sb-trending-item" onclick="goto(\'' + escId(a.id) + '\')">' +
+    return '<div class="sb-trending-item" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
       '<span class="sb-trending-num">' + num + '</span>' +
       '<div class="sb-trending-info"><span class="sb-trending-cat">' + esc(a.categoryAr) + '</span>' +
       '<h4>' + esc(a.title) + '</h4>' +
@@ -170,8 +170,8 @@ function renderLatest() {
   if (!list) return;
   const items = allArticles.slice(1, 7);
   list.innerHTML = items.map(a => {
-    return '<div class="sb-latest-item" onclick="goto(\'' + escId(a.id) + '\')">' +
-      (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
+    return '<div class="sb-latest-item" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
+      (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
       '<div class="sb-latest-info"><span class="sb-latest-cat">' + esc(a.categoryAr) + '</span>' +
       '<h4>' + esc(a.title) + '</h4>' +
       '<span class="sb-latest-date">' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
@@ -185,12 +185,12 @@ function renderEditorsPicks() {
     return (b.quality_score || 0) - (a.quality_score || 0);
   });
   const items = scored.slice(0, 3);
-  grid.innerHTML = items.map(a => {
-    return '<div class="sb-editor-card" onclick="goto(\'' + escId(a.id) + '\')">' +
-      (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
-      '<div class="sb-editor-body"><span class="sb-editor-cat">' + esc(a.categoryAr) + '</span>' +
-      '<h3>' + esc(a.title) + '</h3>' +
-      '<span class="sb-editor-time">' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
+  list.innerHTML = items.map(a => {
+    return '<div class="sb-latest-item" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
+      (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
+      '<div class="sb-latest-info"><span class="sb-latest-cat">' + esc(a.categoryAr) + '</span>' +
+      '<h4>' + esc(a.title) + '</h4>' +
+      '<span class="sb-latest-date">' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
   }).join('');
 }
 
@@ -200,7 +200,7 @@ function renderGrid() {
   if (!grid) return;
   const items = filteredArticles;
   if (items.length === 0) {
-    grid.innerHTML = '<div class="sb-loading">لا توجد مقالات متطابقة</div>';
+    grid.innerHTML = '<div class="sb-empty-state">لا توجد مقالات متطابقة</div>';
     if (loadMoreContainer) loadMoreContainer.innerHTML = '';
     return;
   }
@@ -225,9 +225,12 @@ function appendGridItems() {
     const card = document.createElement('div');
     card.className = 'sb-card';
     card.style.animation = 'sbFadeIn 0.3s ease';
+    card.tabIndex = 0;
+    card.role = 'button';
     card.onclick = function() { goto(a.id); };
+    card.onkeydown = function(e) { if (e.key === 'Enter' || e.key === 'Space') { e.preventDefault(); this.click(); } };
     let cardHtml = '';
-    if (a.image) cardHtml += '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">';
+    if (a.image) cardHtml += '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">';
     cardHtml += '<div class="sb-card-body"><div class="sb-card-cat">' + esc(a.categoryAr) + '</div>' +
       '<h3>' + esc(a.title) + '</h3>' +
       (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +
@@ -289,7 +292,7 @@ function renderMostRead() {
   if (!list) return;
   const items = allArticles.slice(0, 5);
   list.innerHTML = items.map((a, i) => {
-    return '<div class="sb-most-read-item" onclick="goto(\'' + escId(a.id) + '\')">' +
+    return '<div class="sb-most-read-item" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
       '<span class="sb-most-read-num">' + (i + 1) + '</span>' +
       '<div class="sb-most-read-info"><span class="sb-most-read-cat">' + esc(a.categoryAr) + '</span>' +
       '<h4>' + esc(a.title) + '</h4></div></div>';
@@ -351,33 +354,45 @@ function filterCategory(cat) {
   window.scrollTo({top: document.getElementById('sbGrid')?.offsetTop - 80 || 0, behavior: 'smooth'});
 }
 
+let searchTimer;
 function filterSearch(query) {
-  if (!query.trim()) {
-    filteredArticles = [...allArticles];
-  } else {
-    const q = query.trim().toLowerCase();
-    filteredArticles = allArticles.filter(a =>
-      (a.title && a.title.toLowerCase().includes(q)) ||
-      (a.excerpt && a.excerpt.toLowerCase().includes(q)) ||
-      (a.categoryAr && a.categoryAr.toLowerCase().includes(q)) ||
-      (a.tags && a.tags.some(t => t.toLowerCase().includes(q)))
-    );
-  }
-  renderGrid();
-  const countEl = document.getElementById('sbSearchCount');
-  if (countEl) {
-    countEl.textContent = filteredArticles.length === allArticles.length ? '' : 'نتائج البحث: ' + filteredArticles.length + ' مقال';
-  }
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(function() {
+    if (!query.trim()) {
+      filteredArticles = [...allArticles];
+    } else {
+      const q = query.trim().toLowerCase();
+      filteredArticles = allArticles.filter(a =>
+        (a.title && a.title.toLowerCase().includes(q)) ||
+        (a.excerpt && a.excerpt.toLowerCase().includes(q)) ||
+        (a.categoryAr && a.categoryAr.toLowerCase().includes(q)) ||
+        (a.tags && a.tags.some(t => t.toLowerCase().includes(q)))
+      );
+    }
+    renderGrid();
+    const countEl = document.getElementById('sbSearchCount');
+    if (countEl) {
+      countEl.textContent = filteredArticles.length === allArticles.length ? '' : 'نتائج البحث: ' + filteredArticles.length + ' مقال';
+    }
+    const grid = document.getElementById('sbGrid');
+    if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 250);
 }
 
 function toggleMenu() {
-  document.getElementById('sbNav').classList.toggle('open');
-  document.getElementById('sbOverlay').classList.toggle('show');
+  const nav = document.getElementById('sbNav');
+  const overlay = document.getElementById('sbOverlay');
+  const btn = document.querySelector('.sb-menu-btn');
+  const isOpen = nav.classList.toggle('open');
+  overlay.classList.toggle('show');
+  if (btn) btn.setAttribute('aria-expanded', isOpen);
 }
 
 function closeMenu() {
   document.getElementById('sbNav').classList.remove('open');
   document.getElementById('sbOverlay').classList.remove('show');
+  const btn = document.querySelector('.sb-menu-btn');
+  if (btn) btn.setAttribute('aria-expanded', 'false');
 }
 
 function toggleSearch() {
@@ -393,6 +408,16 @@ function closeSearch() {
   document.getElementById('sbSearchInput').value = '';
   filterSearch('');
 }
+
+function handleKeydown(e) {
+  if (e.key === 'Escape') {
+    const nav = document.getElementById('sbNav');
+    if (nav && nav.classList.contains('open')) closeMenu();
+    const bar = document.getElementById('sbSearchBar');
+    if (bar && bar.classList.contains('show')) closeSearch();
+  }
+}
+document.addEventListener('keydown', handleKeydown);
 
 function esc(s) { if (!s) return ''; var d = document.createElement('div'); d.appendChild(document.createTextNode(s)); return d.innerHTML; }
 function escId(id) { return encodeURIComponent(id || ''); }
@@ -527,8 +552,8 @@ function renderRelatedArticles(article) {
   const related = getRelatedArticles(article, 4);
   if (related.length === 0) return '';
   const html = related.map(a =>
-    '<div class="sb-related-item" onclick="goto(\'' + escId(a.id) + '\')">' +
-    (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
+    '<div class="sb-related-item" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
+    (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
     '<div class="sb-related-info"><span class="sb-related-cat">' + esc(a.categoryAr) + '</span>' +
     '<h4>' + esc(a.title) + '</h4></div></div>'
   ).join('');
@@ -599,7 +624,7 @@ async function loadArticle() {
     const catBadge = '<a href="category.html?cat=' + escId(a.categoryKey) + '" style="display:inline-block;background:#e0e7ff;color:var(--accent);padding:2px 10px;border-radius:4px;font-size:.75rem;font-weight:700;margin-bottom:8px;text-decoration:none">' + esc(a.categoryAr) + '</a>';
     const bodyWithAds = a.body ? injectAdsIntoBody(a.body) : '';
     main.innerHTML = '<div class="sb-container"><article class="sb-article">' +
-      (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '">' : '') +
+      (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" onerror="this.style.display=\'none\'">' : '') +
       catBadge +
       '<h1>' + esc(a.title) + '</h1>' +
       '<div class="sb-article-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + (a.readTime || 'قراءة دقيقة') + '</span></div>' +
@@ -670,13 +695,13 @@ async function initCategoryPage() {
     const adFeed = '<div class="sb-ad-box" style="min-height:250px;margin:0 0 20px;grid-column:1/-1"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 250</div></div>';
     let gridHtml = '';
     if (catArticles.length === 0) {
-      gridHtml = '<div class="sb-loading">لا توجد مقالات في هذا التصنيف</div>';
+      gridHtml = '<div class="sb-empty-state">لا توجد مقالات في هذا التصنيف</div>';
     } else {
       const items = catArticles.slice(0, 20);
       for (let i = 0; i < items.length; i++) {
         const a = items[i];
-        gridHtml += '<div class="sb-card" onclick="goto(\'' + escId(a.id) + '\')">' +
-          (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
+        gridHtml += '<div class="sb-card" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
+          (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
           '<div class="sb-card-body"><div class="sb-card-cat">' + esc(a.categoryAr) + '</div>' +
           '<h3>' + esc(a.title) + '</h3>' +
           (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +

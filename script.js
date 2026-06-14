@@ -1,4 +1,4 @@
-const BASE = 'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/sandbox';
+const BASE = 'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/data';
 let allArticles = [];
 let filteredArticles = [];
 const PAGE_SIZE = 9;
@@ -27,7 +27,11 @@ const CATEGORY_MAP = {
   Security:'أمن سيبراني',Startups:'شركات',
   Mobile:'هواتف ذكية',Hardware:'شركات',Gaming:'هواتف ذكية',
   Science:'الذكاء الاصطناعي',Business:'شركات',Cloud:'شركات',
-  'تكنولوجيا':'شركات','تقنية':'شركات',EV:'سيارات كهربائية',ev:'سيارات كهربائية'
+  'تكنولوجيا':'شركات','تقنية':'شركات',
+  'Electric Vehicles':'سيارات كهربائية',
+  'شركات تقنية':'شركات','الأمن السيبراني':'أمن سيبراني',
+  'تطوير':'تطوير',
+  EV:'سيارات كهربائية',ev:'سيارات كهربائية'
 };
 
 const TAG_CATEGORY_MAP = {

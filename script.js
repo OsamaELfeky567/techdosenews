@@ -53,6 +53,59 @@ const TAG_CATEGORY_MAP = {
   'Big-Tech':'companies','أبحاث':'ai','research':'ai'
 };
 
+const ENTITY_IMAGES = {
+  openai:'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80',
+  google:'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=800&q=80',
+  apple:'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&q=80',
+  microsoft:'https://images.unsplash.com/photo-1642132652075-7f2f0ab8f1b0?w=800&q=80',
+  nvidia:'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80',
+  samsung:'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=800&q=80',
+  tesla:'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80',
+  meta:'https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&q=80',
+  amazon:'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=800&q=80',
+  deepmind:'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
+  anthropic:'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
+  twitter:'https://images.unsplash.com/photo-1611605698335-8b1569810432?w=800&q=80',
+  cybersecurity:'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80',
+  ai:'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
+  mobile:'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80',
+  ev:'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&q=80',
+  companies:'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
+  default:'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80'
+};
+const ENTITY_KEYWORDS = [
+  [['openai','chatgpt','gpt-4','gpt4','o1','o3','sora','sam altman'],'openai'],
+  [['google','gemini','deepmind','gmail','android','pixel','youtube','chrome','waymo'],'google'],
+  [['apple','iphone','ipad','macbook','tim cook','siri','ios','vision pro','app store'],'apple'],
+  [['microsoft','windows','azure','copilot','satya','office 365','linkedin','github','xbox'],'microsoft'],
+  [['nvidia','jensen','geforce','rtx','cuda','titan'],'nvidia'],
+  [['samsung','galaxy','bixby','one ui'],'samsung'],
+  [['tesla','cybertruck','model 3','model y','elon musk','full self-driving','fsd','autopilot'],'tesla'],
+  [['meta','facebook','instagram','whatsapp','threads','zuckerberg','oculus','quest'],'meta'],
+  [['amazon','aws','alexa','prime','kindle','jeff bezos','ring'],'amazon'],
+  [['anthropic','claude','dario'],'anthropic'],
+  [['twitter','x.com','x corp','tweet','xai','grok'],'twitter'],
+  [['أمن سيبراني','cybersecurity','hacking','ransomware','اختراق','فيروس','breach','vulnerability','zero-day'],'cybersecurity']
+];
+function resolveImage(a) {
+  if (!a) return ENTITY_IMAGES.default;
+  const text = ((a.title||'')+' '+(a.source||'')+' '+(a.source_name||'')+' '+(a.tags||[]).join(' ')).toLowerCase();
+  for (const [keywords,entity] of ENTITY_KEYWORDS) {
+    for (const kw of keywords) {
+      if (text.includes(kw)) return ENTITY_IMAGES[entity];
+    }
+  }
+  if (a.categoryAr) {
+    const catLower = a.categoryAr.toLowerCase();
+    if (catLower.includes('ذكاء اصطناعي')) return ENTITY_IMAGES.ai;
+    if (catLower.includes('أمن')||catLower.includes('سيبراني')) return ENTITY_IMAGES.cybersecurity;
+    if (catLower.includes('هواتف')||catLower.includes('جوال')||catLower.includes('موبايل')) return ENTITY_IMAGES.mobile;
+    if (catLower.includes('سيارات')||catLower.includes('كهرب')) return ENTITY_IMAGES.ev;
+    if (catLower.includes('شركات')||catLower.includes('اعمال')||catLower.includes('تقنية')) return ENTITY_IMAGES.companies;
+  }
+  return a.image || ENTITY_IMAGES.default;
+}
+
 const ARABIC_DAYS = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
 const ARABIC_MONTHS = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
 
@@ -143,7 +196,7 @@ function renderHero() {
   if (!a) a = sorted[0];
   const pubDate = getPubDate(a);
   hero.innerHTML = '<div tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
-    (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
+    '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' +
     '<div class="sb-hero-overlay"><div class="sb-cat-badge">' + esc(a.categoryAr) + '</div>' +
     getFreshnessBadge(pubDate) +
     '<h2>' + esc(a.title) + '</h2>' +
@@ -171,7 +224,7 @@ function renderLatest() {
   const items = allArticles.slice(1, 7);
   list.innerHTML = items.map(a => {
     return '<div class="sb-latest-item" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
-      (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
+      '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' +
       '<div class="sb-latest-info"><span class="sb-latest-cat">' + esc(a.categoryAr) + '</span>' +
       '<h4>' + esc(a.title) + '</h4>' +
       '<span class="sb-latest-date">' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
@@ -187,7 +240,7 @@ function renderEditorsPicks() {
   const items = scored.slice(0, 3);
   list.innerHTML = items.map(a => {
     return '<div class="sb-latest-item" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
-      (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
+      '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' +
       '<div class="sb-latest-info"><span class="sb-latest-cat">' + esc(a.categoryAr) + '</span>' +
       '<h4>' + esc(a.title) + '</h4>' +
       '<span class="sb-latest-date">' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
@@ -230,7 +283,7 @@ function appendGridItems() {
     card.onclick = function() { goto(a.id); };
     card.onkeydown = function(e) { if (e.key === 'Enter' || e.key === 'Space') { e.preventDefault(); this.click(); } };
     let cardHtml = '';
-    if (a.image) cardHtml += '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">';
+    cardHtml += '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">';
     cardHtml += '<div class="sb-card-body"><div class="sb-card-cat">' + esc(a.categoryAr) + '</div>' +
       '<h3>' + esc(a.title) + '</h3>' +
       (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +
@@ -553,7 +606,7 @@ function renderRelatedArticles(article) {
   if (related.length === 0) return '';
   const html = related.map(a =>
     '<div class="sb-related-item" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
-    (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
+    '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' +
     '<div class="sb-related-info"><span class="sb-related-cat">' + esc(a.categoryAr) + '</span>' +
     '<h4>' + esc(a.title) + '</h4></div></div>'
   ).join('');
@@ -624,7 +677,7 @@ async function loadArticle() {
     const catBadge = '<a href="category.html?cat=' + escId(a.categoryKey) + '" style="display:inline-block;background:#e0e7ff;color:var(--accent);padding:2px 10px;border-radius:4px;font-size:.75rem;font-weight:700;margin-bottom:8px;text-decoration:none">' + esc(a.categoryAr) + '</a>';
     const bodyWithAds = a.body ? injectAdsIntoBody(a.body) : '';
     main.innerHTML = '<div class="sb-container"><article class="sb-article">' +
-      (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" onerror="this.style.display=\'none\'">' : '') +
+      '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" onerror="this.style.display=\'none\'">' +
       catBadge +
       '<h1>' + esc(a.title) + '</h1>' +
       '<div class="sb-article-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + (a.readTime || 'قراءة دقيقة') + '</span></div>' +
@@ -701,7 +754,7 @@ async function initCategoryPage() {
       for (let i = 0; i < items.length; i++) {
         const a = items[i];
         gridHtml += '<div class="sb-card" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
-          (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
+          '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' +
           '<div class="sb-card-body"><div class="sb-card-cat">' + esc(a.categoryAr) + '</div>' +
           '<h3>' + esc(a.title) + '</h3>' +
           (a.excerpt ? '<p>' + esc(a.excerpt) + '</p>' : '') +

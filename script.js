@@ -71,7 +71,7 @@ const ENTITY_IMAGES = {
   mobile:'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80',
   ev:'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&q=80',
   companies:'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
-  default:'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80'
+  default:'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80'
 };
 const ENTITY_KEYWORDS = [
   [['openai','chatgpt','gpt-4','gpt4','o1','o3','sora','sam altman'],'openai'],
@@ -102,9 +102,10 @@ function resolveImage(a) {
     if (catLower.includes('أمن')||catLower.includes('سيبراني')) return ENTITY_IMAGES.cybersecurity;
     if (catLower.includes('هواتف')||catLower.includes('جوال')||catLower.includes('موبايل')) return ENTITY_IMAGES.mobile;
     if (catLower.includes('سيارات')||catLower.includes('كهرب')) return ENTITY_IMAGES.ev;
-    if (catLower.includes('شركات')||catLower.includes('اعمال')||catLower.includes('تقنية')) return ENTITY_IMAGES.companies;
+    if (catLower.includes('شركات')||catLower.includes('اعمال')||catLower.includes('تقنية')||catLower.includes('تكنولوجيا')) return ENTITY_IMAGES.companies;
   }
-  return a.image || ENTITY_IMAGES.default;
+  if (a.image && !a.image.includes('photo-1518770660439-4636190af475')) return a.image;
+  return ENTITY_IMAGES.default;
 }
 
 const ARABIC_DAYS = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
@@ -672,9 +673,9 @@ async function loadArticle() {
     document.title = a.title + ' — TD بالعربي';
     document.querySelector('[property="og:title"]') && (document.querySelector('[property="og:title"]').content = a.title + ' — TD بالعربي');
     document.querySelector('[property="og:description"]') && (document.querySelector('[property="og:description"]').content = a.excerpt || '');
-    document.querySelector('[property="og:image"]') && (document.querySelector('[property="og:image"]').content = a.image || '');
+    document.querySelector('[property="og:image"]') && (document.querySelector('[property="og:image"]').content = resolveImage(a));
     document.querySelector('[property="og:url"]') && (document.querySelector('[property="og:url"]').content = 'https://osamaelfeky567.github.io/techdosenews/article.html?id=' + a.id);
-    document.querySelector('[name="twitter:image"]') && (document.querySelector('[name="twitter:image"]').content = a.image || '');
+    document.querySelector('[name="twitter:image"]') && (document.querySelector('[name="twitter:image"]').content = resolveImage(a));
     const tagsArr = Array.isArray(a.tags) ? a.tags : [];
     const tagsHtml = tagsArr.map(t => '<span>' + esc(t) + '</span>').join('');
     a.categoryAr = getArticleCategory(a);
@@ -711,7 +712,7 @@ function injectNewsArticleSchema(a) {
     '@type': 'NewsArticle',
     headline: a.title,
     description: (a.excerpt || '').substring(0, 300),
-    image: a.image || 'https://osamaelfeky567.github.io/techdosenews/sandbox/og-image.png',
+    image: resolveImage(a),
     author: { '@type': 'Organization', name: 'TD بالعربي' },
     publisher: { '@type': 'Organization', name: 'TD بالعربي', logo: { '@type': 'ImageObject', url: 'https://osamaelfeky567.github.io/techdosenews/sandbox/og-image.png' } },
     datePublished: pubDate,

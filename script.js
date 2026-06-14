@@ -1,4 +1,4 @@
-const BASE = 'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/data';
+const BASE = '/techdosenews/data';
 let allArticles = [];
 let filteredArticles = [];
 const PAGE_SIZE = 9;

@@ -19,6 +19,7 @@
 <script type="module">
 import * as CKEditor from 'ckeditor5';
 window.CKEditor = CKEditor;
+if (window.__CKEDITOR_RESOLVE__) window.__CKEDITOR_RESOLVE__();
 </script>
 <style>
 :root {
@@ -573,6 +574,9 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
    ============================================================ */
 
 'use strict';
+
+// CKEditor module script (deferred, line 19) sets this when CDN loads
+window.__CKEDITOR_PROMISE__ = new Promise(r => { window.__CKEDITOR_RESOLVE__ = r; });
 
 // ============================================================
 // CONFIG
@@ -1184,7 +1188,7 @@ let CKEDITOR_INSTANCE = null;
 async function initCKEditor() {
   if (CKEDITOR_INSTANCE) return CKEDITOR_INSTANCE;
   if (typeof CKEditor === 'undefined') {
-    await new Promise(resolve => setTimeout(resolve, 500));
+    await window.__CKEDITOR_PROMISE__;
     if (typeof CKEditor === 'undefined') return null;
   }
   const { ClassicEditor, Essentials, Bold, Italic, Underline, Strikethrough, Heading, Font, List, Alignment, BlockQuote, CodeBlock, HorizontalLine, Table, TableToolbar, TableProperties, TableCellProperties, Link, Image, ImageToolbar, ImageCaption, ImageResize, ImageStyle, ImageUpload, Base64UploadAdapter, Paragraph, RemoveFormat, PasteFromOffice, SourceEditing, GeneralHtmlSupport, AutoLink } = CKEditor;
@@ -1227,7 +1231,7 @@ async function initCKEditor() {
     const editor = await ClassicEditor.create(document.getElementById('editBody'), {
       language: { ui: 'en', content: 'ar' },
       plugins: [Essentials, Bold, Italic, Underline, Strikethrough, Heading, Font, List, Alignment, BlockQuote, CodeBlock, HorizontalLine, Table, TableToolbar, TableProperties, TableCellProperties, Link, AutoLink, Image, ImageToolbar, ImageCaption, ImageResize, ImageStyle, ImageUpload, GitHubUploadAdapterPlugin, Paragraph, RemoveFormat, PasteFromOffice, SourceEditing, GeneralHtmlSupport],
-      toolbar: ['undo', 'redo', '|', 'heading', '|', 'bold', 'italic', 'underline', 'strikethrough', 'removeFormat', '|', 'fontColor', 'fontBackgroundColor', '|', 'alignment:rtl', 'alignment:center', 'alignment:ltr', '|', 'bulletedList', 'numberedList', '|', 'blockQuote', 'codeBlock', 'horizontalLine', '|', 'insertTable', 'link', 'imageUpload', 'sourceEditing'],
+      toolbar: ['undo', 'redo', '|', 'heading', '|', 'bold', 'italic', 'underline', 'strikethrough', 'removeFormat', '|', 'fontColor', 'fontBackgroundColor', '|', 'alignment:right', 'alignment:center', 'alignment:left', '|', 'bulletedList', 'numberedList', '|', 'blockQuote', 'codeBlock', 'horizontalLine', '|', 'insertTable', 'link', 'imageUpload', 'sourceEditing'],
       heading: { options: [
         { model: 'paragraph', title: 'فقرة', class: 'ck-heading_paragraph' },
         { model: 'heading1', view: 'h1', title: 'العنوان الرئيسي', class: 'ck-heading_h1' },
@@ -1235,7 +1239,7 @@ async function initCKEditor() {
         { model: 'heading3', view: 'h3', title: 'عنوان فرعي صغير', class: 'ck-heading_h3' },
         { model: 'heading4', view: 'h4', title: 'عنوان فرعي أصغر', class: 'ck-heading_h4' }
       ]},
-      alignment: { options: ['rtl', 'center', 'ltr', 'justify'] },
+      alignment: { options: ['right', 'center', 'left', 'justify'] },
       table: { contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties'] },
       image: { toolbar: ['imageTextAlternative', 'imageCaption', 'imageStyle:inline', 'imageStyle:wrapText', 'imageStyle:breakText', '|', 'imageResize'], styles: ['inline', 'wrapText', 'breakText'], resizeOptions: [{ name: 'imageResize:original', value: null, label: 'أصلي' }, { name: 'imageResize:50', value: '50', label: '50%' }, { name: 'imageResize:75', value: '75', label: '75%' }, { name: 'imageResize:100', value: '100', label: '100%' }] },
       link: { addTargetToExternalLinks: true, defaultProtocol: 'https://' },

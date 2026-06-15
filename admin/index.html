@@ -8,6 +8,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+<script type="importmap">
+{
+  "imports": {
+    "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/44.0.0/ckeditor5.js",
+    "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/44.0.0/"
+  }
+}
+</script>
 <style>
 :root {
   --bg:#0f172a; --bg2:#1e293b; --bg3:#334155;
@@ -96,6 +104,66 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
 .toast.show{display:block;animation:fadeInUp .3s}
 .toast.success{border-color:var(--green)}
 .toast.error{border-color:var(--red)}
+/* CKEditor 5 Dark Theme */
+.ck.ck-editor { --ck-color-base-background: #1e293b; --ck-color-base-foreground: #f1f5f9; --ck-color-base-text: #f1f5f9; --ck-color-base-active: #3b82f6; --ck-color-base-active-focus: #2563eb; --ck-color-focus-border: #3b82f6; --ck-color-toolbar-background: #0f172a; --ck-color-toolbar-border: #334155; --ck-color-button-default-background: transparent; --ck-color-button-default-hover-background: #334155; --ck-color-button-on-background: #1e293b; --ck-color-button-on-hover-background: #334155; --ck-color-panel-background: #1e293b; --ck-color-panel-border: #334155; --ck-color-input-background: #0f172a; --ck-color-input-border: #334155; --ck-color-dropdown-panel-background: #1e293b; --ck-color-dropdown-panel-border: #334155; --ck-color-list-background: #1e293b; --ck-color-list-item-background: transparent; --ck-color-list-item-background-hover: #334155; --ck-color-list-item-background-active: #3b82f6; --ck-color-list-button-on-background: #334155; --ck-color-list-button-on-background-focus: #334155; --ck-color-labeled-field-label-background: transparent; --ck-color-table-focused-cell-background: #334155; --ck-color-link-default: #60a5fa; --ck-color-link-selected-background: #334155; --ck-color-widget-type-around-button-active: #3b82f6; --ck-color-widget-type-around-button-hover: #3b82f6; --ck-color-button-save: #22c55e; --ck-color-button-cancel: #ef4444; --ck-color-engine-placeholder-text: #64748b; --ck-border-radius: 8px; --ck-spacing-small: 6px; --ck-spacing-medium: 10px; --ck-spacing-large: 14px; --ck-font-size-base: 14px; --ck-line-height-base: 1.75; }
+.ck.ck-editor .ck.ck-toolbar .ck.ck-toolbar__separator { background: #334155; }
+.ck.ck-content { min-height: 400px; padding: 16px; line-height: 1.8; font-size: 15px; direction: rtl; text-align: right; }
+.ck.ck-content h2 { font-size: 1.5rem; font-weight: 700; margin: 1em 0 0.5em; color: #f1f5f9; }
+.ck.ck-content h3 { font-size: 1.25rem; font-weight: 600; margin: 0.8em 0 0.4em; color: #e2e8f0; }
+.ck.ck-content h4 { font-size: 1.1rem; font-weight: 600; margin: 0.6em 0 0.3em; color: #cbd5e1; }
+.ck.ck-content p { margin: 0 0 0.8em; line-height: 1.8; }
+.ck.ck-content blockquote { border-right: 4px solid #3b82f6; border-left: none; margin: 1em 0; padding: 0.5em 1em; background: #0f172a; color: #94a3b8; font-style: italic; }
+.ck.ck-content pre { background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 12px; direction: ltr; text-align: left; overflow-x: auto; }
+.ck.ck-content table { border-collapse: collapse; margin: 1em 0; width: 100%; }
+.ck.ck-content td, .ck.ck-content th { border: 1px solid #334155; padding: 8px 12px; }
+.ck.ck-content th { background: #0f172a; font-weight: 600; }
+.ck.ck-content a { color: #60a5fa; text-decoration: underline; }
+.ck.ck-content ul, .ck.ck-content ol { margin: 0.5em 0; padding-right: 1.5em; }
+.ck.ck-content li { margin: 0.3em 0; }
+.ck.ck-content .callout-box { background: #0f172a; border-right: 4px solid #3b82f6; border-radius: 8px; padding: 12px 16px; margin: 1em 0; }
+.ck.ck-content .highlight-box { background: rgba(251, 191, 36, 0.1); border-right: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 1em 0; }
+.ck.ck-content figure.image { margin: 1em 0; }
+.ck.ck-content figure.image figcaption { font-size: 0.85rem; color: #94a3b8; text-align: center; }
+.ck.ck-content hr { border: none; border-top: 1px solid #334155; margin: 1.5em 0; }
+.ck.ck-content .text-tiny { font-size: 0.8em; }
+.ck.ck-content .text-small { font-size: 0.9em; }
+.ck.ck-content .text-big { font-size: 1.2em; }
+.ck.ck-content .text-huge { font-size: 1.5em; }
+.ck.ck-content .marker-yellow { background: rgba(251, 191, 36, 0.3); }
+.ck.ck-content .marker-green { background: rgba(34, 197, 94, 0.3); }
+.ck.ck-content .marker-pink { background: rgba(244, 114, 182, 0.3); }
+.ck.ck-content .marker-blue { background: rgba(96, 165, 250, 0.3); }
+.ck.ck-content .pen-red { color: #ef4444; }
+.ck.ck-content .pen-green { color: #22c55e; }
+.ck.ck-content .ck-placeholder { color: #64748b; }
+.ck-editor__editable_inline { direction: rtl; text-align: right; }
+.ck.ck-balloon-panel { z-index: 10000 !important; }
+/* Preview styles matching live site */
+.preview-container { max-width: 800px; margin: 0 auto; background: var(--bg); padding: 24px; border-radius: var(--radius); border: 1px solid var(--bg3); }
+.preview-container .article-title { font-size: 1.6rem; font-weight: 900; margin-bottom: 8px; color: var(--text); line-height: 1.3; }
+.preview-container .article-meta { color: var(--text3); font-size: 0.85rem; margin-bottom: 16px; }
+.preview-container .article-body { line-height: 1.8; color: var(--text); }
+.preview-container .article-body h2 { font-size: 1.4rem; font-weight: 700; margin: 1em 0 0.5em; color: var(--text); }
+.preview-container .article-body h3 { font-size: 1.2rem; font-weight: 600; margin: 0.8em 0 0.4em; color: var(--text); }
+.preview-container .article-body p { margin: 0 0 0.8em; }
+.preview-container .article-body blockquote { border-right: 4px solid var(--primary); border-left: none; margin: 1em 0; padding: 0.5em 1em; background: var(--bg2); color: var(--text2); font-style: italic; }
+.preview-container .article-body table { border-collapse: collapse; margin: 1em 0; width: 100%; }
+.preview-container .article-body td, .preview-container .article-body th { border: 1px solid var(--bg3); padding: 8px 12px; }
+.preview-container .article-body th { background: var(--bg2); font-weight: 600; }
+.preview-container .article-body a { color: var(--primary); }
+.preview-container .article-body ul, .preview-container .article-body ol { margin: 0.5em 0; padding-right: 1.5em; }
+.preview-container .article-body .callout-box { background: var(--bg2); border-right: 4px solid var(--primary); border-radius: 8px; padding: 12px 16px; margin: 1em 0; }
+.preview-container .article-body .highlight-box { background: rgba(251, 191, 36, 0.1); border-right: 4px solid var(--orange); border-radius: 8px; padding: 12px 16px; margin: 1em 0; }
+.preview-container .article-body figure.image { margin: 1em 0; }
+.preview-container .article-body figure.image figcaption { font-size: 0.85rem; color: var(--text3); text-align: center; }
+.preview-container .article-body hr { border: none; border-top: 1px solid var(--bg3); margin: 1.5em 0; }
+.preview-container .article-body img { max-width: 100%; height: auto; border-radius: 8px; }
+/* Internal link modal */
+#internalLinkModal .article-list-modal { max-height: 400px; overflow-y: auto; margin-top: 12px; }
+#internalLinkModal .article-list-modal .link-item { padding: 8px 12px; cursor: pointer; border-radius: 6px; transition: 0.2s; }
+#internalLinkModal .article-list-modal .link-item:hover { background: var(--bg3); }
+#internalLinkModal .article-list-modal .link-item .link-title { font-size: 0.85rem; color: var(--text); }
+#internalLinkModal .article-list-modal .link-item .link-id { font-size: 0.75rem; color: var(--text3); }
 /* Modal */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9998;display:none;align-items:center;justify-content:center;padding:20px}
 .modal-overlay.show{display:flex}
@@ -262,16 +330,35 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
             <textarea id="editExcerpt" placeholder="نبذة مختصرة من 1-2 جمل..." required></textarea>
           </div>
           <div class="form-group">
-            <label>نص المقال (HTML) *</label>
-            <textarea class="body-editor" id="editBody" placeholder="<h2>عنوان فرعي</h2><p>نص المقال...</p>" required></textarea>
+            <label>نص المقال *</label>
+            <div style="display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap">
+              <button type="button" class="btn btn-sm btn-outline" onclick="insertBlock('callout')" title="مربع تنبيه"><i class="fas fa-info-circle"></i> تنبيه</button>
+              <button type="button" class="btn btn-sm btn-outline" onclick="insertBlock('highlight')" title="مربع تمييز"><i class="fas fa-highlighter"></i> تمييز</button>
+              <button type="button" class="btn btn-sm btn-outline" onclick="insertBlock('category-link')" title="رابط تصنيف"><i class="fas fa-folder"></i> رابط تصنيف</button>
+              <span style="color:var(--text3);font-size:.75rem;padding:4px 8px">أدوات إضافية:</span>
+            </div>
+            <div id="editBody"></div>
+            <div class="hint">استخدم شريط الأدوات لتنسيق النص. يمكن إدراج الصور والجداول والروابط.</div>
           </div>
           <div class="form-group">
             <label>تأثير على مصر</label>
             <textarea id="editEgypt" placeholder="تحليل التأثير على السوق المصري والعربي (اختياري)"></textarea>
           </div>
+          <div class="form-group">
+            <label>إدارة الصورة</label>
+            <div id="imagePreviewContainer" style="margin-bottom:8px;display:none">
+              <img id="articleImagePreview" style="max-width:100%;max-height:200px;border-radius:8px;border:1px solid var(--bg3);display:block;margin-bottom:4px">
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button type="button" class="btn btn-primary btn-sm" id="uploadImageBtn"><i class="fas fa-upload"></i> رفع صورة</button>
+              <input type="file" id="articleImageUpload" accept="image/*" style="display:none">
+              <button type="button" class="btn btn-red btn-sm" id="deleteImageBtn"><i class="fas fa-trash"></i> حذف الصورة</button>
+            </div>
+            <div id="uploadProgress" style="font-size:.8rem;color:var(--text3);margin-top:4px"></div>
+          </div>
           <div class="form-row">
             <div class="form-group">
-              <label>رابط الصورة</label>
+              <label>رابط خارجي (External URL)</label>
               <input type="url" id="editImage" placeholder="https://...">
               <div class="hint">اترك فارغاً لاستخدام الصورة التلقائية</div>
             </div>
@@ -318,12 +405,39 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
           </div>
           <div class="toolbar" style="margin-top:16px">
             <button type="submit" class="btn btn-primary" id="saveArticleBtn"><i class="fas fa-save"></i> حفظ</button>
+            <button type="button" class="btn btn-green" id="previewArticleBtn"><i class="fas fa-eye"></i> معاينة</button>
+            <button type="button" class="btn btn-outline" id="internalLinkBtn"><i class="fas fa-link"></i> رابط مقال</button>
             <button type="button" class="btn btn-outline" id="cancelEditBtn">إلغاء</button>
             <div class="spacer"></div>
             <div id="editorStatus" style="font-size:.8rem;color:var(--text3)"></div>
           </div>
         </form>
       </section>
+
+      <!-- ===== INTERNAL LINK MODAL ===== -->
+      <div class="modal-overlay" id="internalLinkModal">
+        <div class="modal" style="max-width:600px">
+          <div class="modal-header">
+            <h3>اختر مقالاً للربط الداخلي</h3>
+            <button class="modal-close" onclick="closeModal('internalLinkModal')">&times;</button>
+          </div>
+          <div class="modal-body">
+            <input type="search" id="linkArticleSearch" placeholder="ابحث عن مقال..." oninput="renderLinkArticleList()" style="width:100%;padding:10px 12px;border:1px solid var(--bg3);border-radius:8px;background:var(--bg2);color:var(--text);font-size:.85rem">
+            <div class="article-list-modal" id="linkArticleList"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PREVIEW MODAL ===== -->
+      <div class="modal-overlay" id="previewModal" onclick="if(event.target===this)closeModal('previewModal')">
+        <div class="modal" style="max-width:800px;width:90%">
+          <div class="modal-header">
+            <h3>معاينة المقال</h3>
+            <button class="modal-close" onclick="closeModal('previewModal')">&times;</button>
+          </div>
+          <div class="modal-body" id="previewContent"></div>
+        </div>
+      </div>
 
       <!-- ===== CATEGORIES ===== -->
       <section class="page" id="page-categories">
@@ -543,6 +657,19 @@ async function ghDelete(path, sha, message) {
   return data;
 }
 
+async function ghPutBinary(path, base64Content, message, sha) {
+  const body = { message: message || 'Upload image from admin panel', content: base64Content };
+  if (sha) body.sha = sha;
+  const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
+    method: 'PUT',
+    headers: { 'Authorization': `Bearer ${GH_TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'admin-panel' },
+    body: JSON.stringify(body)
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(`GitHub PUT ${path}: ${res.status} ${data.message || ''}`);
+  return data;
+}
+
 async function ghGetText(path) {
   const j = await ghFetch(path);
   return { text: decodeURIComponent(escape(atob(j.content))), sha: j.sha };
@@ -655,6 +782,13 @@ function navigateTo(page) {
   if (targetPage) targetPage.classList.add('active');
   const navItem = document.querySelector(`.nav-item[data-page="${page}"]`);
   if (navItem) navItem.classList.add('active');
+
+  // CKEditor lifecycle
+  if (page === 'editor') {
+    startEditorIfNeeded();
+  } else {
+    // Don't destroy on every nav — keep instance alive
+  }
 }
 
 // ============================================================
@@ -856,6 +990,8 @@ function renderArticles() {
 }
 
 /* Editor */
+let PENDING_EDITOR_DATA = null;
+
 function populateEditor(article) {
   CURRENT_EDIT_ID = article ? article.id : null;
   document.getElementById('editorTitle').textContent = article ? 'تعديل مقال' : 'مقال جديد';
@@ -863,9 +999,10 @@ function populateEditor(article) {
   document.getElementById('editId').value = article ? article.id : '';
   document.getElementById('editTitle').value = article ? (article.title_ar || article.title || '') : '';
   document.getElementById('editExcerpt').value = article ? (article.excerpt || '') : '';
-  document.getElementById('editBody').value = article ? (article.body || '') : '';
+  PENDING_EDITOR_DATA = article ? (article.body || '') : '';
   document.getElementById('editEgypt').value = article ? (article.egypt || article.egyptImpact || '') : '';
   document.getElementById('editImage').value = article ? (article.image_url || article.image || '') : '';
+  updateImagePreview();
   document.getElementById('editImageQuery').value = article ? (article.image_query || '') : '';
   document.getElementById('editSource').value = article ? (article.source_name || article.source || '') : '';
   document.getElementById('editSourceLink').value = article ? (article.source_link || '') : '';
@@ -915,6 +1052,54 @@ function renderTags() {
       renderTags();
     };
   });
+}
+
+function updateImagePreview() {
+  const url = document.getElementById('editImage').value;
+  const container = document.getElementById('imagePreviewContainer');
+  const img = document.getElementById('articleImagePreview');
+  if (url) {
+    img.src = url;
+    container.style.display = 'block';
+  } else {
+    container.style.display = 'none';
+    img.src = '';
+  }
+}
+
+async function handleImageUpload(file) {
+  if (!file) return;
+  const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'];
+  if (!validTypes.includes(file.type)) return showToast('نوع الملف غير مدعوم. استخدم JPG, PNG, GIF, WebP', 'error');
+  if (file.size > 5 * 1024 * 1024) return showToast('حجم الملف كبير جداً. الحد الأقصى 5MB', 'error');
+
+  const ext = file.name.split('.').pop() || 'png';
+  const id = CURRENT_EDIT_ID || Date.now().toString();
+  const filename = `article_${id}.${ext}`;
+  const path = `img/${filename}`;
+  const rawUrl = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${path}`;
+
+  const progress = document.getElementById('uploadProgress');
+  progress.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري رفع الصورة...';
+
+  try {
+    const dataUrl = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error('فشل قراءة الملف'));
+      reader.readAsDataURL(file);
+    });
+    const base64 = dataUrl.split(',')[1];
+    let sha = '';
+    try { const existing = await ghFetch(path); sha = existing.sha; } catch {}
+    await ghPutBinary(path, base64, sha ? 'تحديث صورة المقال' : 'رفع صورة مقال', sha);
+    document.getElementById('editImage').value = rawUrl;
+    updateImagePreview();
+    progress.innerHTML = '<span style="color:var(--green)"><i class="fas fa-check-circle"></i> تم رفع الصورة بنجاح</span>';
+    setTimeout(() => progress.innerHTML = '', 3000);
+  } catch (e) {
+    progress.innerHTML = `<span style="color:var(--red)"><i class="fas fa-exclamation-circle"></i> ${esc(e.message)}</span>`;
+  }
 }
 
 /* Categories */
@@ -987,8 +1172,341 @@ function renderThemes() {
   });
 }
 
+// ============================================================
+// CKEDITOR 5
+// ============================================================
+let CKEDITOR_INSTANCE = null;
+
+async function initCKEditor() {
+  if (CKEDITOR_INSTANCE) return CKEDITOR_INSTANCE;
+  if (typeof CKEditor === 'undefined') {
+    await new Promise(resolve => setTimeout(resolve, 500));
+    if (typeof CKEditor === 'undefined') return null;
+  }
+  const { ClassicEditor, Essentials, Bold, Italic, Underline, Strikethrough, Heading, Font, List, Alignment, BlockQuote, CodeBlock, HorizontalLine, Table, TableToolbar, TableProperties, TableCellProperties, Link, Image, ImageToolbar, ImageCaption, ImageResize, ImageStyle, ImageUpload, Base64UploadAdapter, Paragraph, RemoveFormat, PasteFromOffice, SourceEditing, GeneralHtmlSupport, AutoLink } = CKEditor;
+
+  class GitHubUploadAdapter {
+    constructor(loader) { this.loader = loader; }
+    async upload() {
+      const file = await this.loader.file;
+      if (!file) return { default: '' };
+      const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'];
+      if (!validTypes.includes(file.type)) throw new Error('نوع الملف غير مدعوم');
+      if (file.size > 5 * 1024 * 1024) throw new Error('حجم الملف كبير جداً. الحد الأقصى 5MB');
+
+      const ext = file.name.split('.').pop() || 'png';
+      const id = CURRENT_EDIT_ID || Date.now().toString();
+      const filename = `article_${id}_${Date.now()}.${ext}`;
+      const path = `img/${filename}`;
+      const rawUrl = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${path}`;
+
+      const dataUrl = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(new Error('فشل قراءة الملف'));
+        reader.readAsDataURL(file);
+      });
+      const base64 = dataUrl.split(',')[1];
+      let sha = '';
+      try { const existing = await ghFetch(path); sha = existing.sha; } catch {}
+      await ghPutBinary(path, base64, sha ? 'تحديث صورة المقال' : 'رفع صورة مقال', sha);
+      return { default: rawUrl };
+    }
+    abort() {}
+  }
+
+  function GitHubUploadAdapterPlugin(editor) {
+    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => new GitHubUploadAdapter(loader);
+  }
+
+  try {
+    const editor = await ClassicEditor.create(document.getElementById('editBody'), {
+      language: { ui: 'en', content: 'ar' },
+      plugins: [Essentials, Bold, Italic, Underline, Strikethrough, Heading, Font, List, Alignment, BlockQuote, CodeBlock, HorizontalLine, Table, TableToolbar, TableProperties, TableCellProperties, Link, AutoLink, Image, ImageToolbar, ImageCaption, ImageResize, ImageStyle, ImageUpload, GitHubUploadAdapterPlugin, Paragraph, RemoveFormat, PasteFromOffice, SourceEditing, GeneralHtmlSupport],
+      toolbar: ['undo', 'redo', '|', 'heading', '|', 'bold', 'italic', 'underline', 'strikethrough', 'removeFormat', '|', 'fontColor', 'fontBackgroundColor', '|', 'alignment:rtl', 'alignment:center', 'alignment:ltr', '|', 'bulletedList', 'numberedList', '|', 'blockQuote', 'codeBlock', 'horizontalLine', '|', 'insertTable', 'link', 'imageUpload', 'sourceEditing'],
+      heading: { options: [
+        { model: 'paragraph', title: 'فقرة', class: 'ck-heading_paragraph' },
+        { model: 'heading1', view: 'h1', title: 'العنوان الرئيسي', class: 'ck-heading_h1' },
+        { model: 'heading2', view: 'h2', title: 'عنوان فرعي', class: 'ck-heading_h2' },
+        { model: 'heading3', view: 'h3', title: 'عنوان فرعي صغير', class: 'ck-heading_h3' },
+        { model: 'heading4', view: 'h4', title: 'عنوان فرعي أصغر', class: 'ck-heading_h4' }
+      ]},
+      alignment: { options: ['rtl', 'center', 'ltr', 'justify'] },
+      table: { contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties'] },
+      image: { toolbar: ['imageTextAlternative', 'imageCaption', 'imageStyle:inline', 'imageStyle:wrapText', 'imageStyle:breakText', '|', 'imageResize'], styles: ['inline', 'wrapText', 'breakText'], resizeOptions: [{ name: 'imageResize:original', value: null, label: 'أصلي' }, { name: 'imageResize:50', value: '50', label: '50%' }, { name: 'imageResize:75', value: '75', label: '75%' }, { name: 'imageResize:100', value: '100', label: '100%' }] },
+      link: { addTargetToExternalLinks: true, defaultProtocol: 'https://' },
+      fontColor: { colors: [
+        { color: '#f1f5f9', label: 'أبيض' }, { color: '#94a3b8', label: 'رمادي' }, { color: '#3b82f6', label: 'أزرق' }, { color: '#22c55e', label: 'أخضر' }, { color: '#ef4444', label: 'أحمر' }, { color: '#f59e0b', label: 'برتقالي' }, { color: '#a855f7', label: 'بنفسجي' }, { color: '#ec4899', label: 'وردي' }, { color: '#000000', label: 'أسود' }
+      ]},
+      fontBackgroundColor: { colors: [
+        { color: 'rgba(251,191,36,0.3)', label: 'أصفر' }, { color: 'rgba(34,197,94,0.3)', label: 'أخضر' }, { color: 'rgba(244,114,182,0.3)', label: 'وردي' }, { color: 'rgba(96,165,250,0.3)', label: 'أزرق' }, { color: 'rgba(239,68,68,0.3)', label: 'أحمر' }
+      ]},
+      htmlSupport: { allow: [{ name: /.*/, attributes: true, classes: true, styles: true }] },
+      placeholder: 'ابدأ بكتابة المقال هنا...'
+    });
+    CKEDITOR_INSTANCE = editor;
+    editor.ui.focusTracker.on('change:isFocused', () => {
+      if (!editor.ui.focusTracker.isFocused) {
+        document.getElementById('editorStatus').textContent = 'آخر حفظ تلقائي: ' + new Date().toLocaleTimeString('ar-EG');
+      }
+    });
+    return editor;
+  } catch (e) {
+    console.error('CKEditor init error:', e);
+    document.getElementById('editorStatus').textContent = 'خطأ في تهيئة المحرر';
+    return null;
+  }
+}
+
+function getEditorData() {
+  if (CKEDITOR_INSTANCE) return CKEDITOR_INSTANCE.getData();
+  return '';
+}
+
+function setEditorData(html) {
+  if (CKEDITOR_INSTANCE) {
+    CKEDITOR_INSTANCE.setData(html || '');
+  } else {
+    PENDING_EDITOR_DATA = html || '';
+  }
+}
+
+async function destroyCKEditor() {
+  if (CKEDITOR_INSTANCE) {
+    try { await CKEDITOR_INSTANCE.destroy(); } catch {}
+    CKEDITOR_INSTANCE = null;
+  }
+}
+
+function showInternalLinkModal() {
+  // Reset modal to article list view
+  const modal = document.getElementById('internalLinkModal');
+  modal.innerHTML = `
+    <div class="modal" style="max-width:600px">
+      <div class="modal-header">
+        <h3>اختر مقالاً للربط الداخلي</h3>
+        <button class="modal-close" onclick="closeModal('internalLinkModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="search" id="linkArticleSearch" placeholder="ابحث عن مقال..." oninput="renderLinkArticleList()" style="width:100%;padding:10px 12px;border:1px solid var(--bg3);border-radius:8px;background:var(--bg2);color:var(--text);font-size:.85rem">
+        <div class="article-list-modal" id="linkArticleList"></div>
+      </div>
+    </div>`;
+  renderLinkArticleList();
+  openModal('internalLinkModal');
+}
+
+function renderLinkArticleList() {
+  const search = (document.getElementById('linkArticleSearch').value || '').toLowerCase();
+  const list = DB.filter(a => (a.title_ar||'').toLowerCase().includes(search) || (a.id||'').toLowerCase().includes(search));
+  const container = document.getElementById('linkArticleList');
+  if (list.length === 0) {
+    container.innerHTML = '<div style="color:var(--text3);padding:20px;text-align:center">لا توجد مقالات</div>';
+    return;
+  }
+  container.innerHTML = list.map(a => {
+    const title = a.title_ar || a.title || 'بدون عنوان';
+    return `<div class="link-item" onclick="insertInternalLink('${esc(a.id)}')">
+      <div class="link-title">${esc(title.substring(0, 60))}</div>
+      <div class="link-id">${esc(a.id)} - ${esc(a.category || '')}</div>
+    </div>`;
+  }).join('');
+}
+
+function insertInternalLink(articleId) {
+  const article = DB.find(a => String(a.id) === String(articleId));
+  if (!article) return;
+  const url = `https://${GH_OWNER}.github.io/${GH_REPO}/article.html?id=${articleId}`;
+  const title = article.title_ar || article.title || 'المقال';
+  if (CKEDITOR_INSTANCE) {
+    const model = CKEDITOR_INSTANCE.model;
+    const selection = model.document.selection;
+    if (selection.isCollapsed) {
+      CKEDITOR_INSTANCE.model.change(writer => {
+        const linkElement = writer.createText(title, { linkHref: url });
+        model.insertContent(linkElement);
+      });
+    } else {
+      CKEDITOR_INSTANCE.execute('link', url);
+    }
+  }
+  closeModal('internalLinkModal');
+}
+
+function insertBlock(type) {
+  if (!CKEDITOR_INSTANCE) return;
+  const editor = CKEDITOR_INSTANCE;
+
+  if (type === 'callout') {
+    editor.model.change(writer => {
+      const container = writer.createElement('div', { class: 'callout-box' });
+      const paragraph = writer.createElement('paragraph');
+      writer.appendText('نص التنبيه هنا...', paragraph);
+      writer.append(paragraph, container);
+      editor.model.insertContent(container);
+    });
+    return;
+  }
+
+  if (type === 'highlight') {
+    editor.model.change(writer => {
+      const container = writer.createElement('div', { class: 'highlight-box' });
+      const paragraph = writer.createElement('paragraph');
+      writer.appendText('نص مميز هنا...', paragraph);
+      writer.append(paragraph, container);
+      editor.model.insertContent(container);
+    });
+    return;
+  }
+
+  if (type === 'category-link') {
+    const cats = Object.keys(CAT_COLORS);
+    const catList = cats.map(c =>
+      `<div class="link-item" onclick="insertCategoryLink('${esc(c)}')">
+        <div class="link-title" style="display:flex;align-items:center;gap:8px">
+          <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:${CAT_COLORS[c]}"></span>
+          ${esc(c)}
+        </div>
+        <div class="link-id">رابط التصنيف</div>
+      </div>`
+    ).join('');
+    const modalContent = `
+      <div class="modal-header">
+        <h3>اختر تصنيفاً للربط</h3>
+        <button class="modal-close" onclick="closeModal('internalLinkModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="article-list-modal">${catList}</div>
+      </div>
+    `;
+    document.getElementById('internalLinkModal').innerHTML = modalContent;
+    openModal('internalLinkModal');
+    return;
+  }
+}
+
+function insertCategoryLink(category) {
+  const url = `https://${GH_OWNER}.github.io/${GH_REPO}/category.html?cat=${encodeURIComponent(category)}`;
+  if (CKEDITOR_INSTANCE) {
+    const selection = CKEDITOR_INSTANCE.model.document.selection;
+    if (selection.isCollapsed) {
+      CKEDITOR_INSTANCE.model.change(writer => {
+        const linkElement = writer.createText(category, { linkHref: url });
+        CKEDITOR_INSTANCE.model.insertContent(linkElement);
+      });
+    } else {
+      CKEDITOR_INSTANCE.execute('link', url);
+    }
+  }
+  closeModal('internalLinkModal');
+  // Restore modal content
+  setTimeout(() => {
+    document.getElementById('internalLinkModal').innerHTML = `
+      <div class="modal" style="max-width:600px">
+        <div class="modal-header">
+          <h3>اختر مقالاً للربط الداخلي</h3>
+          <button class="modal-close" onclick="closeModal('internalLinkModal')">&times;</button>
+        </div>
+        <div class="modal-body">
+          <input type="search" id="linkArticleSearch" placeholder="ابحث عن مقال..." oninput="renderLinkArticleList()" style="width:100%;padding:10px 12px;border:1px solid var(--bg3);border-radius:8px;background:var(--bg2);color:var(--text);font-size:.85rem">
+          <div class="article-list-modal" id="linkArticleList"></div>
+        </div>
+      </div>`;
+    renderLinkArticleList();
+  }, 100);
+}
+
+function validateArticleContent(html) {
+  const issues = [];
+  if (!html || html.trim() === '') { issues.push('نص المقال فارغ'); return issues; }
+  const imgRegex = /<img[^>]+src=["']([^"']+)["']/g;
+  let match;
+  while ((match = imgRegex.exec(html)) !== null) {
+    const src = match[1];
+    if (src.startsWith('data:')) issues.push('يوجد صور بصيغة base64 لم يتم رفعها. انتظر حتى اكتمال الرفع.');
+  }
+  const brokenTags = html.match(/<[^>]*>/g);
+  if (brokenTags) {
+    const stack = [];
+    const selfClosing = ['br','hr','img','input','meta','link','area','base','col','embed','source','track','wbr'];
+    for (const tag of brokenTags) {
+      const m = tag.match(/<\/?([a-zA-Z0-9]+)/);
+      if (!m) continue;
+      const name = m[1].toLowerCase();
+      if (tag.startsWith('</')) {
+        if (!selfClosing.includes(name) && stack.length > 0 && stack[stack.length-1] === name) stack.pop();
+      } else if (!tag.endsWith('/>') && !selfClosing.includes(name)) {
+        stack.push(name);
+      }
+    }
+    if (stack.length > 0) issues.push('يوجد وسوم غير مغلقة: ' + stack.join(', '));
+  }
+  return issues;
+}
+
+function openModal(id) {
+  document.getElementById(id).style.display = 'flex';
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+function renderPreview() {
+  const title = document.getElementById('editTitle').value || 'بدون عنوان';
+  const category = document.getElementById('editCategory').value || 'تكنولوجيا';
+  const excerpt = document.getElementById('editExcerpt').value || '';
+  const bodyHtml = getEditorData();
+  const imageUrl = document.getElementById('editImage').value || 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80';
+  const now = new Date().toLocaleString('ar-EG');
+  const catColor = CAT_COLORS[category] || '#3b82f6';
+
+  const content = `
+    <article class="preview-container">
+      <span style="display:inline-block;background:${catColor};color:#fff;padding:4px 12px;border-radius:20px;font-size:.8rem;font-weight:600;margin-bottom:12px">${esc(category)}</span>
+      <h1 class="article-title">${esc(title)}</h1>
+      <div class="article-meta">${now} | ${Math.max(1, Math.round((bodyHtml||'').split(/\s+/).filter(Boolean).length/80))} دقائق للقراءة</div>
+      <img src="${esc(imageUrl)}" alt="${esc(title)}" style="width:100%;max-height:400px;object-fit:cover;border-radius:8px;margin:12px 0">
+      ${excerpt ? '<p style="font-size:1.05rem;color:var(--text2);margin-bottom:16px;line-height:1.6">' + esc(excerpt) + '</p>' : ''}
+      <hr style="border:none;border-top:1px solid var(--bg3);margin:16px 0">
+      <div class="article-body">${bodyHtml}</div>
+    </article>
+  `;
+
+  document.getElementById('previewContent').innerHTML = content;
+  openModal('previewModal');
+}
+
+// ============================================================
+// INIT — CKEditor start on editor page
+// ============================================================
+let CKEDITOR_INIT_STARTED = false;
+
+async function startEditorIfNeeded() {
+  if (CKEDITOR_INIT_STARTED) return;
+  const editorPage = document.getElementById('page-editor');
+  if (editorPage.classList.contains('active') && !CKEDITOR_INSTANCE) {
+    CKEDITOR_INIT_STARTED = true;
+    document.getElementById('editorStatus').textContent = 'جاري تحميل المحرر...';
+    await initCKEditor();
+    document.getElementById('editorStatus').textContent = 'المحرر جاهز';
+    // Apply any pending data
+    if (PENDING_EDITOR_DATA !== null) {
+      setEditorData(PENDING_EDITOR_DATA);
+      PENDING_EDITOR_DATA = null;
+    }
+  }
+}
+
 /* Init dashboard etc on article page */
 async function saveArticle(formData) {
+  // Validate before save
+  const articleBody = getEditorData();
+  const validationErrors = validateArticleContent(articleBody);
+  if (validationErrors.length > 0) {
+    return showToast('تحذير: ' + validationErrors.join(' | '), 'error');
+  }
+
   const isNew = !CURRENT_EDIT_ID;
   const id = CURRENT_EDIT_ID || Date.now().toString();
   const now = new Date().toISOString();
@@ -998,7 +1516,7 @@ async function saveArticle(formData) {
     id,
     title_ar: formData.title,
     excerpt: formData.excerpt,
-    body: formData.body,
+    body: articleBody,
     egypt: formData.egypt || '',
     category: formData.category,
     tags: formData.tags,
@@ -1234,11 +1752,11 @@ async function afterLogin() {
   // Article form submit
   document.getElementById('articleForm').onsubmit = async (e) => {
     e.preventDefault();
-    const fd = new FormData(e.target);
+    const bodyHtml = getEditorData();
     const data = {
       title: document.getElementById('editTitle').value,
       excerpt: document.getElementById('editExcerpt').value,
-      body: document.getElementById('editBody').value,
+      body: bodyHtml,
       egypt: document.getElementById('editEgypt').value,
       category: document.getElementById('editCategory').value,
       tags: EDIT_TAGS,
@@ -1250,7 +1768,8 @@ async function afterLogin() {
       status: document.getElementById('editStatus').value,
       featured: document.getElementById('editFeatured').checked
     };
-    if (!data.title || !data.body) return showToast('العنوان ونص المقال مطلوبان', 'error');
+    if (!data.title) return showToast('العنوان مطلوب', 'error');
+    if (!data.body || data.body.trim() === '') return showToast('نص المقال مطلوب', 'error');
     const btn = document.getElementById('saveArticleBtn');
     btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الحفظ...';
     try {
@@ -1261,8 +1780,27 @@ async function afterLogin() {
     btn.disabled = false; btn.innerHTML = '<i class="fas fa-save"></i> حفظ';
   };
 
+  // Preview article
+  document.getElementById('previewArticleBtn').onclick = renderPreview;
+
+  // Internal link
+  document.getElementById('internalLinkBtn').onclick = showInternalLinkModal;
+
   // Cancel edit
   document.getElementById('cancelEditBtn').onclick = () => navigateTo('articles');
+
+  // Image management
+  document.getElementById('uploadImageBtn').onclick = () => document.getElementById('articleImageUpload').click();
+  document.getElementById('articleImageUpload').onchange = (e) => {
+    if (e.target.files && e.target.files[0]) handleImageUpload(e.target.files[0]);
+    e.target.value = '';
+  };
+  document.getElementById('deleteImageBtn').onclick = () => {
+    document.getElementById('editImage').value = '';
+    updateImagePreview();
+    showToast('تم حذف الصورة', 'success');
+  };
+  document.getElementById('editImage').oninput = updateImagePreview;
 
   // Tags input
   document.getElementById('tagInput').addEventListener('keydown', e => {

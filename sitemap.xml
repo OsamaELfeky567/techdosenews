@@ -13,6 +13,34 @@
   <url><loc>https://osamaelfeky567.github.io/techdosenews/disclaimer.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://osamaelfeky567.github.io/techdosenews/editorial-policy.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781479820832-tnoo7z</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-14T23:30:22.845Z</news:publication_date>
+      <news:title>أقل سعر على الإطلاق لهاتف Google Pixel 9 مع خصم ضخم بنسبة 44٪ في صفقة أمازون المحدودة الوقت</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781478020271-zerqvu</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-14T23:00:21.850Z</news:publication_date>
+      <news:title> شاهد كيف تقوم Google بإعادة اختراع البحث باستخدام الذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781458220538-ubizxr</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -22,7 +50,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-14T17:30:22Z</news:publication_date>
+      <news:publication_date>2026-06-14T17:30:22.257Z</news:publication_date>
       <news:title>أطلقت OpenAI قسمًا جديدًا للروبوتات. هل ينبغي لمستثمري Tesla القلق؟</news:title>
     </news:news>
   </url>
@@ -36,7 +64,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-14T13:30:23Z</news:publication_date>
+      <news:publication_date>2026-06-14T13:30:23.313Z</news:publication_date>
       <news:title>أطلقت OpenAI قسم الروبوتات. هل ينبغي لمستثمري Tesla القلق؟</news:title>
     </news:news>
   </url>
@@ -50,7 +78,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-14T13:00:22Z</news:publication_date>
+      <news:publication_date>2026-06-14T13:00:22.156Z</news:publication_date>
       <news:title>أطلقت OpenAI قسمًا جديدًا للروبوتات. هل ينبغي لمستثمري Tesla القلق؟</news:title>
     </news:news>
   </url>
@@ -64,7 +92,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-14T12:30:23Z</news:publication_date>
+      <news:publication_date>2026-06-14T12:30:23.293Z</news:publication_date>
       <news:title>بعد عام على تعيين أليكساندر وانغ لبناء نموذج ذكاء اصطناعي جديد، يضطر زوكربيرغ لبيعه - CNBC</news:title>
     </news:news>
   </url>
@@ -78,7 +106,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-14T12:00:22Z</news:publication_date>
+      <news:publication_date>2026-06-14T12:00:22.591Z</news:publication_date>
       <news:title>أطلقت OpenAI قسمًا جديدًا للروبوتات. هل يجب على مستثمري Tesla القلق؟</news:title>
     </news:news>
   </url>
@@ -92,7 +120,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-14T08:30:22Z</news:publication_date>
+      <news:publication_date>2026-06-14T08:30:22.525Z</news:publication_date>
       <news:title>أبل تكشف عن ثلاثة أدلة مخفية حول مستقبل الشركة بفضل الذكاء الاصطناعي</news:title>
     </news:news>
   </url>
@@ -106,7 +134,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-14T08:00:22Z</news:publication_date>
+      <news:publication_date>2026-06-14T08:00:22.093Z</news:publication_date>
       <news:title>ما قالته قائدة طويلة الأمد في جوجل للذكاء الاصطناعي لطلاب علوم الحاسوب في جامعة واشنطن في حفل التخرج</news:title>
     </news:news>
   </url>
@@ -120,7 +148,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-13T15:00:22Z</news:publication_date>
+      <news:publication_date>2026-06-13T15:00:22.215Z</news:publication_date>
       <news:title>شاومي تطلق أداة برمجة ذكاء اصطناعي، تدعي تفوقها على كلود كود في المهام المعقدة</news:title>
     </news:news>
   </url>
@@ -134,7 +162,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-13T11:00:23Z</news:publication_date>
+      <news:publication_date>2026-06-13T11:00:23.320Z</news:publication_date>
       <news:title>500 موظف حكومي يخضعون للتدريب على منصات الذكاء الاصطناعي في ورشة عمل في سوريبيت</news:title>
     </news:news>
   </url>
@@ -148,7 +176,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-13T10:30:21Z</news:publication_date>
+      <news:publication_date>2026-06-13T10:30:21.771Z</news:publication_date>
       <news:title>LSEG توسع نطاق الذكاء الاصطناعي الموثوق به مع OpenAI</news:title>
     </news:news>
   </url>
@@ -162,7 +190,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-13T09:30:22Z</news:publication_date>
+      <news:publication_date>2026-06-13T09:30:22.520Z</news:publication_date>
       <news:title>الذكاء الاصطناعي يقوي تحليل أطروحة الاستثمار مع OpenAI Codex - StartupHub.ai</news:title>
     </news:news>
   </url>
@@ -176,7 +204,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-13T09:00:22Z</news:publication_date>
+      <news:publication_date>2026-06-13T09:00:22.959Z</news:publication_date>
       <news:title>دراسة نيتشر ميدسين تظهر أن النماذج اللغوية العامة تتفوق على أدوات الذكاء الاصطناعي الطبية المخصصة</news:title>
     </news:news>
   </url>
@@ -190,7 +218,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-13T08:30:22Z</news:publication_date>
+      <news:publication_date>2026-06-13T08:30:22.256Z</news:publication_date>
       <news:title>شركة Anthropic تعلق الوصول إلى أدوات الذكاء الاصطناعي Fable 5 و Mythos 5: ماذا حدث بالفعل</news:title>
     </news:news>
   </url>
@@ -204,7 +232,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-13T08:00:22Z</news:publication_date>
+      <news:publication_date>2026-06-13T08:00:22.338Z</news:publication_date>
       <news:title>دورات جديدة في أكاديمية OpenAI للعصر القادم من العمل</news:title>
     </news:news>
   </url>
@@ -218,7 +246,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-13T06:00:22Z</news:publication_date>
+      <news:publication_date>2026-06-13T06:00:22.141Z</news:publication_date>
       <news:title>شركة OpenAI تشتري شركة Ona لمساعدة التحكم في وكلاء الذكاء الاصطناعي</news:title>
     </news:news>
   </url>
@@ -232,7 +260,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-13T05:30:22Z</news:publication_date>
+      <news:publication_date>2026-06-13T05:30:22.467Z</news:publication_date>
       <news:title>أنتروبك تعلق أنظمة كلود فابل 5 وميثوس 5 الذكية بسبب مخاوف أمنية</news:title>
     </news:news>
   </url>
@@ -246,7 +274,7 @@
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-12T21:30:21Z</news:publication_date>
+      <news:publication_date>2026-06-12T21:30:21.867Z</news:publication_date>
       <news:title>أبحاث حول كيف يمكن للذكاء الاصطناعي مساعدة المستخدمين على فهم الحالات الجلدية - أبحاث في جوجل</news:title>
     </news:news>
   </url>
@@ -255,1535 +283,3583 @@
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T19:30:21.977Z</news:publication_date>
+      <news:title>أفضل أدوات الذكاء الاصطناعي المجانية للعمل في 2026: ChatGPT و Claude والمزيد</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781287221495-wqyho7</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T18:00:23.354Z</news:publication_date>
+      <news:title>جوجل تطلق Colab CLI لمطوري البرمجيات والتحكم الآلي ووكلاء الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781281820401-ocypok</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T16:30:22.383Z</news:publication_date>
+      <news:title>Palantir تتعاون مع Google Cloud لتكامل أدوات Gemini الذكية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781280021551-gvi0h7</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T16:00:23.720Z</news:publication_date>
+      <news:title>كيف نتصدى للاحتيال باستخدام الذكاء الاصطناعي من خلال الأمن والتشريعات والمزيد</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781278220387-rve8zn</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T15:30:22.229Z</news:publication_date>
+      <news:title>مدير أمن جوجل يستقيل بسبب صفقة الذكاء الاصطناعي مع الجيش الأمريكي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781276420509-7gzfex</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T15:00:22.275Z</news:publication_date>
+      <news:title>حرب الأسعار في مجال الذكاء الاصطناعي بدأت، وتضع ضغطاً على OpenAI وAnthropic</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781274621173-caf89t</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T14:30:23.053Z</news:publication_date>
+      <news:title>شركة OpenAI تكتسب شركة Ona الألمانية لتعزيز مهام وكلاء Codex</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781272820661-5qu55g</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T14:00:22.604Z</news:publication_date>
+      <news:title>الكنديون يزيدون استخدامهم للذكاء الاصطناعي للحصول على المشورة المالية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781271021797-sgp4d9</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T13:30:23.863Z</news:publication_date>
+      <news:title>جوجل تستهدف عمليات التصيد الاحتيالي التي تعتمد على الذكاء الاصطناعي في دعوى قضائية جديدة في نيويورك</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781263820538-keu0p2</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T11:30:22.367Z</news:publication_date>
+      <news:title>جوجل ترفع دعوى قضائية لمنع مجموعة صينية من استخدام تقنيات الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781262020472-lh021j</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T11:00:26.838Z</news:publication_date>
+      <news:title>مستقبل الظهور</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781260220281-czs2jk</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T10:30:22.017Z</news:publication_date>
+      <news:title>نماذج اللغة الكبيرة متعددة الاستخدامات تتفوق على أدوات الذكاء الاصطناعي السريرية المتخصصة في المعايير الطبية - نيتشر</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781258420681-97sohg</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T10:00:23.136Z</news:publication_date>
+      <news:title>شائعات السوق: OpenAI لشراء Ona لتعزيز أدوات الذكاء الاصطناعي للمؤسسات</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781256620217-cfwooi</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T09:30:21.734Z</news:publication_date>
+      <news:title>جوجل تقول إن مجموعة الجريمة الإلكترونية الصينية استخدمت الذكاء الاصطناعي في عمليات الاحتيال</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781254826637-f0zct3</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T09:00:29.631Z</news:publication_date>
+      <news:title>OpenAI تستحوذ على Ona لتوسيع أدوات الذكاء الاصطناعي للمشاريع</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781229620149-ubiazd</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T02:00:21.876Z</news:publication_date>
+      <news:title>كودكس يعزز تصحيح الأخطاء على الويب من خلال التكامل مع المتصفح</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781227820436-rejj3g</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T01:30:22.003Z</news:publication_date>
+      <news:title>تطوير نظام Apple Developer: دمج Gemini AI الأصلي في Xcode 27 ، ومخيم البرمجة يكتسب حليفًا قويًا - AIBase</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781226020168-9dr36m</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T01:00:22.278Z</news:publication_date>
+      <news:title>شريك Palantir مع Google Cloud لتكامل أدوات Gemini AI</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781224220204-uf391t</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T00:30:21.966Z</news:publication_date>
+      <news:title>جوجل تكشف عن وكلاء معلومات مدعومين بالذكاء الاصطناعي وأدوات بحث مخصصة</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781222420175-46a2ez</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-12T00:00:21.815Z</news:publication_date>
+      <news:title>OpenAI تدعم قانون الشفافية الإصطناعي في الاتحاد الأوروبي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781220620159-b1c60s</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-11T23:30:21.537Z</news:publication_date>
+      <news:title>زاك بروسر من WorkOS يتحدث عن الإنتاجية غير المرتبطة بالذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781218820363-s9dxlv</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-11T23:00:22.184Z</news:publication_date>
+      <news:title>طراز Fable الجديد من شركة Anthropic يلاقي ردود فعل سلبية من المستخدمين بسبب القيود</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781217020713-lzemvl</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-11T22:30:22.567Z</news:publication_date>
+      <news:title>كما تتقدم OpenAI في مجال الأعمال التجارية، تضع Apple و Google أهدافها على الجماهير</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781213420235-sejm3z</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-11T21:30:21.729Z</news:publication_date>
+      <news:title>أجيل روبوتس تعرض تقنية التحكم في القوة والأندرويد والذكاء الاصطناعي الفيزيائي في حدث تكنولوجيا الروبوتات في اليابان</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781211620261-rynom4</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-11T21:00:22.616Z</news:publication_date>
+      <news:title>داخل الهند: هوليوود تُجادل في شأن الذكاء الاصطناعي، بينما يعتمد صانعوا الأفلام الهنود عليه</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781209820079-v20qgo</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-11T20:30:21.892Z</news:publication_date>
+      <news:title>تنمية الجيل القادم من العمال الأمريكيين</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781208020452-1mmmru</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-11T20:00:22.846Z</news:publication_date>
+      <news:title>من المتوقع أن تخفض OpenAI الأسعار قريبا لمواجهة المنافس Anthropic</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781206220364-706a93</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-11T19:30:22.039Z</news:publication_date>
+      <news:title>الوكالة الصناعية تستعد لبيع أدوات الذكاء الاصطناعي لصناعة الألعاب</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781204420343-aszgbv</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-11T19:00:22.628Z</news:publication_date>
+      <news:title>عمال أمازون يكرهون أدوات الذكاء الاصطناعي الداخلية الخاصة بهم</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781202620388-8s4w0p</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-11T18:30:22.296Z</news:publication_date>
+      <news:title>فيزا تطلق أدوات ذكاء اصطناعي وعملة مستقرة لتعزيز التجارة الذكية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781200822482-ghi5lq</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-11T18:00:24.134Z</news:publication_date>
+      <news:title>شركة Anthropic تطلب إجارة مراكز بيانات أولية وتسعى للحصول على دعم مالي من Google</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781199020442-0pl8r3</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-11T17:30:22.391Z</news:publication_date>
+      <news:title>دعم عمل أوروبا لضمان وجود نظام موثوق به للذكاء الاصطناعي - OpenAI</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781197221037-3jsaiv</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-11T17:00:24.956Z</news:publication_date>
+      <news:title>شركة OpenAI تستحوذ على شركة Ona لدعم مساعد الترميز الذكي Codex</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781195420537-bltqq0</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-11T16:30:22.923Z</news:publication_date>
+      <news:title>مُشغلات مقرها الصين استخدمت ChatGPT لتأثير بيانات مراكز البيانات والتعريفات الجمركية - Axios</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781191820249-3ipmnk</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-11T15:30:22.228Z</news:publication_date>
+      <news:title>جوجل تكشف عن أدوات تسويق مدفوعة بالذكاء الاصطناعي في حدثها السنوي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781188220817-gdw0h5</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-11T14:30:22.957Z</news:publication_date>
+      <news:title>كما تتمایل OpenAI إلى أعمال الشركات، تضع Apple و Google أهدافها على الجماهير</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781127020244-gf90iy</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-10T21:30:21.943Z</news:publication_date>
+      <news:title>DiffusionGemma: 4 أضعاف سرعة توليد النص</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781125222664-8umiv6</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-10T21:00:24.355Z</news:publication_date>
+      <news:title>وفر الوقت ونمو عملك مع أدوات Gemini الجديدة</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781123420301-bwhu5f</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-10T20:30:22.514Z</news:publication_date>
+      <news:title>شركة Check Point تنضم إلى برامج OpenAI السيبرانية لأدوات الأمان التي تعمل بالذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781121620312-gde963</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-10T20:00:22.568Z</news:publication_date>
+      <news:title>مايكروسوفت تحطم الرقم القياسي بشهر يونيو 2026 بتحديثات أمنية تتجاوز 200 تصحيح</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781119822280-tj9o7m</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-10T19:30:24.248Z</news:publication_date>
+      <news:title>محرك بحث جوجل الذكي يستخدم 10 أضعاف الطاقة أكثر من عمليات البحث العادية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781118020760-yb6b81</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-10T19:00:23.271Z</news:publication_date>
+      <news:title>جوجل تنضم إلى مؤسسة إكليبس كعضو استراتيجي لتسريع أدوات المطورين المتكاملة مع الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781116220282-3ssw01</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-10T18:30:22.261Z</news:publication_date>
+      <news:title>أثريتيك قامت عمداً بتصميم نماذجها الجديدة من أساس Mythos لتكون سيئة في أبحاث الذكاء الاصطناعي، والمنشئون غاضبون</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781114421007-7wbcnt</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-10T18:00:23.533Z</news:publication_date>
+      <news:title>DiffusionGemma: دليل المطور</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781112621131-xfirh6</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-10T17:30:22.971Z</news:publication_date>
+      <news:title>وول ستريت تحتاج إلى دورة مكثفة في اقتصاد التوكين قبل عروض أسهم شركة آي آي بي أو - سي إن بي سي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781109020905-pndke7</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-10T16:30:22.447Z</news:publication_date>
+      <news:title>إدارة أصول Balyasny: رئيس قسم الذكاء الاصطناعي يبرز اعتماد الشركة لأدوات OpenAI</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781105420286-a96yf1</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-10T15:30:22.091Z</news:publication_date>
+      <news:title>لماذا كان الإعلان الأكبر لشركة Apple في WWDC مخصصًا للمطورين</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781103621160-8a3sqe</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-10T15:00:22.458Z</news:publication_date>
+      <news:title>تتوفر Google Gemini Pro لأعضاء هيئة التدريس والموظفين بدءًا من أسبوع 15 يونيو - جامعة بوردو</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781051421198-l5sy74</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-10T00:30:23.178Z</news:publication_date>
+      <news:title>استعراض كوك، وإعادة ميلاد سيري: شراكة آبل مع جوجل جيمييني لإعادة بناء نظام سيري، هل يمكن لمؤتمر آبل العالمي 2026 إشعال محرك النمو التالي لشركة آبل لمدة 15 عامًا؟</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781049620450-eylu3t</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-10T00:00:22.296Z</news:publication_date>
+      <news:title>Nvidia تدفع توسع حوسبة سحابة Apple الخاصة إلى Google</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781047821181-5ue5p9</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T23:30:23.153Z</news:publication_date>
+      <news:title>أدوات مطور WWDC 2026: نماذج الأساس تتمكن الآن من تبادل مزودي الذكاء الاصطناعي بدون تغييرات في الكود</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781046020716-rfzyav</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T23:00:22.570Z</news:publication_date>
+      <news:title>عمال الولايات المتحدة يتصدرون الشكوك العالمية بشأن الذكاء الاصطناعي على الرغم من الدفع الشركي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781044220450-qz29wv</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T22:30:22.159Z</news:publication_date>
+      <news:title>تشغيل مستقبل الروبوتات في أوروبا</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781040620741-i4rtik</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T21:30:22.382Z</news:publication_date>
+      <news:title>Semrush تحدد كيفية كسب المحتوى على LinkedIn الإشارات في أدوات البحث الذكية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781037021262-5cgddt</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T20:30:23.006Z</news:publication_date>
+      <news:title>أنتروبك تصدر نسخة من نموذجها الشهير Mythos للمطورين</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781035220953-q3yxyn</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T20:00:23.162Z</news:publication_date>
+      <news:title>أبل تعرض سيري آي آي في مؤتمر وورلد وايد ديفرلوبرز: ما الذي تفقده الصين؟</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781033420908-68ylw3</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T19:30:22.340Z</news:publication_date>
+      <news:title>苹果推出第三代基础模型 - 苹果机器学习研究</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781031620909-r1qs6h</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T19:00:23.582Z</news:publication_date>
+      <news:title>أدوات الذكاء الاصطناعي المخصصة للقوات العسكرية تهدف إلى تقليل عبء العمل الإداري</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781029820415-kvsfbh</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T18:30:22.352Z</news:publication_date>
+      <news:title>آبل تتبنى خيال تحرير الصور بالذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781026220668-o79efp</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025991965-1-Ope</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025993047-2-%D8%BA%D9%88%D8%BA</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025993891-3-%D9%85%D8%A7%D9%8A</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025994812-4-%D8%A5%D9%86%D9%81</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025995669-5-%D8%A2%D8%A8%D9%84</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025996465-6-%D9%87%D8%AC%D9%88</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025997299-7-%D8%AB%D8%BA%D8%B1</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025998129-8-%D8%BA%D9%88%D8%BA</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025999103-9-%D8%B3%D8%A7%D9%85</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025999991-10-%D8%AA%D8%B3%D9%84</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781026000897-11-%D8%B1%D9%8A%D9%81</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781024422728-vx9kym</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T17:30:22.686Z</news:publication_date>
+      <news:title>جوجل تجعل ميزات AI Mode Pro متاحة مجانًا 'هذا الصيف' وتفاصيل أدوات Gemini لكأس العالم 2026</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781024420428-ovyf94</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T17:00:22.633Z</news:publication_date>
+      <news:title>آبل تتبنى خيال تحرير الصور بالذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781022621280-cvnvv1</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781020822780-yrfmzk</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T16:30:35.768Z</news:publication_date>
+      <news:title>AI: استعداد سيري للانطلاق هذا الخريف. AI-RTZ #1112 - AI: إعادة الضبط إلى الصفر</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781019020858-cgo40r</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T15:30:22.693Z</news:publication_date>
+      <news:title>آبل تقول إن الذكاء الاصطناعي الخاص بها لا يزال خاصًا حتى عندما يعمل على خواديم جوجل</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781017220295-3nyl08</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781015423376-4onw13</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T15:00:23.018Z</news:publication_date>
+      <news:title>أبل تكشف عن سيري الذكاء الاصطناعي مع جوجل جيمييني في مؤتمر WWDC 2026</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781015421639-oc62fr</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T14:30:23.588Z</news:publication_date>
+      <news:title>المساعد الصوتي سيري جاهز للانطلاق هذا الخريف</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781013620312-ckiqzi</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781011822727-rkpsf9</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T14:00:21.828Z</news:publication_date>
+      <news:title>داخل برنامج جوجل لتدريب المعلمين على الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781011820181-tqfoqk</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T13:30:22.388Z</news:publication_date>
+      <news:title>خدمات الذكاء الاصطناعي والروبوتات تقود مجموعة متنوعة من 29 وحشا جديدا في مايو مع استعداد SpaceX و Anthropic و OpenAI للخروج الكبير</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781010021779-yrpqq6</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T13:00:26.186Z</news:publication_date>
+      <news:title>سيري الذكية من Apple رائعة ولكن تأخرت عامين</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781008220908-few2wm</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781006422684-717nju</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T12:30:22.822Z</news:publication_date>
+      <news:title>أبل تشحن في النهاية ترقية مساعد الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781006420275-j7p2et</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781004622653-sffqwr</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T12:00:22.222Z</news:publication_date>
+      <news:title>أبل تشحن في النهاية ترقية مساعد الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781004620202-wovrak</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780968624914-85m99d</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T11:30:21.864Z</news:publication_date>
+      <news:title>داخل برنامج جوجل لتدريب المعلمين على الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780968622316-dxb6qy</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T01:30:24.135Z</news:publication_date>
+      <news:title>苹果智慧将强大的人工智能能力融入日常体验</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780966820500-htjeci</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780963222833-mwxbt1</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T01:00:22.861Z</news:publication_date>
+      <news:title>أبل تراهن على إصلاح سيري المتأخر لسد الفجوة في مجال الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780963220574-20i4em</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T00:00:22.404Z</news:publication_date>
+      <news:title>أبل تشترك مع جوجل وإنفيديا لإنشاء أكثر نماذج الذكاء الاصطناعي تقدمًا</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780961420391-tm0bmv</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-08T23:30:22.505Z</news:publication_date>
+      <news:title>آبل تراهن على إصلاح سيري المتأخر لسد الفجوة في مجال الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780959621186-h9mz8c</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-08T23:00:23.377Z</news:publication_date>
+      <news:title>مدير تنفيذي شركة Apple تيم كوك يتوقع أن يكشف عن سيري جديدة في مؤتمر WWDC في تحديث استراتيجية الذكاء الاصطناعي لمواكبة منافسيها ChatGPT وGemini</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780957820598-8clu39</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780956138191-6izwzm</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780956118357-s35vi8</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780956066796-kwe084</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780956048458-e7ymkr</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-08T22:30:22.356Z</news:publication_date>
+      <news:title>مدير تنفيذي شركة Apple تيم كوك يكشف عن سيري جديدة في مؤتمر WWDC كجزء من تحديث استراتيجية الذكاء الاصطناعي لمواكبة منافسيها ChatGPT وGemini</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780954220556-ap751s</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-08T21:30:22.476Z</news:publication_date>
+      <news:title>أبل تطلق سيري الجديد المعتمد على الذكاء الاصطناعي في مؤتمرها السنوي WWDC</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780952421342-orkt3e</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780867823267-zx9tj0</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-08T21:00:23.276Z</news:publication_date>
+      <news:title>هي سيري: أبل تعلن عن تحديث ذكاء اصطناعي طال انتظاره</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780867820623-lwru9g</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-07T21:30:22.603Z</news:publication_date>
+      <news:title>تجديد جذري لتشات جبت: تحويله إلى تطبيق خارق مزود بأدوات برمجة ووكلاء ذكاء اصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780866020913-rzd6kx</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780864223505-92g4oa</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-07T21:00:22.437Z</news:publication_date>
+      <news:title>Palantir تتعاون مع Google Cloud لتكامل أدوات Gemini الذكية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780864220789-bhjfam</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-07T20:30:22.608Z</news:publication_date>
+      <news:title>سيحصل ChatGPT قريباً على أكبر تغيير منذ إطلاقه: وكلاء ذكاء اصطناعي وأدوات برمجة والمزيد</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780862420264-on5bio</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-07T20:00:22.144Z</news:publication_date>
+      <news:title>مراقب الامتحانات في المملكة المتحدة يخشى من تحويل الامتحانات إلى عمليات بحث جوجل باستخدام النظارات الذكية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780860620228-ud85op</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-07T19:30:21.822Z</news:publication_date>
+      <news:title>أفضل 21 أداة ذكاء اصطناعي منخفضة الشفرة وبدون شفرة في عام 2026</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780858820840-g1fmct</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-07T19:00:22.531Z</news:publication_date>
+      <news:title>شركة OpenAI تخطط لإعادة تصميم ChatGPT بالكامل مع التركيز على وكلاء الذكاء الاصطناعي وأدوات البرمجة</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780857020512-kiyyc5</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-07T18:30:22.358Z</news:publication_date>
+      <news:title>المراهنة الكبيرة القادمة لشركة OpenAI قبل الاكتتاب العام؟ - مايكروسوفت (NASDAQ:MSFT) - بنزينغا</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780855220056-76kkve</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780853422652-l41dkr</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-07T18:00:21.854Z</news:publication_date>
+      <news:title>المراهنة الكبيرة القادمة لشركة OpenAI قبل الاكتتاب العام: ChatGPT قد لا تبدو نفسها مرة أخرى</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780853420224-61krp4</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-07T17:30:22.079Z</news:publication_date>
+      <news:title>أوبن آي آي تخطط لأكبر تحديث لتشات جي بي تي منذ إطلاقه</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780851619620-b2d23f</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780850967924-xinfrr</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780790422830-irypin</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780788623851-29u9uz</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-07T17:00:21.482Z</news:publication_date>
+      <news:title>شركة OpenAI تخطط لإعادة تصميم ChatGPT كتطبيق خارق قبل الاكتتاب العام</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780786820964-9zeujd</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-06T23:00:24.087Z</news:publication_date>
+      <news:title>تطبيق DaVinci Resolve 21 متاح الآن مع أدوات تحرير الصور والذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780785020711-yq4ytq</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-06T22:30:23.993Z</news:publication_date>
+      <news:title>جوجل تطلق واجهة سطر الأوامر الجديدة Colab CLI لمطوري التطبيقات ووكلاء الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780783221195-01sn9z</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-06T22:00:23.141Z</news:publication_date>
+      <news:title>مدير تنفيذي في جوجل يُشير إلى تجربة الأدوات الذكية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780781421666-ztkbyk</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780779623301-257qk5</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-06T21:30:23.347Z</news:publication_date>
+      <news:title>أوبن آي آي تطلق وضع الحجر الصحي لمواجهة هجمات حقن البرامج النصية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780779621086-90ceuc</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-06T21:00:23.040Z</news:publication_date>
+      <news:title>مدير تنفيذي في جوجل من موناغان: 'تجربة' مع أدوات الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780777820757-aoh7lg</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-06T20:30:22.449Z</news:publication_date>
+      <news:title>ماذا يمكن توقعها من مؤتمر WWDC 2026: سيري مدعوم من Gemini، و iOS 27، و macOS 27 والمزيد</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780776020919-tyfbnw</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-06T20:00:22.894Z</news:publication_date>
+      <news:title>مؤتمر WWDC 2026 يفتح أبوابه يوم الإثنين: جيميني يقوم بتشغيل سيري المعاد بناؤها، وiPhone 11 يواجه قطع iOS 27</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780774220175-0mv3gf</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-06T19:30:22.222Z</news:publication_date>
+      <news:title>إرشادات جوجل المحدّثة تحث على تقديم شكاوى إلى لجنة التجارة الفيدرالية ضد محسّني تحسين محركات البحث المشبوهين</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780772420264-82w3l5</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780770622888-1cxwjv</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-06T19:00:22.098Z</news:publication_date>
+      <news:title>جوجل تدفع لمساحة سحابية لشركة سبايس إكس تقدر بأكثر من 900 مليون دولار شهريا</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780770620378-8h7r3m</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-06T18:30:21.994Z</news:publication_date>
+      <news:title>جوجل تدفع لشركة سبيس إكس ما يقرب من مليار دولار شهريًا لاستخدام سعة التخزين السحابي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780768820496-mryt4d</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-06T18:00:22.179Z</news:publication_date>
+      <news:title>أبرز خمس قصص في مجال الذكاء الاصطناعي هذا الأسبوع</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780767020620-2t40ri</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-06T17:30:22.362Z</news:publication_date>
+      <news:title>نظام الحظر الجديد في ChatGPT يقيد الأدوات التي يمكن أن تمكن من سرقة البيانات</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780691420631-iksm99</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T20:30:22.483Z</news:publication_date>
+      <news:title>شريك Palantir مع Google Cloud لتكامل أدوات Gemini الذكية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780687820958-xubfw5</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T19:30:23.836Z</news:publication_date>
+      <news:title>هل يمكن لـ NVIDIA Cosmos 3 جعل الذكاء الاصطناعي المادي المفتوح حقيقة، أو سوف يؤخر التجزئة التقدم؟</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780686020602-0i83su</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780684222891-9w8m5d</loc>
-    <lastmod>2026-06-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T19:00:23.187Z</news:publication_date>
+      <news:title>طرح الحكومات للذكاء الاصطناعي يتجاوز إدارته</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780684220660-2kx59m</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T18:30:22.424Z</news:publication_date>
+      <news:title>استعراض الأخبار البحثية: إنهاء تحديث جوجل الرئيسي في مايو، أدوات التحكم في تقارير أداء الذكاء الاصطناعي، جوجل أدس، إعلانات ChatGPT، أدوات Microsoft Scout</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780678820849-f8dmm7</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T17:00:22.563Z</news:publication_date>
+      <news:title>أفضل أدوات توليد فيديو بالذكاء الاصطناعي 2026: تم اختبارها وترتيبها ومقارنتها لجميع الحالات</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780677021375-96tkpq</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T16:30:23.229Z</news:publication_date>
+      <news:title>لماذا استخدم هذا المطور ChatGPT لبناء محرر PDF بدلاً من ذلك</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780675220620-kn7wd7</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T16:00:22.257Z</news:publication_date>
+      <news:title>أحدث الأخبار حول الذكاء الاصطناعي التي أعلننا عنها في مايو 2026</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780673420693-1x507a</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T15:30:23.376Z</news:publication_date>
+      <news:title>أبل توافق على Poke كأول عميل ذكاء اصطناعي على منصة Messages for Business</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780671620954-73qfhk</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T15:00:22.993Z</news:publication_date>
+      <news:title>كودكس يغير عملية التطوير في زابير</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780669820464-nyz5xp</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780668022916-el45t2</loc>
-    <lastmod>2026-06-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T14:30:21.993Z</news:publication_date>
+      <news:title>مدير المالية في OpenAI: عدم معرفة أدوات الذكاء الاصطناعي مثل Codex يعتبر الآن عائقاً في توظيف الموظفين الماليين</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780668020660-8knzc9</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780666223547-laq2xj</loc>
-    <lastmod>2026-06-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T14:00:22.479Z</news:publication_date>
+      <news:title>كودكس يغير عملية التطوير في زابير</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780666221400-qh4cs4</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T13:30:23.135Z</news:publication_date>
+      <news:title>تطبيق Poke يُقدم أول وكيل ذكاء اصطناعي على رسائل Apple</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780664420710-flynb5</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T13:00:23.474Z</news:publication_date>
+      <news:title>فيديو: إنهاء تحديث Google May Core، أدوات التحكم في تقارير أداء الذكاء الاصطناعي، Google Ads، إعلانات ChatGPT، أدوات Microsoft Scout - Search Engine Roundtable</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780660820982-6vk0n2</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780659023725-uobrwc</loc>
-    <lastmod>2026-06-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T12:00:23.073Z</news:publication_date>
+      <news:title>ميزات iOS 27 المتوقعة: سيري أكثر ذكاءً وأدوات إيه آي جديدة والمزيد مما يمكن توقعها عند إعلان شركة آبل عن تحديث آيفون في مؤتمر WWDC</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780659021175-bn8vze</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780657222657-rmv9k6</loc>
-    <lastmod>2026-06-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T11:30:23.765Z</news:publication_date>
+      <news:title>ظاهرة الترميز بالاتجاه ترفع قيمة شركة Supabase الناشئة إلى 10.5 مليار دولار</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780657220330-w11s12</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T11:00:22.438Z</news:publication_date>
+      <news:title>مدير تنفيذي شركة Airbnb، بريان تشيسكي، يخطط لإنشاء شركة ذكاء اصطناعي جديدة</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780655420792-kwy8px</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T10:30:22.689Z</news:publication_date>
+      <news:title>هل يمكن لمساعدي البحث الذكاء الاصطناعي تسريع اكتشاف العلوم؟</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780653620620-5hoqy6</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780651822688-edwili</loc>
-    <lastmod>2026-06-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T10:00:22.660Z</news:publication_date>
+      <news:title>هل يمكن لمساعدي البحث الذكاء الاصطناعي أن يسرعوا اكتشاف العلمي؟</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780651820255-kac28l</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780650023246-yu9exu</loc>
-    <lastmod>2026-06-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780648222672-iuukcf</loc>
-    <lastmod>2026-06-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T09:30:22.000Z</news:publication_date>
+      <news:title>دفع OpenAI لتقنيات الذكاء الاصطناعي في مجال الدفاع البيولوجي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780648220261-lqzfyu</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T08:30:21.685Z</news:publication_date>
+      <news:title>المخاطر الأمنية الخفية خلف أدوات الذكاء الاصطناعي الشهيرة</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780646421098-ccr05u</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780645881759-ig1czr</loc>
-    <lastmod>2026-06-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T08:00:22.774Z</news:publication_date>
+      <news:title>جامعة ولاية يوتا تقدم Gemini for Education إلى جميع المدارس من الروضة حتى الثانوية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780608620954-pzhnt6</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-04T21:30:22.646Z</news:publication_date>
+      <news:title>مدير تنفيذي Airbnb بريان تشيسكي يخطط لبدء شركة ذكاء اصطناعي جديدة</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780606820832-w09mql</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-04T21:00:22.582Z</news:publication_date>
+      <news:title>يوتا تقدم أدوات ذكاء اصطناعي في الفصول الدراسية على مستوى الولاية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780605020319-cphmol</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-04T20:30:22.081Z</news:publication_date>
+      <news:title>كاغل تجعل إنشاء معايير الذكاء الاصطناعي بدون مجهود</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780603221110-eu9wyx</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-04T20:00:22.954Z</news:publication_date>
+      <news:title>ما يمكن توقعَه من مؤتمر WWDC 2026: تحديث Siri المتوقع بشدة وتحديثات Apple Intelligence</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780601421210-y8eknn</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-04T19:30:23.047Z</news:publication_date>
+      <news:title>أضخم صندوق ثروة سيادية في العالم يدعم الدعوة إلى الرقابة على استخدام جوجل لتكنولوجيا السحابة والذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780599620480-zg2q7x</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-04T19:00:22.627Z</news:publication_date>
+      <news:title>نفيديا و في في لي تدعمان جولة تمويل شركة Generalist بقيمة 400 مليون دولار لتوسيع آليتها في الروبوتات الذكية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780596022039-schxp5</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-04T18:00:23.783Z</news:publication_date>
+      <news:title>مايكروسوفت: أدوات ويب ماستر من بينج ستحصل على ميزات جديدة قريبا</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780594220286-36a4y2</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-04T17:30:22.126Z</news:publication_date>
+      <news:title>جوجل و USBE يتعاونان لجلب أدوات الذكاء الاصطناعي إلى فصول ولاية يوتا</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780592421133-kd9kgz</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-04T17:00:23.744Z</news:publication_date>
+      <news:title>شركة OpenAI ترد على الأمر التنفيذي للبيت الأبيض بشأن حوكمة الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780590620391-qnkh5r</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-04T16:30:22.468Z</news:publication_date>
+      <news:title>نفيديا و في في لي تدعمان جولة تمويل شركة Generalist بقيمة 400 مليون دولار لتوسيع نطاق الروبوتات الذكية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780588820347-j21use</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-04T16:00:22.144Z</news:publication_date>
+      <news:title>محمد حسيني: هل تحتاج العلوم إلى الذكاء الاصطناعي المستقل؟</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780587020323-fg0ly2</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-04T15:30:22.319Z</news:publication_date>
+      <news:title>أدوات Snowflake الجديدة للمعاملات الفكرية تستهدف نقطة ألم في التسويق</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780585221211-8ea4t3</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-04T15:00:22.947Z</news:publication_date>
+      <news:title>إندافا إعادة توصيل توصيل البرمجيات مع وكلاء OpenAI الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780583420474-t1gf83</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-04T14:30:22.329Z</news:publication_date>
+      <news:title>مديرو OpenAI و Anthropic و Microsoft يدعون إلى قوانين أكثر صرامة ضد التهديدات البيولوجية للمصادر الذكية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780581620354-7hvzwj</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-04T14:00:22.253Z</news:publication_date>
+      <news:title>يوتا تقدم أدوات ذكاء اصطناعي في الفصول الدراسية على مستوى الولاية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780579820887-qea4l6</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-04T13:30:22.679Z</news:publication_date>
+      <news:title>إطلاق Gemma 4 12B: نموذج متعدد الوضعيات موحد وخالي من التشفير</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780417821586-w9wmx1</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T16:30:25.759Z</news:publication_date>
+      <news:title>أوبن آي آي تخطط لتقديم أدوات ذكاء اصطناعي لمجالات المالية والقانونية في سباق مع أنثروبك</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780414220299-myhfux</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T15:30:22.435Z</news:publication_date>
+      <news:title>مايكروسوفت بيلد 2026: أجهزة كمبيوتر جديدة وأدوات ذكاء اصطناعي سحابية وتحديثات ويندوز في محور الاهتمام</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780412420312-gyl50q</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T15:00:23.294Z</news:publication_date>
+      <news:title>أضاف Workday Build وكلاء المطورين وأدوات أمان ذكاء اصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780410621256-s41d3v</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T14:30:23.202Z</news:publication_date>
+      <news:title>ZeroDrift تجمع 10 ملايين دولار لتحسين مشكلة الامتثال في الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780408821154-qm0b7r</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T14:00:25.169Z</news:publication_date>
+      <news:title>سام ألتمان يدعم شركة ألفريد، شركة استارتآب لتقنيات الذكاء الاصطناعي الفيزيائية في مجال الروبوتات</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780407020490-eynk3o</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T13:30:22.360Z</news:publication_date>
+      <news:title>مايكروسوفت بيلد 2026: أدوات ذكاء اصطناعي جديدة للمحاسبات الشخصية والسحابة متوقعة</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780403420275-ma7mik</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T12:30:21.898Z</news:publication_date>
+      <news:title>تجزم Google Gemini خناقها على القياس متعدد الوضع</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780399820777-0oxnah</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T11:30:22.603Z</news:publication_date>
+      <news:title>ألفابيت ستجمع 80 مليار دولار لتمويل نفقاتها في مجال الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780398020367-wae5z9</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T11:00:22.513Z</news:publication_date>
+      <news:title>إعادة تنظيم قسم الروبوتات في OpenAI! Nvidia/WiMi يتوليان القيادة في سلسلة صناعة الروبوتات الذكية وتتضح المنافسة</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780396220247-9oowbn</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T10:30:22.054Z</news:publication_date>
+      <news:title>هجوم يستهدف مستخدمي OpenAI Codex يكشف مخاطر سلسلة توريد برامج الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780394421181-ms1pc0</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T10:00:23.544Z</news:publication_date>
+      <news:title>قائمة فوربس 2026 لأفضل 50 شركة في مجال الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780392620362-dfqbx6</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T09:30:22.228Z</news:publication_date>
+      <news:title>سباق جمع التمويل بين عمالقة الذكاء الاصطناعي يزداد حراً مع تحركات Alphabet و Anthropic</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780390820277-1qmiru</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T09:00:24.396Z</news:publication_date>
+      <news:title>نفيديا: مخاوف خسارة الوظائف بسبب الذكاء الاصطناعي 'هراء'</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780389020358-zkgl8u</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T08:30:22.385Z</news:publication_date>
+      <news:title>ميتا وان: تحول وسائل التواصل الاجتماعي إلى اشتراكات أدوات الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780387220229-ae8r0k</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T08:00:22.175Z</news:publication_date>
+      <news:title>عقبة سان فرانسيسكو للذكاء الاصطناعي، أنثروبك، تقدم طلبًا للاكتتاب العام بعد تقييم بقيمة 965 مليار دولار</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780385421260-jqhu4j</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T07:30:23.261Z</news:publication_date>
+      <news:title>عملاق الذكاء الاصطناعي Anthropic يتقدم بطلب للاكتتاب العام في الولايات المتحدة الأمريكية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780383620757-6ijx2d</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T07:00:23.010Z</news:publication_date>
+      <news:title>هل يجب أن يعيد شراكة فانوك مع جوجل في مجال الروبوتات الذكية إعادة صياغة سرد الروبوتات الذكية المادية لمستثمري فانوك (TSE:6954)?</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780381820221-eflq4f</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T06:30:22.092Z</news:publication_date>
+      <news:title>13.6 مليون أسترالي يستخدمون أدوات الذكاء الاصطناعي مثل ChatGPT و Google Gemini و Microsoft Copilot و Canva Magic Studio و Claude</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780380020308-edcog6</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T06:00:22.410Z</news:publication_date>
+      <news:title>القوة الخلفية لتحديثات بحث جوجل الأخيرة</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780376419964-hf4yyp</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780376402810-kyj27h</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780376171395-vnplm0</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780375466705-hj01ra</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T05:00:23.470Z</news:publication_date>
+      <news:title>ألفابيت ستجمع 80 مليار دولار في الأسهم لتمويل إنفاقها على الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780374621058-fgg3t2</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T04:30:23.342Z</news:publication_date>
+      <news:title>توسع OpenAI في طموحات الروبوتات، وتستقطب مهندسين لتطوير الأجهزة والذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780371020235-rcg2sq</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T03:30:21.875Z</news:publication_date>
+      <news:title>أخلاقيات مطورو الذكاء الاصطناعي مهمة أيضا</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780369220294-inyugn</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T03:00:21.992Z</news:publication_date>
+      <news:title>ولاية فلوريدا ترفع دعوى قضائية ضد OpenAI وسام ألتمان بسبب مخاطر الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780367420238-a7imc8</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T02:30:21.977Z</news:publication_date>
+      <news:title>وادي السيليكون يتبنى شعارا جديدا: هيا لنصبح ماديين</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780365620167-ev2i29</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T02:00:22.609Z</news:publication_date>
+      <news:title>وادي السيليكون ي推ّ ل بناء روبوتات ذكاء اصطناعي مادية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780363820310-qodz9q</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T01:30:21.946Z</news:publication_date>
+      <news:title>إطلاق الذكاء الاصطناعي بشكل عاجل يترك العمال حائرين والشركات تكافح</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780362020897-hemlcz</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T01:00:22.871Z</news:publication_date>
+      <news:title>الرأي | بيرني ساندرز: الذكاء الاصطناعي ي属于 الشعب، وليس للأثرياء</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780360220150-b7n1ho</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T00:30:23.065Z</news:publication_date>
+      <news:title>نماذج OpenAI الآن على منصة AWS</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780356620359-1uozdp</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T23:30:22.142Z</news:publication_date>
+      <news:title>أوبن آي آي وأرمينيا تطلقان برنامجًا تعليميًا لتعليم الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780354820270-93fmoz</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T23:00:21.912Z</news:publication_date>
+      <news:title>ألفابيت تخطط لجمع 80 مليار دولار لتحقيق أهدافها في مجال الذكاء الاصطناعي، بينما ستستثمر بركشاير 10 مليارات دولار</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780353020288-sivcai</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T22:30:22.024Z</news:publication_date>
+      <news:title>كما مدير عام جوجل أستراليا، هنا خطأ الذكاء الاصطناعي الذي أراه في كل مكان</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780349420185-s80j2h</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T21:30:23.316Z</news:publication_date>
+      <news:title>وصلت وكلاء جيميني سبارك الذكية من جوجل مع أسئلة حول الخصوصية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780347620241-pjqs33</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T21:00:22.307Z</news:publication_date>
+      <news:title>مايكروسوفت وغوغل تسرعان في برمجة الذكاء الاصطناعي مع سيطرة OpenAI</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780345821208-xkj3ff</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T20:30:22.956Z</news:publication_date>
+      <news:title>مايكروسوفت وجوجل متأخرتان في برمجة الذكاء الاصطناعي، لكن من 'المهم جدا' أن تتنافسان من أجل النمو</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780344020361-hz8ek0</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T20:00:22.346Z</news:publication_date>
+      <news:title>الرأي | بيرني ساندرز: يجب أن تملك العامة نصف الشركات الكبيرة لتقنيات الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780342220355-etrezf</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T19:30:22.272Z</news:publication_date>
+      <news:title>مطور Stargate يزعم أن الصين تدعم احتجاجات مركز البيانات</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780340421281-rueik5</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T19:00:23.334Z</news:publication_date>
+      <news:title>شركة Anthropic تقدم طلبًا للخروج إلى السوق العامة، مما يضع المرحلة للاكتتاب العام الضخم</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780338620240-net4v4</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T18:30:23.102Z</news:publication_date>
+      <news:title>مايكروسوفت تُحكم أدوات الذكاء الاصطناعي مع تركيز المستثمرين على تبني القيمة المُستندة إلى النتائج</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780336820535-c9rav4</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T18:00:24.324Z</news:publication_date>
+      <news:title>وصلت حقيقة الذكاء الاصطناعي أخيرا - شركة Fast Company</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780335020428-8fz79i</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T17:30:22.100Z</news:publication_date>
+      <news:title>كيف استخدمنا Gemini لبناء Google I/O 2026</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780333220343-cuebil</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T17:00:22.283Z</news:publication_date>
+      <news:title>DuckDuckGo تجعل محرك بحثها الخالي من الذكاء الاصطناعي أكثر سهولة في الوصول إليه مع ازدهار حركة المرور</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780331420270-ok02zl</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T16:30:23.194Z</news:publication_date>
+      <news:title>إطلاق لوما آي لمختبر روبوتات يمكن لأي شخص استخدامه</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780329620298-n8r7na</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T16:00:22.034Z</news:publication_date>
+      <news:title>سوندار بيتشاي في مؤتمر Google I/O 2026: Gemini يصل إلى 900 مليون مستخدم</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780318820605-b4hglt</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T13:00:23.143Z</news:publication_date>
+      <news:title>إيران تستخدم الذكاء الاصطناعي الغربي في الهجمات الإلكترونية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780309820931-fbnj5x</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T10:30:22.752Z</news:publication_date>
+      <news:title>يأمل بنك الكومنولث في أن تساعده وكلاء الذكاء الاصطناعي في الرد على التهديد التنافسي من OpenAI</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780308020586-xnz8a2</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T10:00:22.858Z</news:publication_date>
+      <news:title>فهم الجدل حول الاكتئاب الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780306220357-j6f42b</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T09:30:22.199Z</news:publication_date>
+      <news:title>أدوات تقنية تقوم بإزالة حواجز الأمان في الذكاء الاصطناعي؛ ولكن فقط في النماذج المفتوحة</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780304420276-f22p26</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T09:00:22.424Z</news:publication_date>
+      <news:title>شركة OpenAI تعلن عن توظيف مهندسي روبوتات مع رؤية سام ألتمان لإنشاء هيومنويدات مدعومة بالذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780302621284-hm6osh</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T08:30:23.203Z</news:publication_date>
+      <news:title>سام ألتمان يُشير إلى دفع الروبوتات كما تدخل OpenAI منافسة جديدة مع إيلون ماسك</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780300820378-hfhzkr</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T08:00:23.360Z</news:publication_date>
+      <news:title>نفيديا تعمل على وضع شرائحها في أجهزة الكمبيوتر الشخصية</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780299020416-jjgwea</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T07:30:22.212Z</news:publication_date>
+      <news:title>OpenAI تريد أن يكون لديك روبوتك الشخصي للمعرفة الصناعية، تبدأ في توظيف فريق الروبوتات</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780297220209-bxujb0</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T07:00:22.040Z</news:publication_date>
+      <news:title>OpenAI تعود إلى مجال الروبوتات من خلال التوظيف</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780295506509-u30im3</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T06:31:48.368Z</news:publication_date>
+      <news:title>معارضو تحديث الشفرة يبثون إعلانًا منشأ بواسطة الذكاء الاصطناعي يظهر امرأة مصابة بعدوى بكتيرية من نهر جيمس</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780295420335-nbff7a</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-01T06:30:22.485Z</news:publication_date>
+      <news:title>بعد الذكاء الاصطناعي، سام ألتمان وإيلون ماسك في طريقهم لمعركة جديدة مع بدء توظيف روبوتات OpenAI</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780255820967-9hwb2q</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-31T19:30:22.897Z</news:publication_date>
+      <news:title>جيميني 3.5 فلاش من جوجل يكلف 3 أضعاف سعره السابق، ونهاية عصر الذكاء الاصطناعي الرخيص</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780250374624-pdv66z</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-31T17:59:36.740Z</news:publication_date>
+      <news:title>OpenAI Robotics تعزز التوظيف لإنشاء روبوتات متعددة الأغراض</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780228820436-sm94fz</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-31T12:00:22.338Z</news:publication_date>
+      <news:title>يمكن لـ ChatGPT الآن إدارة محفظتك و حساباتك البنكية: تعريف أدوات التمويل الشخصي من OpenAI</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780228808596-ngxhdy</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-31T12:00:10.786Z</news:publication_date>
+      <news:title>أنا أختبر أدوات الذكاء الاصطناعي للعيش وأنا استخدم هذه الدعائم الخمسة لإصلاح الهلوسة</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780228802997-o0sp0k</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-31T12:00:02.997Z</news:publication_date>
+      <news:title>I test AI tools for a living and these are the 5 prompts I use to fix hallucinations - Tom's Guide</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780227002585-9tcoti</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-31T11:30:02.585Z</news:publication_date>
+      <news:title>Small Business Tech News This Week: Uber, Starbucks, OpenAI, TikTok And 20 Great AI Tools - Forbes</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780225202361-mt1ra9</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-31T11:00:02.361Z</news:publication_date>
+      <news:title>AI tools tested on Bangladeshi NIDs: Some refused, others generated altered images - The Daily Star</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780219819741-ltjy1e</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-31T09:30:21.411Z</news:publication_date>
+      <news:title>جوجل تكشف عن أدوات ذكاء اصطناعي لدعم سير عمل البحث العلمي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780216208309-zoa4c4</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-31T08:30:10.222Z</news:publication_date>
+      <news:title>BeyondComments: تحليل تفاعل الجمهور على يوتيوب</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780216202789-hcv5hb</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-31T08:30:02.789Z</news:publication_date>
+      <news:title>Gemini 3.5: Advanced AI Workflows - Dynamic Business</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780212064916-wrxrie</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-31T07:21:06.658Z</news:publication_date>
+      <news:title>جوجل كلاود تبرم اتفاقية كبيرة مع شركة EQT الأوروبية للاستحواذ في مجال الذكاء الاصطناعي</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780211892853-iw2r3d</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=apple-smart-glasses-strategy</loc>
-    <lastmod>2026-05-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-31T07:18:14.590Z</news:publication_date>
+      <news:title>شركة Firebird تنضم إلى جهود تعليم الذكاء الاصطناعي على المستوى الوطني في أرمينيا وتطلق Firebird Labs</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780182140710-akwtei</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-30T23:02:20.710Z</news:publication_date>
+      <news:title>Mistral Rebrands Le Chat as Vibe, Launches Autonomous Work Agent for Enterprise - MLQ.ai</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780182037879-njbayo</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-30T23:00:37.879Z</news:publication_date>
+      <news:title>Terence Tao: AI is Reducing Cognitive Friction in Math - StartupHub.ai</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780181371457-3zcfhh</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=anthropic-tops-openai-valuation</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=valve-steam-deck-price-hike</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-30T22:49:31.457Z</news:publication_date>
+      <news:title>Google DeepMind Explains AI Agent Building Struggles - StartupHub.ai</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=1779831983701</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-26T21:46:23.701Z</news:publication_date>
+      <news:title>هل انتهك الجيش الأمريكي قواعد استخدامه لخدمة Starlink؟</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=1779829218818</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-26T21:00:18.818Z</news:publication_date>
+      <news:title>ما الذي يهدد ملايين وكلاء الذكاء الاصطناعي؟</news:title>
+    </news:news>
   </url>
   <url>
     <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=1779826586228</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-26T20:16:26.229Z</news:publication_date>
+      <news:title>كيف تكوّن الغلاف الجوي الغني بالأكسجين؟</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025991965-1-Ope</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T17:26:31.961Z</news:publication_date>
+      <news:title>OpenAI تطلق GPT-5 مع قدرات استدلال متقدمة تفوق التوقعات</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025993047-2-غوغ</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T17:26:31.961Z</news:publication_date>
+      <news:title>غوغل DeepMind تكشف عن نموذج Gemini 3 مع تفوق في الرياضيات والعلوم</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025993891-3-ماي</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T17:26:31.961Z</news:publication_date>
+      <news:title>مايكروسوفت تطلق Copilot 360 مع تكامل عميق في جميع تطبيقات أوفيس</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025994812-4-إنف</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T17:26:31.961Z</news:publication_date>
+      <news:title>إنفيديا تعلن عن شريحة Rubin Ultra بقدرات حوسبة غير مسبوقة للذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025995669-5-آبل</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T17:26:31.961Z</news:publication_date>
+      <news:title>آبل تطلق Vision Pro 2 بشاشة 8K ووزن أخف بنسبة 40%</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025996465-6-هجو</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T17:26:31.961Z</news:publication_date>
+      <news:title>هجوم إلكتروني يستهدف البنية التحتية الحيوية في أوروبا ويشل 3 مطارات كبرى</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025997299-7-ثغر</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T17:26:31.961Z</news:publication_date>
+      <news:title>ثغرة أمنية خطيرة في معالجات Intel تؤثر على مليارات الأجهزة حول العالم</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025998129-8-غوغ</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T17:26:31.961Z</news:publication_date>
+      <news:title>غوغل تطلق Android 16 مع دعم الذكاء الاصطناعي على الجهاز وتحسينات الخصوصية</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025999103-9-سام</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T17:26:31.961Z</news:publication_date>
+      <news:title>سامسونج تطلق Galaxy S26 Ultra بكاميرا 300 ميغابكسل وقلم S Pen محسّن</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781025999991-10-تسل</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T17:26:31.961Z</news:publication_date>
+      <news:title>تسلا تعلن عن شاحن Supercharger V5 بقدرة 500 كيلوواط لشحن البطارية في 10 دقائق</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=pipeline-1781026000897-11-ريف</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T17:26:31.961Z</news:publication_date>
+      <news:title>ريفيان تكشف عن شاحنة R2T الكهربائية بسعر 45 ألف دولار ومدى 600 كيلومتر</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781024422728-vx9kym</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T17:00:24.565Z</news:publication_date>
+      <news:title>أبل تكشف عن سيري آي آي مع جوجل جيمييني في مؤتمر وورلد وايد ديفرلوبرز كونفرنس 2026</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781020822780-yrfmzk</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T16:00:24.915Z</news:publication_date>
+      <news:title>Apple تقول إن الذكاء الاصطناعي الخاص بها لا يزال خاصًا حتى عند تشغيله على خوادم جوجل</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781015423376-4onw13</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T14:30:25.395Z</news:publication_date>
+      <news:title>苹果公司宣布推出第三代基础模型，这是苹果机器学习研究的最新成果</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781011822727-rkpsf9</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T13:30:24.990Z</news:publication_date>
+      <news:title>سيري الذكاء الاصطناعي من شركة Apple رائعة ولكن تأخرت عامين</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781006422684-717nju</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T12:00:24.668Z</news:publication_date>
+      <news:title>خدمات الذكاء الاصطناعي والروبوتات تقود مجموعة متنوعة من 29 وحشا جديدا في مايو مع إعداد SpaceX و Anthropic و OpenAI لمغادرة ضخمة</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1781004622653-sffqwr</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T11:30:24.652Z</news:publication_date>
+      <news:title>أبل تشحن أخيراً تحديث مساعد الذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780968624914-85m99d</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T01:30:27.324Z</news:publication_date>
+      <news:title>مدير تنفيذي شركة Apple تيم كوك يتوقع أن يكشف عن سيري جديدة في مؤتمر WWDC في تحديث استراتيجية الذكاء الاصطناعي لمواكبة المنافسين ChatGPT وGemini</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780963222833-mwxbt1</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-09T00:00:24.824Z</news:publication_date>
+      <news:title>أبل تشترك مع جوجل وإنفيديا لإنشاء أكثر نموذج متقدم للذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780956138191-6izwzm</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-08T22:02:19.363Z</news:publication_date>
+      <news:title>تطبيق صور أبل يحصل على ثلاثة أدوات تحرير جديدة مدعومة بالذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780956118357-s35vi8</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-08T22:01:59.480Z</news:publication_date>
+      <news:title>أبل تكشف عن مساعد صوتي محدث من سيري مع ميزات ذكاء اصطناعي جديدة في مؤتمرها السنوي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780956066796-kwe084</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-08T22:01:07.778Z</news:publication_date>
+      <news:title>Apple تتوقع الكشف عن ميزات الذكاء الاصطناعي الجديدة في مؤتمر المطورين الأخير مع الرئيس التنفذي تيم كوك</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780956048458-e7ymkr</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-08T22:00:49.646Z</news:publication_date>
+      <news:title>أبل تطلق سيري الجديد المزود بقدرات الذكاء الاصطناعي في مؤتمرها السنوي WWDC</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780867823267-zx9tj0</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-07T21:30:27.181Z</news:publication_date>
+      <news:title>مُراقب الامتحانات في المملكة المتحدة يُعبّر عن قلقه بشأن النظارات الذكية التي تُحول الامتحانات إلى عمليات بحث جوجل</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780864223505-92g4oa</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-07T20:30:25.872Z</news:publication_date>
+      <news:title>أفضل 21 أداة ذكاء اصطناعي منخفضة الشفرة وبدون شفرة في 2026 - MarkTechPost</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780853422652-l41dkr</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-07T17:30:24.515Z</news:publication_date>
+      <news:title>أوبن آي آي تخطط لأكبر تحديث لتشات جي بي تي منذ إطلاقها</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780850967924-xinfrr</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-07T16:49:29.931Z</news:publication_date>
+      <news:title>شركة OpenAI تخطط لإعادة تصميم تطبيق ChatGPT قبل الاكتتاب العام</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780790422830-irypin</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-07T00:00:24.941Z</news:publication_date>
+      <news:title>مدير شركة جوجل في موناغان: 'تجربة' مع أدوات الذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780788623851-29u9uz</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-06T23:30:26.009Z</news:publication_date>
+      <news:title>مؤتمر WWDC 2026 يفتح أبوابه يوم الإثنين: جيمييني يعزز إعادة بناء سيري، وايفون 11 يواجه قطع iOS 27</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780779623301-257qk5</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-06T21:00:24.776Z</news:publication_date>
+      <news:title>أهم خمسة قصص في مجال الذكاء الاصطناعي هذا الأسبوع</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780770622888-1cxwjv</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-06T18:30:24.473Z</news:publication_date>
+      <news:title>وضع الحظر الجديد في ChatGPT يقيد الأدوات التي يمكن أن تمكن من سرقة البيانات</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780684222891-9w8m5d</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T18:30:24.705Z</news:publication_date>
+      <news:title>ملخص الأخبار المتداولة في الفيديو: إنهاء تحديث جوجل الأساسي في مايو، أدوات التحكم في تقارير أداء الذكاء الاصطناعي، جوجل أدس، إعلانات ChatGPT، أدوات مايكروسوفت سكاوت</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780668022916-el45t2</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T14:00:24.790Z</news:publication_date>
+      <news:title>ظاهرة كودينج الفايب ترفع قيمة شركة ستارت أب Supabase إلى 10.5 مليار دولار</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780666223547-laq2xj</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T13:30:25.929Z</news:publication_date>
+      <news:title>أعلى صندوق ثروة سيادية في العالم يدعم الدعوة إلى الرقابة على استخدام جوجل لتكنولوجيا السحابة والذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780659023725-uobrwc</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T11:30:26.228Z</news:publication_date>
+      <news:title>أضخم صندوق ثروة سيادية في العالم يدعم الضغط من أجل الإشراف على استخدام جوجل لتكنولوجيا السحابة والذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780657222657-rmv9k6</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T11:00:24.461Z</news:publication_date>
+      <news:title>أضخم صندوق ثروة سيادية في العالم يدعم الدعوة إلى مراقبة جوجل لاستخدامها لتكنولوجيا السحابة والذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780651822688-edwili</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T09:30:24.398Z</news:publication_date>
+      <news:title>دفع OpenAI في مجال الدفاع البيولوجي بالذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780650023246-yu9exu</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T09:00:24.915Z</news:publication_date>
+      <news:title>ماذا يمكن توقع حدوثه في مؤتمر WWDC 2026: تحديث Siri المتوقع بشدة وتحديثات Apple Intelligence</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780648222672-iuukcf</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T08:30:24.506Z</news:publication_date>
+      <news:title>مدير تنفيذي شركة Airbnb، بريان تشيسكي، يخطط لبدء شركة ذكاء اصطناعي جديدة</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780645881759-ig1czr</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-05T07:51:23.469Z</news:publication_date>
+      <news:title>جامعة يوتا تطرح Gemini for Education لجميع المدارس من الروضة حتى الثانوية</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780376402810-kyj27h</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T05:00:04.988Z</news:publication_date>
+      <news:title>وادي السيليكون يضغط من أجل بناء روبوتات ذكاء اصطناعي مادية</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780376171395-vnplm0</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T04:56:13.638Z</news:publication_date>
+      <news:title>إкспانسيون أوبن آي آي في مجال الروبوتات، وتجنيد مهندسين لتطوير الأجهزة والذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1780375466705-hj01ra</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-02T04:44:28.654Z</news:publication_date>
+      <news:title>إطلاق برنامج تعليمي لتعليم الذكاء الاصطناعي في أرمينيا</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=anthropic-tops-openai-valuation</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-28</news:publication_date>
+      <news:title>أنثروبك تتفوق على أوبن آي آي لت trởة أکبر شركة بدأه ذکاء اصطناعي في العالم</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=apple-smart-glasses-strategy</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-31</news:publication_date>
+      <news:title>استراتيجية آبل ل النظارات الذكية هي نفسها مثل الساعات الذكية</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://osamaelfeky567.github.io/techdosenews/article.html?id=valve-steam-deck-price-hike</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-28</news:publication_date>
+      <news:title>فالف ترفع أسعار Steam Deck بأكثر من 40٪</news:title>
+    </news:news>
   </url>
 </urlset>

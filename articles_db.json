@@ -11,13 +11,14 @@
       "OpenAI",
       "Tesla"
     ],
-    "image_query": "",
-    "image_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
+    "image_query": "technology news",
+    "image_url": "https://etimg.etb2bimg.com/photo/108256371.cms",
     "source_name": "The Globe and Mail",
     "source_link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxOTEMzTVQ3OGNlMDU5LXc0Z1RKRFk0eTFFWGhrOHJYaHZvUHdmc2s0VjNQVS1NcXdPZ1RwbVU3NW1jbGRDZDZTRGpfNmxsX2ZNdWZDT3dHbDlTdER2M1FZT2RWNVZlMTBnM2oxMTktdTE4VTl6MmhfSDZ1dHRDTkNjcDMxU29FbE5RRkZ3S2JackhFTUJhdFlWT1U3UTJuM1RGVmpkWFhKanhzb1ROQ1hkN2phTTBhRVFjeHlNNFZUeTBPNTk4T1hPX0hDNG5MMnhXY0VMYVNfVFFNdXlEeGhBcTJwRUs3UG5GbWdYQlN3LXI?oc=5",
     "video_url": "",
     "status": "published",
-    "created_at": "2026-06-14T13:30:23.313Z"
+    "created_at": "2026-06-14T13:30:23.313Z",
+    "featured": false
   },
   {
     "id": "art-1781442020370-j5gakf",

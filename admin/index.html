@@ -1264,13 +1264,13 @@ async function initEditor() {
 }
 
 function getEditorData() {
-  if (EDITOR_INSTANCE) return EDITOR_INSTANCE.getContents(true);
+  if (EDITOR_INSTANCE) return EDITOR_INSTANCE.$.html.get();
   return '';
 }
 
 function setEditorData(html) {
   if (EDITOR_INSTANCE) {
-    EDITOR_INSTANCE.setContents(html || '');
+    EDITOR_INSTANCE.$.html.set(html || '');
   } else {
     PENDING_EDITOR_DATA = html || '';
   }

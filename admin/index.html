@@ -8,19 +8,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
-<script type="importmap">
-{
-  "imports": {
-      "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/41.4.0/ckeditor5.js",
-      "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/41.4.0/"
-  }
-}
-</script>
-<script type="module">
-import * as CKEditor from 'ckeditor5';
-window.CKEditor = CKEditor;
-if (window.__CKEDITOR_RESOLVE__) window.__CKEDITOR_RESOLVE__();
-</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suneditor@2.49.1/dist/css/suneditor.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suneditor@2.49.1/dist/css/suneditor-contents.min.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/suneditor@2.49.1/dist/suneditor.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/suneditor@2.49.1/src/lang/ar.js" crossorigin="anonymous"></script>
 <style>
 :root {
   --bg:#0f172a; --bg2:#1e293b; --bg3:#334155;
@@ -109,40 +100,46 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
 .toast.show{display:block;animation:fadeInUp .3s}
 .toast.success{border-color:var(--green)}
 .toast.error{border-color:var(--red)}
-/* CKEditor 5 Dark Theme */
-.ck.ck-editor { --ck-color-base-background: #1e293b; --ck-color-base-foreground: #f1f5f9; --ck-color-base-text: #f1f5f9; --ck-color-base-active: #3b82f6; --ck-color-base-active-focus: #2563eb; --ck-color-focus-border: #3b82f6; --ck-color-toolbar-background: #0f172a; --ck-color-toolbar-border: #334155; --ck-color-button-default-background: transparent; --ck-color-button-default-hover-background: #334155; --ck-color-button-on-background: #1e293b; --ck-color-button-on-hover-background: #334155; --ck-color-panel-background: #1e293b; --ck-color-panel-border: #334155; --ck-color-input-background: #0f172a; --ck-color-input-border: #334155; --ck-color-dropdown-panel-background: #1e293b; --ck-color-dropdown-panel-border: #334155; --ck-color-list-background: #1e293b; --ck-color-list-item-background: transparent; --ck-color-list-item-background-hover: #334155; --ck-color-list-item-background-active: #3b82f6; --ck-color-list-button-on-background: #334155; --ck-color-list-button-on-background-focus: #334155; --ck-color-labeled-field-label-background: transparent; --ck-color-table-focused-cell-background: #334155; --ck-color-link-default: #60a5fa; --ck-color-link-selected-background: #334155; --ck-color-widget-type-around-button-active: #3b82f6; --ck-color-widget-type-around-button-hover: #3b82f6; --ck-color-button-save: #22c55e; --ck-color-button-cancel: #ef4444; --ck-color-engine-placeholder-text: #64748b; --ck-border-radius: 8px; --ck-spacing-small: 6px; --ck-spacing-medium: 10px; --ck-spacing-large: 14px; --ck-font-size-base: 14px; --ck-line-height-base: 1.75; }
-.ck.ck-editor .ck.ck-toolbar .ck.ck-toolbar__separator { background: #334155; }
-.ck.ck-content { min-height: 400px; padding: 16px; line-height: 1.8; font-size: 15px; direction: rtl; text-align: right; }
-.ck.ck-content h2 { font-size: 1.5rem; font-weight: 700; margin: 1em 0 0.5em; color: #f1f5f9; }
-.ck.ck-content h3 { font-size: 1.25rem; font-weight: 600; margin: 0.8em 0 0.4em; color: #e2e8f0; }
-.ck.ck-content h4 { font-size: 1.1rem; font-weight: 600; margin: 0.6em 0 0.3em; color: #cbd5e1; }
-.ck.ck-content p { margin: 0 0 0.8em; line-height: 1.8; }
-.ck.ck-content blockquote { border-right: 4px solid #3b82f6; border-left: none; margin: 1em 0; padding: 0.5em 1em; background: #0f172a; color: #94a3b8; font-style: italic; }
-.ck.ck-content pre { background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 12px; direction: ltr; text-align: left; overflow-x: auto; }
-.ck.ck-content table { border-collapse: collapse; margin: 1em 0; width: 100%; }
-.ck.ck-content td, .ck.ck-content th { border: 1px solid #334155; padding: 8px 12px; }
-.ck.ck-content th { background: #0f172a; font-weight: 600; }
-.ck.ck-content a { color: #60a5fa; text-decoration: underline; }
-.ck.ck-content ul, .ck.ck-content ol { margin: 0.5em 0; padding-right: 1.5em; }
-.ck.ck-content li { margin: 0.3em 0; }
-.ck.ck-content .callout-box { background: #0f172a; border-right: 4px solid #3b82f6; border-radius: 8px; padding: 12px 16px; margin: 1em 0; }
-.ck.ck-content .highlight-box { background: rgba(251, 191, 36, 0.1); border-right: 4px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin: 1em 0; }
-.ck.ck-content figure.image { margin: 1em 0; }
-.ck.ck-content figure.image figcaption { font-size: 0.85rem; color: #94a3b8; text-align: center; }
-.ck.ck-content hr { border: none; border-top: 1px solid #334155; margin: 1.5em 0; }
-.ck.ck-content .text-tiny { font-size: 0.8em; }
-.ck.ck-content .text-small { font-size: 0.9em; }
-.ck.ck-content .text-big { font-size: 1.2em; }
-.ck.ck-content .text-huge { font-size: 1.5em; }
-.ck.ck-content .marker-yellow { background: rgba(251, 191, 36, 0.3); }
-.ck.ck-content .marker-green { background: rgba(34, 197, 94, 0.3); }
-.ck.ck-content .marker-pink { background: rgba(244, 114, 182, 0.3); }
-.ck.ck-content .marker-blue { background: rgba(96, 165, 250, 0.3); }
-.ck.ck-content .pen-red { color: #ef4444; }
-.ck.ck-content .pen-green { color: #22c55e; }
-.ck.ck-content .ck-placeholder { color: #64748b; }
-.ck-editor__editable_inline { direction: rtl; text-align: right; }
-.ck.ck-balloon-panel { z-index: 10000 !important; }
+/* SunEditor Dark Theme */
+.sun-editor { border: 1px solid #334155; border-radius: 8px; overflow: hidden; }
+.sun-editor .se-toolbar { background: #0f172a; border-bottom: 1px solid #334155; }
+.sun-editor .se-toolbar .se-btn-module, .sun-editor .se-toolbar .se-btn { background: transparent; color: #cbd5e1; border-radius: 4px; }
+.sun-editor .se-toolbar .se-btn-module:hover, .sun-editor .se-toolbar .se-btn:hover { background: #334155; color: #f1f5f9; }
+.sun-editor .se-toolbar .se-btn-module.active, .sun-editor .se-toolbar .se-btn.active { background: #1e293b; color: #3b82f6; }
+.sun-editor .se-toolbar .se-btn-menu-dots { background: #334155; }
+.sun-editor .se-toolbar .se-btn-menu-dots .se-btn { color: #94a3b8; }
+.sun-editor .se-wrapper { background: #1e293b; min-height: 400px; }
+.sun-editor .se-wrapper .se-wrapper-wysiwyg { background: #1e293b; color: #f1f5f9; direction: rtl; text-align: right; padding: 16px; min-height: 400px; font-size: 15px; line-height: 1.8; }
+.sun-editor .se-resizing-bar { background: #0f172a; border-top: 1px solid #334155; color: #64748b; }
+.sun-editor .se-submenu { background: #1e293b; border-bottom: 1px solid #334155; }
+.sun-editor .se-submenu .se-btn { background: transparent; color: #cbd5e1; }
+.sun-editor .se-submenu .se-btn:hover { background: #334155; }
+.sun-editor .se-arrow { border-color: #334155; }
+.sun-editor .se-list-layer { background: #1e293b; border: 1px solid #334155; color: #f1f5f9; }
+.sun-editor .se-list-layer .se-btn-list { color: #f1f5f9; }
+.sun-editor .se-list-layer .se-btn-list:hover { background: #334155; }
+.sun-editor .se-dialog { background: #1e293b; border: 1px solid #334155; color: #f1f5f9; border-radius: 8px; }
+.sun-editor .se-dialog input, .sun-editor .se-dialog select, .sun-editor .se-dialog textarea { background: #0f172a; border: 1px solid #334155; color: #f1f5f9; }
+.sun-editor .se-dialog .se-dialog-header { background: #0f172a; border-bottom: 1px solid #334155; }
+.sun-editor .se-dialog .se-dialog-inner label { color: #94a3b8; }
+.sun-editor .se-dialog .se-btn-primary { background: #3b82f6; color: #fff; border: none; }
+.sun-editor .se-dialog .se-btn-primary:hover { background: #2563eb; }
+.sun-editor .se-dialog .se-btn-cancel { background: #334155; color: #cbd5e1; border: 1px solid #475569; }
+.sun-editor .se-color-pallet { background: #1e293b; border: 1px solid #334155; }
+.sun-editor .se-color-pallet .se-color-thumb { border: 1px solid #475569; }
+.se-wrapper-wysiwyg h2 { font-size: 1.5rem; font-weight: 700; margin: 1em 0 0.5em; color: #f1f5f9; }
+.se-wrapper-wysiwyg h3 { font-size: 1.25rem; font-weight: 600; margin: 0.8em 0 0.4em; color: #e2e8f0; }
+.se-wrapper-wysiwyg h4 { font-size: 1.1rem; font-weight: 600; margin: 0.6em 0 0.3em; color: #cbd5e1; }
+.se-wrapper-wysiwyg p { margin: 0 0 0.8em; line-height: 1.8; }
+.se-wrapper-wysiwyg blockquote { border-right: 4px solid #3b82f6; border-left: none; margin: 1em 0; padding: 0.5em 1em; background: #0f172a; color: #94a3b8; font-style: italic; }
+.se-wrapper-wysiwyg pre { background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 12px; direction: ltr; text-align: left; overflow-x: auto; }
+.se-wrapper-wysiwyg table { border-collapse: collapse; margin: 1em 0; width: 100%; }
+.se-wrapper-wysiwyg td, .se-wrapper-wysiwyg th { border: 1px solid #334155; padding: 8px 12px; }
+.se-wrapper-wysiwyg th { background: #0f172a; font-weight: 600; }
+.se-wrapper-wysiwyg a { color: #60a5fa; text-decoration: underline; }
+.se-wrapper-wysiwyg ul, .se-wrapper-wysiwyg ol { margin: 0.5em 0; padding-right: 1.5em; }
+.se-wrapper-wysiwyg li { margin: 0.3em 0; }
+.se-wrapper-wysiwyg hr { border: none; border-top: 1px solid #334155; margin: 1.5em 0; }
 /* Preview styles matching live site */
 .preview-container { max-width: 800px; margin: 0 auto; background: var(--bg); padding: 24px; border-radius: var(--radius); border: 1px solid var(--bg3); }
 .preview-container .article-title { font-size: 1.6rem; font-weight: 900; margin-bottom: 8px; color: var(--text); line-height: 1.3; }
@@ -575,8 +572,7 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
 
 'use strict';
 
-// CKEditor module script (deferred, line 19) sets this when CDN loads
-window.__CKEDITOR_PROMISE__ = new Promise(r => { window.__CKEDITOR_RESOLVE__ = r; });
+// SunEditor instance and pending data
 
 // ============================================================
 // CONFIG
@@ -791,7 +787,7 @@ function navigateTo(page) {
   const navItem = document.querySelector(`.nav-item[data-page="${page}"]`);
   if (navItem) navItem.classList.add('active');
 
-  // CKEditor lifecycle
+  // Editor lifecycle
   if (page === 'editor') {
     startEditorIfNeeded();
   } else {
@@ -1181,108 +1177,110 @@ function renderThemes() {
 }
 
 // ============================================================
-// CKEDITOR 5
+// SUNEDITOR
 // ============================================================
-let CKEDITOR_INSTANCE = null;
+let EDITOR_INSTANCE = null;
 
-async function initCKEditor() {
-  if (CKEDITOR_INSTANCE) return CKEDITOR_INSTANCE;
-  if (typeof CKEditor === 'undefined') {
-    await window.__CKEDITOR_PROMISE__;
-    if (typeof CKEditor === 'undefined') return null;
-  }
-  const { ClassicEditor, Essentials, Bold, Italic, Underline, Strikethrough, Heading, Font, List, Alignment, BlockQuote, CodeBlock, HorizontalLine, Table, TableToolbar, TableProperties, TableCellProperties, Link, Image, ImageToolbar, ImageCaption, ImageResize, ImageStyle, ImageUpload, Base64UploadAdapter, Paragraph, RemoveFormat, PasteFromOffice, SourceEditing, GeneralHtmlSupport, AutoLink } = CKEditor;
+async function initEditor() {
+  if (EDITOR_INSTANCE) return EDITOR_INSTANCE;
+  if (typeof SUNEDITOR === 'undefined') return null;
 
-  class GitHubUploadAdapter {
-    constructor(loader) { this.loader = loader; }
-    async upload() {
-      const file = await this.loader.file;
-      if (!file) return { default: '' };
-      const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'];
-      if (!validTypes.includes(file.type)) throw new Error('نوع الملف غير مدعوم');
-      if (file.size > 5 * 1024 * 1024) throw new Error('حجم الملف كبير جداً. الحد الأقصى 5MB');
+  const container = document.getElementById('editBody');
 
-      const ext = file.name.split('.').pop() || 'png';
-      const id = CURRENT_EDIT_ID || Date.now().toString();
-      const filename = `article_${id}_${Date.now()}.${ext}`;
-      const path = `img/${filename}`;
-      const rawUrl = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${path}`;
+  async function uploadImage(file) {
+    if (!file) return '';
+    const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'];
+    if (!validTypes.includes(file.type)) throw new Error('نوع الملف غير مدعوم');
+    if (file.size > 5 * 1024 * 1024) throw new Error('حجم الملف كبير جداً. الحد الأقصى 5MB');
 
-      const dataUrl = await new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = () => reject(new Error('فشل قراءة الملف'));
-        reader.readAsDataURL(file);
-      });
-      const base64 = dataUrl.split(',')[1];
-      let sha = '';
-      try { const existing = await ghFetch(path); sha = existing.sha; } catch {}
-      await ghPutBinary(path, base64, sha ? 'تحديث صورة المقال' : 'رفع صورة مقال', sha);
-      return { default: rawUrl };
-    }
-    abort() {}
-  }
+    const ext = file.name.split('.').pop() || 'png';
+    const id = CURRENT_EDIT_ID || Date.now().toString();
+    const filename = `article_${id}_${Date.now()}.${ext}`;
+    const path = `img/${filename}`;
+    const rawUrl = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${path}`;
 
-  function GitHubUploadAdapterPlugin(editor) {
-    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => new GitHubUploadAdapter(loader);
+    const dataUrl = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error('فشل قراءة الملف'));
+      reader.readAsDataURL(file);
+    });
+    const base64 = dataUrl.split(',')[1];
+    let sha = '';
+    try { const existing = await ghFetch(path); sha = existing.sha; } catch {}
+    await ghPutBinary(path, base64, sha ? 'تحديث صورة المقال' : 'رفع صورة مقال', sha);
+    return rawUrl;
   }
 
   try {
-    const editor = await ClassicEditor.create(document.getElementById('editBody'), {
-      language: { ui: 'en', content: 'ar' },
-      plugins: [Essentials, Bold, Italic, Underline, Strikethrough, Heading, Font, List, Alignment, BlockQuote, CodeBlock, HorizontalLine, Table, TableToolbar, TableProperties, TableCellProperties, Link, AutoLink, Image, ImageToolbar, ImageCaption, ImageResize, ImageStyle, ImageUpload, GitHubUploadAdapterPlugin, Paragraph, RemoveFormat, PasteFromOffice, SourceEditing, GeneralHtmlSupport],
-      toolbar: ['undo', 'redo', '|', 'heading', '|', 'bold', 'italic', 'underline', 'strikethrough', 'removeFormat', '|', 'fontColor', 'fontBackgroundColor', '|', 'alignment:right', 'alignment:center', 'alignment:left', '|', 'bulletedList', 'numberedList', '|', 'blockQuote', 'codeBlock', 'horizontalLine', '|', 'insertTable', 'link', 'imageUpload', 'sourceEditing'],
-      heading: { options: [
-        { model: 'paragraph', title: 'فقرة', class: 'ck-heading_paragraph' },
-        { model: 'heading1', view: 'h1', title: 'العنوان الرئيسي', class: 'ck-heading_h1' },
-        { model: 'heading2', view: 'h2', title: 'عنوان فرعي', class: 'ck-heading_h2' },
-        { model: 'heading3', view: 'h3', title: 'عنوان فرعي صغير', class: 'ck-heading_h3' },
-        { model: 'heading4', view: 'h4', title: 'عنوان فرعي أصغر', class: 'ck-heading_h4' }
-      ]},
-      alignment: { options: ['right', 'center', 'left', 'justify'] },
-      table: { contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties'] },
-      image: { toolbar: ['imageTextAlternative', 'imageCaption', 'imageStyle:inline', 'imageStyle:wrapText', 'imageStyle:breakText', '|', 'imageResize'], styles: ['inline', 'wrapText', 'breakText'], resizeOptions: [{ name: 'imageResize:original', value: null, label: 'أصلي' }, { name: 'imageResize:50', value: '50', label: '50%' }, { name: 'imageResize:75', value: '75', label: '75%' }, { name: 'imageResize:100', value: '100', label: '100%' }] },
-      link: { addTargetToExternalLinks: true, defaultProtocol: 'https://' },
-      fontColor: { colors: [
-        { color: '#f1f5f9', label: 'أبيض' }, { color: '#94a3b8', label: 'رمادي' }, { color: '#3b82f6', label: 'أزرق' }, { color: '#22c55e', label: 'أخضر' }, { color: '#ef4444', label: 'أحمر' }, { color: '#f59e0b', label: 'برتقالي' }, { color: '#a855f7', label: 'بنفسجي' }, { color: '#ec4899', label: 'وردي' }, { color: '#000000', label: 'أسود' }
-      ]},
-      fontBackgroundColor: { colors: [
-        { color: 'rgba(251,191,36,0.3)', label: 'أصفر' }, { color: 'rgba(34,197,94,0.3)', label: 'أخضر' }, { color: 'rgba(244,114,182,0.3)', label: 'وردي' }, { color: 'rgba(96,165,250,0.3)', label: 'أزرق' }, { color: 'rgba(239,68,68,0.3)', label: 'أحمر' }
-      ]},
-      htmlSupport: { allow: [{ name: /.*/, attributes: true, classes: true, styles: true }] },
-      placeholder: 'ابدأ بكتابة المقال هنا...'
+    const editor = SUNEDITOR.create(container, {
+      width: '100%',
+      height: 'auto',
+      minHeight: '400px',
+      dir: 'rtl',
+      lang: SUNEDITOR_LANG.ar,
+      stickyToolbar: 0,
+      toolbarContainer: null,
+      imageUploadUrl: null,
+      imageUploadHandler: async function(xmlHttp, info, core) {
+        try {
+          const url = await uploadImage(info[0]);
+          const uploadHandler = core._imageUploadHandler;
+          if (uploadHandler) uploadHandler(url);
+        } catch (e) {
+          core.showToast(e.message || 'فشل رفع الصورة');
+        }
+      },
+      videoUploadHandler: null,
+      imageMultipleFile: false,
+      videoMultipleFile: false,
+      tabDisable: false,
+      buttonList: [
+        ['undo', 'redo'],
+        ['font', 'fontSize', 'formatBlock'],
+        ['bold', 'italic', 'underline', 'strike', 'removeFormat'],
+        ['fontColor', 'hiliteColor'],
+        ['align', 'horizontalRule', 'list', 'table'],
+        ['link', 'image', 'video'],
+        ['showBlocks', 'codeView', 'fullScreen']
+      ],
+      fontSize: [8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36],
+      defaultTag: 'p',
+      formats: ['p', 'h1', 'h2', 'h3', 'h4'],
+      colorList: [
+        '#f1f5f9', '#94a3b8', '#3b82f6', '#22c55e', '#ef4444', '#f59e0b',
+        '#a855f7', '#ec4899', '#000000', '#ffffff'
+      ],
+      linkTargetNewWindow: true,
+      addTags: ['callout-box', 'highlight-box']
     });
-    CKEDITOR_INSTANCE = editor;
-    editor.ui.focusTracker.on('change:isFocused', () => {
-      if (!editor.ui.focusTracker.isFocused) {
-        document.getElementById('editorStatus').textContent = 'آخر حفظ تلقائي: ' + new Date().toLocaleTimeString('ar-EG');
-      }
-    });
+
+    EDITOR_INSTANCE = editor;
     return editor;
   } catch (e) {
-    console.error('CKEditor init error:', e);
+    console.error('SunEditor init error:', e);
     document.getElementById('editorStatus').textContent = 'خطأ في تهيئة المحرر';
     return null;
   }
 }
 
 function getEditorData() {
-  if (CKEDITOR_INSTANCE) return CKEDITOR_INSTANCE.getData();
+  if (EDITOR_INSTANCE) return EDITOR_INSTANCE.getContents(true);
   return '';
 }
 
 function setEditorData(html) {
-  if (CKEDITOR_INSTANCE) {
-    CKEDITOR_INSTANCE.setData(html || '');
+  if (EDITOR_INSTANCE) {
+    EDITOR_INSTANCE.setContents(html || '');
   } else {
     PENDING_EDITOR_DATA = html || '';
   }
 }
 
-async function destroyCKEditor() {
-  if (CKEDITOR_INSTANCE) {
-    try { await CKEDITOR_INSTANCE.destroy(); } catch {}
-    CKEDITOR_INSTANCE = null;
+function destroyEditor() {
+  if (EDITOR_INSTANCE) {
+    try { EDITOR_INSTANCE.destroy(); } catch {}
+    EDITOR_INSTANCE = null;
   }
 }
 
@@ -1321,49 +1319,38 @@ function renderLinkArticleList() {
   }).join('');
 }
 
+function insertEditorLink(url, text) {
+  if (!EDITOR_INSTANCE) return;
+  const core = EDITOR_INSTANCE.core;
+  const sel = core.getSelection();
+  if (sel && !sel.isCollapsed) {
+    const selectedText = sel.toString();
+    sel.deleteFromDocument();
+    core.insertHTML(`<a href="${esc(url)}" target="_blank" rel="noopener">${esc(selectedText)}</a>`);
+  } else {
+    core.insertHTML(`<a href="${esc(url)}" target="_blank" rel="noopener">${esc(text)}</a>`);
+  }
+}
+
 function insertInternalLink(articleId) {
   const article = DB.find(a => String(a.id) === String(articleId));
   if (!article) return;
   const url = `https://${GH_OWNER}.github.io/${GH_REPO}/article.html?id=${articleId}`;
   const title = article.title_ar || article.title || 'المقال';
-  if (CKEDITOR_INSTANCE) {
-    const model = CKEDITOR_INSTANCE.model;
-    const selection = model.document.selection;
-    if (selection.isCollapsed) {
-      CKEDITOR_INSTANCE.model.change(writer => {
-        const linkElement = writer.createText(title, { linkHref: url });
-        model.insertContent(linkElement);
-      });
-    } else {
-      CKEDITOR_INSTANCE.execute('link', url);
-    }
-  }
+  insertEditorLink(url, title);
   closeModal('internalLinkModal');
 }
 
 function insertBlock(type) {
-  if (!CKEDITOR_INSTANCE) return;
-  const editor = CKEDITOR_INSTANCE;
+  if (!EDITOR_INSTANCE) return;
 
   if (type === 'callout') {
-    editor.model.change(writer => {
-      const container = writer.createElement('div', { class: 'callout-box' });
-      const paragraph = writer.createElement('paragraph');
-      writer.appendText('نص التنبيه هنا...', paragraph);
-      writer.append(paragraph, container);
-      editor.model.insertContent(container);
-    });
+    EDITOR_INSTANCE.insertHTML('<div class="callout-box"><p>نص التنبيه هنا...</p></div>');
     return;
   }
 
   if (type === 'highlight') {
-    editor.model.change(writer => {
-      const container = writer.createElement('div', { class: 'highlight-box' });
-      const paragraph = writer.createElement('paragraph');
-      writer.appendText('نص مميز هنا...', paragraph);
-      writer.append(paragraph, container);
-      editor.model.insertContent(container);
-    });
+    EDITOR_INSTANCE.insertHTML('<div class="highlight-box"><p>نص مميز هنا...</p></div>');
     return;
   }
 
@@ -1395,19 +1382,8 @@ function insertBlock(type) {
 
 function insertCategoryLink(category) {
   const url = `https://${GH_OWNER}.github.io/${GH_REPO}/category.html?cat=${encodeURIComponent(category)}`;
-  if (CKEDITOR_INSTANCE) {
-    const selection = CKEDITOR_INSTANCE.model.document.selection;
-    if (selection.isCollapsed) {
-      CKEDITOR_INSTANCE.model.change(writer => {
-        const linkElement = writer.createText(category, { linkHref: url });
-        CKEDITOR_INSTANCE.model.insertContent(linkElement);
-      });
-    } else {
-      CKEDITOR_INSTANCE.execute('link', url);
-    }
-  }
+  insertEditorLink(url, category);
   closeModal('internalLinkModal');
-  // Restore modal content
   setTimeout(() => {
     document.getElementById('internalLinkModal').innerHTML = `
       <div class="modal" style="max-width:600px">
@@ -1486,19 +1462,19 @@ function renderPreview() {
 }
 
 // ============================================================
-// INIT — CKEditor start on editor page
+// INIT — Editor start on editor page
 // ============================================================
-let CKEDITOR_INIT_STARTED = false;
+let EDITOR_INIT_STARTED = false;
 
 async function startEditorIfNeeded() {
-  if (CKEDITOR_INIT_STARTED) return;
+  if (EDITOR_INIT_STARTED) return;
   const editorPage = document.getElementById('page-editor');
-  if (editorPage.classList.contains('active') && !CKEDITOR_INSTANCE) {
-    CKEDITOR_INIT_STARTED = true;
+  if (editorPage.classList.contains('active') && !EDITOR_INSTANCE) {
+    EDITOR_INIT_STARTED = true;
     document.getElementById('editorStatus').textContent = 'جاري تحميل المحرر...';
-    const editor = await initCKEditor();
+    const editor = await initEditor();
     if (!editor) {
-      CKEDITOR_INIT_STARTED = false;
+      EDITOR_INIT_STARTED = false;
       document.getElementById('editorStatus').textContent = 'خطأ: فشل تحميل المحرر. حاول مرة أخرى.';
       return;
     }

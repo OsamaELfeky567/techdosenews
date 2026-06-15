@@ -1496,9 +1496,13 @@ async function startEditorIfNeeded() {
   if (editorPage.classList.contains('active') && !CKEDITOR_INSTANCE) {
     CKEDITOR_INIT_STARTED = true;
     document.getElementById('editorStatus').textContent = 'جاري تحميل المحرر...';
-    await initCKEditor();
+    const editor = await initCKEditor();
+    if (!editor) {
+      CKEDITOR_INIT_STARTED = false;
+      document.getElementById('editorStatus').textContent = 'خطأ: فشل تحميل المحرر. حاول مرة أخرى.';
+      return;
+    }
     document.getElementById('editorStatus').textContent = 'المحرر جاهز';
-    // Apply any pending data
     if (PENDING_EDITOR_DATA !== null) {
       setEditorData(PENDING_EDITOR_DATA);
       PENDING_EDITOR_DATA = null;

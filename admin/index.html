@@ -1320,14 +1320,14 @@ function renderLinkArticleList() {
 
 function insertEditorLink(url, text) {
   if (!EDITOR_INSTANCE) return;
-  const core = EDITOR_INSTANCE.core;
-  const sel = core.getSelection();
-  if (sel && !sel.isCollapsed) {
-    const selectedText = sel.toString();
-    sel.deleteFromDocument();
-    core.insertHTML(`<a href="${esc(url)}" target="_blank" rel="noopener">${esc(selectedText)}</a>`);
+  const selection = EDITOR_INSTANCE.$.selection;
+  const range = selection.getRange();
+  if (range && !range.collapsed) {
+    const selectedText = range.toString();
+    range.deleteContents();
+    EDITOR_INSTANCE.$.html.insert(`<a href="${esc(url)}" target="_blank" rel="noopener">${esc(selectedText)}</a>`);
   } else {
-    core.insertHTML(`<a href="${esc(url)}" target="_blank" rel="noopener">${esc(text)}</a>`);
+    EDITOR_INSTANCE.$.html.insert(`<a href="${esc(url)}" target="_blank" rel="noopener">${esc(text)}</a>`);
   }
 }
 
@@ -1344,12 +1344,12 @@ function insertBlock(type) {
   if (!EDITOR_INSTANCE) return;
 
   if (type === 'callout') {
-    EDITOR_INSTANCE.insertHTML('<div class="callout-box"><p>نص التنبيه هنا...</p></div>');
+    EDITOR_INSTANCE.$.html.insert('<div class="callout-box"><p>نص التنبيه هنا...</p></div>');
     return;
   }
 
   if (type === 'highlight') {
-    EDITOR_INSTANCE.insertHTML('<div class="highlight-box"><p>نص مميز هنا...</p></div>');
+    EDITOR_INSTANCE.$.html.insert('<div class="highlight-box"><p>نص مميز هنا...</p></div>');
     return;
   }
 

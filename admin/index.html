@@ -488,12 +488,18 @@ const DEFAULT_CONFIG = {
   customJs: ''
 };
 
-// Category color map
-const CAT_COLORS = {
+// Category color map (overridden after config load)
+let CAT_COLORS = {
   'ذكاء اصطناعي': '#8E44AD', 'أمن سيبراني': '#C0392B', 'شركات التقنية': '#F39C12',
   'مصر والتقنية': '#1E8449', 'هواتف ذكية': '#1B4F72', 'إلكترونيات': '#2E86C1',
   'سيارات كهربائية': '#27AE60'
 };
+
+function syncCatColors() {
+  if (CONFIG.catColors && Object.keys(CONFIG.catColors).length) {
+    CAT_COLORS = { ...CAT_COLORS, ...CONFIG.catColors };
+  }
+}
 
 // ============================================================
 // GITHUB API
@@ -566,11 +572,6 @@ function clearSession() {
 // AUTH
 // ============================================================
 
-async function checkPassword(pass) {
-  const hash = await sha256(pass);
-  return hash === CONFIG.passwordHash;
-}
-
 async function sha256(str) {
   try {
     const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
@@ -592,6 +593,7 @@ async function loadConfig() {
     console.error('loadConfig failed:', e);
     CONFIG = { ...DEFAULT_CONFIG };
   }
+  syncCatColors();
 }
 
 async function loadDb() {
@@ -672,7 +674,7 @@ function initHeaderClock() {
 }
 
 /* Insights */
-function renderInsights() {
+async function renderInsights() {
   if (!DB.length) return;
 
   // Featured count
@@ -990,6 +992,7 @@ async function saveArticle(formData) {
   const isNew = !CURRENT_EDIT_ID;
   const id = CURRENT_EDIT_ID || Date.now().toString();
   const now = new Date().toISOString();
+  const dbIdx = DB.findIndex(a => String(a.id) === String(id));
 
   const article = {
     id,
@@ -1000,16 +1003,16 @@ async function saveArticle(formData) {
     category: formData.category,
     tags: formData.tags,
     image_query: formData.imageQuery || 'technology news',
-    image_url: formData.image || `https://source.unsplash.com/featured/800x450/?${encodeURIComponent(formData.imageQuery || 'technology technology news')}`,
+    image_url: formData.image || `https://source.unsplash.com/featured/800x450/?${encodeURIComponent(formData.imageQuery || 'technology news')}`,
     source_name: formData.source || 'Tech Dose News',
     source_link: formData.sourceLink || '',
     video_url: formData.videoUrl || '',
     status: formData.status || 'published',
-    created_at: now
+    featured: formData.featured || false,
+    created_at: (dbIdx >= 0 ? DB[dbIdx].created_at : null) || now
   };
 
   // Update or add to DB
-  const dbIdx = DB.findIndex(a => String(a.id) === String(id));
   if (dbIdx >= 0) {
     DB[dbIdx] = { ...DB[dbIdx], ...article };
   } else {
@@ -1044,6 +1047,9 @@ async function saveArticle(formData) {
       INDEX.unshift(artObj);
     }
     article.status = 'published';
+  } else {
+    // Remove from index if unpublishing
+    INDEX = INDEX.filter(i => String(i.id) !== String(id));
   }
 
   // Save to GitHub
@@ -1052,10 +1058,7 @@ async function saveArticle(formData) {
   try { const j = await ghFetch('data/articles/index.json'); idxSha = j.sha; } catch {}
 
   await ghPut('articles_db.json', JSON.stringify(DB, null, 2), isNew ? 'إضافة مقال جديد' : 'تحديث مقال: ' + article.title_ar, dbSha);
-
-  if (formData.status === 'published') {
-    await ghPut('data/articles/index.json', JSON.stringify(INDEX, null, 2), 'تحديث فهرس المقالات', idxSha);
-  }
+  await ghPut('data/articles/index.json', JSON.stringify(INDEX, null, 2), 'تحديث فهرس المقالات', idxSha);
 
   showToast(isNew ? 'تم إضافة المقال بنجاح' : 'تم تحديث المقال بنجاح', 'success');
   navigateTo('articles');
@@ -1176,7 +1179,6 @@ async function initApp() {
   await loadConfig();
   const storedToken = loadSession();
   if (storedToken) GH_TOKEN = storedToken;
-  if (!GH_TOKEN && CONFIG.ghToken) GH_TOKEN = CONFIG.ghToken;
   await afterLogin();
 }
 
@@ -1196,7 +1198,7 @@ async function afterLogin() {
   }
 
   // Populate settings
-  document.getElementById('editGhToken').value = GH_TOKEN || CONFIG.ghToken || '';
+  document.getElementById('editGhToken').value = GH_TOKEN || '';
   document.getElementById('editWebhookUrl').value = CONFIG.webhookUrl || '';
   document.getElementById('editSiteName').value = CONFIG.siteName || '';
   document.getElementById('editSiteDesc').value = CONFIG.siteDesc || '';

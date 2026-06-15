@@ -1213,6 +1213,7 @@ async function initEditor() {
 
   try {
     const editor = SUNEDITOR.create(container, {
+      plugins: SUNEDITOR.plugins,
       width: '100%',
       height: 'auto',
       minHeight: '400px',
@@ -1235,11 +1236,11 @@ async function initEditor() {
       tabDisable: false,
       buttonList: [
         ['undo', 'redo'],
-        ['fontFamily', 'fontSize', 'formatBlock'],
+        ['font', 'fontSize', 'paragraphStyle'],
         ['bold', 'italic', 'underline', 'strike', 'removeFormat'],
-        ['fontColor', 'hiliteColor'],
-        ['align', 'horizontalRule', 'list', 'table'],
-        ['link', 'image', 'video'],
+        ['fontColor', 'backgroundColor'],
+        ['align', 'hr', 'list', 'table'],
+        ['dir', 'link', 'image', 'video'],
         ['showBlocks', 'codeView', 'fullScreen']
       ],
       fontSize: [8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36],

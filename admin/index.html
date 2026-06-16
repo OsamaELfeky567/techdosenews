@@ -1597,9 +1597,21 @@ async function saveArticle(formData) {
     ARTICLES.unshift(article);
   }
 
-  // Save to GitHub (only index.json)
+  // Save to GitHub — merge with latest remote to prevent pipeline data loss
   let idxSha = '';
-  try { const j = await ghFetch('data/articles/index.json'); idxSha = j.sha; } catch {}
+  let remoteData = [];
+  try {
+    const j = await ghFetch('data/articles/index.json');
+    idxSha = j.sha;
+    remoteData = JSON.parse(decodeURIComponent(escape(atob(j.content))));
+  } catch {}
+  // Merge: keep remote articles not in local ARTICLES, then apply local changes
+  const localIds = new Set(ARTICLES.map(a => String(a.id)));
+  const merged = remoteData.filter(a => !localIds.has(String(a.id)));
+  merged.push(...ARTICLES);
+  merged.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  if (merged.length > 500) merged.length = 500;
+  ARTICLES = merged;
   await ghPut('data/articles/index.json', JSON.stringify(ARTICLES, null, 2), isNew ? 'إضافة مقال جديد' : 'تحديث مقال: ' + formData.title, idxSha);
 
   // Send Telegram if checkbox checked
@@ -1615,11 +1627,21 @@ async function saveArticle(formData) {
 async function deleteArticle(id) {
   showModal('حذف المقال', 'هل أنت متأكد من حذف هذا المقال؟ لا يمكن التراجع عن هذا الإجراء.', async () => {
     try {
-      ARTICLES = ARTICLES.filter(a => String(a.id) !== String(id));
-
+      // Fetch latest remote data before deleting
       let idxSha = '';
-      try { const j = await ghFetch('data/articles/index.json'); idxSha = j.sha; } catch {}
-      await ghPut('data/articles/index.json', JSON.stringify(ARTICLES, null, 2), 'حذف مقال', idxSha);
+      let remoteData = [];
+      try {
+        const j = await ghFetch('data/articles/index.json');
+        idxSha = j.sha;
+        remoteData = JSON.parse(decodeURIComponent(escape(atob(j.content))));
+      } catch {}
+      // Merge local + remote, then remove
+      const localIds = new Set(ARTICLES.map(a => String(a.id)));
+      const merged = remoteData.filter(a => !localIds.has(String(a.id)));
+      merged.push(...ARTICLES);
+      ARTICLES = merged.filter(a => String(a.id) !== String(id));
+
+      await ghPut('data/articles/index.json', JSON.stringify(ARTICLES, null, 2), 'حذف مقال: ' + (merged.find(a => String(a.id) === String(id))?.title || id), idxSha);
 
       showToast('تم حذف المقال', 'success');
       renderArticles();

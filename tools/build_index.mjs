@@ -35,7 +35,7 @@ function normalize(article) {
     link: (article.link && article.link !== article.techdose_link) ? article.link : (article.source_link || ''),
     techdose_link: article.techdose_link || '',
     videoUrl: article.videoUrl || '',
-    status: article.status || 'published',
+    status: (article.status || 'published') === 'published' && (article.techdose_link || article.link || article.source_link) ? 'published' : 'draft',
     featured: false
   };
 }

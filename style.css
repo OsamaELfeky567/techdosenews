@@ -149,6 +149,7 @@ a{text-decoration:none;color:inherit}
 .sb-article-meta{display:flex;gap:16px;font-size:.85rem;color:var(--muted);margin-bottom:20px;flex-wrap:wrap}
 .sb-article-body{font-size:1.05rem;line-height:1.9;color:#374151}
 .sb-article-body p{margin-bottom:18px;text-align:justify}
+.sb-article-body h1{font-size:1.6rem;font-weight:800;margin:32px 0 16px;color:var(--navy)}
 .sb-article-body h2{font-size:1.45rem;font-weight:800;margin:28px 0 14px;color:var(--navy)}
 .sb-article-body h3{font-size:1.2rem;font-weight:700;margin:24px 0 12px;color:var(--navy)}
 .sb-article-body h4{font-size:1.05rem;font-weight:700;margin:20px 0 10px;color:var(--navy)}

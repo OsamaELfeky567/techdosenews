@@ -122,8 +122,7 @@ function renderAll() {
 function renderHero() {
   const hero = document.getElementById('sbHero');
   if (!hero || allArticles.length === 0) return;
-  const featured = allArticles.filter(a => a.featured);
-  const a = featured.length > 0 ? featured[0] : allArticles[0];
+  const a = allArticles[0];
   hero.innerHTML = '<div onclick="goto(\'' + escId(a.id) + '\')">' +
     (a.image ? '<img src="' + a.image + '" alt="' + esc(a.title) + '" loading="lazy">' : '') +
     '<div class="sb-hero-overlay"><div class="sb-cat-badge">' + esc(a.categoryAr) + '</div>' +

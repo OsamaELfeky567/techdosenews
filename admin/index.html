@@ -265,7 +265,6 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
         <!-- Insights -->
         <div class="page-title" style="font-size:1rem;margin-bottom:12px;margin-top:24px">تحليلات متقدمة <span class="sub">من بيانات الموقع</span></div>
         <div class="stats-grid" id="insightsGrid">
-          <div class="stat-card"><div class="stat-label">المقالات البارزة (Featured)</div><div class="stat-value" id="insightFeatured">-</div></div>
           <div class="stat-card"><div class="stat-label">عدد التصنيفات</div><div class="stat-value" id="insightCats">-</div></div>
           <div class="stat-card"><div class="stat-label">المصادر المختلفة</div><div class="stat-value" id="insightSources">-</div></div>
           <div class="stat-card"><div class="stat-label">معدل النشر</div><div class="stat-value" id="insightRate" style="font-size:1.1rem">-</div><div class="stat-sub">مقال/يوم</div></div>
@@ -400,8 +399,8 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
               </select>
             </div>
             <div class="form-group" style="display:flex;align-items:center;gap:10px;padding-top:20px">
-              <label style="margin:0">مقال مميز (Featured)</label>
-              <label class="switch"><input type="checkbox" id="editFeatured"><span class="slider"></span></label>
+              <label style="margin:0">نشر على تيليجرام</label>
+              <label class="switch"><input type="checkbox" id="editTelegram"><span class="slider"></span></label>
             </div>
           </div>
           <div class="toolbar" style="margin-top:16px">
@@ -522,6 +521,11 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
           <div class="hint">لتشغيل الوركفلو من لوحة التحكم</div>
         </div>
         <div class="form-group">
+          <label>Telegram Bot Token</label>
+          <input type="password" id="editTgToken" placeholder="123456:ABC-def_gh..." style="direction:ltr;text-align:left;font-family:monospace">
+          <div class="hint">توكن بوت التيلجرام (من @BotFather). مخزن في admin_config.json</div>
+        </div>
+        <div class="form-group">
           <label>كلمة المرور (تغيير)</label>
           <input type="password" id="editAdminPass" placeholder="اترك فارغاً للإبقاء على الحالية" autocomplete="new-password">
           <div class="hint">سيتم تخزينها بشكل آمن (SHA-256)</div>
@@ -581,8 +585,7 @@ const GH_REPO  = 'techdosenews';
 const CONFIG_PATH = 'admin_config.json';
 let GH_TOKEN = '';
 let CONFIG = null;
-let DB = [];         // articles_db.json
-let INDEX = [];      // articles/index.json
+let ARTICLES = [];   // data/articles/index.json (single source of truth)
 let EDIT_TAGS = [];
 let CURRENT_EDIT_ID = null;
 
@@ -663,14 +666,26 @@ async function ghDelete(path, sha, message) {
 async function ghPutBinary(path, base64Content, message, sha) {
   const body = { message: message || 'Upload image from admin panel', content: base64Content };
   if (sha) body.sha = sha;
-  const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
-    method: 'PUT',
-    headers: { 'Authorization': `Bearer ${GH_TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'admin-panel' },
-    body: JSON.stringify(body)
-  });
-  const data = await res.json();
-  if (!res.ok) throw new Error(`GitHub PUT ${path}: ${res.status} ${data.message || ''}`);
-  return data;
+  const maxRetries = 3;
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
+        method: 'PUT',
+        headers: { 'Authorization': `Bearer ${GH_TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'admin-panel' },
+        body: JSON.stringify(body)
+      });
+      const data = await res.json();
+      if (res.ok) return data;
+      if (res.status === 401) throw new Error('فشل التوثيق: توكن GitHub غير صالح أو منتهي الصلاحية. جدد التوكن في الإعدادات.');
+      if (res.status === 403) throw new Error('ممنوع الوصول: التوكن لا يملك صلاحية repo. أضف صلاحية repo للتوكن.');
+      if (res.status === 422 && attempt < maxRetries - 1) { await new Promise(r => setTimeout(r, 1000)); continue; }
+      throw new Error(`GitHub PUT ${path}: ${res.status} ${data.message || ''}`);
+    } catch (e) {
+      if (attempt === maxRetries - 1) throw e;
+      if (e.message.includes('فشل التوثيق') || e.message.includes('ممنوع الوصول')) throw e;
+      await new Promise(r => setTimeout(r, 1000));
+    }
+  }
 }
 
 async function ghGetText(path) {
@@ -726,18 +741,11 @@ async function loadConfig() {
   syncCatColors();
 }
 
-async function loadDb() {
-  try {
-    const j = await ghGetJson('articles_db.json');
-    DB = j.data;
-  } catch { DB = []; }
-}
-
-async function loadIndex() {
+async function loadArticles() {
   try {
     const j = await ghGetJson('data/articles/index.json');
-    INDEX = j.data;
-  } catch { INDEX = []; }
+    ARTICLES = j.data;
+  } catch { ARTICLES = []; }
 }
 
 // ============================================================
@@ -812,29 +820,26 @@ function initHeaderClock() {
 
 /* Insights */
 async function renderInsights() {
-  if (!DB.length) return;
-
-  // Featured count
-  document.getElementById('insightFeatured').textContent = INDEX.filter(a => a.featured).length;
+  if (!ARTICLES.length) return;
 
   // Category count
-  const cats = new Set(DB.map(a => a.category).filter(Boolean));
+  const cats = new Set(ARTICLES.map(a => a.category).filter(Boolean));
   document.getElementById('insightCats').textContent = cats.size;
 
   // Sources
-  const sources = new Set(DB.map(a => (a.source_name||a.source||'')).filter(Boolean));
+  const sources = new Set(ARTICLES.map(a => (a.source||'')).filter(Boolean));
   document.getElementById('insightSources').textContent = sources.size;
 
   // Publishing rate (articles per day over last 30 days)
   const now = Date.now();
   const thirtyDays = 30 * 86400000;
-  const recent = DB.filter(a => a.created_at && (now - new Date(a.created_at).getTime()) < thirtyDays);
+  const recent = ARTICLES.filter(a => a.date && (now - new Date(a.date).getTime()) < thirtyDays);
   const rate = (recent.length / 30).toFixed(1);
   document.getElementById('insightRate').textContent = rate;
 
   // Category chart (bar chart)
   const catCounts = {};
-  DB.forEach(a => { const c = a.category || 'أخرى'; catCounts[c] = (catCounts[c]||0) + 1; });
+  ARTICLES.forEach(a => { const c = a.category || 'أخرى'; catCounts[c] = (catCounts[c]||0) + 1; });
   const catEntries = Object.entries(catCounts).sort((a,b) => b[1]-a[1]);
   const maxCat = Math.max(...catEntries.map(e => e[1]), 1);
   const catChart = document.getElementById('insightCatChart');
@@ -852,9 +857,9 @@ async function renderInsights() {
 
   // Timeline (articles per month)
   const monthCounts = {};
-  DB.forEach(a => {
-    if (!a.created_at) return;
-    const d = new Date(a.created_at);
+  ARTICLES.forEach(a => {
+    if (!a.date) return;
+    const d = new Date(a.date);
     const key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0');
     monthCounts[key] = (monthCounts[key]||0) + 1;
   });
@@ -875,7 +880,7 @@ async function renderInsights() {
 
   // Source chart
   const sourceCounts = {};
-  DB.forEach(a => { const s = a.source_name||a.source||'غير معروف'; sourceCounts[s] = (sourceCounts[s]||0) + 1; });
+  ARTICLES.forEach(a => { const s = a.source||'غير معروف'; sourceCounts[s] = (sourceCounts[s]||0) + 1; });
   const srcEntries = Object.entries(sourceCounts).sort((a,b) => b[1]-a[1]).slice(0, 8);
   const maxSrc = Math.max(...srcEntries.map(e => e[1]), 1);
   const srcChart = document.getElementById('insightSourceChart');
@@ -911,8 +916,8 @@ async function renderInsights() {
           <p style="color:var(--green);font-size:.85rem;margin-bottom:8px"><i class="fas fa-check-circle"></i> إجمالي المشاهدات المسجلة: <strong>${totalViews}</strong></p>
           <p style="color:var(--text2);font-size:.8rem;margin-bottom:8px">عبر ${totalArticles} مقال</p>
           <div style="max-height:200px;overflow-y:auto">${Object.entries(views).sort((a,b) => b[1].count - a[1].count).slice(0,10).map(([id, v]) => {
-            const art = DB.find(a => String(a.id) === String(id)) || INDEX.find(a => String(a.id) === String(id));
-            const title = art ? (art.title_ar||art.title||'') : '#'+id;
+            const art = ARTICLES.find(a => String(a.id) === String(id)) || ARTICLES.find(a => String(a.id) === String(id));
+            const title = art ? (art.title||'') : '#'+id;
             return '<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--bg3);font-size:.8rem">' +
               '<span style="color:var(--text2);text-overflow:ellipsis;overflow:hidden;white-space:nowrap;max-width:200px">' + esc(title.substring(0,40)) + '</span>' +
               '<span style="color:var(--text);font-weight:600;direction:ltr">' + v.count + '</span></div>';
@@ -926,9 +931,9 @@ async function renderInsights() {
 async function renderDashboard() {
   const now = new Date();
   const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-  const todayCount = DB.filter(a => (a.created_at ? new Date(a.created_at).getTime() : 0) >= todayStart).length;
-  const publishedCount = INDEX.length;
-  document.getElementById('statTotal').textContent = DB.length;
+  const todayCount = ARTICLES.filter(a => (a.date ? new Date(a.date).getTime() : 0) >= todayStart).length;
+  const publishedCount = ARTICLES.filter(a => a.status !== 'draft').length;
+  document.getElementById('statTotal').textContent = ARTICLES.length;
   document.getElementById('statPublished').textContent = publishedCount;
   document.getElementById('statToday').textContent = todayCount;
 
@@ -939,7 +944,7 @@ async function renderDashboard() {
   } catch { document.getElementById('statLastUpdate').textContent = '-'; }
 
   // Recent articles
-  const recent = INDEX.slice(0, 5);
+  const recent = ARTICLES.slice(0, 5);
   const container = document.getElementById('dashboardArticles');
   if (recent.length === 0) {
     container.innerHTML = '<div class="empty-state"><i class="fas fa-newspaper"></i><p>لا توجد مقالات منشورة بعد</p></div>';
@@ -949,7 +954,7 @@ async function renderDashboard() {
     <tr style="cursor:pointer" onclick="editArticle('${esc(a.id)}')">
       <td>${esc(a.title).substring(0,60)}</td>
       <td><span class="badge badge-published">${esc(a.category)}</span></td>
-      <td style="font-size:.8rem;color:var(--text3)">${a.publishedAt ? new Date(a.publishedAt).toLocaleDateString('ar-EG') : '-'}</td>
+      <td style="font-size:.8rem;color:var(--text3)">${a.date ? new Date(a.date).toLocaleDateString('ar-EG') : '-'}</td>
     </tr>`).join('')}</tbody></table>`;
 }
 
@@ -959,8 +964,8 @@ function renderArticles() {
   const catFilter = document.getElementById('artFilter').value;
   const statusFilter = document.getElementById('artStatusFilter').value;
 
-  let list = [...DB];
-  if (search) list = list.filter(a => (a.title_ar||'').toLowerCase().includes(search) || (a.excerpt||'').toLowerCase().includes(search));
+  let list = [...ARTICLES];
+  if (search) list = list.filter(a => (a.title||'').toLowerCase().includes(search) || (a.excerpt||'').toLowerCase().includes(search));
   if (catFilter) list = list.filter(a => (a.category||'') === catFilter);
   if (statusFilter) list = list.filter(a => (a.status||'published') === statusFilter);
 
@@ -974,13 +979,12 @@ function renderArticles() {
   container.innerHTML = `<table><thead><tr>
     <th>العنوان</th><th>التصنيف</th><th>الحالة</th><th>التاريخ</th><th>إجراءات</th>
   </tr></thead><tbody>${list.map(a => {
-    const inIndex = INDEX.some(i => String(i.id) === String(a.id));
-    const status = inIndex ? 'published' : (a.status || 'draft');
+    const status = a.status !== 'draft' ? 'published' : 'draft';
     return `<tr>
-      <td><strong>${esc(a.title_ar||'').substring(0,50)}</strong></td>
+      <td><strong>${esc(a.title||'').substring(0,50)}</strong></td>
       <td><span class="badge badge-published">${esc(a.category||'')}</span></td>
       <td><span class="badge ${status === 'published' ? 'badge-published' : 'badge-draft'}">${status === 'published' ? 'منشور' : 'مسودة'}</span></td>
-      <td style="font-size:.8rem;color:var(--text3)">${a.created_at ? new Date(a.created_at).toLocaleDateString('ar-EG') : '-'}</td>
+      <td style="font-size:.8rem;color:var(--text3)">${a.date ? new Date(a.date).toLocaleDateString('ar-EG') : '-'}</td>
       <td>
         <div class="actions">
           <button class="btn btn-sm btn-primary" onclick="editArticle('${a.id}')"><i class="fas fa-edit"></i></button>
@@ -1000,24 +1004,27 @@ function populateEditor(article) {
   document.getElementById('editorTitle').textContent = article ? 'تعديل مقال' : 'مقال جديد';
   document.getElementById('editorSub').textContent = article ? `ID: ${article.id}` : '';
   document.getElementById('editId').value = article ? article.id : '';
-  document.getElementById('editTitle').value = article ? (article.title_ar || article.title || '') : '';
+  document.getElementById('editTitle').value = article ? (article.title || '') : '';
   document.getElementById('editExcerpt').value = article ? (article.excerpt || '') : '';
   PENDING_EDITOR_DATA = article ? (article.body || '') : '';
-  document.getElementById('editEgypt').value = article ? (article.egypt || article.egyptImpact || '') : '';
-  document.getElementById('editImage').value = article ? (article.image_url || article.image || '') : '';
+  document.getElementById('editEgypt').value = article ? (article.egypt || '') : '';
+  document.getElementById('editImage').value = article ? (article.image || '') : '';
   updateImagePreview();
   document.getElementById('editImageQuery').value = article ? (article.image_query || '') : '';
-  document.getElementById('editSource').value = article ? (article.source_name || article.source || '') : '';
-  document.getElementById('editSourceLink').value = article ? (article.source_link || '') : '';
-  document.getElementById('editVideoUrl').value = article ? (article.video_url || article.videoUrl || '') : '';
-  document.getElementById('editStatus').value = article ? ((article.status === 'draft' || !INDEX.some(i => String(i.id) === String(article.id))) ? 'draft' : 'published') : 'published';
-  document.getElementById('editFeatured').checked = article ? !!(article.featured) : false;
+  document.getElementById('editSource').value = article ? (article.source || '') : '';
+  document.getElementById('editSourceLink').value = article ? (article.link || '') : '';
+  document.getElementById('editVideoUrl').value = article ? (article.videoUrl || '') : '';
+  document.getElementById('editStatus').value = article ? (article.status === 'draft' ? 'draft' : 'published') : 'published';
+  document.getElementById('editTelegram').checked = false;
 
   // Tags
   EDIT_TAGS = article ? (article.tags || []) : [];
   renderTags();
 
   populateCategorySelect(article ? article.category : '');
+
+  // Destroy existing editor instance so content is refreshed on editor page init
+  destroyEditor();
 
   navigateTo('editor');
 }
@@ -1026,9 +1033,9 @@ function populateCategorySelect(selected) {
   const cats = Object.keys(CAT_COLORS);
   const sel = document.getElementById('editCategory');
   sel.innerHTML = cats.map(c => `<option value="${c}"${c === selected ? ' selected' : ''}>${c}</option>`).join('');
-  // Add custom categories from DB
+  // Add custom categories from articles
   const dbCats = new Set();
-  DB.forEach(a => { if (a.category && !cats.includes(a.category)) dbCats.add(a.category); });
+  ARTICLES.forEach(a => { if (a.category && !cats.includes(a.category)) dbCats.add(a.category); });
   dbCats.forEach(c => {
     const opt = document.createElement('option');
     opt.value = c; opt.textContent = c;
@@ -1112,7 +1119,7 @@ function renderCategories() {
     <div class="table-wrap">
       <table><thead><tr><th>التصنيف</th><th>اللون</th><th>عدد المقالات</th><th>إجراءات</th></tr></thead>
       <tbody>${Object.entries(CAT_COLORS).map(([cat, color]) => {
-        const count = DB.filter(a => a.category === cat).length;
+        const count = ARTICLES.filter(a => a.category === cat).length;
         return `<tr>
           <td><strong>${cat}</strong></td>
           <td><input type="color" value="${color}" data-cat="${cat}" class="cat-color-picker" style="width:36px;height:30px;border:none;border-radius:4px;cursor:pointer;background:none;padding:0"></td>
@@ -1241,20 +1248,25 @@ async function initEditor() {
         ['fontColor', 'backgroundColor'],
         ['align', 'hr', 'list', 'table'],
         ['dir', 'link', 'image', 'video'],
-        ['showBlocks', 'codeView', 'fullScreen']
+        ['code', 'pre', 'showBlocks', 'codeView', 'fullScreen']
       ],
       fontSize: [8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36],
       defaultTag: 'p',
-      formats: ['p', 'h1', 'h2', 'h3', 'h4'],
+      formats: ['p', 'h1', 'h2', 'h3', 'h4', 'blockquote'],
       colorList: [
         '#f1f5f9', '#94a3b8', '#3b82f6', '#22c55e', '#ef4444', '#f59e0b',
         '#a855f7', '#ec4899', '#000000', '#ffffff'
       ],
       linkTargetNewWindow: true,
+      linkRel: 'noopener noreferrer',
       addTags: ['callout-box', 'highlight-box']
     });
 
     EDITOR_INSTANCE = editor;
+    // Ensure container has the editor content area
+    if (editor.core && editor.core.context) {
+      // SunEditor v3.1.4 — editor is ready after create resolves
+    }
     return editor;
   } catch (e) {
     console.error('SunEditor init error:', e);
@@ -1278,9 +1290,13 @@ function setEditorData(html) {
 
 function destroyEditor() {
   if (EDITOR_INSTANCE) {
-    try { EDITOR_INSTANCE.destroy(); } catch {}
+    try { EDITOR_INSTANCE.destroy(); } catch (e) { console.warn('Editor destroy warning:', e); }
     EDITOR_INSTANCE = null;
   }
+  // Clear container so SunEditor can re-create cleanly
+  const container = document.getElementById('editBody');
+  if (container) container.innerHTML = '';
+  EDITOR_INIT_STARTED = false;
 }
 
 function showInternalLinkModal() {
@@ -1303,14 +1319,14 @@ function showInternalLinkModal() {
 
 function renderLinkArticleList() {
   const search = (document.getElementById('linkArticleSearch').value || '').toLowerCase();
-  const list = DB.filter(a => (a.title_ar||'').toLowerCase().includes(search) || (a.id||'').toLowerCase().includes(search));
+  const list = ARTICLES.filter(a => (a.title||'').toLowerCase().includes(search) || (a.id||'').toLowerCase().includes(search));
   const container = document.getElementById('linkArticleList');
   if (list.length === 0) {
     container.innerHTML = '<div style="color:var(--text3);padding:20px;text-align:center">لا توجد مقالات</div>';
     return;
   }
   container.innerHTML = list.map(a => {
-    const title = a.title_ar || a.title || 'بدون عنوان';
+    const title = a.title || 'بدون عنوان';
     return `<div class="link-item" onclick="insertInternalLink('${esc(a.id)}')">
       <div class="link-title">${esc(title.substring(0, 60))}</div>
       <div class="link-id">${esc(a.id)} - ${esc(a.category || '')}</div>
@@ -1325,17 +1341,17 @@ function insertEditorLink(url, text) {
   if (range && !range.collapsed) {
     const selectedText = range.toString();
     range.deleteContents();
-    EDITOR_INSTANCE.$.html.insert(`<a href="${esc(url)}" target="_blank" rel="noopener">${esc(selectedText)}</a>`);
+    EDITOR_INSTANCE.$.html.insert(`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(selectedText)}</a>`);
   } else {
-    EDITOR_INSTANCE.$.html.insert(`<a href="${esc(url)}" target="_blank" rel="noopener">${esc(text)}</a>`);
+    EDITOR_INSTANCE.$.html.insert(`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(text)}</a>`);
   }
 }
 
 function insertInternalLink(articleId) {
-  const article = DB.find(a => String(a.id) === String(articleId));
+  const article = ARTICLES.find(a => String(a.id) === String(articleId));
   if (!article) return;
   const url = `https://${GH_OWNER}.github.io/${GH_REPO}/article.html?id=${articleId}`;
-  const title = article.title_ar || article.title || 'المقال';
+  const title = article.title || 'المقال';
   insertEditorLink(url, title);
   closeModal('internalLinkModal');
 }
@@ -1466,28 +1482,77 @@ function renderPreview() {
 let EDITOR_INIT_STARTED = false;
 
 async function startEditorIfNeeded() {
-  if (EDITOR_INIT_STARTED) return;
+  if (EDITOR_INIT_STARTED && EDITOR_INSTANCE) return;
   const editorPage = document.getElementById('page-editor');
-  if (editorPage.classList.contains('active') && !EDITOR_INSTANCE) {
-    EDITOR_INIT_STARTED = true;
-    document.getElementById('editorStatus').textContent = 'جاري تحميل المحرر...';
-    const editor = await initEditor();
-    if (!editor) {
-      EDITOR_INIT_STARTED = false;
-      document.getElementById('editorStatus').textContent = 'خطأ: فشل تحميل المحرر. حاول مرة أخرى.';
-      return;
-    }
-    document.getElementById('editorStatus').textContent = 'المحرر جاهز';
-    if (PENDING_EDITOR_DATA !== null) {
-      setEditorData(PENDING_EDITOR_DATA);
-      PENDING_EDITOR_DATA = null;
-    }
+  if (!editorPage.classList.contains('active')) return;
+
+  // If instance exists but we just re-created it, re-init
+  destroyEditor();
+  EDITOR_INIT_STARTED = true;
+  document.getElementById('editorStatus').textContent = 'جاري تحميل المحرر...';
+  const editor = await initEditor();
+  if (!editor) {
+    EDITOR_INIT_STARTED = false;
+    document.getElementById('editorStatus').textContent = 'خطأ: فشل تحميل المحرر. حاول مرة أخرى.';
+    return;
   }
+  document.getElementById('editorStatus').textContent = 'المحرر جاهز';
+  if (PENDING_EDITOR_DATA !== null) {
+    // Retry setting content until editor is fully ready
+    let retries = 0;
+    const trySet = setInterval(() => {
+      if (EDITOR_INSTANCE) {
+        try {
+          EDITOR_INSTANCE.$.html.set(PENDING_EDITOR_DATA);
+          PENDING_EDITOR_DATA = null;
+          clearInterval(trySet);
+          document.getElementById('editorStatus').textContent = 'تم تحميل المحتوى';
+        } catch (e) {
+          retries++;
+          if (retries > 10) {
+            clearInterval(trySet);
+            document.getElementById('editorStatus').textContent = 'تحذير: قد يكون المحتوى غير محمل بالكامل';
+          }
+        }
+      } else {
+        retries++;
+        if (retries > 10) {
+          clearInterval(trySet);
+        }
+      }
+    }, 200);
+  }
+}
+
+/* Telegram */
+async function sendToTelegram(article) {
+  if (!CONFIG.telegram) return;
+  const tgToken = CONFIG.telegramBotToken;
+  if (!tgToken) {
+    return showToast('⚠ يرجى ضبط Telegram Bot Token في الإعدادات أولاً', 'error');
+  }
+  const excerpt = (article.excerpt || article.body || '').substring(0, 200);
+  const htmlMsg = `📰 <b>${article.title}</b>\n\n${excerpt}\n\n🔗 <a href="${article.techdose_link}">اقرأ الخبر كاملاً</a>\n📄 المصدر: ${article.source || 'Tech Dose News'}`;
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: '-1003896125398', text: htmlMsg, parse_mode: 'HTML', disable_web_page_preview: false })
+    });
+    const data = await res.json();
+    if (data.ok) {
+      showToast('✅ تم إرسال المقال إلى تيلجرام', 'success');
+    } else {
+      showToast('❌ فشل إرسال تيلجرام: ' + (data.description || 'خطأ غير معروف'), 'error');
+    }
+  } catch (e) {
+    showToast('❌ خطأ في الاتصال بتيلجرام: ' + e.message, 'error');
+  }
+}
 }
 
 /* Init dashboard etc on article page */
 async function saveArticle(formData) {
-  // Validate before save
   const articleBody = getEditorData();
   const validationErrors = validateArticleContent(articleBody);
   if (validationErrors.length > 0) {
@@ -1497,73 +1562,50 @@ async function saveArticle(formData) {
   const isNew = !CURRENT_EDIT_ID;
   const id = CURRENT_EDIT_ID || Date.now().toString();
   const now = new Date().toISOString();
-  const dbIdx = DB.findIndex(a => String(a.id) === String(id));
+  const idx = ARTICLES.findIndex(a => String(a.id) === String(id));
+  const existing = idx >= 0 ? ARTICLES[idx] : null;
+
+  const readTime = Math.max(1, Math.round((articleBody||'').split(/\s+/).filter(Boolean).length/80)) + ' دقائق';
+  const image_url = formData.image || `https://picsum.photos/seed/${encodeURIComponent(formData.imageQuery || 'tech')}/800/450`;
+  const techdoseLink = `https://${GH_OWNER}.github.io/${GH_REPO}/article.html?id=${id}`;
 
   const article = {
     id,
-    title_ar: formData.title,
+    title: formData.title,
     excerpt: formData.excerpt,
     body: articleBody,
-    egypt: formData.egypt || '',
     category: formData.category,
     tags: formData.tags,
-    image_query: formData.imageQuery || 'technology news',
-    image_url: formData.image || `https://source.unsplash.com/featured/800x450/?${encodeURIComponent(formData.imageQuery || 'technology news')}`,
-    source_name: formData.source || 'Tech Dose News',
-    source_link: formData.sourceLink || '',
-    video_url: formData.videoUrl || '',
-    status: formData.status || 'published',
-    featured: formData.featured || false,
-    created_at: (dbIdx >= 0 ? DB[dbIdx].created_at : null) || now
+    image: image_url,
+    image_query: formData.imageQuery || '',
+    date: (existing ? existing.date : null) || now,
+    readTime,
+    views: existing ? existing.views : '0',
+    hasEgyptImpact: !!(formData.egypt && formData.egypt.length > 5),
+    egypt: formData.egypt || '',
+    source: formData.source || 'Tech Dose News',
+    link: formData.sourceLink || '',
+    techdose_link: techdoseLink,
+    videoUrl: formData.videoUrl || '',
+    status: formData.status || 'published'
   };
 
-  // Update or add to DB
-  if (dbIdx >= 0) {
-    DB[dbIdx] = { ...DB[dbIdx], ...article };
+  // Update or add
+  if (idx >= 0) {
+    ARTICLES[idx] = { ...ARTICLES[idx], ...article };
   } else {
-    DB.unshift(article);
+    ARTICLES.unshift(article);
   }
 
-  // Publish to index if status is published
-  if (formData.status === 'published') {
-    const artObj = {
-      id: article.id,
-      title: article.title_ar,
-      excerpt: article.excerpt,
-      category: article.category,
-      tags: article.tags || [],
-      image: article.image_url,
-      publishedAt: now,
-      readTime: Math.max(1, Math.round(((article.body||'').split(/\s+/).filter(Boolean).length)/80)) + ' دقائق',
-      views: '0',
-      hasEgyptImpact: !!(article.egypt && article.egypt.length > 5),
-      featured: formData.featured || false,
-      body: article.body,
-      egyptImpact: article.egypt || '',
-      source: article.source_name,
-      videoUrl: article.video_url,
-      link: `https://${GH_OWNER}.github.io/${GH_REPO}/article.html?id=${article.id}`
-    };
-
-    const idxIdx = INDEX.findIndex(i => String(i.id) === String(id));
-    if (idxIdx >= 0) {
-      INDEX[idxIdx] = artObj;
-    } else {
-      INDEX.unshift(artObj);
-    }
-    article.status = 'published';
-  } else {
-    // Remove from index if unpublishing
-    INDEX = INDEX.filter(i => String(i.id) !== String(id));
-  }
-
-  // Save to GitHub
-  let dbSha = '', idxSha = '';
-  try { const j = await ghFetch('articles_db.json'); dbSha = j.sha; } catch {}
+  // Save to GitHub (only index.json)
+  let idxSha = '';
   try { const j = await ghFetch('data/articles/index.json'); idxSha = j.sha; } catch {}
+  await ghPut('data/articles/index.json', JSON.stringify(ARTICLES, null, 2), isNew ? 'إضافة مقال جديد' : 'تحديث مقال: ' + formData.title, idxSha);
 
-  await ghPut('articles_db.json', JSON.stringify(DB, null, 2), isNew ? 'إضافة مقال جديد' : 'تحديث مقال: ' + article.title_ar, dbSha);
-  await ghPut('data/articles/index.json', JSON.stringify(INDEX, null, 2), 'تحديث فهرس المقالات', idxSha);
+  // Send Telegram if checkbox checked
+  if (formData.telegram && formData.status === 'published') {
+    sendToTelegram(article);
+  }
 
   showToast(isNew ? 'تم إضافة المقال بنجاح' : 'تم تحديث المقال بنجاح', 'success');
   navigateTo('articles');
@@ -1573,15 +1615,11 @@ async function saveArticle(formData) {
 async function deleteArticle(id) {
   showModal('حذف المقال', 'هل أنت متأكد من حذف هذا المقال؟ لا يمكن التراجع عن هذا الإجراء.', async () => {
     try {
-      DB = DB.filter(a => String(a.id) !== String(id));
-      INDEX = INDEX.filter(a => String(a.id) !== String(id));
+      ARTICLES = ARTICLES.filter(a => String(a.id) !== String(id));
 
-      let dbSha = '', idxSha = '';
-      try { const j = await ghFetch('articles_db.json'); dbSha = j.sha; } catch {}
+      let idxSha = '';
       try { const j = await ghFetch('data/articles/index.json'); idxSha = j.sha; } catch {}
-
-      await ghPut('articles_db.json', JSON.stringify(DB, null, 2), 'حذف مقال من قاعدة البيانات', dbSha);
-      await ghPut('data/articles/index.json', JSON.stringify(INDEX, null, 2), 'حذف مقال من الفهرس', idxSha);
+      await ghPut('data/articles/index.json', JSON.stringify(ARTICLES, null, 2), 'حذف مقال', idxSha);
 
       showToast('تم حذف المقال', 'success');
       renderArticles();
@@ -1597,7 +1635,7 @@ function previewArticle(id) {
 }
 
 async function editArticle(id) {
-  const article = DB.find(a => String(a.id) === String(id)) || INDEX.find(a => String(a.id) === String(id));
+  const article = ARTICLES.find(a => String(a.id) === String(id)) || ARTICLES.find(a => String(a.id) === String(id));
   if (!article) return showToast('المقال غير موجود', 'error');
   populateEditor(article);
 }
@@ -1652,6 +1690,8 @@ async function saveSettings() {
     saveSession(); // stored in localStorage only (GitHub blocks tokens in files)
   }
   if (newWebhook) CONFIG.webhookUrl = newWebhook;
+  const newTgToken = document.getElementById('editTgToken').value.trim();
+  if (newTgToken) CONFIG.telegramBotToken = newTgToken;
   if (newPass) CONFIG.passwordHash = await sha256(newPass);
 
   await saveConfigToGh();
@@ -1690,8 +1730,7 @@ async function initApp() {
 async function afterLogin() {
   try {
   // Load data (works without token for public repos)
-  try { await loadDb(); } catch (e) { console.error('loadDb:', e); }
-  try { await loadIndex(); } catch (e) { console.error('loadIndex:', e); }
+  try { await loadArticles(); } catch (e) { console.error('loadArticles:', e); }
 
   // If no token, prompt user to set it
   if (!GH_TOKEN) {
@@ -1705,6 +1744,7 @@ async function afterLogin() {
   // Populate settings
   document.getElementById('editGhToken').value = GH_TOKEN || '';
   document.getElementById('editWebhookUrl').value = CONFIG.webhookUrl || '';
+  document.getElementById('editTgToken').value = CONFIG.telegramBotToken || '';
   document.getElementById('editSiteName').value = CONFIG.siteName || '';
   document.getElementById('editSiteDesc').value = CONFIG.siteDesc || '';
   document.getElementById('editTelegramUrl').value = CONFIG.telegram || '';
@@ -1753,7 +1793,7 @@ async function afterLogin() {
       sourceLink: document.getElementById('editSourceLink').value,
       videoUrl: document.getElementById('editVideoUrl').value,
       status: document.getElementById('editStatus').value,
-      featured: document.getElementById('editFeatured').checked
+      telegram: document.getElementById('editTelegram').checked
     };
     if (!data.title) return showToast('العنوان مطلوب', 'error');
     if (!data.body || data.body.trim() === '') return showToast('نص المقال مطلوب', 'error');

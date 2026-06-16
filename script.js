@@ -147,11 +147,16 @@ function getCategoryKey(article) {
   return 'تقنية';
 }
 
+async function fetchIndex() {
+  const url = 'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/data/articles/index.json?t=' + Date.now();
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  return res.json();
+}
+
 async function loadIndex() {
   try {
-    const res = await fetch(BASE + '/articles/index.json');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
+    const data = await fetchIndex();
     allArticles = Array.isArray(data) ? data : (data.articles || []);
     if (allArticles.length === 0) throw new Error('No articles');
     for (const a of allArticles) {
@@ -659,9 +664,7 @@ async function loadArticle() {
   if (!id) { main.innerHTML = '<div class="sb-container"><div class="sb-loading">⚠ معرف المقال غير موجود</div></div>'; return; }
   try {
     if (allArticles.length === 0) {
-      const res = await fetch(BASE + '/articles/index.json');
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const data = await res.json();
+      const data = await fetchIndex();
       allArticles = Array.isArray(data) ? data : (data.articles || []);
       for (const a of allArticles) {
         a.categoryAr = getArticleCategory(a);
@@ -733,9 +736,7 @@ async function initCategoryPage() {
   const catName = CATEGORY_MAP[catKey] || 'التقنية';
   document.title = catName + ' — TD بالعربي';
   try {
-    const res = await fetch(BASE + '/articles/index.json');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
+    const data = await fetchIndex();
     allArticles = Array.isArray(data) ? data : (data.articles || []);
     for (const a of allArticles) {
       a.categoryAr = getArticleCategory(a);
@@ -831,7 +832,7 @@ function initAnalyticsDashboard() {
   }
 }
 
-if (document.getElementById('sbGrid')) { loadIndex(); setInterval(function() { updateLastUpdate(); renderRelativeTimes(); }, 60000); updateLastUpdate(); }
+if (document.getElementById('sbGrid')) { loadIndex(); setInterval(function() { loadIndex(); }, 30000); setInterval(function() { updateLastUpdate(); renderRelativeTimes(); }, 60000); updateLastUpdate(); }
 if (document.getElementById('sbArticleMain')) { loadArticle(); initAnalytics(); }
 if (document.getElementById('sbCategoryMain')) { initCategoryPage(); initAnalytics(); }
 if (document.getElementById('sbAnalyticsDashboard')) { initAnalyticsDashboard(); }

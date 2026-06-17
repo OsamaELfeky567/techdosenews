@@ -1,5 +1,27 @@
 [
   {
+    "id": "test-crud-1781709273289",
+    "title": "CRUD TEST 1781709273289",
+    "excerpt": "Test excerpt",
+    "body": "<p>Test body</p>",
+    "category": "تكنولوجيا",
+    "tags": [
+      "test"
+    ],
+    "image": "https://picsum.photos/seed/test/800/450",
+    "image_query": "test",
+    "date": "2026-06-17T15:14:33.289Z",
+    "readTime": "1 min read",
+    "views": "0",
+    "hasEgyptImpact": false,
+    "egypt": "",
+    "source": "CRUD Test",
+    "link": "https://example.com",
+    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=test-crud-1781709273289",
+    "videoUrl": "",
+    "status": "published"
+  },
+  {
     "id": "art-1781709122863-nigq3b",
     "title": "أدوات الطب الذكية تعمل على الاقتراب من العيادة",
     "excerpt": "تقرير حديث من جريدة الفاينانشال تايمز يظهر تقدم أدوات الطب الذكية نحو الاستخدام السريري",

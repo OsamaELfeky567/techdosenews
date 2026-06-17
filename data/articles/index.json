@@ -1,28 +1,5 @@
 [
   {
-    "id": "test-cert-1781655681347",
-    "title": "اختبار شهادة النشر - 2026-06-17T00:21:21.347Z",
-    "excerpt": "هذا المقال تم إنشاؤه لاختبار نظام النشر والتزامن",
-    "body": "<h2>قسم الاختبار</h2><p>هذا النص يستخدم للتحقق من نظام النشر.</p><ul><li>نقطة 1</li><li>نقطة 2</li></ul>",
-    "category": "تكنولوجيا",
-    "tags": [
-      "test",
-      "certification"
-    ],
-    "image": "https://picsum.photos/seed/certtest/800/450",
-    "image_query": "technology test",
-    "date": "2026-06-17T00:21:21.350Z",
-    "readTime": "1 دقائق",
-    "views": "0",
-    "hasEgyptImpact": false,
-    "egypt": "",
-    "source": "Certification Test",
-    "link": "https://example.com/cert-test",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=test-cert-1781655681347",
-    "videoUrl": "",
-    "status": "published"
-  },
-  {
     "id": "test-cert-1781655605967",
     "title": "اختبار شهادة النشر - 2026-06-17T00:20:05.967Z",
     "excerpt": "هذا المقال تم إنشاؤه لاختبار نظام النشر والتزامن",

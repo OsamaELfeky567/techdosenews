@@ -509,16 +509,11 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
 
       <!-- ===== SETTINGS ===== -->
       <section class="page" id="page-settings">
-        <div class="page-title">الإعدادات <span class="sub">API keys والتكوين</span></div>
+        <div class="page-title">الإعدادات <span class="sub">تكوين السيرفر الوسيط</span></div>
         <div class="form-group">
-          <label>GitHub Token</label>
-          <input type="password" id="editGhToken" placeholder="ghp_..." style="direction:ltr;text-align:left;font-family:monospace">
-          <div class="hint">مطلوب للوصول إلى API. صلاحية: repo (public repo access)</div>
-        </div>
-        <div class="form-group">
-          <label>n8n Webhook URL</label>
-          <input type="url" id="editWebhookUrl" placeholder="https://your-n8n.com/webhook/tdn-run" style="direction:ltr;text-align:left">
-          <div class="hint">لتشغيل الوركفلو من لوحة التحكم</div>
+          <label>Backend Webhook URL</label>
+          <input type="url" id="editWebhookUrl" placeholder="https://your-n8n.com/webhook/gh-proxy" style="direction:ltr;text-align:left">
+          <div class="hint">السيرفر الوسيط (TDN Backend Layer) الذي يدير GitHub API نيابة عن لوحة التحكم. يجب تفعيل CORS. يتم تخزين التوكن في السيرفر وليس في المتصفح.</div>
         </div>
         <div class="form-group">
           <label>Telegram Bot Token</label>
@@ -583,7 +578,6 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
 const GH_OWNER = 'osamaelfeky567';
 const GH_REPO  = 'techdosenews';
 const CONFIG_PATH = 'admin_config.json';
-let GH_TOKEN = '';
 let CONFIG = null;
 let ARTICLES = [];   // data/articles/index.json (single source of truth)
 let EDIT_TAGS = [];
@@ -625,62 +619,79 @@ function syncCatColors() {
 // GITHUB API
 // ============================================================
 async function ghFetch(path) {
-  if (GH_TOKEN) {
-    const url = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`;
-    const res = await fetch(url, { headers: { 'Authorization': `Bearer ${GH_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' } });
-    if (!res.ok) throw new Error(`GET ${path}: ${res.status}`);
-    return res.json();
-  }
-  // No token: use relative URL from admin/ one level up
-  const localUrl = '../' + path;
-  const res = await fetch(localUrl);
+  // Use raw.githubusercontent.com for immediate, auth-free reads
+  const url = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${path}`;
+  const res = await fetch(url);
   if (!res.ok) throw new Error(`GET ${path}: ${res.status}`);
   const text = await res.text();
   return { content: btoa(unescape(encodeURIComponent(text))) };
 }
 
+function getProxyUrl() {
+  const base = (CONFIG?.webhookUrl || '').replace(/\/+$/, '');
+  return base ? base + '/gh-proxy' : '';
+}
+
 async function ghPut(path, content, message, sha) {
-  const body = { message: message || 'Update from admin panel', content: btoa(unescape(encodeURIComponent(content))) };
-  if (sha) body.sha = sha;
-  const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
-    method: 'PUT',
-    headers: { 'Authorization': `Bearer ${GH_TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'admin-panel' },
-    body: JSON.stringify(body)
+  const proxyUrl = getProxyUrl();
+  if (!proxyUrl) throw new Error('لم يتم ضبط Webhook URL. اذهب إلى الإعدادات وأضف رابط السيرفر الوسيط.');
+  const res = await fetch(proxyUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      action: 'put-content',
+      path,
+      content: btoa(unescape(encodeURIComponent(content))),
+      message: message || 'Update from admin panel',
+      sha: sha || ''
+    })
   });
   const data = await res.json();
-  if (!res.ok) throw new Error(`GitHub PUT ${path}: ${res.status} ${data.message || ''}`);
-  return data;
+  if (!data.success) throw new Error(`GitHub PUT ${path}: ${data.data?.message || JSON.stringify(data)}`);
+  return data.data;
 }
 
 async function ghDelete(path, sha, message) {
-  const body = { message: message || 'Delete from admin panel', sha };
-  const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
-    method: 'DELETE',
-    headers: { 'Authorization': `Bearer ${GH_TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'admin-panel' },
-    body: JSON.stringify(body)
+  const proxyUrl = getProxyUrl();
+  if (!proxyUrl) throw new Error('لم يتم ضبط Webhook URL. اذهب إلى الإعدادات وأضف رابط السيرفر الوسيط.');
+  const res = await fetch(proxyUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      action: 'delete',
+      path,
+      sha,
+      message: message || 'Delete from admin panel'
+    })
   });
   const data = await res.json();
-  if (!res.ok) throw new Error(`GitHub DELETE ${path}: ${res.status}`);
-  return data;
+  if (!data.success) throw new Error(`GitHub DELETE ${path}: ${data.data?.message || JSON.stringify(data)}`);
+  return data.data;
 }
 
 async function ghPutBinary(path, base64Content, message, sha) {
-  const body = { message: message || 'Upload image from admin panel', content: base64Content };
-  if (sha) body.sha = sha;
+  const proxyUrl = getProxyUrl();
+  if (!proxyUrl) throw new Error('لم يتم ضبط Webhook URL. اذهب إلى الإعدادات وأضف رابط السيرفر الوسيط.');
   const maxRetries = 3;
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
-      const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
-        method: 'PUT',
-        headers: { 'Authorization': `Bearer ${GH_TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'admin-panel' },
-        body: JSON.stringify(body)
+      const res = await fetch(proxyUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'put-binary',
+          path,
+          content: base64Content,
+          message: message || 'Upload image from admin panel',
+          sha: sha || ''
+        })
       });
       const data = await res.json();
-      if (res.ok) return data;
-      if (res.status === 401) throw new Error('فشل التوثيق: توكن GitHub غير صالح أو منتهي الصلاحية. جدد التوكن في الإعدادات.');
-      if (res.status === 403) throw new Error('ممنوع الوصول: التوكن لا يملك صلاحية repo. أضف صلاحية repo للتوكن.');
+      if (data.success) return data.data;
+      if (res.status === 401 || data.data?.message?.includes('Bad credentials')) throw new Error('فشل التوثيق: تحقق من إعدادات السيرفر الوسيط.');
+      if (res.status === 403) throw new Error('ممنوع الوصول: السيرفر الوسيط لا يملك صلاحية كافية.');
       if (res.status === 422 && attempt < maxRetries - 1) { await new Promise(r => setTimeout(r, 1000)); continue; }
-      throw new Error(`GitHub PUT ${path}: ${res.status} ${data.message || ''}`);
+      throw new Error(`GitHub PUT ${path}: ${res.status} ${data.data?.message || JSON.stringify(data)}`);
     } catch (e) {
       if (attempt === maxRetries - 1) throw e;
       if (e.message.includes('فشل التوثيق') || e.message.includes('ممنوع الوصول')) throw e;
@@ -700,22 +711,7 @@ async function ghGetJson(path) {
 }
 
 // ============================================================
-// STATE PERSISTENCE
-// ============================================================
-function saveSession() {
-  sessionStorage.setItem('tdn_admin_token', GH_TOKEN);
-}
-
-function loadSession() {
-  return sessionStorage.getItem('tdn_admin_token') || '';
-}
-
-function clearSession() {
-  sessionStorage.removeItem('tdn_admin_token');
-}
-
-// ============================================================
-// AUTH
+// AUTH (proxy-based — no PAT in browser)
 // ============================================================
 
 async function sha256(str) {
@@ -723,7 +719,6 @@ async function sha256(str) {
     const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
     return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
   } catch(e) {
-    // Fallback if Web Crypto unavailable
     return '';
   }
 }
@@ -906,24 +901,22 @@ async function renderInsights() {
 
   // Views from views_db.json (n8n tracking)
   try {
-    if (GH_TOKEN) {
-      const vdb = await ghGetJson('views_db.json').catch(() => null);
-      if (vdb && vdb.data) {
-        const views = vdb.data;
-        const totalViews = Object.values(views).reduce((sum, v) => sum + (v.count||0), 0);
-        const totalArticles = Object.keys(views).length;
-        const viewBox = document.getElementById('insightViews');
-        viewBox.innerHTML = `
-          <p style="color:var(--green);font-size:.85rem;margin-bottom:8px"><i class="fas fa-check-circle"></i> إجمالي المشاهدات المسجلة: <strong>${totalViews}</strong></p>
-          <p style="color:var(--text2);font-size:.8rem;margin-bottom:8px">عبر ${totalArticles} مقال</p>
-          <div style="max-height:200px;overflow-y:auto">${Object.entries(views).sort((a,b) => b[1].count - a[1].count).slice(0,10).map(([id, v]) => {
-            const art = ARTICLES.find(a => String(a.id) === String(id)) || ARTICLES.find(a => String(a.id) === String(id));
-            const title = art ? (art.title||'') : '#'+id;
-            return '<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--bg3);font-size:.8rem">' +
-              '<span style="color:var(--text2);text-overflow:ellipsis;overflow:hidden;white-space:nowrap;max-width:200px">' + esc(title.substring(0,40)) + '</span>' +
-              '<span style="color:var(--text);font-weight:600;direction:ltr">' + v.count + '</span></div>';
-          }).join('')}</div>`;
-      }
+    const vdb = await ghGetJson('views_db.json').catch(() => null);
+    if (vdb && vdb.data) {
+      const views = vdb.data;
+      const totalViews = Object.values(views).reduce((sum, v) => sum + (v.count||0), 0);
+      const totalArticles = Object.keys(views).length;
+      const viewBox = document.getElementById('insightViews');
+      viewBox.innerHTML = `
+        <p style="color:var(--green);font-size:.85rem;margin-bottom:8px"><i class="fas fa-check-circle"></i> إجمالي المشاهدات المسجلة: <strong>${totalViews}</strong></p>
+        <p style="color:var(--text2);font-size:.8rem;margin-bottom:8px">عبر ${totalArticles} مقال</p>
+        <div style="max-height:200px;overflow-y:auto">${Object.entries(views).sort((a,b) => b[1].count - a[1].count).slice(0,10).map(([id, v]) => {
+          const art = ARTICLES.find(a => String(a.id) === String(id)) || ARTICLES.find(a => String(a.id) === String(id));
+          const title = art ? (art.title||'') : '#'+id;
+          return '<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--bg3);font-size:.8rem">' +
+            '<span style="color:var(--text2);text-overflow:ellipsis;overflow:hidden;white-space:nowrap;max-width:200px">' + esc(title.substring(0,40)) + '</span>' +
+            '<span style="color:var(--text);font-weight:600;direction:ltr">' + v.count + '</span></div>';
+        }).join('')}</div>`;
     }
   } catch {}
 }
@@ -1703,14 +1696,9 @@ function deleteCategory(name) {
 // SETTINGS SAVE
 // ============================================================
 async function saveSettings() {
-  const newToken = document.getElementById('editGhToken').value.trim();
   const newWebhook = document.getElementById('editWebhookUrl').value.trim();
   const newPass = document.getElementById('editAdminPass').value;
 
-  if (newToken) {
-    GH_TOKEN = newToken;
-    saveSession(); // stored in localStorage only (GitHub blocks tokens in files)
-  }
   if (newWebhook) CONFIG.webhookUrl = newWebhook;
   const newTgToken = document.getElementById('editTgToken').value.trim();
   if (newTgToken) CONFIG.telegramBotToken = newTgToken;
@@ -1723,16 +1711,21 @@ async function saveSettings() {
 }
 
 async function testGhConnection() {
-  const token = document.getElementById('editGhToken').value.trim() || GH_TOKEN;
+  const proxyUrl = getProxyUrl();
   const status = document.getElementById('settingsStatus');
-  status.innerHTML = '<span style="color:var(--text3)"><i class="fas fa-spinner fa-spin"></i> جاري الاختبار...</span>';
+  if (!proxyUrl) { status.innerHTML = '<span style="color:var(--red)">يرجى ضبط Webhook URL أولاً</span>'; return; }
+  status.innerHTML = '<span style="color:var(--text3)"><i class="fas fa-spinner fa-spin"></i> جاري اختبار الاتصال بالسيرفر الوسيط...</span>';
   try {
-    const res = await fetch('https://api.github.com/user', { headers: { 'Authorization': `Bearer ${token}`, 'User-Agent': 'admin-panel' } });
+    const res = await fetch(proxyUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'get', path: 'admin_config.json' })
+    });
     const data = await res.json();
-    if (res.ok) {
-      status.innerHTML = `<span style="color:var(--green)"><i class="fas fa-check-circle"></i> متصل بنجاح: ${esc(data.login)}</span>`;
+    if (data.success) {
+      status.innerHTML = '<span style="color:var(--green)"><i class="fas fa-check-circle"></i> السيرفر الوسيط متصل ويعمل</span>';
     } else {
-      status.innerHTML = `<span style="color:var(--red)"><i class="fas fa-exclamation-circle"></i> ${data.message || 'فشل الاتصال'}</span>`;
+      status.innerHTML = `<span style="color:var(--red)"><i class="fas fa-exclamation-circle"></i> ${data.data?.message || 'فشل الاتصال'}</span>`;
     }
   } catch (e) {
     status.innerHTML = `<span style="color:var(--red)"><i class="fas fa-exclamation-circle"></i> ${esc(e.message)}</span>`;
@@ -1744,8 +1737,6 @@ async function testGhConnection() {
 // ============================================================
 async function initApp() {
   await loadConfig();
-  const storedToken = loadSession();
-  if (storedToken) GH_TOKEN = storedToken;
   await afterLogin();
 }
 
@@ -1754,10 +1745,9 @@ async function afterLogin() {
   // Load data (works without token for public repos)
   try { await loadArticles(); } catch (e) { console.error('loadArticles:', e); }
 
-  // Note: reads work without token (relative URLs), writes need GH_TOKEN
+  // Note: reads via raw.githubusercontent.com, writes proxy through backend server (no PAT)
 
   // Populate settings
-  document.getElementById('editGhToken').value = GH_TOKEN || '';
   document.getElementById('editWebhookUrl').value = CONFIG.webhookUrl || '';
   document.getElementById('editTgToken').value = CONFIG.telegramBotToken || '';
   document.getElementById('editSiteName').value = CONFIG.siteName || '';
@@ -1913,9 +1903,8 @@ async function afterLogin() {
   // Workflow trigger
   document.getElementById('triggerWorkflowBtn').onclick = triggerWorkflow;
 
-  // Logout
+  // Logout (proxy-based — no session to clear)
   document.getElementById('logoutBtn').onclick = () => {
-    clearSession();
     location.reload();
   };
 

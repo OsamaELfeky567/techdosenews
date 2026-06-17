@@ -1,5 +1,28 @@
 [
   {
+    "id": "test-cert-1781655495232",
+    "title": "اختبار شهادة النشر - 2026-06-17T00:18:15.232Z",
+    "excerpt": "هذا المقال تم إنشاؤه لاختبار نظام النشر والتزامن",
+    "body": "<h2>قسم الاختبار</h2><p>هذا النص يستخدم للتحقق من نظام النشر.</p><ul><li>نقطة 1</li><li>نقطة 2</li></ul>",
+    "category": "تكنولوجيا",
+    "tags": [
+      "test",
+      "certification"
+    ],
+    "image": "https://picsum.photos/seed/certtest/800/450",
+    "image_query": "technology test",
+    "date": "2026-06-17T00:18:15.235Z",
+    "readTime": "1 دقائق",
+    "views": "0",
+    "hasEgyptImpact": false,
+    "egypt": "",
+    "source": "Certification Test",
+    "link": "https://example.com/cert-test",
+    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=test-cert-1781655495232",
+    "videoUrl": "",
+    "status": "published"
+  },
+  {
     "id": "art-1781654420283-4kmam8",
     "title": "أندرويد 17 يُطلق مع أدوات متعددة جديدة لمهام متعددة مع توسيع ميزات Gemini من جوجل",
     "excerpt": "أعلنت جوجل عن إطلاق نظام أندرويد 17 مع أدوات متعددة جديدة لمهام متعددة، مما يتيح للمستخدمين تجربة استخدام أكثر كفاءة وسهولة.",

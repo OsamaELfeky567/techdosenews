@@ -625,15 +625,16 @@ function syncCatColors() {
 // GITHUB API
 // ============================================================
 async function ghFetch(path) {
-  const headers = { 'Accept': 'application/vnd.github.v3+json' };
-  if (GH_TOKEN) headers['Authorization'] = `Bearer ${GH_TOKEN}`;
-  const url = GH_TOKEN
-    ? `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`
-    : `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${path}`;
-  const res = await fetch(url, GH_TOKEN ? { headers } : {});
+  if (GH_TOKEN) {
+    const url = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`;
+    const res = await fetch(url, { headers: { 'Authorization': `Bearer ${GH_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' } });
+    if (!res.ok) throw new Error(`GET ${path}: ${res.status}`);
+    return res.json();
+  }
+  // No token: use relative URL from admin/ one level up
+  const localUrl = '../' + path;
+  const res = await fetch(localUrl);
   if (!res.ok) throw new Error(`GET ${path}: ${res.status}`);
-  if (GH_TOKEN) return res.json();
-  // Raw content mode: return JSON
   const text = await res.text();
   return { content: btoa(unescape(encodeURIComponent(text))) };
 }
@@ -1248,7 +1249,7 @@ async function initEditor() {
         ['fontColor', 'backgroundColor'],
         ['align', 'hr', 'list', 'table'],
         ['dir', 'link', 'image', 'video'],
-        ['code', 'pre', 'showBlocks', 'codeView', 'fullScreen']
+        ['showBlocks', 'codeView', 'fullScreen']
       ],
       fontSize: [8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36],
       defaultTag: 'p',
@@ -1549,7 +1550,6 @@ async function sendToTelegram(article) {
     showToast('❌ خطأ في الاتصال بتيلجرام: ' + e.message, 'error');
   }
 }
-}
 
 /* Init dashboard etc on article page */
 async function saveArticle(formData) {
@@ -1754,14 +1754,7 @@ async function afterLogin() {
   // Load data (works without token for public repos)
   try { await loadArticles(); } catch (e) { console.error('loadArticles:', e); }
 
-  // If no token, prompt user to set it
-  if (!GH_TOKEN) {
-    document.getElementById('dashboardArticles').innerHTML =
-      '<div class="empty-state"><i class="fas fa-key"></i><p>لأول مرة؟ اروح <strong>الإعدادات</strong> وحط GitHub Token (اسأل المطور عن التوكن)</p></div>';
-    document.getElementById('statTotal').textContent = '?';
-    document.getElementById('statPublished').textContent = '?';
-    document.getElementById('statToday').textContent = '?';
-  }
+  // Note: reads work without token (relative URLs), writes need GH_TOKEN
 
   // Populate settings
   document.getElementById('editGhToken').value = GH_TOKEN || '';

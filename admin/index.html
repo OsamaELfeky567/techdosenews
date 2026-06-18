@@ -575,11 +575,11 @@ async function loadCategories() {
 
 function getDefaultCategories() {
   return [
-    { id: 'ai', name: 'الذكاء الاصطناعي', color: '#8E44AD' },
-    { id: 'cybersecurity', name: 'أمن سيبراني', color: '#C0392B' },
-    { id: 'companies', name: 'شركات', color: '#F39C12' },
-    { id: 'phones', name: 'هواتف ذكية', color: '#1B4F72' },
-    { id: 'ev', name: 'سيارات كهربائية', color: '#27AE60' }
+    { id: 'ai', name: 'الذكاء الاصطناعي', color: '#8E44AD', keywords: ['ai','artificial intelligence','llm','gpt','openai','deep learning','machine learning','chatgpt','gemini','claude'] },
+    { id: 'cybersecurity', name: 'أمن سيبراني', color: '#C0392B', keywords: ['cybersecurity','security','vulnerability','hack','breach','malware','ransomware','privacy','data breach'] },
+    { id: 'companies', name: 'شركات', color: '#F39C12', keywords: ['tech company','startup','acquisition','ipo','funding','google','apple','microsoft','meta','amazon','nvidia','business','software','cloud','saas','chip','processor','gpu','cpu'] },
+    { id: 'phones', name: 'هواتف ذكية', color: '#1B4F72', keywords: ['smartphone','iphone','galaxy','pixel','mobile','ios','android','tablet','gadget','laptop','gaming'] },
+    { id: 'ev', name: 'سيارات كهربائية', color: '#27AE60', keywords: ['ev','electric vehicle','self-driving','autonomous','tesla','robotics','drone','space','nasa','rocket'] }
   ];
 }
 
@@ -608,17 +608,26 @@ function getCategoryIdFromArticle(article) {
   const byName = CAT_BY_NAME[article.category];
   if (byName) return byName.id;
   const legacyMap = {
-    'تكنولوجيا': 'ai', 'تقنية': 'ai',
+    'تكنولوجيا': 'companies', 'تقنية': 'companies',
     'شركات': 'companies', 'شركات التقنية': 'companies',
     'business-tech': 'companies', 'startups': 'companies',
     'programming': 'companies', 'software': 'companies',
-    'هواتف ذكية': 'phones', 'موبايل': 'phones', 'mobile': 'phones',
-    'سيارات كهربائية': 'ev', 'hardware': 'companies',
+    'cloud': 'companies', 'Big-Tech': 'companies', 'big-tech': 'companies',
+    'BigTech': 'companies', 'Business': 'companies', 'Cloud': 'companies',
+    'Startups': 'companies', 'business': 'companies', 'BigTech': 'companies',
+    'شركات ناشئة': 'companies', 'هاردوير': 'companies',
+    'hardware': 'companies', 'Hardware': 'companies', 'برمجة': 'companies',
     'مصر والتقنية': 'companies', 'إلكترونيات': 'companies',
-    'space': 'ai', 'science': 'ai', 'reviews': 'phones',
-    'gaming': 'phones', 'ألعاب': 'phones', 'برمجة': 'companies',
-    'هاردوير': 'companies', 'فضاء': 'ai', 'علوم': 'ai',
-    'شركات ناشئة': 'companies', 'مراجعات': 'phones'
+    'AI': 'ai', 'AI_ar': 'ai', 'Science': 'ai', 'science': 'ai',
+    'space': 'ai', 'فضاء': 'ai', 'علوم': 'ai',
+    'هواتف ذكية': 'phones', 'موبايل': 'phones', 'mobile': 'phones',
+    'Mobile': 'phones', 'gaming': 'phones', 'Gaming': 'phones',
+    'ألعاب': 'phones', 'reviews': 'phones', 'مراجعات': 'phones',
+    'consumer': 'phones', 'consumer': 'phones',
+    'سيارات كهربائية': 'ev', 'Electric Vehicles': 'ev',
+    'EV': 'ev', 'ev': 'ev',
+    'security': 'cybersecurity', 'Security': 'cybersecurity',
+    'الأمن السيبراني': 'cybersecurity'
   };
   return legacyMap[article.category] || 'ai';
 }
@@ -669,21 +678,22 @@ async function ghApiRequest(method, path, body) {
     return { sha: data.sha, ...data.data };
   }
 
-  // Direct GitHub API (fallback — requires GH_TOKEN)
-  if (!GH_TOKEN) throw new Error('لا يوجد توكن GitHub. أضف التوكن في الإعدادات أو هيئ البروكسي.');
+  // Direct GitHub API (fallback — GET works without token for public repos)
   const apiUrl = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`;
   const headers = {
-    'Authorization': `Bearer ${GH_TOKEN}`,
     'Accept': 'application/vnd.github.v3+json',
     'User-Agent': 'admin-panel',
     'Content-Type': 'application/json'
   };
+  if (GH_TOKEN) headers['Authorization'] = `Bearer ${GH_TOKEN}`;
 
   if (method === 'GET') {
     const res = await fetch(apiUrl, { headers });
     if (!res.ok) throw new Error(`GET ${path}: ${res.status}`);
     return res.json();
   }
+
+  if (!GH_TOKEN) throw new Error('لا يوجد توكن GitHub. أضف التوكن في الإعدادات أو هيئ البروكسي.');
 
   const bodyStr = body ? JSON.stringify(body) : undefined;
   const res = await fetch(apiUrl, { method, headers, body: bodyStr });
@@ -962,7 +972,7 @@ async function saveConfigToGh() {
 async function saveCategoriesToGh() {
   let sha = '';
   try { const j = await ghFetch('data/categories.json'); sha = j.sha; } catch {}
-  const data = CATEGORIES.map(c => ({ id: c.id, name: c.name, color: c.color }));
+  const data = CATEGORIES.map(c => ({ id: c.id, name: c.name, color: c.color, keywords: c.keywords || [] }));
   await ghPut('data/categories.json', JSON.stringify(data, null, 2), 'تحديث التصنيفات من لوحة التحكم', sha);
 }
 
@@ -1227,8 +1237,8 @@ async function renderDashboard() {
 async function loadArticles() {
   try {
     const j = await ghGetJson('data/articles/index.json');
-    ARTICLES = j.data;
-  } catch { ARTICLES = []; }
+    INDEX = j.data;
+  } catch { INDEX = []; }
 }
 
 function renderArticles() {
@@ -1302,7 +1312,7 @@ function populateCategorySelect(selected) {
   const sel = document.getElementById('editCategory');
   sel.innerHTML = CATEGORIES.map(c => `<option value="${c.id}"${c.id === selected ? ' selected' : ''}>${c.name}</option>`).join('');
   const dbCats = new Set();
-  ARTICLES.forEach(a => { if (a.category && !getCategoryIds().includes(a.category)) dbCats.add(a.category); });
+  INDEX.forEach(a => { if (a.category && !getCategoryIds().includes(a.category)) dbCats.add(a.category); });
   dbCats.forEach(catId => {
     const opt = document.createElement('option');
     opt.value = catId; opt.textContent = getCategoryName(catId);
@@ -1353,7 +1363,7 @@ function renderCategories() {
     <div class="table-wrap">
       <table><thead><tr><th>المعرف</th><th>التصنيف</th><th>اللون</th><th>عدد المقالات</th><th>إجراءات</th></tr></thead>
       <tbody>${CATEGORIES.map(cat => {
-        const count = ARTICLES.filter(a => getCategoryIdFromArticle(a) === cat.id).length;
+        const count = INDEX.filter(a => getCategoryIdFromArticle(a) === cat.id).length;
         return `<tr>
           <td style="color:var(--text2);font-size:.8rem">${cat.id}</td>
           <td><strong>${cat.name}</strong></td>
@@ -1386,8 +1396,8 @@ function renderCategories() {
     const color = document.getElementById('newCatColor').value;
     if (!id || !name) return showToast('المعرف والاسم مطلوبان', 'error');
     if (CATEGORIES.some(c => c.id === id)) return showToast('المعرف موجود بالفعل', 'error');
-    CATEGORIES.push({ id, name, color });
-    CAT_BY_NAME[name] = { id, name, color };
+    CATEGORIES.push({ id, name, color, keywords: [] });
+    CAT_BY_NAME[name] = { id, name, color, keywords: [] };
     saveCategoriesToGh().then(() => { showToast('تم إضافة التصنيف', 'success'); renderCategories(); populateCategorySelect(''); }).catch(e => showToast(e.message, 'error'));
   };
 }

@@ -57,48 +57,40 @@ const AD_CONFIG = {
 
 
 const CATEGORY_MAP = {
-  ai:'الذكاء الاصطناعي',cybersecurity:'أمن سيبراني',
-  companies:'شركات',phones:'هواتف ذكية',ev:'سيارات كهربائية',
-  security:'أمن سيبراني',business:'شركات',
-  startups:'شركات',bigtech:'شركات',software:'شركات',cloud:'شركات',
+  ai:'الذكاء الاصطناعي',companies:'شركات',cybersecurity:'أمن سيبراني',
+  mobile:'هواتف ذكية',ev:'سيارات كهربائية',
+  security:'أمن سيبراني',business:'شركات',startups:'شركات',
+  bigtech:'شركات',software:'شركات',cloud:'شركات',
   hardware:'شركات',consumer:'هواتف ذكية',gaming:'هواتف ذكية',
-  mobile:'هواتف ذكية',AI:'الذكاء الاصطناعي',AI_ar:'الذكاء الاصطناعي',
+  AI:'الذكاء الاصطناعي',AI_ar:'الذكاء الاصطناعي',
   'Big-Tech':'شركات','big-tech':'شركات',BigTech:'شركات',
   Security:'أمن سيبراني',Startups:'شركات',
   Mobile:'هواتف ذكية',Hardware:'شركات',Gaming:'هواتف ذكية',
   Science:'الذكاء الاصطناعي',Business:'شركات',Cloud:'شركات',
-  programming:'شركات','business-tech':'شركات',
   'تكنولوجيا':'شركات','تقنية':'شركات',
   'Electric Vehicles':'سيارات كهربائية',
   'شركات تقنية':'شركات','الأمن السيبراني':'أمن سيبراني',
-  'تطوير':'شركات','برمجة':'شركات',
-  EV:'سيارات كهربائية',ev:'سيارات كهربائية',
-  space:'الذكاء الاصطناعي',science:'الذكاء الاصطناعي',
-  reviews:'هواتف ذكية','هاردوير':'شركات',
-  'فضاء':'الذكاء الاصطناعي','علوم':'الذكاء الاصطناعي',
-  'شركات ناشئة':'شركات','مراجعات':'هواتف ذكية',ألعاب:'هواتف ذكية',
-  'هواتف ذكية':'هواتف ذكية','موبايل':'هواتف ذكية'
+  'تطوير':'تطوير',
+  EV:'سيارات كهربائية',ev:'سيارات كهربائية'
 };
 
 const TAG_CATEGORY_MAP = {
   'تكنولوجيا':'companies','تقنية':'companies','ذكاء اصطناعي':'ai',
   'أمن سيبراني':'cybersecurity','أمان':'cybersecurity',
-  'هواتف':'phones','mobile':'phones','Mobile':'phones','موبايل':'phones',
+  'هواتف':'mobile','mobile':'mobile','Mobile':'mobile',
   'أعمال':'companies','business':'companies','Business':'companies',
   'شركات':'companies','startups':'companies','Startups':'companies',
-  'برمجيات':'companies','software':'companies','برمجة':'companies',
+  'برمجيات':'companies','software':'companies',
   'سحابة':'companies','cloud':'companies',
-  'عتاد':'companies','hardware':'companies','هاردوير':'companies',
+  'عتاد':'companies','hardware':'companies',
   'سيارات':'ev','EV':'ev','سيارات كهربائية':'ev',
   'ai':'ai','AI':'ai','security':'cybersecurity',
   'Security':'cybersecurity','cybersecurity':'cybersecurity',
-  'gaming':'phones','Gaming':'phones','ألعاب':'phones',
-  'science':'ai','Science':'ai','علوم':'ai',
-  'روبوتات':'ai','robotics':'ai','فضاء':'ai','space':'ai',
+  'gaming':'mobile','Gaming':'mobile',
+  'science':'ai','Science':'ai',
+  'روبوتات':'ai','robotics':'ai','فضاء':'ai',
   'bigtech':'companies','big-tech':'companies','BigTech':'companies',
-  'Big-Tech':'companies','أبحاث':'ai','research':'ai',
-  'business-tech':'companies','programming':'companies',
-  'reviews':'phones','مراجعات':'phones'
+  'Big-Tech':'companies','أبحاث':'ai','research':'ai'
 };
 
 const ENTITY_IMAGES = {
@@ -136,31 +128,24 @@ const ENTITY_KEYWORDS = [
   [['أمن سيبراني','cybersecurity','hacking','ransomware','اختراق','فيروس','breach','vulnerability','zero-day'],'cybersecurity']
 ];
 function resolveImage(a) {
-   if (!a) return ENTITY_IMAGES.default;
-   // ✅ استخدم الصورة المخصصة المرفوعة أولاً
-   // في INDEX: حقل 'image' يحتوي على الصورة المخصصة (من image_url في DB)
-   // في DB: حقل 'image_url' يحتوي على الصورة المخصصة
-   if (a.image_url && a.image_url.trim() && a.image_url.includes('raw.githubusercontent.com')) return a.image_url;
-   if (a.image && a.image.trim() && a.image.includes('raw.githubusercontent.com')) return a.image;
-   
-   const tagsStr = Array.isArray(a.tags) ? a.tags.join(' ') : (typeof a.tags === 'string' ? a.tags.replace(/,/g,' ') : '');
-   const text = ((a.title||'')+' '+(a.source||'')+' '+(a.source_name||'')+' '+tagsStr).toLowerCase();
-   for (const [keywords,entity] of ENTITY_KEYWORDS) {
-     for (const kw of keywords) {
-       if (text.includes(kw)) return ENTITY_IMAGES[entity];
-     }
-   }
-   if (a.categoryAr) {
-     const catLower = a.categoryAr.toLowerCase();
-     if (catLower.includes('ذكاء اصطناعي')) return ENTITY_IMAGES.ai;
-     if (catLower.includes('أمن')||catLower.includes('سيبراني')) return ENTITY_IMAGES.cybersecurity;
-     if (catLower.includes('هواتف')||catLower.includes('جوال')||catLower.includes('موبايل')) return ENTITY_IMAGES.mobile;
-     if (catLower.includes('سيارات')||catLower.includes('كهرب')) return ENTITY_IMAGES.ev;
-     if (catLower.includes('شركات')||catLower.includes('اعمال')||catLower.includes('تقنية')||catLower.includes('تكنولوجيا')) return ENTITY_IMAGES.companies;
-   }
-   // Fallback: use any non-placeholder image
-   if (a.image && !a.image.includes('photo-1518770660439-4636190af475')) return a.image;
-   return ENTITY_IMAGES.default;
+  if (!a) return ENTITY_IMAGES.default;
+  const tagsStr = Array.isArray(a.tags) ? a.tags.join(' ') : (typeof a.tags === 'string' ? a.tags.replace(/,/g,' ') : '');
+  const text = ((a.title||'')+' '+(a.source||'')+' '+(a.source_name||'')+' '+tagsStr).toLowerCase();
+  for (const [keywords,entity] of ENTITY_KEYWORDS) {
+    for (const kw of keywords) {
+      if (text.includes(kw)) return ENTITY_IMAGES[entity];
+    }
+  }
+  if (a.categoryAr) {
+    const catLower = a.categoryAr.toLowerCase();
+    if (catLower.includes('ذكاء اصطناعي')) return ENTITY_IMAGES.ai;
+    if (catLower.includes('أمن')||catLower.includes('سيبراني')) return ENTITY_IMAGES.cybersecurity;
+    if (catLower.includes('هواتف')||catLower.includes('جوال')||catLower.includes('موبايل')) return ENTITY_IMAGES.mobile;
+    if (catLower.includes('سيارات')||catLower.includes('كهرب')) return ENTITY_IMAGES.ev;
+    if (catLower.includes('شركات')||catLower.includes('اعمال')||catLower.includes('تقنية')||catLower.includes('تكنولوجيا')) return ENTITY_IMAGES.companies;
+  }
+  if (a.image && !a.image.includes('photo-1518770660439-4636190af475')) return a.image;
+  return ENTITY_IMAGES.default;
 }
 
 const ARABIC_DAYS = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
@@ -387,7 +372,7 @@ function loadMore() {
 function renderCategories() {
   const grid = document.getElementById('sbCategoriesGrid');
   if (!grid) return;
-  const mainCats = {ai:'الذكاء الاصطناعي',companies:'شركات',cybersecurity:'أمن سيبراني',phones:'هواتف ذكية',ev:'سيارات كهربائية'};
+  const mainCats = {ai:'الذكاء الاصطناعي',companies:'شركات',cybersecurity:'أمن سيبراني',mobile:'هواتف ذكية',ev:'سيارات كهربائية'};
   grid.innerHTML = Object.entries(mainCats).map(([key, name]) =>
     '<div class="sb-cat-chip" onclick="location.href=\'category.html?cat=' + key + '\'">' + name + '</div>'
   ).join('');
@@ -417,7 +402,7 @@ function renderMostRead() {
 function renderFooterCats() {
   const list = document.getElementById('sbFooterCategories');
   if (!list) return;
-  const mainCats = {ai:'الذكاء الاصطناعي',companies:'شركات',cybersecurity:'أمن سيبراني',phones:'هواتف ذكية',ev:'سيارات كهربائية'};
+  const mainCats = {ai:'الذكاء الاصطناعي',companies:'شركات',cybersecurity:'أمن سيبراني',mobile:'هواتف ذكية',ev:'سيارات كهربائية'};
   list.innerHTML = Object.entries(mainCats).map(([key, name]) =>
     '<li><a href="category.html?cat=' + key + '">' + name + '</a></li>'
   ).join('');
@@ -802,7 +787,7 @@ async function initCategoryPage() {
       (Array.isArray(a.tags) && a.tags.some(t => TAG_CATEGORY_MAP[t] === catKey || t === catName))
     );
     const count = catArticles.length;
-    const mainCats = {ai:'الذكاء الاصطناعي',companies:'شركات',cybersecurity:'أمن سيبراني',phones:'هواتف ذكية',ev:'سيارات كهربائية'};
+    const mainCats = {ai:'الذكاء الاصطناعي',companies:'شركات',cybersecurity:'أمن سيبراني',mobile:'هواتف ذكية',ev:'سيارات كهربائية'};
     const chips = Object.entries(mainCats).map(([key, name]) =>
       '<div class="sb-cat-chip' + (key === catKey ? ' sb-cat-chip-active' : '') + '" onclick="location.href=\'category.html?cat=' + key + '\'">' + name + '</div>'
     ).join('');

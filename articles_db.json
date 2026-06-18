@@ -1,10 +1,10 @@
 [
   {
     "id": "test-1781822760686",
-    "title_ar": "اختبار مقال جديد",
+    "title_ar": "مقال محدث: اختبار التحديث",
     "title": "https://example.com",
     "excerpt": "اختبار",
-    "body": "محتوى الاختبار",
+    "body": "محتوى محدث للاختبار",
     "category": "tech",
     "image": "",
     "source": "",

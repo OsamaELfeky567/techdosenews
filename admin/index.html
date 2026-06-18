@@ -434,6 +434,11 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
           <div class="hint">لتشغيل الوركفلو من لوحة التحكم</div>
         </div>
         <div class="form-group">
+          <label>GitHub Proxy URL</label>
+          <input type="url" id="editGhProxyUrl" placeholder="https://your-proxy.com:3001" style="direction:ltr;text-align:left">
+          <div class="hint">بروكسي GitHub App (اختياري — يحل محل التوكن)</div>
+        </div>
+        <div class="form-group">
           <label>كلمة المرور (تغيير)</label>
           <input type="password" id="editAdminPass" placeholder="اترك فارغاً للإبقاء على الحالية" autocomplete="new-password">
           <div class="hint">سيتم تخزينها بشكل آمن (SHA-256)</div>
@@ -507,6 +512,7 @@ const DEFAULT_CONFIG = {
   facebook: 'https://facebook.com/techdosenews',
   twitter: 'https://x.com/techdosenews',
   webhookUrl: 'http://localhost:5678/webhook/tdn-run',
+  ghProxyUrl: '',
   colors: {
     navy: '#0D1B2A', blueDark: '#1B4F72', blue: '#2E86C1',
     gold: '#F39C12', lightBlue: '#D6EAF8', bg: '#F4F6F7',
@@ -587,10 +593,101 @@ function syncCatConfig() {
 }
 
 // ============================================================
-// GITHUB API
+// GITHUB API — Proxy-aware (routes through gh-proxy when configured)
 // ============================================================
 
+function getProxyUrl() {
+  return (CONFIG && CONFIG.ghProxyUrl) || '';
+}
+
+async function ghApiRequest(method, path, body) {
+  const proxyUrl = getProxyUrl();
+  const useProxy = proxyUrl && method !== 'GET';
+
+  if (useProxy) {
+    const actionMap = { 'PUT': 'put-content', 'DELETE': 'delete', 'GET': 'get' };
+    const action = actionMap[method] || 'put-content';
+    const payload = { action, path };
+    if (body) {
+      if (body.content) payload.content = body.content;
+      if (body.message) payload.message = body.message;
+      if (body.sha) payload.sha = body.sha;
+    }
+    const res = await fetch(proxyUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error || `Proxy ${method} ${path}: ${res.status}`);
+    return { sha: data.sha, ...data.data };
+  }
+
+  // Direct GitHub API (fallback — requires GH_TOKEN)
+  if (!GH_TOKEN) throw new Error('لا يوجد توكن GitHub. أضف التوكن في الإعدادات أو هيئ البروكسي.');
+  const apiUrl = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`;
+  const headers = {
+    'Authorization': `Bearer ${GH_TOKEN}`,
+    'Accept': 'application/vnd.github.v3+json',
+    'User-Agent': 'admin-panel',
+    'Content-Type': 'application/json'
+  };
+
+  if (method === 'GET') {
+    const res = await fetch(apiUrl, { headers });
+    if (!res.ok) throw new Error(`GET ${path}: ${res.status}`);
+    return res.json();
+  }
+
+  const bodyStr = body ? JSON.stringify(body) : undefined;
+  const res = await fetch(apiUrl, { method, headers, body: bodyStr });
+  const data = await res.json();
+  if (!res.ok) throw new Error(`GitHub ${method} ${path}: ${res.status} ${data.message || ''}`);
+  return data;
+}
+
+async function ghFetch(path) {
+  return ghApiRequest('GET', path);
+}
+
+async function ghPut(path, content, message, sha) {
+  const body = { message: message || 'Update from admin panel', content: btoa(unescape(encodeURIComponent(content))) };
+  if (sha) body.sha = sha;
+  return ghApiRequest('PUT', path, body);
+}
+
+async function ghDelete(path, sha, message) {
+  const body = { message: message || 'Delete from admin panel', sha };
+  return ghApiRequest('DELETE', path, body);
+}
+
+async function ghGetText(path) {
+  const j = await ghFetch(path);
+  return { text: decodeURIComponent(escape(atob(j.content))), sha: j.sha };
+}
+
+async function ghGetJson(path) {
+  const j = await ghFetch(path);
+  return { data: JSON.parse(decodeURIComponent(escape(atob(j.content)))), sha: j.sha };
+}
+
 async function ghPutBinary(path, base64Content, message, sha) {
+  const proxyUrl = getProxyUrl();
+  if (proxyUrl) {
+    const payload = { action: 'put-binary', path, content: base64Content, message: message || 'Upload image from admin panel' };
+    if (sha) payload.sha = sha;
+    const res = await fetch(proxyUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error || `Proxy binary upload: ${res.status}`);
+    return data.data;
+  }
+
+  // Direct GitHub API fallback
+  if (!GH_TOKEN) throw new Error('لا يوجد توكن GitHub. أضف التوكن في الإعدادات أو هيئ البروكسي.');
   const body = { message: message || 'Upload image from admin panel', content: base64Content };
   if (sha) body.sha = sha;
   const maxRetries = 3;
@@ -614,6 +711,7 @@ async function ghPutBinary(path, base64Content, message, sha) {
     }
   }
 }
+
 async function uploadImage(file) {
   if (!file) return '';
   const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'];
@@ -637,56 +735,6 @@ async function uploadImage(file) {
   try { const existing = await ghFetch(path); sha = existing.sha; } catch {}
   await ghPutBinary(path, base64, sha ? 'تحديث صورة المقال' : 'رفع صورة مقال', sha);
   return rawUrl;
-}
-
-
-async function ghFetch(path) {
-  const headers = { 'Accept': 'application/vnd.github.v3+json' };
-  if (GH_TOKEN) headers['Authorization'] = `Bearer ${GH_TOKEN}`;
-  const url = GH_TOKEN
-    ? `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`
-    : `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${path}`;
-  const res = await fetch(url, GH_TOKEN ? { headers } : {});
-  if (!res.ok) throw new Error(`GET ${path}: ${res.status}`);
-  if (GH_TOKEN) return res.json();
-  // Raw content mode: return JSON
-  const text = await res.text();
-  return { content: btoa(unescape(encodeURIComponent(text))) };
-}
-
-async function ghPut(path, content, message, sha) {
-  const body = { message: message || 'Update from admin panel', content: btoa(unescape(encodeURIComponent(content))) };
-  if (sha) body.sha = sha;
-  const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
-    method: 'PUT',
-    headers: { 'Authorization': `Bearer ${GH_TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'admin-panel' },
-    body: JSON.stringify(body)
-  });
-  const data = await res.json();
-  if (!res.ok) throw new Error(`GitHub PUT ${path}: ${res.status} ${data.message || ''}`);
-  return data;
-}
-
-async function ghDelete(path, sha, message) {
-  const body = { message: message || 'Delete from admin panel', sha };
-  const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
-    method: 'DELETE',
-    headers: { 'Authorization': `Bearer ${GH_TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'admin-panel' },
-    body: JSON.stringify(body)
-  });
-  const data = await res.json();
-  if (!res.ok) throw new Error(`GitHub DELETE ${path}: ${res.status}`);
-  return data;
-}
-
-async function ghGetText(path) {
-  const j = await ghFetch(path);
-  return { text: decodeURIComponent(escape(atob(j.content))), sha: j.sha };
-}
-
-async function ghGetJson(path) {
-  const j = await ghFetch(path);
-  return { data: JSON.parse(decodeURIComponent(escape(atob(j.content)))), sha: j.sha };
 }
 
 // ============================================================
@@ -903,7 +951,7 @@ async function renderInsights() {
 
   // Views from views_db.json (n8n tracking)
   try {
-    if (GH_TOKEN) {
+    if (GH_TOKEN || getProxyUrl()) {
       const vdb = await ghGetJson('views_db.json').catch(() => null);
       if (vdb && vdb.data) {
         const views = vdb.data;
@@ -1350,13 +1398,15 @@ function deleteCategory(id) {
 async function saveSettings() {
   const newToken = document.getElementById('editGhToken').value.trim();
   const newWebhook = document.getElementById('editWebhookUrl').value.trim();
+  const newProxy = document.getElementById('editGhProxyUrl').value.trim();
   const newPass = document.getElementById('editAdminPass').value;
 
   if (newToken) {
     GH_TOKEN = newToken;
-    saveSession(); // stored in localStorage only (GitHub blocks tokens in files)
+    saveSession();
   }
   if (newWebhook) CONFIG.webhookUrl = newWebhook;
+  if (newProxy !== undefined) CONFIG.ghProxyUrl = newProxy;
   if (newPass) CONFIG.passwordHash = await sha256(newPass);
 
   await saveConfigToGh();
@@ -1399,10 +1449,10 @@ async function afterLogin() {
   try { await loadDb(); } catch (e) { console.error('loadDb:', e); }
   try { await loadIndex(); } catch (e) { console.error('loadIndex:', e); }
 
-  // If no token, prompt user to set it
-  if (!GH_TOKEN) {
+  // If no auth method configured, prompt user
+  if (!GH_TOKEN && !getProxyUrl()) {
     document.getElementById('dashboardArticles').innerHTML =
-      '<div class="empty-state"><i class="fas fa-key"></i><p>لأول مرة؟ اروح <strong>الإعدادات</strong> وحط GitHub Token (اسأل المطور عن التوكن)</p></div>';
+      '<div class="empty-state"><i class="fas fa-key"></i><p>لأول مرة؟ اروح <strong>الإعدادات</strong> وحط GitHub Token أو هيئ بروكسي GitHub App</p></div>';
     document.getElementById('statTotal').textContent = '?';
     document.getElementById('statPublished').textContent = '?';
     document.getElementById('statToday').textContent = '?';
@@ -1411,6 +1461,7 @@ async function afterLogin() {
   // Populate settings
   document.getElementById('editGhToken').value = GH_TOKEN || CONFIG.ghToken || '';
   document.getElementById('editWebhookUrl').value = CONFIG.webhookUrl || '';
+  document.getElementById('editGhProxyUrl').value = CONFIG.ghProxyUrl || '';
   document.getElementById('editSiteName').value = CONFIG.siteName || '';
   document.getElementById('editSiteDesc').value = CONFIG.siteDesc || '';
   document.getElementById('editTelegramChannel').value = CONFIG.telegram_channel || '';

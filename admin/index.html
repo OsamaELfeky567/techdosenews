@@ -891,6 +891,14 @@ async function ghApiRequest(method, path, body) {
   const proxyUrl = getProxyUrl();
   const useProxy = proxyUrl && method !== 'GET';
 
+  // Helper to add timeout to fetch
+  const fetchWithTimeout = (url, options, timeoutMs = 30000) => {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+    return fetch(url, { ...options, signal: controller.signal })
+      .finally(() => clearTimeout(timeout));
+  };
+
   if (useProxy) {
     const actionMap = { 'PUT': 'put-content', 'DELETE': 'delete', 'GET': 'get' };
     const action = actionMap[method] || 'put-content';
@@ -900,14 +908,21 @@ async function ghApiRequest(method, path, body) {
       if (body.message) payload.message = body.message;
       if (body.sha) payload.sha = body.sha;
     }
-    const res = await fetch(proxyUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    const data = await res.json();
-    if (!data.success) throw new Error(data.error || `Proxy ${method} ${path}: ${res.status}`);
-    return { sha: data.sha, ...data.data };
+    try {
+      const res = await fetchWithTimeout(proxyUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.error || `Proxy ${method} ${path}: ${res.status}`);
+      return { sha: data.sha, ...data.data };
+    } catch (e) {
+      if (e.name === 'AbortError') {
+        throw new Error(`انتهت مهلة انتظار البروكسي - الخادم لا يستجيب (${path})`);
+      }
+      throw e;
+    }
   }
 
   // Direct GitHub API (fallback — GET works without token for public repos)
@@ -919,19 +934,26 @@ async function ghApiRequest(method, path, body) {
   };
   if (GH_TOKEN) headers['Authorization'] = `Bearer ${GH_TOKEN}`;
 
-  if (method === 'GET') {
-    const res = await fetch(apiUrl, { headers });
-    if (!res.ok) throw new Error(`GET ${path}: ${res.status}`);
-    return res.json();
+  try {
+    if (method === 'GET') {
+      const res = await fetchWithTimeout(apiUrl, { headers });
+      if (!res.ok) throw new Error(`GET ${path}: ${res.status}`);
+      return res.json();
+    }
+
+    if (!GH_TOKEN) throw new Error('لا يوجد توكن GitHub. أضف التوكن في الإعدادات أو هيئ البروكسي.');
+
+    const bodyStr = body ? JSON.stringify(body) : undefined;
+    const res = await fetchWithTimeout(apiUrl, { method, headers, body: bodyStr });
+    const data = await res.json();
+    if (!res.ok) throw new Error(`GitHub ${method} ${path}: ${res.status} ${data.message || ''}`);
+    return data;
+  } catch (e) {
+    if (e.name === 'AbortError') {
+      throw new Error(`انتهت مهلة انتظار GitHub - الخادم لا يستجيب (${path})`);
+    }
+    throw e;
   }
-
-  if (!GH_TOKEN) throw new Error('لا يوجد توكن GitHub. أضف التوكن في الإعدادات أو هيئ البروكسي.');
-
-  const bodyStr = body ? JSON.stringify(body) : undefined;
-  const res = await fetch(apiUrl, { method, headers, body: bodyStr });
-  const data = await res.json();
-  if (!res.ok) throw new Error(`GitHub ${method} ${path}: ${res.status} ${data.message || ''}`);
-  return data;
 }
 
 async function ghFetch(path) {
@@ -961,17 +983,31 @@ async function ghGetJson(path) {
 
 async function ghPutBinary(path, base64Content, message, sha) {
   const proxyUrl = getProxyUrl();
+  const fetchWithTimeout = (url, options, timeoutMs = 30000) => {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+    return fetch(url, { ...options, signal: controller.signal })
+      .finally(() => clearTimeout(timeout));
+  };
+
   if (proxyUrl) {
     const payload = { action: 'put-binary', path, content: base64Content, message: message || 'Upload image from admin panel' };
     if (sha) payload.sha = sha;
-    const res = await fetch(proxyUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    const data = await res.json();
-    if (!data.success) throw new Error(data.error || `Proxy binary upload: ${res.status}`);
-    return data.data;
+    try {
+      const res = await fetchWithTimeout(proxyUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.error || `Proxy binary upload: ${res.status}`);
+      return data.data;
+    } catch (e) {
+      if (e.name === 'AbortError') {
+        throw new Error(`انتهت مهلة انتظار البروكسي - فشل رفع الصورة`);
+      }
+      throw e;
+    }
   }
 
   // Direct GitHub API fallback
@@ -979,9 +1015,10 @@ async function ghPutBinary(path, base64Content, message, sha) {
   const body = { message: message || 'Upload image from admin panel', content: base64Content };
   if (sha) body.sha = sha;
   const maxRetries = 3;
+  
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
-      const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
+      const res = await fetchWithTimeout(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${GH_TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'admin-panel' },
         body: JSON.stringify(body)
@@ -993,6 +1030,10 @@ async function ghPutBinary(path, base64Content, message, sha) {
       if (res.status === 422 && attempt < maxRetries - 1) { await new Promise(r => setTimeout(r, 1000)); continue; }
       throw new Error(`GitHub PUT ${path}: ${res.status} ${data.message || ''}`);
     } catch (e) {
+      if (e.name === 'AbortError' && attempt < maxRetries - 1) {
+        await new Promise(r => setTimeout(r, 1000));
+        continue;
+      }
       if (attempt === maxRetries - 1) throw e;
       if (e.message.includes('فشل التوثيق') || e.message.includes('ممنوع الوصول')) throw e;
       await new Promise(r => setTimeout(r, 1000));
@@ -1002,27 +1043,56 @@ async function ghPutBinary(path, base64Content, message, sha) {
 
 async function uploadImage(file) {
   if (!file) return '';
+  
+  // Validate file type
   const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'];
-  if (!validTypes.includes(file.type)) throw new Error('نوع الملف غير مدعوم');
-  if (file.size > 5 * 1024 * 1024) throw new Error('حجم الملف كبير جداً. الحد الأقصى 5MB');
+  if (!validTypes.includes(file.type)) {
+    throw new Error(`نوع الملف "${file.type}" غير مدعوم. الأنواع المدعومة: JPG, PNG, GIF, WebP, SVG`);
+  }
+  
+  // Validate file size
+  const maxSizeMB = 5;
+  if (file.size > maxSizeMB * 1024 * 1024) {
+    throw new Error(`حجم الملف ${(file.size / 1024 / 1024).toFixed(2)}MB كبير جداً. الحد الأقصى ${maxSizeMB}MB`);
+  }
 
-  const ext = file.name.split('.').pop() || 'png';
-  const id = CURRENT_EDIT_ID || Date.now().toString();
-  const filename = `article_${id}_${Date.now()}.${ext}`;
-  const path = `img/${filename}`;
-  const rawUrl = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${path}`;
+  try {
+    // Read file as base64
+    const dataUrl = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error('فشل قراءة الملف'));
+      reader.readAsDataURL(file);
+    });
+    
+    const base64 = dataUrl.split(',')[1];
+    if (!base64) {
+      throw new Error('فشل تحويل الملف إلى Base64');
+    }
 
-  const dataUrl = await new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = () => reject(new Error('فشل قراءة الملف'));
-    reader.readAsDataURL(file);
-  });
-  const base64 = dataUrl.split(',')[1];
-  let sha = '';
-  try { const existing = await ghFetch(path); sha = existing.sha; } catch {}
-  await ghPutBinary(path, base64, sha ? 'تحديث صورة المقال' : 'رفع صورة مقال', sha);
-  return rawUrl;
+    // Generate unique filename
+    const ext = file.name.split('.').pop() || 'png';
+    const id = CURRENT_EDIT_ID || Date.now().toString();
+    const filename = `article_${id}_${Date.now()}.${ext}`;
+    const path = `img/${filename}`;
+    const rawUrl = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${path}`;
+
+    // Check if file exists and get SHA
+    let sha = '';
+    try {
+      const existing = await ghFetch(path);
+      sha = existing.sha;
+    } catch (e) {
+      // File doesn't exist yet (expected for new uploads)
+    }
+
+    // Upload file
+    await ghPutBinary(path, base64, sha ? 'تحديث صورة المقال' : 'رفع صورة مقال', sha);
+    return rawUrl;
+  } catch (e) {
+    console.error('uploadImage error:', e);
+    throw new Error(`فشل رفع الصورة: ${e.message}`);
+  }
 }
 
 // ============================================================
@@ -1791,107 +1861,151 @@ function renderThemes() {
 
 /* Init dashboard etc on article page */
 async function saveArticle(formData) {
-  const isNew = !CURRENT_EDIT_ID;
-  const id = CURRENT_EDIT_ID || Date.now().toString();
-  const now = new Date().toISOString();
+  try {
+    const isNew = !CURRENT_EDIT_ID;
+    const id = CURRENT_EDIT_ID || Date.now().toString();
+    const now = new Date().toISOString();
 
-  const article = {
-    id,
-    title_ar: formData.title,
-    excerpt: formData.excerpt,
-    body: formData.body,
-    egypt: formData.egypt || '',
-    category: formData.category,
-    tags: formData.tags,
-    image_query: formData.imageQuery || 'technology news',
-    image_url: formData.image || `https://source.unsplash.com/featured/800x450/?${encodeURIComponent(formData.imageQuery || 'technology technology news')}`,
-    source_name: formData.source || 'Tech Dose News',
-    source_link: formData.sourceLink || '',
-    video_url: formData.videoUrl || '',
-    status: formData.status || 'published',
-    created_at: now,
-    published_at: formData.published_at || (isNew ? new Date().toISOString() : article.published_at || formData.date ? new Date(formData.date).toISOString() : new Date().toISOString()),
-    updated_at: new Date().toISOString()
-  };
+    // Get existing article if updating (for preserving published_at)
+    const existingArticle = DB.find(a => String(a.id) === String(id)) || {};
 
-  // Update or add to DB
-  const dbIdx = DB.findIndex(a => String(a.id) === String(id));
-  if (dbIdx >= 0) {
-    DB[dbIdx] = { ...DB[dbIdx], ...article };
-  } else {
-    DB.unshift(article);
-  }
-
-  // Publish to index if status is published
-  if (formData.status === 'published') {
-    const artObj = {
-      id: article.id,
-      title: article.title_ar,
-      excerpt: article.excerpt,
-      category: article.category,
-      tags: article.tags || [],
-      image: article.image_url,
-      publishedAt: now,
-      readTime: Math.max(1, Math.round(((article.body||'').split(/\s+/).filter(Boolean).length)/80)) + ' دقائق',
-      views: '0',
-      hasEgyptImpact: !!(article.egypt && article.egypt.length > 5),
-      featured: formData.featured || false,
-      body: article.body,
-      egyptImpact: article.egypt || '',
-      source: article.source_name,
-      videoUrl: article.video_url,
-      link: `https://${GH_OWNER}.github.io/${GH_REPO}/article.html?id=${article.id}`
+    const article = {
+      id,
+      title_ar: formData.title,
+      excerpt: formData.excerpt,
+      body: formData.body,
+      egypt: formData.egypt || '',
+      category: formData.category,
+      tags: formData.tags,
+      image_query: formData.imageQuery || 'technology news',
+      image_url: formData.image || `https://source.unsplash.com/featured/800x450/?${encodeURIComponent(formData.imageQuery || 'technology technology news')}`,
+      source_name: formData.source || 'Tech Dose News',
+      source_link: formData.sourceLink || '',
+      video_url: formData.videoUrl || '',
+      status: formData.status || 'published',
+      created_at: existingArticle.created_at || now,
+      published_at: formData.published_at || (isNew ? now : (existingArticle.published_at || (formData.date ? new Date(formData.date).toISOString() : now))),
+      updated_at: now
     };
 
-    const idxIdx = INDEX.findIndex(i => String(i.id) === String(id));
-    if (idxIdx >= 0) {
-      INDEX[idxIdx] = artObj;
+    // Update or add to DB
+    const dbIdx = DB.findIndex(a => String(a.id) === String(id));
+    if (dbIdx >= 0) {
+      DB[dbIdx] = { ...DB[dbIdx], ...article };
     } else {
-      INDEX.unshift(artObj);
+      DB.unshift(article);
     }
-    article.status = 'published';
+
+    // Publish to index if status is published
+    if (formData.status === 'published') {
+      const artObj = {
+        id: article.id,
+        title: article.title_ar,
+        excerpt: article.excerpt,
+        category: article.category,
+        tags: article.tags || [],
+        image: article.image_url,
+        publishedAt: now,
+        readTime: Math.max(1, Math.round(((article.body||'').split(/\s+/).filter(Boolean).length)/80)) + ' دقائق',
+        views: '0',
+        hasEgyptImpact: !!(article.egypt && article.egypt.length > 5),
+        featured: formData.featured || false,
+        body: article.body,
+        egyptImpact: article.egypt || '',
+        source: article.source_name,
+        videoUrl: article.video_url,
+        link: `https://${GH_OWNER}.github.io/${GH_REPO}/article.html?id=${article.id}`
+      };
+
+      const idxIdx = INDEX.findIndex(i => String(i.id) === String(id));
+      if (idxIdx >= 0) {
+        INDEX[idxIdx] = artObj;
+      } else {
+        INDEX.unshift(artObj);
+      }
+      article.status = 'published';
+    }
+
+    // Save to GitHub (with retry logic for race conditions)
+    let dbSha = '', idxSha = '';
+    let maxRetries = 2, retryCount = 0;
+    
+    while (retryCount < maxRetries) {
+      try {
+        // Fetch latest SHAs
+        try { const j = await ghFetch('articles_db.json'); dbSha = j.sha; } catch (e) { dbSha = ''; }
+        try { const j = await ghFetch('data/articles/index.json'); idxSha = j.sha; } catch (e) { idxSha = ''; }
+
+        // Save articles_db.json
+        await ghPut('articles_db.json', JSON.stringify(DB, null, 2), isNew ? 'إضافة مقال جديد' : 'تحديث مقال: ' + article.title_ar, dbSha);
+
+        // Save index if published
+        if (formData.status === 'published') {
+          await ghPut('data/articles/index.json', JSON.stringify(INDEX, null, 2), 'تحديث فهرس المقالات', idxSha);
+        }
+
+        // Success - break loop
+        break;
+      } catch (e) {
+        retryCount++;
+        if (retryCount >= maxRetries) {
+          throw new Error(`فشل حفظ المقال بعد ${maxRetries} محاولات: ${e.message}`);
+        }
+        // Wait before retry
+        await new Promise(r => setTimeout(r, 500 * retryCount));
+      }
+    }
+
+    // Send notifications asynchronously (don't block article save)
+    if (formData.status === 'published') {
+      // Telegram
+      if (formData.telegram) {
+        sendToTelegram(article).catch(e => console.error('Telegram error:', e));
+      }
+      // n8n workflow
+      triggerWorkflow().catch(e => console.error('n8n error:', e));
+    }
+
+    showToast(isNew ? 'تم إضافة المقال بنجاح' : 'تم تحديث المقال بنجاح', 'success');
+    navigateTo('articles');
+    renderArticles();
+  } catch (e) {
+    showToast('خطأ في الحفظ: ' + e.message, 'error');
+    console.error('saveArticle error:', e);
   }
-
-  // Save to GitHub
-  let dbSha = '', idxSha = '';
-  try { const j = await ghFetch('articles_db.json'); dbSha = j.sha; } catch {}
-  try { const j = await ghFetch('data/articles/index.json'); idxSha = j.sha; } catch {}
-
-  await ghPut('articles_db.json', JSON.stringify(DB, null, 2), isNew ? 'إضافة مقال جديد' : 'تحديث مقال: ' + article.title_ar, dbSha);
-
-  if (formData.status === 'published') {
-    await ghPut('data/articles/index.json', JSON.stringify(INDEX, null, 2), 'تحديث فهرس المقالات', idxSha);
-  }
-
-  // Send Telegram if checkbox checked
-  if (formData.telegram && formData.status === 'published') {
-    sendToTelegram(article);
-  }
-
-  showToast(isNew ? 'تم إضافة المقال بنجاح' : 'تم تحديث المقال بنجاح', 'success');
-  navigateTo('articles');
-  renderArticles();
 }
 /* Telegram */
 async function sendToTelegram(article) {
-  if (!CONFIG.telegram_channel && !CONFIG.telegram) return;
+  // Check if Telegram is configured
   const tgToken = CONFIG.telegramBotToken;
-  if (!tgToken) {
-    return showToast('⚠ يرجى ضبط Telegram Bot Token في الإعدادات أولاً', 'error');
+  const tgChannelId = CONFIG.telegramChannelId;
+  
+  if (!tgToken || !tgChannelId) {
+    console.warn('Telegram not fully configured - skipping');
+    return;
   }
-  const excerpt = (article.excerpt || article.body || '').substring(0, 200);
-  const htmlMsg = `📰 <b>${article.title}</b>
-
-${excerpt}
-
-🔗 <a href="${article.link}">اقرأ الخبر كاملاً</a>
-📄 المصدر: ${article.source || 'Tech Dose News'}`;
+  
   try {
+    const excerpt = (article.excerpt || article.body || '').substring(0, 200);
+    const articleTitle = article.title_ar || article.title || 'مقال جديد';
+    const htmlMsg = `📰 <b>${esc(articleTitle)}</b>
+
+${esc(excerpt)}
+
+🔗 <a href="${article.link || '#'}">اقرأ الخبر كاملاً</a>
+📄 المصدر: ${esc(article.source_name || 'Tech Dose News')}`;
+    
     const res = await fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: '-1003896125398', text: htmlMsg, parse_mode: 'HTML', disable_web_page_preview: false })
+      body: JSON.stringify({ 
+        chat_id: tgChannelId, 
+        text: htmlMsg, 
+        parse_mode: 'HTML', 
+        disable_web_page_preview: false 
+      })
     });
+    
     const data = await res.json();
     if (data.ok) {
       showToast('✅ تم إرسال المقال إلى تيلجرام', 'success');
@@ -1907,21 +2021,63 @@ ${excerpt}
 async function deleteArticle(id) {
   showModal('حذف المقال', 'هل أنت متأكد من حذف هذا المقال؟ لا يمكن التراجع عن هذا الإجراء.', async () => {
     try {
+      // Find article before deletion to log details
+      const articleToDelete = DB.find(a => String(a.id) === String(id)) || INDEX.find(a => String(a.id) === String(id));
+      if (!articleToDelete) {
+        throw new Error('المقال غير موجود في السجلات');
+      }
+
+      // Save original state in case we need to rollback
+      const originalDB = JSON.parse(JSON.stringify(DB));
+      const originalINDEX = JSON.parse(JSON.stringify(INDEX));
+
+      // Remove from local arrays
       DB = DB.filter(a => String(a.id) !== String(id));
       INDEX = INDEX.filter(a => String(a.id) !== String(id));
 
-      let dbSha = '', idxSha = '';
-      try { const j = await ghFetch('articles_db.json'); dbSha = j.sha; } catch {}
-      try { const j = await ghFetch('data/articles/index.json'); idxSha = j.sha; } catch {}
+      try {
+        // Fetch latest SHAs
+        let dbSha = '', idxSha = '';
+        try { const j = await ghFetch('articles_db.json'); dbSha = j.sha; } catch {}
+        try { const j = await ghFetch('data/articles/index.json'); idxSha = j.sha; } catch {}
 
-      await ghPut('articles_db.json', JSON.stringify(DB, null, 2), 'حذف مقال من قاعدة البيانات', dbSha);
-      await ghPut('data/articles/index.json', JSON.stringify(INDEX, null, 2), 'حذف مقال من الفهرس', idxSha);
+        // Save to GitHub with retry
+        let maxRetries = 2, retryCount = 0;
+        
+        while (retryCount < maxRetries) {
+          try {
+            await ghPut('articles_db.json', JSON.stringify(DB, null, 2), 'حذف مقال: ' + (articleToDelete.title_ar || articleToDelete.title || ''), dbSha);
+            
+            // Only update index if article was published
+            if (INDEX.length !== originalINDEX.length || !INDEX.find(a => String(a.id) === String(id))) {
+              await ghPut('data/articles/index.json', JSON.stringify(INDEX, null, 2), 'حذف مقال من الفهرس', idxSha);
+            }
 
-      showToast('تم حذف المقال', 'success');
-      renderArticles();
-      renderDashboard();
+            break;
+          } catch (e) {
+            retryCount++;
+            if (retryCount >= maxRetries) {
+              // Rollback on failure
+              DB = originalDB;
+              INDEX = originalINDEX;
+              throw new Error(`فشل حذف المقال: ${e.message}`);
+            }
+            await new Promise(r => setTimeout(r, 500 * retryCount));
+          }
+        }
+
+        showToast('تم حذف المقال بنجاح', 'success');
+        renderArticles();
+        renderDashboard();
+      } catch (e) {
+        // Rollback on any GitHub error
+        DB = originalDB;
+        INDEX = originalINDEX;
+        throw e;
+      }
     } catch (e) {
       showToast('خطأ في الحذف: ' + e.message, 'error');
+      console.error('deleteArticle error:', e);
     }
   });
 }
@@ -1949,13 +2105,55 @@ function esc(str) {
 // ============================================================
 async function triggerWorkflow() {
   const statusEl = document.getElementById('workflowStatus');
+  
+  // Check if webhook is configured
+  const webhookUrl = CONFIG.webhookUrl;
+  if (!webhookUrl) {
+    statusEl.innerHTML = '<span style="color:var(--red)"><i class="fas fa-exclamation-circle"></i> خطأ: لم يتم إعداد رابط n8n webhook. اذهب للإعدادات وأدخل الرابط</span>';
+    return;
+  }
+  
+  // Check for localhost URL (development only)
+  if (webhookUrl.includes('localhost') || webhookUrl.includes('127.0.0.1')) {
+    statusEl.innerHTML = '<span style="color:var(--orange)"><i class="fas fa-exclamation-triangle"></i> تحذير: رابط webhook يشير إلى localhost - سيعمل فقط في التطوير</span>';
+    return;
+  }
+  
   statusEl.innerHTML = '<div class="loading"><i class="fas fa-spinner"></i> جاري التشغيل...</div>';
+  
   try {
-    const url = CONFIG.webhookUrl || 'https://localhost:5678/webhook/tdn-run';
-    const res = await fetch(url, { method: 'GET', mode: 'no-cors' });
+    // Use POST instead of GET for webhook
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+    
+    const res = await fetch(webhookUrl, { 
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        action: 'trigger',
+        timestamp: new Date().toISOString(),
+        source: 'admin-panel'
+      }),
+      signal: controller.signal
+    });
+    
+    clearTimeout(timeoutId);
+    
+    // Check if response is successful (200-299)
+    if (!res.ok) {
+      throw new Error(`Webhook returned ${res.statusCode}: ${res.statusText}`);
+    }
+    
+    const data = await res.json().catch(() => ({}));
+    
     statusEl.innerHTML = `<span style="color:var(--green)"><i class="fas fa-check-circle"></i> تم إرسال أمر التشغيل بنجاح</span><br><span style="color:var(--text3);font-size:.8rem">${new Date().toLocaleString('ar-EG')}</span>`;
   } catch (e) {
-    statusEl.innerHTML = `<span style="color:var(--red)"><i class="fas fa-exclamation-circle"></i> خطأ: ${esc(e.message)}</span>`;
+    if (e.name === 'AbortError') {
+      statusEl.innerHTML = `<span style="color:var(--red)"><i class="fas fa-exclamation-circle"></i> خطأ: انتهت مهلة الانتظار - الخادم لا يستجيب</span>`;
+    } else {
+      statusEl.innerHTML = `<span style="color:var(--red)"><i class="fas fa-exclamation-circle"></i> خطأ: ${esc(e.message)}</span>`;
+    }
+    console.error('Webhook error:', e);
   }
 }
 
@@ -2066,7 +2264,7 @@ async function afterLogin() {
     DB = INDEX.map(a => ({
       id: a.id,
       title_ar: a.title || '',
-      title: a.link || '',
+      title: '', // title field not in INDEX, use empty
       excerpt: a.excerpt || '',
       body: a.body || '',
       category: a.category || '',
@@ -2075,10 +2273,16 @@ async function afterLogin() {
       source_name: a.source || '',
       status: 'published',
       featured: !!a.featured,
-      published_at: a.date || a.publishedAt || '',
-      created_at: a.date || a.publishedAt || '',
+      published_at: a.publishedAt || a.date || '',
+      created_at: a.publishedAt || a.date || '',
       tags: a.tags || [],
-      hasEgyptImpact: !!a.hasEgyptImpact
+      hasEgyptImpact: !!a.hasEgyptImpact,
+      image_url: a.image || '',
+      image_query: 'technology news',
+      egypt: a.egyptImpact || '',
+      video_url: a.videoUrl || '',
+      source_link: a.link || '',
+      updated_at: new Date().toISOString()
     }));
     console.log('Rebuilt DB from INDEX —', DB.length, 'articles');
   }

@@ -151,6 +151,35 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
   .color-row{flex-wrap:wrap}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
 }
+  .stats-grid-4{grid-template-columns:repeat(4,1fr)}
+  .stats-grid-5{grid-template-columns:repeat(5,1fr)}
+}
+.settings-collapsible{margin-bottom:16px;background:var(--surface);border-radius:var(--radius);border:1px solid var(--bg3);overflow:hidden}
+.settings-collapsible .sc-header{padding:12px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;user-select:none;font-size:.9rem;font-weight:600}
+.settings-collapsible .sc-header:hover{background:var(--nav-hover)}
+.settings-collapsible .sc-header i:first-child{width:18px;color:var(--primary)}
+.settings-collapsible .sc-header .sc-arrow{transition:transform .3s;margin-right:auto}
+.settings-collapsible.open .sc-header .sc-arrow{transform:rotate(90deg)}
+.settings-collapsible .sc-body{display:none;padding:0 16px 16px;border-top:1px solid var(--bg3)}
+.settings-collapsible.open .sc-body{display:block}
+.sc-body .form-group{margin-top:14px}
+.sc-body .hint{font-size:.75rem;color:var(--text3);margin-top:4px;line-height:1.5}
+.analytics-section{margin-bottom:24px}
+.analytics-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.analytics-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--bg3);padding:16px}
+.analytics-card h4{font-size:.85rem;color:var(--text2);margin-bottom:12px}
+.analytics-card .a-value{font-size:1.8rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.analytics-card .a-label{font-size:.75rem;color:var(--text3)}
+.analytics-card .a-placeholder{font-size:.8rem;color:var(--text3);padding:20px 0;text-align:center}
+.chart-wrap{position:relative;min-height:120px}
+.chart-bar-wrap{display:flex;align-items:flex-end;gap:4px;height:120px;padding-top:10px}
+.chart-bar{flex:1;border-radius:4px 4px 0 0;min-height:2px;transition:height .6s;position:relative}
+.chart-bar-label{font-size:.6rem;color:var(--text3);text-align:center;transform:rotate(-45deg);white-space:nowrap;position:absolute;bottom:-18px;left:50%;transform:translateX(-50%) rotate(-45deg)}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:20px}
+.kpi-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--bg3);padding:12px 16px;text-align:center}
+.kpi-card .kpi-value{font-size:1.4rem;font-weight:700;color:var(--text)}
+.kpi-card .kpi-label{font-size:.72rem;color:var(--text3);margin-top:2px}
+.kpi-card .kpi-icon{font-size:1.2rem;margin-bottom:4px;color:var(--primary)}
 </style>
 </head>
 <body>
@@ -223,6 +252,39 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
           <div style="background:var(--surface);border-radius:var(--radius);border:1px solid var(--bg3);padding:16px">
             <h4 style="font-size:.85rem;color:var(--text2);margin-bottom:10px"><i class="fas fa-link"></i> توزيع المصادر</h4>
             <div id="insightSourceChart"></div>
+          </div>
+        </div>
+
+        <!-- Analytics Dashboard -->
+        <div class="analytics-section">
+          <div class="page-title" style="font-size:1rem;margin-bottom:12px;margin-top:24px">إحصائيات متقدمة <span class="sub">Dashboard Analytics</span></div>
+          <!-- KPI Cards -->
+          <div class="kpi-row" id="analyticsKpiRow">
+            <div class="kpi-card"><div class="kpi-icon"><i class="fas fa-file-alt"></i></div><div class="kpi-value" id="akpiTotal">-</div><div class="kpi-label">إجمالي المقالات</div></div>
+            <div class="kpi-card"><div class="kpi-icon" style="color:var(--green)"><i class="fas fa-check-circle"></i></div><div class="kpi-value" id="akpiPub">-</div><div class="kpi-label">منشور</div></div>
+            <div class="kpi-card"><div class="kpi-icon" style="color:var(--gold)"><i class="fas fa-pen"></i></div><div class="kpi-value" id="akpiDraft">-</div><div class="kpi-label">مسودة</div></div>
+            <div class="kpi-card"><div class="kpi-icon" style="color:var(--purple)"><i class="fas fa-clock"></i></div><div class="kpi-value" id="akpiSched">-</div><div class="kpi-label">مجدول</div></div>
+            <div class="kpi-card"><div class="kpi-icon" style="color:var(--blue)"><i class="fas fa-eye"></i></div><div class="kpi-value" id="akpiVisits">-</div><div class="kpi-label">إجمالي الزيارات</div></div>
+            <div class="kpi-card"><div class="kpi-icon" style="color:var(--emerald)"><i class="fas fa-calendar-week"></i></div><div class="kpi-value" id="akpiVisits28">-</div><div class="kpi-label">آخر 28 يوم</div></div>
+          </div>
+          <!-- Charts Row -->
+          <div class="analytics-grid">
+            <div class="analytics-card">
+              <h4><i class="fas fa-chart-pie"></i> حالة المقالات</h4>
+              <div class="chart-wrap" id="analyticsPieChart"><div class="a-placeholder">جاري التحميل...</div></div>
+            </div>
+            <div class="analytics-card">
+              <h4><i class="fas fa-chart-bar"></i> النمو بالمقالات</h4>
+              <div class="chart-wrap" id="analyticsGrowthChart"><div class="a-placeholder">جاري التحميل...</div></div>
+            </div>
+            <div class="analytics-card">
+              <h4><i class="fas fa-chart-area"></i> الزيارات — آخر 7 أيام</h4>
+              <div class="chart-wrap" id="analyticsTraffic7"><div class="a-placeholder">بيانات الزيارات الحقيقية ستظهر بعد تفعيل أداة التحليلات.</div></div>
+            </div>
+            <div class="analytics-card">
+              <h4><i class="fas fa-chart-area"></i> الزيارات — آخر 28 يوم</h4>
+              <div class="chart-wrap" id="analyticsTraffic28"><div class="a-placeholder">بيانات الزيارات الحقيقية ستظهر بعد تفعيل أداة التحليلات.</div></div>
+            </div>
           </div>
         </div>
 
@@ -377,17 +439,17 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
           </div>
           <div class="form-group">
             <label>رابط قناة التيلجرام</label>
-            <input type="url" id="editTelegramChannel" value="https://t.me/td_arabi">
+            <input type="url" id="themeTelegramChannel" value="https://t.me/td_arabi">
             <div class="hint">الرابط المباشر لقناة التيلجرام</div>
           </div>
           <div class="form-group">
             <label>رابط إعادة التوجيه</label>
-            <input type="url" id="editTelegramRedirect" value="https://t.me/td_arabi">
+            <input type="url" id="themeTelegramRedirect" value="https://t.me/td_arabi">
             <div class="hint">صفحة وسيطة قبل التوجيه (تستخدم في وضع redirect)</div>
           </div>
           <div class="form-group">
             <label>وضع التيلجرام</label>
-            <select id="editTelegramMode">
+            <select id="themeTelegramMode">
               <option value="redirect">Redirect (صفحة وسيطة)</option>
               <option value="direct">Direct (رابط مباشر)</option>
             </select>
@@ -425,26 +487,173 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
       <!-- ===== SETTINGS ===== -->
       <section class="page" id="page-settings">
         <div class="page-title">الإعدادات <span class="sub">API keys والتكوين</span></div>
-        <div class="form-group">
-          <label>GitHub Token</label>
-          <input type="password" id="editGhToken" placeholder="ghp_..." style="direction:ltr;text-align:left;font-family:monospace">
-          <div class="hint">مطلوب للوصول إلى API. صلاحية: repo (public repo access)</div>
+
+        <!-- === Core === -->
+        <div class="settings-collapsible open">
+          <div class="sc-header" onclick="this.parentNode.classList.toggle('open')"><i class="fas fa-key"></i> الإعدادات الأساسية <i class="fas fa-chevron-left sc-arrow"></i></div>
+          <div class="sc-body">
+            <div class="form-group">
+              <label>GitHub Token</label>
+              <input type="password" id="editGhToken" placeholder="ghp_..." style="direction:ltr;text-align:left;font-family:monospace">
+              <div class="hint">مطلوب للوصول إلى API. صلاحية: repo (public repo access)</div>
+            </div>
+            <div class="form-group">
+              <label>n8n Webhook URL</label>
+              <input type="url" id="editWebhookUrl" placeholder="https://your-n8n.com/webhook/tdn-run" style="direction:ltr;text-align:left">
+              <div class="hint">لتشغيل الوركفلو من لوحة التحكم</div>
+            </div>
+            <div class="form-group">
+              <label>GitHub Proxy URL</label>
+              <input type="url" id="editGhProxyUrl" placeholder="https://your-proxy.com:3001" style="direction:ltr;text-align:left">
+              <div class="hint">بروكسي GitHub App (اختياري — يحل محل التوكن)</div>
+            </div>
+            <div class="form-group">
+              <label>كلمة المرور (تغيير)</label>
+              <input type="password" id="editAdminPass" placeholder="اترك فارغاً للإبقاء على الحالية" autocomplete="new-password">
+              <div class="hint">سيتم تخزينها بشكل آمن (SHA-256)</div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label>n8n Webhook URL</label>
-          <input type="url" id="editWebhookUrl" placeholder="https://your-n8n.com/webhook/tdn-run" style="direction:ltr;text-align:left">
-          <div class="hint">لتشغيل الوركفلو من لوحة التحكم</div>
+
+        <!-- === Analytics Integrations === -->
+        <div class="settings-collapsible open">
+          <div class="sc-header" onclick="this.parentNode.classList.toggle('open')"><i class="fas fa-chart-line"></i> تحليلات المواقع <i class="fas fa-chevron-left sc-arrow"></i></div>
+          <div class="sc-body">
+            <div class="form-group">
+              <label>Google Analytics 4 — GA4 Measurement ID</label>
+              <input type="text" id="editGa4Id" placeholder="G-XXXXXXXXXX" style="direction:ltr;text-align:left;font-family:monospace">
+              <div class="hint">من Google Analytics: انتقل إلى Admin → Data Streams → اختر موقعك → انسخ Measurement ID.<br>الغرض: تتبع الزوار والسلوك والصفحات الأكثر زيارة.<br>مثال: <code>G-ABCDEF1234</code></div>
+            </div>
+            <div class="form-group">
+              <label>Google Search Console — Verification Meta Tag</label>
+              <input type="text" id="editGscMeta" placeholder="&lt;meta name=&quot;google-site-verification&quot; content=&quot;...&quot;&gt;" style="direction:ltr;text-align:left;font-family:monospace">
+              <div class="hint">من Search Console: أضف الموقع → اختيار طريقة HTML → انسخ محتوى content فقط.<br>الغرض: مراقبة أداء الموقع في نتائج البحث.<br>مثال: <code>abcdef1234567890abcdef1234567890</code></div>
+            </div>
+            <div class="form-group">
+              <label>Google Search Console — Property URL</label>
+              <input type="url" id="editGscUrl" placeholder="https://example.com" style="direction:ltr;text-align:left">
+              <div class="hint">رابط الموقع الكامل كما يظهر في Search Console.<br>الغرض: ربط Search Console Dashboard بلوحة التحكم مستقبلاً.<br>مثال: <code>https://techdosenews.com</code></div>
+            </div>
+            <div class="form-group">
+              <label>Microsoft Clarity — Project ID</label>
+              <input type="text" id="editClarityId" placeholder="Clarity Project ID" style="direction:ltr;text-align:left;font-family:monospace">
+              <div class="hint">من Clarity: أنشئ مشروع → انسخ Project ID من كود التتبع.<br>الغرض: تسجيل جلسات المستخدمين وخرائط الحرارة (Heatmaps).<br>مثال: <code>abcdef1234</code></div>
+            </div>
+            <div class="form-group">
+              <label>GoatCounter — Endpoint</label>
+              <input type="url" id="editGoatcounter" placeholder="https://your-code.goatcounter.com" style="direction:ltr;text-align:left">
+              <div class="hint">من GoatCounter: سجل → انسخ رابط الموقع من Dashboard.<br>الغرض: تحليلات خفيفة وسريعة بدون تأثير على الأداء.<br>مثال: <code>https://tdn.goatcounter.com</code></div>
+            </div>
+            <div class="form-group">
+              <label>Plausible Analytics — Domain</label>
+              <input type="text" id="editPlausibleDomain" placeholder="example.com" style="direction:ltr;text-align:left">
+              <div class="hint">من Plausible: أضف موقعك → انسخ اسم الدومين.<br>الغرض: تحليلات خصوصية مفتوحة المصدر.<br>مثال: <code>techdosenews.com</code></div>
+            </div>
+            <div class="form-group">
+              <label>Umami — Website ID</label>
+              <input type="text" id="editUmamiId" placeholder="Umami Website ID" style="direction:ltr;text-align:left;font-family:monospace">
+              <div class="hint">من Umami: Settings → Websites → انسخ Website ID.<br>الغرض: تحليلات ذات استضافة ذاتية (Self-hosted).<br>مثال: <code>abc12345-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code></div>
+            </div>
+            <div class="form-group">
+              <label>Umami — Script URL</label>
+              <input type="url" id="editUmamiScript" placeholder="https://your-umami.com/script.js" style="direction:ltr;text-align:left">
+              <div class="hint">رابط ملف <code>script.js</code> الخاص بخادم Umami الخاص بك.<br>مثال: <code>https://analytics.example.com/script.js</code></div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label>GitHub Proxy URL</label>
-          <input type="url" id="editGhProxyUrl" placeholder="https://your-proxy.com:3001" style="direction:ltr;text-align:left">
-          <div class="hint">بروكسي GitHub App (اختياري — يحل محل التوكن)</div>
+
+        <!-- === Notification Integrations === -->
+        <div class="settings-collapsible">
+          <div class="sc-header" onclick="this.parentNode.classList.toggle('open')"><i class="fas fa-bell"></i> الإشعارات والتكامل الخارجي <i class="fas fa-chevron-left sc-arrow"></i></div>
+          <div class="sc-body">
+            <div class="form-group">
+              <label>Telegram — Bot Token</label>
+              <input type="password" id="editTelegramBot" placeholder="123456:ABC-DEF1234" style="direction:ltr;text-align:left;font-family:monospace">
+              <div class="hint">من BotFather: /newbot → انسخ التوكن.<br>الغرض: إرسال المقالات الجديدة تلقائياً للقناة.</div>
+            </div>
+            <div class="form-group">
+              <label>Telegram — Channel ID</label>
+              <input type="text" id="editTelegramChannelId" placeholder="@channel_username" style="direction:ltr;text-align:left">
+              <div class="hint">آيدي القناة (يبدأ بـ @).<br>الغرض: تحديد وجهة الإرسال.</div>
+            </div>
+            <div class="form-group">
+              <label>Telegram — Channel URL</label>
+              <input type="url" id="editTelegramChannel" placeholder="https://t.me/td_arabi" style="direction:ltr;text-align:left">
+              <div class="hint">رابط القناة العامة (زر متابعة).</div>
+            </div>
+            <div class="form-group">
+              <label>Telegram — Redirect URL</label>
+              <input type="url" id="editTelegramRedirect" placeholder="https://t.me/td_arabi" style="direction:ltr;text-align:left">
+              <div class="hint">رابط إعادة التوجيه بعد النقر على زر التيلجرام.</div>
+            </div>
+            <div class="form-group">
+              <label>Telegram — Mode</label>
+              <select id="editTelegramMode" style="direction:ltr">
+                <option value="redirect">redirect</option>
+                <option value="bot">bot</option>
+              </select>
+              <div class="hint">redirect = رابط مباشر، bot = إرسال عبر البوت.</div>
+            </div>
+            <div class="form-group">
+              <label>Discord — Webhook URL</label>
+              <input type="url" id="editDiscordWebhook" placeholder="https://discord.com/api/webhooks/..." style="direction:ltr;text-align:left">
+              <div class="hint">من Discord: Server Settings → Integrations → Webhooks → New Webhook → انسخ الرابط.<br>الغرض: إشعارات المقالات الجديدة على سيرفر ديسكورد.</div>
+            </div>
+            <div class="form-group">
+              <label>Slack — Webhook URL</label>
+              <input type="url" id="editSlackWebhook" placeholder="https://hooks.slack.com/services/..." style="direction:ltr;text-align:left">
+              <div class="hint">من Slack: <a href="https://api.slack.com/messaging/webhooks" target="_blank">أنشئ Incoming Webhook</a> → انسخ الرابط.<br>الغرض: إشعارات المقالات الجديدة على سلاك.</div>
+            </div>
+            <div class="form-group">
+              <label>Email — Notification Address</label>
+              <input type="email" id="editEmailNotif" placeholder="admin@example.com" style="direction:ltr;text-align:left">
+              <div class="hint">الغرض: إرسال إشعارات البريد عند نشر مقالات جديدة (يتطلب خدمة SMTP خارجية).</div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label>كلمة المرور (تغيير)</label>
-          <input type="password" id="editAdminPass" placeholder="اترك فارغاً للإبقاء على الحالية" autocomplete="new-password">
-          <div class="hint">سيتم تخزينها بشكل آمن (SHA-256)</div>
+
+        <!-- === SEO & Domain Readiness === -->
+        <div class="settings-collapsible">
+          <div class="sc-header" onclick="this.parentNode.classList.toggle('open')"><i class="fas fa-globe"></i> تحسين محركات البحث والاستعداد للنقل <i class="fas fa-chevron-left sc-arrow"></i></div>
+          <div class="sc-body">
+            <div class="form-group">
+              <label>Site URL</label>
+              <input type="url" id="editSiteUrl" placeholder="https://techdosenews.com" style="direction:ltr;text-align:left">
+              <div class="hint">الرابط النهائي للموقع بعد شراء الدومين.<br>الغرض: استخدامه في الـ sitemap والـ canonical والـ RSS.<br>مثال: <code>https://techdosenews.com</code></div>
+            </div>
+            <div class="form-group">
+              <label>Canonical Domain</label>
+              <input type="text" id="editCanonicalDomain" placeholder="techdosenews.com" style="direction:ltr;text-align:left">
+              <div class="hint">الدومين الأساسي (بدون www).<br>الغرض: منع مشاكل المحتوى المكرر (Duplicate Content).<br>مثال: <code>techdosenews.com</code></div>
+            </div>
+            <div class="form-group">
+              <label>robots.txt URL</label>
+              <input type="url" id="editRobotsUrl" placeholder="https://techdosenews.com/robots.txt" style="direction:ltr;text-align:left">
+              <div class="hint">الرابط الكامل لملف robots.txt.<br>الغرض: توجيه محركات البحث لأرشفة الموقع.<br>مثال: <code>https://techdosenews.com/robots.txt</code></div>
+            </div>
+            <div class="form-group">
+              <label>sitemap.xml URL</label>
+              <input type="url" id="editSitemapUrl" placeholder="https://techdosenews.com/sitemap.xml" style="direction:ltr;text-align:left">
+              <div class="hint">الرابط الكامل لملف sitemap.xml.<br>الغرض: تسريع فهرسة الموقع.<br>مثال: <code>https://techdosenews.com/sitemap.xml</code></div>
+            </div>
+            <div class="form-group">
+              <label>Google Site Verification</label>
+              <input type="text" id="editGoogleVerify" placeholder="google-xxxxxxxxxxx" style="direction:ltr;text-align:left;font-family:monospace">
+              <div class="hint">من Google Search Console: إضافة ملكية الموقع → طريقة DNS أو HTML.<br>الغرض: إثبات ملكية الموقع لجوجل.<br>مثال: <code>google-abc123def456</code></div>
+            </div>
+            <div class="form-group">
+              <label>Bing Site Verification</label>
+              <input type="text" id="editBingVerify" placeholder="bing-xxxxxxxxxxx" style="direction:ltr;text-align:left;font-family:monospace">
+              <div class="hint">من Bing Webmaster Tools: أضف موقعك → انسخ علامة التحقق.<br>الغرض: إثبات ملكية الموقع لبنج.<br>مثال: <code>bing-abc123def456</code></div>
+            </div>
+            <div class="form-group">
+              <label>Yandex Site Verification</label>
+              <input type="text" id="editYandexVerify" placeholder="yandex-xxxxxxxxxxx" style="direction:ltr;text-align:left;font-family:monospace">
+              <div class="hint">من Yandex Webmaster: أضف موقعك → انسخ علامة التحقق.<br>الغرض: إثبات ملكية الموقع لياندكس.<br>مثال: <code>yandex-abc123def456</code></div>
+            </div>
+          </div>
         </div>
+
         <div class="toolbar" style="margin-top:12px">
           <button class="btn btn-primary" id="saveSettingsBtn"><i class="fas fa-save"></i> حفظ الإعدادات</button>
           <button class="btn btn-outline" id="testGhBtn"><i class="fas fa-plug"></i> اختبار الاتصال</button>
@@ -537,10 +746,33 @@ const DEFAULT_CONFIG = {
   telegram_channel: 'https://t.me/td_arabi',
   telegram_redirect: 'https://t.me/td_arabi',
   telegram_mode: 'redirect',
+  telegramBotToken: '',
+  telegramChannelId: '',
   facebook: 'https://facebook.com/techdosenews',
   twitter: 'https://x.com/techdosenews',
   webhookUrl: 'http://localhost:5678/webhook/tdn-run',
   ghProxyUrl: '',
+  // Analytics Integrations
+  ga4MeasurementId: '',
+  searchConsoleMetaTag: '',
+  searchConsolePropertyUrl: '',
+  clarityProjectId: '',
+  goatcounterEndpoint: '',
+  plausibleDomain: '',
+  umamiWebsiteId: '',
+  umamiScriptUrl: '',
+  // Notification Integrations
+  discordWebhook: '',
+  slackWebhook: '',
+  emailNotification: '',
+  // SEO & Domain Readiness
+  siteUrl: '',
+  canonicalDomain: '',
+  robotsUrl: '',
+  sitemapUrl: '',
+  googleVerification: '',
+  bingVerification: '',
+  yandexVerification: '',
   colors: {
     navy: '#0D1B2A', blueDark: '#1B4F72', blue: '#2E86C1',
     gold: '#F39C12', lightBlue: '#D6EAF8', bg: '#F4F6F7',
@@ -1065,7 +1297,7 @@ function applyPendingState() {
   if (!state) return;
   delete window._pendingState;
   if (state.page === 'articles') renderArticles();
-  if (state.page === 'dashboard') { renderDashboard(); renderInsights(); }
+  if (state.page === 'dashboard') { renderDashboard(); renderInsights(); renderAnalyticsDashboard(); }
   if (state.page === 'categories') renderCategories();
   if (state.page === 'editor' && state.editId) {
     setTimeout(() => editArticle(state.editId), 100);
@@ -1231,7 +1463,135 @@ async function renderDashboard() {
     </tr>`).join('')}</tbody></table>`;
 }
 
-/* Articles List */
+/* ============================================================
+   Analytics Abstraction Layer
+   ============================================================ */
+
+/**
+ * getAnalyticsProvider — Returns the configured analytics provider object.
+ * If no provider is configured, returns null so fallback text is shown.
+ * Providers checked in priority: GoatCounter, GA4, Plausible, Umami.
+ */
+function getAnalyticsProvider() {
+  if (CONFIG.goatcounterEndpoint) {
+    return { name: 'goatcounter', endpoint: CONFIG.goatcounterEndpoint, label: 'GoatCounter' };
+  }
+  if (CONFIG.ga4MeasurementId) {
+    return { name: 'ga4', measurementId: CONFIG.ga4MeasurementId, label: 'Google Analytics 4' };
+  }
+  if (CONFIG.plausibleDomain) {
+    return { name: 'plausible', domain: CONFIG.plausibleDomain, label: 'Plausible' };
+  }
+  if (CONFIG.umamiWebsiteId && CONFIG.umamiScriptUrl) {
+    return { name: 'umami', websiteId: CONFIG.umamiWebsiteId, scriptUrl: CONFIG.umamiScriptUrl, label: 'Umami' };
+  }
+  return null;
+}
+
+/* ============================================================
+   Analytics Dashboard
+   ============================================================ */
+
+async function renderAnalyticsDashboard() {
+  if (!DB.length) {
+    document.querySelectorAll('#analyticsKpiRow .kpi-value').forEach(el => el.textContent = '-');
+    return;
+  }
+
+  // --- KPI Cards ---
+  const total = DB.length;
+  const published = INDEX.length;
+  const drafts = DB.filter(a => !INDEX.some(i => String(i.id) === String(a.id)) && (!a.status || a.status === 'draft')).length;
+  const scheduled = DB.filter(a => a.status === 'scheduled').length;
+  document.getElementById('akpiTotal').textContent = total;
+  document.getElementById('akpiPub').textContent = published;
+  document.getElementById('akpiDraft').textContent = drafts;
+  document.getElementById('akpiSched').textContent = scheduled;
+
+  // Visits from views_db.json
+  let totalVisits = 0, visits28 = 0;
+  try {
+    if (GH_TOKEN || getProxyUrl()) {
+      const vdb = await ghGetJson('views_db.json').catch(() => null);
+      if (vdb && vdb.data) {
+        const entries = Object.entries(vdb.data);
+        totalVisits = entries.reduce((sum, [, v]) => sum + (v.count || 0), 0);
+        const cutoff28 = Date.now() - 28 * 86400000;
+        visits28 = entries.reduce((sum, [, v]) => {
+          if (v.lastVisit && new Date(v.lastVisit).getTime() >= cutoff28) return sum + (v.count || 0);
+          return sum;
+        }, 0);
+      }
+    }
+  } catch {}
+  document.getElementById('akpiVisits').textContent = totalVisits || '—';
+  document.getElementById('akpiVisits28').textContent = visits28 || '—';
+
+  // --- Pie Chart: Article Status ---
+  const pieEl = document.getElementById('analyticsPieChart');
+  const statuses = [
+    { label: 'منشور', count: published, color: '#1E8449' },
+    { label: 'مسودة', count: drafts, color: '#F39C12' },
+    { label: 'مجدول', count: scheduled, color: '#8E44AD' }
+  ];
+  const totalStatus = published + drafts + scheduled || 1;
+  pieEl.innerHTML = '<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center;padding:8px 0">' +
+    '<div style="position:relative;width:100px;height:100px">' +
+    '<svg width="100" height="100" viewBox="0 0 42 42">' +
+    statuses.map((s, i) => {
+      const pct = s.count / totalStatus;
+      if (pct === 0) return '';
+      const offset = statuses.slice(0, i).reduce((sum, ss) => sum + (ss.count / totalStatus) * 100, 0);
+      const len = pct * 100;
+      return `<circle cx="21" cy="21" r="15.915" fill="none" stroke="${s.color}" stroke-width="3" stroke-dasharray="${len} ${100-len}" stroke-dashoffset="${-offset}" transform="rotate(-90 21 21)" opacity="0.85"/>`;
+    }).join('') +
+    '</svg></div><div>' +
+    statuses.map(s => `<div style="display:flex;align-items:center;gap:6px;font-size:.75rem;margin:2px 0"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${s.color}"></span> ${s.label}: <strong>${s.count}</strong></div>`).join('') +
+    '</div></div>';
+
+  // --- Growth Chart (articles per month, last 6) ---
+  const growthEl = document.getElementById('analyticsGrowthChart');
+  const monthCounts = {};
+  DB.forEach(a => {
+    if (!a.created_at) return;
+    const d = new Date(a.created_at);
+    const key = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+    monthCounts[key] = (monthCounts[key] || 0) + 1;
+  });
+  const monthEntries = Object.entries(monthCounts).sort().slice(-6);
+  const maxMonth = Math.max(...monthEntries.map(e => e[1]), 1);
+  if (monthEntries.length) {
+    growthEl.innerHTML = '<div class="chart-bar-wrap">' +
+      monthEntries.map(([m, c]) => {
+        const pct = (c / maxMonth * 100).toFixed(0);
+        const names = { '2026-05':'مايو','2026-04':'أبريل','2026-03':'مارس','2026-06':'يونيو','2026-07':'يوليو','2026-08':'أغسطس','2026-09':'سبتمبر','2026-10':'أكتوبر','2026-11':'نوفمبر','2026-12':'ديسمبر' };
+        const label = names[m] || m.split('-')[1] + '/' + m.split('-')[0].slice(2);
+        return `<div class="chart-bar" style="height:${pct}%;background:var(--primary);position:relative" title="${c} مقال"><span class="chart-bar-label">${label}</span></div>`;
+      }).join('') +
+      '</div>';
+  } else {
+    growthEl.innerHTML = '<div class="a-placeholder">لا توجد بيانات كافية</div>';
+  }
+
+  // --- Traffic Charts (7 and 28 day — placeholder unless provider configured) ---
+  const provider = getAnalyticsProvider();
+  const traffic7El = document.getElementById('analyticsTraffic7');
+  const traffic28El = document.getElementById('analyticsTraffic28');
+
+  if (provider) {
+    traffic7El.innerHTML = `<div class="a-placeholder" style="padding:10px 0">
+      <i class="fas fa-check-circle" style="color:var(--green)"></i> متصل بـ <strong>${provider.label}</strong><br>
+      <span style="font-size:.7rem;color:var(--text3)">سيتم عرض بيانات الزيارات الحقيقية بعد ربط API التحليلات.</span>
+    </div>`;
+    traffic28El.innerHTML = `<div class="a-placeholder" style="padding:10px 0">
+      <i class="fas fa-check-circle" style="color:var(--green)"></i> متصل بـ <strong>${provider.label}</strong><br>
+      <span style="font-size:.7rem;color:var(--text3)">بيانات 28 يوماً متاحة بعد تجميع كافٍ للبيانات.</span>
+    </div>`;
+  } else {
+    traffic7El.innerHTML = '<div class="a-placeholder">بيانات الزيارات الحقيقية ستظهر بعد تفعيل أداة التحليلات.</div>';
+    traffic28El.innerHTML = '<div class="a-placeholder">بيانات الزيارات الحقيقية ستظهر بعد تفعيل أداة التحليلات.</div>';
+  }
+}
 
 
 async function loadArticles() {
@@ -1631,6 +1991,35 @@ async function saveSettings() {
   if (newProxy !== undefined) CONFIG.ghProxyUrl = newProxy;
   if (newPass) CONFIG.passwordHash = await sha256(newPass);
 
+  // Analytics
+  CONFIG.ga4MeasurementId = document.getElementById('editGa4Id').value.trim();
+  CONFIG.searchConsoleMetaTag = document.getElementById('editGscMeta').value.trim();
+  CONFIG.searchConsolePropertyUrl = document.getElementById('editGscUrl').value.trim();
+  CONFIG.clarityProjectId = document.getElementById('editClarityId').value.trim();
+  CONFIG.goatcounterEndpoint = document.getElementById('editGoatcounter').value.trim();
+  CONFIG.plausibleDomain = document.getElementById('editPlausibleDomain').value.trim();
+  CONFIG.umamiWebsiteId = document.getElementById('editUmamiId').value.trim();
+  CONFIG.umamiScriptUrl = document.getElementById('editUmamiScript').value.trim();
+
+  // Notifications
+  CONFIG.telegramBotToken = document.getElementById('editTelegramBot').value.trim();
+  CONFIG.telegramChannelId = document.getElementById('editTelegramChannelId').value.trim();
+  CONFIG.telegram_channel = document.getElementById('editTelegramChannel').value.trim();
+  CONFIG.telegram_redirect = document.getElementById('editTelegramRedirect').value.trim();
+  CONFIG.telegram_mode = document.getElementById('editTelegramMode').value;
+  CONFIG.discordWebhook = document.getElementById('editDiscordWebhook').value.trim();
+  CONFIG.slackWebhook = document.getElementById('editSlackWebhook').value.trim();
+  CONFIG.emailNotification = document.getElementById('editEmailNotif').value.trim();
+
+  // SEO & Domain
+  CONFIG.siteUrl = document.getElementById('editSiteUrl').value.trim();
+  CONFIG.canonicalDomain = document.getElementById('editCanonicalDomain').value.trim();
+  CONFIG.robotsUrl = document.getElementById('editRobotsUrl').value.trim();
+  CONFIG.sitemapUrl = document.getElementById('editSitemapUrl').value.trim();
+  CONFIG.googleVerification = document.getElementById('editGoogleVerify').value.trim();
+  CONFIG.bingVerification = document.getElementById('editBingVerify').value.trim();
+  CONFIG.yandexVerification = document.getElementById('editYandexVerify').value.trim();
+
   await saveConfigToGh();
   const status = document.getElementById('settingsStatus');
   status.innerHTML = `<span style="color:var(--green)"><i class="fas fa-check-circle"></i> تم حفظ الإعدادات</span>`;
@@ -1694,6 +2083,37 @@ async function afterLogin() {
   document.getElementById('editTwitterUrl').value = CONFIG.twitter || '';
   document.getElementById('editCustomCss').value = CONFIG.customCss || '';
   document.getElementById('editCustomJs').value = CONFIG.customJs || '';
+  // Theme tab fields
+  document.getElementById('editSiteName').value = CONFIG.siteName || '';
+  document.getElementById('editSiteDesc').value = CONFIG.siteDesc || '';
+  document.getElementById('themeTelegramChannel').value = CONFIG.telegram_channel || '';
+  document.getElementById('themeTelegramRedirect').value = CONFIG.telegram_redirect || '';
+  document.getElementById('themeTelegramMode').value = CONFIG.telegram_mode || 'redirect';
+  document.getElementById('editFacebookUrl').value = CONFIG.facebook || '';
+  document.getElementById('editTwitterUrl').value = CONFIG.twitter || '';
+  // Analytics
+  document.getElementById('editGa4Id').value = CONFIG.ga4MeasurementId || '';
+  document.getElementById('editGscMeta').value = CONFIG.searchConsoleMetaTag || '';
+  document.getElementById('editGscUrl').value = CONFIG.searchConsolePropertyUrl || '';
+  document.getElementById('editClarityId').value = CONFIG.clarityProjectId || '';
+  document.getElementById('editGoatcounter').value = CONFIG.goatcounterEndpoint || '';
+  document.getElementById('editPlausibleDomain').value = CONFIG.plausibleDomain || '';
+  document.getElementById('editUmamiId').value = CONFIG.umamiWebsiteId || '';
+  document.getElementById('editUmamiScript').value = CONFIG.umamiScriptUrl || '';
+  // Notifications
+  document.getElementById('editTelegramBot').value = CONFIG.telegramBotToken || '';
+  document.getElementById('editTelegramChannelId').value = CONFIG.telegramChannelId || '';
+  document.getElementById('editDiscordWebhook').value = CONFIG.discordWebhook || '';
+  document.getElementById('editSlackWebhook').value = CONFIG.slackWebhook || '';
+  document.getElementById('editEmailNotif').value = CONFIG.emailNotification || '';
+  // SEO & Domain
+  document.getElementById('editSiteUrl').value = CONFIG.siteUrl || '';
+  document.getElementById('editCanonicalDomain').value = CONFIG.canonicalDomain || '';
+  document.getElementById('editRobotsUrl').value = CONFIG.robotsUrl || '';
+  document.getElementById('editSitemapUrl').value = CONFIG.sitemapUrl || '';
+  document.getElementById('editGoogleVerify').value = CONFIG.googleVerification || '';
+  document.getElementById('editBingVerify').value = CONFIG.bingVerification || '';
+  document.getElementById('editYandexVerify').value = CONFIG.yandexVerification || '';
 
   // Restore UI state from before refresh
   restoreUIState();
@@ -1711,7 +2131,7 @@ async function afterLogin() {
       }
       navigateTo(page);
       // Refresh data on page switch
-      if (page === 'dashboard') { renderDashboard(); renderInsights(); }
+      if (page === 'dashboard') { renderDashboard(); renderInsights(); renderAnalyticsDashboard(); }
       if (page === 'articles') renderArticles();
       if (page === 'categories') renderCategories();
       if (page === 'themes') renderThemes();
@@ -1803,9 +2223,9 @@ async function afterLogin() {
   document.getElementById('saveSiteInfoBtn').onclick = async () => {
     CONFIG.siteName = document.getElementById('editSiteName').value;
     CONFIG.siteDesc = document.getElementById('editSiteDesc').value;
-    CONFIG.telegram_channel = document.getElementById('editTelegramChannel').value;
-    CONFIG.telegram_redirect = document.getElementById('editTelegramRedirect').value;
-    CONFIG.telegram_mode = document.getElementById('editTelegramMode').value;
+    CONFIG.telegram_channel = document.getElementById('themeTelegramChannel').value;
+    CONFIG.telegram_redirect = document.getElementById('themeTelegramRedirect').value;
+    CONFIG.telegram_mode = document.getElementById('themeTelegramMode').value;
     CONFIG.facebook = document.getElementById('editFacebookUrl').value;
     CONFIG.twitter = document.getElementById('editTwitterUrl').value;
     try { await saveConfigToGh(); showToast('تم حفظ معلومات الموقع', 'success'); } catch (e) { showToast(e.message, 'error'); }
@@ -1911,6 +2331,7 @@ async function afterLogin() {
   // Initial render
   renderDashboard();
   renderInsights();
+  renderAnalyticsDashboard();
   renderArticles();
   renderCategories();
   renderThemes();

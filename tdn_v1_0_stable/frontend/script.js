@@ -1,44 +1,4 @@
 const BASE = '/techdosenews/data';
-
-/* Telegram — Single Source of Truth */
-let TELEGRAM_CONFIG = null;
-function getTelegramUrl() {
-  const mode = TELEGRAM_CONFIG?.telegram_mode || 'redirect';
-  if (mode === 'direct') {
-    return TELEGRAM_CONFIG?.telegram_channel || 'https://t.me/td_arabi';
-  }
-  // mode === 'redirect' or any other value
-  if (TELEGRAM_CONFIG?.telegram_redirect) return TELEGRAM_CONFIG.telegram_redirect;
-  // fallback: future td-arabi.com domain
-  if (TELEGRAM_CONFIG?.telegram_channel) return TELEGRAM_CONFIG.telegram_channel;
-  return 'https://t.me/td_arabi';
-}
-
-async function loadTelegramConfig() {
-  try {
-    const url = 'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/admin_config.json?t=' + Date.now();
-    const res = await fetch(url);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const cfg = await res.json();
-    TELEGRAM_CONFIG = {
-      telegram_channel: cfg.telegram_channel || 'https://t.me/td_arabi',
-      telegram_redirect: cfg.telegram_redirect || cfg.telegram || '',
-      telegram_mode: cfg.telegram_mode || 'redirect'
-    };
-  } catch (e) {
-    TELEGRAM_CONFIG = {
-      telegram_channel: 'https://t.me/td_arabi',
-      telegram_redirect: 'https://td-arabi-redirect.blogspot.com/',
-      telegram_mode: 'redirect'
-    };
-  }
-  // Update all Telegram buttons on the page
-  const url = getTelegramUrl();
-  document.querySelectorAll('.sb-telegram-btn').forEach(el => { el.href = url; });
-}
-
-// Load Telegram config on every page
-document.addEventListener('DOMContentLoaded', loadTelegramConfig);
 let allArticles = [];
 let filteredArticles = [];
 const PAGE_SIZE = 9;

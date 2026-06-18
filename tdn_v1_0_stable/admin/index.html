@@ -475,22 +475,11 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
             <textarea id="editSiteDesc" rows="3">Ù…Ù†ØµØ© Ø¥Ø®Ø¨Ø§Ø±ÙŠØ© Ø¹Ø±Ø¨ÙŠØ© Ù…ØªØ®ØµØµØ© ÙÙŠ Ø£Ø®Ø¨Ø§Ø± Ø§Ù„ØªÙƒÙ†ÙˆÙ„ÙˆØ¬ÙŠØ§ ÙˆØ§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ</textarea>
           </div>
           <div class="form-group">
-            <label>رابط قناة التليجرام (الوجهة الفعلية)</label>
-            <input type="url" id="editTelegramChannel" value="https://t.me/td_arabi">
+            <label>Ø±Ø§Ø¨Ø· Ø§Ù„ØªÙŠÙ„Ø¬Ø±Ø§Ù…</label>
+            <input type="url" id="editTelegramUrl" value="https://td-arabi-redirect.blogspot.com/">
           </div>
           <div class="form-group">
-            <label>رابط إعادة التوجيه (Blogger)</label>
-            <input type="url" id="editTelegramRedirect" value="https://td-arabi-redirect.blogspot.com/">
-          </div>
-          <div class="form-group">
-            <label>وضع التوجيه</label>
-            <select id="editTelegramMode">
-              <option value="redirect">Redirect (Blogger → Telegram)</option>
-              <option value="direct">Direct (Telegram مباشر)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>رابط فيسبوك</label>
+            <label>Ø±Ø§Ø¨Ø· ÙÙŠØ³Ø¨ÙˆÙƒ</label>
             <input type="url" id="editFacebookUrl" value="https://facebook.com/">
           </div>
           <div class="form-group">
@@ -744,16 +733,6 @@ async function loadConfig() {
   try {
     const j = await ghGetJson(CONFIG_PATH);
     CONFIG = { ...DEFAULT_CONFIG, ...j.data };
-    // Migrate old telegram key to new structure
-    if (CONFIG.telegram && !CONFIG.telegram_redirect) {
-      CONFIG.telegram_redirect = CONFIG.telegram;
-    }
-    if (!CONFIG.telegram_channel) {
-      CONFIG.telegram_channel = 'https://t.me/td_arabi';
-    }
-    if (!CONFIG.telegram_mode) {
-      CONFIG.telegram_mode = 'redirect';
-    }
   } catch(e) {
     console.error('loadConfig failed:', e);
     CONFIG = { ...DEFAULT_CONFIG };
@@ -1544,7 +1523,7 @@ async function startEditorIfNeeded() {
 
 /* Telegram */
 async function sendToTelegram(article) {
-  if (!CONFIG.telegramBotToken) return;
+  if (!CONFIG.telegram) return;
   const tgToken = CONFIG.telegramBotToken;
   if (!tgToken) {
     return showToast('âš  ÙŠØ±Ø¬Ù‰ Ø¶Ø¨Ø· Telegram Bot Token ÙÙŠ Ø§Ù„Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø£ÙˆÙ„Ø§Ù‹', 'error');
@@ -1776,9 +1755,7 @@ async function afterLogin() {
   document.getElementById('editTgToken').value = CONFIG.telegramBotToken || '';
   document.getElementById('editSiteName').value = CONFIG.siteName || '';
   document.getElementById('editSiteDesc').value = CONFIG.siteDesc || '';
-  document.getElementById('editTelegramChannel').value = CONFIG.telegram_channel || 'https://t.me/td_arabi';
-  document.getElementById('editTelegramRedirect').value = CONFIG.telegram_redirect || '';
-  document.getElementById('editTelegramMode').value = CONFIG.telegram_mode || 'redirect';
+  document.getElementById('editTelegramUrl').value = CONFIG.telegram || '';
   document.getElementById('editFacebookUrl').value = CONFIG.facebook || '';
   document.getElementById('editTwitterUrl').value = CONFIG.twitter || '';
   document.getElementById('editCustomCss').value = CONFIG.customCss || '';
@@ -1909,11 +1886,7 @@ async function afterLogin() {
   document.getElementById('saveSiteInfoBtn').onclick = async () => {
     CONFIG.siteName = document.getElementById('editSiteName').value;
     CONFIG.siteDesc = document.getElementById('editSiteDesc').value;
-    CONFIG.telegram_channel = document.getElementById('editTelegramChannel').value;
-    CONFIG.telegram_redirect = document.getElementById('editTelegramRedirect').value;
-    CONFIG.telegram_mode = document.getElementById('editTelegramMode').value;
-    // Keep backward compat
-    CONFIG.telegram = CONFIG.telegram_redirect;
+    CONFIG.telegram = document.getElementById('editTelegramUrl').value;
     CONFIG.facebook = document.getElementById('editFacebookUrl').value;
     CONFIG.twitter = document.getElementById('editTwitterUrl').value;
     try { await saveConfigToGh(); showToast('ØªÙ… Ø­ÙØ¸ Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø§Ù„Ù…ÙˆÙ‚Ø¹', 'success'); } catch (e) { showToast(e.message, 'error'); }

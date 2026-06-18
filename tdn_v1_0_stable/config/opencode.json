@@ -1,0 +1,59 @@
+{
+"$schema": "https://opencode.ai/config.json",
+"model": "nvidia/nemotron-3-ultra",
+"agent": {
+"architect": {
+  "mode": "primary",
+  "model": "nvidia/nemotron-3-ultra"
+},
+
+"researcher": {
+  "description": "Researches technologies, frameworks, APIs, SEO, Google indexing, AI models and gathers information from documentation and web sources.",
+  "mode": "subagent",
+  "model": "moonshotai/kimi-k2.6",
+  "prompt": "You are a senior research specialist. Gather accurate information, summarize findings, compare alternatives, and provide concise recommendations.",
+  "permission": {
+    "edit": "deny",
+    "bash": "deny"
+  }
+},
+
+"reviewer": {
+  "description": "Reviews code quality, detects bugs, checks performance issues, validates architecture and security.",
+  "mode": "subagent",
+  "model": "deepseek/deepseek-v4-flash",
+  "prompt": "You are a senior software reviewer. Detect bugs, security issues, performance bottlenecks, duplicated logic, architectural problems and provide fixes.",
+  "permission": {
+    "edit": "deny"
+  }
+},
+
+"writer": {
+  "description": "Writes documentation, reports, implementation plans, markdown files and project summaries.",
+  "mode": "subagent",
+  "model": "glm/glm-5.1",
+  "prompt": "You are a technical writer. Create professional markdown reports, implementation plans, changelogs and project documentation."
+},
+
+"seo-auditor": {
+  "description": "Audits SEO, indexing readiness, metadata, schema markup, EEAT signals and Google compliance.",
+  "mode": "subagent",
+  "model": "deepseek/deepseek-v4-flash",
+  "prompt": "You are an SEO auditor. Evaluate indexing readiness, schema markup, metadata quality, EEAT, crawlability and provide action plans.",
+  "permission": {
+    "edit": "deny"
+  }
+},
+
+"frontend-auditor": {
+  "description": "Checks responsive design, mobile UX, layout issues and frontend quality.",
+  "mode": "subagent",
+  "model": "nvidia/nemotron-3-ultra",
+  "prompt": "You are a senior frontend engineer. Review layouts, responsiveness, accessibility and UX quality.",
+  "permission": {
+    "edit": "deny"
+  }
+}
+}
+}
+

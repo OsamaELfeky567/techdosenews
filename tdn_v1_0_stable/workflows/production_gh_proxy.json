@@ -1,0 +1,211 @@
+{
+  "name": "TDN GH Proxy [GITHUB-APP-READY]",
+  "nodes": [
+    {
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "parameters": {
+        "path": "gh-proxy",
+        "responseMode": "responseNode",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              { "name": "Access-Control-Allow-Origin", "value": "*" },
+              { "name": "Access-Control-Allow-Methods", "value": "POST, OPTIONS" },
+              { "name": "Access-Control-Allow-Headers", "value": "Content-Type" }
+            ]
+          }
+        },
+        "httpMethod": "POST"
+      },
+      "webhookId": "gh-proxy"
+    },
+    {
+      "name": "Route by Action",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1.1,
+      "position": [500, 300],
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.body.action }}",
+        "rules": {
+          "string": [
+            { "value": "put-content", "output": 0 },
+            { "value": "put-binary", "output": 1 },
+            { "value": "delete", "output": 2 },
+            { "value": "get", "output": 3 }
+          ]
+        }
+      }
+    },
+    {
+      "name": "PUT Content",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [750, 200],
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ 'https://api.github.com/repos/osamaelfeky567/techdosenews/contents/' + $json.body.path }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "message", "value": "={{ $json.body.message || 'Update from admin panel' }}" },
+            { "name": "content", "value": "={{ $json.body.content }}" },
+            { "name": "sha", "value": "={{ $json.body.sha || '' }}" }
+          ]
+        },
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "gh-pat",
+          "name": "GitHub PAT"
+        }
+      }
+    },
+    {
+      "name": "PUT Binary",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [750, 350],
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ 'https://api.github.com/repos/osamaelfeky567/techdosenews/contents/' + $json.body.path }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "message", "value": "={{ $json.body.message || 'Upload from admin panel' }}" },
+            { "name": "content", "value": "={{ $json.body.content }}" },
+            { "name": "sha", "value": "={{ $json.body.sha || '' }}" }
+          ]
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "gh-pat",
+          "name": "GitHub PAT"
+        }
+      }
+    },
+    {
+      "name": "Delete",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [750, 500],
+      "parameters": {
+        "method": "DELETE",
+        "url": "={{ 'https://api.github.com/repos/osamaelfeky567/techdosenews/contents/' + $json.body.path }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "message", "value": "={{ $json.body.message || 'Delete from admin panel' }}" },
+            { "name": "sha", "value": "={{ $json.body.sha }}" }
+          ]
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "gh-pat",
+          "name": "GitHub PAT"
+        }
+      }
+    },
+    {
+      "name": "GET Content",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [750, 650],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ 'https://api.github.com/repos/osamaelfeky567/techdosenews/contents/' + $json.body.path }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "gh-pat",
+          "name": "GitHub PAT"
+        }
+      }
+    },
+    {
+      "name": "Build Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.1,
+      "position": [1000, 300],
+      "parameters": {
+        "values": {
+          "string": [
+            { "name": "success", "value": "={{ $json.statusCode >= 200 && $json.statusCode < 300 }}" },
+            { "name": "data", "value": "={{ $json.body }}" },
+            { "name": "sha", "value": "={{ $json.body?.content?.sha }}" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "name": "Respond to Admin",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1250, 300],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              { "name": "Access-Control-Allow-Origin", "value": "*" }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [[{ "node": "Route by Action", "type": "main", "index": 0 }]]
+    },
+    "Route by Action": {
+      "main": [
+        [{ "node": "PUT Content", "type": "main", "index": 0 }],
+        [{ "node": "PUT Binary", "type": "main", "index": 0 }],
+        [{ "node": "Delete", "type": "main", "index": 0 }],
+        [{ "node": "GET Content", "type": "main", "index": 0 }]
+      ]
+    },
+    "PUT Content": {
+      "main": [[{ "node": "Build Response", "type": "main", "index": 0 }]]
+    },
+    "PUT Binary": {
+      "main": [[{ "node": "Build Response", "type": "main", "index": 0 }]]
+    },
+    "Delete": {
+      "main": [[{ "node": "Build Response", "type": "main", "index": 0 }]]
+    },
+    "GET Content": {
+      "main": [[{ "node": "Build Response", "type": "main", "index": 0 }]]
+    },
+    "Build Response": {
+      "main": [[{ "node": "Respond to Admin", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "timezone": "UTC",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": []
+}

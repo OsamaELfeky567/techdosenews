@@ -1,10 +1,8 @@
 ﻿{
   "passwordHash": "",
   "siteName": "Tech Dose News",
-  "siteDesc": "منصة إخبارية عربية متخصصة في أخبار التكنولوجيا والذكاء الاصطناعي",
-  "telegram_channel": "https://t.me/td_arabi",
-  "telegram_redirect": "https://td-arabi-redirect.blogspot.com/",
-  "telegram_mode": "redirect",
+  "siteDesc": "Ù…Ù†ØµØ© Ø¥Ø®Ø¨Ø§Ø±ÙŠØ© Ø¹Ø±Ø¨ÙŠØ© Ù…ØªØ®ØµØµØ© ÙÙŠ Ø£Ø®Ø¨Ø§Ø± Ø§Ù„ØªÙƒÙ†ÙˆÙ„ÙˆØ¬ÙŠØ§ ÙˆØ§Ù„Ø°ÙƒØ§Ø¡ Ø§Ù„Ø§ØµØ·Ù†Ø§Ø¹ÙŠ",
+  "telegram_channel": "https://t.me/td_arabi",\n  "telegram_redirect": "https://td-arabi-redirect.blogspot.com/",\n  "telegram_mode": "redirect",
   "facebook": "https://facebook.com/techdosenews",
   "twitter": "https://x.com/techdosenews",
   "webhookUrl": "http://localhost:5678/webhook/tdn-run",

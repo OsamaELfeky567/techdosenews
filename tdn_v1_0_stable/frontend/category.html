@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>التصنيفات — TD بالعربي</title>
+<meta name="robots" content="index,follow">
+<meta name="description" content="تصفح مقالات TD بالعربي حسب التصنيف">
+<link rel="canonical" href="https://osamaelfeky567.github.io/techdosenews/category.html">
+<link rel="alternate" hreflang="ar" href="https://osamaelfeky567.github.io/techdosenews/category.html">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:site_name" content="TD بالعربي">
+<meta property="og:title" content="التصنيفات — TD بالعربي">
+<meta property="og:description" content="تصفح مقالات التقنية والذكاء الاصطناعي حسب التصنيف">
+<meta property="og:image" content="https://osamaelfeky567.github.io/techdosenews/sandbox/og-image.png">
+<meta property="og:url" content="https://osamaelfeky567.github.io/techdosenews/category.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="التصنيفات — TD بالعربي">
+<meta name="twitter:description" content="تصفح مقالات التقنية والذكاء الاصطناعي حسب التصنيف">
+<meta name="twitter:image" content="https://osamaelfeky567.github.io/techdosenews/sandbox/og-image.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230F172A'/%3E%3Ctext x='50' y='68' font-family='Cairo,sans-serif' font-size='48' font-weight='900' fill='%232563EB' text-anchor='middle'%3ETD%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "TD بالعربي",
+  "url": "https://osamaelfeky567.github.io/techdosenews"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="sbOverlay" class="sb-overlay" onclick="closeMenu()"></div>
+<header class="sb-header">
+  <div class="sb-container">
+    <button class="sb-menu-btn" onclick="toggleMenu()" aria-label="القائمة">☰</button>
+    <a href="index.html" class="sb-logo">TD <span>بالعربي</span></a>
+    <div class="sb-header-info">
+      <span class="sb-header-date" id="sbLastUpdate"></span>
+      <span class="sb-header-time" id="sbHeaderTime"></span>
+    </div>
+    <nav class="sb-nav" id="sbNav">
+      <a href="index.html">الرئيسية</a>
+      <a href="category.html?cat=ai">الذكاء الاصطناعي</a>
+      <a href="category.html?cat=companies">شركات</a>
+      <a href="category.html?cat=security">أمن سيبراني</a>
+      <a href="category.html?cat=mobile">هواتف ذكية</a>
+      <a href="category.html?cat=ev">سيارات كهربائية</a>
+    </nav>
+    <button class="sb-search-btn" onclick="toggleSearch()" aria-label="بحث">🔍</button>
+  </div>
+</header>
+
+<div class="sb-search-bar" id="sbSearchBar">
+  <div class="sb-container">
+    <input type="text" id="sbSearchInput" placeholder="ابحث عن مقالات..." oninput="filterSearch(this.value)">
+    <button onclick="closeSearch()">إلغاء</button>
+  </div>
+</div>
+
+<main class="sb-category-main" id="sbCategoryMain">
+  <div class="sb-container">
+    <div class="sb-loading">جاري تحميل التصنيف...</div>
+  </div>
+</main>
+
+<footer class="sb-footer">
+  <div class="sb-container">
+    <div class="sb-footer-grid">
+      <div class="sb-footer-col">
+        <div class="sb-footer-logo">TD <span>بالعربي</span></div>
+        <p>منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي والشركات الناشئة.</p>
+      </div>
+      <div class="sb-footer-col">
+        <h4>التصنيفات</h4>
+        <ul id="sbFooterCategories"></ul>
+      </div>
+    </div>
+    <div class="sb-footer-bottom">
+      <p>© 2026 TD بالعربي — جميع الحقوق محفوظة.</p>
+      <p style="margin-top:8px;font-size:.8rem">
+        <a href="about.html">من نحن</a> · <a href="contact.html">اتصل بنا</a> · <a href="privacy.html">سياسة الخصوصية</a> · <a href="terms.html">شروط الاستخدام</a> · <a href="disclaimer.html">إخلاء مسؤولية</a>
+      </p>
+    </div>
+  </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

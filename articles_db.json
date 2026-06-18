@@ -1,0 +1,19 @@
+[
+  {
+    "id": "test-1781822760686",
+    "title_ar": "اختبار مقال جديد",
+    "title": "https://example.com",
+    "excerpt": "اختبار",
+    "body": "محتوى الاختبار",
+    "category": "tech",
+    "image": "",
+    "source": "",
+    "source_name": "",
+    "status": "published",
+    "featured": false,
+    "published_at": "2026-06-18T22:46:00.687Z",
+    "created_at": "2026-06-18T22:46:00.687Z",
+    "tags": [],
+    "hasEgyptImpact": false
+  }
+]

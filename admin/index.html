@@ -61,6 +61,7 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
 .btn-outline{background:none;border:1px solid var(--bg3);color:var(--text2)}
 .btn-outline:hover{border-color:var(--text);color:var(--text)}
 .btn-sm{padding:4px 10px;font-size:.8rem}
+.btn-xs{padding:2px 6px;font-size:.75rem}
 /* Table */
 .table-wrap{background:var(--surface);border-radius:var(--radius);border:1px solid var(--bg3);overflow-x:auto}
 .table-wrap table{width:100%;border-collapse:collapse}
@@ -279,6 +280,7 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
             <div style="display:flex;gap:8px;flex-wrap:wrap">
               <button type="button" class="btn btn-primary btn-sm" id="uploadImageBtn"><i class="fas fa-upload"></i> رفع صورة</button>
               <input type="file" id="articleImageUpload" accept="image/*" style="display:none">
+              <button type="button" class="btn btn-outline btn-sm" id="mediaLibraryBtn"><i class="fas fa-images"></i> مكتبة الصور</button>
               <button type="button" class="btn btn-red btn-sm" id="deleteImageBtn"><i class="fas fa-trash"></i> حذف الصورة</button>
             </div>
             <div id="uploadProgress" style="margin-top:6px;font-size:.8rem;color:var(--text2)"></div>
@@ -474,6 +476,32 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
     <div class="modal-actions">
       <button class="btn btn-outline" id="modalCancel">إلغاء</button>
       <button class="btn btn-red" id="modalConfirm">تأكيد</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MEDIA LIBRARY ===== -->
+<div class="modal-overlay" id="mediaLibraryOverlay">
+  <div class="modal" style="max-width:750px;width:90vw;max-height:80vh;display:flex;flex-direction:column">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <h3 style="margin:0"><i class="fas fa-images"></i> مكتبة الصور</h3>
+      <button class="btn btn-outline btn-sm" id="mediaLibraryClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="tabs" style="margin-bottom:12px">
+      <div class="tab active" data-media-tab="gallery">الصور المرفوعة</div>
+      <div class="tab" data-media-tab="upload">رفع جديد</div>
+      <div class="tab" data-media-tab="search">بحث</div>
+    </div>
+    <div id="mediaLibraryGallery" style="flex:1;overflow-y:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;padding:4px"></div>
+    <div id="mediaLibraryUpload" style="display:none;padding:20px;text-align:center;border:2px dashed var(--bg3);border-radius:8px">
+      <p style="color:var(--text2);margin-bottom:12px"><i class="fas fa-cloud-upload-alt" style="font-size:2rem;display:block;margin-bottom:8px"></i> اسحب الصورة أو اختر ملفاً</p>
+      <input type="file" id="mediaLibraryFileInput" accept="image/*" style="display:block;margin:0 auto">
+      <button class="btn btn-primary" id="mediaLibraryUploadBtn" style="margin-top:12px;display:none"><i class="fas fa-upload"></i> رفع</button>
+      <div id="mediaLibraryUploadProgress" style="margin-top:8px;font-size:.85rem;color:var(--text2)"></div>
+    </div>
+    <div id="mediaLibrarySearch" style="display:none">
+      <input type="text" id="mediaLibrarySearchInput" placeholder="ابحث عن صورة..." style="width:100%;margin-bottom:12px">
+      <div id="mediaLibrarySearchResults" style="flex:1;overflow-y:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;padding:4px"></div>
     </div>
   </div>
 </div>
@@ -756,6 +784,112 @@ async function uploadImage(file) {
 }
 
 // ============================================================
+// MEDIA LIBRARY
+// ============================================================
+
+let _mediaLibraryFiles = [];
+
+function openMediaLibrary() {
+  document.getElementById('mediaLibraryOverlay').classList.add('show');
+  loadMediaLibraryGallery();
+}
+
+function closeMediaLibrary() {
+  document.getElementById('mediaLibraryOverlay').classList.remove('show');
+}
+
+async function loadMediaLibraryGallery() {
+  const container = document.getElementById('mediaLibraryGallery');
+  container.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--text2);padding:40px"><i class="fas fa-spinner fa-spin" style="font-size:2rem;display:block;margin-bottom:8px"></i>جاري التحميل...</div>';
+  try {
+    const files = await ghFetch('img');
+    _mediaLibraryFiles = Array.isArray(files) ? files.filter(f => f.type === 'file' && /\.(png|jpg|jpeg|gif|webp|svg)$/i.test(f.name)) : [];
+    if (_mediaLibraryFiles.length === 0) {
+      container.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--text2);padding:40px"><i class="fas fa-folder-open" style="font-size:2rem;display:block;margin-bottom:8px"></i>لا توجد صور مرفوعة</div>';
+      return;
+    }
+    container.innerHTML = '';
+    _mediaLibraryFiles.forEach(f => {
+      const div = document.createElement('div');
+      div.style.cssText = 'border:1px solid var(--bg3);border-radius:8px;overflow:hidden;cursor:pointer;position:relative';
+      const img = document.createElement('img');
+      img.src = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${f.path}`;
+      img.style.cssText = 'width:100%;height:120px;object-fit:cover;display:block';
+      img.loading = 'lazy';
+      img.onerror = () => { img.src = ''; img.style.cssText = 'padding:20px;color:var(--text2);text-align:center;font-size:.8rem'; img.alt = 'خطأ في التحميل'; };
+      div.appendChild(img);
+      const name = document.createElement('div');
+      name.style.cssText = 'padding:4px 6px;font-size:.75rem;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap';
+      name.textContent = f.name;
+      div.appendChild(name);
+      const actions = document.createElement('div');
+      actions.style.cssText = 'display:flex;gap:2px;padding:2px 4px 4px';
+      const useBtn = document.createElement('button');
+      useBtn.className = 'btn btn-primary btn-xs';
+      useBtn.innerHTML = '<i class="fas fa-check"></i> استخدام';
+      useBtn.onclick = (e) => { e.stopPropagation(); selectMediaImage(img.src); };
+      actions.appendChild(useBtn);
+      const delBtn = document.createElement('button');
+      delBtn.className = 'btn btn-red btn-xs';
+      delBtn.innerHTML = '<i class="fas fa-trash"></i>';
+      delBtn.onclick = (e) => { e.stopPropagation(); deleteMediaImage(f.path, f.sha); };
+      actions.appendChild(delBtn);
+      div.appendChild(actions);
+      div.onclick = () => selectMediaImage(img.src);
+      container.appendChild(div);
+    });
+  } catch (e) {
+    container.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--danger);padding:40px"><i class="fas fa-exclamation-triangle" style="font-size:2rem;display:block;margin-bottom:8px"></i>فشل تحميل مكتبة الصور<br><span style="font-size:.8rem">تأكد من وجود مجلد img/ في المستودع</span></div>';
+  }
+}
+
+function selectMediaImage(url) {
+  document.getElementById('editImage').value = url;
+  updateImagePreview();
+  closeMediaLibrary();
+  showToast('تم اختيار الصورة', 'success');
+}
+
+async function deleteMediaImage(path, sha) {
+  showModal('تأكيد حذف الصورة', 'هل أنت متأكد من حذف هذه الصورة؟', async () => {
+    try {
+      await ghDelete(path, sha);
+      showToast('تم حذف الصورة', 'success');
+      loadMediaLibraryGallery();
+    } catch (e) {
+      showToast(e.message, 'error');
+    }
+  });
+}
+
+function searchMediaLibrary() {
+  const q = document.getElementById('mediaLibrarySearchInput').value.trim().toLowerCase();
+  const results = document.getElementById('mediaLibrarySearchResults');
+  if (!q) { results.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--text2);padding:40px">اكتب كلمة للبحث في مكتبة الصور</div>'; return; }
+  const matched = _mediaLibraryFiles.filter(f => f.name.toLowerCase().includes(q));
+  if (matched.length === 0) {
+    results.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--text2);padding:40px"><i class="fas fa-search" style="font-size:2rem;display:block;margin-bottom:8px"></i>لا توجد نتائج</div>';
+    return;
+  }
+  results.innerHTML = '';
+  matched.forEach(f => {
+    const div = document.createElement('div');
+    div.style.cssText = 'border:1px solid var(--bg3);border-radius:8px;overflow:hidden;cursor:pointer;position:relative';
+    const img = document.createElement('img');
+    img.src = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${f.path}`;
+    img.style.cssText = 'width:100%;height:120px;object-fit:cover;display:block';
+    img.loading = 'lazy';
+    div.appendChild(img);
+    const name = document.createElement('div');
+    name.style.cssText = 'padding:4px 6px;font-size:.75rem;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap';
+    name.textContent = f.name;
+    div.appendChild(name);
+    div.onclick = () => selectMediaImage(img.src);
+    results.appendChild(div);
+  });
+}
+
+// ============================================================
 // STATE PERSISTENCE
 // ============================================================
 function saveSession() {
@@ -868,6 +1002,64 @@ function navigateTo(page) {
   if (targetPage) targetPage.classList.add('active');
   const navItem = document.querySelector(`.nav-item[data-page="${page}"]`);
   if (navItem) navItem.classList.add('active');
+  saveUIState();
+}
+
+// ============================================================
+// STATE PERSISTENCE (refresh-safe)
+// ============================================================
+const STATE_KEY = 'tdn_admin_state';
+
+function saveUIState() {
+  const state = {
+    page: document.querySelector('.page.active')?.id?.replace('page-', '') || 'dashboard',
+    artSearch: document.getElementById('artSearch')?.value || '',
+    artFilter: document.getElementById('artFilter')?.value || '',
+    artStatusFilter: document.getElementById('artStatusFilter')?.value || '',
+    artPage: window._artPage || 0,
+    editId: CURRENT_EDIT_ID || null,
+    timestamp: Date.now()
+  };
+  try { localStorage.setItem(STATE_KEY, JSON.stringify(state)); } catch {}
+}
+
+function restoreUIState() {
+  try {
+    const raw = localStorage.getItem(STATE_KEY);
+    if (!raw) return;
+    const state = JSON.parse(raw);
+    // Save for deferred render after handlers are attached
+    window._pendingState = state;
+    if (state.page && state.page !== 'settings') {
+      const target = document.getElementById('page-' + state.page);
+      if (target) navigateTo(state.page);
+    }
+    if (state.artSearch) {
+      const el = document.getElementById('artSearch');
+      if (el) { el.value = state.artSearch; }
+    }
+    if (state.artFilter) {
+      const el = document.getElementById('artFilter');
+      if (el) { el.value = state.artFilter; }
+    }
+    if (state.artStatusFilter) {
+      const el = document.getElementById('artStatusFilter');
+      if (el) { el.value = state.artStatusFilter; }
+    }
+    if (state.artPage) window._artPage = state.artPage;
+  } catch {}
+}
+
+function applyPendingState() {
+  const state = window._pendingState;
+  if (!state) return;
+  delete window._pendingState;
+  if (state.page === 'articles') renderArticles();
+  if (state.page === 'dashboard') { renderDashboard(); renderInsights(); }
+  if (state.page === 'categories') renderCategories();
+  if (state.page === 'editor' && state.editId) {
+    setTimeout(() => editArticle(state.editId), 100);
+  }
 }
 
 // ============================================================
@@ -1057,15 +1249,17 @@ function renderArticles() {
     return;
   }
   container.innerHTML = `<table><thead><tr>
-    <th>العنوان</th><th>التصنيف</th><th>الحالة</th><th>التاريخ</th><th>إجراءات</th>
+    <th>العنوان</th><th>التصنيف</th><th>الحالة</th><th>تاريخ النشر</th><th>آخر تحديث</th><th>إجراءات</th>
   </tr></thead><tbody>${list.map(a => {
     const inIndex = INDEX.some(i => String(i.id) === String(a.id));
     const status = inIndex ? 'published' : (a.status || 'draft');
+    const fmtDT = (ts) => { if (!ts) return '-'; try { return new Date(ts).toLocaleString('ar-EG', { year:'numeric', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }); } catch { return ts; } };
     return `<tr>
       <td><strong>${esc(a.title_ar||'').substring(0,50)}</strong></td>
       <td><span class="badge badge-published">${esc(a.category||'')}</span></td>
       <td><span class="badge ${status === 'published' ? 'badge-published' : 'badge-draft'}">${status === 'published' ? 'منشور' : 'مسودة'}</span></td>
-      <td style="font-size:.8rem;color:var(--text3)">${a.created_at ? new Date(a.created_at).toLocaleDateString('ar-EG') : '-'}</td>
+      <td style="font-size:.8rem;color:var(--text3);white-space:nowrap">${fmtDT(a.published_at || a.created_at)}</td>
+      <td style="font-size:.8rem;color:var(--text3);white-space:nowrap">${fmtDT(a.updated_at || a.published_at || a.created_at)}</td>
       <td>
         <div class="actions">
           <button class="btn btn-sm btn-primary" onclick="editArticle('${a.id}')"><i class="fas fa-edit"></i></button>
@@ -1491,6 +1685,9 @@ async function afterLogin() {
   document.getElementById('editCustomCss').value = CONFIG.customCss || '';
   document.getElementById('editCustomJs').value = CONFIG.customJs || '';
 
+  // Restore UI state from before refresh
+  restoreUIState();
+
   // Start clock
   initHeaderClock();
 
@@ -1560,10 +1757,10 @@ async function afterLogin() {
     }
   });
 
-  // Article search
-  document.getElementById('artSearch').addEventListener('input', renderArticles);
-  document.getElementById('artFilter').addEventListener('change', renderArticles);
-  document.getElementById('artStatusFilter').addEventListener('change', renderArticles);
+  // Article search (with state persistence)
+  document.getElementById('artSearch').addEventListener('input', () => { renderArticles(); saveUIState(); });
+  document.getElementById('artFilter').addEventListener('change', () => { renderArticles(); saveUIState(); });
+  document.getElementById('artStatusFilter').addEventListener('change', () => { renderArticles(); saveUIState(); });
 
   // Theme save
   document.getElementById('saveThemeBtn').onclick = async () => {
@@ -1626,6 +1823,52 @@ async function afterLogin() {
   };
   document.getElementById('editImage').addEventListener('input', updateImagePreview);
 
+  // Media Library
+  document.getElementById('mediaLibraryBtn').onclick = openMediaLibrary;
+  document.getElementById('mediaLibraryClose').onclick = closeMediaLibrary;
+  document.getElementById('mediaLibraryOverlay').onclick = (e) => { if (e.target.id === 'mediaLibraryOverlay') closeMediaLibrary(); };
+
+  // Media Library tabs
+  document.querySelectorAll('[data-media-tab]').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('[data-media-tab]').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      document.getElementById('mediaLibraryGallery').style.display = 'none';
+      document.getElementById('mediaLibraryUpload').style.display = 'none';
+      document.getElementById('mediaLibrarySearch').style.display = 'none';
+      document.getElementById('mediaLibrary' + t.dataset.mediaTab.charAt(0).toUpperCase() + t.dataset.mediaTab.slice(1)).style.display = '';
+      if (t.dataset.mediaTab === 'gallery') loadMediaLibraryGallery();
+    });
+  });
+
+  // Media Library upload
+  document.getElementById('mediaLibraryFileInput').onchange = () => {
+    const btn = document.getElementById('mediaLibraryUploadBtn');
+    btn.style.display = document.getElementById('mediaLibraryFileInput').files.length ? '' : 'none';
+  };
+  document.getElementById('mediaLibraryUploadBtn').onclick = async () => {
+    const file = document.getElementById('mediaLibraryFileInput').files[0];
+    if (!file) return;
+    const btn = document.getElementById('mediaLibraryUploadBtn');
+    btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الرفع...';
+    const progress = document.getElementById('mediaLibraryUploadProgress');
+    try {
+      const url = await uploadImage(file);
+      progress.innerHTML = `<span style="color:var(--success)">✓ تم الرفع: <a href="${url}" target="_blank" style="color:var(--primary)">${url}</a></span>`;
+      document.getElementById('editImage').value = url;
+      updateImagePreview();
+      // Switch to gallery tab
+      document.querySelector('[data-media-tab="gallery"]').click();
+    } catch (e) { progress.innerHTML = `<span style="color:var(--danger)">✗ ${e.message}</span>`; }
+    finally { btn.disabled = false; btn.innerHTML = '<i class="fas fa-upload"></i> رفع'; }
+  };
+
+  // Media Library search
+  let _searchTimer;
+  document.getElementById('mediaLibrarySearchInput').oninput = () => {
+    clearTimeout(_searchTimer);
+    _searchTimer = setTimeout(() => searchMediaLibrary(), 400);
+  };
 
   // Advanced save
   document.getElementById('saveAdvancedBtn').onclick = async () => {
@@ -1651,7 +1894,7 @@ async function afterLogin() {
   const filter = document.getElementById('artFilter');
   CATEGORIES.forEach(c => {
     const opt = document.createElement('option');
-    opt.value = c; opt.textContent = c;
+    opt.value = c.id; opt.textContent = c.name;
     filter.appendChild(opt);
   });
 
@@ -1661,6 +1904,9 @@ async function afterLogin() {
   renderArticles();
   renderCategories();
   renderThemes();
+
+  // Apply saved state after all handlers and renders
+  applyPendingState();
   } catch(e) { console.error('afterLogin error:', e); }
 }
 

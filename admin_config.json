@@ -23,5 +23,7 @@
     "emerald": "#27AE60"
   },
   "customCss": "",
-  "customJs": ""
+  "customJs": "",
+  "test": true,
+  "timestamp": 1781655417085
 }

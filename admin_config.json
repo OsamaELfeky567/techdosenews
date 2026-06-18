@@ -8,7 +8,7 @@
   "facebook": "https://facebook.com/techdosenews",
   "twitter": "https://x.com/techdosenews",
   "webhookUrl": "http://localhost:5678/webhook/tdn-run",
-  "ghProxyUrl": "",
+  "ghProxyUrl": "http://localhost:3001",
   "colors": {
     "navy": "#0D1B2A",
     "blueDark": "#1B4F72",

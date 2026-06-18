@@ -2061,6 +2061,28 @@ async function afterLogin() {
   try { await loadDb(); } catch (e) { console.error('loadDb:', e); }
   try { await loadIndex(); } catch (e) { console.error('loadIndex:', e); }
 
+  // Rebuild DB from INDEX if articles_db.json is gone (single-source-of-truth migration)
+  if (!DB.length && INDEX.length) {
+    DB = INDEX.map(a => ({
+      id: a.id,
+      title_ar: a.title || '',
+      title: a.link || '',
+      excerpt: a.excerpt || '',
+      body: a.body || '',
+      category: a.category || '',
+      image: a.image || '',
+      source: a.source || '',
+      source_name: a.source || '',
+      status: 'published',
+      featured: !!a.featured,
+      published_at: a.date || a.publishedAt || '',
+      created_at: a.date || a.publishedAt || '',
+      tags: a.tags || [],
+      hasEgyptImpact: !!a.hasEgyptImpact
+    }));
+    console.log('Rebuilt DB from INDEX —', DB.length, 'articles');
+  }
+
   // If no auth method configured, prompt user
   if (!GH_TOKEN && !getProxyUrl()) {
     document.getElementById('dashboardArticles').innerHTML =

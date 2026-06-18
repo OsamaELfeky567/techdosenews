@@ -27,7 +27,7 @@ const GITHUB_INSTALLATION_ID = process.env.GITHUB_INSTALLATION_ID || '';
 // Support loading private key from file (avoids env var newline issues)
 const PRIVATE_KEY_PATH = process.env.GITHUB_APP_PRIVATE_KEY_PATH || '';
 if (!GITHUB_APP_PRIVATE_KEY && PRIVATE_KEY_PATH) {
-  try { GITHUB_APP_PRIVATE_KEY = fs.readFileSync(PRIVATE_KEY_PATH, 'utf-8'); } catch {}
+    try { GITHUB_APP_PRIVATE_KEY = readFileSync(PRIVATE_KEY_PATH, 'utf-8'); } catch {}
 }
 
 // Auto-discover installation ID if not set

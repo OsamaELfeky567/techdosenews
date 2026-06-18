@@ -1,93 +1,32 @@
 [
   {
     "id": "ai",
-    "name": "ذكاء اصطناعي",
-    "keywords": [
-      "ai",
-      "artificial intelligence",
-      "llm",
-      "gpt",
-      "openai",
-      "deep learning",
-      "machine learning"
-    ]
+    "name": "الذكاء الاصطناعي",
+    "color": "#8E44AD",
+    "keywords": ["ai","artificial intelligence","llm","gpt","openai","deep learning","machine learning","chatgpt","gemini","claude"]
   },
   {
-    "id": "security",
+    "id": "cybersecurity",
     "name": "أمن سيبراني",
-    "keywords": [
-      "cybersecurity",
-      "security",
-      "vulnerability",
-      "hack",
-      "breach",
-      "malware",
-      "ransomware"
-    ]
+    "color": "#C0392B",
+    "keywords": ["cybersecurity","security","vulnerability","hack","breach","malware","ransomware","privacy","data breach"]
   },
   {
     "id": "companies",
-    "name": "شركات التقنية",
-    "keywords": [
-      "tech company",
-      "startup",
-      "acquisition",
-      "ipo",
-      "funding",
-      "google",
-      "apple",
-      "microsoft",
-      "meta",
-      "amazon",
-      "nvidia"
-    ]
-  },
-  {
-    "id": "egypt",
-    "name": "مصر والتقنية",
-    "keywords": [
-      "egypt",
-      "مصر",
-      "القاهرة",
-      "الاسكندرية"
-    ]
+    "name": "شركات",
+    "color": "#F39C12",
+    "keywords": ["tech company","startup","acquisition","ipo","funding","google","apple","microsoft","meta","amazon","nvidia","business","software","cloud","saas","chip","processor","gpu","cpu"]
   },
   {
     "id": "phones",
     "name": "هواتف ذكية",
-    "keywords": [
-      "smartphone",
-      "iphone",
-      "galaxy",
-      "pixel",
-      "mobile",
-      "ios",
-      "android"
-    ]
-  },
-  {
-    "id": "electronics",
-    "name": "إلكترونيات",
-    "keywords": [
-      "chip",
-      "processor",
-      "gpu",
-      "cpu",
-      "hardware",
-      "gadget",
-      "laptop",
-      "tablet"
-    ]
+    "color": "#1B4F72",
+    "keywords": ["smartphone","iphone","galaxy","pixel","mobile","ios","android","tablet","gadget","laptop","gaming"]
   },
   {
     "id": "ev",
     "name": "سيارات كهربائية",
-    "keywords": [
-      "ev",
-      "electric vehicle",
-      "self-driving",
-      "autonomous",
-      "tesla"
-    ]
+    "color": "#27AE60",
+    "keywords": ["ev","electric vehicle","self-driving","autonomous","tesla","robotics","drone","space","nasa","rocket"]
   }
 ]

@@ -57,40 +57,48 @@ const AD_CONFIG = {
 
 
 const CATEGORY_MAP = {
-  ai:'الذكاء الاصطناعي',companies:'شركات',cybersecurity:'أمن سيبراني',
-  mobile:'هواتف ذكية',ev:'سيارات كهربائية',
-  security:'أمن سيبراني',business:'شركات',startups:'شركات',
-  bigtech:'شركات',software:'شركات',cloud:'شركات',
+  ai:'الذكاء الاصطناعي',cybersecurity:'أمن سيبراني',
+  companies:'شركات',phones:'هواتف ذكية',ev:'سيارات كهربائية',
+  security:'أمن سيبراني',business:'شركات',
+  startups:'شركات',bigtech:'شركات',software:'شركات',cloud:'شركات',
   hardware:'شركات',consumer:'هواتف ذكية',gaming:'هواتف ذكية',
-  AI:'الذكاء الاصطناعي',AI_ar:'الذكاء الاصطناعي',
+  mobile:'هواتف ذكية',AI:'الذكاء الاصطناعي',AI_ar:'الذكاء الاصطناعي',
   'Big-Tech':'شركات','big-tech':'شركات',BigTech:'شركات',
   Security:'أمن سيبراني',Startups:'شركات',
   Mobile:'هواتف ذكية',Hardware:'شركات',Gaming:'هواتف ذكية',
   Science:'الذكاء الاصطناعي',Business:'شركات',Cloud:'شركات',
+  programming:'شركات','business-tech':'شركات',
   'تكنولوجيا':'شركات','تقنية':'شركات',
   'Electric Vehicles':'سيارات كهربائية',
   'شركات تقنية':'شركات','الأمن السيبراني':'أمن سيبراني',
-  'تطوير':'تطوير',
-  EV:'سيارات كهربائية',ev:'سيارات كهربائية'
+  'تطوير':'شركات','برمجة':'شركات',
+  EV:'سيارات كهربائية',ev:'سيارات كهربائية',
+  space:'الذكاء الاصطناعي',science:'الذكاء الاصطناعي',
+  reviews:'هواتف ذكية','هاردوير':'شركات',
+  'فضاء':'الذكاء الاصطناعي','علوم':'الذكاء الاصطناعي',
+  'شركات ناشئة':'شركات','مراجعات':'هواتف ذكية',ألعاب:'هواتف ذكية',
+  'هواتف ذكية':'هواتف ذكية','موبايل':'هواتف ذكية'
 };
 
 const TAG_CATEGORY_MAP = {
   'تكنولوجيا':'companies','تقنية':'companies','ذكاء اصطناعي':'ai',
   'أمن سيبراني':'cybersecurity','أمان':'cybersecurity',
-  'هواتف':'mobile','mobile':'mobile','Mobile':'mobile',
+  'هواتف':'phones','mobile':'phones','Mobile':'phones','موبايل':'phones',
   'أعمال':'companies','business':'companies','Business':'companies',
   'شركات':'companies','startups':'companies','Startups':'companies',
-  'برمجيات':'companies','software':'companies',
+  'برمجيات':'companies','software':'companies','برمجة':'companies',
   'سحابة':'companies','cloud':'companies',
-  'عتاد':'companies','hardware':'companies',
+  'عتاد':'companies','hardware':'companies','هاردوير':'companies',
   'سيارات':'ev','EV':'ev','سيارات كهربائية':'ev',
   'ai':'ai','AI':'ai','security':'cybersecurity',
   'Security':'cybersecurity','cybersecurity':'cybersecurity',
-  'gaming':'mobile','Gaming':'mobile',
-  'science':'ai','Science':'ai',
-  'روبوتات':'ai','robotics':'ai','فضاء':'ai',
+  'gaming':'phones','Gaming':'phones','ألعاب':'phones',
+  'science':'ai','Science':'ai','علوم':'ai',
+  'روبوتات':'ai','robotics':'ai','فضاء':'ai','space':'ai',
   'bigtech':'companies','big-tech':'companies','BigTech':'companies',
-  'Big-Tech':'companies','أبحاث':'ai','research':'ai'
+  'Big-Tech':'companies','أبحاث':'ai','research':'ai',
+  'business-tech':'companies','programming':'companies',
+  'reviews':'phones','مراجعات':'phones'
 };
 
 const ENTITY_IMAGES = {

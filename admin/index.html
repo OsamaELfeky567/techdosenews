@@ -523,24 +523,37 @@ const DEFAULT_CONFIG = {
   customJs: ''
 };
 
-// Centralized category registry (single source of truth)
-const CATEGORIES = [
-  { id: 'ai', name: 'الذكاء الاصطناعي', color: '#8E44AD' },
-  { id: 'cybersecurity', name: 'أمن سيبراني', color: '#C0392B' },
-  { id: 'programming', name: 'برمجة', color: '#2E86C1' },
-  { id: 'mobile', name: 'موبايل', color: '#1B4F72' },
-  { id: 'hardware', name: 'هاردوير', color: '#27AE60' },
-  { id: 'space', name: 'فضاء', color: '#1A237E' },
-  { id: 'science', name: 'علوم', color: '#00897B' },
-  { id: 'business-tech', name: 'شركات التقنية', color: '#F39C12' },
-  { id: 'startups', name: 'شركات ناشئة', color: '#FF6F00' },
-  { id: 'gaming', name: 'ألعاب', color: '#6A1B9A' },
-  { id: 'reviews', name: 'مراجعات', color: '#E65100' }
-];
-
-// Backward-compat: also index by name for quick lookups
+// Categories — loaded from data/categories.json (single source of truth)
+let CATEGORIES = [];
 let CAT_BY_NAME = {};
-CATEGORIES.forEach(c => { CAT_BY_NAME[c.name] = c; });
+
+function rebuildCatIndex() {
+  CAT_BY_NAME = {};
+  CATEGORIES.forEach(c => { CAT_BY_NAME[c.name] = c; });
+}
+
+async function loadCategories() {
+  try {
+    const j = await ghGetJson('data/categories.json');
+    CATEGORIES = j.data || [];
+    if (CATEGORIES.length === 0) CATEGORIES = getDefaultCategories();
+    CATEGORIES.forEach(c => { if (!c.color) c.color = '#3b82f6'; });
+    rebuildCatIndex();
+  } catch {
+    CATEGORIES = getDefaultCategories();
+    rebuildCatIndex();
+  }
+}
+
+function getDefaultCategories() {
+  return [
+    { id: 'ai', name: 'الذكاء الاصطناعي', color: '#8E44AD' },
+    { id: 'cybersecurity', name: 'أمن سيبراني', color: '#C0392B' },
+    { id: 'companies', name: 'شركات', color: '#F39C12' },
+    { id: 'phones', name: 'هواتف ذكية', color: '#1B4F72' },
+    { id: 'ev', name: 'سيارات كهربائية', color: '#27AE60' }
+  ];
+}
 
 function getCategoryName(id) {
   const cat = CATEGORIES.find(c => c.id === id);
@@ -568,9 +581,16 @@ function getCategoryIdFromArticle(article) {
   if (byName) return byName.id;
   const legacyMap = {
     'تكنولوجيا': 'ai', 'تقنية': 'ai',
-    'شركات': 'business-tech', 'شركات التقنية': 'business-tech',
-    'هواتف ذكية': 'mobile', 'سيارات كهربائية': 'hardware',
-    'مصر والتقنية': 'business-tech', 'إلكترونيات': 'hardware'
+    'شركات': 'companies', 'شركات التقنية': 'companies',
+    'business-tech': 'companies', 'startups': 'companies',
+    'programming': 'companies', 'software': 'companies',
+    'هواتف ذكية': 'phones', 'موبايل': 'phones', 'mobile': 'phones',
+    'سيارات كهربائية': 'ev', 'hardware': 'companies',
+    'مصر والتقنية': 'companies', 'إلكترونيات': 'companies',
+    'space': 'ai', 'science': 'ai', 'reviews': 'phones',
+    'gaming': 'phones', 'ألعاب': 'phones', 'برمجة': 'companies',
+    'هاردوير': 'companies', 'فضاء': 'ai', 'علوم': 'ai',
+    'شركات ناشئة': 'companies', 'مراجعات': 'phones'
   };
   return legacyMap[article.category] || 'ai';
 }
@@ -581,14 +601,12 @@ function resolveCategoryDisplay(catIdOrName) {
   return CAT_BY_NAME[catIdOrName] ? catIdOrName : catIdOrName;
 }
 
-// Override colors from config if available
 function syncCatConfig() {
   if (CONFIG.catColors && Object.keys(CONFIG.catColors).length) {
     CATEGORIES.forEach(c => {
       if (CONFIG.catColors[c.name]) c.color = CONFIG.catColors[c.name];
     });
-    CAT_BY_NAME = {};
-    CATEGORIES.forEach(c => { CAT_BY_NAME[c.name] = c; });
+    rebuildCatIndex();
   }
 }
 
@@ -805,6 +823,13 @@ async function saveConfigToGh() {
   let sha = '';
   try { const j = await ghFetch(CONFIG_PATH); sha = j.sha; } catch {}
   await ghPut(CONFIG_PATH, JSON.stringify(CONFIG, null, 2), 'تحديث إعدادات لوحة التحكم', sha);
+}
+
+async function saveCategoriesToGh() {
+  let sha = '';
+  try { const j = await ghFetch('data/categories.json'); sha = j.sha; } catch {}
+  const data = CATEGORIES.map(c => ({ id: c.id, name: c.name, color: c.color }));
+  await ghPut('data/categories.json', JSON.stringify(data, null, 2), 'تحديث التصنيفات من لوحة التحكم', sha);
 }
 
 // ============================================================
@@ -1157,10 +1182,7 @@ function renderCategories() {
       const catId = el.dataset.catId;
       const cat = CATEGORIES.find(c => c.id === catId);
       if (cat) cat.color = el.value;
-      CONFIG.colors = CONFIG.colors || {};
-      CONFIG.catColors = {};
-      CATEGORIES.forEach(c => { CONFIG.catColors[c.name] = c.color; });
-      try { await saveConfigToGh(); showToast('تم حفظ ألوان التصنيفات', 'success'); } catch (e) { showToast('خطأ في الحفظ: ' + e.message, 'error'); }
+      try { await saveCategoriesToGh(); showToast('تم حفظ ألوان التصنيفات', 'success'); } catch (e) { showToast('خطأ في الحفظ: ' + e.message, 'error'); }
     });
   });
 
@@ -1172,9 +1194,7 @@ function renderCategories() {
     if (CATEGORIES.some(c => c.id === id)) return showToast('المعرف موجود بالفعل', 'error');
     CATEGORIES.push({ id, name, color });
     CAT_BY_NAME[name] = { id, name, color };
-    CONFIG.catColors = {};
-    CATEGORIES.forEach(c => { CONFIG.catColors[c.name] = c.color; });
-    saveConfigToGh().then(() => { showToast('تم إضافة التصنيف', 'success'); renderCategories(); populateCategorySelect(''); }).catch(e => showToast(e.message, 'error'));
+    saveCategoriesToGh().then(() => { showToast('تم إضافة التصنيف', 'success'); renderCategories(); populateCategorySelect(''); }).catch(e => showToast(e.message, 'error'));
   };
 }
 
@@ -1382,14 +1402,12 @@ function deleteCategory(id) {
   const cat = CATEGORIES.find(c => c.id === id);
   if (!cat) return;
   if (!confirm('هل أنت متأكد من حذف التصنيف "' + cat.name + '"؟')) return;
-  const guarded = ['ai','cybersecurity','programming','mobile','hardware','space','science','business-tech','startups','gaming','reviews'];
+  const guarded = ['ai','cybersecurity','companies','phones','ev'];
   if (guarded.includes(id)) return showToast('لا يمكن حذف التصنيفات الأساسية', 'error');
   const idx = CATEGORIES.findIndex(c => c.id === id);
   if (idx >= 0) CATEGORIES.splice(idx, 1);
   delete CAT_BY_NAME[cat.name];
-  CONFIG.catColors = {};
-  CATEGORIES.forEach(c => { CONFIG.catColors[c.name] = c.color; });
-  saveConfigToGh().then(() => { showToast('تم حذف التصنيف', 'success'); renderCategories(); populateCategorySelect(''); }).catch(e => showToast(e.message, 'error'));
+  saveCategoriesToGh().then(() => { showToast('تم حذف التصنيف', 'success'); renderCategories(); populateCategorySelect(''); }).catch(e => showToast(e.message, 'error'));
 }
 
 // ============================================================
@@ -1437,6 +1455,7 @@ async function testGhConnection() {
 // ============================================================
 async function initApp() {
   await loadConfig();
+  await loadCategories();
   const storedToken = loadSession();
   if (storedToken) GH_TOKEN = storedToken;
   if (!GH_TOKEN && CONFIG.ghToken) GH_TOKEN = CONFIG.ghToken;

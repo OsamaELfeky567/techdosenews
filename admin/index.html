@@ -768,6 +768,10 @@ let INDEX = [];      // articles/index.json
 let EDIT_TAGS = [];
 let CURRENT_EDIT_ID = null;
 
+function getSiteUrl() {
+  return CONFIG && CONFIG.siteUrl ? CONFIG.siteUrl.replace(/\/$/, '') : `https://${GH_OWNER}.github.io/${GH_REPO}`;
+}
+
 // Default config
 const DEFAULT_CONFIG = {
   passwordHash: '',
@@ -2031,7 +2035,7 @@ async function saveArticle(formData) {
         egyptImpact: article.egypt || '',
         source: article.source_name,
         videoUrl: article.video_url,
-        link: `https://${GH_OWNER}.github.io/${GH_REPO}/article.html?id=${article.id}`
+        link: `${getSiteUrl()}/article.html?id=${article.id}`
       };
 
       const idxIdx = INDEX.findIndex(i => String(i.id) === String(id));
@@ -2328,7 +2332,7 @@ async function deleteArticle(id) {
 }
 
 function previewArticle(id) {
-  window.open(`https://${GH_OWNER}.github.io/${GH_REPO}/article.html?id=${id}`, '_blank');
+  window.open(`${getSiteUrl()}/article.html?id=${id}`, '_blank');
 }
 
 async function editArticle(id) {

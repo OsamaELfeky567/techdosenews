@@ -849,30 +849,32 @@ function getCategoryIds() {
 }
 function getCategoryIdFromArticle(article) {
   if (!article || !article.category) return 'ai';
+  if (article.canonicalCategory) return article.canonicalCategory;
   if (CATEGORIES.some(c => c.id === article.category)) return article.category;
   const byName = CAT_BY_NAME[article.category];
   if (byName) return byName.id;
   const legacyMap = {
-    'تكنولوجيا': 'companies', 'تقنية': 'companies',
-    'شركات': 'companies', 'شركات التقنية': 'companies',
-    'business-tech': 'companies', 'startups': 'companies',
-    'programming': 'companies', 'software': 'companies',
-    'cloud': 'companies', 'Big-Tech': 'companies', 'big-tech': 'companies',
-    'BigTech': 'companies', 'Business': 'companies', 'Cloud': 'companies',
-    'Startups': 'companies', 'business': 'companies', 'BigTech': 'companies',
-    'شركات ناشئة': 'companies', 'هاردوير': 'companies',
-    'hardware': 'companies', 'Hardware': 'companies', 'برمجة': 'companies',
-    'مصر والتقنية': 'companies', 'إلكترونيات': 'companies',
-    'AI': 'ai', 'AI_ar': 'ai', 'Science': 'ai', 'science': 'ai',
-    'space': 'ai', 'فضاء': 'ai', 'علوم': 'ai',
-    'هواتف ذكية': 'phones', 'موبايل': 'phones', 'mobile': 'phones',
-    'Mobile': 'phones', 'gaming': 'phones', 'Gaming': 'phones',
-    'ألعاب': 'phones', 'reviews': 'phones', 'مراجعات': 'phones',
-    'consumer': 'phones', 'consumer': 'phones',
-    'سيارات كهربائية': 'ev', 'Electric Vehicles': 'ev',
-    'EV': 'ev', 'ev': 'ev',
-    'security': 'cybersecurity', 'Security': 'cybersecurity',
-    'الأمن السيبراني': 'cybersecurity'
+    'تكنولوجيا':'companies','تقنية':'companies',
+    'شركات':'companies','شركات التقنية':'companies','تطوير':'companies',
+    'business-tech':'companies','startups':'companies',
+    'programming':'companies','software':'companies',
+    'cloud':'companies','Big-Tech':'companies','big-tech':'companies',
+    'BigTech':'companies','Business':'companies','Cloud':'companies',
+    'Startups':'companies','business':'companies',
+    'شركات ناشئة':'companies','هاردوير':'companies',
+    'hardware':'companies','Hardware':'companies','برمجة':'companies',
+    'مصر والتقنية':'companies','إلكترونيات':'companies',
+    'AI':'ai','AI_ar':'ai','Science':'ai','science':'ai',
+    'space':'ai','فضاء':'ai','علوم':'ai',
+    'ذكاء اصطناعي':'ai','الذكاء الاصطناعي':'ai','ai':'ai',
+    'هواتف ذكية':'phones','موبايل':'phones','mobile':'phones',
+    'Mobile':'phones','gaming':'phones','Gaming':'phones',
+    'ألعاب':'phones','reviews':'phones','مراجعات':'phones',
+    'consumer':'phones',
+    'سيارات كهربائية':'ev','Electric Vehicles':'ev',
+    'EV':'ev','ev':'ev',
+    'security':'cybersecurity','Security':'cybersecurity',
+    'الأمن السيبراني':'cybersecurity'
   };
   return legacyMap[article.category] || 'ai';
 }
@@ -1710,10 +1712,12 @@ function renderArticles() {
     const status = inIndex ? 'published' : (a.status || 'draft');
     const checked = selectedIds.has(String(a.id)) ? 'checked' : '';
     const fmtDT = (ts) => { if (!ts) return '-'; try { return new Date(ts).toLocaleString('ar-EG', { year:'numeric', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }); } catch { return ts; } };
+    const catId = getCategoryIdFromArticle(a);
+    const catName = (CATEGORIES.find(c => c.id === catId) || {}).name || a.categoryAr || a.category || '';
     return `<tr class="${checked ? 'row-selected' : ''}">
       <td class="cb-cell"><input type="checkbox" ${checked} onchange="toggleArticle('${a.id}')"></td>
       <td><strong>${esc(a.title_ar||'').substring(0,50)}</strong></td>
-      <td><span class="badge badge-published">${esc(a.category||'')}</span></td>
+      <td><span class="badge badge-published">${esc(catName)}</span></td>
       <td><span class="badge ${status === 'published' ? 'badge-published' : 'badge-draft'}">${status === 'published' ? 'منشور' : 'مسودة'}</span></td>
       <td style="font-size:.8rem;color:var(--text3);white-space:nowrap">${fmtDT(a.published_at || a.created_at)}</td>
       <td style="font-size:.8rem;color:var(--text3);white-space:nowrap">${fmtDT(a.updated_at || a.published_at || a.created_at)}</td>
@@ -1759,14 +1763,6 @@ function populateEditor(article) {
 function populateCategorySelect(selected) {
   const sel = document.getElementById('editCategory');
   sel.innerHTML = CATEGORIES.map(c => `<option value="${c.id}"${c.id === selected ? ' selected' : ''}>${c.name}</option>`).join('');
-  const dbCats = new Set();
-  INDEX.forEach(a => { if (a.category && !getCategoryIds().includes(a.category)) dbCats.add(a.category); });
-  dbCats.forEach(catId => {
-    const opt = document.createElement('option');
-    opt.value = catId; opt.textContent = getCategoryName(catId);
-    if (catId === selected) opt.selected = true;
-    sel.appendChild(opt);
-  });
 }
 
 function renderTags() {
@@ -1894,6 +1890,7 @@ async function saveArticle(formData) {
       body: formData.body,
       egypt: formData.egypt || '',
       category: formData.category,
+      canonicalCategory: getCategoryIdFromArticle({ category: formData.category }),
       tags: formData.tags,
       image_query: formData.imageQuery || 'technology news',
       image_url: formData.image || `https://source.unsplash.com/featured/800x450/?${encodeURIComponent(formData.imageQuery || 'technology technology news')}`,

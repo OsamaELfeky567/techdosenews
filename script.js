@@ -35,6 +35,9 @@ async function loadTelegramConfig() {
   // Update all Telegram buttons on the page
   const url = getTelegramUrl();
   document.querySelectorAll('.sb-telegram-btn').forEach(el => { el.href = url; });
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.sb-telegram-btn') && typeof gtag === 'function') gtag('event', 'telegram_click');
+  });
 }
 
 // Load Telegram config on every page
@@ -483,6 +486,7 @@ function filterSearch(query) {
         (a.categoryAr && a.categoryAr.toLowerCase().includes(q)) ||
         (Array.isArray(a.tags) && a.tags.some(t => t.toLowerCase().includes(q)))
       );
+      if (typeof gtag === 'function') gtag('event', 'search_used', { search_term: q });
     }
     renderGrid();
     const countEl = document.getElementById('sbSearchCount');
@@ -757,6 +761,7 @@ async function loadArticle() {
       '<div class="sb-ad-sticky"><div class="sb-ad-box sb-ad-300x600"><div class="sb-ad-label">إعلان</div><div class="sb-ad-placeholder">300 × 600</div></div></div></aside></div>';
     renderRelatedArticles(a);
     injectNewsArticleSchema(a);
+    if (typeof gtag === 'function') gtag('event', 'article_open', { article_id: a.id, article_title: a.title, article_category: a.categoryAr });
   } catch(e) {
     main.innerHTML = '<div class="sb-container"><div class="sb-loading">⚠ تعذر تحميل المقال — ' + e.message + '</div></div>';
   }

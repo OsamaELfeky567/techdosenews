@@ -22,6 +22,7 @@
 !merged_frontend/script.js
 !deployment_candidate/script.js
 !canonical_frontend/script.js
+!js/analytics.js
 
 # But re-exclude test/deploy/audit scripts
 deploy_*.js

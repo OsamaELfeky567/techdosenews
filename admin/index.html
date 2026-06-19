@@ -76,6 +76,12 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
 .toolbar input:focus,.toolbar select:focus{outline:none;border-color:var(--primary)}
 .toolbar input[type=search]{min-width:220px}
 .toolbar .spacer{flex:1}
+/* Bulk actions */
+.bulk-bar{display:flex;gap:8px;align-items:center;padding:10px 14px;background:var(--surface);border:1px solid var(--primary);border-radius:var(--radius);margin-bottom:12px;font-size:.85rem;color:var(--text2)}
+.bulk-bar .btn{white-space:nowrap}
+.cb-cell{width:36px;text-align:center!important}
+.cb-cell input[type=checkbox]{width:16px;height:16px;cursor:pointer;accent-color:var(--primary)}
+.row-selected td{background:rgba(59,130,246,.08)!important}
 /* Form */
 .form-group{margin-bottom:16px}
 .form-group label{display:block;font-weight:600;font-size:.85rem;margin-bottom:4px;color:var(--text)}
@@ -301,6 +307,13 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
           <select id="artStatusFilter"><option value="">كل الحالات</option><option value="published">منشور</option><option value="draft">مسودة</option></select>
           <div class="spacer"></div>
           <button class="btn btn-primary" id="newArticleBtn"><i class="fas fa-plus"></i> مقال جديد</button>
+        </div>
+        <div class="bulk-bar" id="bulkBar" style="display:none">
+          <span id="bulkCount">0</span> مقال محدد
+          <button class="btn btn-sm btn-red" onclick="bulkDelete()"><i class="fas fa-trash"></i> حذف المحدد</button>
+          <button class="btn btn-sm btn-primary" onclick="bulkPublish()"><i class="fas fa-check-circle"></i> نشر المحدد</button>
+          <button class="btn btn-sm btn-outline" onclick="bulkDraft()"><i class="fas fa-pen"></i> حفظ كمسودة</button>
+          <button class="btn btn-sm btn-outline" onclick="clearSelection()" style="margin-right:auto"><i class="fas fa-times"></i> إلغاء التحديد</button>
         </div>
         <div id="articlesContainer" class="table-wrap"></div>
       </section>
@@ -1690,12 +1703,15 @@ function renderArticles() {
     return;
   }
   container.innerHTML = `<table><thead><tr>
+    <th class="cb-cell"><input type="checkbox" id="selectAll" onchange="toggleSelectAll(this.checked)"></th>
     <th>العنوان</th><th>التصنيف</th><th>الحالة</th><th>تاريخ النشر</th><th>آخر تحديث</th><th>إجراءات</th>
   </tr></thead><tbody>${list.map(a => {
     const inIndex = INDEX.some(i => String(i.id) === String(a.id));
     const status = inIndex ? 'published' : (a.status || 'draft');
+    const checked = selectedIds.has(String(a.id)) ? 'checked' : '';
     const fmtDT = (ts) => { if (!ts) return '-'; try { return new Date(ts).toLocaleString('ar-EG', { year:'numeric', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }); } catch { return ts; } };
-    return `<tr>
+    return `<tr class="${checked ? 'row-selected' : ''}">
+      <td class="cb-cell"><input type="checkbox" ${checked} onchange="toggleArticle('${a.id}')"></td>
       <td><strong>${esc(a.title_ar||'').substring(0,50)}</strong></td>
       <td><span class="badge badge-published">${esc(a.category||'')}</span></td>
       <td><span class="badge ${status === 'published' ? 'badge-published' : 'badge-draft'}">${status === 'published' ? 'منشور' : 'مسودة'}</span></td>
@@ -1710,6 +1726,7 @@ function renderArticles() {
       </td>
     </tr>`;
   }).join('')}</tbody></table>`;
+  updateBulkBar();
 }
 
 /* Editor */
@@ -2018,6 +2035,97 @@ ${esc(excerpt)}
   }
 }
 
+
+// ============================================================
+// BULK ACTIONS (P3)
+// ============================================================
+const selectedIds = new Set();
+
+function toggleArticle(id) {
+  const sid = String(id);
+  if (selectedIds.has(sid)) selectedIds.delete(sid); else selectedIds.add(sid);
+  renderArticles();
+}
+
+function toggleSelectAll(checked) {
+  const search = (document.getElementById('artSearch').value || '').toLowerCase();
+  const catFilter = document.getElementById('artFilter').value;
+  const statusFilter = document.getElementById('artStatusFilter').value;
+  let list = [...DB];
+  if (search) list = list.filter(a => (a.title_ar||'').toLowerCase().includes(search) || (a.excerpt||'').toLowerCase().includes(search));
+  if (catFilter) list = list.filter(a => (a.category||'') === catFilter);
+  if (statusFilter) list = list.filter(a => (a.status||'published') === statusFilter);
+  if (checked) list.forEach(a => selectedIds.add(String(a.id)));
+  else list.forEach(a => selectedIds.delete(String(a.id)));
+  renderArticles();
+}
+
+function updateBulkBar() {
+  const bar = document.getElementById('bulkBar');
+  const count = document.getElementById('bulkCount');
+  count.textContent = selectedIds.size;
+  bar.style.display = selectedIds.size ? 'flex' : 'none';
+}
+
+function clearSelection() {
+  selectedIds.clear();
+  renderArticles();
+}
+
+async function bulkAction(action) {
+  const ids = [...selectedIds];
+  if (ids.length === 0) { showToast('لم يتم تحديد أي مقال', 'error'); return; }
+  const labels = { delete: 'حذف', publish: 'نشر', draft: 'حفظ كمسودة' };
+  showModal(`${labels[action]} ${ids.length} مقال`, `هل أنت متأكد من ${labels[action]} ${ids.length} مقال؟`, async () => {
+    try {
+      const originalDB = JSON.parse(JSON.stringify(DB));
+      const originalINDEX = JSON.parse(JSON.stringify(INDEX));
+
+      if (action === 'delete') {
+        DB = DB.filter(a => !ids.includes(String(a.id)));
+        INDEX = INDEX.filter(a => !ids.includes(String(a.id)));
+      } else if (action === 'publish') {
+        DB.forEach(a => { if (ids.includes(String(a.id))) {
+          a.status = 'published';
+          if (!INDEX.some(i => String(i.id) === String(a.id))) {
+            INDEX.unshift({
+              id: a.id, title: a.title_ar || a.title || '', excerpt: a.excerpt || '', category: a.category || '',
+              tags: a.tags || [], image: a.image_url || a.image || '', publishedAt: new Date().toISOString(),
+              readTime: Math.max(1, Math.round(((a.body||'').split(/\s+/).filter(Boolean).length)/80)) + ' دقائق',
+              views: '0', hasEgyptImpact: !!(a.egypt && a.egypt.length > 5),
+              featured: false, body: a.body || '', egyptImpact: a.egypt || '',
+              source: a.source_name || '', videoUrl: a.video_url || '',
+              link: `https://${GH_OWNER}.github.io/${GH_REPO}/article.html?id=${a.id}`
+            });
+          }
+        }});
+      } else if (action === 'draft') {
+        DB.forEach(a => { if (ids.includes(String(a.id))) a.status = 'draft'; });
+        INDEX = INDEX.filter(a => !ids.includes(String(a.id)));
+      }
+
+      let dbSha = '', idxSha = '';
+      try { const j = await ghFetch('articles_db.json'); dbSha = j.sha; } catch {}
+      try { const j = await ghFetch('data/articles/index.json'); idxSha = j.sha; } catch {}
+
+      await ghPut('articles_db.json', JSON.stringify(DB, null, 2), `${labels[action]} ${ids.length} مقال` + ids.slice(0,3).map(id => { const a = originalDB.find(x => String(x.id) === id); return a ? ': ' + (a.title_ar||a.title||'').substring(0,30) : ''; }).join(''), dbSha);
+      if (action !== 'draft' || INDEX.length !== originalINDEX.length) {
+        await ghPut('data/articles/index.json', JSON.stringify(INDEX, null, 2), `${labels[action]} ${ids.length} مقال - فهرس`, idxSha);
+      }
+
+      selectedIds.clear();
+      showToast(`تم ${labels[action]} ${ids.length} مقال بنجاح`, 'success');
+      renderArticles();
+      renderDashboard();
+    } catch (e) {
+      showToast(`خطأ في ${labels[action]}: ` + e.message, 'error');
+    }
+  });
+}
+
+function bulkDelete() { bulkAction('delete'); }
+function bulkPublish() { bulkAction('publish'); }
+function bulkDraft() { bulkAction('draft'); }
 
 async function deleteArticle(id) {
   showModal('حذف المقال', 'هل أنت متأكد من حذف هذا المقال؟ لا يمكن التراجع عن هذا الإجراء.', async () => {

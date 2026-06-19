@@ -1507,9 +1507,10 @@ async function renderDashboard() {
   const now = new Date();
   const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
   const todayCount = DB.filter(a => (a.created_at ? new Date(a.created_at).getTime() : 0) >= todayStart).length;
-  const publishedCount = INDEX.length;
+  const publishedOnSite = INDEX.filter(a => a.status !== 'draft').length;
+  const draftCount = DB.filter(a => a.status === 'draft' || (!INDEX.some(i => String(i.id) === String(a.id)))).length;
   document.getElementById('statTotal').textContent = DB.length;
-  document.getElementById('statPublished').textContent = publishedCount;
+  document.getElementById('statPublished').textContent = publishedOnSite;
   document.getElementById('statToday').textContent = todayCount;
 
   // Last update
@@ -2259,7 +2260,7 @@ async function afterLogin() {
   try { await loadDb(); } catch (e) { console.error('loadDb:', e); }
   try { await loadIndex(); } catch (e) { console.error('loadIndex:', e); }
 
-  // Rebuild DB from INDEX if articles_db.json is gone (single-source-of-truth migration)
+  // Rebuild DB from INDEX if articles_db.json is stale or empty (single-source-of-truth migration)
   if (!DB.length && INDEX.length) {
     DB = INDEX.map(a => ({
       id: a.id,
@@ -2271,7 +2272,7 @@ async function afterLogin() {
       image: a.image || '',
       source: a.source || '',
       source_name: a.source || '',
-      status: 'published',
+      status: a.status || 'published',
       featured: !!a.featured,
       published_at: a.publishedAt || a.date || '',
       created_at: a.publishedAt || a.date || '',
@@ -2285,6 +2286,8 @@ async function afterLogin() {
       updated_at: new Date().toISOString()
     }));
     console.log('Rebuilt DB from INDEX —', DB.length, 'articles');
+  } else if (DB.length && DB.length !== INDEX.length) {
+    console.warn('DB length mismatch:', DB.length, '(DB) vs', INDEX.length, '(INDEX) — run sync_articles.js to rebuild');
   }
 
   // If no auth method configured, prompt user

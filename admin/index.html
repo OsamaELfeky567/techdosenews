@@ -420,6 +420,7 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
           <div class="toolbar" style="margin-top:16px">
             <button type="submit" class="btn btn-primary" id="saveArticleBtn"><i class="fas fa-save"></i> حفظ</button>
             <button type="button" class="btn btn-outline" id="cancelEditBtn">إلغاء</button>
+            <button type="button" class="btn btn-outline" id="aiAssistBtn" onclick="aiAssist()" title="Gemini AI Assistant"><i class="fas fa-magic"></i> AI Assist</button>
             <div class="spacer"></div>
             <div id="editorStatus" style="font-size:.8rem;color:var(--text3)"></div>
           </div>
@@ -525,6 +526,11 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
               <label>n8n Webhook URL</label>
               <input type="url" id="editWebhookUrl" placeholder="https://your-n8n.com/webhook/tdn-run" style="direction:ltr;text-align:left">
               <div class="hint">لتشغيل الوركفلو من لوحة التحكم</div>
+            </div>
+            <div class="form-group">
+              <label>Gemini API Key (AI Assistant)</label>
+              <input type="password" id="editGeminiKey" placeholder="AIzaSy..." style="direction:ltr;text-align:left;font-family:monospace">
+              <div class="hint">مفتاح API من Google AI Studio (ai.google.dev). يستخدم لتحسين المقالات واقتراح التصنيفات</div>
             </div>
             <div class="form-group">
               <label>GitHub Proxy URL</label>
@@ -1915,6 +1921,54 @@ function renderThemes() {
   });
 }
 
+/* AI Assistant (P8) */
+async function aiAssist() {
+  const key = CONFIG.geminiKey;
+  if (!key) { showToast('تحتاج إلى إضافة Gemini API Key في الإعدادات أولاً', 'error'); return; }
+  const title = document.getElementById('editTitle').value.trim();
+  const body = document.getElementById('editBody').value.trim();
+  if (!body && !title) { showToast('أدخل عنوان المقال أو نص المقال أولاً', 'error'); return; }
+
+  const btn = document.getElementById('aiAssistBtn');
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري...';
+
+  try {
+    const prompt = `أنت مساعد تحرير مقالات تقنية. حلل المحتوى التالي وقدم:
+1. التصنيف المقترح (اختر واحداً من: ai, cybersecurity, companies, phones, ev)
+2. عنوان مقترح محسّن (بالعربية،不超过 100 حرف)
+3. وصف مختصر محسّن (بالعربية, جملة واحدة 50-100 حرف)
+
+العنوان الحالي: ${title || 'لا يوجد'}
+المحتوى: ${(body || title || '').substring(0, 3000)}
+
+أجب بصيغة JSON فقط بهذا الشكل:
+{"category":"...","title":"...","excerpt":"..."}`;
+
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${key}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+    });
+    const data = await res.json();
+    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    const json = JSON.parse(text.replace(/```json\s*/g, '').replace(/```/g, '').trim());
+
+    const info = [];
+    if (json.category) {
+      const cat = CATEGORIES.find(c => c.id === json.category);
+      if (cat) { document.getElementById('editCategory').value = cat.id; info.push(`التصنيف: ${cat.name}`); }
+    }
+    if (json.title && !title) { document.getElementById('editTitle').value = json.title; info.push(`العنوان: ${json.title.substring(0,50)}...`); }
+    if (json.excerpt) { document.getElementById('editExcerpt').value = json.excerpt; info.push('الوصف: محدث'); }
+
+    showToast('AI Assist: ' + info.join(' | '), 'success');
+  } catch (e) {
+    showToast('AI Assist: فشل الاتصال: ' + e.message, 'error');
+  } finally {
+    btn.disabled = false; btn.innerHTML = '<i class="fas fa-magic"></i> AI Assist';
+  }
+}
+
 /* Init dashboard etc on article page */
 async function saveArticle(formData) {
   try {
@@ -2381,6 +2435,7 @@ async function saveSettings() {
   if (newPass) CONFIG.passwordHash = await sha256(newPass);
 
   // Analytics
+  CONFIG.geminiKey = document.getElementById('editGeminiKey').value.trim() || CONFIG.geminiKey;
   CONFIG.ga4MeasurementId = document.getElementById('editGa4Id').value.trim();
   CONFIG.searchConsoleMetaTag = document.getElementById('editGscMeta').value.trim();
   CONFIG.searchConsolePropertyUrl = document.getElementById('editGscUrl').value.trim();
@@ -2511,6 +2566,7 @@ async function afterLogin() {
   document.getElementById('editFacebookUrl').value = CONFIG.facebook || '';
   document.getElementById('editTwitterUrl').value = CONFIG.twitter || '';
   // Analytics
+  document.getElementById('editGeminiKey').value = CONFIG.geminiKey || '';
   document.getElementById('editGa4Id').value = CONFIG.ga4MeasurementId || '';
   document.getElementById('editGscMeta').value = CONFIG.searchConsoleMetaTag || '';
   document.getElementById('editGscUrl').value = CONFIG.searchConsolePropertyUrl || '';

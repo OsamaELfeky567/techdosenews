@@ -119,6 +119,7 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
 .badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.75rem;font-weight:600}
 .badge-published{background:rgba(34,197,94,.15);color:var(--green)}
 .badge-draft{background:rgba(245,158,11,.15);color:var(--orange)}
+.badge-scheduled{background:rgba(168,85,247,.15);color:var(--purple)}
 /* Empty state */
 .empty-state{text-align:center;padding:60px 20px;color:var(--text3)}
 .empty-state i{font-size:2.5rem;margin-bottom:12px;opacity:.4}
@@ -227,6 +228,7 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
           <div class="stat-card"><div class="stat-label">إجمالي المقالات</div><div class="stat-value" id="statTotal">-</div><div class="stat-sub">في قاعدة البيانات</div></div>
           <div class="stat-card"><div class="stat-label">منشور</div><div class="stat-value" id="statPublished">-</div><div class="stat-sub">على الموقع</div></div>
           <div class="stat-card"><div class="stat-label">اليوم</div><div class="stat-value" id="statToday">-</div><div class="stat-sub">مقال جديد</div></div>
+          <div class="stat-card"><div class="stat-label">مجدول</div><div class="stat-value" id="statScheduled">-</div><div class="stat-sub">بانتظار النشر</div></div>
           <div class="stat-card"><div class="stat-label">آخر تحديث</div><div class="stat-value" id="statLastUpdate" style="font-size:1rem">-</div><div class="stat-sub">الموقع</div></div>
         </div>
         <!-- Insights -->
@@ -304,7 +306,7 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
         <div class="toolbar">
           <input type="search" id="artSearch" placeholder="بحث في المقالات...">
           <select id="artFilter"><option value="">كل التصنيفات</option></select>
-          <select id="artStatusFilter"><option value="">كل الحالات</option><option value="published">منشور</option><option value="draft">مسودة</option></select>
+          <select id="artStatusFilter"><option value="">كل الحالات</option><option value="published">منشور</option><option value="draft">مسودة</option><option value="scheduled">مجدول</option></select>
           <div class="spacer"></div>
           <button class="btn btn-primary" id="newArticleBtn"><i class="fas fa-plus"></i> مقال جديد</button>
         </div>
@@ -315,6 +317,7 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
           <button class="btn btn-sm btn-outline" onclick="bulkDraft()"><i class="fas fa-pen"></i> حفظ كمسودة</button>
           <button class="btn btn-sm btn-outline" onclick="clearSelection()" style="margin-right:auto"><i class="fas fa-times"></i> إلغاء التحديد</button>
         </div>
+        <div class="toolbar" id="scheduledBar" style="margin-top:-8px"></div>
         <div id="articlesContainer" class="table-wrap"></div>
       </section>
 
@@ -396,12 +399,20 @@ input,select,textarea,button{font-family:inherit;font-size:.95rem}
           <div class="form-row" style="align-items:center">
             <div class="form-group">
               <label>حالة النشر</label>
-              <select id="editStatus">
+              <select id="editStatus" onchange="toggleScheduledField()">
                 <option value="published">منشور</option>
                 <option value="draft">مسودة</option>
+                <option value="scheduled">مجدول</option>
               </select>
             </div>
-            <div class="form-group" style="display:flex;align-items:center;gap:10px;padding-top:20px">
+            <div class="form-group" id="scheduledAtGroup" style="display:none">
+              <label>موعد النشر</label>
+              <input type="datetime-local" id="editScheduledAt">
+              <div class="hint">سيتم نشر المقال تلقائياً في هذا الموعد</div>
+            </div>
+          </div>
+          <div class="form-row" style="align-items:center">
+            <div class="form-group" style="display:flex;align-items:center;gap:10px;padding-top:4px">
               <label style="margin:0">مقال مميز (Featured)</label>
               <label class="switch"><input type="checkbox" id="editFeatured"><span class="slider"></span></label>
             </div>
@@ -1524,9 +1535,14 @@ async function renderDashboard() {
   const todayCount = DB.filter(a => (a.created_at ? new Date(a.created_at).getTime() : 0) >= todayStart).length;
   const publishedOnSite = INDEX.filter(a => a.status !== 'draft').length;
   const draftCount = DB.filter(a => a.status === 'draft' || (!INDEX.some(i => String(i.id) === String(a.id)))).length;
+  const scheduledCount = DB.filter(a => a.status === 'scheduled' && a.scheduled_at && new Date(a.scheduled_at) > new Date()).length;
   document.getElementById('statTotal').textContent = DB.length;
   document.getElementById('statPublished').textContent = publishedOnSite;
   document.getElementById('statToday').textContent = todayCount;
+  document.getElementById('statScheduled').textContent = scheduledCount;
+  if (scheduledCount > 0) {
+    document.getElementById('page-articles').querySelector('.toolbar').after(document.getElementById('scheduledBar'));
+  }
 
   // Last update
   try {
@@ -1709,7 +1725,8 @@ function renderArticles() {
     <th>العنوان</th><th>التصنيف</th><th>الحالة</th><th>تاريخ النشر</th><th>آخر تحديث</th><th>إجراءات</th>
   </tr></thead><tbody>${list.map(a => {
     const inIndex = INDEX.some(i => String(i.id) === String(a.id));
-    const status = inIndex ? 'published' : (a.status || 'draft');
+    const isScheduled = a.status === 'scheduled' && a.scheduled_at && new Date(a.scheduled_at) > new Date();
+    const status = isScheduled ? 'scheduled' : (inIndex ? 'published' : (a.status || 'draft'));
     const checked = selectedIds.has(String(a.id)) ? 'checked' : '';
     const fmtDT = (ts) => { if (!ts) return '-'; try { return new Date(ts).toLocaleString('ar-EG', { year:'numeric', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }); } catch { return ts; } };
     const catId = getCategoryIdFromArticle(a);
@@ -1718,7 +1735,7 @@ function renderArticles() {
       <td class="cb-cell"><input type="checkbox" ${checked} onchange="toggleArticle('${a.id}')"></td>
       <td><strong>${esc(a.title_ar||'').substring(0,50)}</strong></td>
       <td><span class="badge badge-published">${esc(catName)}</span></td>
-      <td><span class="badge ${status === 'published' ? 'badge-published' : 'badge-draft'}">${status === 'published' ? 'منشور' : 'مسودة'}</span></td>
+      <td><span class="badge ${status === 'published' ? 'badge-published' : status === 'scheduled' ? 'badge-scheduled' : 'badge-draft'}">${status === 'published' ? 'منشور' : status === 'scheduled' ? 'مجدول' : 'مسودة'}</span></td>
       <td style="font-size:.8rem;color:var(--text3);white-space:nowrap">${fmtDT(a.published_at || a.created_at)}</td>
       <td style="font-size:.8rem;color:var(--text3);white-space:nowrap">${fmtDT(a.updated_at || a.published_at || a.created_at)}</td>
       <td>
@@ -1731,6 +1748,22 @@ function renderArticles() {
     </tr>`;
   }).join('')}</tbody></table>`;
   updateBulkBar();
+  renderScheduledBar();
+}
+
+function renderScheduledBar() {
+  const now = new Date();
+  const due = DB.filter(a => a.status === 'scheduled' && a.scheduled_at && new Date(a.scheduled_at) <= now);
+  const bar = document.getElementById('scheduledBar');
+  if (due.length > 0) {
+    bar.innerHTML = `<div style="display:flex;align-items:center;gap:10px;padding:8px 14px;background:rgba(168,85,247,.1);border-radius:8px;font-size:.85rem">
+      <i class="fas fa-clock" style="color:var(--purple)"></i>
+      <span style="color:var(--text2)"><strong style="color:var(--purple)">${due.length}</strong> مقال مجدول جاهز للنشر</span>
+      <button class="btn btn-sm btn-green" onclick="publishScheduled()"><i class="fas fa-check-circle"></i> نشر الآن</button>
+    </div>`;
+  } else {
+    bar.innerHTML = '';
+  }
 }
 
 /* Editor */
@@ -1748,8 +1781,11 @@ function populateEditor(article) {
   document.getElementById('editSource').value = article ? (article.source_name || article.source || '') : '';
   document.getElementById('editSourceLink').value = article ? (article.source_link || '') : '';
   document.getElementById('editVideoUrl').value = article ? (article.video_url || article.videoUrl || '') : '';
-  document.getElementById('editStatus').value = article ? ((article.status === 'draft' || !INDEX.some(i => String(i.id) === String(article.id))) ? 'draft' : 'published') : 'published';
+  document.getElementById('editScheduledAt').value = article ? (article.scheduled_at ? new Date(article.scheduled_at).toISOString().substring(0,16) : '') : '';
+  const isDraft = article ? (article.status === 'draft' || (article.status !== 'scheduled' && !INDEX.some(i => String(i.id) === String(article.id)))) : false;
+  document.getElementById('editStatus').value = article ? (article.status === 'scheduled' ? 'scheduled' : (isDraft ? 'draft' : 'published')) : 'published';
   document.getElementById('editFeatured').checked = article ? !!(article.featured) : false;
+  toggleScheduledField();
 
   // Tags
   EDIT_TAGS = article ? (article.tags || []) : [];
@@ -1763,6 +1799,12 @@ function populateEditor(article) {
 function populateCategorySelect(selected) {
   const sel = document.getElementById('editCategory');
   sel.innerHTML = CATEGORIES.map(c => `<option value="${c.id}"${c.id === selected ? ' selected' : ''}>${c.name}</option>`).join('');
+}
+
+function toggleScheduledField() {
+  const status = document.getElementById('editStatus').value;
+  const group = document.getElementById('scheduledAtGroup');
+  group.style.display = status === 'scheduled' ? 'block' : 'none';
 }
 
 function renderTags() {
@@ -1898,6 +1940,7 @@ async function saveArticle(formData) {
       source_link: formData.sourceLink || '',
       video_url: formData.videoUrl || '',
       status: formData.status || 'published',
+      scheduled_at: formData.status === 'scheduled' ? (formData.scheduledAt || new Date(Date.now() + 86400000).toISOString()) : '',
       created_at: existingArticle.created_at || now,
       published_at: formData.published_at || (isNew ? now : (existingArticle.published_at || (formData.date ? new Date(formData.date).toISOString() : now))),
       updated_at: now
@@ -1909,6 +1952,11 @@ async function saveArticle(formData) {
       DB[dbIdx] = { ...DB[dbIdx], ...article };
     } else {
       DB.unshift(article);
+    }
+
+    // Remove from INDEX if drafted or scheduled
+    if (formData.status === 'draft' || formData.status === 'scheduled') {
+      INDEX = INDEX.filter(a => String(a.id) !== String(id));
     }
 
     // Publish to index if status is published
@@ -2123,6 +2171,43 @@ async function bulkAction(action) {
 function bulkDelete() { bulkAction('delete'); }
 function bulkPublish() { bulkAction('publish'); }
 function bulkDraft() { bulkAction('draft'); }
+
+async function publishScheduled() {
+  const now = new Date();
+  const due = DB.filter(a => a.status === 'scheduled' && a.scheduled_at && new Date(a.scheduled_at) <= now);
+  if (due.length === 0) { showToast('لا توجد مقالات مجدولة جاهزة للنشر', 'error'); return; }
+  showModal(`نشر ${due.length} مقال مجدول`, `هل أنت متأكد من نشر ${due.length} مقال مجدول فوراً؟`, async () => {
+    try {
+      const ids = due.map(a => String(a.id));
+      due.forEach(a => {
+        a.status = 'published';
+        a.scheduled_at = '';
+        if (!INDEX.some(i => String(i.id) === String(a.id))) {
+          INDEX.unshift({
+            id: a.id, title: a.title_ar || a.title || '', excerpt: a.excerpt || '', category: a.category || '',
+            tags: a.tags || [], image: a.image_url || a.image || '', publishedAt: new Date().toISOString(),
+            readTime: Math.max(1, Math.round(((a.body||'').split(/\s+/).filter(Boolean).length)/80)) + ' دقائق',
+            views: '0', hasEgyptImpact: !!(a.egypt && a.egypt.length > 5),
+            featured: false, body: a.body || '', egyptImpact: a.egypt || '',
+            source: a.source_name || '', videoUrl: a.video_url || '',
+            link: `https://${GH_OWNER}.github.io/${GH_REPO}/article.html?id=${a.id}`
+          });
+        }
+      });
+      let dbSha = '', idxSha = '';
+      try { const j = await ghFetch('articles_db.json'); dbSha = j.sha; } catch {}
+      try { const j = await ghFetch('data/articles/index.json'); idxSha = j.sha; } catch {}
+      await ghPut('articles_db.json', JSON.stringify(DB, null, 2), `نشر ${due.length} مقال مجدول`, dbSha);
+      await ghPut('data/articles/index.json', JSON.stringify(INDEX, null, 2), `نشر ${due.length} مقال مجدول - فهرس`, idxSha);
+      showToast(`تم نشر ${due.length} مقال بنجاح`, 'success');
+      renderArticles();
+      renderDashboard();
+      renderScheduledBar();
+    } catch (e) {
+      showToast('خطأ في النشر المجدول: ' + e.message, 'error');
+    }
+  });
+}
 
 async function deleteArticle(id) {
   showModal('حذف المقال', 'هل أنت متأكد من حذف هذا المقال؟ لا يمكن التراجع عن هذا الإجراء.', async () => {
@@ -2492,6 +2577,7 @@ async function afterLogin() {
       sourceLink: document.getElementById('editSourceLink').value,
       videoUrl: document.getElementById('editVideoUrl').value,
       status: document.getElementById('editStatus').value,
+      scheduledAt: document.getElementById('editScheduledAt').value,
       featured: document.getElementById('editFeatured').checked
     };
     if (!data.title || !data.body) return showToast('العنوان ونص المقال مطلوبان', 'error');

@@ -11,7 +11,7 @@
   "twitter": "https://x.com/techdosenews",
   "webhookUrl": "http://localhost:5678/webhook/tdn-run",
   "ghProxyUrl": "http://localhost:3001",
-  "ga4MeasurementId": "",
+  "ga4MeasurementId": "G-XJD3ENNWK9",
   "searchConsoleMetaTag": "",
   "searchConsolePropertyUrl": "",
   "clarityProjectId": "",

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /dashboard.html
 
-Sitemap: https://osamaelfeky567.github.io/techdosenews/sitemap.xml
+Sitemap: https://td-arabi.com/sitemap.xml

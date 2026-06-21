@@ -8,10 +8,38 @@
   <url><loc>https://td-arabi.com/disclaimer.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://td-arabi.com/editorial-policy.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url>
+    <loc>https://td-arabi.com/article.html?id=art-1782045020186-ndylyv</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-21T12:30:26.180Z</news:publication_date>
+      <news:title>سónar+D يعيد صياغة Llotja de Mar مع التركيبات الذكية</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://td-arabi.com/article.html?id=art-1782043221143-kedq66</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-21T12:00:23.140Z</news:publication_date>
+      <news:title>مبتدئة الذكاء الاصطناعي تقدم تنظيفًا مجانًا لتدريب روبوتات البديل</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/article.html?id=art-1781996420278-emchdl</loc>
     <lastmod>2026-06-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -25,7 +53,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781956820536-axbmyu</loc>
     <lastmod>2026-06-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -39,7 +67,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781924420446-sc4zg5</loc>
     <lastmod>2026-06-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -53,7 +81,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781922620325-h0lz3b</loc>
     <lastmod>2026-06-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -67,7 +95,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781913621368-tvu1t8</loc>
     <lastmod>2026-06-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -81,7 +109,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781911820313-dkxuju</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -95,7 +123,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781901021684-enpz4o</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -109,7 +137,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781897420854-d94u0t</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -123,7 +151,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781881221626-ey7idd</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -137,7 +165,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781874020402-42cn0b</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -151,7 +179,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781872220498-r89sn3</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -165,7 +193,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781868620638-i3pp8e</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -179,7 +207,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781865021464-gpfz3l</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -193,7 +221,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781863220495-d9bljb</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -207,7 +235,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781854220224-ydu62o</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -221,7 +249,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781841620369-2cgvca</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -235,7 +263,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781839820341-w1qmr8</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -249,7 +277,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781838020321-o94ld5</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -263,7 +291,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781836220172-yffh3l</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -277,7 +305,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781834420431-tt1hwg</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -291,7 +319,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781832620375-nn4ebz</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -305,7 +333,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781830820744-73p7vl</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -319,7 +347,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781829020533-sair7d</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -333,7 +361,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781827220272-7t0iui</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -347,7 +375,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781825420323-bbl4es</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -361,7 +389,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781823620633-9qyhz7</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -375,7 +403,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781805620198-u8c7rn</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -389,7 +417,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781802020331-kxoax0</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -403,7 +431,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781798420571-7jpksx</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -417,7 +445,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781796620887-re06fr</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -431,7 +459,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781794820680-qd1fkf</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -445,7 +473,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781793020232-swmomb</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -459,7 +487,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781791220967-ttgsuv</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -473,7 +501,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781789420591-fzoqhr</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -487,7 +515,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781787620543-tq570f</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -501,7 +529,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781785820594-pk6hgt</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -515,7 +543,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781784021321-a3jtdc</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -529,7 +557,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781782220572-6qi07l</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -543,7 +571,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781780421489-8wo87o</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -557,7 +585,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781778620613-1uca06</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -571,7 +599,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781776821557-huu2p9</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -585,7 +613,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781773220242-8us9fk</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -599,7 +627,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781771420691-43iz1l</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -613,7 +641,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781769620544-o6f4fu</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -627,7 +655,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781733620377-jkgpo7</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -641,7 +669,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781733249608-528aib</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -655,7 +683,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781733057037-mv4t16</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -669,7 +697,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781732931197-zjzzuz</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -683,7 +711,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781732847139-h41orb</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -697,7 +725,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781730020343-gmlrfg</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -711,7 +739,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781728220347-8hbseb</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -725,7 +753,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781726420261-d83z1s</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -739,7 +767,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781724620345-qg1arq</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -753,7 +781,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781722820400-kln7hz</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -767,7 +795,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781719220191-o1ayy3</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -781,7 +809,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781717421304-9e3u1m</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -795,7 +823,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781715620506-755udg</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -809,7 +837,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781713820315-kbznoo</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -823,7 +851,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781712020441-1wtvaq</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -837,7 +865,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781710220154-ksjjf2</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -851,7 +879,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781709122863-nigq3b</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -865,7 +893,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781686820530-p01maq</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -879,7 +907,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781685020583-rhi5pk</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -893,7 +921,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781683220491-pv1g2p</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -907,7 +935,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781681420817-o88tfb</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -921,7 +949,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781679620800-xo47vo</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -935,7 +963,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781677820459-lg8im9</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -949,7 +977,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781676020445-8po4y5</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -963,7 +991,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781674220399-us9jyl</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -977,7 +1005,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781672420400-zs7t1a</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -991,7 +1019,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781670620305-0v14ha</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1005,7 +1033,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781665220305-hw6bgy</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1019,7 +1047,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781663420530-cyxk5u</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1033,7 +1061,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781661620569-rkrzle</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1047,7 +1075,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781659820620-5s9aa8</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1061,7 +1089,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781658020303-xya6de</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1075,7 +1103,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781656220616-lk0i8y</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1089,7 +1117,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781654420283-4kmam8</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1103,7 +1131,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781652620509-4d0yxv</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1117,7 +1145,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781650820237-tjkw89</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1131,7 +1159,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781622020740-ency56</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1145,7 +1173,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781555420636-0yfoz7</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1159,7 +1187,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781553620572-w58gb9</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1173,7 +1201,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781551820699-ceequt</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1187,7 +1215,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781478020271-zerqvu</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1201,7 +1229,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781443821453-og08tw</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1215,7 +1243,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781442020370-j5gakf</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1229,7 +1257,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781440220530-u1bhj4</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1243,7 +1271,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781438420581-5u6awe</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1257,7 +1285,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781425821016-clncb6</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1271,7 +1299,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781424020336-ufxijl</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1285,7 +1313,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781362820470-ptqsxz</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1299,7 +1327,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781348421579-svkpdf</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1313,7 +1341,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781346620434-9fwvl4</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1327,7 +1355,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781343020300-5atna8</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1341,7 +1369,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781341221241-p6kxbg</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1355,7 +1383,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781339420581-fer7hm</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1369,7 +1397,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781337620470-7mquzv</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1383,7 +1411,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781330420497-rjqoqa</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1397,7 +1425,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781328620406-2f0nzn</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1411,7 +1439,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781299820382-b6lrjp</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1425,7 +1453,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781292620525-kd3k9q</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1439,7 +1467,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781287221495-wqyho7</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1453,7 +1481,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781281820401-ocypok</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1467,7 +1495,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781280021551-gvi0h7</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1481,7 +1509,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781278220387-rve8zn</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1495,7 +1523,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781276420509-7gzfex</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1509,7 +1537,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781274621173-caf89t</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1523,7 +1551,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781272820661-5qu55g</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1537,7 +1565,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781271021797-sgp4d9</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1551,7 +1579,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781263820538-keu0p2</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1565,7 +1593,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781262020472-lh021j</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1579,7 +1607,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781260220281-czs2jk</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1593,7 +1621,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781258420681-97sohg</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1607,7 +1635,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781256620217-cfwooi</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1621,7 +1649,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781254826637-f0zct3</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1635,7 +1663,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781229620149-ubiazd</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1649,7 +1677,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781227820436-rejj3g</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1663,7 +1691,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781226020168-9dr36m</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1677,7 +1705,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781224220204-uf391t</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1691,7 +1719,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781222420175-46a2ez</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1705,7 +1733,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781220620159-b1c60s</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1719,7 +1747,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781218820363-s9dxlv</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1733,7 +1761,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781217020713-lzemvl</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1747,7 +1775,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781213420235-sejm3z</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1761,7 +1789,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781211620261-rynom4</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1775,7 +1803,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781209820079-v20qgo</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1789,7 +1817,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781208020452-1mmmru</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1803,7 +1831,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781206220364-706a93</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1817,7 +1845,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781204420343-aszgbv</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1831,7 +1859,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781202620388-8s4w0p</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1845,7 +1873,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781200822482-ghi5lq</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1859,7 +1887,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781199020442-0pl8r3</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1873,7 +1901,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781197221037-3jsaiv</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1887,7 +1915,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781195420537-bltqq0</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1901,7 +1929,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781191820249-3ipmnk</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1915,7 +1943,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781188220817-gdw0h5</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1929,7 +1957,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781127020244-gf90iy</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1943,7 +1971,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781125222664-8umiv6</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1957,7 +1985,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781123420301-bwhu5f</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1971,7 +1999,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781121620312-gde963</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1985,7 +2013,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781119822280-tj9o7m</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -1999,7 +2027,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781118020760-yb6b81</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2013,7 +2041,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781116220282-3ssw01</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2027,7 +2055,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781114421007-7wbcnt</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2041,7 +2069,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781112621131-xfirh6</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2055,7 +2083,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781109020905-pndke7</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2069,7 +2097,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781105420286-a96yf1</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2083,7 +2111,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781103621160-8a3sqe</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2097,7 +2125,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781051421198-l5sy74</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2111,7 +2139,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781049620450-eylu3t</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2125,7 +2153,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781047821181-5ue5p9</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2139,7 +2167,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781046020716-rfzyav</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2153,7 +2181,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781044220450-qz29wv</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2167,7 +2195,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781040620741-i4rtik</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2181,7 +2209,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781037021262-5cgddt</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2195,7 +2223,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781035220953-q3yxyn</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2209,7 +2237,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781033420908-68ylw3</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2223,7 +2251,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781031620909-r1qs6h</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2237,7 +2265,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781029820415-kvsfbh</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2251,7 +2279,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781026220668-o79efp</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2265,7 +2293,7 @@
     <loc>https://td-arabi.com/article.html?id=pipeline-1781025991965-1-Ope</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2279,7 +2307,7 @@
     <loc>https://td-arabi.com/article.html?id=pipeline-1781025993047-2-غوغ</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2293,7 +2321,7 @@
     <loc>https://td-arabi.com/article.html?id=pipeline-1781025993891-3-ماي</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2307,7 +2335,7 @@
     <loc>https://td-arabi.com/article.html?id=pipeline-1781025994812-4-إنف</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2321,7 +2349,7 @@
     <loc>https://td-arabi.com/article.html?id=pipeline-1781025995669-5-آبل</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2335,7 +2363,7 @@
     <loc>https://td-arabi.com/article.html?id=pipeline-1781025996465-6-هجو</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2349,7 +2377,7 @@
     <loc>https://td-arabi.com/article.html?id=pipeline-1781025997299-7-ثغر</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2363,7 +2391,7 @@
     <loc>https://td-arabi.com/article.html?id=pipeline-1781025998129-8-غوغ</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2377,7 +2405,7 @@
     <loc>https://td-arabi.com/article.html?id=pipeline-1781025999103-9-سام</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2391,7 +2419,7 @@
     <loc>https://td-arabi.com/article.html?id=pipeline-1781025999991-10-تسل</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2405,7 +2433,7 @@
     <loc>https://td-arabi.com/article.html?id=pipeline-1781026000897-11-ريف</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2419,7 +2447,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781024422728-vx9kym</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2433,7 +2461,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781024420428-ovyf94</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2447,7 +2475,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781022621280-cvnvv1</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2461,7 +2489,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781020822780-yrfmzk</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2475,7 +2503,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781019020858-cgo40r</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2489,7 +2517,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781017220295-3nyl08</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2503,7 +2531,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781015423376-4onw13</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2517,7 +2545,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781015421639-oc62fr</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2531,7 +2559,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781013620312-ckiqzi</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2545,7 +2573,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781011822727-rkpsf9</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2559,7 +2587,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781011820181-tqfoqk</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2573,7 +2601,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781010021779-yrpqq6</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2587,7 +2615,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781008220908-few2wm</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2601,7 +2629,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781006422684-717nju</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2615,7 +2643,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781006420275-j7p2et</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2629,7 +2657,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781004622653-sffqwr</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2643,7 +2671,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1781004620202-wovrak</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2657,7 +2685,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780968624914-85m99d</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2671,7 +2699,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780968622316-dxb6qy</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2685,7 +2713,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780966820500-htjeci</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2699,7 +2727,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780963222833-mwxbt1</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2713,7 +2741,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780963220574-20i4em</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2727,7 +2755,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780961420391-tm0bmv</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2741,7 +2769,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780959621186-h9mz8c</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2755,7 +2783,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780957820598-8clu39</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2769,7 +2797,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780956138191-6izwzm</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2783,7 +2811,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780956118357-s35vi8</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2797,7 +2825,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780956066796-kwe084</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2811,7 +2839,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780956048458-e7ymkr</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2825,7 +2853,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780954220556-ap751s</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2839,7 +2867,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780952421342-orkt3e</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2853,7 +2881,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780867823267-zx9tj0</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2867,7 +2895,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780867820623-lwru9g</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2881,7 +2909,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780866020913-rzd6kx</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2895,7 +2923,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780864223505-92g4oa</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2909,7 +2937,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780864220789-bhjfam</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2923,7 +2951,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780862420264-on5bio</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2937,7 +2965,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780860620228-ud85op</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2951,7 +2979,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780858820840-g1fmct</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2965,7 +2993,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780855220056-76kkve</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2979,7 +3007,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780853422652-l41dkr</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -2993,7 +3021,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780853420224-61krp4</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3007,7 +3035,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780851619620-b2d23f</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3021,7 +3049,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780850967924-xinfrr</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3035,7 +3063,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780790422830-irypin</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3049,7 +3077,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780788623851-29u9uz</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3063,7 +3091,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780786820964-9zeujd</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3077,7 +3105,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780785020711-yq4ytq</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3091,7 +3119,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780783221195-01sn9z</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3105,7 +3133,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780781421666-ztkbyk</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3119,7 +3147,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780779623301-257qk5</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3133,7 +3161,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780779621086-90ceuc</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3147,7 +3175,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780777820757-aoh7lg</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3161,7 +3189,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780776020919-tyfbnw</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3175,7 +3203,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780774220175-0mv3gf</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3189,7 +3217,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780772420264-82w3l5</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3203,7 +3231,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780770622888-1cxwjv</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3217,7 +3245,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780770620378-8h7r3m</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3231,7 +3259,7 @@
     <loc>https://td-arabi.com/article.html?id=art-s2-prod-1780769475872</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3245,7 +3273,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780768820496-mryt4d</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3259,7 +3287,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780767020620-2t40ri</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3273,7 +3301,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780691420631-iksm99</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3287,7 +3315,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780687820958-xubfw5</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3301,7 +3329,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780686020602-0i83su</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3315,7 +3343,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780684222891-9w8m5d</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3329,7 +3357,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780684220660-2kx59m</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3343,7 +3371,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780678820849-f8dmm7</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3357,7 +3385,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780677021375-96tkpq</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3371,7 +3399,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780675220620-kn7wd7</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3385,7 +3413,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780673420693-1x507a</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3399,7 +3427,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780671620954-73qfhk</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3413,7 +3441,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780669820464-nyz5xp</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3427,7 +3455,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780668022916-el45t2</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3441,7 +3469,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780668020660-8knzc9</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3455,7 +3483,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780666223547-laq2xj</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3469,7 +3497,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780666221400-qh4cs4</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3483,7 +3511,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780664420710-flynb5</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3497,7 +3525,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780660820982-6vk0n2</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3511,7 +3539,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780659023725-uobrwc</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3525,7 +3553,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780659021175-bn8vze</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3539,7 +3567,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780657222657-rmv9k6</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3553,7 +3581,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780657220330-w11s12</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3567,7 +3595,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780655420792-kwy8px</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3581,7 +3609,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780653620620-5hoqy6</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3595,7 +3623,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780651822688-edwili</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3609,7 +3637,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780651820255-kac28l</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3623,7 +3651,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780650023246-yu9exu</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3637,7 +3665,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780648222672-iuukcf</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3651,7 +3679,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780648220261-lqzfyu</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3665,7 +3693,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780646421098-ccr05u</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3679,7 +3707,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780645881759-ig1czr</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3693,7 +3721,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780608620954-pzhnt6</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3707,7 +3735,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780606820832-w09mql</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3721,7 +3749,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780605020319-cphmol</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3735,7 +3763,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780603221110-eu9wyx</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3749,7 +3777,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780601421210-y8eknn</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3763,7 +3791,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780599620480-zg2q7x</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3777,7 +3805,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780596022039-schxp5</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3791,7 +3819,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780594220286-36a4y2</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3805,7 +3833,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780592421133-kd9kgz</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3819,7 +3847,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780590620391-qnkh5r</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3833,7 +3861,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780588820347-j21use</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3847,7 +3875,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780587020323-fg0ly2</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3861,7 +3889,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780585221211-8ea4t3</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3875,7 +3903,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780583420474-t1gf83</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3889,7 +3917,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780581620354-7hvzwj</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3903,7 +3931,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780579820887-qea4l6</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3917,7 +3945,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780417821586-w9wmx1</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3931,7 +3959,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780414220299-myhfux</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3945,7 +3973,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780412420312-gyl50q</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3959,7 +3987,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780410621256-s41d3v</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3973,7 +4001,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780408821154-qm0b7r</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -3987,7 +4015,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780407020490-eynk3o</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4001,7 +4029,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780403420275-ma7mik</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4015,7 +4043,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780399820777-0oxnah</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4029,7 +4057,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780398020367-wae5z9</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4043,7 +4071,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780396220247-9oowbn</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4057,7 +4085,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780394421181-ms1pc0</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4071,7 +4099,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780392620362-dfqbx6</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4085,7 +4113,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780390820277-1qmiru</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4099,7 +4127,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780389020358-zkgl8u</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4113,7 +4141,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780387220229-ae8r0k</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4127,7 +4155,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780385421260-jqhu4j</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4141,7 +4169,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780383620757-6ijx2d</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4155,7 +4183,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780381820221-eflq4f</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4169,7 +4197,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780380020308-edcog6</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4183,7 +4211,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780376419964-hf4yyp</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4197,7 +4225,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780376402810-kyj27h</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4211,7 +4239,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780376171395-vnplm0</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4225,7 +4253,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780375466705-hj01ra</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4239,7 +4267,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780374621058-fgg3t2</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4253,7 +4281,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780371020235-rcg2sq</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4267,7 +4295,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780369220294-inyugn</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4281,7 +4309,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780367420238-a7imc8</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4295,7 +4323,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780365620167-ev2i29</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4309,7 +4337,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780363820310-qodz9q</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4323,7 +4351,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780362020897-hemlcz</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4337,7 +4365,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780360220150-b7n1ho</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4351,7 +4379,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780356620359-1uozdp</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4365,7 +4393,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780354820270-93fmoz</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4379,7 +4407,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780353020288-sivcai</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4393,7 +4421,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780349420185-s80j2h</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4407,7 +4435,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780347620241-pjqs33</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4421,7 +4449,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780345821208-xkj3ff</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4435,7 +4463,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780344020361-hz8ek0</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4449,7 +4477,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780342220355-etrezf</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4463,7 +4491,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780340421281-rueik5</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4477,7 +4505,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780338620240-net4v4</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4491,7 +4519,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780336820535-c9rav4</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4505,7 +4533,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780335020428-8fz79i</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4519,7 +4547,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780333220343-cuebil</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4533,7 +4561,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780331420270-ok02zl</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4547,7 +4575,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780329620298-n8r7na</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4561,7 +4589,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780318820605-b4hglt</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4575,7 +4603,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780309820931-fbnj5x</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4589,7 +4617,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780308020586-xnz8a2</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4603,7 +4631,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780306220357-j6f42b</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4617,7 +4645,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780304420276-f22p26</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4631,7 +4659,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780302621284-hm6osh</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4645,7 +4673,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780300820378-hfhzkr</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4659,7 +4687,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780299020416-jjgwea</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4673,7 +4701,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780297220209-bxujb0</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4687,7 +4715,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780295506509-u30im3</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4701,7 +4729,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780295420335-nbff7a</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4715,7 +4743,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780255820967-9hwb2q</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4729,7 +4757,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780250374624-pdv66z</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4743,7 +4771,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780228820436-sm94fz</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4757,7 +4785,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780228808596-ngxhdy</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4771,7 +4799,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780228802997-o0sp0k</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4785,7 +4813,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780227002585-9tcoti</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4799,7 +4827,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780225202361-mt1ra9</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4813,7 +4841,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780219819741-ltjy1e</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4827,7 +4855,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780216213412-v2ieed</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4841,7 +4869,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780216208309-zoa4c4</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4855,7 +4883,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780216202789-hcv5hb</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4869,7 +4897,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780212064916-wrxrie</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4883,7 +4911,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780211892853-iw2r3d</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4897,7 +4925,7 @@
     <loc>https://td-arabi.com/article.html?id=apple-smart-glasses-strategy</loc>
     <lastmod>2026-05-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4911,7 +4939,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780182140710-akwtei</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4925,7 +4953,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780182037879-njbayo</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4939,7 +4967,7 @@
     <loc>https://td-arabi.com/article.html?id=art-1780181371457-3zcfhh</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4953,7 +4981,7 @@
     <loc>https://td-arabi.com/article.html?id=anthropic-tops-openai-valuation</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4967,7 +4995,7 @@
     <loc>https://td-arabi.com/article.html?id=valve-steam-deck-price-hike</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4981,7 +5009,7 @@
     <loc>https://td-arabi.com/article.html?id=1779831983701</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -4995,7 +5023,7 @@
     <loc>https://td-arabi.com/article.html?id=1779831983701</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5009,7 +5037,7 @@
     <loc>https://td-arabi.com/article.html?id=1779829218818</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5023,7 +5051,7 @@
     <loc>https://td-arabi.com/article.html?id=1779829218818</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5037,7 +5065,7 @@
     <loc>https://td-arabi.com/article.html?id=1779826586228</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5051,7 +5079,7 @@
     <loc>https://td-arabi.com/article.html?id=1779826586228</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5065,7 +5093,7 @@
     <loc>https://td-arabi.com/article.html?id=1779779336410</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5079,7 +5107,7 @@
     <loc>https://td-arabi.com/article.html?id=1779778967630</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5093,7 +5121,7 @@
     <loc>https://td-arabi.com/article.html?id=1779775217831</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5107,7 +5135,7 @@
     <loc>https://td-arabi.com/article.html?id=1779771617169</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5121,7 +5149,7 @@
     <loc>https://td-arabi.com/article.html?id=1779768018107</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5135,7 +5163,7 @@
     <loc>https://td-arabi.com/article.html?id=1779764417291</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5149,7 +5177,7 @@
     <loc>https://td-arabi.com/article.html?id=1779760818060</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5163,7 +5191,7 @@
     <loc>https://td-arabi.com/article.html?id=1779757217459</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5177,7 +5205,7 @@
     <loc>https://td-arabi.com/article.html?id=1779754913755</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5191,7 +5219,7 @@
     <loc>https://td-arabi.com/article.html?id=1779753634238</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5205,7 +5233,7 @@
     <loc>https://td-arabi.com/article.html?id=1779753616783</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5219,7 +5247,7 @@
     <loc>https://td-arabi.com/article.html?id=1779750984997</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5233,7 +5261,7 @@
     <loc>https://td-arabi.com/article.html?id=1779750880031</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5247,7 +5275,7 @@
     <loc>https://td-arabi.com/article.html?id=1779750864875</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5261,7 +5289,7 @@
     <loc>https://td-arabi.com/article.html?id=1779750848745</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5275,7 +5303,7 @@
     <loc>https://td-arabi.com/article.html?id=1779749581570</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5289,7 +5317,7 @@
     <loc>https://td-arabi.com/article.html?id=1779748734429</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5303,7 +5331,7 @@
     <loc>https://td-arabi.com/article.html?id=1779742860277</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5317,7 +5345,7 @@
     <loc>https://td-arabi.com/article.html?id=1779742839787</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
@@ -5331,7 +5359,7 @@
     <loc>https://td-arabi.com/article.html?id=1779739253312</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>

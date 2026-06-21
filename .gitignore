@@ -24,6 +24,10 @@
 !canonical_frontend/script.js
 !js/analytics.js
 
+# CI/CD scripts (safe - no secrets, in scripts/ directory)
+!scripts/generate-sitemap.js
+!scripts/submit-indexnow.js
+
 # But re-exclude test/deploy/audit scripts
 deploy_*.js
 audit_*.js

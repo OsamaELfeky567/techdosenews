@@ -736,7 +736,7 @@ async function loadArticle() {
     document.querySelector('[property="og:title"]') && (document.querySelector('[property="og:title"]').content = a.title + ' — TD بالعربي');
     document.querySelector('[property="og:description"]') && (document.querySelector('[property="og:description"]').content = a.excerpt || '');
     document.querySelector('[property="og:image"]') && (document.querySelector('[property="og:image"]').content = resolveImage(a));
-    document.querySelector('[property="og:url"]') && (document.querySelector('[property="og:url"]').content = 'https://osamaelfeky567.github.io/techdosenews/article.html?id=' + a.id);
+    document.querySelector('[property="og:url"]') && (document.querySelector('[property="og:url"]').content = 'https://td-arabi.com/article.html?id=' + a.id);
     document.querySelector('[name="twitter:image"]') && (document.querySelector('[name="twitter:image"]').content = resolveImage(a));
     const tagsArr = Array.isArray(a.tags) ? a.tags : [];
     const tagsHtml = tagsArr.map(t => '<span>' + esc(t) + '</span>').join('');
@@ -769,7 +769,7 @@ async function loadArticle() {
 
 function injectNewsArticleSchema(a) {
   const pubDate = getPubDate(a) || new Date().toISOString();
-  const url = 'https://osamaelfeky567.github.io/techdosenews/article.html?id=' + escId(a.id);
+  const url = 'https://td-arabi.com/article.html?id=' + escId(a.id);
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
@@ -777,7 +777,7 @@ function injectNewsArticleSchema(a) {
     description: (a.excerpt || '').substring(0, 300),
     image: resolveImage(a),
     author: { '@type': 'Organization', name: 'TD بالعربي' },
-    publisher: { '@type': 'Organization', name: 'TD بالعربي', logo: { '@type': 'ImageObject', url: 'https://osamaelfeky567.github.io/techdosenews/sandbox/og-image.png' } },
+    publisher: { '@type': 'Organization', name: 'TD بالعربي', logo: { '@type': 'ImageObject', url: 'https://td-arabi.com/sandbox/og-image.png' } },
     datePublished: pubDate,
     dateModified: pubDate,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url }

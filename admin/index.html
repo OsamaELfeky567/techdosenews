@@ -769,7 +769,7 @@ let EDIT_TAGS = [];
 let CURRENT_EDIT_ID = null;
 
 function getSiteUrl() {
-  return CONFIG && CONFIG.siteUrl ? CONFIG.siteUrl.replace(/\/$/, '') : `https://${GH_OWNER}.github.io/${GH_REPO}`;
+  return CONFIG && CONFIG.siteUrl ? CONFIG.siteUrl.replace(/\/$/, '') : 'https://td-arabi.com';
 }
 
 // Default config
@@ -2198,7 +2198,7 @@ async function bulkAction(action) {
               views: '0', hasEgyptImpact: !!(a.egypt && a.egypt.length > 5),
               featured: false, body: a.body || '', egyptImpact: a.egypt || '',
               source: a.source_name || '', videoUrl: a.video_url || '',
-              link: `https://${GH_OWNER}.github.io/${GH_REPO}/article.html?id=${a.id}`
+              link: `https://td-arabi.com/article.html?id=${a.id}`
             });
           }
         }});
@@ -2248,7 +2248,7 @@ async function publishScheduled() {
             views: '0', hasEgyptImpact: !!(a.egypt && a.egypt.length > 5),
             featured: false, body: a.body || '', egyptImpact: a.egypt || '',
             source: a.source_name || '', videoUrl: a.video_url || '',
-            link: `https://${GH_OWNER}.github.io/${GH_REPO}/article.html?id=${a.id}`
+            link: `https://td-arabi.com/article.html?id=${a.id}`
           });
         }
       });

@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url><loc>https://td-arabi.com/</loc><changefreq>hourly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://td-arabi.com/category.html?cat=ai</loc><changefreq>hourly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://td-arabi.com/category.html?cat=companies</loc><changefreq>hourly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://td-arabi.com/category.html?cat=security</loc><changefreq>hourly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://td-arabi.com/category.html?cat=mobile</loc><changefreq>hourly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://td-arabi.com/category.html?cat=ev</loc><changefreq>hourly</changefreq><priority>0.8</priority></url>
   <url><loc>https://td-arabi.com/about.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://td-arabi.com/contact.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://td-arabi.com/privacy.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>

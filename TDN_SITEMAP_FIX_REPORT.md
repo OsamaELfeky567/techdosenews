@@ -59,8 +59,33 @@ All 13 production files (HTML, JS, config) contained hardcoded `https://osamaelf
 - **robots.txt**: Already correct (`https://td-arabi.com/sitemap.xml`)
 - **Residual `github.io`**: Only in `articles_db.json` (article source data) and `production_workflow.json` (n8n pipeline code) — excluded by constraints
 
-## Commit
+## Category URL Removal
+
+### Context
+
+As part of the Tags Only Architecture migration, category pages (`category.html?cat=ai`, `cat=companies`, `cat=security`, `cat=mobile`, `cat=ev`) are being phased out and should not be submitted to search engines or IndexNow.
+
+### Fix
+
+Removed the 5 category `<url>` entries from the static section of both:
+- `backup_cleanup_final/old_cleanup_20260616/root_audit_scripts/gen_sitemap.js`
+- `backup_cleanup_final/old_cleanup_20260616/root_audit_scripts/gen_sitemap_remote.js`
+
+### Validation
+
+| Check | Result |
+|-------|--------|
+| `grep category.html sitemap.xml` | **0 matches** ✅ |
+| Article count | 381 (unchanged) ✅ |
+| Static pages (/, about, contact, privacy, terms, disclaimer, editorial-policy) | All 7 present ✅ |
+| `news:news` entries | 762 (381 articles × 2 for open/close tags) ✅ |
+| XML declaration | `<?xml version="1.0" encoding="UTF-8"?>` ✅ |
+| Closing tag | `</urlset>` ✅ |
+| robots.txt | `Sitemap: https://td-arabi.com/sitemap.xml` ✅ |
+
+## Commits
 
 ```
 fix(seo): migrate sitemap URLs to td-arabi.com
+refactor(seo): remove category URLs from sitemap
 ```

@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
 Disallow: /dashboard.html
+Disallow: /server/
+Disallow: /scripts/
+Disallow: /node_modules/
 
 Sitemap: https://td-arabi.com/sitemap.xml

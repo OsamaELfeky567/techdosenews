@@ -85,6 +85,13 @@ a{text-decoration:none;color:inherit}
 .sb-ad-label{font-size:.65rem;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
 .sb-ad-placeholder{font-size:.85rem;color:#94a3b8}
 .sb-ad-728x90{min-height:90px;margin:24px 0}
+/* === ADSTERRA CONTAINERS === */
+.ad-container{overflow:hidden;text-align:center}
+.ad-leaderboard{max-width:728px;margin:0 auto 24px}
+.ad-rectangle{max-width:300px;margin:0 auto 24px}
+.ad-sidebar{position:sticky;top:20px;width:160px;float:left;margin-left:-180px}
+@media(max-width:1100px){.ad-sidebar{display:none!important}}
+@media(max-width:768px){.ad-leaderboard{display:none}}
 .sb-ad-300x250{min-height:250px}
 .sb-ad-leaderboard{min-height:90px;margin:24px 0}
 .sb-ad-leaderboard .sb-ad-placeholder-mb{display:none}

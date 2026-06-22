@@ -1,133 +1,24 @@
-# Tech Dose News - Git Ignore
-# Prevent secret exposure, build artifacts, and development clutter
+# Dependencies
+node_modules/
 
-# Environment files
+# Security
+*.pem
+*.key
 .env
 .env.local
 .env.production
-.env.development
 
-# Secrets and credentials
-*.key
-*.pem
-*.cert
-**/groq_production.key
+# Backup directories
+backup_*/
 
-# Development scripts (all contain hardcoded tokens)
-# Root-level JS deploy/audit/test/fix scripts
-*.js
-# Except explicitly unfollowed patterns
-!script.js
-!orchestrator_current.js
-!merged_frontend/script.js
-!deployment_candidate/script.js
-!canonical_frontend/script.js
-!js/analytics.js
-
-# CI/CD scripts (safe - no secrets, in scripts/ directory)
-!scripts/generate-sitemap.js
-!scripts/submit-indexnow.js
-
-# But re-exclude test/deploy/audit scripts
-deploy_*.js
-audit_*.js
-check_*.js
-test_*.js
-verify_*.js
-fix*.js
-fix_*.js
-debug_*.js
-diagnose_*.js
-sandbox_*.js
-run_*.js
-prod_code_*.js
-orch_*.js
-
-# Reports containing secrets
-SECRET_EXPOSURE_REPORT*.md
-TechDoseNews_Report.*
-WORKFLOW_ACTIVATION_REPORT.md
-WORKFLOW_STATUS_AUDIT.md
-
-# Node and dependencies
-node_modules/
-package-lock.json
-yarn.lock
-
-# Build output
-dist/
-build/
-out/
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
+# Logs
+*.log
+npm-debug.log*
 
 # OS files
 .DS_Store
 Thumbs.db
-desktop.ini
 
-# Python
-__pycache__/
-*.pyc
-*.pyo
-.venv/
-venv/
-
-# Logs
-*.log
-system.log
-
-# Dumps and temp files
-all_nodes_dump*.txt
-tmp_login.json
-last_execution_*.txt
-last_execution_*.json
-direct_test_result.json
-tg_test_*.json
-validation_results.json
-
-# Backup directories (contain copies of secrets)
-_BACKUP_*/
-_ARCHIVE/
-PRE_DEPLOY_BACKUP/
-PHASE1_BACKUP_*/
-backup_cleanup_*/
-
-# Research lab (contains Groq key files)
-sandbox_research_lab/
-sandbox_research_lab_backup_*/
-
-# Sandbox artifacts
-sandbox/
-sandbox_frontend/
-sandbox_*.html
-sandbox_*.css
-sandbox_*.json
-
-# Cleanup artifacts
-merged_frontend/
-phase1_current/
-IMAGE_APPROVAL_PACKAGE/
-
-# Legacy databases
-articles_db.json.legacy
-
-# Old report files (single source of truth is TDN_MASTER_EXECUTION_REPORT.md)
-SECRET_EXPOSURE_REPORT*.md
-TechDoseNews_Report.*
-WORKFLOW_ACTIVATION_REPORT.md
-WORKFLOW_STATUS_AUDIT.md
-
-# Test scripts in tools/
-tools/editor_cert_test.mjs
-tools/editor_lifecycle_test.mjs
-tools/check_braces.mjs
-tools/check_suneditor_plugins.mjs
-
-# Individual article files (index.json is single source of truth)
-data/articles/*.json
-!data/articles/index.json
+# Build outputs
+dist/
+build/

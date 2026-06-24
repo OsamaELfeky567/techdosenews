@@ -1,5 +1,28 @@
 [
   {
+    "id": "art-1782322260225-d6gt54",
+    "title": "White House drastically shortens deadline for dropping quantum-vulnerable crypto",
+    "excerpt": "The White House is drastically shortening the deadline for government agencies and organizations to adopt new quantum-resistant encryption systems that will wit",
+    "body": "<p><p>The White House is drastically shortening the deadline for government agencies and organizations to adopt new quantum-resistant encryption systems that will withstand attacks that use quantum computers, as the federal government seeks to protect decades’ worth of secrets belonging to militaries, banks, governments, and most individuals on Earth. The executive order, titled Securing the Nation against Advanced Cryptographic Attacks , requires computing systems for “high-value assets” and “high-impact systems” to transition to post-quantum cryptographic key establishment schemes by December 31, 2030, and to quantum-safe digital signature schemes by December 31, 2031. Heading off a significant threat The new deadline, which for many organizations is about five years sooner than the previous one, comes on the heels of recent research showing that the resources and cost for building a cryptographically relevant quantum computer are far less than previous consensus estimates. In response, Google, Cloudflare, and other companies recently tightened their timelines for moving off vulnerable systems to 2029. Read full article Comments</p></p>",
+    "tags": [
+      "تكنولوجيا"
+    ],
+    "image": "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?w=800",
+    "image_query": "",
+    "date": "2026-06-24T17:31:23.645Z",
+    "readTime": "1 min read",
+    "views": "0",
+    "hasEgyptImpact": false,
+    "egypt": "",
+    "source": "Ars Technica - All content",
+    "link": "https://arstechnica.com/information-technology/2026/06/executive-order-bumps-up-deadline-to-move-off-quantum-vulnerable-crypto/",
+    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782322260225-d6gt54",
+    "videoUrl": "",
+    "status": "published",
+    "seo_score": 55,
+    "seo_grade": "C"
+  },
+  {
     "id": "art-1782322248122-714gt5",
     "title": "Prime Day deals under $50 that are really worth it",
     "excerpt": "If you’re looking for a good deal without spending hundreds, Prime Day discounts have pushed some of our favorite products under $50. You can pick up everything",

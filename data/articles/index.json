@@ -1,5 +1,32 @@
 [
   {
+    "id": "art-1782318712850-lxxv7t",
+    "title": "بيت ترامب يفقد ثقته في مؤسس شركة أنثروبك",
+    "excerpt": "اجتماعات عالية المخاطر في البيت الأبيض مع مؤسس شركة أنثروبك داريو أمودي، الذي وصف بأنه \"غريب\" من قبل أحد المسؤولين، تم استبداله بمؤسس الشركة توم براون",
+    "body": "<p>في اجتماعات عالية المخاطر في البيت الأبيض، تم استبدال مؤسس شركة أنثروبك داريو أمودي، الذي وصف بأنه \"غريب\" من قبل أحد المسؤولين، بمؤسس الشركة توم براون. هذا التغيير يأتي في وقت حرج لشركة أنثروبك، التي تعمل على تطوير تقنيات الذكاء الاصطناعي. <br>   تحول في القيادة <br>   داريو أمودي، المؤسس المشارك لشركة أنثروبك، كان يلعب دورًا هامًا في اجتماعات الشركة مع البيت الأبيض. ومع ذلك، فقد تم استبداله مؤخرًا بمؤسس الشركة توم براون. هذا التغيير يثير تساؤلات حول مستقبل الشركة وطريقة تعاملها مع البيت الأبيض. <br>   شركة أنثروبك تعمل على تطوير تقنيات الذكاء الاصطناعي، وهي مجال يعتبر حاسمًا في الوقت الحالي. ومع التغييرات في القيادة، فإنه من المهم أن تراقب الشركة كيف ستتطور في المستقبل. <br>   في الختام، يبدو أن भविष شركة أنثروبك غير واضح في الوقت الحالي، مع التغييرات في القيادة وضغوط البيت الأبيض. ومع ذلك، فإنه من المهم أن نتابع التطورات في هذا المجال لكي ن理解 كيف ستتأثر الشركة في المستقبل</p>",
+    "tags": [
+      "شركة أنثروبك",
+      "داريو أمودي",
+      "توم براون",
+      "البيت الأبيض",
+      "الذكاء الاصطناعي"
+    ],
+    "image": "https://images.pexels.com/photos/19825314/pexels-photo-19825314.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "image_query": "",
+    "date": "2026-06-24T16:31:55.247Z",
+    "readTime": "1 min read",
+    "views": "0",
+    "hasEgyptImpact": false,
+    "egypt": "",
+    "source": "WIRED",
+    "link": "https://www.wired.com/story/the-trump-white-house-is-over-anthropics-dario-amodei/",
+    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782318712850-lxxv7t",
+    "videoUrl": "",
+    "status": "published",
+    "seo_score": 77,
+    "seo_grade": "B"
+  },
+  {
     "id": "art-1782318698945-dy4gmr",
     "title": "Amazon will present its framework for engineering trustworthy AI agents at VB Transform 2026",
     "excerpt": "AI agents are increasingly proficient at executing business tasks autonomously, but IT leaders are cautious about granting permissions to access enterprise syst",

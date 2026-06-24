@@ -1,5 +1,28 @@
 [
   {
+    "id": "art-1782320493526-085h2g",
+    "title": "Intuit will show off how it rebuilt its AI infrastructure to support fast and complex tasks at VB Transform 2026",
+    "excerpt": "Customer expectations have shifted from simple, fast conversational interactions to complex agentic AI-powered tasks that legacy IT architectures simply can’t h",
+    "body": "<p><p>Customer expectations have shifted from simple, fast conversational interactions to complex agentic AI-powered tasks that legacy IT architectures simply can’t handle. To address this, Intuit made the bold decision to overhaul its technical infrastructure for its business platform. The company moved away from its multi-agent setup, which prioritized broad capabilities, to a granular, skill-and-tool-based architecture while embedding human experts directly into the workflow alongside AI. This shift involved decomposing its massive agents into specialized components, separating the brain from the hands, essentially. We went from a multi-agent system where we had large agents that did a lot to fully incorporating workflows, skills and tools down to the base level,” said Nhung Ho, VP of AI at Intuit. “We changed the orchestrator, we changed the planner, we changed the brain, and we also changed what everybody had to build across the whole company. At VB Transform 2026 on July 14 and 15, Ho will share details about the technology decisions behind building an abstraction layer behind Intuit’s system of intelligence. She’ll also share how the new architecture has allowed the company to decouple its orchestration from specific model providers, allowing Intuit to remain agile and use the best tools for the job, whether from large model providers or their own home-grown tools. Other VB Transform sessions focused on agentic orchestration include: From signals to shelves: How Target is engineering Agentic AI for the right product, right place, right time with speaker Siobhan McFeeney, SVP Technology, Target; The engineer s multiplier: How Instacart uses agentic AI to eliminate toil, elevate teams and slash costs with speaker Anirban Kundu, CTO, Instacart; MCP connection isn t orchestration: Building the agent execution layer with Arnab Bose, chief product officer, Asana; Building the agentic workforce: A blueprint for scaling AI operations without the sprawl with Romit Jadhwani, Sr. Director, Enterprise AI, Data Productivity, Rivian and Craig Wiley, VP of AI, Databricks; and Inside Atlassian’s Living Lab: Deploying context-aware agents at scale with Dr. Molly Sands, head of the Teamwork Lab at Atlassian Interested in attending VB Transform 2026? Register here . A select number of complimentary passes are also available to senior technology leaders. Contact us to get yours.</p></p>",
+    "tags": [
+      "تكنولوجيا"
+    ],
+    "image": "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "image_query": "",
+    "date": "2026-06-24T17:01:37.988Z",
+    "readTime": "2 min read",
+    "views": "0",
+    "hasEgyptImpact": false,
+    "egypt": "",
+    "source": "VentureBeat",
+    "link": "https://venturebeat.com/orchestration/intuit-will-show-off-how-it-rebuilt-its-ai-infrastructure-to-support-fast-and-complex-tasks-at-vb-transform-2026",
+    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782320493526-085h2g",
+    "videoUrl": "",
+    "status": "published",
+    "seo_score": 62,
+    "seo_grade": "C"
+  },
+  {
     "id": "art-1782320459568-ed2qvp",
     "title": "Slate Auto's truck builder goes live for its $25k electric pickup",
     "excerpt": "This morning, Slate Auto officially announced pricing for its Slate electric truck. Ars will have some time with a prototype later today, along with—hopefully—a",

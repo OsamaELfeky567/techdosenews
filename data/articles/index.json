@@ -1,5 +1,28 @@
 [
   {
+    "id": "art-1782318698945-dy4gmr",
+    "title": "Amazon will present its framework for engineering trustworthy AI agents at VB Transform 2026",
+    "excerpt": "AI agents are increasingly proficient at executing business tasks autonomously, but IT leaders are cautious about granting permissions to access enterprise syst",
+    "body": "<p><p>AI agents are increasingly proficient at executing business tasks autonomously, but IT leaders are cautious about granting permissions to access enterprise systems. Part of the challenge lies in how AI reliability is measured. Industry standards often rely on EVAL scores, which provide a static snapshot of performance rather than a measure of overall reliability. These metrics can fail to capture predictability across prompts, environments, and input types, said Bryan Silverthorn, director of the AGI Autonomy research lab at Amazon. Amazon’s AGI autonomy research lab is moving beyond raw performance benchmarks, focusing instead on a structured framework centered on consistency, robustness, predictability, and safety, Silverthorn told VentureBeat during an interview ahead of his session at VB Transform 2026 . Rather than assuming that models can be harnessed into safety, Amazon’s approach emphasizes decoupled systems, such as sandboxed environments where agents propose changes that are reviewed by humans before implementation. This strategy aims to bridge the trust gap by prioritizing verifiable interactions, even in highly sensitive domains like finance, where the potential damage an agent can cause is significant. In VentureBeat’s Q2 Pulse Research survey of over 100 senior technology leaders and buyers, just 4% said they are comfortable relying on model guardrails alone. When asked what worries them most about model guardrails, 40% said unauthorized access to tools or data and 27% cited prompt manipulation or injection. At VB Transform, Silverthorn will share details of Amazon’s approach to trustworthy agentic AI and how companies can move from single-agent wrappers to multi-tool architectures that can self-correct mid-execution during his session titled Closing the capability-reliability gap: Inside Amazon’s framework for engineering trustworthy agents . Another agentic ops and evals-focused session at VentureBeat’s flagship conference, happening July 14 and 15 in Menlo Park, is Intelligence at scale: How Waymo builds safe, efficient AI for the physical world with speaker Manasi Joshi, director of systems intelligence and machine learning at Waymo. Interested in attending VB Transform 2026? A select number of complimentary passes are also available to senior technology leaders. Contact us to get yours. You can also purchase tickets here .</p></p>",
+    "tags": [
+      "تكنولوجيا"
+    ],
+    "image": "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "image_query": "",
+    "date": "2026-06-24T16:31:43.375Z",
+    "readTime": "2 min read",
+    "views": "0",
+    "hasEgyptImpact": false,
+    "egypt": "",
+    "source": "VentureBeat",
+    "link": "https://venturebeat.com/orchestration/amazon-will-present-its-framework-for-engineering-trustworthy-ai-agents-at-vb-transform-2026",
+    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782318698945-dy4gmr",
+    "videoUrl": "",
+    "status": "published",
+    "seo_score": 62,
+    "seo_grade": "C"
+  },
+  {
     "id": "art-1782318686398-t1x9qx",
     "title": "Military branches restore flu shot requirement after virus swept through base",
     "excerpt": "The Army, Navy, and Air Force are once again requiring basic trainees to get vaccinated against influenza after the virus quickly swept through an Air Force bas",

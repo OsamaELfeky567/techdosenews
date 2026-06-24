@@ -1,5 +1,28 @@
 [
   {
+    "id": "art-1782343881143-kizmxz",
+    "title": "OpenAI and Broadcom announce chip designed for LLM inference at scale",
+    "excerpt": "OpenAI, the company behind ChatGPT and Codex and the models those tools utilize, and Broadcom, an established silicon supplier, have announced a new chip called",
+    "body": "<p><p>OpenAI, the company behind ChatGPT and Codex and the models those tools utilize, and Broadcom, an established silicon supplier, have announced a new chip called Jalapeño, designed specifically for large language model inference in data centers. The chip is intended to be deployed at large data centers, both companies claim this is just the first generation in a long-term project that will see chips refined over time. Read full article Comments</p></p>",
+    "tags": [
+      "تكنولوجيا"
+    ],
+    "image": "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "image_query": "",
+    "date": "2026-06-24T23:31:21.769Z",
+    "readTime": "1 min read",
+    "views": "0",
+    "hasEgyptImpact": false,
+    "egypt": "",
+    "source": "Ars Technica - All content",
+    "link": "https://arstechnica.com/gadgets/2026/06/openai-and-broadcom-announce-chip-designed-for-llm-inference-at-scale/",
+    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782343881143-kizmxz",
+    "videoUrl": "",
+    "status": "published",
+    "seo_score": 65,
+    "seo_grade": "C"
+  },
+  {
     "id": "art-1782343870406-s6lmt5",
     "title": "Microsoft introduces cheaper Surface devices with half the memory",
     "excerpt": "Microsoft just added a cheaper 12-inch Surface Pro and 13-inch Surface Laptop to its lineup. Both models come equipped with 8GB of RAM instead of 16GB, costing ",

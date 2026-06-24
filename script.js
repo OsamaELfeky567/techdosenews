@@ -300,7 +300,6 @@ function appendGridItems() {
   const frag = document.createDocumentFragment();
   const start = gridRenderedCount;
   const end = Math.min(start + PAGE_SIZE, items.length);
-  const adHtml = '<div class="ad-grid-placeholder" style="grid-column:1/-1;text-align:center;margin:0 0 20px"><div class="sb-ad-label">إعلان</div></div>';
   for (let i = start; i < end; i++) {
     const a = items[i];
     const card = document.createElement('div');
@@ -322,10 +321,6 @@ function appendGridItems() {
       '<div class="sb-card-meta"><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
     card.innerHTML = cardHtml;
     frag.appendChild(card);
-    const globalIndex = i;
-    if ((globalIndex + 1) % 6 === 0 && globalIndex + 1 < items.length) {
-      frag.appendChild(createAdsterra('8650abbaa1fd85a5ced9afc2f1f57777', 'iframe', 250, 300));
-    }
   }
   grid.appendChild(frag);
   gridRenderedCount = end;
@@ -670,7 +665,7 @@ function injectAdsIntoBody(bodyHtml) {
   for (let i = 0; i < paragraphs.length; i++) {
     result += paragraphs[i];
     if (i === 2) {
-      result += '<div class="ad-inline-placeholder" data-ad-pos="after-p3"></div>';
+      result += '<div class="ad-inline-placeholder" data-ad-pos="after-intro"></div>';
     } else if (i === Math.floor(paragraphs.length / 2)) {
       result += '<div class="ad-inline-placeholder" data-ad-pos="middle"></div>';
     } else if (i === paragraphs.length - 2) {
@@ -750,21 +745,16 @@ async function loadArticle() {
       '<h1>' + cleanTitle + '</h1>' +
       '<div class="sb-article-meta"><span class="author">فريق TD بالعربي</span><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + readingTimeStr + '</span><button onclick="navigator.clipboard.writeText(window.location.href);this.textContent=\'✅ تم\';setTimeout(()=>this.textContent=\'🔗 نسخ الرابط\',2000)" style="background:transparent;color:var(--accent);border:1px solid var(--border);padding:4px 10px;border-radius:5px;cursor:pointer;font-size:12px;margin-right:10px">🔗 نسخ الرابط</button></div>' +
       '<div class="sb-article-datetime">' + formattedDate + ' <span class="sb-article-relative">' + relativeDate + '</span></div>' +
-      '<div id="ad-after-title"></div>' +
       (a.excerpt ? '<div class="sb-article-body"><p><strong>' + esc(a.excerpt) + '</strong></p></div>' : '') +
       (bodyWithAds ? '<div class="sb-article-body">' + bodyWithAds + '</div>' : '') +
       (tagsHtml ? '<div class="sb-article-tags">' + tagsHtml + '</div>' : '') +
-      '<div id="ad-end-of-article"></div>' +
+      '<div id="ad-before-related"></div>' +
       '<div id="sbRelatedArticles"></div>' +
-      '</article><aside class="sb-article-sidebar"><div id="ad-sidebar-rect"></div>' +
+      '</article><aside class="sb-article-sidebar">' +
       '<div class="sb-ad-sticky"><div id="ad-sidebar-skyscraper"></div></div></aside></div>';
     // Hydrate article Adsterra placements
-    const adAfterTitle = document.getElementById('ad-after-title');
-    if (adAfterTitle) adAfterTitle.replaceWith(createAdsterra('8650abbaa1fd85a5ced9afc2f1f57777', 'iframe', 250, 300));
-    const adEnd = document.getElementById('ad-end-of-article');
-    if (adEnd) adEnd.replaceWith(createAdsterra('8650abbaa1fd85a5ced9afc2f1f57777', 'iframe', 250, 300));
-    const adSidebar = document.getElementById('ad-sidebar-rect');
-    if (adSidebar) adSidebar.replaceWith(createAdsterra('8650abbaa1fd85a5ced9afc2f1f57777', 'iframe', 250, 300));
+    const adBeforeRelated = document.getElementById('ad-before-related');
+    if (adBeforeRelated) adBeforeRelated.replaceWith(createAdsterra('8650abbaa1fd85a5ced9afc2f1f57777', 'iframe', 250, 300));
     const adSkyscraper = document.getElementById('ad-sidebar-skyscraper');
     if (adSkyscraper) {
       const wrap = createAdsterra('c229277af38c3a4d4544dfc44e87757f', 'iframe', 600, 160);
@@ -772,9 +762,16 @@ async function loadArticle() {
       wrap.style.cssText = 'text-align:center;margin:0;position:sticky;top:80px';
       adSkyscraper.replaceWith(wrap);
     }
-    // Hydrate inline body ads (after-p3, middle, before-end)
+    // Hydrate inline body ads (after-intro 300x250, middle 728x90, before-end 300x250)
     document.querySelectorAll('.ad-inline-placeholder').forEach(function(el) {
-      el.replaceWith(createAdsterra('dc29c63238688f937f7bb9cfb4bf3962', 'iframe', 90, 728));
+      const pos = el.getAttribute('data-ad-pos');
+      if (pos === 'after-intro') {
+        el.replaceWith(createAdsterra('8650abbaa1fd85a5ced9afc2f1f57777', 'iframe', 250, 300));
+      } else if (pos === 'middle') {
+        el.replaceWith(createAdsterra('dc29c63238688f937f7bb9cfb4bf3962', 'iframe', 90, 728));
+      } else if (pos === 'before-end') {
+        el.replaceWith(createAdsterra('8650abbaa1fd85a5ced9afc2f1f57777', 'iframe', 250, 300));
+      }
     });
     renderRelatedArticles(a);
     injectNewsArticleSchema(a);

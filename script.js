@@ -117,15 +117,6 @@ function resolveImage(a) {
 const ARABIC_DAYS = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
 const ARABIC_MONTHS = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
 
-const COMPANIES = [
-  {sym:'أوب',name:'أوبن‌إيه‌آي'},
-  {sym:'إن‌ف',name:'إنفيديا'},
-  {sym:'أن',name:'أنثروبيك'},
-  {sym:'جوج',name:'جوجل'},
-  {sym:'ميك',name:'مايكروسوفت'},
-  {sym:'ميت',name:'ميتا'}
-];
-
 async function fetchIndex() {
   const spinner = document.getElementById('loading-spinner');
   if (spinner) spinner.style.display = 'block';
@@ -167,10 +158,8 @@ function renderAll() {
   renderHero();
   renderLatest();
   renderTrending();
-  renderEditorsPicks();
   renderTagCloud();
   renderGrid();
-  renderCompanies();
   renderMostRead();
   renderFooterTags();
   updateLastUpdate();
@@ -256,25 +245,6 @@ function renderLatest() {
   }).join('');
 }
 
-function renderEditorsPicks() {
-  const grid = document.getElementById('sbEditorsGrid');
-  if (!grid || allArticles.length < 3) return;
-  const scored = [...allArticles].sort(function(a, b) {
-    return (b.quality_score || 0) - (a.quality_score || 0);
-  });
-  const items = scored.slice(0, 3);
-  grid.innerHTML = items.map(a => {
-    const tagsHtml = Array.isArray(a.tags) && a.tags.length > 0
-      ? '<span class="sb-latest-cat">' + esc(a.tags[0]) + '</span>'
-      : '';
-    return '<div class="sb-latest-item" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
-      '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" onerror="this.style.display=\'none\'">' +
-      '<div class="sb-latest-info">' + tagsHtml +
-      '<h4>' + esc(a.title) + '</h4>' +
-      '<span class="sb-latest-date">' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
-  }).join('');
-}
-
 function renderGrid() {
   const grid = document.getElementById('sbGrid');
   const loadMoreContainer = document.getElementById('sbLoadMoreContainer');
@@ -345,15 +315,6 @@ function loadMore() {
       }
     }, 100);
   }
-}
-
-function renderCompanies() {
-  const list = document.getElementById('sbCompanyList');
-  if (!list) return;
-  list.innerHTML = COMPANIES.map(c =>
-    '<div class="sb-company-item"><div class="sb-company-logo">' + c.sym + '</div>' +
-    '<span class="sb-company-name">' + c.name + '</span></div>'
-  ).join('');
 }
 
 function renderMostRead() {

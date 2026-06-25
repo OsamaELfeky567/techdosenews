@@ -1,5 +1,28 @@
 [
   {
+    "id": "art-1782385251455-891mxs",
+    "title": "IBM claims world’s first sub-1 nanometer chip technology",
+    "excerpt": "A new chip architecture from IBM can integrate nearly 100 billion transistors on a chip the size of a human fingernail—nearly twice the transistor density of th",
+    "body": "<p><p>A new chip architecture from IBM can integrate nearly 100 billion transistors on a chip the size of a human fingernail—nearly twice the transistor density of the company’s previous generation of chip technology. The resulting improvement in chip compute performance and energy efficiency comes from what IBM describes as the “world’s first sub-1 nanometer chip technology” for AI data centers. “It's not just an incremental step, it's a meaningful leap forward,” said Jay Gambetta , director of IBM Research and IBM Fellow, in an advance media briefing. He described the new chip technology as “pointing to a future where computing becomes significantly more powerful without a corresponding increase in energy.” It’s worth unpacking what the “world’s first sub-1 nanometer chip technology” means, because it is impractical to build reliably functional chips with transistors and other features smaller than 1 nanometer due to various physical limitations. Instead, IBM is basically claiming that its new “nanostack” architecture can deliver the computing performance improvements that would be expected if a theoretical chip could be built with physical features smaller than 1 nanometer. Read full article Comments</p></p>",
+    "tags": [
+      "تكنولوجيا"
+    ],
+    "image": "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "image_query": "",
+    "date": "2026-06-25T11:00:52.012Z",
+    "readTime": "1 min read",
+    "views": "0",
+    "hasEgyptImpact": false,
+    "egypt": "",
+    "source": "Ars Technica - All content",
+    "link": "https://arstechnica.com/gadgets/2026/06/ibm-claims-worlds-first-sub-1-nanometer-chip-technology/",
+    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782385251455-891mxs",
+    "videoUrl": "",
+    "status": "published",
+    "seo_score": 75,
+    "seo_grade": "B"
+  },
+  {
     "id": "art-1782385236516-tsqqhc",
     "title": "Disney agrees to pay $50 million to YouTube TV and DirecTV subscribers",
     "excerpt": "YouTube TV and DirecTV Stream customers may be eligible for a cash payout, after Disney agreed to pay $50 million to settle claims that it forced the services t",

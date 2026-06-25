@@ -24,6 +24,41 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
+<script>
+(function(){
+  var id = new URLSearchParams(window.location.search).get('id');
+  if (id) {
+    var link = document.querySelector('link[rel="canonical"]');
+    if (link) link.href = 'https://td-arabi.com/article.html?id=' + encodeURIComponent(id);
+  }
+  if (id) {
+    fetch('https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/data/articles/index.json?t=' + Date.now())
+      .then(function(r) { return r.json(); })
+      .then(function(articles) {
+        var a = Array.isArray(articles) ? articles.find(function(x) { return x.id === id; }) : null;
+        if (!a) return;
+        var schema = {
+          '@context': 'https://schema.org',
+          '@type': 'NewsArticle',
+          'headline': a.title_ar || a.title || '',
+          'description': (a.excerpt || '').substring(0, 300),
+          'image': a.image || a.image_url || a.ogImage || '',
+          'author': { '@type': 'Organization', 'name': 'TD بالعربي' },
+          'publisher': { '@type': 'Organization', 'name': 'TD بالعربي', 'logo': { '@type': 'ImageObject', 'url': 'https://td-arabi.com/img/og-image.png' } },
+          'datePublished': a.date || a.publishedAt || new Date().toISOString(),
+          'dateModified': a.date || a.publishedAt || new Date().toISOString(),
+          'mainEntityOfPage': { '@type': 'WebPage', '@id': 'https://td-arabi.com/article.html?id=' + encodeURIComponent(id) }
+        };
+        var el = document.createElement('script');
+        el.type = 'application/ld+json';
+        el.id = 'newsarticle-schema';
+        el.textContent = JSON.stringify(schema);
+        document.head.appendChild(el);
+      })
+      .catch(function(){});
+  }
+})();
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

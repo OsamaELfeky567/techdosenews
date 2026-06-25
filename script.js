@@ -745,6 +745,8 @@ async function loadArticle() {
 }
 
 function injectNewsArticleSchema(a) {
+  var existing = document.getElementById('newsarticle-schema');
+  if (existing) existing.remove();
   const pubDate = getPubDate(a) || new Date().toISOString();
   const url = 'https://td-arabi.com/article.html?id=' + encodeURIComponent(a.id);
   const schema = {

@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync } from 'fs';
 const DB = JSON.parse(readFileSync('articles_db.json', 'utf-8'));
-const published = DB.filter(a => a.status === 'published').sort((a,b) => new Date(b.date||b.publishedAt) - new Date(a.date||a.publishedAt)).slice(0,20);
+const published = DB.filter(a => a.status === 'published').sort((a,b) => new Date(b.published_at||b.date||b.publishedAt) - new Date(a.published_at||a.date||a.publishedAt)).slice(0,20);
 const BASE = 'https://td-arabi.com';
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
 xml += '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">\n';
@@ -15,7 +15,7 @@ for (const a of published) {
   const title = (a.title || a.title_ar || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const desc = (a.excerpt || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const link = BASE + '/article.html?id=' + encodeURIComponent(a.id);
-  const date = new Date(a.date || a.publishedAt).toUTCString();
+  const date = new Date(a.published_at || a.date || a.publishedAt).toUTCString();
   const img = a.image_url || a.image || '';
   xml += '  <item>\n';
   xml += '    <title>' + title + '</title>\n';

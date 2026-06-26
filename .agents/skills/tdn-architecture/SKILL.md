@@ -19,8 +19,7 @@ Admin Panel (browser) → GitHub API → GitHub Repo (data files) → GitHub Pag
 
 | File | Role |
 |------|------|
-| `data/articles/index.json` | **SOURCE OF TRUTH** — all 367+ published articles |
-| `articles_db.json` | Dashboard DB — rebuilt from index.json via sync_articles.js |
+| `data/articles/index.json` | **SOURCE OF TRUTH** — all published articles |
 | `data/published_topics.json` | n8n tracking — 12+ published article titles |
 | `data/content_hashes.json` | n8n dedup — title+description hashes |
 | `data/published_links.json` | n8n tracking — written but not read for dedup |
@@ -41,10 +40,9 @@ n8n (30-min schedule)
   → Telegram notification
 
 Admin Panel (browser, GitHub Token auth)
-  → Load: articles_db.json + index.json via GitHub API
-  → Edit: saveArticle() writes to both files
+  → Load: index.json via GitHub API
+  → Edit: saveArticle() writes to index.json
   → Delete: deleteArticle() with rollback
-  → Sync: requires manual sync_articles.js to rebuild DB
 
 Site (GitHub Pages)
   → Load: index.json → render all articles
@@ -62,7 +60,6 @@ Site (GitHub Pages)
 ## Critical Rules
 
 - **index.json is always the source of truth** — never delete or overwrite
-- **articles_db.json is a derived file** — always rebuildable from index.json
 - **n8n workflow is production-locked** — READ ONLY, never modify
 - **Admin panel is MAINTENANCE MODE** — no new features, only bug fixes unless explicitly requested
 - **Gemini pipeline is isolated** — never touch production files

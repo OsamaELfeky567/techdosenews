@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const DB_PATH = path.join(__dirname, '..', 'articles_db.json');
+const DB_PATH = path.join(__dirname, '..', 'data', 'articles', 'index.json');
 const CAT_PATH = path.join(__dirname, '..', 'data', 'categories.json');
 
 const CATEGORIES = JSON.parse(fs.readFileSync(CAT_PATH, 'utf8'));

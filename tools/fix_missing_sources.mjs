@@ -7,7 +7,6 @@ const root = join(__dirname, '..');
 
 const files = [
   { path: join(root, 'data', 'articles', 'index.json'), label: 'index.json' },
-  { path: join(root, 'articles_db.json'), label: 'articles_db.json' },
 ];
 
 for (const { path, label } of files) {

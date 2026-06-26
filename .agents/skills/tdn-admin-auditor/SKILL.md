@@ -21,7 +21,7 @@ The admin panel (`admin/index.html`) is a 2575-line single-file application with
 
 | Function | Line | Purpose |
 |----------|------|---------|
-| `loadDb()` | ~1251 | Loads `articles_db.json` |
+| `loadDb()` | ~1251 | Loads `data/articles/index.json` |
 | `loadIndex()` | ~1258 | Loads `data/articles/index.json` |
 | `renderDashboard()` | ~1506 | Calculates and displays stats |
 | `renderArticles()` | ~1674 | Renders article table with search/filter |
@@ -33,8 +33,8 @@ The admin panel (`admin/index.html`) is a 2575-line single-file application with
 ## Audit Checklist
 
 ### Dashboard Counters
-- `statTotal` = `DB.length` (articles_db.json count)
-- `statPublished` = `INDEX.length` filtered (exclude draft)
+- `statTotal` = `ARTICLES.length` (index.json count)
+- `statPublished` = articles filtered by `status === 'published'`
 - `statToday` = articles created today
 - Verify these match between reloads
 

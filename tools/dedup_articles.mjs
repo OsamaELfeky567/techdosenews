@@ -26,5 +26,4 @@ function dedup(filePath, label) {
 }
 
 dedup(join(root, 'data', 'articles', 'index.json'), 'index.json');
-dedup(join(root, 'articles_db.json'), 'articles_db.json');
 console.log('Done.');

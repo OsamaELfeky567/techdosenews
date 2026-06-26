@@ -33,7 +33,6 @@ description: "Production safety rules for Tech Dose News — prevent data loss, 
 
 ### Before deployment:
 - [ ] Verify index.json loads correctly
-- [ ] Verify articles_db.json matches index.json
 - [ ] Test article view on site
 - [ ] Check no duplicate article IDs exist
 
@@ -47,7 +46,6 @@ git push origin main
 
 For data corruption in index.json:
 - Restore from local backup or git history
-- Use `sync_articles.js` to rebuild articles_db.json
 
 ## NEVER DO
 

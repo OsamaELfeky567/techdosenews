@@ -68,17 +68,11 @@ function migrateArticle(a) {
 
 // Migrate index.json
 const idxPath = join(root, 'data', 'articles', 'index.json');
-const dbPath = join(root, 'articles_db.json');
 
 const index = JSON.parse(readFileSync(idxPath, 'utf8'));
 const migrated = index.map(migrateArticle);
 writeFileSync(idxPath, JSON.stringify(migrated, null, 2), 'utf8');
 console.log(`index.json: ${index.length} articles migrated`);
-
-const db = JSON.parse(readFileSync(dbPath, 'utf8'));
-const migratedDb = db.map(migrateArticle);
-writeFileSync(dbPath, JSON.stringify(migratedDb, null, 2), 'utf8');
-console.log(`articles_db.json: ${db.length} articles migrated`);
 
 // Summary - count auto-generated tags
 let autoTagged = 0;

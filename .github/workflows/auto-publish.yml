@@ -28,12 +28,15 @@ jobs:
       - name: Generate sitemap.xml
         run: node scripts/generate-sitemap.js
 
+      - name: Generate rss.xml
+        run: node tools/generate-rss.mjs
+
       - name: Commit changes
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add articles_db.json sitemap.xml
-          git diff --staged --quiet || git commit -m 'auto: sync db and sitemap [bot]'
+          git add articles_db.json sitemap.xml rss.xml
+          git diff --staged --quiet || git commit -m 'auto: sync db, sitemap and rss [bot]'
           git push
 
       - name: Submit to IndexNow

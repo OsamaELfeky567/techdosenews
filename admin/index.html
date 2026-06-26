@@ -205,7 +205,7 @@ tr:hover{background:var(--bg2)}
 const GH_OWNER = 'osamaelfeky567';
 const GH_REPO = 'techdosenews';
 const GH_API = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}`;
-const RAW_URL = 'https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main';
+const RAW_URL = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main`;
 
 let CONFIG = {};
 let ARTICLES = [];
@@ -347,13 +347,16 @@ function renderArticles() {
   }
   const tb = document.getElementById('articlesTable');
   if (!page.length) { tb.innerHTML = '<div class="empty-state">لا توجد مقالات تطابق البحث</div>'; document.getElementById('pagination').innerHTML = ''; return; }
-  tb.innerHTML = '<table><thead><tr><th style="width:30px"><input type="checkbox" onchange="toggleAll(this.checked)"></th><th>العنوان</th><th>التاريخ</th><th>التصنيف</th><th>تحسين محركات</th><th>الحالة</th><th>إجراءات</th></tr></thead><tbody>' +
+  tb.innerHTML = '<table><thead><tr><th style="width:30px"><input type="checkbox" onchange="toggleAll(this.checked)"></th><th style="width:50px">الصورة</th><th>العنوان</th><th>التاريخ</th><th>التصنيف</th><th>تحسين محركات</th><th>الحالة</th><th>إجراءات</th></tr></thead><tbody>' +
     page.map(a => {
       const seoScore = a.seo_score || 0;
       const seoGrade = seoScore >= 85 ? 'A' : seoScore >= 70 ? 'B' : seoScore >= 55 ? 'C' : seoScore >= 40 ? 'D' : 'F';
       const gradeColors = {A:'#238636',B:'#1f6feb',C:'#d29922',D:'#db6d28',F:'#da3633'};
+      const imgUrl = a.image_url || a.image || '';
+      const imgTag = imgUrl ? '<img src="' + imgUrl + '" alt="" style="width:44px;height:32px;border-radius:4px;object-fit:cover;border:1px solid var(--bg3)" loading="lazy" onerror="this.style.display=\'none\'">' : '<span style="color:var(--text3);font-size:.7rem">—</span>';
       return '<tr>' +
       '<td><input type="checkbox" ' + (SELECTED_IDS.has(a.id) ? 'checked' : '') + ' onchange="toggleSelect(\'' + a.id + '\',this.checked)"></td>' +
+      '<td>' + imgTag + '</td>' +
       '<td>' + (a.title_ar || a.title || '').substring(0, 50) + '</td>' +
       '<td style="font-size:.8rem;color:var(--text2)">' + (a.date || a.publishedAt || '').substring(0, 10) + '</td>' +
       '<td>' + (a.categoryAr || a.category || '—') + '</td>' +

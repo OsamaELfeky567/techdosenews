@@ -698,13 +698,28 @@ async function loadArticle() {
       '<a href="https://www.facebook.com/sharer/sharer.php?u=' + shareUrl + '" target="_blank" rel="noopener" class="sb-share sb-share-facebook" aria-label="مشاركة على فيسبوك"><i class="fab fa-facebook"></i></a>' +
       '</div>';
 
+    // Add reading progress bar
+    if (!document.querySelector('.sb-progress-bar')) {
+      var pb = document.createElement('div');
+      pb.className = 'sb-progress-bar';
+      pb.innerHTML = '<div class="sb-progress-fill" id="sbProgressFill"></div>';
+      document.body.appendChild(pb);
+      window.addEventListener('scroll', function() {
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var pct = docHeight > 0 ? Math.min(scrollTop / docHeight * 100, 100) : 0;
+        var fill = document.getElementById('sbProgressFill');
+        if (fill) fill.style.width = pct + '%';
+      });
+    }
+
     main.innerHTML = '<div class="sb-container"><article class="sb-article">' +
       breadcrumbHtml +
       shareHtml +
       '<img src="' + img + '" alt="' + cleanTitle + '" loading="lazy" onerror="this.style.display=\'none\'">' +
       (tagsHtml ? '<div class="sb-article-tags">' + tagsHtml + '</div>' : '') +
       '<h1>' + cleanTitle + '</h1>' +
-      '<div class="sb-article-meta"><span class="author">فريق TD بالعربي</span><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + readingTimeStr + '</span><button onclick="navigator.clipboard.writeText(window.location.href);this.textContent=\'✅ تم\';setTimeout(()=>this.textContent=\'🔗 نسخ الرابط\',2000)" style="background:transparent;color:var(--accent);border:1px solid var(--border);padding:4px 10px;border-radius:5px;cursor:pointer;font-size:12px;margin-right:10px">🔗 نسخ الرابط</button></div>' +
+      '<div class="sb-article-meta"><div class="sb-article-author"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="border-radius:50%;background:var(--accent);padding:4px"><path d="M14 14c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm0 2c-5.333 0-10 2.686-10 6v2h20v-2c0-3.314-4.667-6-10-6z" fill="#fff"/></svg>فريق TD بالعربي</div><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + readingTimeStr + '</span><button class="sb-copy-link" onclick="navigator.clipboard.writeText(window.location.href);this.innerHTML=\'<svg width=\\"16\\" height=\\"16\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\"><path d=\\"M20 6L9 17l-5-5\\"/></svg>\';setTimeout(()=>this.innerHTML=\'<svg width=\\"16\\" height=\\"16\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\"><path d=\\"M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71\\"/><path d=\\"M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71\\"/></svg>\',2000)" aria-label="نسخ الرابط"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></button></div>' +
       '<div class="sb-article-datetime">' + formattedDate + ' <span class="sb-article-relative">' + relativeDate + '</span></div>' +
       (a.excerpt ? '<div class="sb-article-body"><p><strong>' + esc(a.excerpt) + '</strong></p></div>' : '') +
       (bodyWithAds ? '<div class="sb-article-body">' + bodyWithAds + '</div>' : '') +

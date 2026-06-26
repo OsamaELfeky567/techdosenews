@@ -5,7 +5,7 @@ const INDEX_PATH = path.join(__dirname, '..', 'data', 'articles', 'index.json');
 const SITEMAP_PATH = path.join(__dirname, '..', 'sitemap.xml');
 const BASE = 'https://td-arabi.com';
 
-const index = JSON.parse(fs.readFileSync(INDEX_PATH, 'utf8'));
+const index = JSON.parse(fs.readFileSync(INDEX_PATH, 'utf8')).filter(a => a.status === 'published');
 const now = new Date().toISOString().slice(0, 10);
 
 const staticPages = [

@@ -130,6 +130,7 @@ async function loadIndex() {
   try {
     const data = await fetchIndex();
     allArticles = Array.isArray(data) ? data : (data.articles || []);
+    allArticles = allArticles.filter(a => a.status === 'published');
     if (allArticles.length === 0) throw new Error('No articles');
     allArticles.sort(function(a, b) { return new Date(getPubDate(b) || 0) - new Date(getPubDate(a) || 0); });
     applyTagFilter();
@@ -647,7 +648,7 @@ async function loadArticle() {
   try {
     if (allArticles.length === 0) {
       const data = await fetchIndex();
-      allArticles = Array.isArray(data) ? data : (data.articles || []);
+      allArticles = (Array.isArray(data) ? data : (data.articles || [])).filter(a => a.status === 'published');
     }
     const a = allArticles.find(art => art.id === id);
     if (!a) throw new Error('لم يتم العثور على المقال');

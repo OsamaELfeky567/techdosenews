@@ -22,9 +22,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Sync articles_db.json
-        run: node scripts/sync_articles.js
-
       - name: Generate sitemap.xml
         run: node scripts/generate-sitemap.js
 
@@ -35,7 +32,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add articles_db.json sitemap.xml rss.xml
+          git add sitemap.xml rss.xml data/articles/index.json
           git diff --staged --quiet || git commit -m 'auto: sync db, sitemap and rss [bot]'
           git push
 

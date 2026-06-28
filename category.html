@@ -30,50 +30,94 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script>const theme=localStorage.getItem('td-theme');if(theme==='dark'||(!theme&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark')</script>
 <link rel="stylesheet" href="style.css">
 <script src="/js/analytics.js" async></script>
+<link rel="alternate" type="application/rss+xml" title="TD بالعربي - RSS Feed" href="https://td-arabi.com/rss.xml">
 </head>
 <body>
-<div id="sbOverlay" class="sb-overlay" onclick="closeMenu()"></div>
+<div id="loading-spinner" style="display:none;text-align:center;padding:80px 0;">
+  <div style="border:3px solid var(--border,#e2e8f0);border-top:3px solid var(--accent,#2563eb);border-radius:50%;width:45px;height:45px;animation:spin .8s linear infinite;margin:0 auto 15px"></div>
+  <p style="color:var(--muted,#64748b);font-family:inherit;">جارٍ التحميل...</p>
+</div>
+<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+<div id="sbOverlay" class="sb-overlay" onclick="closeMenu()" role="presentation"></div>
 <header class="sb-header">
   <div class="sb-container">
-    <button class="sb-menu-btn" onclick="toggleMenu()" aria-label="القائمة">☰</button>
-    <a href="index.html" class="sb-logo">TD <span>بالعربي</span></a>
+    <button class="sb-menu-btn" onclick="toggleMenu()" aria-label="القائمة" aria-expanded="false">☰</button>
+    <h1 style="margin:0;font-size:inherit;font-weight:inherit"><a href="index.html" class="sb-logo">TD <span>بالعربي</span></a></h1>
     <div class="sb-header-info">
       <span class="sb-header-date" id="sbLastUpdate"></span>
       <span class="sb-header-time" id="sbHeaderTime"></span>
     </div>
-    <nav class="sb-nav" id="sbNav">
+    <nav class="sb-nav" id="sbNav" aria-label="القائمة الرئيسية">
       <a href="index.html">الرئيسية</a>
-      <a href="category.html?cat=ai">الذكاء الاصطناعي</a>
-      <a href="category.html?cat=companies">شركات</a>
-      <a href="category.html?cat=cybersecurity">أمن سيبراني</a>
-      <a href="category.html?cat=phones">هواتف ذكية</a>
-      <a href="category.html?cat=ev">سيارات كهربائية</a>
+      <a href="index.html#all">آخر الأخبار</a>
+      <a href="about.html">من نحن</a>
+      <a href="contact.html">تواصل معنا</a>
+      <a href="#" class="sb-telegram-btn" target="_blank" rel="noopener">تيليجرام</a>
     </nav>
-    <button class="sb-search-btn" onclick="toggleSearch()" aria-label="بحث">🔍</button>
+    <div class="sb-header-actions">
+      <button class="sb-theme-toggle" onclick="toggleTheme()" aria-label="الوضع الليلي" id="sbThemeToggle">🌙</button>
+      <button class="sb-search-btn" onclick="toggleSearch()" aria-label="بحث">🔍</button>
+    </div>
   </div>
 </header>
 
-<div class="sb-search-bar" id="sbSearchBar">
+<div class="sb-search-bar" id="sbSearchBar" role="search">
   <div class="sb-container">
-    <input type="text" id="sbSearchInput" placeholder="ابحث عن مقالات..." oninput="filterSearch(this.value)">
+    <input type="text" id="sbSearchInput" placeholder="ابحث عن مقالات..." oninput="filterSearch(this.value)" aria-label="بحث عن مقالات">
     <button onclick="closeSearch()">إلغاء</button>
   </div>
 </div>
 
 <main class="sb-category-main" id="sbCategoryMain">
   <div class="sb-container">
-    <div class="sb-loading">جاري تحميل التصنيف...</div>
+    <div id="sbCategorySkeleton">
+      <div class="sb-category-header">
+        <div class="sb-skeleton sb-skeleton-line-lg" style="width:200px;height:32px"></div>
+        <div class="sb-skeleton sb-skeleton-line-sm" style="width:80px;margin-right:12px"></div>
+      </div>
+      <div class="sb-category-chips">
+        <div class="sb-skeleton sb-skeleton-tag" style="width:90px;height:32px;border-radius:20px"></div>
+        <div class="sb-skeleton sb-skeleton-tag" style="width:130px;height:32px;border-radius:20px"></div>
+        <div class="sb-skeleton sb-skeleton-tag" style="width:70px;height:32px;border-radius:20px"></div>
+        <div class="sb-skeleton sb-skeleton-tag" style="width:110px;height:32px;border-radius:20px"></div>
+        <div class="sb-skeleton sb-skeleton-tag" style="width:80px;height:32px;border-radius:20px"></div>
+      </div>
+      <div class="sb-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--spacing-lg,24px)">
+        <div class="sb-skeleton sb-skeleton-card"><div class="sb-skeleton sb-skeleton-card-img"></div><div class="sb-skeleton-card-body"><div class="sb-skeleton sb-skeleton-tag"></div><div class="sb-skeleton sb-skeleton-line-lg"></div><div class="sb-skeleton sb-skeleton-line"></div><div class="sb-skeleton sb-skeleton-line" style="width:80%"></div><div class="sb-skeleton sb-skeleton-line-sm" style="margin-top:16px"></div></div></div>
+        <div class="sb-skeleton sb-skeleton-card"><div class="sb-skeleton sb-skeleton-card-img"></div><div class="sb-skeleton-card-body"><div class="sb-skeleton sb-skeleton-tag"></div><div class="sb-skeleton sb-skeleton-line-lg"></div><div class="sb-skeleton sb-skeleton-line"></div><div class="sb-skeleton sb-skeleton-line" style="width:80%"></div><div class="sb-skeleton sb-skeleton-line-sm" style="margin-top:16px"></div></div></div>
+        <div class="sb-skeleton sb-skeleton-card"><div class="sb-skeleton sb-skeleton-card-img"></div><div class="sb-skeleton-card-body"><div class="sb-skeleton sb-skeleton-tag"></div><div class="sb-skeleton sb-skeleton-line-lg"></div><div class="sb-skeleton sb-skeleton-line"></div><div class="sb-skeleton sb-skeleton-line" style="width:80%"></div><div class="sb-skeleton sb-skeleton-line-sm" style="margin-top:16px"></div></div></div>
+      </div>
+    </div>
+    <div id="sbCategoryContent" style="display:none">
+      <div class="sb-category-header">
+        <h1 id="sbCategoryTitle"></h1>
+        <span class="sb-category-count" id="sbCategoryCount"></span>
+      </div>
+      <div class="sb-category-chips" id="sbCategoryChips"></div>
+      <div class="sb-grid" id="sbCategoryGrid" aria-live="polite"></div>
+    </div>
   </div>
 </main>
+
+<section class="sb-telegram-cta">
+  <div class="sb-container">
+    <div class="sb-telegram-content">
+      <h3>انضم إلى قناة TD بالعربي على تيليجرام</h3>
+      <p>أهم أخبار التقنية والذكاء الاصطناعي تصلك أولًا، وبدقة احترافية.</p>
+      <a href="#" class="sb-telegram-btn" target="_blank" rel="noopener">📱 انضم إلى القناة الآن</a>
+    </div>
+  </div>
+</section>
 
 <footer class="sb-footer">
   <div class="sb-container">
     <div class="sb-footer-grid">
       <div class="sb-footer-col">
         <div class="sb-footer-logo">TD <span>بالعربي</span></div>
-        <p>منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي والشركات الناشئة.</p>
+        <p>منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي والشركات الناشئة، بمعايير صحفية احترافية وتحرير دقيق.</p>
       </div>
       <div class="sb-footer-col">
         <h4>التصنيفات</h4>
@@ -88,6 +132,11 @@
     </div>
   </div>
 </footer>
+
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none" aria-label="العودة للأعلى">↑</button>
+<script>
+window.addEventListener('scroll',function(){var b=document.getElementById('back-to-top');if(b)b.style.display=window.scrollY>500?'block':'none'});
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
 <script src="script.js"></script>
 </body>

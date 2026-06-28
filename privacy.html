@@ -2,53 +2,77 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index,follow">
 <title>سياسة الخصوصية — TD بالعربي</title>
-<meta name="description" content="سياسة الخصوصية لمنصة TD بالعربي">
+<meta name="description" content="سياسة الخصوصية لمنصة TD بالعربي — نلتزم بحماية خصوصية زوارنا. تعرف على كيفية جمع واستخدام وحماية معلوماتك الشخصية.">
 <link rel="canonical" href="https://td-arabi.com/privacy.html">
 <link rel="alternate" hreflang="ar" href="https://td-arabi.com/privacy.html">
 <meta property="og:locale" content="ar_AR">
 <meta property="og:site_name" content="TD بالعربي">
 <meta property="og:title" content="سياسة الخصوصية — TD بالعربي">
-<meta property="og:description" content="سياسة الخصوصية لمنصة TD بالعربي">
-<meta property="og:image" content="https://td-arabi.com/sandbox/og-image.png">
+<meta property="og:description" content="سياسة الخصوصية لمنصة TD بالعربي — نلتزم بحماية خصوصية زوارنا.">
+<meta property="og:image" content="https://td-arabi.com/img/og-image.png">
 <meta property="og:url" content="https://td-arabi.com/privacy.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="سياسة الخصوصية — TD بالعربي">
-<meta name="twitter:description" content="سياسة الخصوصية لمنصة TD بالعربي">
-<meta name="twitter:image" content="https://td-arabi.com/sandbox/og-image.png">
+<meta name="twitter:description" content="سياسة الخصوصية لمنصة TD بالعربي — نلتزم بحماية خصوصية زوارنا.">
+<meta name="twitter:image" content="https://td-arabi.com/img/og-image.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"TD بالعربي","url":"https://td-arabi.com","logo":"https://td-arabi.com/img/og-image.png","description":"منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي"}</script>
+<script>const theme=localStorage.getItem('td-theme');if(theme==='dark'||(!theme&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
 <script src="/js/analytics.js" async></script>
 <link rel="alternate" type="application/rss+xml" title="TD بالعربي - RSS Feed" href="https://td-arabi.com/rss.xml">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"TD بالعربي","url":"https://td-arabi.com","logo":"https://td-arabi.com/img/og-image.png","description":"منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي","sameAs":["https://t.me/techdosenews","https://twitter.com/techdosenews"]}
-</script>
 </head>
 <body>
+<div id="loading-spinner" style="display:none;text-align:center;padding:80px 0;">
+  <div style="border:3px solid var(--border,#e2e8f0);border-top:3px solid var(--accent,#2563eb);border-radius:50%;width:45px;height:45px;animation:spin .8s linear infinite;margin:0 auto 15px"></div>
+  <p style="color:var(--muted,#64748b);font-family:inherit;">جارٍ التحميل...</p>
+</div>
+<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+<div id="sbOverlay" class="sb-overlay" onclick="closeMenu()" role="presentation"></div>
 <header class="sb-header">
-  <div class="sb-container" style="display:flex;align-items:center;justify-content:space-between">
-    <a href="index.html" class="sb-logo">TD <span>بالعربي</span></a>
-    <nav class="sb-nav" style="position:static;background:transparent;flex-direction:row;padding:0;height:auto;width:auto">
+  <div class="sb-container">
+    <button class="sb-menu-btn" onclick="toggleMenu()" aria-label="القائمة" aria-expanded="false">☰</button>
+    <h1 style="margin:0;font-size:inherit;font-weight:inherit"><a href="index.html" class="sb-logo">TD <span>بالعربي</span></a></h1>
+    <div class="sb-header-info">
+      <span class="sb-header-date" id="sbLastUpdate"></span>
+      <span class="sb-header-time" id="sbHeaderTime"></span>
+    </div>
+    <nav class="sb-nav" id="sbNav" aria-label="القائمة الرئيسية">
       <a href="index.html">الرئيسية</a>
-      <a href="category.html?cat=ai">الذكاء الاصطناعي</a>
-      <a href="category.html?cat=companies">شركات</a>
-      <a href="category.html?cat=security">أمن سيبراني</a>
-      <a href="category.html?cat=mobile">هواتف ذكية</a>
-      <a href="category.html?cat=ev">سيارات كهربائية</a>
+      <a href="index.html#all">آخر الأخبار</a>
+      <a href="about.html">من نحن</a>
+      <a href="contact.html">تواصل معنا</a>
+      <a href="#" class="sb-telegram-btn" target="_blank" rel="noopener">تيليجرام</a>
     </nav>
+    <div class="sb-header-actions">
+      <button class="sb-theme-toggle" onclick="toggleTheme()" aria-label="الوضع الليلي" id="sbThemeToggle">🌙</button>
+      <button class="sb-search-btn" onclick="toggleSearch()" aria-label="بحث">🔍</button>
+    </div>
   </div>
 </header>
+
+<div class="sb-search-bar" id="sbSearchBar" role="search">
+  <div class="sb-container">
+    <input type="text" id="sbSearchInput" placeholder="ابحث عن مقالات..." oninput="filterSearch(this.value)" aria-label="بحث عن مقالات">
+    <button onclick="closeSearch()">إلغاء</button>
+  </div>
+</div>
+
 <main class="sb-main">
   <div class="sb-container">
-    <article class="sb-article" style="max-width:700px;margin:40px auto;padding:0 16px">
+    <div class="sb-page-header">
       <h1>سياسة الخصوصية</h1>
+    </div>
+    <article class="sb-page-content">
       <p>نحن في TD بالعربي نلتزم بحماية خصوصية زوارنا. توضح هذه السياسة كيفية جمع واستخدام وحماية معلوماتك الشخصية.</p>
       <h2>المعلومات التي نجمعها</h2>
       <p>قد نجمع معلومات غير شخصية مثل نوع المتصفح ونظام التشغيل والصفحات التي تمت زيارتها، وذلك لتحسين تجربة المستخدم.</p>
@@ -62,14 +86,42 @@
     </article>
   </div>
 </main>
+
+<section class="sb-telegram-cta">
+  <div class="sb-container">
+    <div class="sb-telegram-content">
+      <h3>انضم إلى قناة TD بالعربي على تيليجرام</h3>
+      <p>أهم أخبار التقنية والذكاء الاصطناعي تصلك أولًا، وبدقة احترافية.</p>
+      <a href="#" class="sb-telegram-btn" target="_blank" rel="noopener">📱 انضم إلى القناة الآن</a>
+    </div>
+  </div>
+</section>
+
 <footer class="sb-footer">
   <div class="sb-container">
-    <p>&copy; 2026 TD بالعربي. جميع الحقوق محفوظة.</p>
-    <p style="margin-top:8px">
-      <a href="about.html">من نحن</a> &middot; <a href="editorial-policy.html">السياسة التحريرية</a> &middot; <a href="contact.html">اتصل بنا</a> &middot; <a href="privacy.html">سياسة الخصوصية</a> &middot; <a href="terms.html">شروط الاستخدام</a> &middot; <a href="disclaimer.html">إخلاء مسؤولية</a>
-    </p>
+    <div class="sb-footer-grid">
+      <div class="sb-footer-col">
+        <div class="sb-footer-logo">TD <span>بالعربي</span></div>
+        <p>منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي والشركات الناشئة، بمعايير صحفية احترافية وتحرير دقيق.</p>
+      </div>
+      <div class="sb-footer-col">
+        <h4>الوسوم الرائجة</h4>
+        <ul id="sbFooterTags"></ul>
+      </div>
+    </div>
+    <div class="sb-footer-bottom">
+      <p>© 2026 TD بالعربي — جميع الحقوق محفوظة.</p>
+      <p style="margin-top:8px;font-size:.8rem">
+        <a href="about.html">من نحن</a> · <a href="contact.html">اتصل بنا</a> · <a href="privacy.html">سياسة الخصوصية</a> · <a href="terms.html">شروط الاستخدام</a> · <a href="disclaimer.html">إخلاء مسؤولية</a>
+      </p>
+    </div>
   </div>
 </footer>
+
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none" aria-label="العودة للأعلى">↑</button>
+<script>
+window.addEventListener('scroll',function(){var b=document.getElementById('back-to-top');if(b)b.style.display=window.scrollY>500?'block':'none'});
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
 <script src="script.js"></script>
 </body>

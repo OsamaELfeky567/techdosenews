@@ -6,79 +6,117 @@
 <title>404 — الصفحة غير موجودة | TD بالعربي</title>
 <meta name="robots" content="noindex,nofollow">
 <meta name="description" content="عذرًا، الصفحة التي تبحث عنها غير موجودة">
+<link rel="canonical" href="https://td-arabi.com/404.html">
+<link rel="alternate" hreflang="ar" href="https://td-arabi.com/404.html">
 <meta property="og:locale" content="ar_AR">
-<meta property="og:type" content="website">
+<meta property="og:site_name" content="TD بالعربي">
 <meta property="og:title" content="404 — الصفحة غير موجودة | TD بالعربي">
 <meta property="og:description" content="عذرًا، الصفحة التي تبحث عنها غير موجودة">
-<meta property="og:url" content="https://td-arabi.com/404.html">
 <meta property="og:image" content="https://td-arabi.com/img/og-image.png">
-<meta property="og:site_name" content="TD بالعربي">
+<meta property="og:url" content="https://td-arabi.com/404.html">
+<meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="404 — الصفحة غير موجودة | TD بالعربي">
 <meta name="twitter:description" content="عذرًا، الصفحة التي تبحث عنها غير موجودة">
 <meta name="twitter:image" content="https://td-arabi.com/img/og-image.png">
-<link rel="canonical" href="https://td-arabi.com/404.html">
-<link rel="alternate" hreflang="ar" href="https://td-arabi.com/404.html">
-<link rel="alternate" hreflang="x-default" href="https://td-arabi.com/404.html">
-<link rel="alternate" type="application/rss+xml" title="TD بالعربي — أخبار التقنية" href="https://td-arabi.com/rss.xml">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script>const theme=localStorage.getItem('td-theme');if(theme==='dark'||(!theme&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark')</script>
 <link rel="stylesheet" href="style.css">
-<style>
-.sb-404{min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
-.sb-404 h1{font-size:5rem;color:var(--accent);margin-bottom:1rem}
-.sb-404 p{font-size:1.2rem;color:var(--muted);margin-bottom:2rem;max-width:500px}
-.sb-404 a{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 2rem;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600}
-.sb-404 a:hover{opacity:.9}
-.sb-404 .sb-categories{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:2rem}
-.sb-404 .sb-cat-chip{padding:.4rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:20px;text-decoration:none;color:var(--text);font-size:.9rem}
-.sb-404 .sb-cat-chip:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
-</style>
 <script src="/js/analytics.js" async></script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"TD بالعربي","url":"https://td-arabi.com","logo":"https://td-arabi.com/img/og-image.png","description":"منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي"}
-</script>
+<link rel="alternate" type="application/rss+xml" title="TD بالعربي - RSS Feed" href="https://td-arabi.com/rss.xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"TD بالعربي","url":"https://td-arabi.com","logo":"https://td-arabi.com/img/og-image.png","description":"TD بالعربي | منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي"}</script>
 </head>
 <body>
+<div id="loading-spinner" style="display:none;text-align:center;padding:80px 0;">
+  <div style="border:3px solid var(--border,#e2e8f0);border-top:3px solid var(--accent,#2563eb);border-radius:50%;width:45px;height:45px;animation:spin .8s linear infinite;margin:0 auto 15px"></div>
+  <p style="color:var(--muted,#64748b);font-family:inherit;">جارٍ التحميل...</p>
+</div>
+<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+<div id="sbOverlay" class="sb-overlay" onclick="closeMenu()" role="presentation"></div>
 <header class="sb-header">
-  <div class="sb-header-inner">
-    <a href="index.html" class="sb-logo">TD بالعربي</a>
-    <nav class="sb-nav">
-      <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
-      <a href="category.html?cat=ai">الذكاء الاصطناعي</a>
-      <a href="category.html?cat=companies">شركات</a>
-      <a href="category.html?cat=security">أمن سيبراني</a>
-      <a href="category.html?cat=phones">هواتف ذكية</a>
-      <a href="category.html?cat=ev">سيارات كهربائية</a>
+  <div class="sb-container">
+    <button class="sb-menu-btn" onclick="toggleMenu()" aria-label="القائمة" aria-expanded="false">☰</button>
+    <h1 style="margin:0;font-size:inherit;font-weight:inherit"><a href="index.html" class="sb-logo">TD <span>بالعربي</span></a></h1>
+    <div class="sb-header-info">
+      <span class="sb-header-date" id="sbLastUpdate"></span>
+      <span class="sb-header-time" id="sbHeaderTime"></span>
+    </div>
+    <nav class="sb-nav" id="sbNav" aria-label="القائمة الرئيسية">
+      <a href="index.html">الرئيسية</a>
+      <a href="index.html#all">آخر الأخبار</a>
+      <a href="about.html">من نحن</a>
+      <a href="contact.html">تواصل معنا</a>
+      <a href="#" class="sb-telegram-btn" target="_blank" rel="noopener">تيليجرام</a>
     </nav>
+    <div class="sb-header-actions">
+      <button class="sb-theme-toggle" onclick="toggleTheme()" aria-label="الوضع الليلي" id="sbThemeToggle">🌙</button>
+      <button class="sb-search-btn" onclick="toggleSearch()" aria-label="بحث">🔍</button>
+    </div>
   </div>
 </header>
-<main class="sb-404">
-  <h1>404</h1>
-  <p>عذرًا، الصفحة التي تبحث عنها غير موجودة أو تم نقلها.</p>
-  <a href="index.html"><i class="fas fa-arrow-right"></i> العودة إلى الرئيسية</a>
-  <div class="sb-categories">
-    <a href="category.html?cat=ai" class="sb-cat-chip">الذكاء الاصطناعي</a>
-    <a href="category.html?cat=companies" class="sb-cat-chip">شركات</a>
-    <a href="category.html?cat=security" class="sb-cat-chip">أمن سيبراني</a>
-    <a href="category.html?cat=phones" class="sb-cat-chip">هواتف ذكية</a>
-    <a href="category.html?cat=ev" class="sb-cat-chip">سيارات كهربائية</a>
-    <a href="category.html" class="sb-cat-chip">جميع التصنيفات</a>
+
+<div class="sb-search-bar" id="sbSearchBar" role="search">
+  <div class="sb-container">
+    <input type="text" id="sbSearchInput" placeholder="ابحث عن مقالات..." oninput="filterSearch(this.value)" aria-label="بحث عن مقالات">
+    <button onclick="closeSearch()">إلغاء</button>
+  </div>
+</div>
+
+<main class="sb-main" style="min-height:60vh;display:flex;align-items:center;justify-content:center">
+  <div class="sb-container" style="text-align:center;padding:60px 20px">
+    <div style="font-size:6rem;font-weight:900;color:var(--accent,#2563eb);line-height:1;margin-bottom:20px">404</div>
+    <h2 style="font-size:1.5rem;font-weight:800;color:var(--text);margin-bottom:12px">عذرًا، الصفحة غير موجودة</h2>
+    <p style="color:var(--muted,#64748b);margin-bottom:24px;max-width:450px;margin-left:auto;margin-right:auto">الصفحة التي تبحث عنها ربما تم نقلها أو حذفها. يمكنك العودة للرئيسية أو تصفح التصنيفات أدناه.</p>
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--accent,#2563eb);color:#fff;border-radius:8px;font-weight:700;text-decoration:none;transition:all .25s">← العودة إلى الرئيسية</a>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:28px">
+      <a href="category.html?cat=ai" class="sb-cat-chip">الذكاء الاصطناعي</a>
+      <a href="category.html?cat=companies" class="sb-cat-chip">شركات</a>
+      <a href="category.html?cat=cybersecurity" class="sb-cat-chip">أمن سيبراني</a>
+      <a href="category.html?cat=phones" class="sb-cat-chip">هواتف ذكية</a>
+      <a href="category.html?cat=ev" class="sb-cat-chip">سيارات كهربائية</a>
+      <a href="category.html" class="sb-cat-chip">جميع التصنيفات</a>
+    </div>
   </div>
 </main>
+
+<section class="sb-telegram-cta">
+  <div class="sb-container">
+    <div class="sb-telegram-content">
+      <h3>انضم إلى قناة TD بالعربي على تيليجرام</h3>
+      <p>أهم أخبار التقنية والذكاء الاصطناعي تصلك أولًا، وبدقة احترافية.</p>
+      <a href="#" class="sb-telegram-btn" target="_blank" rel="noopener">📱 انضم إلى القناة الآن</a>
+    </div>
+  </div>
+</section>
+
 <footer class="sb-footer">
-  <div class="sb-footer-inner">
-    <p>&copy; 2026 TD بالعربي — جميع الحقوق محفوظة.</p>
-    <div class="sb-footer-links">
-      <a href="editorial-policy.html">من نحن</a>
-      <a href="#">اتصل بنا</a>
-      <a href="#">سياسة الخصوصية</a>
-      <a href="#">شروط الاستخدام</a>
+  <div class="sb-container">
+    <div class="sb-footer-grid">
+      <div class="sb-footer-col">
+        <div class="sb-footer-logo">TD <span>بالعربي</span></div>
+        <p>منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي والشركات الناشئة، بمعايير صحفية احترافية وتحرير دقيق.</p>
+      </div>
+      <div class="sb-footer-col">
+        <h4>الوسوم الرائجة</h4>
+        <ul id="sbFooterTags"></ul>
+      </div>
+    </div>
+    <div class="sb-footer-bottom">
+      <p>© 2026 TD بالعربي — جميع الحقوق محفوظة.</p>
+      <p style="margin-top:8px;font-size:.8rem">
+        <a href="about.html">من نحن</a> · <a href="contact.html">اتصل بنا</a> · <a href="privacy.html">سياسة الخصوصية</a> · <a href="terms.html">شروط الاستخدام</a> · <a href="disclaimer.html">إخلاء مسؤولية</a>
+      </p>
     </div>
   </div>
 </footer>
+
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none" aria-label="العودة للأعلى">↑</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

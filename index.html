@@ -22,48 +22,26 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "TD بالعربي",
-  "url": "https://td-arabi.com",
-  "logo": "https://td-arabi.com/img/og-image.png",
-  "description": "TD بالعربي | منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "TD بالعربي",
-  "url": "https://td-arabi.com",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://td-arabi.com/?s={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"TD بالعربي","url":"https://td-arabi.com","logo":"https://td-arabi.com/img/og-image.png","description":"TD بالعربي | منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"TD بالعربي","url":"https://td-arabi.com","potentialAction":{"@type":"SearchAction","target":"https://td-arabi.com/?s={search_term_string}","query-input":"required name=search_term_string"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 <script src="/js/analytics.js" async></script>
 <link rel="alternate" type="application/rss+xml" title="TD بالعربي - RSS Feed" href="https://td-arabi.com/rss.xml">
+<script>const theme=localStorage.getItem('td-theme');if(theme==='dark'||(!theme&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark')</script>
 </head>
 <body>
 <div id="loading-spinner" style="display:none;text-align:center;padding:80px 0;">
-  <div style="border:3px solid #e2e8f0;border-top:3px solid #2563eb;border-radius:50%;width:45px;height:45px;animation:spin .8s linear infinite;margin:0 auto 15px"></div>
-  <p style="color:#64748b;font-family:inherit;">جارٍ التحميل...</p>
+  <div style="border:3px solid var(--border,#e2e8f0);border-top:3px solid var(--accent,#2563eb);border-radius:50%;width:45px;height:45px;animation:spin .8s linear infinite;margin:0 auto 15px"></div>
+  <p style="color:var(--muted,#64748b);font-family:inherit;">جارٍ التحميل...</p>
 </div>
-<style>
-@keyframes spin{to{transform:rotate(360deg)}}
-</style>
-<div id="sbOverlay" class="sb-overlay" onclick="closeMenu()"></div>
+<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+<div id="sbOverlay" class="sb-overlay" onclick="closeMenu()" role="presentation"></div>
 <header class="sb-header">
   <div class="sb-container">
-    <button class="sb-menu-btn" onclick="toggleMenu()" aria-label="القائمة">☰</button>
+    <button class="sb-menu-btn" onclick="toggleMenu()" aria-label="القائمة" aria-expanded="false">☰</button>
     <h1 style="margin:0;font-size:inherit;font-weight:inherit"><a href="index.html" class="sb-logo">TD <span>بالعربي</span></a></h1>
     <div class="sb-header-info">
       <span class="sb-header-date" id="sbLastUpdate"></span>
@@ -76,13 +54,16 @@
       <a href="contact.html">تواصل معنا</a>
       <a href="#" class="sb-telegram-btn" target="_blank" rel="noopener">تيليجرام</a>
     </nav>
-    <button class="sb-search-btn" onclick="toggleSearch()" aria-label="بحث">🔍</button>
+    <div class="sb-header-actions">
+      <button class="sb-theme-toggle" onclick="toggleTheme()" aria-label="الوضع الليلي" id="sbThemeToggle">🌙</button>
+      <button class="sb-search-btn" onclick="toggleSearch()" aria-label="بحث">🔍</button>
+    </div>
   </div>
 </header>
 
 <div class="sb-search-bar" id="sbSearchBar" role="search">
   <div class="sb-container">
-    <input type="text" id="sbSearchInput" placeholder="ابحث عن مقالات..." oninput="filterSearch(this.value)">
+    <input type="text" id="sbSearchInput" placeholder="ابحث عن مقالات..." oninput="filterSearch(this.value)" aria-label="بحث عن مقالات">
     <button onclick="closeSearch()">إلغاء</button>
   </div>
 </div>
@@ -91,15 +72,23 @@
   <div class="sb-container">
     <div class="ad-container ad-leaderboard" id="ad-header">
       <div class="sb-ad-label">إعلان</div>
-      <script>
-        atOptions = { 'key' : 'dc29c63238688f937f7bb9cfb4bf3962', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-      </script>
+      <script>atOptions={'key':'dc29c63238688f937f7bb9cfb4bf3962','format':'iframe','height':90,'width':728,'params':{}};</script>
       <script src="https://www.highperformanceformat.com/dc29c63238688f937f7bb9cfb4bf3962/invoke.js"></script>
     </div>
 
     <div class="sb-hero-row">
       <div class="sb-hero" id="sbHero"></div>
-      <aside class="sb-sidebar sb-sidebar-top"></aside>
+      <div class="sb-hero-secondary" id="sbHeroSecondary"></div>
+    </div>
+
+    <div id="sbHeroSkeleton" style="display:none">
+      <div class="sb-hero-row">
+        <div class="sb-skeleton sb-skeleton-hero"></div>
+        <div class="sb-hero-secondary" style="gap:var(--spacing-lg,24px)">
+          <div class="sb-skeleton sb-skeleton-hero-sm"></div>
+          <div class="sb-skeleton sb-skeleton-hero-sm"></div>
+        </div>
+      </div>
     </div>
 
     <div class="sb-content-row">
@@ -108,6 +97,11 @@
           <h2>آخر الأخبار</h2>
         </div>
         <div class="sb-latest-list" id="sbLatestList"></div>
+        <div id="sbLatestSkeleton" style="display:none">
+          <div class="sb-skeleton-latest" style="padding:0 0 14px"><div class="sb-skeleton sb-skeleton-latest-img"></div><div style="flex:1"><div class="sb-skeleton sb-skeleton-line" style="width:40%"></div><div class="sb-skeleton sb-skeleton-line"></div><div class="sb-skeleton sb-skeleton-line-sm"></div></div></div>
+          <div class="sb-skeleton-latest"><div class="sb-skeleton sb-skeleton-latest-img"></div><div style="flex:1"><div class="sb-skeleton sb-skeleton-line" style="width:40%"></div><div class="sb-skeleton sb-skeleton-line"></div><div class="sb-skeleton sb-skeleton-line-sm"></div></div></div>
+          <div class="sb-skeleton-latest"><div class="sb-skeleton sb-skeleton-latest-img"></div><div style="flex:1"><div class="sb-skeleton sb-skeleton-line" style="width:40%"></div><div class="sb-skeleton sb-skeleton-line"></div><div class="sb-skeleton sb-skeleton-line-sm"></div></div></div>
+        </div>
       </section>
       <section class="sb-trending" id="sbTrending">
         <div class="sb-section-header">
@@ -115,14 +109,17 @@
           <a href="index.html#all" class="sb-view-all">عرض الكل</a>
         </div>
         <div class="sb-trending-list" id="sbTrendingList"></div>
+        <div id="sbTrendingSkeleton" style="display:none">
+          <div class="sb-skeleton-trending"><div class="sb-skeleton sb-skeleton-trending-num"></div><div style="flex:1"><div class="sb-skeleton sb-skeleton-line" style="width:70%"></div><div class="sb-skeleton sb-skeleton-line-sm" style="width:40%"></div></div></div>
+          <div class="sb-skeleton-trending"><div class="sb-skeleton sb-skeleton-trending-num"></div><div style="flex:1"><div class="sb-skeleton sb-skeleton-line" style="width:70%"></div><div class="sb-skeleton sb-skeleton-line-sm" style="width:40%"></div></div></div>
+          <div class="sb-skeleton-trending"><div class="sb-skeleton sb-skeleton-trending-num"></div><div style="flex:1"><div class="sb-skeleton sb-skeleton-line" style="width:70%"></div><div class="sb-skeleton sb-skeleton-line-sm" style="width:40%"></div></div></div>
+        </div>
       </section>
     </div>
 
     <div class="ad-container ad-leaderboard">
       <div class="sb-ad-label">إعلان</div>
-      <script>
-        atOptions = { 'key' : 'dc29c63238688f937f7bb9cfb4bf3962', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-      </script>
+      <script>atOptions={'key':'dc29c63238688f937f7bb9cfb4bf3962','format':'iframe','height':90,'width':728,'params':{}};</script>
       <script src="https://www.highperformanceformat.com/dc29c63238688f937f7bb9cfb4bf3962/invoke.js"></script>
     </div>
 
@@ -131,6 +128,11 @@
         <div class="sb-most-read" id="sbMostRead">
           <h3>الأكثر قراءة</h3>
           <div id="sbMostReadList"></div>
+          <div id="sbMostReadSkeleton" style="display:none">
+            <div class="sb-skeleton-latest" style="border-bottom:1px solid var(--border,#e2e8f0);padding:10px 0"><div style="flex:1"><div class="sb-skeleton sb-skeleton-line" style="width:80%"></div><div class="sb-skeleton sb-skeleton-line-sm" style="width:30%"></div></div></div>
+            <div class="sb-skeleton-latest" style="border-bottom:1px solid var(--border,#e2e8f0);padding:10px 0"><div style="flex:1"><div class="sb-skeleton sb-skeleton-line" style="width:80%"></div><div class="sb-skeleton sb-skeleton-line-sm" style="width:30%"></div></div></div>
+            <div class="sb-skeleton-latest" style="border-bottom:1px solid var(--border,#e2e8f0);padding:10px 0"><div style="flex:1"><div class="sb-skeleton sb-skeleton-line" style="width:80%"></div><div class="sb-skeleton sb-skeleton-line-sm" style="width:30%"></div></div></div>
+          </div>
         </div>
       </aside>
       <div class="sb-content-main">
@@ -142,11 +144,16 @@
         </section>
 
         <section class="sb-section">
-    <div class="sb-section-header">
-          <h2>جميع المقالات <span id="sbSearchCount" class="sb-search-count"></span></h2>
-        </div>
-        <div class="sb-grid" id="sbGrid" aria-live="polite"></div>
-        <div id="sbLoadMoreContainer" style="text-align:center;margin:24px 0"></div>
+          <div class="sb-section-header">
+            <h2>جميع المقالات <span id="sbSearchCount" class="sb-search-count"></span></h2>
+          </div>
+          <div class="sb-grid" id="sbGrid" aria-live="polite"></div>
+          <div id="sbGridSkeleton" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--spacing-lg,24px)">
+            <div class="sb-skeleton sb-skeleton-card"><div class="sb-skeleton sb-skeleton-card-img"></div><div class="sb-skeleton-card-body"><div class="sb-skeleton sb-skeleton-tag"></div><div class="sb-skeleton sb-skeleton-line-lg"></div><div class="sb-skeleton sb-skeleton-line"></div><div class="sb-skeleton sb-skeleton-line" style="width:80%"></div><div class="sb-skeleton sb-skeleton-line-sm" style="margin-top:16px"></div></div></div>
+            <div class="sb-skeleton sb-skeleton-card"><div class="sb-skeleton sb-skeleton-card-img"></div><div class="sb-skeleton-card-body"><div class="sb-skeleton sb-skeleton-tag"></div><div class="sb-skeleton sb-skeleton-line-lg"></div><div class="sb-skeleton sb-skeleton-line"></div><div class="sb-skeleton sb-skeleton-line" style="width:80%"></div><div class="sb-skeleton sb-skeleton-line-sm" style="margin-top:16px"></div></div></div>
+            <div class="sb-skeleton sb-skeleton-card"><div class="sb-skeleton sb-skeleton-card-img"></div><div class="sb-skeleton-card-body"><div class="sb-skeleton sb-skeleton-tag"></div><div class="sb-skeleton sb-skeleton-line-lg"></div><div class="sb-skeleton sb-skeleton-line"></div><div class="sb-skeleton sb-skeleton-line" style="width:80%"></div><div class="sb-skeleton sb-skeleton-line-sm" style="margin-top:16px"></div></div></div>
+          </div>
+          <div id="sbLoadMoreContainer" style="text-align:center;margin:var(--spacing-lg,24px) 0"></div>
         </section>
       </div>
     </div>
@@ -161,9 +168,7 @@
 
     <div class="ad-container ad-leaderboard" style="margin:24px auto 0">
       <div class="sb-ad-label">إعلان</div>
-      <script>
-        atOptions = { 'key' : 'dc29c63238688f937f7bb9cfb4bf3962', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-      </script>
+      <script>atOptions={'key':'dc29c63238688f937f7bb9cfb4bf3962','format':'iframe','height':90,'width':728,'params':{}};</script>
       <script src="https://www.highperformanceformat.com/dc29c63238688f937f7bb9cfb4bf3962/invoke.js"></script>
     </div>
   </div>
@@ -190,10 +195,7 @@
   </div>
 </footer>
 
-<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none;position:fixed;bottom:30px;left:30px;background:#2563eb;color:#fff;border:none;width:45px;height:45px;border-radius:50%;font-size:20px;cursor:pointer;z-index:999;box-shadow:0 4px 12px rgba(0,0,0,.3)">↑</button>
-<script>
-window.addEventListener('scroll',function(){var b=document.getElementById('back-to-top');if(b)b.style.display=window.scrollY>500?'block':'none'});
-</script>
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none" aria-label="العودة للأعلى">↑</button>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
 <script src="script.js"></script>
 </body>

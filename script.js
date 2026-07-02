@@ -625,28 +625,47 @@ function getFreshnessBadge(dateStr) {
 
 function goto(id) { window.location.href = 'article.html?id=' + escId(id); }
 
-/* ── Related Articles ── */
+/* ── Related Articles (Semantic) ── */
 function getRelatedArticles(article, count) {
   count = count || 4;
-  let related = [];
+  const articleEntities = [];
+  if (article.primary_company) articleEntities.push(article.primary_company.toLowerCase());
+  if (article.secondary_company) articleEntities.push(article.secondary_company.toLowerCase());
+  if (Array.isArray(article.products)) articleEntities.push(...article.products.map(s => (s || '').toLowerCase()).filter(Boolean));
+  if (Array.isArray(article.technologies)) articleEntities.push(...article.technologies.map(s => (s || '').toLowerCase()).filter(Boolean));
+  if (Array.isArray(article.ai_models)) articleEntities.push(...article.ai_models.map(s => (s || '').toLowerCase()).filter(Boolean));
+  if (Array.isArray(article.people)) articleEntities.push(...article.people.map(s => (s || '').toLowerCase()).filter(Boolean));
+  if (Array.isArray(article.countries)) articleEntities.push(...article.countries.map(s => (s || '').toLowerCase()).filter(Boolean));
   const articleTags = Array.isArray(article.tags) ? article.tags : [];
-  if (articleTags.length > 0) {
-    const tagHits = {};
-    for (const a of allArticles) {
-      if (a.id === article.id) continue;
-      const aTags = Array.isArray(a.tags) ? a.tags : [];
-      if (aTags.length === 0) continue;
-      let score = 0;
-      for (const tag of articleTags) {
-        if (aTags.some(t => t.toLowerCase() === tag.toLowerCase())) score += 2;
-        if (aTags.some(t => t.toLowerCase().includes(tag.toLowerCase()) || tag.toLowerCase().includes(t.toLowerCase()))) score += 1;
-      }
-      if (score > 0) tagHits[a.id] = { article: a, score: score };
+  const scored = [];
+  for (const a of allArticles) {
+    if (a.id === article.id) continue;
+    if (a.status !== 'published') continue;
+    let entityScore = 0;
+    const aEntities = [];
+    if (a.primary_company) aEntities.push(a.primary_company.toLowerCase());
+    if (a.secondary_company) aEntities.push(a.secondary_company.toLowerCase());
+    if (Array.isArray(a.products)) aEntities.push(...a.products.map(s => (s || '').toLowerCase()).filter(Boolean));
+    if (Array.isArray(a.technologies)) aEntities.push(...a.technologies.map(s => (s || '').toLowerCase()).filter(Boolean));
+    if (Array.isArray(a.ai_models)) aEntities.push(...a.ai_models.map(s => (s || '').toLowerCase()).filter(Boolean));
+    if (Array.isArray(a.people)) aEntities.push(...a.people.map(s => (s || '').toLowerCase()).filter(Boolean));
+    if (Array.isArray(a.countries)) aEntities.push(...a.countries.map(s => (s || '').toLowerCase()).filter(Boolean));
+    for (const ent of articleEntities) {
+      if (aEntities.some(e => e === ent)) entityScore += 5;
+      if (aEntities.some(e => e.includes(ent) || ent.includes(e))) entityScore += 2;
     }
-    related = Object.values(tagHits).sort((x, y) => y.score - x.score).slice(0, count).map(x => x.article);
+    let tagScore = 0;
+    const aTags = Array.isArray(a.tags) ? a.tags : [];
+    for (const tag of articleTags) {
+      if (aTags.some(t => t.toLowerCase() === tag.toLowerCase())) tagScore += 2;
+      if (aTags.some(t => t.toLowerCase().includes(tag.toLowerCase()) || tag.toLowerCase().includes(t.toLowerCase()))) tagScore += 1;
+    }
+    const totalScore = entityScore + tagScore;
+    if (totalScore > 0) scored.push({ article: a, score: totalScore, entityScore: entityScore });
   }
+  let related = scored.sort((x, y) => y.score - x.score || y.entityScore - x.entityScore).slice(0, count).map(x => x.article);
   if (related.length < count) {
-    const more = allArticles.filter(a => a.id !== article.id && !related.some(r => r.id === a.id));
+    const more = allArticles.filter(a => a.id !== article.id && a.status === 'published' && !related.some(r => r.id === a.id));
     more.sort(() => Math.random() - 0.5);
     related = related.concat(more.slice(0, count - related.length));
   }
@@ -656,14 +675,35 @@ function getRelatedArticles(article, count) {
 function renderRelatedArticles(article) {
   const container = document.getElementById('sbRelatedArticles');
   if (!container) return;
-  const related = getRelatedArticles(article, 4);
-  if (related.length === 0) { container.innerHTML = ''; return; }
-  const html = related.map(a =>
-    '<div class="sb-related-item" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
+  const aiLinks = Array.isArray(article.internal_links) ? article.internal_links : [];
+  const semantic = getRelatedArticles(article, 6);
+  const usedIds = new Set();
+  const seen = [];
+  for (const link of aiLinks) {
+    if (usedIds.has(link.id)) continue;
+    usedIds.add(link.id);
+    const match = allArticles.find(a => a.id === link.id && a.status === 'published');
+    if (match) {
+      seen.push(match);
+    } else {
+      seen.push({ id: link.id, title: link.title, techdose_link: link.techdose_link, tags: [] });
+    }
+  }
+  for (const a of semantic) {
+    if (usedIds.has(a.id)) continue;
+    usedIds.add(a.id);
+    if (seen.length >= 4) break;
+    seen.push(a);
+  }
+  if (seen.length === 0) { container.innerHTML = ''; return; }
+  const html = seen.map(a => {
+    const hasInternalLink = aiLinks.some(l => l.id === a.id);
+    const badgeHtml = hasInternalLink ? '<span class="sb-related-badge">مختار</span>' : '';
+    return '<div class="sb-related-item" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
     '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" decoding="async" width="90" height="65" onerror="this.style.display=\'none\'">' +
-    '<div class="sb-related-info"><span class="sb-related-tag">' + esc(Array.isArray(a.tags) && a.tags.length > 0 ? a.tags[0] : 'تقنية') + '</span>' +
-    '<h4>' + esc(a.title) + '</h4></div></div>'
-  ).join('');
+    '<div class="sb-related-info">' + badgeHtml + '<span class="sb-related-tag">' + esc(Array.isArray(a.tags) && a.tags.length > 0 ? a.tags[0] : 'تقنية') + '</span>' +
+    '<h4>' + esc(a.title) + '</h4></div></div>';
+  }).join('');
   container.innerHTML = '<section class="sb-related-section"><h2>مقالات ذات صلة</h2><div class="sb-related-grid">' + html + '</div></section>';
 }
 

@@ -21,7 +21,7 @@ const GH_API = "https://api.github.com/repos/osamaelfeky567/techdosenews/content
 const GH_H = { "Authorization": "token " + GH_TOKEN, "Accept": "application/vnd.github.v3+json" };
 
 const TG_TOKEN = process.env.TG_TOKEN || "";
-const TG_CHAT_ID = process.env.TG_CHAT_ID || "-1003896125398";
+const TG_CHAT_ID = "-1003896125398" || "-1003896125398";
 const FRONTEND_URL = "https://osamaelfeky567.github.io/techdosenews";
 
 const GROQ_API_KEY = process.env.GROQ_API_KEY || "";
@@ -337,45 +337,117 @@ function editorialFormat(ai) {
 }
 
 function calculateQuality(article) {
-  let score = 0;
-  const wordCount = (article.body || "").split(/\s+/).filter(Boolean).length;
-  if (wordCount >= 700) score += 20;
-  else if (wordCount >= 500) score += 14;
-  else if (wordCount >= 300) score += 8;
-  else score += 2;
-  const titleLen = (article.title_ar || "").length;
-  if (titleLen >= 40 && titleLen <= 65) score += 12;
-  else if (titleLen >= 30 && titleLen <= 75) score += 8;
-  else score += 2;
-  const excerptLen = (article.excerpt || "").length;
-  if (excerptLen >= 100 && excerptLen <= 200) score += 10;
-  else if (excerptLen >= 50 && excerptLen <= 300) score += 6;
-  else score += 2;
-  if (article.image && !article.image.includes("photo-1518770660439")) score += 8;
-  if (Array.isArray(article.tags) && article.tags.length >= 3) score += 6;
-  if (article.primary_company) score += 4;
-  if (Array.isArray(article.products) && article.products.length > 0) score += 4;
-  if (Array.isArray(article.technologies) && article.technologies.length > 0) score += 3;
-  if (Array.isArray(article.ai_models) && article.ai_models.length > 0) score += 2;
-  if (Array.isArray(article.countries) && article.countries.length > 0) score += 2;
-  if (Array.isArray(article.internal_links) && article.internal_links.length >= 3) score += 10;
-  else if (Array.isArray(article.internal_links) && article.internal_links.length > 0) score += 5;
-  let entityTypes = 0;
-  if (article.primary_company) entityTypes++;
-  if (Array.isArray(article.products) && article.products.length > 0) entityTypes++;
-  if (Array.isArray(article.technologies) && article.technologies.length > 0) entityTypes++;
-  if (Array.isArray(article.ai_models) && article.ai_models.length > 0) entityTypes++;
-  if (Array.isArray(article.countries) && article.countries.length > 0) entityTypes++;
-  if (Array.isArray(article.os) && article.os.length > 0) entityTypes++;
-  if (Array.isArray(article.chipsets) && article.chipsets.length > 0) entityTypes++;
-  if (entityTypes >= 3) score += 8;
-  else if (entityTypes >= 2) score += 5;
-  else if (entityTypes >= 1) score += 2;
-  if (article.seo_title && article.seo_title.length >= 40) score += 5;
-  if (article.meta_description && article.meta_description.length >= 100) score += 5;
-  if (article.focus_keyword) score += 3;
-  score += 3;
-  return Math.min(score, 100);
+  const body = article.body || "";
+  const title = article.title_ar || "";
+  const excerpt = article.excerpt || "";
+  const words = body.split(/\s+/).filter(Boolean);
+  const wordCount = words.length;
+  const paragraphs = body.split(/\n{2,}/).filter(p => p.trim().length > 20);
+  const paraCount = paragraphs.length;
+  const bodyText = body.replace(/<[^>]*>/g, " ");
+
+  /* ───── 1. Information Value (30 pts) ───── */
+  let infoScore = 0;
+  const digits = (bodyText.match(/\d+(\.\d+)?/g) || []);
+  const uniqueDigits = new Set(digits.filter(d => d.length >= 2));
+  if (uniqueDigits.size >= 12) infoScore += 10;
+  else if (uniqueDigits.size >= 6) infoScore += 7;
+  else if (uniqueDigits.size >= 3) infoScore += 4;
+  else infoScore += 1;
+  if (wordCount >= 700) infoScore += 7;
+  else if (wordCount >= 500) infoScore += 5;
+  else if (wordCount >= 350) infoScore += 3;
+  const hasCompany = !!article.primary_company;
+  const hasProduct = Array.isArray(article.products) && article.products.length > 0;
+  if (hasCompany && hasProduct) infoScore += 5;
+  else if (hasCompany || hasProduct) infoScore += 2;
+  const versionPattern = /[A-Za-z\u0600-\u06FF]+\s*\d+[\d.]*/g;
+  const versions = bodyText.match(versionPattern) || [];
+  const uniqueVersions = new Set(versions.filter(v => /\d{2,}/.test(v)));
+  if (uniqueVersions.size >= 3) infoScore += 8;
+  else if (uniqueVersions.size >= 2) infoScore += 6;
+  else if (uniqueVersions.size >= 1) infoScore += 3;
+
+  /* ───── 2. Editorial Flow (13 pts) ───── */
+  let flowScore = 0;
+  if (paraCount >= 5 && paraCount <= 15) flowScore += 4;
+  else if (paraCount >= 3) flowScore += 2;
+  const openings = paragraphs.map(p => {
+    const t = p.trim().replace(/<[^>]*>/g, "");
+    const m = t.match(/^[^\s]{2,5}/);
+    return m ? m[0] : "";
+  }).filter(Boolean);
+  const openingCounts = {};
+  for (const o of openings) { openingCounts[o] = (openingCounts[o] || 0) + 1; }
+  const maxRepeated = Math.max(...Object.values(openingCounts), 0);
+  if (maxRepeated <= 1) flowScore += 3;
+  else if (maxRepeated === 2) flowScore += 2;
+  const lastPara = paragraphs[paragraphs.length - 1] || "";
+  const lastWords = lastPara.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean);
+  if (lastWords.length >= 25) flowScore += 2;
+  else if (lastWords.length >= 15) flowScore += 1;
+  const cliches = ["في عالم التكنولوجيا المتسارع", "يُعد هذا تطوراً مهماً", "من الجدير بالذكر", "تعرف على", "شهدنا مؤخراً", "في خطوة جديدة", "تشهد الساحة التقنية", "يشهد العالم", "في تطور لافت"];
+  let clicheCount = 0;
+  for (const c of cliches) { if (bodyText.includes(c)) clicheCount++; }
+  flowScore += Math.max(0, 4 - clicheCount * 2);
+
+  /* ───── 3. Headline Quality (12 pts) ───── */
+  let headScore = 0;
+  const titleLen = title.length;
+  if (titleLen >= 30 && titleLen <= 65) headScore += 4;
+  else if (titleLen >= 25 && titleLen <= 75) headScore += 2;
+  const hasEntity = hasCompany || hasProduct || (Array.isArray(article.technologies) && article.technologies.length > 0);
+  if (hasEntity) headScore += 4;
+  if (!title.includes("؟") && !title.includes("?")) headScore += 1;
+  const genericWords = ["جديد", "أحدث", "مهم", "كبير", "قوي"];
+  let isGeneric = true;
+  for (const gw of genericWords) { if (title.includes(gw)) { isGeneric = false; break; } }
+  if (isGeneric) headScore += 3;
+
+  /* ───── 4. Intro Quality (12 pts) ───── */
+  let introScore = 0;
+  const firstPara = (paragraphs[0] || "").replace(/<[^>]*>/g, "");
+  const firstWords = firstPara.split(/\s+/).filter(Boolean);
+  if (firstWords.length >= 25) introScore += 3;
+  else if (firstWords.length >= 12) introScore += 2;
+  const clicheStarts = ["أعلنت", "وكشفت", "أكدت", "صرحت", "أوضحت", "كشفت"];
+  const startsWithCliche = clicheStarts.some(cs => firstPara.trim().startsWith(cs));
+  if (!startsWithCliche) introScore += 4;
+  const hasDigitInIntro = /\d/.test(firstPara);
+  if (hasDigitInIntro) introScore += 2;
+  if (firstPara.length >= 80) introScore += 3;
+
+  /* ───── 5. Readability (13 pts) ───── */
+  let readScore = 0;
+  if (wordCount >= 600) readScore += 5;
+  else if (wordCount >= 450) readScore += 3;
+  else if (wordCount >= 300) readScore += 2;
+  const avgParaWords = paraCount > 0 ? wordCount / paraCount : 0;
+  if (avgParaWords <= 40) readScore += 4;
+  else if (avgParaWords <= 55) readScore += 2;
+  const sentences = bodyText.split(/[.!?؟!]\s+/);
+  const maxSentLen = Math.max(...sentences.map(s => s.split(/\s+/).filter(Boolean).length), 0);
+  if (maxSentLen <= 50) readScore += 4;
+  else if (maxSentLen <= 65) readScore += 2;
+
+  /* ───── 6. Technical Depth (15 pts) ───── */
+  let techScore = 0;
+  if (Array.isArray(article.products) && article.products.length > 0) techScore += 3;
+  if (Array.isArray(article.technologies) && article.technologies.length > 0) techScore += 3;
+  if (Array.isArray(article.ai_models) && article.ai_models.length > 0) techScore += 2;
+  if (article.primary_company) techScore += 2;
+  if (Array.isArray(article.internal_links) && article.internal_links.length >= 3) techScore += 5;
+  else if (Array.isArray(article.internal_links) && article.internal_links.length > 0) techScore += 2;
+
+  /* ───── 7. SEO Completeness (5 pts) ───── */
+  let seoScore = 0;
+  if (article.seo_title && article.seo_title.length >= 35) seoScore += 2;
+  if (article.meta_description && article.meta_description.length >= 100) seoScore += 1;
+  if (article.focus_keyword) seoScore += 1;
+  if (Array.isArray(article.secondary_keywords) && article.secondary_keywords.length >= 2) seoScore += 1;
+
+  const total = infoScore + flowScore + headScore + introScore + readScore + techScore + seoScore;
+  return Math.min(total, 100);
 }
 
 async function aiGenerate(title, fullContent, source) {
@@ -411,6 +483,56 @@ async function aiGenerate(title, fullContent, source) {
     }
   }
   throw lastErr;
+}
+
+/* ───── Phase 7.3 — Editorial Quality Rewrite ───── */
+
+async function aiRewrite(original, origTitle, fullContent, source, currentScore) {
+  const scores = ["تحسين العمق التقني وإضافة تفاصيل وأرقام ومقارنات محددة","تحسين المقدمة لتكون أكثر تشويقاً وإيجازاً","تحسين العنوان ليكون أقوى وأقل من 65 حرفاً","تحسين الانتقال بين الفقرات لتكون أكثر سلاسة","تحسين الخاتمة باستنتاج أقوى","تحسين حقول SEO: عنوان SEO ووصف ميتا وكلمة مفتاحية","تحسين استخراج الكيانات: شركات، منتجات، تقنيات"];
+  const prompt = `أنت محرر تقني محترف. المقال أدناه حصل على ${currentScore}/100. يحسن لرفعه للنشر.
+
+المصدر: ${source}
+العنوان الأصلي: ${origTitle}
+المحتوى الأصلي: ${(fullContent||"").substring(0,2500)}
+
+المقال الحالي:
+العنوان: ${original.title_ar||origTitle}
+المقدمة: ${((original.excerpt||"")).substring(0,200)}
+المقال: ${((original.body||"")).substring(0,4000)}
+الوسوم: ${JSON.stringify(original.tags||[])}
+SEO الحالي: ${original.seo_title||""} | ${original.meta_description||""} | ${original.focus_keyword||""}
+
+تعليمات التحسين:
+${scores.map((s,i)=>`${i+1}. ${s}`).join("\n")}
+
+أعد إخراج JSON كامل بنفس حقول JSON لهذا المقال (all fields: title_ar, seo_title, meta_description, seo_slug, excerpt, body, telegram_summary, category, tags, focus_keyword, secondary_keywords, primary_company, secondary_company, products, devices, technologies, ai_models, os, chipsets, browsers, cloud_platforms, languages, opensource_projects, executives, markets, countries, people, stocks, investors, image_queries).`;
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  let lastErr;
+  for (let i = 0; i < 3; i++) {
+    if (i > 0) await sleep(5000);
+    try {
+      const res = await this.helpers.httpRequest({
+        method: "POST", url: "https://api.groq.com/openai/v1/chat/completions",
+        headers: { "Authorization": "Bearer " + GROQ_API_KEY, "Content-Type": "application/json" },
+        body: { model: GROQ_MODEL, messages: [{ role: "system", content: "أنت محرر تقني متخصص في Tech Dose News. تحسن المقالات لمعايير النشر دون تغيير الحقائق." }, { role: "user", content: prompt }], temperature: 0.25, max_tokens: 3072, response_format: { type: "json_object" } }
+      });
+      return JSON.parse(res.choices[0].message.content);
+    } catch(e) {
+      lastErr = e;
+      if (e.response && typeof e.response === 'object') { lastErr.message = (e.response.data||e.response.body||"") + " (HTTP " + e.statusCode + ")"; }
+      continue;
+    }
+  }
+  return null;
+}
+
+async function getHoursSinceLastPublish() {
+  try {
+    const tr = await ghGet("data/published_topics.json");
+    const topics = tr.content ? b64decode(tr.content) : [];
+    if (!topics || topics.length === 0) return 999;
+    return (Date.now() - new Date(topics[0].timestamp).getTime()) / 3600000;
+  } catch(e) { return 999; }
 }
 
 async function fetchSourceRSS() {
@@ -732,6 +854,10 @@ async function main() {
     ai_success: false,
     quality_score: 0,
     quality_passed: false,
+    rewrite_attempted: false,
+    rewrite_success: false,
+    quality_override: false,
+    quality_override_reason: "",
     internal_links_count: 0,
     article_id: null,
     article_url: null,
@@ -809,8 +935,20 @@ async function main() {
 
   const maxRetries = 3;
   let ai;
+  let article = null;
   let qualityScore = 0;
   let attempt = 0;
+  let aiTitle = "", aiExcerpt = "", aiBody = "", aiTg = "", aiCategory = "";
+  let aiTags = [];
+  let seoTitle = "", metaDesc = "", seoSlug = "", focusKw = "";
+  let secondaryKws = [];
+  let primaryCompany = null, secondaryCompany = null;
+  let products = [], devices = [], technologies = [], aiModels = [];
+  let os = [], chipsets = [], browsers = [], cloud = [], languages = [];
+  let opensource = [], executives = [], markets = [], countries = [], people = [];
+  let stocks = [], investors = [], imageQueries = [];
+  let internalLinks = [];
+  let imageUrl = "", imageMeta = {};
 
   while (attempt < maxRetries) {
     try {
@@ -824,40 +962,40 @@ async function main() {
 
     ai = editorialFormat(ai);
 
-    const aiTitle = ai.title_ar || picked.title;
-    const aiExcerpt = (ai.excerpt || ai.body || "").substring(0, 300);
-    const aiBody = ai.body || "";
-    const aiTg = ai.telegram_summary || ai.excerpt || "";
-    const aiCategory = ai.category || "تكنولوجيا";
-    const aiTags = Array.isArray(ai.tags) ? ai.tags : ["تكنولوجيا"];
+    aiTitle = ai.title_ar || picked.title;
+    aiExcerpt = (ai.excerpt || ai.body || "").substring(0, 300);
+    aiBody = ai.body || "";
+    aiTg = ai.telegram_summary || ai.excerpt || "";
+    aiCategory = ai.category || "تكنولوجيا";
+    aiTags = Array.isArray(ai.tags) ? ai.tags : ["تكنولوجيا"];
 
-    const seoTitle = ai.seo_title || aiTitle;
-    const metaDesc = ai.meta_description || aiExcerpt.substring(0, 160);
-    const seoSlug = ai.seo_slug || "";
-    const focusKw = ai.focus_keyword || "";
-    const secondaryKws = Array.isArray(ai.secondary_keywords) ? ai.secondary_keywords : [];
+    seoTitle = ai.seo_title || aiTitle;
+    metaDesc = ai.meta_description || aiExcerpt.substring(0, 160);
+    seoSlug = ai.seo_slug || "";
+    focusKw = ai.focus_keyword || "";
+    secondaryKws = Array.isArray(ai.secondary_keywords) ? ai.secondary_keywords : [];
 
-    const primaryCompany = ai.primary_company || null;
-    const secondaryCompany = ai.secondary_company || null;
-    const products = Array.isArray(ai.products) ? ai.products : [];
-    const devices = Array.isArray(ai.devices) ? ai.devices : [];
-    const technologies = Array.isArray(ai.technologies) ? ai.technologies : [];
-    const aiModels = Array.isArray(ai.ai_models) ? ai.ai_models : [];
-    const os = Array.isArray(ai.os) ? ai.os : [];
-    const chipsets = Array.isArray(ai.chipsets) ? ai.chipsets : [];
-    const browsers = Array.isArray(ai.browsers) ? ai.browsers : [];
-    const cloud = Array.isArray(ai.cloud_platforms) ? ai.cloud_platforms : [];
-    const languages = Array.isArray(ai.languages) ? ai.languages : [];
-    const opensource = Array.isArray(ai.opensource_projects) ? ai.opensource_projects : [];
-    const executives = Array.isArray(ai.executives) ? ai.executives : [];
-    const markets = Array.isArray(ai.markets) ? ai.markets : [];
-    const countries = Array.isArray(ai.countries) ? ai.countries : [];
-    const people = Array.isArray(ai.people) ? ai.people : [];
-    const stocks = Array.isArray(ai.stocks) ? ai.stocks : [];
-    const investors = Array.isArray(ai.investors) ? ai.investors : [];
-    const imageQueries = Array.isArray(ai.image_queries) ? ai.image_queries : [];
+    primaryCompany = ai.primary_company || null;
+    secondaryCompany = ai.secondary_company || null;
+    products = Array.isArray(ai.products) ? ai.products : [];
+    devices = Array.isArray(ai.devices) ? ai.devices : [];
+    technologies = Array.isArray(ai.technologies) ? ai.technologies : [];
+    aiModels = Array.isArray(ai.ai_models) ? ai.ai_models : [];
+    os = Array.isArray(ai.os) ? ai.os : [];
+    chipsets = Array.isArray(ai.chipsets) ? ai.chipsets : [];
+    browsers = Array.isArray(ai.browsers) ? ai.browsers : [];
+    cloud = Array.isArray(ai.cloud_platforms) ? ai.cloud_platforms : [];
+    languages = Array.isArray(ai.languages) ? ai.languages : [];
+    opensource = Array.isArray(ai.opensource_projects) ? ai.opensource_projects : [];
+    executives = Array.isArray(ai.executives) ? ai.executives : [];
+    markets = Array.isArray(ai.markets) ? ai.markets : [];
+    countries = Array.isArray(ai.countries) ? ai.countries : [];
+    people = Array.isArray(ai.people) ? ai.people : [];
+    stocks = Array.isArray(ai.stocks) ? ai.stocks : [];
+    investors = Array.isArray(ai.investors) ? ai.investors : [];
+    imageQueries = Array.isArray(ai.image_queries) ? ai.image_queries : [];
 
-    const internalLinks = await generateInternalLinks({
+    internalLinks = await generateInternalLinks({
       primary_company: primaryCompany,
       secondary_company: secondaryCompany,
       products: products,
@@ -871,8 +1009,8 @@ async function main() {
 
     const entities = { primary_company: primaryCompany, secondary_company: secondaryCompany, products, technologies, ai_models: aiModels, countries, people };
     const imgResult = await selectImage(picked, picked.link, entities, imageQueries, aiTitle, sourceName);
-    const imageUrl = imgResult.url;
-    const imageMeta = imgResult.meta;
+    imageUrl = imgResult.url;
+    imageMeta = imgResult.meta;
     result.image_source = imageMeta.source;
     result.image_provider = imageMeta.provider;
     result.image_query = imageMeta.query;
@@ -884,7 +1022,7 @@ async function main() {
 
     const bodyHtml = "<p>" + aiBody.replace(/\n\n/g, "</p><p>").replace(/\n/g, "<br>") + "</p>";
 
-    const article = {
+    article = {
       id: articleId,
       title_ar: aiTitle,
       excerpt: aiExcerpt,
@@ -929,10 +1067,102 @@ async function main() {
     }
   }
 
+  /* ───── Phase 7.3: Editorial Rewrite Attempt ───── */
+  if (qualityScore < QUALITY_THRESHOLD) {
+    result.rewrite_attempted = true;
+    result.ai_retries = attempt;
+    try {
+      const rewritten = await aiRewrite(ai, picked.title, fullArticleContent, sourceName, qualityScore);
+      if (rewritten && rewritten.body) {
+        ai = rewritten;
+        result.rewrite_success = true;
+        ai = editorialFormat(ai);
+        aiTitle = ai.title_ar || picked.title;
+        aiExcerpt = (ai.excerpt || ai.body || "").substring(0, 300);
+        aiBody = ai.body || "";
+        aiTg = ai.telegram_summary || ai.excerpt || "";
+        aiCategory = ai.category || "تكنولوجيا";
+        aiTags = Array.isArray(ai.tags) ? ai.tags : ["تكنولوجيا"];
+        seoTitle = ai.seo_title || aiTitle;
+        metaDesc = ai.meta_description || aiExcerpt.substring(0, 160);
+        seoSlug = ai.seo_slug || "";
+        focusKw = ai.focus_keyword || "";
+        secondaryKws = Array.isArray(ai.secondary_keywords) ? ai.secondary_keywords : [];
+        primaryCompany = ai.primary_company || null;
+        secondaryCompany = ai.secondary_company || null;
+        products = Array.isArray(ai.products) ? ai.products : [];
+        devices = Array.isArray(ai.devices) ? ai.devices : [];
+        technologies = Array.isArray(ai.technologies) ? ai.technologies : [];
+        aiModels = Array.isArray(ai.ai_models) ? ai.ai_models : [];
+        os = Array.isArray(ai.os) ? ai.os : [];
+        chipsets = Array.isArray(ai.chipsets) ? ai.chipsets : [];
+        browsers = Array.isArray(ai.browsers) ? ai.browsers : [];
+        cloud = Array.isArray(ai.cloud_platforms) ? ai.cloud_platforms : [];
+        languages = Array.isArray(ai.languages) ? ai.languages : [];
+        opensource = Array.isArray(ai.opensource_projects) ? ai.opensource_projects : [];
+        executives = Array.isArray(ai.executives) ? ai.executives : [];
+        markets = Array.isArray(ai.markets) ? ai.markets : [];
+        countries = Array.isArray(ai.countries) ? ai.countries : [];
+        people = Array.isArray(ai.people) ? ai.people : [];
+        stocks = Array.isArray(ai.stocks) ? ai.stocks : [];
+        investors = Array.isArray(ai.investors) ? ai.investors : [];
+        imageQueries = Array.isArray(ai.image_queries) ? ai.image_queries : [];
+        internalLinks = await generateInternalLinks({
+          primary_company: primaryCompany, secondary_company: secondaryCompany,
+          products: products, technologies: technologies, ai_models: aiModels,
+          countries: countries, people: people, tags: aiTags
+        }, existingIndex);
+        result.internal_links_count = internalLinks.length;
+        const entities = { primary_company: primaryCompany, secondary_company: secondaryCompany, products, technologies, ai_models: aiModels, countries, people };
+        const imgResult = await selectImage(picked, picked.link, entities, imageQueries, aiTitle, sourceName);
+        imageUrl = imgResult.url;
+        imageMeta = imgResult.meta;
+        result.image_source = imageMeta.source;
+        result.image_provider = imageMeta.provider;
+        result.image_query = imageMeta.query;
+        result.image_type = imageMeta.image_type;
+        result.image_confidence = imageMeta.confidence;
+        result.original_candidates = imageMeta.original_candidates;
+        result.pexels_tried = imageMeta.pexels_tried;
+        result.unsplash_tried = imageMeta.unsplash_tried;
+        const bodyHtml = "<p>" + aiBody.replace(/\n\n/g, "</p><p>").replace(/\n/g, "<br>") + "</p>";
+        article = {
+          id: articleId, title_ar: aiTitle, excerpt: aiExcerpt, body: bodyHtml,
+          category: aiCategory, tags: aiTags, image: imageUrl,
+          image_source: imageMeta.source, image_provider: imageMeta.provider,
+          image_query: imageMeta.query, image_type: imageMeta.image_type,
+          image_confidence: imageMeta.confidence, source_link: picked.link,
+          source_name: sourceName, status: "published",
+          readTime: Math.ceil(aiBody.split(/\s+/).filter(Boolean).length / 200) + " min read",
+          created_at: new Date().toISOString()
+        };
+        qualityScore = calculateQuality({
+          title_ar: aiTitle, excerpt: aiExcerpt, body: aiBody, image: imageUrl,
+          tags: aiTags, primary_company: primaryCompany, products: products,
+          technologies: technologies, ai_models: aiModels, countries: countries,
+          internal_links: internalLinks
+        });
+        result.quality_score = qualityScore;
+      }
+    } catch(e) {
+      result.rewrite_error = e.message;
+    }
+  }
+
+  /* ───── Phase 7.3: Stabilization Mode ───── */
+  if (qualityScore < QUALITY_THRESHOLD && qualityScore >= 65) {
+    const hoursSinceLastPub = await getHoursSinceLastPublish();
+    if (hoursSinceLastPub > 6) {
+      result.quality_override = true;
+      result.quality_override_reason = "Stabilization mode: " + hoursSinceLastPub.toFixed(1) + "h since last publish";
+      // Bypass threshold — allow publication
+      qualityScore = QUALITY_THRESHOLD;
+    }
+  }
+
   if (qualityScore < QUALITY_THRESHOLD) {
     result.status = "quality_rejected";
     result.quality_passed = false;
-    result.ai_retries = attempt;
     return result;
   }
   result.quality_passed = true;
@@ -1048,3 +1278,4 @@ async function main() {
 
 const _r = await main();
 return [{ json: _r }];
+

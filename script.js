@@ -722,6 +722,33 @@ function injectAdsIntoBody(bodyHtml) {
   return result;
 }
 
+/* ── Toast ── */
+function showToast(msg) {
+  var t = document.getElementById('sb-toast');
+  if (!t) return;
+  t.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>' + msg;
+  t.classList.add('show');
+  clearTimeout(t._hide);
+  t._hide = setTimeout(function() { t.classList.remove('show'); }, 2500);
+}
+function copyArticleLink() {
+  var url = window.location.href;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(function() { showToast('تم نسخ رابط المقال'); }).catch(function() { fallbackCopy(url); });
+  } else {
+    fallbackCopy(url);
+  }
+}
+function fallbackCopy(url) {
+  var ta = document.createElement('textarea');
+  ta.value = url;
+  ta.style.position = 'fixed'; ta.style.left = '-9999px'; ta.style.top = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); showToast('تم نسخ رابط المقال'); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
 /* ── Article Page ── */
 async function loadArticle() {
   const main = document.getElementById('sbArticleMain');
@@ -770,17 +797,23 @@ async function loadArticle() {
     setMeta('[name="twitter:image"]', 'content', img);
     setMeta('link[rel="canonical"]', 'href', url);
 
-    const tagsHtml = tagsArr.map(t => '<span class="sb-article-tag" onclick="filterByTag(\'' + escAttr(t) + '\')" role="button" tabindex="0" onkeydown="if(event.key===\'Enter\')this.click()">' + esc(t) + '</span>').join('');
+    const tagsHtml = tagsArr.map(t => '<a href="category.html?tag=' + encodeURIComponent(t) + '" class="sb-article-tag">' + esc(t) + '</a>').join('');
     const bodyWithAds = a.body ? injectAdsIntoBody(a.body) : '';
     const breadcrumbHtml = '<nav class="sb-breadcrumb" aria-label="مسار المقال"><a href="index.html">الرئيسية</a> / <span>' + cleanTitle + '</span></nav>';
     injectBreadcrumbSchema(url, cleanTitle);
     const shareUrl = encodeURIComponent(url);
     const shareTitle = encodeURIComponent(title + ' | TD بالعربي');
+    const shareSvgCopy = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
+    const shareSvgX = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
+    const shareSvgTg = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>';
+    const shareSvgWa = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>';
+    const shareSvgFb = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>';
     const shareHtml = '<div class="sb-share-buttons">' +
-      '<a href="https://twitter.com/intent/tweet?text=' + shareTitle + '&url=' + shareUrl + '" target="_blank" rel="noopener" class="sb-share sb-share-twitter" aria-label="مشاركة على X"><i class="fab fa-x-twitter"></i></a>' +
-      '<a href="https://t.me/share/url?url=' + shareUrl + '&text=' + shareTitle + '" target="_blank" rel="noopener" class="sb-share sb-share-telegram" aria-label="مشاركة على تيليجرام"><i class="fab fa-telegram"></i></a>' +
-      '<a href="https://wa.me/?text=' + shareTitle + '%20' + shareUrl + '" target="_blank" rel="noopener" class="sb-share sb-share-whatsapp" aria-label="مشاركة على واتساب"><i class="fab fa-whatsapp"></i></a>' +
-      '<a href="https://www.facebook.com/sharer/sharer.php?u=' + shareUrl + '" target="_blank" rel="noopener" class="sb-share sb-share-facebook" aria-label="مشاركة على فيسبوك"><i class="fab fa-facebook"></i></a>' +
+      '<button class="sb-share sb-share-copy" id="sb-copy-link-btn" aria-label="نسخ الرابط">' + shareSvgCopy + '</button>' +
+      '<a href="https://wa.me/?text=' + shareTitle + '%20' + shareUrl + '" target="_blank" rel="noopener" class="sb-share sb-share-whatsapp" aria-label="مشاركة على واتساب">' + shareSvgWa + '</a>' +
+      '<a href="https://t.me/share/url?url=' + shareUrl + '&text=' + shareTitle + '" target="_blank" rel="noopener" class="sb-share sb-share-telegram" aria-label="مشاركة على تيليجرام">' + shareSvgTg + '</a>' +
+      '<a href="https://www.facebook.com/sharer/sharer.php?u=' + shareUrl + '" target="_blank" rel="noopener" class="sb-share sb-share-facebook" aria-label="مشاركة على فيسبوك">' + shareSvgFb + '</a>' +
+      '<a href="https://twitter.com/intent/tweet?text=' + shareTitle + '&url=' + shareUrl + '" target="_blank" rel="noopener" class="sb-share sb-share-twitter" aria-label="مشاركة على X">' + shareSvgX + '</a>' +
       '</div>';
 
     if (!document.querySelector('.sb-progress-bar')) {
@@ -806,7 +839,7 @@ async function loadArticle() {
       '<img src="' + img + '" alt="' + cleanTitle + '" loading="lazy" decoding="async" width="740" height="420" onerror="this.style.display=\'none\'">' +
       (tagsHtml ? '<div class="sb-article-tags">' + tagsHtml + '</div>' : '') +
       '<h1>' + cleanTitle + '</h1>' +
-      '<div class="sb-article-meta"><div class="sb-article-author"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="border-radius:50%;background:var(--accent,#2563eb);padding:4px"><path d="M14 14c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm0 2c-5.333 0-10 2.686-10 6v2h20v-2c0-3.314-4.667-6-10-6z" fill="#fff"/></svg>فريق TD بالعربي</div><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + readingTimeStr + '</span><button class="sb-copy-link" onclick="navigator.clipboard.writeText(window.location.href);this.innerHTML=\'<svg width=\\"16\\" height=\\"16\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\"><path d=\\"M20 6L9 17l-5-5\\"/></svg>\';setTimeout(()=>this.innerHTML=\'<svg width=\\"16\\" height=\\"16\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\"><path d=\\"M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71\\"/><path d=\\"M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71\\"/></svg>\',2000)" aria-label="نسخ الرابط"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></button></div>' +
+      '<div class="sb-article-meta"><div class="sb-article-author"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="border-radius:50%;background:var(--accent,#2563eb);padding:4px"><path d="M14 14c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm0 2c-5.333 0-10 2.686-10 6v2h20v-2c0-3.314-4.667-6-10-6z" fill="#fff"/></svg>فريق TD بالعربي</div><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + readingTimeStr + '</span></div>' +
       '<div class="sb-article-datetime">' + formattedDate + ' <span class="sb-article-relative">' + relativeDate + '</span></div>' +
       (a.excerpt ? '<div class="sb-article-body"><p><strong>' + esc(a.excerpt) + '</strong></p></div>' : '') +
       (bodyWithAds ? '<div class="sb-article-body">' + bodyWithAds + '</div>' : '') +
@@ -831,6 +864,8 @@ async function loadArticle() {
       else if (pos === 'middle') { el.replaceWith(createAdsterra('dc29c63238688f937f7bb9cfb4bf3962', 'iframe', 90, 728)); }
       else if (pos === 'before-end') { el.replaceWith(createAdsterra('8650abbaa1fd85a5ced9afc2f1f57777', 'iframe', 250, 300)); }
     });
+    var copyBtn = document.getElementById('sb-copy-link-btn');
+    if (copyBtn) copyBtn.addEventListener('click', copyArticleLink);
     renderRelatedArticles(a);
     injectNewsArticleSchema(a);
     if (typeof gtag === 'function') gtag('event', 'article_open', { article_id: a.id, article_title: a.title });
@@ -886,7 +921,7 @@ async function loadCategory() {
   const spinner = document.getElementById('loading-spinner');
   if (spinner) spinner.style.display = 'block';
   const params = new URLSearchParams(window.location.search);
-  const cat = params.get('cat') || '';
+  const cat = params.get('cat') || params.get('tag') || '';
   try {
     if (allArticles.length === 0) {
       const data = await fetchIndex();

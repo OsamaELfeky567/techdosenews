@@ -71,8 +71,8 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
+<style>.sb-toast{position:fixed;bottom:-80px;left:50%;transform:translateX(-50%);background:var(--bg-card,#1e293b);color:var(--text,#fff);padding:12px 28px;border-radius:12px;font-size:.9rem;font-weight:600;box-shadow:0 8px 30px rgba(0,0,0,.25);z-index:9999;transition:all .35s cubic-bezier(.22,1,.36,1);opacity:0;pointer-events:none;white-space:nowrap}.sb-toast.show{bottom:32px;opacity:1;pointer-events:auto}.sb-toast svg{display:inline-block;vertical-align:middle;margin-left:8px;width:18px;height:18px}</style>
 <script src="/js/analytics.js" async></script>
 <link rel="alternate" type="application/rss+xml" title="TD بالعربي - RSS Feed" href="https://td-arabi.com/rss.xml">
 </head>
@@ -167,6 +167,7 @@
   </div>
 </footer>
 
+<div id="sb-toast" class="sb-toast" role="alert" aria-live="polite"></div>
 <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none" aria-label="العودة للأعلى">↑</button>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
 <script src="script.js"></script>

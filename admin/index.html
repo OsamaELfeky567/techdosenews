@@ -767,8 +767,8 @@ function checkAlerts() {
   const alerts = [];
   const lastPub = EXECUTIONS.find(e => e.published);
   const hoursSincePub = lastPub ? ((now - new Date(lastPub.triggered_at).getTime()) / 3600000) : 999;
-  if (hoursSincePub >= 6) alerts.push({ type: 'red', icon: 'fa-clock', text: 'لم ينشر أي مقال منذ ' + hoursSincePub.toFixed(1) + ' ساعة! بحاجة إلى تدخل.' });
-  else if (hoursSincePub >= 3) alerts.push({ type: 'yellow', icon: 'fa-clock', text: 'آخر نشر منذ ' + hoursSincePub.toFixed(1) + ' ساعة.' });
+  if (hoursSincePub >= 4) alerts.push({ type: 'red', icon: 'fa-clock', text: 'لم ينشر أي مقال منذ ' + hoursSincePub.toFixed(1) + ' ساعة! بحاجة إلى تدخل.' });
+  else if (hoursSincePub >= 2) alerts.push({ type: 'yellow', icon: 'fa-clock', text: 'آخر نشر منذ ' + hoursSincePub.toFixed(1) + ' ساعة.' });
 
   const last5 = EXECUTIONS.slice(0, 5);
   const allFailed = last5.length >= 5 && last5.every(e => !e.published && e.status !== 'ok');
@@ -861,7 +861,7 @@ function renderOperations() {
   const alerts = checkAlerts();
 
   // Production status (Phase 10.2 Part G)
-  const prodStatus = hoursSinceLastPub < 0 ? 'N/A' : hoursSinceLastPub >= 6 ? 'RED' : hoursSinceLastPub >= 3 ? 'YELLOW' : 'GREEN';
+  const prodStatus = hoursSinceLastPub < 0 ? 'N/A' : hoursSinceLastPub >= 4 ? 'RED' : hoursSinceLastPub >= 2 ? 'YELLOW' : 'GREEN';
   const prodColor = prodStatus === 'GREEN' ? 'var(--green)' : prodStatus === 'YELLOW' ? 'var(--orange)' : 'var(--red)';
   const prodIcon = prodStatus === 'GREEN' ? 'fa-check-circle' : prodStatus === 'YELLOW' ? 'fa-exclamation-circle' : 'fa-times-circle';
   const prodEmoji = prodStatus === 'GREEN' ? '🟢' : prodStatus === 'YELLOW' ? '🟡' : '🔴';
@@ -915,8 +915,8 @@ function renderOperations() {
 
 function getHealthWarn(hours) {
   if (hours < 0) return '';
-  if (hours >= 6) return ' <span class="health-warn red"><i class="fas fa-exclamation-triangle"></i> حرج</span>';
-  if (hours >= 3) return ' <span class="health-warn yellow"><i class="fas fa-exclamation-circle"></i> تحذير</span>';
+  if (hours >= 4) return ' <span class="health-warn red"><i class="fas fa-exclamation-triangle"></i> حرج</span>';
+  if (hours >= 2) return ' <span class="health-warn yellow"><i class="fas fa-exclamation-circle"></i> تحذير</span>';
   return '';
 }
 
@@ -1419,7 +1419,7 @@ function generateOperationsReport() {
   md += '\n## صحة الخطوط\n\n';
   const checks = [
     ['آخر 24 ساعة نشاط', up ? '✅' : '❌'],
-    ['آخر 6 ساعات نشر', lastPub && hoursSincePub < 6 ? '✅' : (lastPub && hoursSincePub < 24 ? '⚠️' : '❌')],
+    ['آخر ساعتين نشر', lastPub && hoursSincePub < 2 ? '✅' : (lastPub && hoursSincePub < 24 ? '⚠️' : '❌')],
     ['متوسط الجودة >= 80', avgQ !== 'N/A' && parseFloat(avgQ) >= 80 ? '✅' : '⚠️'],
     ['لدينا تنفيذات', total > 0 ? '✅' : '❌'],
   ];
@@ -1550,7 +1550,7 @@ function renderSystemHealth() {
   const checks = [
     { label: 'المفهرس', count: total, sub: published + ' منشور', ok: total > 0 },
     { label: 'منشور اليوم', count: todayPub, sub: weekPub + ' هذا الأسبوع', ok: todayPub > 0 },
-    { label: 'آخر نشر', count: lastPub ? articleDate(lastPub).substring(0,10) : '—', sub: hoursSincePub >= 0 ? 'منذ ' + hoursSincePub.toFixed(1) + ' ساعة' : '—', ok: hoursSincePub < 6 },
+    { label: 'آخر نشر', count: lastPub ? articleDate(lastPub).substring(0,10) : '—', sub: hoursSincePub >= 0 ? 'منذ ' + hoursSincePub.toFixed(1) + ' ساعة' : '—', ok: hoursSincePub < 2 },
     { label: 'حالة الخط', count: lastExec ? (execHours < 2 ? 'نشط' : 'خامل') : 'ميت', sub: execHours >= 0 ? execHours.toFixed(1) + ' ساعة' : '—', ok: execHours < 2 },
     { label: 'GitHub', count: ghToken ? 'موصل' : 'غير موصل', sub: ghToken ? 'مفعل' : '—', ok: !!ghToken },
     { label: 'تليجرام', count: tgToken ? 'موصل' : 'غير موصل', sub: tgToken ? 'مفعل' : '—', ok: !!tgToken },
@@ -2603,10 +2603,10 @@ function generateStabilizationReport() {
   md += '| إجمالي التنفيذات | ' + total + ' | — |\n';
   md += '| المنشورات | ' + published + ' | — |\n';
 
-  if (allFailed || hoursSincePub >= 6) {
+  if (allFailed || hoursSincePub >= 2) {
     md += '\n## إجراءات التثبيت الموصى بها\n\n';
     if (allFailed) md += '- تحقق من اتصال Groq AI (قد يكون Rate Limited)\n';
-    if (hoursSincePub >= 6) md += '- تحقق من جدولة n8n workflow\n';
+    if (hoursSincePub >= 2) md += '- لم ينشر منذ أكثر من ساعتين — تحقق من جدولة n8n workflow\n';
     if (hoursSincePub >= 24) md += '- قد يكون هناك خلل في RSS أو خط الإنتاج\n';
     if (execHours >= 2) md += '- آخر تنفيذ منذ أكثر من ساعتين — تحقق من n8n\n';
   } else {

@@ -1288,7 +1288,7 @@ async function main() {
       const bdL1 = result.quality_dimensions || {};
       const infoOkL1 = (bdL1.info || 0) >= Math.round(38 * 0.6);
       const flowOkL1 = (bdL1.flow || 0) >= Math.round(15 * 0.6);
-      const techOkL1 = (bdL1.tech || 0) >= 10;
+      const techOkL1 = (bdL1.tech || 0) >= 8;
       const hasImageL1 = imageUrl && imageUrl.length > 0 && validateImage(imageUrl);
       if (trustedL1 && result.rewrite_success && result.word_count >= 700 && hasImageL1 && infoOkL1 && flowOkL1 && techOkL1) {
         result.quality_override = true;

@@ -485,11 +485,155 @@ async function aiGenerate(title, fullContent, source) {
   throw lastErr;
 }
 
-/* ───── Phase 7.3 — Editorial Quality Rewrite ───── */
+/* ───── Phase 7.4 — Editorial Quality Calibration ───── */
 
-async function aiRewrite(original, origTitle, fullContent, source, currentScore) {
-  const scores = ["تحسين العمق التقني وإضافة تفاصيل وأرقام ومقارنات محددة","تحسين المقدمة لتكون أكثر تشويقاً وإيجازاً","تحسين العنوان ليكون أقوى وأقل من 65 حرفاً","تحسين الانتقال بين الفقرات لتكون أكثر سلاسة","تحسين الخاتمة باستنتاج أقوى","تحسين حقول SEO: عنوان SEO ووصف ميتا وكلمة مفتاحية","تحسين استخراج الكيانات: شركات، منتجات، تقنيات"];
-  const prompt = `أنت محرر تقني محترف. المقال أدناه حصل على ${currentScore}/100. يحسن لرفعه للنشر.
+const QUALITY_TARGETS = { info: 35, flow: 20, headline: 15, intro: 10, tech: 10, readability: 5, seo: 5 };
+
+function calculateQuality(article) {
+  const body = article.body || "";
+  const title = article.title_ar || "";
+  const words = body.split(/\s+/).filter(Boolean);
+  const wordCount = words.length;
+  const paragraphs = body.split(/\n{2,}/).filter(p => p.trim().length > 20);
+  const paraCount = paragraphs.length;
+  const bodyText = body.replace(/<[^>]*>/g, " ");
+  const hasCompany = !!article.primary_company;
+  const hasProduct = Array.isArray(article.products) && article.products.length > 0;
+
+  /* ───── 1. Information Value (35 pts) ───── */
+  let infoScore = 0;
+  const digits = (bodyText.match(/\d+(\.\d+)?/g) || []);
+  const uniqueDigits = new Set(digits.filter(d => d.length >= 2));
+  if (uniqueDigits.size >= 8) infoScore += 8;
+  else if (uniqueDigits.size >= 5) infoScore += 5;
+  else if (uniqueDigits.size >= 3) infoScore += 3;
+  else infoScore += 1;
+  if (wordCount >= 700) infoScore += 5;
+  else if (wordCount >= 500) infoScore += 3;
+  else if (wordCount >= 350) infoScore += 2;
+  if (hasCompany && hasProduct) infoScore += 5;
+  else if (hasCompany || hasProduct) infoScore += 2;
+  const versionPattern = /[A-Za-z\u0600-\u06FF]+\s*\d+[\d.]*/g;
+  const versions = bodyText.match(versionPattern) || [];
+  const uniqueVersions = new Set(versions.filter(v => /\d{2,}/.test(v)));
+  if (uniqueVersions.size >= 2) infoScore += 4;
+  else if (uniqueVersions.size >= 1) infoScore += 2;
+  const whySig = /يؤدي|يؤثر|بسبب|نتيجة|تأثير|يتسبب|يساهم/i;
+  const bgSig = /بدأ|أطلقت|منذ|سابقاً|تأسست|كانت/i;
+  const futureSig = /سوف|مستقبل|يتوقع|سيتم|سيشهد/i;
+  const cmpSig = /مقارنة|أكبر|أصغر|أسرع|أفضل|أسوأ|مقابل/i;
+  if (whySig.test(bodyText)) infoScore += 2;
+  if (bgSig.test(bodyText)) infoScore += 2;
+  if (futureSig.test(bodyText)) infoScore += 2;
+  if (cmpSig.test(bodyText)) infoScore += 2;
+  const techExplain = /يعمل|تقوم|آلية|طريقة|خطوات|مراحل|عملية/i;
+  if (techExplain.test(bodyText)) infoScore += 3;
+
+  /* ───── 2. Editorial Flow (20 pts) ───── */
+  let flowScore = 0;
+  if (paraCount >= 3 && paraCount <= 20) flowScore += 4;
+  else if (paraCount >= 2) flowScore += 2;
+  const openings = paragraphs.map(p => { const t = p.trim().replace(/<[^>]*>/g, ""); const m = t.match(/^[^\s]{2,5}/); return m ? m[0] : ""; }).filter(Boolean);
+  const openingCounts = {};
+  for (const o of openings) { openingCounts[o] = (openingCounts[o] || 0) + 1; }
+  const maxRepeated = Math.max(...Object.values(openingCounts), 0);
+  if (maxRepeated <= 1) flowScore += 3;
+  else if (maxRepeated === 2) flowScore += 2;
+  const lastPara = paragraphs[paragraphs.length - 1] || "";
+  const lastWords = lastPara.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean);
+  if (lastWords.length >= 25) flowScore += 2;
+  else if (lastWords.length >= 15) flowScore += 1;
+  const cliches = ["في عالم التكنولوجيا المتسارع", "يُعد هذا تطوراً مهماً", "من الجدير بالذكر", "تعرف على", "شهدنا مؤخراً", "في خطوة جديدة", "تشهد الساحة التقنية", "يشهد العالم", "في تطور لافت"];
+  let clicheCount = 0;
+  for (const c of cliches) { if (bodyText.includes(c)) clicheCount++; }
+  flowScore += Math.max(0, 4 - clicheCount * 2);
+  if (paraCount >= 3) {
+    const paraLengths = paragraphs.map(p => p.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean).length);
+    const avg = paraLengths.reduce((a, b) => a + b, 0) / paraLengths.length;
+    const variance = paraLengths.reduce((sum, len) => sum + Math.abs(len - avg), 0) / paraLengths.length;
+    if (variance > 10) flowScore += 3;
+  }
+  const flowSig = /من ناحية|بالمقابل|علاوة على|فضلاً عن|إضافة إلى|كما أن|بالإضافة/i;
+  if (flowSig.test(bodyText)) flowScore += 4;
+
+  /* ───── 3. Headline Quality (15 pts) ───── */
+  let headScore = 0;
+  const titleLen = title.length;
+  if (titleLen >= 30 && titleLen <= 65) headScore += 5;
+  else if (titleLen >= 25 && titleLen <= 75) headScore += 3;
+  const hasEntity = hasCompany || hasProduct || (Array.isArray(article.technologies) && article.technologies.length > 0);
+  if (hasEntity) headScore += 4;
+  if (!title.includes("؟") && !title.includes("?")) headScore += 1;
+  const genericWords = ["جديد", "أحدث", "مهم", "كبير", "قوي"];
+  let isGeneric = true;
+  for (const gw of genericWords) { if (title.includes(gw)) { isGeneric = false; break; } }
+  if (isGeneric) headScore += 3;
+  const actionWords = /تكشف|تعلن|تطلق|تطرح|تستحوذ/i;
+  if (actionWords.test(title)) headScore += 2;
+
+  /* ───── 4. Intro Quality (10 pts) ───── */
+  let introScore = 0;
+  const firstPara = (paragraphs[0] || "").replace(/<[^>]*>/g, "");
+  const firstWords = firstPara.split(/\s+/).filter(Boolean);
+  if (firstWords.length >= 25) introScore += 2;
+  else if (firstWords.length >= 12) introScore += 1;
+  const clicheStarts = ["أعلنت", "وكشفت", "أكدت", "صرحت", "أوضحت", "كشفت"];
+  const startsWithCliche = clicheStarts.some(cs => firstPara.trim().startsWith(cs));
+  if (!startsWithCliche) introScore += 3;
+  const hasDigitInIntro = /\d/.test(firstPara);
+  if (hasDigitInIntro) introScore += 2;
+  if (firstPara.length >= 80) introScore += 3;
+
+  /* ───── 5. Readability (5 pts) ───── */
+  let readScore = 0;
+  if (wordCount >= 600) readScore += 2;
+  else if (wordCount >= 450) readScore += 1;
+  const avgParaWords = paraCount > 0 ? wordCount / paraCount : 0;
+  if (avgParaWords <= 40) readScore += 2;
+  else if (avgParaWords <= 55) readScore += 1;
+  const sentences = bodyText.split(/[.!?؟!]\s+/);
+  const maxSentLen = Math.max(...sentences.map(s => s.split(/\s+/).filter(Boolean).length), 0);
+  if (maxSentLen <= 50) readScore += 1;
+
+  /* ───── 6. Technical Depth (10 pts) ───── */
+  let techScore = 0;
+  if (Array.isArray(article.products) && article.products.length > 0) techScore += 2;
+  if (Array.isArray(article.technologies) && article.technologies.length > 0) techScore += 1;
+  if (Array.isArray(article.ai_models) && article.ai_models.length > 0) techScore += 1;
+  if (article.primary_company) techScore += 1;
+  if (Array.isArray(article.internal_links) && article.internal_links.length >= 2) techScore += 2;
+  else if (Array.isArray(article.internal_links) && article.internal_links.length >= 1) techScore += 1;
+  const techExplainWords = /يعمل|تقوم|آلية|بروتوكول|واجهة|خوارزمية|بنية|ذاكرة|معالج/i;
+  if (techExplainWords.test(bodyText)) techScore += 3;
+
+  /* ───── 7. SEO Completeness (5 pts) ───── */
+  let seoScore = 0;
+  if (article.seo_title && article.seo_title.length >= 35) seoScore += 2;
+  if (article.meta_description && article.meta_description.length >= 100) seoScore += 1;
+  if (article.focus_keyword) seoScore += 1;
+  if (Array.isArray(article.secondary_keywords) && article.secondary_keywords.length >= 2) seoScore += 1;
+
+  const total = infoScore + flowScore + headScore + introScore + readScore + techScore + seoScore;
+  return { total: Math.min(total, 100), breakdown: { info: infoScore, flow: flowScore, headline: headScore, intro: introScore, readability: readScore, tech: techScore, seo: seoScore } };
+}
+
+async function aiRewrite(original, origTitle, fullContent, source, breakdown) {
+  const dimInfo = {
+    info: { name: "المعلومات والأرقام", target: 35, instr: "أضف أرقاماً وإحصائيات محددة، اشرح الأسباب والتأثيرات، قدم مقارنات، اذكر خلفية الحدث وتوقعاته المستقبلية" },
+    flow: { name: "التدفق والبنية", target: 20, instr: "نوّع أطوال الفقرات، استخدم عبارات الربط المنطقي، حسّن الخاتمة باستنتاج أقوى" },
+    headline: { name: "العنوان", target: 15, instr: "اجعله أقوى وأقل من 65 حرفاً، تأكد من احتوائه على كيان محدد (شركة/منتج/تقنية)" },
+    intro: { name: "المقدمة", target: 10, instr: "اجعلها أكثر تشويقاً، ابدأ برقم أو حقيقة محددة، تجنب البدايات المتكررة" },
+    tech: { name: "العمق التقني", target: 10, instr: "أضف شرحاً تقنياً: كيف تعمل التقنية، الخوارزميات، البنية التقنية" },
+    readability: { name: "قابلية القراءة", target: 5, instr: "قسّم الجمل الطويلة، حقّق توازناً في أطوال الفقرات" },
+    seo: { name: "تحسين محركات البحث", target: 5, instr: "حسّن عنوان SEO ووصف الميتا والكلمات المفتاحية" }
+  };
+  const weakDims = Object.entries(breakdown).filter(([k, v]) => v < dimInfo[k].target * 0.7).map(([k]) => dimInfo[k]);
+  if (weakDims.length === 0) return original;
+
+  const dimsText = weakDims.map(d => `- ${d.name} (حصل على ${breakdown[Object.keys(dimInfo).find(k => dimInfo[k].name === d.name)]}/${d.target}): ${d.instr}`).join("\n");
+  const keptDims = Object.entries(breakdown).filter(([k, v]) => v >= dimInfo[k].target * 0.7).map(([k]) => dimInfo[k].name).join("، ");
+
+  const prompt = `أنت محرر تقني متخصص. أنت لا تعيد كتابة المقال كاملاً — فقط تحسّن الأجزاء المحددة أدناه.
 
 المصدر: ${source}
 العنوان الأصلي: ${origTitle}
@@ -500,12 +644,14 @@ async function aiRewrite(original, origTitle, fullContent, source, currentScore)
 المقدمة: ${((original.excerpt||"")).substring(0,200)}
 المقال: ${((original.body||"")).substring(0,4000)}
 الوسوم: ${JSON.stringify(original.tags||[])}
-SEO الحالي: ${original.seo_title||""} | ${original.meta_description||""} | ${original.focus_keyword||""}
 
-تعليمات التحسين:
-${scores.map((s,i)=>`${i+1}. ${s}`).join("\n")}
+أجزاء المقال الجيدة (لا تلمسها): ${keptDims}
 
-أعد إخراج JSON كامل بنفس حقول JSON لهذا المقال (all fields: title_ar, seo_title, meta_description, seo_slug, excerpt, body, telegram_summary, category, tags, focus_keyword, secondary_keywords, primary_company, secondary_company, products, devices, technologies, ai_models, os, chipsets, browsers, cloud_platforms, languages, opensource_projects, executives, markets, countries, people, stocks, investors, image_queries).`;
+الأجزاء التي تحتاج تحسيناً:
+${dimsText}
+
+أخرج JSON كاملاً بنفس الحقول مع تحسين الأجزاء المطلوبة فقط. حافظ على باقي المحتوى دون تغيير.
+الحقول: title_ar, seo_title, meta_description, seo_slug, excerpt, body, telegram_summary, category, tags, focus_keyword, secondary_keywords, primary_company, secondary_company, products, devices, technologies, ai_models, os, chipsets, browsers, cloud_platforms, languages, opensource_projects, executives, markets, countries, people, stocks, investors, image_queries.`;
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   let lastErr;
   for (let i = 0; i < 3; i++) {
@@ -514,7 +660,7 @@ ${scores.map((s,i)=>`${i+1}. ${s}`).join("\n")}
       const res = await this.helpers.httpRequest({
         method: "POST", url: "https://api.groq.com/openai/v1/chat/completions",
         headers: { "Authorization": "Bearer " + GROQ_API_KEY, "Content-Type": "application/json" },
-        body: { model: GROQ_MODEL, messages: [{ role: "system", content: "أنت محرر تقني متخصص في Tech Dose News. تحسن المقالات لمعايير النشر دون تغيير الحقائق." }, { role: "user", content: prompt }], temperature: 0.25, max_tokens: 3072, response_format: { type: "json_object" } }
+        body: { model: GROQ_MODEL, messages: [{ role: "system", content: "أنت محرر تقني متخصص في Tech Dose News. تحسّن فقط الأجزاء المطلوبة ولا تغير المحتوى الجيد." }, { role: "user", content: prompt }], temperature: 0.25, max_tokens: 3072, response_format: { type: "json_object" } }
       });
       return JSON.parse(res.choices[0].message.content);
     } catch(e) {
@@ -1042,7 +1188,7 @@ async function main() {
       created_at: new Date().toISOString()
     };
 
-    qualityScore = calculateQuality({
+    const qResult = calculateQuality({
       title_ar: aiTitle,
       excerpt: aiExcerpt,
       body: aiBody,
@@ -1055,9 +1201,11 @@ async function main() {
       countries: countries,
       internal_links: internalLinks
     });
+    qualityScore = qResult.total;
     result.quality_score = qualityScore;
+    result.quality_dimensions = qResult.breakdown;
 
-    if (qualityScore >= QUALITY_THRESHOLD) {
+    if (qResult.total >= QUALITY_THRESHOLD) {
       break;
     }
 
@@ -1067,12 +1215,12 @@ async function main() {
     }
   }
 
-  /* ───── Phase 7.3: Editorial Rewrite Attempt ───── */
+  /* ───── Phase 7.4: Targeted Rewrite (failed dimensions only) ───── */
   if (qualityScore < QUALITY_THRESHOLD) {
     result.rewrite_attempted = true;
     result.ai_retries = attempt;
     try {
-      const rewritten = await aiRewrite(ai, picked.title, fullArticleContent, sourceName, qualityScore);
+      const rewritten = await aiRewrite(ai, picked.title, fullArticleContent, sourceName, result.quality_dimensions);
       if (rewritten && rewritten.body) {
         ai = rewritten;
         result.rewrite_success = true;
@@ -1136,13 +1284,15 @@ async function main() {
           readTime: Math.ceil(aiBody.split(/\s+/).filter(Boolean).length / 200) + " min read",
           created_at: new Date().toISOString()
         };
-        qualityScore = calculateQuality({
+        const qResult2 = calculateQuality({
           title_ar: aiTitle, excerpt: aiExcerpt, body: aiBody, image: imageUrl,
           tags: aiTags, primary_company: primaryCompany, products: products,
           technologies: technologies, ai_models: aiModels, countries: countries,
           internal_links: internalLinks
         });
+        qualityScore = qResult2.total;
         result.quality_score = qualityScore;
+        result.quality_dimensions = qResult2.breakdown;
       }
     } catch(e) {
       result.rewrite_error = e.message;

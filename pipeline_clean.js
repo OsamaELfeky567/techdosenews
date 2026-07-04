@@ -1,4 +1,4 @@
-﻿
+
 const RSS_SOURCES = [
   { name: "BBC Arabic", url: "https://feeds.bbci.co.uk/arabic/rss.xml", lang: "ar", tier: 1 },
   { name: "عرب هاردوير", url: "https://arabhardware.net/feed/", lang: "ar", tier: 1 },
@@ -163,7 +163,8 @@ async function ghPut(path, content, msg) {
 }
 
 function b64decode(encoded) {
-  return JSON.parse(Buffer.from(encoded, "base64").toString());
+  try { return JSON.parse(Buffer.from(encoded, "base64").toString()); }
+  catch(e) { return null; }
 }
 
 async function fetchArticleContent(url) {
@@ -588,8 +589,9 @@ ${genImprovementsText}
 async function getHoursSinceLastPublish() {
   try {
     const tr = await ghGet("data/published_topics.json");
-    const topics = tr.content ? b64decode(tr.content) : [];
-    if (!topics || topics.length === 0) return 999;
+    let topics = tr.content ? b64decode(tr.content) : [];
+    if (!Array.isArray(topics)) topics = [];
+    if (topics.length === 0) return 999;
     return (Date.now() - new Date(topics[0].timestamp).getTime()) / 3600000;
   } catch(e) { return 999; }
 }
@@ -1030,7 +1032,7 @@ async function main() {
   let existingHashes = [];
   try {
     const hr = await ghGet("data/content_hashes.json");
-    if (hr.content) existingHashes = b64decode(hr.content);
+    if (hr.content) { const d = b64decode(hr.content); existingHashes = Array.isArray(d) ? d : []; }
   } catch(e) {}
 
   const newItems = [];
@@ -1053,7 +1055,7 @@ async function main() {
   let existingIndex = [];
   try {
     const ir = await ghGet("data/articles/index.json");
-    if (ir.content) existingIndex = b64decode(ir.content);
+    if (ir.content) { const d = b64decode(ir.content); existingIndex = Array.isArray(d) ? d : []; }
   } catch(e) {}
 
   let fullArticleContent = null;
@@ -1433,7 +1435,7 @@ async function main() {
   let index = [];
   try {
     const ir = await ghGet("data/articles/index.json");
-    if (ir.content) index = b64decode(ir.content);
+    if (ir.content) { const d = b64decode(ir.content); index = Array.isArray(d) ? d : []; }
   } catch(e) {}
 
   index.unshift({
@@ -1494,6 +1496,7 @@ async function main() {
   try {
     const lr = await ghGet("data/published_links.json");
     let links = lr.content ? b64decode(lr.content) : [];
+    if (!Array.isArray(links)) links = [];
     links.unshift(picked.link);
     if (links.length > 5000) links.length = 5000;
     await ghPut("data/published_links.json", JSON.stringify(links, null, 2), "Link: " + aiTitle.substring(0,80));
@@ -1502,6 +1505,7 @@ async function main() {
   try {
     const tr = await ghGet("data/published_topics.json");
     let topics = tr.content ? b64decode(tr.content) : [];
+    if (!Array.isArray(topics)) topics = [];
     topics.unshift({ title: aiTitle, source: sourceName, timestamp: article.created_at, topic_fp: "" });
     if (topics.length > 500) topics.length = 500;
     await ghPut("data/published_topics.json", JSON.stringify(topics, null, 2), "Topic: " + aiTitle.substring(0,80));

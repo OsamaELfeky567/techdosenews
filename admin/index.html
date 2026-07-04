@@ -739,7 +739,7 @@ function showExecutionDetails(id) {
     ['اجتاز الجودة', e.quality_passed ? 'نعم' : 'لا'],
     ['محاولة إعادة كتابة', e.rewrite_attempted ? 'نعم' : 'لا'],
     ['نجاح إعادة الكتابة', e.rewrite_success ? 'نعم' : 'لا'],
-    ['تجاوز الجودة', e.quality_override ? 'نعم (' + e.quality_override_reason + ')' : 'لا'],
+    ['تجاوز الجودة', e.quality_override ? 'نعم (L' + (e.override_level || 1) + ' — ' + e.quality_override_reason + ')' : 'لا'],
     ['منشور', e.published ? 'نعم' : 'لا'],
     ['تليجرام', e.telegram_sent ? 'نعم' : 'لا'],
     ['GitHub', e.deployed || e.status === 'deployed' ? 'نعم' : 'لا'],
@@ -846,6 +846,17 @@ function renderOperations() {
   });
   const topReason = Object.entries(reasons).sort((a, b) => b[1] - a[1])[0];
 
+  // Override tracking (Phase 10.3)
+  const overrides = EXECUTIONS.filter(e => e.quality_override);
+  const overrideToday = todayExecs.filter(e => e.quality_override).length;
+  const overridePublished = overrides.filter(e => e.published).length;
+  const overridePct = overrides.length ? ((overridePublished / overrides.length) * 100).toFixed(0) : '—';
+  const rewriteGains = EXECUTIONS.filter(e => e.estimated_gain_after_rewrite > 0).map(e => e.estimated_gain_after_rewrite);
+  const avgRewriteGain = rewriteGains.length ? (rewriteGains.reduce((s, v) => s + v, 0) / rewriteGains.length).toFixed(0) : '—';
+  const pubTimes = EXECUTIONS.filter(e => e.published && e.triggered_at).map(e => new Date(e.triggered_at).getTime()).sort((a, b) => b - a);
+  const avgGapMs = pubTimes.length >= 2 ? pubTimes.slice(0, -1).reduce((s, t, i) => s + (t - pubTimes[i + 1]), 0) / (pubTimes.length - 1) : 0;
+  const avgGapH = avgGapMs ? (avgGapMs / 3600000).toFixed(1) : '—';
+
   // Alerts
   const alerts = checkAlerts();
 
@@ -853,6 +864,7 @@ function renderOperations() {
   const prodStatus = hoursSinceLastPub < 0 ? 'N/A' : hoursSinceLastPub >= 6 ? 'RED' : hoursSinceLastPub >= 3 ? 'YELLOW' : 'GREEN';
   const prodColor = prodStatus === 'GREEN' ? 'var(--green)' : prodStatus === 'YELLOW' ? 'var(--orange)' : 'var(--red)';
   const prodIcon = prodStatus === 'GREEN' ? 'fa-check-circle' : prodStatus === 'YELLOW' ? 'fa-exclamation-circle' : 'fa-times-circle';
+  const prodEmoji = prodStatus === 'GREEN' ? '🟢' : prodStatus === 'YELLOW' ? '🟡' : '🔴';
 
   // Estimated reason for no publications (last 5 consecutive failures)
   let estimatedReason = '—';
@@ -874,13 +886,15 @@ function renderOperations() {
   let statsHtml = '<div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;margin-bottom:12px;background:' + prodColor + '15;border:1px solid ' + prodColor + '">' +
     '<div style="width:48px;height:48px;border-radius:50%;background:' + prodColor + ';display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem"><i class="fas ' + prodIcon + '"></i></div>' +
     '<div style="flex:1"><div style="font-size:.85rem;font-weight:700;color:' + prodColor + '">' +
-    (prodStatus === 'GREEN' ? 'النشر يعمل بشكل طبيعي' : prodStatus === 'YELLOW' ? 'تحذير: لم ينشر منذ ' + hoursSinceLastPub.toFixed(1) + ' ساعة' : 'حرج: لم ينشر منذ ' + hoursSinceLastPub.toFixed(1) + ' ساعة!') +
+    prodEmoji + ' ' + (prodStatus === 'GREEN' ? 'النشر يعمل بشكل طبيعي' : prodStatus === 'YELLOW' ? 'تحذير: لم ينشر منذ ' + hoursSinceLastPub.toFixed(1) + ' ساعة' : 'حرج: لم ينشر منذ ' + hoursSinceLastPub.toFixed(1) + ' ساعة!') +
     '</div><div style="font-size:.75rem;color:var(--text3);margin-top:2px">السبب المحتمل: ' + estimatedReason + '</div></div></div>' +
     '<div class="stat-card"><div class="stat-label">آخر تنفيذ</div><div class="stat-value" style="font-size:1.1rem">' + (lastExec ? new Date(lastExec.triggered_at).toLocaleTimeString('ar-EG', { hour:'2-digit', minute:'2-digit' }) : '—') + '</div><div class="stat-sub">' + (lastExec ? statusBadge(lastExec) : '—') + '</div></div>' +
     '<div class="stat-card"><div class="stat-label">آخر مقال منشور</div><div class="stat-value" style="font-size:.95rem">' + (lastPub ? (lastPub.article_title || '').substring(0, 22) : '—') + '</div><div class="stat-sub">' + (hoursSinceLastPub >= 0 ? 'منذ ' + hoursSinceLastPub.toFixed(1) + ' ساعة' : '—') + getHealthWarn(hoursSinceLastPub) + '</div></div>' +
     '<div class="stat-card"><div class="stat-label">تنفيذات اليوم</div><div class="stat-value">' + todayExecs.length + '</div><div class="stat-sub">' + publishedToday + ' نشر، ' + rejectedToday + ' رفض، ' + failedToday + ' فشل، ' + skippedToday + ' تخطي</div></div>' +
     '<div class="stat-card"><div class="stat-label">متوسط الجودة</div><div class="stat-value">' + avgQ + '</div><div class="stat-sub">اليوم: ' + avgQToday + ' | ' + rewriteToday + ' إعادة كتابة</div></div>' +
     '<div class="stat-card"><div class="stat-label">متوسط المدة</div><div class="stat-value" style="font-size:1.3rem">' + avgDur.toFixed(0) + 'ث</div></div>' +
+    '<div class="stat-card"><div class="stat-label">🔄 التجاوزات</div><div class="stat-value" style="font-size:1.1rem">' + overrides.length + '</div><div class="stat-sub">نجاح ' + overridePct + '% (' + overridePublished + '/' + overrides.length + ') | اليوم ' + overrideToday + '</div></div>' +
+    '<div class="stat-card"><div class="stat-label">⏱ متوسط الفجوة</div><div class="stat-value" style="font-size:1.1rem">' + avgGapH + '</div><div class="stat-sub">ساعة بين المقالات | متوسط كسب: +' + avgRewriteGain + '</div></div>' +
     (topReason ? '<div class="stat-card"><div class="stat-label">أكثر سبب للرفض</div><div class="stat-value" style="font-size:.9rem">' + topReason[0] + '</div><div class="stat-sub">' + topReason[1] + ' مرة</div></div>' : '');
 
   document.getElementById('opsStats').innerHTML = statsHtml;
@@ -958,6 +972,7 @@ function renderExecTimeline() {
       (e.telegram_sent ? '<span style="color:var(--primary)"><i class="fab fa-telegram"></i> تلجرام</span>' : '') +
       (e.deployed || e.status === 'deployed' ? '<span><i class="fab fa-github"></i> GitHub</span>' : '') +
       (e.rewrite_attempted ? '<span style="color:var(--orange)"><i class="fas fa-pen"></i> إعادة كتابة</span>' : '') +
+      (e.quality_override ? '<span style="color:var(--purple)"><i class="fas fa-exclamation-triangle"></i> تجاوز L' + (e.override_level || 1) + '</span>' : '') +
       '</div>' + reasonsHtml + '</div>';
   }
   if (!list.length) html = '<div class="empty-state">' + (EXEC_FILTER ? 'لا توجد تنفيذات مطابقة للفلتر' : 'لا توجد تنفيذات بعد') + '</div>';

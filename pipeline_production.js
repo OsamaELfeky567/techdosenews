@@ -539,6 +539,8 @@ async function aiRewrite(original, origTitle, fullContent, source, breakdown) {
   genImprovements.push("- أضف توقعات مستقبلية: ماذا نتوقع بعد هذا الإعلان/الحدث؟");
   genImprovements.push("- في المقدمة: ابدأ برقم أو حقيقة أو سؤال بلاغي قوي، لا تبدأ بقال/أعلن/كشف");
   genImprovements.push("- في العنوان: استخدم فعل حركي (تطلق، تكشف، تستحوذ)، اذكر كياناً محدداً، اجعله بين 30-65 حرفاً");
+  genImprovements.push("- حسّن الروابط المنطقية بين الفقرات: استخدم عبارات انتقالية مثل 'من ناحية أخرى'، 'علاوة على ذلك'، 'بالمقابل' و'في سياق متصل'");
+  genImprovements.push("- أضف شرحاً تقنياً أعمق: اشرح آلية عمل التقنية أو الخوارزميات أو البنية التقنية وراء المنتج/الخدمة");
   const genImprovementsText = genImprovements.join("\n");
 
   const prompt = `أنت محرر تقني متخصص. أنت لا تعيد كتابة المقال كاملاً — فقط تحسّن الأجزاء المحددة أدناه.
@@ -901,6 +903,19 @@ async function selectImage(picked, articleUrl, entities, aiImageQueries, title, 
   return { url: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80", meta };
 }
 
+async function lastPublishedWasOverride() {
+  try {
+    const h = await ghGet("data/execution_history.json");
+    const history = (h && Array.isArray(h)) ? h : [];
+    for (const entry of history) {
+      if (entry.status === "published" || entry.status === "published_tg_failed") {
+        return !!entry.quality_override;
+      }
+    }
+  } catch(e) {}
+  return false;
+}
+
 async function checkFallbackConditions(qualityScore, rssSource, wordCount, imageUrl, dimensions) {
   const hoursSinceLastPub = await getHoursSinceLastPublish();
   const srcInfo = RSS_SOURCES.find(s => s.name === rssSource);
@@ -945,6 +960,8 @@ async function main() {
     rewrite_success: false,
     quality_override: false,
     quality_override_reason: "",
+    override_level: 0,
+    quality_grade: "",
     word_count: 0,
     internal_links_count: 0,
     article_id: null,
@@ -1261,24 +1278,23 @@ async function main() {
     result.notes = (result.notes || '') + 'Trusted source boost +' + boost + '. ';
   }
 
-  /* ───── Phase 10 Part C: Smart Quality Gate (Fallback 70-79) ───── */
+  /* ───── Phase 10.3 Level 1: Emergency Publication (2h idle, Q 70-79, strict conditions) ───── */
   if (qualityScore < QUALITY_THRESHOLD && qualityScore >= 70) {
-    const fallback = await checkFallbackConditions(qualityScore, sourceName, result.word_count, imageUrl, result.quality_dimensions);
-    if (fallback.metCount >= fallback.total) {
-      result.quality_override = true;
-      result.quality_override_reason = "Fallback override (" + fallback.metCount + "/" + fallback.total + " conditions) after " + fallback.hoursSinceLastPub.toFixed(1) + "h idle";
-      qualityScore = QUALITY_THRESHOLD;
-    }
-  }
-
-  /* ───── Phase 10.2 Part F: Emergency Publishing Policy ───── */
-  if (qualityScore < QUALITY_THRESHOLD && qualityScore >= 75) {
-    const hoursSince = await getHoursSinceLastPublish();
-    if (hoursSince >= 6 && result.rewrite_success && isTrustedSource && result.word_count >= 700) {
-      const techDim = result.quality_dimensions && result.quality_dimensions.tech;
-      if (techDim >= 8) {
+    const hoursSinceL1 = await getHoursSinceLastPublish();
+    const lastOverrideL1 = await lastPublishedWasOverride();
+    if (hoursSinceL1 >= 2 && !lastOverrideL1) {
+      const srcInfoL1 = RSS_SOURCES.find(s => s.name === sourceName);
+      const trustedL1 = srcInfoL1 && (srcInfoL1.tier === 1 || srcInfoL1.tier === 2);
+      const bdL1 = result.quality_dimensions || {};
+      const infoOkL1 = (bdL1.info || 0) >= Math.round(38 * 0.6);
+      const flowOkL1 = (bdL1.flow || 0) >= Math.round(15 * 0.6);
+      const techOkL1 = (bdL1.tech || 0) >= 10;
+      const hasImageL1 = imageUrl && imageUrl.length > 0 && validateImage(imageUrl);
+      if (trustedL1 && result.rewrite_success && result.word_count >= 700 && hasImageL1 && infoOkL1 && flowOkL1 && techOkL1) {
         result.quality_override = true;
-        result.quality_override_reason = "Emergency Publishing Recovery";
+        result.override_level = 1;
+        result.quality_grade = "B";
+        result.quality_override_reason = "No publication for 2 hours";
         qualityScore = QUALITY_THRESHOLD;
       }
     }
@@ -1316,26 +1332,76 @@ async function main() {
   } /* end for(srcIdx) */
 
   if (!publishedArticle && prevArticle) {
-    const dimTargets = { info: 38, flow: 15, headline: 12, intro: 10, readability: 5, tech: 15, seo: 5 };
-    const bd = prevArticle.qResult.breakdown || {};
-    let estimatedGain = 0;
-    for (const [k, target] of Object.entries(dimTargets)) {
-      const score = bd[k] || 0;
-      if (score < target * 0.7) {
-        const potential = Math.round(target * 0.7);
-        estimatedGain += potential - score;
+    /* ───── Level 2: Force publish best candidate after exhausting all sources ───── */
+    const hoursSinceL2 = await getHoursSinceLastPublish();
+    const lastOverrideL2 = await lastPublishedWasOverride();
+    if (hoursSinceL2 >= 2 && !lastOverrideL2) {
+      qualityScore = QUALITY_THRESHOLD;
+      result.quality_score = qualityScore;
+      result.quality_override = true;
+      result.override_level = 2;
+      result.quality_grade = gradeLabel(prevArticle.qResult.total);
+      result.quality_override_reason = "Level 2 — forced publication after exhausting all sources";
+      result.quality_passed = true;
+      publishedArticle = true;
+      article = prevArticle.article;
+      articleId = prevArticle.articleId;
+      techdoseLink = prevArticle.techdoseLink;
+      const lai = prevArticle.ai;
+      aiTitle = lai.title_ar || article.title_ar;
+      aiExcerpt = (lai.excerpt || lai.body || "").substring(0, 300);
+      aiBody = lai.body || "";
+      aiTg = lai.telegram_summary || lai.excerpt || "";
+      aiCategory = lai.category || article.category || "تكنولوجيا";
+      aiTags = Array.isArray(lai.tags) ? lai.tags : (Array.isArray(article.tags) ? article.tags : ["تكنولوجيا"]);
+      seoTitle = lai.seo_title || aiTitle;
+      metaDesc = lai.meta_description || aiExcerpt.substring(0, 160);
+      seoSlug = lai.seo_slug || "";
+      focusKw = lai.focus_keyword || "";
+      secondaryKws = Array.isArray(lai.secondary_keywords) ? lai.secondary_keywords : [];
+      primaryCompany = lai.primary_company || null;
+      secondaryCompany = lai.secondary_company || null;
+      products = Array.isArray(lai.products) ? lai.products : [];
+      devices = Array.isArray(lai.devices) ? lai.devices : [];
+      technologies = Array.isArray(lai.technologies) ? lai.technologies : [];
+      aiModels = Array.isArray(lai.ai_models) ? lai.ai_models : [];
+      os = Array.isArray(lai.os) ? lai.os : [];
+      chipsets = Array.isArray(lai.chipsets) ? lai.chipsets : [];
+      browsers = Array.isArray(lai.browsers) ? lai.browsers : [];
+      cloud = Array.isArray(lai.cloud_platforms) ? lai.cloud_platforms : [];
+      languages = Array.isArray(lai.languages) ? lai.languages : [];
+      opensource = Array.isArray(lai.opensource_projects) ? lai.opensource_projects : [];
+      executives = Array.isArray(lai.executives) ? lai.executives : [];
+      markets = Array.isArray(lai.markets) ? lai.markets : [];
+      countries = Array.isArray(lai.countries) ? lai.countries : [];
+      people = Array.isArray(lai.people) ? lai.people : [];
+      stocks = Array.isArray(lai.stocks) ? lai.stocks : [];
+      investors = Array.isArray(lai.investors) ? lai.investors : [];
+      imageQueries = Array.isArray(lai.image_queries) ? lai.image_queries : [];
+      imageUrl = article.image || "";
+      hash = contentHash(article.title_ar, article.excerpt || "");
+    } else {
+      const dimTargets = { info: 38, flow: 15, headline: 12, intro: 10, readability: 5, tech: 15, seo: 5 };
+      const bd = prevArticle.qResult.breakdown || {};
+      let estimatedGain = 0;
+      for (const [k, target] of Object.entries(dimTargets)) {
+        const score = bd[k] || 0;
+        if (score < target * 0.7) {
+          const potential = Math.round(target * 0.7);
+          estimatedGain += potential - score;
+        }
       }
+      const estimatedAfter = Math.min(100, prevArticle.qResult.total + estimatedGain);
+      result.status = "quality_rejected";
+      result.quality_passed = false;
+      result.article_title = prevArticle.article.title_ar;
+      result.quality_score = prevArticle.qResult.total;
+      result.quality_dimensions = prevArticle.qResult.breakdown;
+      result.estimated_gain_after_rewrite = estimatedGain;
+      result.estimated_score_after_rewrite = estimatedAfter;
+      result.would_pass_after_rewrite = estimatedAfter >= QUALITY_THRESHOLD;
+      return result;
     }
-    const estimatedAfter = Math.min(100, prevArticle.qResult.total + estimatedGain);
-    result.status = "quality_rejected";
-    result.quality_passed = false;
-    result.article_title = prevArticle.article.title_ar;
-    result.quality_score = prevArticle.qResult.total;
-    result.quality_dimensions = prevArticle.qResult.breakdown;
-    result.estimated_gain_after_rewrite = estimatedGain;
-    result.estimated_score_after_rewrite = estimatedAfter;
-    result.would_pass_after_rewrite = estimatedAfter >= QUALITY_THRESHOLD;
-    return result;
   }
   if (!publishedArticle) {
     result.status = "quality_rejected";

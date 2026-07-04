@@ -36,6 +36,17 @@ const REJ_KW = ["politics","election","president","congress","senate","lifestyle
 
 const QUALITY_THRESHOLD = 80;
 
+function gradeLabel(score) {
+  if (!score || score <= 0) return '';
+  if (score >= 95) return 'A+';
+  if (score >= 90) return 'A';
+  if (score >= 85) return 'A-';
+  if (score >= 80) return 'B+';
+  if (score >= 70) return 'B';
+  if (score >= 60) return 'C';
+  return 'D';
+}
+
 const AI_SYSTEM_PROMPT = "أنت صحفي تقني محترف في منصة Tech Dose News. تكتب مقالات أصلية بالعربية بأسلوب صحافة الجودة.\nقواعد: 1) الطول 700-1200 كلمة 2) المقال أصلي وليس ترجمة 3) ابدأ مباشرة: ماذا حدث؟ لمن؟ لماذا؟ 4) اشرح التقنيات بلغة بسيطة 5) حلّل التأثير على المستخدم والسوق 6) لا رأي شخصي ولا clickbait 7) اختم باستنتاج واضح.\nمحظورات: في عالم التكنولوجيا المتسارع، يُعد هذا تطوراً مهماً، من الجدير بالذكر، تعرف على.\nأسماء الشركات بالإنجليزية: Google، Apple، iPhone، ChatGPT، NVIDIA، OpenAI";
 
 const LOGO_PATTERNS = /logo|avatar|icon|favicon|banner|thumbnail|sprite|badge|button|tracking-pixel|pixel\.gif|spacer|placeholder|advertisement|ad\.|banner-ad/i;
@@ -990,26 +1001,63 @@ async function selectImage(picked, articleUrl, entities, aiImageQueries, title, 
   return { url: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80", meta };
 }
 
+async function checkFallbackConditions(qualityScore, rssSource, wordCount, imageUrl, dimensions) {
+  const hoursSinceLastPub = await getHoursSinceLastPublish();
+  const srcInfo = RSS_SOURCES.find(s => s.name === rssSource);
+  const isTrusted = srcInfo && srcInfo.tier === 1;
+  const hasEnoughWords = wordCount >= 700;
+  const hasImage = imageUrl && imageUrl.length > 0;
+  const minDims = { headline: 8, intro: 5, info: 20, flow: 10, tech: 5, readability: 2, seo: 2 };
+  const dimsOk = Object.entries(minDims).every(([k, v]) => (dimensions[k] || 0) >= v);
+  const conditions = [
+    { label: '\u0641\u062C\u0648\u0629 \u0632\u0645\u0646\u064A\u0629 (' + hoursSinceLastPub.toFixed(1) + '\u0633)', met: hoursSinceLastPub >= 4 },
+    { label: '\u0645\u0635\u062F\u0631 \u0645\u0648\u062B\u0648\u0642', met: isTrusted },
+    { label: '\u0639\u062F\u062F \u0643\u0644\u0645\u0627\u062A \u0643\u0627\u0641\u064D (' + wordCount + ')', met: hasEnoughWords },
+    { label: '\u0635\u0648\u0631\u0629 \u0645\u0648\u062C\u0648\u062F\u0629', met: hasImage },
+    { label: '\u0623\u0628\u0639\u0627\u062F \u062F\u0646\u064A\u0627 \u0645\u062A\u0648\u0641\u0631\u0629', met: dimsOk }
+  ];
+  const metCount = conditions.filter(c => c.met).length;
+  return { metCount, total: conditions.length, conditions, hoursSinceLastPub };
+}
+
 async function main() {
   const result = {
+    execution_id: Date.now(),
+    triggered_at: new Date().toISOString(),
+    completed_at: null,
+    mode: "production",
     status: "ok",
     rss_items: 0,
     after_freshness: 0,
     after_tech_filter: 0,
     after_dedup: 0,
     ai_success: false,
+    ai_retries: 0,
     quality_score: 0,
+    grade: "",
+    quality_dimensions: {},
     quality_passed: false,
+    quality_capped: false,
+    failure_reasons: [],
+    rejection_reason: "",
+    rejection_detail: "",
     rewrite_attempted: false,
     rewrite_success: false,
     quality_override: false,
     quality_override_reason: "",
+    word_count: 0,
     internal_links_count: 0,
     article_id: null,
     article_url: null,
-    telegram_sent: false
+    article_title: "",
+    rss_source: "",
+    telegram_sent: false,
+    telegram_error: "",
+    error: "",
+    notes: ""
   };
 
+  try {
   const srcResult = await fetchSourceRSS();
   let rssItems = [];
   let usedSource = "";
@@ -1059,9 +1107,11 @@ async function main() {
   result.after_dedup = newItems.length;
   if (newItems.length === 0) { result.status = "all_duplicates"; return result; }
 
-  const { item: picked, hash } = newItems[0];
+  for (let itemIdx = 0; itemIdx < newItems.length; itemIdx++) {
+  const { item: picked, hash } = newItems[itemIdx];
   const articleId = makeId();
   const sourceName = picked.source || usedSource;
+  result.rss_source = usedSource;
   const techdoseLink = FRONTEND_URL + "/article.html?id=" + articleId;
 
   let existingIndex = [];
@@ -1299,23 +1349,39 @@ async function main() {
     }
   }
 
-  /* ───── Phase 7.3: Stabilization Mode ───── */
-  if (qualityScore < QUALITY_THRESHOLD && qualityScore >= 65) {
-    const hoursSinceLastPub = await getHoursSinceLastPublish();
-    if (hoursSinceLastPub > 6) {
+  /* ───── Phase 10 Part C: Smart Quality Gate (Fallback 70-79) ───── */
+  if (qualityScore < QUALITY_THRESHOLD && qualityScore >= 70) {
+    const fallback = await checkFallbackConditions(qualityScore, sourceName, result.word_count, imageUrl, result.quality_dimensions);
+    if (fallback.metCount >= 3) {
       result.quality_override = true;
-      result.quality_override_reason = "Stabilization mode: " + hoursSinceLastPub.toFixed(1) + "h since last publish";
-      // Bypass threshold — allow publication
+      result.quality_override_reason = "Fallback override (" + fallback.metCount + "/" + fallback.total + " conditions) after " + fallback.hoursSinceLastPub.toFixed(1) + "h idle";
       qualityScore = QUALITY_THRESHOLD;
     }
   }
 
   if (qualityScore < QUALITY_THRESHOLD) {
+    if (itemIdx < newItems.length - 1) {
+      result.notes = (result.notes || '') + 'Item ' + itemIdx + ' quality=' + qualityScore + ', trying next. ';
+      continue;
+    }
     result.status = "quality_rejected";
     result.quality_passed = false;
+    result.rejection_reason = "\u0641\u0634\u0644 \u0627\u0644\u062C\u0648\u062F\u0629 (" + qualityScore + "/" + QUALITY_THRESHOLD + ")";
+    const bd = result.quality_dimensions || {};
+    const dimTargets = { info: 35, flow: 20, headline: 15, intro: 10, readability: 5, tech: 10, seo: 5 };
+    const dimLabels = { info: "\u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062A", flow: "\u0627\u0644\u062A\u062F\u0641\u0642", headline: "\u0627\u0644\u0639\u0646\u0648\u0627\u0646", intro: "\u0627\u0644\u0645\u0642\u062F\u0645\u0629", readability: "\u0627\u0644\u0642\u0631\u0627\u0621\u0629", tech: "\u0627\u0644\u062A\u0642\u0646\u064A", seo: "SEO" };
+    const reasons = [];
+    for (const [k, target] of Object.entries(dimTargets)) {
+      const score = bd[k] || 0;
+      if (score < target * 0.7) reasons.push(dimLabels[k] + " \u0636\u0639\u064A\u0641 (" + score + "/" + target + ")");
+    }
+    if (reasons.length === 0) reasons.push("\u0627\u0644\u062F\u0631\u062C\u0629 \u0627\u0644\u0625\u062C\u0645\u0627\u0644\u064A\u0629 \u0623\u0642\u0644 \u0645\u0646 \u0627\u0644\u062D\u062F (" + qualityScore + "/" + QUALITY_THRESHOLD + ")");
+    result.failure_reasons = reasons;
+    result.rejection_detail = reasons.join("\u060C ");
     return result;
   }
   result.quality_passed = true;
+  }
 
   let index = [];
   try {
@@ -1424,6 +1490,28 @@ async function main() {
   }
 
   return result;
+  } catch(e) {
+    result.status = "unhandled_error";
+    result.error = e.message;
+    return result;
+  } finally {
+    await saveExecutionHistory(result);
+  }
+}
+
+async function saveExecutionHistory(data) {
+  try {
+    data.completed_at = data.completed_at || new Date().toISOString();
+    data.grade = data.quality_score ? gradeLabel(data.quality_score) : "";
+    let history = [];
+    try {
+      const h = await ghGet("data/execution_history.json");
+      if (h && Array.isArray(h)) history = h;
+    } catch(e) {}
+    history.unshift(data);
+    if (history.length > 200) history.length = 200;
+    await ghPut("data/execution_history.json", JSON.stringify(history, null, 2), "Execution: #" + (data.execution_id || "") + " " + (data.status || ""));
+  } catch(e) { /* silent */ }
 }
 
 const _r = await main();

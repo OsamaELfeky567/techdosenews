@@ -681,18 +681,21 @@ function showExecutionDetails(id) {
   const bd = e.quality_dimensions || {};
   const dimLabels = { info: 'المعلومات', flow: 'التدفق', headline: 'العنوان', intro: 'المقدمة', readability: 'القراءة', tech: 'التقني', seo: 'SEO' };
   const dimTargets = { info: 35, flow: 20, headline: 15, intro: 10, readability: 5, tech: 10, seo: 5 };
+  const dimSuggest = { info: 'أضف بيانات رقمية وأرقاماً وإحصائيات ومصادر موثوقة', flow: 'حسّن تدفق المقال باستخدام جمل انتقالية وفقرات مترابطة', headline: 'اجعله أكثر تحديداً لجذب القارئ مع احتواء الكلمة المفتاحية', intro: 'ابدأ مباشرة بمعلومة قوية أو سؤال يثير الاهتمام', readability: 'قسّم الجمل الطويلة واستخدم كلمات أبسط وفقرات قصيرة', tech: 'أضف شرْحاً تقنياً أعمق مع مصطلحات ومفاهيم واضحة', seo: 'أضف كلمات مفتاحية في العنوان والوصف والنص' };
   let breakdownHtml = '';
   if (Object.values(bd).some(v => v > 0)) {
-    breakdownHtml = '<table style="font-size:.8rem;margin-bottom:12px"><thead><tr><th>البعد</th><th>الدرجة</th><th>الحد</th><th>الشريط</th></tr></thead><tbody>';
+    breakdownHtml = '<table style="font-size:.8rem;margin-bottom:12px"><thead><tr><th>البعد</th><th>الدرجة</th><th>الحد</th><th>الشريط</th><th>تحسين</th></tr></thead><tbody>';
     for (const [k, label] of Object.entries(dimLabels)) {
       const score = bd[k] || 0;
       const target = dimTargets[k];
       const pct = Math.min(100, (score / target) * 100);
       const barColor = pct >= 80 ? 'var(--green)' : (pct >= 60 ? 'var(--orange)' : 'var(--red)');
+      const needsHelp = score < target * 0.7;
       breakdownHtml += '<tr><td style="font-weight:600">' + label + '</td>' +
         '<td>' + score + '</td>' +
         '<td style="color:var(--text3)">' + target + '</td>' +
-        '<td style="width:120px"><div style="height:8px;background:var(--bg3);border-radius:4px;overflow:hidden"><div style="width:' + pct + '%;height:100%;background:' + barColor + ';border-radius:4px"></div></div></td></tr>';
+        '<td style="width:120px"><div style="height:8px;background:var(--bg3);border-radius:4px;overflow:hidden"><div style="width:' + pct + '%;height:100%;background:' + barColor + ';border-radius:4px"></div></div></td>' +
+        '<td style="font-size:.7rem;color:var(--text3);max-width:200px">' + (needsHelp ? '<span style="color:var(--orange)"><i class="fas fa-lightbulb"></i> ' + (dimSuggest[k] || '') + '</span>' : '<span style="color:var(--green)"><i class="fas fa-check"></i> جيد</span>') + '</td></tr>';
     }
     breakdownHtml += '</tbody></table>';
   }
@@ -701,6 +704,8 @@ function showExecutionDetails(id) {
     failureHtml = '<div style="background:rgba(239,68,68,.1);padding:10px;border-radius:6px;margin-bottom:12px"><div style="font-weight:700;color:var(--red);margin-bottom:4px"><i class="fas fa-exclamation-circle"></i> أسباب الرفض</div>' +
       e.failure_reasons.map(r => '<div style="font-size:.8rem;color:var(--red);padding:2px 0">• ' + r + '</div>').join('') + '</div>';
   }
+
+  const timelineHtml = renderPerExecTimeline(e);
 
   const fields = [
     ['رقم التنفيذ', '#' + e.execution_id],
@@ -718,6 +723,7 @@ function showExecutionDetails(id) {
     ['اجتاز الجودة', e.quality_passed ? 'نعم' : 'لا'],
     ['محاولة إعادة كتابة', e.rewrite_attempted ? 'نعم' : 'لا'],
     ['نجاح إعادة الكتابة', e.rewrite_success ? 'نعم' : 'لا'],
+    ['تجاوز الجودة', e.quality_override ? 'نعم (' + e.quality_override_reason + ')' : 'لا'],
     ['منشور', e.published ? 'نعم' : 'لا'],
     ['تليجرام', e.telegram_sent ? 'نعم' : 'لا'],
     ['GitHub', e.deployed || e.status === 'deployed' ? 'نعم' : 'لا'],
@@ -729,7 +735,7 @@ function showExecutionDetails(id) {
     ['خطأ', e.error || '—'],
     ['ملاحظات', e.notes || '—'],
   ];
-  const html = (breakdownHtml || '') + (failureHtml || '') + '<table style="font-size:.82rem"><tbody>' + fields.filter(f => f[1] && f[1] !== '—').map(([k, v]) =>
+  const html = timelineHtml + (breakdownHtml || '') + (failureHtml || '') + '<table style="font-size:.82rem"><tbody>' + fields.filter(f => f[1] && f[1] !== '—').map(([k, v]) =>
     '<tr><td style="font-weight:600;color:var(--text2);width:130px">' + k + '</td><td>' + v + '</td></tr>'
   ).join('') + '</tbody></table>';
   showModal('تفاصيل التنفيذ #' + e.execution_id + (e.article_title ? ' — ' + e.article_title.substring(0, 40) : ''), html, '<button class="btn btn-ghost" onclick="closeModal()">إغلاق</button>');
@@ -1203,10 +1209,37 @@ function adjustPriority(name, delta) {
 function showSourceDetails(name) {
   const stats = getSourceStats(name);
   const cfg = SOURCE_CONFIG[name] || {};
-  const related = EXECUTIONS.filter(e => e.rss_source === name).slice(0, 20);
+  const allRelated = EXECUTIONS.filter(e => e.rss_source === name);
+  const related = allRelated.slice(0, 20);
   const lastPubStr = stats.lastPublish ? new Date(stats.lastPublish).toLocaleString('ar-EG') : '—';
   const lastFetchStr = stats.lastFetch ? new Date(stats.lastFetch).toLocaleString('ar-EG') : '—';
-  let html = '<table style="font-size:.8rem"><tbody>' +
+  // Quality trend (last 10 scored executions)
+  const scoredExecs = allRelated.filter(e => e.quality_score > 0).slice(0, 10);
+  const trendScores = scoredExecs.map(e => e.quality_score).reverse();
+  const trendDir = trendScores.length >= 2 ? (trendScores[trendScores.length - 1] > trendScores[0] ? 'ارتفاع' : trendScores[trendScores.length - 1] < trendScores[0] ? 'انخفاض' : 'ثبات') : '—';
+  const trendColor = trendDir === 'ارتفاع' ? 'var(--green)' : trendDir === 'انخفاض' ? 'var(--red)' : 'var(--text3)';
+  let trendHtml = '';
+  if (trendScores.length > 0) {
+    const maxScore = Math.max(...trendScores, 80);
+    trendHtml = '<div style="margin-bottom:10px"><div style="font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--text2)"><i class="fas fa-chart-line"></i> اتجاه الجودة: <span style="color:' + trendColor + '">' + trendDir + '</span></div>' +
+      '<div style="display:flex;align-items:end;gap:3px;height:50px;padding:4px 0">' +
+      trendScores.map(s => {
+        const h = Math.max(4, (s / maxScore) * 44);
+        const barColor = s >= 80 ? 'var(--green)' : s >= 70 ? 'var(--orange)' : 'var(--red)';
+        return '<div style="flex:1;height:' + h + 'px;background:' + barColor + ';border-radius:3px 3px 0 0;min-width:12px;position:relative" title="' + s + '"><div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:.6rem;color:var(--text3)">' + s + '</div></div>';
+      }).join('') +
+      '</div></div>';
+  }
+  // Distribution bar
+  const pubPct = stats.total ? (stats.published / stats.total * 100).toFixed(0) : 0;
+  const rejPct = stats.total ? (stats.rejected / stats.total * 100).toFixed(0) : 0;
+  const distHtml = '<div style="margin-bottom:10px"><div style="font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--text2)"><i class="fas fa-chart-pie"></i> توزيع التنفيذات (' + stats.total + ')</div>' +
+    '<div style="display:flex;height:20px;border-radius:6px;overflow:hidden;font-size:.7rem;font-weight:600">' +
+    '<div style="flex:' + pubPct + ';background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;min-width:30px">' + pubPct + '% نشر</div>' +
+    '<div style="flex:' + rejPct + ';background:var(--orange);display:flex;align-items:center;justify-content:center;color:#fff;min-width:30px">' + rejPct + '% رفض</div>' +
+    '<div style="flex:' + Math.max(0, 100 - pubPct - rejPct) + ';background:var(--bg3);display:flex;align-items:center;justify-content:center;color:var(--text3);min-width:30px">' + (100 - pubPct - rejPct).toFixed(0) + '% أخرى</div>' +
+    '</div></div>';
+  let html = trendHtml + distHtml + '<table style="font-size:.8rem"><tbody>' +
     '<tr><td style="font-weight:600;color:var(--text2)">المصدر</td><td>' + name + '</td></tr>' +
     '<tr><td style="font-weight:600;color:var(--text2)">الحالة</td><td>' + (cfg.enabled !== false ? 'مفعل' : 'معطل') + '</td></tr>' +
     '<tr><td style="font-weight:600;color:var(--text2)">الأولوية</td><td>' + (cfg.priority || 50) + '</td></tr>' +

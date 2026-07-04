@@ -32,7 +32,7 @@ a{color:var(--primary);text-decoration:none}
 .header-actions .logout-btn{padding:6px 14px;background:none;border:1px solid var(--bg3);color:var(--text2);border-radius:8px;cursor:pointer;transition:.2s;font-size:.85rem}
 .header-actions .logout-btn:hover{border-color:var(--red);color:var(--red)}
 .app-body{display:flex;min-height:calc(100vh - 60px)}
-.sidebar{width:220px;background:var(--surface);padding:12px 0;border-left:1px solid var(--bg3);flex-shrink:0}
+.sidebar{width:220px;background:var(--surface);padding:12px 0;border-left:1px solid var(--bg3);flex-shrink:0;overflow-y:auto}
 .sidebar .nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;color:var(--text2);cursor:pointer;transition:.2s;border-right:3px solid transparent}
 .sidebar .nav-item:hover{background:var(--bg2);color:var(--text)}
 .sidebar .nav-item.active{background:var(--bg2);color:var(--primary);border-right-color:var(--primary)}
@@ -51,35 +51,47 @@ a{color:var(--primary);text-decoration:none}
 .toolbar input,.toolbar select{padding:8px 12px;border:1px solid var(--bg3);border-radius:6px;background:var(--bg2);color:var(--text);outline:none}
 .toolbar input:focus,.toolbar select:focus{border-color:var(--primary)}
 .toolbar input{flex:1;min-width:200px}
-.btn{padding:8px 16px;border:none;border-radius:6px;font-weight:600;cursor:pointer;transition:.2s;font-size:.85rem}
+.btn{padding:8px 16px;border:none;border-radius:6px;font-weight:600;cursor:pointer;transition:.2s;font-size:.85rem;display:inline-flex;align-items:center;gap:4px}
 .btn-primary{background:var(--primary);color:#fff}
 .btn-primary:hover{background:var(--primary-hover)}
+.btn-success{background:var(--green);color:#fff}
+.btn-success:hover{background:#16a34a}
 .btn-danger{background:var(--red);color:#fff}
 .btn-danger:hover{background:#dc2626}
+.btn-warning{background:var(--orange);color:#fff}
+.btn-warning:hover{background:#d97706}
+.btn-ghost{background:var(--bg3);color:var(--text)}
+.btn-ghost:hover{opacity:.8}
 .btn-sm{padding:4px 10px;font-size:.8rem}
 table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:var(--radius);overflow:hidden;border:1px solid var(--bg3)}
 th,td{padding:10px 14px;text-align:right;border-bottom:1px solid var(--bg3);font-size:.85rem}
 th{background:var(--bg2);color:var(--text2);font-weight:600}
 td{color:var(--text)}
 tr:hover{background:var(--bg2)}
-.status-published{color:var(--green)}
-.status-draft{color:var(--orange)}
+.status-published{color:var(--green);font-weight:600}
+.status-draft{color:var(--orange);font-weight:600}
 .pagination{display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap}
 .pagination button{padding:6px 12px;border:1px solid var(--bg3);border-radius:6px;background:var(--surface);color:var(--text2);cursor:pointer}
 .pagination button.active{background:var(--primary);color:#fff;border-color:var(--primary)}
 .pagination button:hover:not(.active){background:var(--bg2)}
-.editor-form{max-width:800px;background:var(--surface);padding:24px;border-radius:var(--radius);border:1px solid var(--bg3)}
-.editor-form .field{margin-bottom:16px}
+.editor-form{max-width:900px;background:var(--surface);padding:24px;border-radius:var(--radius);border:1px solid var(--bg3)}
+.editor-form .field{margin-bottom:14px}
+.editor-form .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .editor-form label{display:block;font-size:.85rem;color:var(--text2);margin-bottom:4px;font-weight:600}
 .editor-form input,.editor-form select,.editor-form textarea{width:100%;padding:10px 14px;border:1px solid var(--bg3);border-radius:6px;background:var(--bg2);color:var(--text);outline:none;transition:.2s}
 .editor-form textarea{min-height:200px;resize:vertical}
 .editor-form input:focus,.editor-form select:focus,.editor-form textarea:focus{border-color:var(--primary)}
 .editor-form .char-counter{text-align:left;font-size:.75rem;color:var(--text3);margin-top:2px}
-.editor-form .image-preview{max-width:200px;border-radius:6px;margin-top:8px;display:none}
+.editor-form .image-preview{max-width:200px;border-radius:6px;margin-top:8px;display:none;border:1px solid var(--bg3)}
 .editor-form .tag-preview{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .editor-form .tag-preview span{padding:2px 10px;background:var(--bg3);border-radius:4px;font-size:.8rem}
 .editor-form .status-toggle{display:flex;gap:12px;align-items:center}
 .editor-form .status-toggle label{display:flex;align-items:center;gap:6px;cursor:pointer}
+.editor-form .section-title{font-size:.95rem;font-weight:700;color:var(--primary);margin:20px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--bg3);display:flex;align-items:center;gap:8px;cursor:pointer}
+.editor-form .section-title i{font-size:.8rem;transition:.3s}
+.editor-form .section-title.collapsed i{transform:rotate(-90deg)}
+.editor-form .section-body{padding-right:8px}
+.editor-form .section-body.hidden{display:none}
 .cat-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-bottom:16px}
 .cat-card{background:var(--surface);padding:16px;border-radius:var(--radius);border:1px solid var(--bg3);display:flex;align-items:center;justify-content:space-between}
 .cat-card .cat-info{display:flex;align-items:center;gap:10px}
@@ -89,11 +101,13 @@ tr:hover{background:var(--bg2)}
 .add-cat-form{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center;background:var(--surface);padding:16px;border-radius:var(--radius);border:1px solid var(--bg3)}
 .add-cat-form input[type="text"]{flex:1;min-width:150px;padding:8px 12px;border:1px solid var(--bg3);border-radius:6px;background:var(--bg2);color:var(--text);outline:none}
 .add-cat-form input[type="color"]{width:40px;height:40px;border:none;border-radius:6px;cursor:pointer;background:none}
-.settings-form{max-width:600px;background:var(--surface);padding:24px;border-radius:var(--radius);border:1px solid var(--bg3)}
-.settings-form .field{margin-bottom:16px}
+.settings-form{max-width:700px;background:var(--surface);padding:24px;border-radius:var(--radius);border:1px solid var(--bg3)}
+.settings-form .field{margin-bottom:14px}
+.settings-form .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .settings-form label{display:block;font-size:.85rem;color:var(--text2);margin-bottom:4px;font-weight:600}
-.settings-form input{width:100%;padding:10px 14px;border:1px solid var(--bg3);border-radius:6px;background:var(--bg2);color:var(--text);outline:none;transition:.2s}
-.settings-form input:focus{border-color:var(--primary)}
+.settings-form input,.settings-form select{width:100%;padding:10px 14px;border:1px solid var(--bg3);border-radius:6px;background:var(--bg2);color:var(--text);outline:none;transition:.2s}
+.settings-form input:focus,.settings-form select:focus{border-color:var(--primary)}
+.settings-form .section-title{font-size:.95rem;font-weight:700;color:var(--primary);margin:20px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--bg3)}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:12px 24px;border-radius:8px;font-weight:600;z-index:999;max-width:400px;text-align:center;animation:fadeIn .3s}
 .toast-success{background:var(--green);color:#fff}
 .toast-error{background:var(--red);color:#fff}
@@ -103,7 +117,22 @@ tr:hover{background:var(--bg2)}
 .loading{text-align:center;padding:40px;color:var(--text2)}
 .bulk-bar{background:var(--surface);padding:12px 16px;border-radius:var(--radius);border:1px solid var(--bg3);margin-bottom:12px;display:none;align-items:center;gap:12px}
 .bulk-bar span{font-size:.85rem;color:var(--text2)}
-@media(max-width:768px){.sidebar{width:60px}.sidebar .nav-item span{display:none}.main{max-width:calc(100% - 60px)}.stats-grid{grid-template-columns:repeat(2,1fr)}}
+.code{cursor:pointer;transition:.2s}
+.code:hover{color:var(--primary)}
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:200;display:none;align-items:center;justify-content:center}
+.modal{background:var(--surface);border-radius:var(--radius);border:1px solid var(--bg3);max-width:600px;width:90%;max-height:80vh;overflow-y:auto;padding:24px}
+.modal h3{font-size:1.1rem;margin-bottom:12px}
+.modal .modal-body{font-size:.9rem;color:var(--text2);line-height:1.8}
+.modal .modal-actions{display:flex;gap:8px;margin-top:16px;justify-content:flex-end}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:16px}
+.report-card{background:var(--surface);padding:16px;border-radius:var(--radius);border:1px solid var(--bg3);cursor:pointer;transition:.2s}
+.report-card:hover{border-color:var(--primary);background:var(--bg2)}
+.report-card .r-icon{font-size:1.5rem;margin-bottom:8px;color:var(--primary)}
+.report-card .r-name{font-weight:600;font-size:.9rem}
+.report-card .r-desc{font-size:.8rem;color:var(--text3);margin-top:4px}
+.report-content{background:var(--surface);padding:24px;border-radius:var(--radius);border:1px solid var(--bg3);white-space:pre-wrap;font-size:.85rem;line-height:1.8;max-height:70vh;overflow-y:auto;display:none}
+.report-content pre{white-space:pre-wrap;word-break:break-word}
+@media(max-width:768px){.sidebar{width:60px}.sidebar .nav-item span{display:none}.main{max-width:calc(100% - 60px)}.stats-grid{grid-template-columns:repeat(2,1fr)}.editor-form .field-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -111,7 +140,7 @@ tr:hover{background:var(--bg2)}
   <div class="login-card">
     <h1>TD <span>بالعربي</span></h1>
     <p>لوحة التحكم</p>
-    <input type="password" id="loginPassword" placeholder="كلمة المرور" onkeydown="if(event.key==='Enter')login()">
+    <input type="password" id="loginPassword" placeholder="كلمة المرور" dir="ltr" onkeydown="if(event.key==='Enter')login()">
     <div class="error" id="loginError">كلمة المرور غير صحيحة</div>
     <button onclick="login()">دخول</button>
   </div>
@@ -128,15 +157,16 @@ tr:hover{background:var(--bg2)}
     <nav class="sidebar" id="sidebar">
       <div class="nav-item active" data-page="dashboard" onclick="showPage('dashboard')"><i class="fas fa-chart-bar"></i><span>الإحصائيات</span></div>
       <div class="nav-item" data-page="articles" onclick="showPage('articles')"><i class="fas fa-newspaper"></i><span>المقالات</span></div>
-      <div class="nav-item" data-page="editor" onclick="showPage('editor')"><i class="fas fa-edit"></i><span>محرر المقالات</span></div>
+      <div class="nav-item" data-page="editor" onclick="showPage('editor')"><i class="fas fa-edit"></i><span>المحرر</span></div>
       <div class="nav-item" data-page="categories" onclick="showPage('categories')"><i class="fas fa-tags"></i><span>التصنيفات</span></div>
+      <div class="nav-item" data-page="reports" onclick="showPage('reports')"><i class="fas fa-file-alt"></i><span>التقارير</span></div>
       <div class="nav-item" data-page="settings" onclick="showPage('settings')"><i class="fas fa-cog"></i><span>الإعدادات</span></div>
     </nav>
     <main class="main">
       <div class="page active" id="page-dashboard">
         <div class="page-title">لوحة المعلومات <span class="sub">نظرة عامة على الموقع</span></div>
         <div class="stats-grid" id="statsGrid"></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
           <div style="background:var(--surface);padding:20px;border-radius:var(--radius);border:1px solid var(--bg3)">
             <h3 style="font-size:1rem;margin-bottom:12px">أفضل 5 تصنيفات</h3>
             <div id="topCategories"></div>
@@ -146,15 +176,20 @@ tr:hover{background:var(--bg2)}
             <div id="latestArticles"></div>
           </div>
         </div>
+        <div style="background:var(--surface);padding:20px;border-radius:var(--radius);border:1px solid var(--bg3)">
+          <h3 style="font-size:1rem;margin-bottom:12px">نظرة سريعة</h3>
+          <div id="quickStats" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px"></div>
+        </div>
       </div>
       <div class="page" id="page-articles">
         <div class="page-title">المقالات <span class="sub" id="articlesCount"></span></div>
-        <div class="bulk-bar" id="bulkBar"><span id="bulkCount"></span><button class="btn btn-danger btn-sm" onclick="bulkDelete()">حذف المحدد</button><button class="btn btn-sm" style="background:var(--bg3);color:var(--text)" onclick="clearBulk()">إلغاء</button></div>
+        <div class="bulk-bar" id="bulkBar"><span id="bulkCount"></span><button class="btn btn-success btn-sm" onclick="bulkPublish()"><i class="fas fa-check"></i> نشر المحدد</button><button class="btn btn-warning btn-sm" onclick="bulkUnpublish()"><i class="fas fa-pause"></i> إلغاء نشر المحدد</button><button class="btn btn-danger btn-sm" onclick="bulkDelete()"><i class="fas fa-trash"></i> حذف المحدد</button><button class="btn btn-ghost btn-sm" onclick="clearBulk()">إلغاء</button></div>
         <div class="toolbar">
-          <input type="text" id="searchInput" placeholder="بحث بالعنوان..." oninput="renderArticles()">
+          <input type="text" id="searchInput" placeholder="بحث بالعنوان أو المعرف..." oninput="renderArticles()">
           <select id="catFilter" onchange="renderArticles()"><option value="">جميع التصنيفات</option></select>
           <select id="statusFilter" onchange="renderArticles()"><option value="">جميع الحالات</option><option value="published">منشور</option><option value="draft">مسودة</option></select>
-          <button class="btn btn-primary" onclick="showPage('editor')"><i class="fas fa-plus"></i> مقال جديد</button>
+          <select id="scoreFilter" onchange="renderArticles()"><option value="">كل الجودة</option><option value="80">جيد (80+)</option><option value="60">متوسط (60-79)</option><option value="0">ضعيف (-60)</option></select>
+          <button class="btn btn-primary" onclick="startNewArticle()"><i class="fas fa-plus"></i> مقال جديد</button>
         </div>
         <div id="articlesTable"></div>
         <div class="pagination" id="pagination"></div>
@@ -163,16 +198,65 @@ tr:hover{background:var(--bg2)}
         <div class="page-title" id="editorTitle">محرر المقالات <span class="sub">إضافة / تعديل مقال</span></div>
         <div class="editor-form">
           <input type="hidden" id="editId">
-          <div class="field"><label>العنوان (بالعربية) <span id="titleCounter" style="font-size:.75rem;color:var(--text3)">0/60</span></label><input type="text" id="articleTitle" placeholder="عنوان المقال" oninput="updateCounters()" required></div>
-          <div class="field"><label>الملخص <span id="excerptCounter" style="font-size:.75rem;color:var(--text3)">0/160</span></label><textarea id="articleExcerpt" rows="3" placeholder="ملخص المقال (160 حرف كحد أقصى)" oninput="updateCounters()" style="min-height:60px"></textarea></div>
-          <div class="field"><label>المحتوى <span id="bodyCounter" style="font-size:.75rem;color:var(--text3)">0 كلمة</span></label><textarea id="articleBody" placeholder="محتوى المقال كاملاً بصيغة HTML" oninput="updateCounters()"></textarea></div>
-          <div class="field"><label>التصنيف</label><select id="articleCategory"></select></div>
-          <div class="field"><label>الكلمات المفتاحية (مفصولة بفواصل)</label><input type="text" id="articleTags" placeholder="تكنولوجيا, ذكاء اصطناعي, ChatGPT" oninput="renderTagPreview()"><div class="tag-preview" id="tagPreview"></div></div>
-          <div class="field"><label>رابط الصورة</label><input type="url" id="articleImage" placeholder="https://example.com/image.jpg" oninput="previewImage()"><img class="image-preview" id="imagePreview" alt="معاينة الصورة"></div>
-          <div class="field"><label>رابط المصدر الأصلي</label><input type="url" id="articleSource" placeholder="https://example.com/article"></div>
-          <div class="field"><label>التاريخ والوقت</label><input type="datetime-local" id="articleDate"></div>
-          <div class="field"><label>الحالة</label><div class="status-toggle"><label><input type="radio" name="status" value="published" checked> منشور</label><label><input type="radio" name="status" value="draft"> مسودة</label></div></div>
-          <div style="display:flex;gap:8px;margin-top:16px"><button class="btn btn-primary" onclick="saveArticle()" id="saveBtn">حفظ المقال</button><button class="btn" style="background:var(--bg3);color:var(--text)" onclick="resetEditor()">إلغاء</button></div>
+          <input type="hidden" id="editOriginal">
+
+          <div class="section-title" onclick="toggleSection(this)"><i class="fas fa-chevron-down"></i> المعلومات الأساسية</div>
+          <div class="section-body">
+            <div class="field"><label>العنوان <span id="titleCounter" style="font-size:.75rem;color:var(--text3)">0/60</span></label><input type="text" id="articleTitle" placeholder="عنوان المقال" oninput="updateCounters()"></div>
+            <div class="field"><label>الملخص <span id="excerptCounter" style="font-size:.75rem;color:var(--text3)">0/160</span></label><textarea id="articleExcerpt" rows="3" placeholder="ملخص المقال (160 حرف كحد أقصى)" oninput="updateCounters()" style="min-height:60px"></textarea></div>
+            <div class="field"><label>المحتوى <span id="bodyCounter" style="font-size:.75rem;color:var(--text3)">0 كلمة</span></label><textarea id="articleBody" placeholder="محتوى المقال كاملاً بصيغة HTML" oninput="updateCounters()"></textarea></div>
+            <div class="field-row">
+              <div class="field"><label>التصنيف</label><select id="articleCategory"></select></div>
+              <div class="field"><label>تاريخ النشر</label><input type="datetime-local" id="articleDate"></div>
+            </div>
+            <div class="field"><label>الكلمات المفتاحية (مفصولة بفواصل)</label><input type="text" id="articleTags" placeholder="تكنولوجيا, ذكاء اصطناعي, ChatGPT" oninput="renderTagPreview()"><div class="tag-preview" id="tagPreview"></div></div>
+          </div>
+
+          <div class="section-title" onclick="toggleSection(this)"><i class="fas fa-chevron-down"></i> الصورة والمصدر</div>
+          <div class="section-body">
+            <div class="field"><label>رابط الصورة</label><input type="url" id="articleImage" placeholder="https://example.com/image.jpg" oninput="previewImage()"><img class="image-preview" id="imagePreview" alt="معاينة الصورة"></div>
+            <div class="field"><label>رابط المصدر الأصلي</label><input type="url" id="articleSource" placeholder="https://example.com/article"></div>
+            <div class="field"><label>اسم المصدر</label><input type="text" id="articleSourceName" placeholder="TechCrunch"></div>
+          </div>
+
+          <div class="section-title" onclick="toggleSection(this)"><i class="fas fa-chevron-down"></i> تحسين محركات البحث (SEO)</div>
+          <div class="section-body">
+            <div class="field"><label>عنوان SEO</label><input type="text" id="articleSeoTitle" placeholder="عنوان محسن لمحركات البحث" oninput="updateCounters()"></div>
+            <div class="field"><label>وصف ميتا</label><textarea id="articleMetaDesc" rows="2" placeholder="وصف مختصر لمحركات البحث (150-160 حرف)" style="min-height:50px"></textarea></div>
+            <div class="field-row">
+              <div class="field"><label>رابط مختصر (Slug)</label><input type="text" id="articleSlug" placeholder="slug-مناسب-للمقال" dir="ltr"></div>
+              <div class="field"><label>الكلمة المفتاحية الأساسية</label><input type="text" id="articleFocusKw" placeholder="Focus keyword" dir="ltr"></div>
+            </div>
+            <div class="field"><label>كلمات مفتاحية ثانوية (مفصولة بفواصل)</label><input type="text" id="articleSecondaryKws" placeholder="ai, technology, ChatGPT" dir="ltr"></div>
+          </div>
+
+          <div class="section-title" onclick="toggleSection(this)"><i class="fas fa-chevron-down"></i> الكيانات (شركات / منتجات / تقنيات)</div>
+          <div class="section-body">
+            <div class="field-row">
+              <div class="field"><label>الشركة الأساسية</label><input type="text" id="articlePrimaryCompany" placeholder="Google" dir="ltr"></div>
+              <div class="field"><label>شركة ثانوية</label><input type="text" id="articleSecondaryCompany" placeholder="Microsoft" dir="ltr"></div>
+            </div>
+            <div class="field"><label>المنتجات (مفصولة بفواصل)</label><input type="text" id="articleProducts" placeholder="iPhone 16, Galaxy S25" dir="ltr"></div>
+            <div class="field"><label>التقنيات (مفصولة بفواصل)</label><input type="text" id="articleTechnologies" placeholder="GPT-4o, TensorFlow" dir="ltr"></div>
+            <div class="field"><label>نماذج الذكاء الاصطناعي (مفصولة بفواصل)</label><input type="text" id="articleAiModels" placeholder="GPT-4o, Gemini 2.0" dir="ltr"></div>
+          </div>
+
+          <div class="section-title" onclick="toggleSection(this)"><i class="fas fa-chevron-down"></i> الحالة والإجراءات</div>
+          <div class="section-body">
+            <div class="field">
+              <label>الحالة</label>
+              <div class="status-toggle">
+                <label><input type="radio" name="status" value="published" checked> <i class="fas fa-check-circle" style="color:var(--green)"></i> منشور</label>
+                <label><input type="radio" name="status" value="draft"> <i class="fas fa-pencil-alt" style="color:var(--orange)"></i> مسودة</label>
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap">
+              <button class="btn btn-primary" onclick="saveArticle()" id="saveBtn"><i class="fas fa-save"></i> حفظ المقال</button>
+              <button class="btn btn-success" onclick="previewArticle()" id="previewBtn"><i class="fas fa-eye"></i> معاينة</button>
+              <button class="btn btn-ghost" onclick="resetEditor()"><i class="fas fa-times"></i> إلغاء</button>
+            </div>
+          </div>
+
         </div>
       </div>
       <div class="page" id="page-categories">
@@ -184,21 +268,58 @@ tr:hover{background:var(--bg2)}
         </div>
         <div class="cat-list" id="catList"></div>
       </div>
+      <div class="page" id="page-reports">
+        <div class="page-title">التقارير <span class="sub">تقارير تلقائية عن الموقع والمقالات</span></div>
+        <div class="reports-grid" id="reportsGrid"></div>
+        <div id="reportView" style="display:none">
+          <div style="display:flex;gap:8px;margin-bottom:12px">
+            <button class="btn btn-ghost" onclick="closeReport()"><i class="fas fa-arrow-right"></i> العودة للقائمة</button>
+            <button class="btn btn-primary" onclick="refreshReport()"><i class="fas fa-sync"></i> تحديث</button>
+          </div>
+          <div class="report-content" id="reportContent"></div>
+        </div>
+      </div>
       <div class="page" id="page-settings">
         <div class="page-title">الإعدادات <span class="sub">إعدادات الموقع والتكاملات</span></div>
         <div class="settings-form">
-          <div class="field"><label>اسم الموقع</label><input type="text" id="setSiteName" placeholder="TD بالعربي"></div>
-          <div class="field"><label>وصف الموقع</label><input type="text" id="setSiteDesc" placeholder="منصة إخبارية عربية"></div>
+          <div class="section-title">الموقع</div>
+          <div class="field-row">
+            <div class="field"><label>اسم الموقع</label><input type="text" id="setSiteName" placeholder="TD بالعربي"></div>
+            <div class="field"><label>وصف الموقع</label><input type="text" id="setSiteDesc" placeholder="منصة إخبارية عربية"></div>
+          </div>
           <div class="field"><label>رابط الموقع</label><input type="url" id="setSiteUrl" placeholder="https://td-arabi.com"></div>
-          <div class="field"><label>GitHub Token <span style="font-size:.75rem;color:var(--text3)">(مطلوب للحفظ)</span></label><input type="password" id="setGhToken" placeholder="ghp_..."></div>
-          <div class="field"><label>Telegram Bot Token</label><input type="password" id="setTeleBot" placeholder="123456:ABC-DEF"></div>
-          <div class="field"><label>Telegram Channel ID</label><input type="text" id="setTeleChan" placeholder="@channel_id"></div>
-          <div class="field"><label>Gemini API Key</label><input type="password" id="setGeminiKey" placeholder="AIza..."></div>
-          <div class="field"><label>IndexNow Key</label><input type="text" id="setIndexNowKey" placeholder="30b3490761e54946bcce8a978d5d218c"></div>
-          <button class="btn btn-primary" onclick="saveSettings()">حفظ الإعدادات</button>
+          <div class="field"><label>رمز الدخول الجديد (اتركه فارغاً إذا لا تريد التغيير)</label><input type="password" id="setPassword" placeholder="كلمة المرور الجديدة" dir="ltr"></div>
+
+          <div class="section-title">التكاملات</div>
+          <div class="field"><label>GitHub Token</label><input type="password" id="setGhToken" placeholder="ghp_..." dir="ltr"></div>
+          <div class="field-row">
+            <div class="field"><label>Telegram Bot Token</label><input type="password" id="setTeleBot" placeholder="123456:ABC-DEF" dir="ltr"></div>
+            <div class="field"><label>Telegram Channel ID</label><input type="text" id="setTeleChan" placeholder="-1001234567890" dir="ltr"></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Gemini API Key</label><input type="password" id="setGeminiKey" placeholder="AIza..." dir="ltr"></div>
+            <div class="field"><label>IndexNow Key</label><input type="text" id="setIndexNowKey" placeholder="30b3490761e54946bcce8a978d5d218c" dir="ltr"></div>
+          </div>
+
+          <div class="section-title">التواصل الاجتماعي</div>
+          <div class="field-row">
+            <div class="field"><label>فيسبوك</label><input type="url" id="setFacebook" placeholder="https://facebook.com/..."></div>
+            <div class="field"><label>تويتر/X</label><input type="url" id="setTwitter" placeholder="https://x.com/..."></div>
+          </div>
+
+          <div style="margin-top:16px">
+            <button class="btn btn-primary" onclick="saveSettings()"><i class="fas fa-save"></i> حفظ الإعدادات</button>
+          </div>
         </div>
       </div>
     </main>
+  </div>
+</div>
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <h3 id="modalTitle"></h3>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-actions" id="modalActions"></div>
   </div>
 </div>
 <script>
@@ -215,11 +336,8 @@ const PER_PAGE = 20;
 let SELECTED_IDS = new Set();
 
 function sha256(str) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(str);
-  return crypto.subtle.digest('SHA-256', data).then(hash => {
-    return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2,'0')).join('');
-  });
+  return crypto.subtle.digest('SHA-256', new TextEncoder().encode(str))
+    .then(h => Array.from(new Uint8Array(h)).map(b => b.toString(16).padStart(2,'0')).join(''));
 }
 
 async function login() {
@@ -231,6 +349,7 @@ async function login() {
   if (!stored && input.value !== 'admin123') { err.style.display = 'block'; return; }
   err.style.display = 'none';
   sessionStorage.setItem('tdn_admin_token', 'authenticated');
+  if (CONFIG.ghToken) sessionStorage.setItem('gh_token', CONFIG.ghToken);
   document.getElementById('loginPage').style.display = 'none';
   document.getElementById('app').style.display = 'block';
   init();
@@ -241,12 +360,23 @@ function logout() {
   location.reload();
 }
 
-function showToast(msg, type) {
+function showToast(msg, type, duration) {
   const t = document.createElement('div');
   t.className = 'toast toast-' + type;
   t.textContent = msg;
   document.body.appendChild(t);
-  setTimeout(() => t.remove(), 3000);
+  setTimeout(() => t.remove(), duration || 3000);
+}
+
+function showModal(title, bodyHtml, actionsHtml) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalBody').innerHTML = bodyHtml;
+  document.getElementById('modalActions').innerHTML = actionsHtml || '';
+  document.getElementById('modalOverlay').style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').style.display = 'none';
 }
 
 async function ghGet(path) {
@@ -257,16 +387,16 @@ async function ghGet(path) {
 
 async function ghPut(path, content, message) {
   const token = CONFIG.ghToken || sessionStorage.getItem('gh_token') || '';
-  if (!token) throw new Error('GitHub Token is required');
+  if (!token) throw new Error('GitHub Token is required. Add it in Settings.');
   let sha = null;
   try {
-    const existing = await fetch(GH_API + '/contents/' + path, { headers: { Authorization: 'token ' + token } });
+    const existing = await fetch(GH_API + '/contents/' + path, { headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json' } });
     if (existing.ok) { const data = await existing.json(); sha = data.sha; }
   } catch(e) {}
   const body = { message: message || 'Update via admin panel', content: btoa(unescape(encodeURIComponent(content))), branch: 'main' };
   if (sha) body.sha = sha;
-  const res = await fetch(GH_API + '/contents/' + path, { method: 'PUT', headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-  if (!res.ok) { const err = await res.json(); throw new Error(err.message || 'HTTP ' + res.status); }
+  const res = await fetch(GH_API + '/contents/' + path, { method: 'PUT', headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json', Accept: 'application/vnd.github.v3+json' }, body: JSON.stringify(body) });
+  if (!res.ok) { const err = await res.json().catch(()=>({})); throw new Error(err.message || 'HTTP ' + res.status); }
   return res.json();
 }
 
@@ -275,7 +405,8 @@ async function loadConfig() {
     const res = await fetch(RAW_URL + '/admin_config.json?t=' + Date.now());
     if (res.ok) CONFIG = await res.json();
   } catch(e) { CONFIG = {}; }
-  if (!CONFIG.passwordHash && CONFIG.passwordHash !== '') CONFIG.passwordHash = '';
+  if (!CONFIG.passwordHash) CONFIG.passwordHash = '';
+  if (CONFIG.ghToken && !sessionStorage.getItem('gh_token')) sessionStorage.setItem('gh_token', CONFIG.ghToken);
 }
 
 async function loadArticles() {
@@ -288,51 +419,74 @@ async function loadArticles() {
 }
 
 async function loadCategories() {
-  try {
-    CATEGORIES = await ghGet('data/categories.json');
-  } catch(e) {
+  try { CATEGORIES = await ghGet('data/categories.json'); } catch(e) {
     try { const res = await fetch(RAW_URL + '/data/categories.json?t=' + Date.now()); if (res.ok) CATEGORIES = await res.json(); } catch(e2) {}
   }
   if (!Array.isArray(CATEGORIES)) CATEGORIES = [];
 }
 
 function getTodayStr() { return new Date().toISOString().substring(0, 10); }
+function articleDate(a) { return a.date || a.publishedAt || a.created_at || ''; }
+function articleTitle(a) { return a.title_ar || a.title || ''; }
 
 function renderDashboard() {
   const total = ARTICLES.length;
-  const today = ARTICLES.filter(a => { const d = a.date || a.publishedAt || ''; return d.substring(0, 10) === getTodayStr(); }).length;
-  const week = ARTICLES.filter(a => { const d = a.date || a.publishedAt || ''; if (!d) return false; const ts = new Date(d).getTime(); return Date.now() - ts < 7 * 86400000; }).length;
-  const month = ARTICLES.filter(a => { const d = a.date || a.publishedAt || ''; if (!d) return false; const ts = new Date(d).getTime(); return Date.now() - ts < 30 * 86400000; }).length;
-  const first = ARTICLES.length > 1 ? new Date(ARTICLES[ARTICLES.length - 1]?.date || ARTICLES[ARTICLES.length - 1]?.publishedAt || Date.now()).getTime() : Date.now();
+  const published = ARTICLES.filter(a => a.status === 'published').length;
+  const drafts = ARTICLES.filter(a => a.status === 'draft').length;
+  const today = ARTICLES.filter(a => articleDate(a).substring(0, 10) === getTodayStr()).length;
+  const week = ARTICLES.filter(a => { const d = articleDate(a); return d && (Date.now() - new Date(d).getTime()) < 7*86400000; }).length;
+  const month = ARTICLES.filter(a => { const d = articleDate(a); return d && (Date.now() - new Date(d).getTime()) < 30*86400000; }).length;
+  const first = ARTICLES.length > 0 ? new Date(articleDate(ARTICLES[ARTICLES.length-1]) || Date.now()).getTime() : Date.now();
   const daysActive = Math.max(1, (Date.now() - first) / 86400000);
   const rate = (total / daysActive).toFixed(1);
+  const avgScore = ARTICLES.filter(a => a.quality_score > 0).reduce((s,a) => s + (a.quality_score||0), 0);
+  const avgScoreDisplay = ARTICLES.filter(a => a.quality_score > 0).length > 0 ? (avgScore / ARTICLES.filter(a=>a.quality_score>0).length).toFixed(0) : '—';
+  const articlesWithImages = ARTICLES.filter(a => a.image || a.image_url).length;
+  const articlesWithSeo = ARTICLES.filter(a => a.seo_title).length;
+  const articlesWithEntities = ARTICLES.filter(a => a.primary_company || (Array.isArray(a.products) && a.products.length > 0)).length;
+
   document.getElementById('statsGrid').innerHTML =
-    '<div class="stat-card"><div class="stat-label">إجمالي المقالات</div><div class="stat-value">' + total + '</div></div>' +
-    '<div class="stat-card"><div class="stat-label">اليوم</div><div class="stat-value">' + today + '</div></div>' +
-    '<div class="stat-card"><div class="stat-label">هذا الأسبوع</div><div class="stat-value">' + week + '</div></div>' +
-    '<div class="stat-card"><div class="stat-label">هذا الشهر</div><div class="stat-value">' + month + '</div></div>' +
-    '<div class="stat-card"><div class="stat-label">معدل النشر (يوميًا)</div><div class="stat-value">' + rate + '</div></div>';
+    '<div class="stat-card"><div class="stat-label">إجمالي المقالات</div><div class="stat-value">' + total + '</div><div class="stat-sub">' + published + ' منشور، ' + drafts + ' مسودة</div></div>' +
+    '<div class="stat-card"><div class="stat-label">معدل النشر (يوميًا)</div><div class="stat-value">' + rate + '</div><div class="stat-sub">' + today + ' اليوم، ' + week + ' أسبوع، ' + month + ' شهر</div></div>' +
+    '<div class="stat-card"><div class="stat-label">متوسط الجودة</div><div class="stat-value">' + avgScoreDisplay + '</div></div>' +
+    '<div class="stat-card"><div class="stat-label">بصورة</div><div class="stat-value">' + articlesWithImages + '</div><div class="stat-sub">من ' + total + '</div></div>' +
+    '<div class="stat-card"><div class="stat-label">مع SEO</div><div class="stat-value">' + articlesWithSeo + '</div></div>' +
+    '<div class="stat-card"><div class="stat-label">مع كيانات</div><div class="stat-value">' + articlesWithEntities + '</div></div>';
+
   const catCounts = {};
   ARTICLES.forEach(a => { const c = a.categoryAr || a.category || 'أخرى'; catCounts[c] = (catCounts[c] || 0) + 1; });
   const topCats = Object.entries(catCounts).sort((a,b) => b[1] - a[1]).slice(0, 5);
-  document.getElementById('topCategories').innerHTML = topCats.length ? topCats.map(([c,n]) =>
-    '<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--bg3);font-size:.85rem"><span>' + c + '</span><span style="color:var(--text2)">' + n + '</span></div>'
-  ).join('') : '<div class="empty-state">لا توجد تصنيفات</div>';
+  document.getElementById('topCategories').innerHTML = topCats.length ?
+    topCats.map(([c,n]) => '<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--bg3);font-size:.85rem"><span>' + c + '</span><span style="color:var(--text2)">' + n + '</span></div>').join('') :
+    '<div class="empty-state">لا توجد تصنيفات</div>';
+
   const latest = ARTICLES.slice(0, 10);
-  document.getElementById('latestArticles').innerHTML = latest.length ? latest.map(a =>
-    '<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--bg3);font-size:.85rem"><span>' + (a.title_ar || a.title || '').substring(0, 40) + '</span><span style="color:var(--text2);font-size:.75rem">' + (a.date || a.publishedAt || '').substring(0, 10) + '</span></div>'
-  ).join('') : '<div class="empty-state">لا توجد مقالات</div>';
+  document.getElementById('latestArticles').innerHTML = latest.length ?
+    latest.map(a => '<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--bg3);font-size:.85rem"><span class="' + (a.status !== 'published' ? 'status-draft' : '') + '">' + articleTitle(a).substring(0, 40) + '</span><span style="color:var(--text2);font-size:.75rem">' + articleDate(a).substring(0, 10) + '</span></div>').join('') :
+    '<div class="empty-state">لا توجد مقالات</div>';
+
+  document.getElementById('quickStats').innerHTML =
+    '<div style="background:var(--bg2);padding:12px;border-radius:6px;text-align:center"><div style="font-size:1.2rem;font-weight:700;color:var(--green)">' + (ARTICLES.filter(a => a.status === 'published').length) + '</div><div style="font-size:.75rem;color:var(--text3)">منشور</div></div>' +
+    '<div style="background:var(--bg2);padding:12px;border-radius:6px;text-align:center"><div style="font-size:1.2rem;font-weight:700;color:var(--orange)">' + drafts + '</div><div style="font-size:.75rem;color:var(--text3)">مسودة</div></div>' +
+    '<div style="background:var(--bg2);padding:12px;border-radius:6px;text-align:center"><div style="font-size:1.2rem;font-weight:700;color:var(--purple)">' + CATEGORIES.length + '</div><div style="font-size:.75rem;color:var(--text3)">تصنيفات</div></div>' +
+    '<div style="background:var(--bg2);padding:12px;border-radius:6px;text-align:center"><div style="font-size:1.2rem;font-weight:700;color:var(--primary)">' + ARTICLES.reduce((s,a) => s + (Array.isArray(a.internal_links) ? a.internal_links.length : 0), 0) + '</div><div style="font-size:.75rem;color:var(--text3)">روابط داخلية</div></div>';
 }
 
 function renderArticles() {
   const search = document.getElementById('searchInput').value.toLowerCase();
   const cat = document.getElementById('catFilter').value;
   const status = document.getElementById('statusFilter').value;
+  const scoreRange = document.getElementById('scoreFilter').value;
+
   let filtered = ARTICLES.filter(a => {
-    const title = (a.title_ar || a.title || '').toLowerCase();
-    if (search && !title.includes(search)) return false;
+    const title = articleTitle(a).toLowerCase();
+    const id = (a.id || '').toLowerCase();
+    if (search && !title.includes(search) && !id.includes(search)) return false;
     if (cat && a.canonicalCategory !== cat && a.category !== cat) return false;
     if (status && a.status !== status) return false;
+    if (scoreRange === '80' && (a.quality_score||0) < 80) return false;
+    if (scoreRange === '60' && ((a.quality_score||0) < 60 || (a.quality_score||0) >= 80)) return false;
+    if (scoreRange === '0' && (a.quality_score||0) >= 60) return false;
     return true;
   });
   document.getElementById('articlesCount').textContent = '(' + filtered.length + ' مقال)';
@@ -347,26 +501,31 @@ function renderArticles() {
   }
   const tb = document.getElementById('articlesTable');
   if (!page.length) { tb.innerHTML = '<div class="empty-state">لا توجد مقالات تطابق البحث</div>'; document.getElementById('pagination').innerHTML = ''; return; }
-  tb.innerHTML = '<table><thead><tr><th style="width:30px"><input type="checkbox" onchange="toggleAll(this.checked)"></th><th style="width:50px">الصورة</th><th>العنوان</th><th>التاريخ</th><th>التصنيف</th><th>تحسين محركات</th><th>الحالة</th><th>إجراءات</th></tr></thead><tbody>' +
+  tb.innerHTML = '<table><thead><tr><th style="width:30px"><input type="checkbox" onchange="toggleAll(this.checked)"></th><th>العنوان</th><th>التاريخ</th><th>التصنيف</th><th>الجودة</th><th>الحالة</th><th>إجراءات</th></tr></thead><tbody>' +
     page.map(a => {
-      const seoScore = a.seo_score || 0;
-      const seoGrade = seoScore >= 85 ? 'A' : seoScore >= 70 ? 'B' : seoScore >= 55 ? 'C' : seoScore >= 40 ? 'D' : 'F';
+      const qs = a.quality_score || 0;
+      const qGrade = qs >= 80 ? 'A' : qs >= 60 ? 'B' : qs >= 40 ? 'C' : qs >= 20 ? 'D' : 'F';
       const gradeColors = {A:'#238636',B:'#1f6feb',C:'#d29922',D:'#db6d28',F:'#da3633'};
-      const imgUrl = a.image_url || a.image || '';
-      const imgTag = imgUrl ? '<img src="' + imgUrl + '" alt="" style="width:44px;height:32px;border-radius:4px;object-fit:cover;border:1px solid var(--bg3)" loading="lazy" onerror="this.style.display=\'none\'">' : '<span style="color:var(--text3);font-size:.7rem">—</span>';
+      const qColor = qs > 0 ? gradeColors[qGrade] || '#555' : '#555';
+      const imgs = a.image || a.image_url || '';
+      const imgTag = imgs ? '<img src="' + imgs + '" alt="" style="width:40px;height:28px;border-radius:4px;object-fit:cover;border:1px solid var(--bg3);margin-left:8px;vertical-align:middle" loading="lazy" onerror="this.style.display=\'none\'">' : '';
       return '<tr>' +
       '<td><input type="checkbox" ' + (SELECTED_IDS.has(a.id) ? 'checked' : '') + ' onchange="toggleSelect(\'' + a.id + '\',this.checked)"></td>' +
-      '<td>' + imgTag + '</td>' +
-      '<td>' + (a.title_ar || a.title || '').substring(0, 50) + '</td>' +
-      '<td style="font-size:.8rem;color:var(--text2)">' + (a.date || a.publishedAt || '').substring(0, 10) + '</td>' +
+      '<td>' + imgTag + '<span class="code" onclick="showArticleDetails(\'' + a.id + '\')">' + articleTitle(a).substring(0, 50) + '</span></td>' +
+      '<td style="font-size:.8rem;color:var(--text2)">' + articleDate(a).substring(0, 10) + '</td>' +
       '<td>' + (a.categoryAr || a.category || '—') + '</td>' +
-      '<td><span style="background:' + (gradeColors[seoGrade] || '#555') + ';color:#fff;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">' + seoGrade + ' ' + seoScore + '</span></td>' +
-      '<td class="status-' + (a.status || 'published') + '">' + (a.status === 'draft' ? 'مسودة' : 'منشور') + '</td>' +
-      '<td style="display:flex;gap:4px"><button class="btn btn-sm btn-primary" onclick="editArticle(\'' + a.id + '\')"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-danger" onclick="deleteArticle(\'' + a.id + '\')"><i class="fas fa-trash"></i></button><button class="btn btn-sm" style="background:var(--bg3);color:var(--text)" onclick="window.open(\'/article.html?id=' + a.id + '\',\'_blank\')"><i class="fas fa-external-link-alt"></i></button></td>' +
+      '<td>' + (qs > 0 ? '<span style="background:' + qColor + ';color:#fff;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">' + qGrade + ' ' + qs + '</span>' : '<span style="color:var(--text3);font-size:.75rem">—</span>') + '</td>' +
+      '<td class="status-' + (a.status || 'published') + '">' + (a.status === 'draft' ? '<i class="fas fa-pencil-alt"></i> مسودة' : '<i class="fas fa-check-circle"></i> منشور') + '</td>' +
+      '<td style="display:flex;gap:4px;flex-wrap:wrap"><button class="btn btn-sm btn-primary" onclick="editArticle(\'' + a.id + '\')" title="تعديل"><i class="fas fa-edit"></i></button>' +
+      (a.status === 'published'
+        ? '<button class="btn btn-sm btn-warning" onclick="toggleStatus(\'' + a.id + '\',\'draft\')" title="إلغاء النشر"><i class="fas fa-pause"></i></button>'
+        : '<button class="btn btn-sm btn-success" onclick="toggleStatus(\'' + a.id + '\',\'published\')" title="نشر"><i class="fas fa-play"></i></button>') +
+      '<button class="btn btn-sm btn-ghost" onclick="window.open(\'/article.html?id=' + a.id + '\',\'_blank\')" title="عرض"><i class="fas fa-external-link-alt"></i></button>' +
+      '<button class="btn btn-sm btn-danger" onclick="deleteArticle(\'' + a.id + '\')" title="حذف"><i class="fas fa-trash"></i></button></td>' +
       '</tr>';
     }).join('') + '</tbody></table>';
   let p = '';
-  for (let i = 1; i <= totalPages; i++) {
+  for (let i = 1; i <= Math.min(totalPages, 50); i++) {
     p += '<button class="' + (i === CURRENT_PAGE ? 'active' : '') + '" onclick="CURRENT_PAGE=' + i + ';renderArticles()">' + i + '</button>';
   }
   document.getElementById('pagination').innerHTML = p;
@@ -374,64 +533,139 @@ function renderArticles() {
   document.getElementById('bulkBar').style.display = SELECTED_IDS.size ? 'flex' : 'none';
 }
 
+function showArticleDetails(id) {
+  const a = ARTICLES.find(x => x.id === id);
+  if (!a) return;
+  const fields = [
+    ['المعرف', a.id],
+    ['العنوان', articleTitle(a)],
+    ['الحالة', a.status],
+    ['التصنيف', a.categoryAr || a.category],
+    ['التاريخ', articleDate(a)],
+    ['الجودة', a.quality_score || '—'],
+    ['الكلمات المفتاحية', Array.isArray(a.tags) ? a.tags.join(', ') : a.tags],
+    ['SEO Title', a.seo_title],
+    ['Meta Description', a.meta_description],
+    ['Slug', a.seo_slug],
+    ['Focus KW', a.focus_keyword],
+    ['Secondary KWs', Array.isArray(a.secondary_keywords) ? a.secondary_keywords.join(', ') : ''],
+    ['الشركة الأساسية', a.primary_company],
+    ['المنتجات', Array.isArray(a.products) ? a.products.join(', ') : ''],
+    ['التقنيات', Array.isArray(a.technologies) ? a.technologies.join(', ') : ''],
+    ['الصفحة', '<a href="/article.html?id=' + a.id + '" target="_blank">article.html?id=' + a.id + '</a>'],
+    ['الرابط', a.techdose_link ? '<a href="' + a.techdose_link + '" target="_blank">' + a.techdose_link + '</a>' : ''],
+    ['المصدر', a.source],
+    ['الرابط الأصلي', a.link ? '<a href="' + a.link + '" target="_blank">' + a.link.substring(0, 50) + '</a>' : ''],
+    ['صورة', a.image ? '<a href="' + a.image + '" target="_blank">✓</a>' : '—'],
+    ['مصدر الصورة', a.image_source || '—'],
+    ['الروابط الداخلية', Array.isArray(a.internal_links) ? a.internal_links.length + ' روابط' : '0'],
+  ];
+  const html = '<table style="font-size:.8rem"><tbody>' + fields.filter(f => f[1]).map(([k,v]) =>
+    '<tr><td style="font-weight:600;color:var(--text2);width:120px">' + k + '</td><td>' + v + '</td></tr>'
+  ).join('') + '</tbody></table>';
+  showModal('تفاصيل المقال', html, '<button class="btn btn-primary" onclick="editArticle(\'' + a.id + '\');closeModal()"><i class="fas fa-edit"></i> تعديل</button><button class="btn btn-ghost" onclick="closeModal()">إغلاق</button>');
+}
+
 function toggleAll(checked) {
   const search = document.getElementById('searchInput').value.toLowerCase();
-  const filtered = ARTICLES.filter(a => (a.title_ar || a.title || '').toLowerCase().includes(search));
+  const filtered = ARTICLES.filter(a => articleTitle(a).toLowerCase().includes(search));
   filtered.forEach(a => { if (checked) SELECTED_IDS.add(a.id); else SELECTED_IDS.delete(a.id); });
   renderArticles();
 }
 
 function toggleSelect(id, checked) { if (checked) SELECTED_IDS.add(id); else SELECTED_IDS.delete(id); renderArticles(); }
-
 function clearBulk() { SELECTED_IDS.clear(); renderArticles(); }
 
-async function bulkDelete() {
-  if (!confirm('حذف ' + SELECTED_IDS.size + ' مقال؟')) return;
-  ARTICLES = ARTICLES.filter(a => !SELECTED_IDS.has(a.id));
+async function bulkPublish() { await bulkStatus('published', 'نشر'); }
+async function bulkUnpublish() { await bulkStatus('draft', 'إلغاء نشر'); }
+
+async function bulkStatus(status, action) {
+  if (!confirm(action + ' ' + SELECTED_IDS.size + ' مقال؟')) return;
+  let changed = 0;
+  ARTICLES.forEach(a => { if (SELECTED_IDS.has(a.id) && a.status !== status) { a.status = status; changed++; } });
+  try {
+    await ghPut('data/articles/index.json', JSON.stringify(ARTICLES, null, 2), 'admin: bulk ' + status + ' ' + SELECTED_IDS.size + ' articles');
+    showToast('تم ' + action + ' ' + changed + ' مقال', 'success');
+  } catch(e) { showToast('خطأ: ' + e.message, 'error'); }
   SELECTED_IDS.clear();
-  try { await ghPut('data/articles/index.json', JSON.stringify(ARTICLES, null, 2), 'admin: bulk delete articles'); showToast('تم الحذف', 'success'); } catch(e) { showToast('خطأ في الحفظ: ' + e.message, 'error'); }
+  renderArticles();
+  renderDashboard();
+}
+
+async function bulkDelete() {
+  if (!confirm('حذف ' + SELECTED_IDS.size + ' مقال؟ هذا الإجراء لا يمكن التراجع عنه.')) return;
+  ARTICLES = ARTICLES.filter(a => !SELECTED_IDS.has(a.id));
+  const count = SELECTED_IDS.size;
+  SELECTED_IDS.clear();
+  try { await ghPut('data/articles/index.json', JSON.stringify(ARTICLES, null, 2), 'admin: bulk delete ' + count + ' articles'); showToast('تم حذف ' + count + ' مقال', 'success'); } catch(e) { showToast('خطأ في الحفظ: ' + e.message, 'error'); }
   renderDashboard();
   renderArticles();
 }
 
-function editArticle(id) {
+async function toggleStatus(id, newStatus) {
   const a = ARTICLES.find(x => x.id === id);
   if (!a) return;
+  a.status = newStatus;
+  const label = newStatus === 'published' ? 'نشر' : 'إلغاء نشر';
+  try {
+    await ghPut('data/articles/index.json', JSON.stringify(ARTICLES, null, 2), 'admin: ' + label + ' ' + id);
+    showToast('تم ' + label + ' المقال', 'success');
+  } catch(e) { showToast('خطأ: ' + e.message, 'error'); }
+  renderArticles();
+  renderDashboard();
+}
+
+function editArticle(id) {
+  const a = ARTICLES.find(x => x.id === id);
+  if (!a) { showToast('المقال غير موجود', 'error'); return; }
   document.getElementById('editId').value = id;
-  document.getElementById('articleTitle').value = a.title_ar || a.title || '';
+  document.getElementById('editOriginal').value = JSON.stringify(a);
+  document.getElementById('articleTitle').value = articleTitle(a);
   document.getElementById('articleExcerpt').value = a.excerpt || '';
   document.getElementById('articleBody').value = a.body || '';
   document.getElementById('articleCategory').value = a.canonicalCategory || a.category || '';
-  document.getElementById('articleTags').value = Array.isArray(a.tags) ? a.tags.join(', ') : (a.tags || '');
+  document.getElementById('articleTags').value = Array.isArray(a.tags) ? a.tags.join(', ') : (typeof a.tags === 'string' ? a.tags : '');
   document.getElementById('articleImage').value = a.image_url || a.image || '';
   document.getElementById('articleSource').value = a.source_link || a.link || '';
-  document.getElementById('articleDate').value = (a.date || a.publishedAt || '').substring(0, 16);
+  document.getElementById('articleSourceName').value = a.source || '';
+  document.getElementById('articleDate').value = (articleDate(a)).substring(0, 16) || new Date().toISOString().substring(0, 16);
+  document.getElementById('articleSeoTitle').value = a.seo_title || '';
+  document.getElementById('articleMetaDesc').value = a.meta_description || '';
+  document.getElementById('articleSlug').value = a.seo_slug || '';
+  document.getElementById('articleFocusKw').value = a.focus_keyword || '';
+  document.getElementById('articleSecondaryKws').value = Array.isArray(a.secondary_keywords) ? a.secondary_keywords.join(', ') : '';
+  document.getElementById('articlePrimaryCompany').value = a.primary_company || '';
+  document.getElementById('articleSecondaryCompany').value = a.secondary_company || '';
+  document.getElementById('articleProducts').value = Array.isArray(a.products) ? a.products.join(', ') : '';
+  document.getElementById('articleTechnologies').value = Array.isArray(a.technologies) ? a.technologies.join(', ') : '';
+  document.getElementById('articleAiModels').value = Array.isArray(a.ai_models) ? a.ai_models.join(', ') : '';
   const radios = document.getElementsByName('status');
-  for (const r of radios) { r.checked = (r.value === (a.status || 'published')); }
+  for (const r of radios) r.checked = (r.value === (a.status || 'published'));
   previewImage();
   renderTagPreview();
   updateCounters();
-  document.getElementById('editorTitle').innerHTML = 'تعديل المقال <span class="sub">تعديل: ' + (a.title_ar || a.title || '').substring(0, 30) + '</span>';
-  document.getElementById('saveBtn').textContent = 'تحديث المقال';
+  document.getElementById('editorTitle').innerHTML = 'تعديل المقال <span class="sub">' + articleTitle(a).substring(0, 40) + '</span>';
+  document.getElementById('saveBtn').innerHTML = '<i class="fas fa-save"></i> تحديث المقال';
+  showPage('editor');
+}
+
+function startNewArticle() {
+  resetEditor();
   showPage('editor');
 }
 
 function resetEditor() {
-  document.getElementById('editId').value = '';
-  document.getElementById('articleTitle').value = '';
-  document.getElementById('articleExcerpt').value = '';
-  document.getElementById('articleBody').value = '';
-  document.getElementById('articleCategory').value = '';
-  document.getElementById('articleTags').value = '';
-  document.getElementById('articleImage').value = '';
-  document.getElementById('articleSource').value = '';
+  ['editId','editOriginal','articleTitle','articleExcerpt','articleBody','articleTags','articleImage','articleSource','articleSourceName','articleSeoTitle','articleMetaDesc','articleSlug','articleFocusKw','articleSecondaryKws','articlePrimaryCompany','articleSecondaryCompany','articleProducts','articleTechnologies','articleAiModels'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
   document.getElementById('articleDate').value = new Date().toISOString().substring(0, 16);
   const radios = document.getElementsByName('status');
-  for (const r of radios) { r.checked = r.value === 'published'; }
+  for (const r of radios) r.checked = r.value === 'published';
   document.getElementById('imagePreview').style.display = 'none';
   document.getElementById('tagPreview').innerHTML = '';
   document.getElementById('editorTitle').innerHTML = 'محرر المقالات <span class="sub">إضافة / تعديل مقال</span>';
-  document.getElementById('saveBtn').textContent = 'حفظ المقال';
+  document.getElementById('saveBtn').innerHTML = '<i class="fas fa-save"></i> حفظ المقال';
   updateCounters();
 }
 
@@ -445,45 +679,100 @@ async function saveArticle() {
   const tags = document.getElementById('articleTags').value.split(',').map(t => t.trim()).filter(Boolean);
   const image = document.getElementById('articleImage').value.trim();
   const source = document.getElementById('articleSource').value.trim();
-  const date = document.getElementById('articleDate').value ? new Date(document.getElementById('articleDate').value).toISOString() : new Date().toISOString();
+  const sourceName = document.getElementById('articleSourceName').value.trim() || 'Tech Dose News';
+  const dateStr = document.getElementById('articleDate').value;
+  const date = dateStr ? new Date(dateStr).toISOString() : new Date().toISOString();
   const status = document.querySelector('input[name="status"]:checked')?.value || 'published';
+  const seoTitle = document.getElementById('articleSeoTitle').value.trim();
+  const metaDesc = document.getElementById('articleMetaDesc').value.trim();
+  const slug = document.getElementById('articleSlug').value.trim();
+  const focusKw = document.getElementById('articleFocusKw').value.trim();
+  const secondaryKws = document.getElementById('articleSecondaryKws').value.split(',').map(t => t.trim()).filter(Boolean);
+  const primaryCompany = document.getElementById('articlePrimaryCompany').value.trim() || null;
+  const secondaryCompany = document.getElementById('articleSecondaryCompany').value.trim() || null;
+  const products = document.getElementById('articleProducts').value.split(',').map(t => t.trim()).filter(Boolean);
+  const technologies = document.getElementById('articleTechnologies').value.split(',').map(t => t.trim()).filter(Boolean);
+  const aiModels = document.getElementById('articleAiModels').value.split(',').map(t => t.trim()).filter(Boolean);
   const catObj = CATEGORIES.find(c => c.id === category);
+  const wordCount = body.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length;
+  const readTime = Math.ceil(wordCount / 200) + ' min read';
+
   const article = {
-    id, title_ar: title, title: '', excerpt, body, category: catObj?.id || category || 'companies',
-    canonicalCategory: catObj?.id || 'companies', categoryAr: catObj?.name || 'شركات',
-    tags, image_url: image, image: image, source_link: source, date, publishedAt: date,
-    status, featured: false, source: 'Tech News', readTime: '1 min read', views: '0', hasEgyptImpact: false
+    id, title_ar: title, title: title,
+    excerpt, body: body,
+    category: catObj?.id || category || 'companies',
+    canonicalCategory: catObj?.id || 'companies',
+    categoryAr: catObj?.name || 'شركات',
+    tags,
+    image: image, image_url: image,
+    source: sourceName, source_link: source, link: source,
+    date, publishedAt: date, created_at: date,
+    status,
+    seo_title: seoTitle, meta_description: metaDesc, seo_slug: slug,
+    focus_keyword: focusKw, secondary_keywords: secondaryKws,
+    primary_company: primaryCompany, secondary_company: secondaryCompany,
+    products, technologies, ai_models: aiModels,
+    readTime,
+    techdose_link: 'https://osamaelfeky567.github.io/techdosenews/article.html?id=' + id,
+    views: '0', hasEgyptImpact: false,
+    image_source: '', image_provider: '', image_query: '', image_type: '', image_confidence: 0,
+    internal_links: [],
+    quality_score: 0
   };
+
   const idx = ARTICLES.findIndex(a => a.id === id);
-  if (idx >= 0) ARTICLES[idx] = article;
-  else ARTICLES.unshift(article);
+  if (idx >= 0) { ARTICLES[idx] = article; } else { ARTICLES.unshift(article); }
+  const op = idx >= 0 ? 'update' : 'create';
   try {
-    await ghPut('data/articles/index.json', JSON.stringify(ARTICLES, null, 2), 'admin: ' + (idx >= 0 ? 'update' : 'create') + ' article - ' + title.substring(0, 50));
-    showToast(idx >= 0 ? 'تم تحديث المقال' : 'تم إضافة المقال', 'success');
+    await ghPut('data/articles/index.json', JSON.stringify(ARTICLES, null, 2), 'admin: ' + op + ' article - ' + title.substring(0, 50));
+    showToast('تم ' + (idx >= 0 ? 'تحديث' : 'إضافة') + ' المقال', 'success');
     renderDashboard();
+    renderArticles();
     resetEditor();
     showPage('articles');
   } catch(e) { showToast('خطأ في الحفظ: ' + e.message, 'error'); }
 }
 
 async function deleteArticle(id) {
-  if (!confirm('حذف هذا المقال؟')) return;
+  showModal('تأكيد الحذف', 'هل أنت متأكد من حذف هذا المقال؟ لا يمكن التراجع عن هذا الإجراء.',
+    '<button class="btn btn-danger" onclick="confirmDelete(\'' + id + '\')"><i class="fas fa-trash"></i> حذف</button><button class="btn btn-ghost" onclick="closeModal()">إلغاء</button>');
+}
+
+async function confirmDelete(id) {
+  closeModal();
   ARTICLES = ARTICLES.filter(a => a.id !== id);
-  try {
-    await ghPut('data/articles/index.json', JSON.stringify(ARTICLES, null, 2), 'admin: delete article ' + id);
-    showToast('تم الحذف', 'success');
-  } catch(e) { showToast('خطأ في الحفظ: ' + e.message, 'error'); }
+  try { await ghPut('data/articles/index.json', JSON.stringify(ARTICLES, null, 2), 'admin: delete article ' + id); showToast('تم الحذف', 'success'); } catch(e) { showToast('خطأ في الحفظ: ' + e.message, 'error'); }
   renderDashboard();
   renderArticles();
 }
 
+function previewArticle() {
+  const title = document.getElementById('articleTitle').value.trim();
+  const excerpt = document.getElementById('articleExcerpt').value.trim();
+  const body = document.getElementById('articleBody').value.trim();
+  const image = document.getElementById('articleImage').value.trim();
+  const tags = document.getElementById('articleTags').value.split(',').map(t => t.trim()).filter(Boolean);
+  const date = document.getElementById('articleDate').value;
+  const cat = document.getElementById('articleCategory').value;
+  const catObj = CATEGORIES.find(c => c.id === cat);
+  const pw = window.open('', '_blank');
+  if (!pw) { showToast('الرجاء السماح للنوافذ المنبثقة', 'error'); return; }
+  pw.document.write('<!DOCTYPE html><html dir="rtl" lang="ar"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>' + title + ' — معاينة</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet"><style>body{background:#f4f6f7;color:#1a252f;font-family:"Cairo",sans-serif;line-height:1.8;padding:20px;max-width:800px;margin:0 auto}img{max-width:100%;border-radius:8px;margin:16px 0}h1{font-size:1.6rem;line-height:1.4;margin-bottom:8px}.meta{color:#7f8c8d;font-size:.85rem;margin-bottom:16px}.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}.tags span{background:#e8e8e8;padding:4px 12px;border-radius:4px;font-size:.8rem}.excerpt{font-size:1.05rem;color:#555;border-right:3px solid #2e86c1;padding-right:12px;margin-bottom:20px}.body{font-size:1rem}.body p{margin-bottom:16px}.notice{background:#ffeaa7;padding:12px;border-radius:8px;font-size:.85rem;margin-bottom:20px;text-align:center}</style></head><body><div class="notice"><strong>⚠️ معاينة</strong> — هذه المعاينة قد تختلف عن الشكل النهائي في الموقع</div>' +
+    (image ? '<img src="' + image + '" alt="" onerror="this.style.display=\'none\'">' : '') +
+    '<h1>' + title + '</h1>' +
+    '<div class="meta">' + (catObj ? catObj.name : cat) + ' &middot; ' + (date ? new Date(date).toLocaleDateString('ar-EG') : '') + '</div>' +
+    '<div class="tags">' + tags.map(t => '<span>' + t + '</span>').join('') + '</div>' +
+    (excerpt ? '<div class="excerpt">' + excerpt + '</div>' : '') +
+    '<div class="body">' + body + '</div>' +
+    '</body></html>');
+  pw.document.close();
+}
+
 function updateCounters() {
-  const t = document.getElementById('articleTitle').value.length;
-  document.getElementById('titleCounter').textContent = t + '/60';
-  const e = document.getElementById('articleExcerpt').value.length;
-  document.getElementById('excerptCounter').textContent = e + '/160';
-  const b = document.getElementById('articleBody').value.trim().split(/\s+/).filter(Boolean).length;
-  document.getElementById('bodyCounter').textContent = b + ' كلمة';
+  document.getElementById('titleCounter').textContent = document.getElementById('articleTitle').value.length + '/60';
+  document.getElementById('excerptCounter').textContent = document.getElementById('articleExcerpt').value.length + '/160';
+  const wc = document.getElementById('articleBody').value.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length;
+  document.getElementById('bodyCounter').textContent = wc + ' كلمة';
 }
 
 function renderTagPreview() {
@@ -494,14 +783,20 @@ function renderTagPreview() {
 function previewImage() {
   const url = document.getElementById('articleImage').value.trim();
   const img = document.getElementById('imagePreview');
-  if (url) { img.src = url; img.style.display = 'block'; } else { img.style.display = 'none'; }
+  if (url) { img.src = url; img.style.display = 'block'; img.onerror = function(){ img.style.display = 'none'; }; } else { img.style.display = 'none'; }
+}
+
+function toggleSection(el) {
+  el.classList.toggle('collapsed');
+  const body = el.nextElementSibling;
+  if (body) body.classList.toggle('hidden');
 }
 
 function renderCategories() {
   const catCounts = {};
   ARTICLES.forEach(a => { const c = a.canonicalCategory || a.category || ''; if (c) catCounts[c] = (catCounts[c] || 0) + 1; });
   document.getElementById('catList').innerHTML = CATEGORIES.map(c =>
-    '<div class="cat-card"><div class="cat-info"><div class="cat-color" style="background:' + (c.color || '#3b82f6') + '"></div><div><div class="cat-name">' + c.name + '</div><div class="cat-count">' + (catCounts[c.id] || 0) + ' مقال</div></div></div><button class="btn btn-sm btn-danger" onclick="deleteCategory(\'' + c.id + '\')"><i class="fas fa-trash"></i></button></div>'
+    '<div class="cat-card"><div class="cat-info"><div class="cat-color" style="background:' + (c.color || '#3b82f6') + '"></div><div><div class="cat-name">' + c.name + '</div><div class="cat-count">' + (catCounts[c.id] || 0) + ' مقال</div></div></div><button class="btn btn-sm" style="background:var(--orange);color:#fff" onclick="editCategory(\'' + c.id + '\')" title="تعديل"><i class="fas fa-pen"></i></button><button class="btn btn-sm btn-danger" onclick="deleteCategory(\'' + c.id + '\')" title="حذف"><i class="fas fa-trash"></i></button></div>'
   ).join('');
 }
 
@@ -517,7 +812,31 @@ async function addCategory() {
     showToast('تم إضافة التصنيف', 'success');
     document.getElementById('newCatName').value = '';
     renderCategories();
+    populateCategorySelect();
   } catch(e) { showToast('خطأ في الحفظ: ' + e.message, 'error'); CATEGORIES.pop(); }
+}
+
+function editCategory(id) {
+  const c = CATEGORIES.find(x => x.id === id);
+  if (!c) return;
+  const newName = prompt('الاسم الجديد للتصنيف:', c.name);
+  if (!newName || newName === c.name) return;
+  const oldId = c.id;
+  const newId = newName.replace(/\s+/g, '-').toLowerCase();
+  if (newId !== oldId && CATEGORIES.find(x => x.id === newId)) { showToast('تصنيف بهذا الاسم موجود', 'error'); return; }
+  c.name = newName;
+  c.id = newId;
+  ARTICLES.forEach(a => { if (a.canonicalCategory === oldId || a.category === oldId) { a.canonicalCategory = newId; a.category = newId; a.categoryAr = newName; } });
+  (async () => {
+    try {
+      await ghPut('data/categories.json', JSON.stringify(CATEGORIES, null, 2), 'admin: rename category ' + oldId + ' to ' + newId);
+      await ghPut('data/articles/index.json', JSON.stringify(ARTICLES, null, 2), 'admin: update category references ' + oldId);
+      showToast('تم تعديل التصنيف', 'success');
+      renderCategories();
+      populateCategorySelect();
+      renderArticles();
+    } catch(e) { showToast('خطأ: ' + e.message, 'error'); }
+  })();
 }
 
 async function deleteCategory(id) {
@@ -527,7 +846,318 @@ async function deleteCategory(id) {
     await ghPut('data/categories.json', JSON.stringify(CATEGORIES, null, 2), 'admin: delete category ' + id);
     showToast('تم الحذف', 'success');
     renderCategories();
+    populateCategorySelect();
   } catch(e) { showToast('خطأ في الحفظ: ' + e.message, 'error'); }
+}
+
+/* ───── Reports ───── */
+const REPORTS = [
+  { id: 'articles_inventory', icon: 'fa-list', name: 'articles_inventory.md', desc: 'فهرس جميع المقالات مع التفاصيل الكاملة' },
+  { id: 'image_inventory', icon: 'fa-images', name: 'image_inventory.md', desc: 'فحص الصور: مكررة، محطمة، مفقودة، دقة منخفضة' },
+  { id: 'seo_audit', icon: 'fa-search', name: 'seo_audit.md', desc: 'تدقيق تحسين محركات البحث لجميع المقالات' },
+  { id: 'sitemap_audit', icon: 'fa-sitemap', name: 'sitemap_audit.md', desc: 'التحقق من وجود جميع المقالات في sitemap.xml' },
+  { id: 'content_quality', icon: 'fa-star', name: 'content_quality.md', desc: 'تحليل جودة المحتوى والتوزيع الإحصائي' },
+  { id: 'internal_links', icon: 'fa-link', name: 'internal_links.md', desc: 'تدقيق الروابط الداخلية بين المقالات' },
+  { id: 'deployment_status', icon: 'fa-rocket', name: 'deployment_status.md', desc: 'حالة النشر على GitHub Pages' },
+  { id: 'github_status', icon: 'fa-github', name: 'github_status.md', desc: 'حالة مستودع GitHub والملفات' },
+  { id: 'telegram_status', icon: 'fa-telegram', name: 'telegram_status.md', desc: 'حالة تكامل التليجرام' },
+];
+
+let ACTIVE_REPORT = '';
+
+function renderReports() {
+  document.getElementById('reportsGrid').innerHTML = REPORTS.map(r =>
+    '<div class="report-card" onclick="openReport(\'' + r.id + '\')"><div class="r-icon"><i class="fas ' + r.icon + '"></i></div><div class="r-name">' + r.name + '</div><div class="r-desc">' + r.desc + '</div></div>'
+  ).join('');
+}
+
+async function openReport(reportId) {
+  ACTIVE_REPORT = reportId;
+  document.getElementById('reportView').style.display = 'block';
+  document.getElementById('reportsGrid').style.display = 'none';
+  document.getElementById('reportContent').style.display = 'block';
+  document.getElementById('reportContent').innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> جاري إنشاء التقرير...</div>';
+  try {
+    const markdown = await generateReport(reportId);
+    document.getElementById('reportContent').innerHTML = '<pre>' + escapeHtml(markdown) + '</pre>';
+  } catch(e) {
+    document.getElementById('reportContent').innerHTML = '<div class="empty-state">خطأ في إنشاء التقرير: ' + escapeHtml(e.message) + '</div>';
+  }
+}
+
+function closeReport() {
+  ACTIVE_REPORT = '';
+  document.getElementById('reportView').style.display = 'none';
+  document.getElementById('reportsGrid').style.display = 'grid';
+}
+
+async function refreshReport() {
+  if (ACTIVE_REPORT) await openReport(ACTIVE_REPORT);
+}
+
+function escapeHtml(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+async function generateReport(reportId) {
+  switch(reportId) {
+    case 'articles_inventory': return generateArticlesInventory();
+    case 'image_inventory': return generateImageInventory();
+    case 'seo_audit': return generateSeoAudit();
+    case 'sitemap_audit': return generateSitemapAudit();
+    case 'content_quality': return generateContentQuality();
+    case 'internal_links': return generateInternalLinks();
+    case 'deployment_status': return generateDeploymentStatus();
+    case 'github_status': return generateGitHubStatus();
+    case 'telegram_status': return generateTelegramStatus();
+    default: return '# تقرير غير معروف';
+  }
+}
+
+function generateArticlesInventory() {
+  let md = '# فهرس المقالات\n\nآخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n| # | المعرف | العنوان | التاريخ | التصنيف | الوسوم | الصورة | الكلمات | الجودة | SEO | الحالة |\n|---|---|---|---|---|---|---|---|---|---|---|\n';
+  ARTICLES.forEach((a, i) => {
+    const title = articleTitle(a).replace(/\|/g, '\\|');
+    const tags = Array.isArray(a.tags) ? a.tags.join(', ') : (a.tags || '');
+    const date = articleDate(a).substring(0, 10);
+    const wc = (a.body || '').replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length;
+    const img = a.image || a.image_url || '';
+    const imgFile = img ? img.split('/').pop() : '—';
+    md += '| ' + (i+1) + ' | ' + a.id + ' | ' + title + ' | ' + date + ' | ' + (a.categoryAr || a.category || '') + ' | ' + tags + ' | ' + imgFile + ' | ' + wc + ' | ' + (a.quality_score || '—') + ' | ' + (a.seo_title ? '✓' : '✗') + ' | ' + (a.status || 'published') + ' |\n';
+  });
+  md += '\n---\n' + ARTICLES.length + ' مقال\n';
+  return md;
+}
+
+function generateImageInventory() {
+  let md = '# فحص الصور\n\nآخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  let missing = 0, withImage = 0, pexels = 0, unsplash = 0, other = 0;
+  const imgMap = {};
+  ARTICLES.filter(a => a.status === 'published').forEach(a => {
+    const img = a.image || a.image_url || '';
+    if (!img) { missing++; return; }
+    withImage++;
+    if (a.image_source === 'pexels' || a.image_provider === 'pexels') pexels++;
+    else if (a.image_source === 'unsplash' || a.image_provider === 'unsplash') unsplash++;
+    else other++;
+    imgMap[img] = (imgMap[img] || 0) + 1;
+  });
+
+  md += '## إحصائيات\n\n';
+  md += '- إجمالي المقالات المنشورة: ' + ARTICLES.filter(a => a.status === 'published').length + '\n';
+  md += '- مقالات بدون صورة: ' + missing + '\n';
+  md += '- مقالات مع صورة: ' + withImage + '\n';
+  md += '- صور Pexels: ' + pexels + '\n';
+  md += '- صور Unsplash: ' + unsplash + '\n';
+  md += '- مصادر أخرى: ' + other + '\n';
+
+  const dups = Object.entries(imgMap).filter(([,c]) => c > 1);
+  if (dups.length > 0) {
+    md += '\n## صور مكررة\n\n';
+    dups.forEach(([url, count]) => { md += '- "' + url.substring(0, 80) + '" مستخدمة ' + count + ' مرات\n'; });
+  } else { md += '\n## صور مكررة\n\nلا توجد صور مكررة\n'; }
+
+  md += '\n## مقالات بدون صور\n\n';
+  ARTICLES.filter(a => a.status === 'published' && !a.image && !a.image_url).slice(0, 20).forEach(a => {
+    md += '- ' + articleTitle(a) + ' (معرف: ' + a.id + ')\n';
+  });
+
+  return md;
+}
+
+function generateSeoAudit() {
+  let md = '# تدقيق تحسين محركات البحث (SEO)\n\nآخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  const withSeoTitle = ARTICLES.filter(a => a.seo_title).length;
+  const withMetaDesc = ARTICLES.filter(a => a.meta_description).length;
+  const withFocusKw = ARTICLES.filter(a => a.focus_keyword).length;
+  const withSlug = ARTICLES.filter(a => a.seo_slug).length;
+  md += '## إحصائيات عامة\n\n';
+  md += '- إجمالي المقالات: ' + ARTICLES.length + '\n';
+  md += '- مع SEO Title: ' + withSeoTitle + ' (' + (ARTICLES.length ? (withSeoTitle/ARTICLES.length*100).toFixed(0) : 0) + '%)\n';
+  md += '- مع Meta Description: ' + withMetaDesc + ' (' + (ARTICLES.length ? (withMetaDesc/ARTICLES.length*100).toFixed(0) : 0) + '%)\n';
+  md += '- مع Focus Keyword: ' + withFocusKw + ' (' + (ARTICLES.length ? (withFocusKw/ARTICLES.length*100).toFixed(0) : 0) + '%)\n';
+  md += '- مع Slug: ' + withSlug + ' (' + (ARTICLES.length ? (withSlug/ARTICLES.length*100).toFixed(0) : 0) + '%)\n';
+
+  md += '\n## مقالات بدون SEO Title\n\n';
+  ARTICLES.filter(a => !a.seo_title && a.status === 'published').slice(0, 15).forEach(a => {
+    md += '- ' + articleTitle(a) + ' (' + a.id + ')\n';
+  });
+
+  md += '\n## مقالات بدون Focus Keyword\n\n';
+  ARTICLES.filter(a => !a.focus_keyword && a.status === 'published').slice(0, 15).forEach(a => {
+    md += '- ' + articleTitle(a) + ' (' + a.id + ')\n';
+  });
+
+  return md;
+}
+
+function generateSitemapAudit() {
+  let md = '# تدقيق خريطة الموقع (Sitemap)\n\nآخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  const published = ARTICLES.filter(a => a.status === 'published');
+  md += '## المقالات المنشورة\n\n';
+  md += '- عدد المقالات المنشورة: ' + published.length + '\n';
+  md += '- عدد المقالات في index.json: ' + ARTICLES.length + '\n\n';
+
+  const baseUrl = CONFIG.siteUrl || 'https://td-arabi.com';
+  md += '## مواقع المقالات\n\n';
+  published.forEach(a => {
+    const url = baseUrl + '/article.html?id=' + a.id;
+    md += '- [' + articleTitle(a) + '](' + url + ') — ' + articleDate(a).substring(0, 10) + '\n';
+  });
+
+  md += '\n## sitemap.xml المتوقع\n\n';
+  md += '```xml\n<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+  md += '  <url><loc>' + baseUrl + '/</loc><priority>1.0</priority></url>\n';
+  published.slice(0, 5).forEach(a => {
+    md += '  <url><loc>' + baseUrl + '/article.html?id=' + a.id + '</loc><lastmod>' + articleDate(a).substring(0, 10) + '</lastmod><priority>0.8</priority></url>\n';
+  });
+  md += '  <!-- ... ' + Math.max(0, published.length - 5) + ' more articles ... -->\n';
+  md += '</urlset>\n```\n';
+
+  return md;
+}
+
+function generateContentQuality() {
+  let md = '# تحليل جودة المحتوى\n\nآخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  const scored = ARTICLES.filter(a => a.quality_score > 0);
+  const scores = scored.map(a => a.quality_score).sort((a,b) => a-b);
+  if (scores.length > 0) {
+    const avg = scores.reduce((a,b) => a+b, 0) / scores.length;
+    const mid = Math.floor(scores.length/2);
+    const median = scores.length % 2 ? scores[mid] : (scores[mid-1] + scores[mid]) / 2;
+    md += '## إحصائيات الجودة\n\n';
+    md += '- المقالات المقيمة: ' + scores.length + '\n';
+    md += '- متوسط الجودة: ' + avg.toFixed(1) + '\n';
+    md += '- الوسيط: ' + median + '\n';
+    md += '- الأعلى: ' + Math.max(...scores) + '\n';
+    md += '- الأدنى: ' + Math.min(...scores) + '\n';
+
+    md += '\n## توزيع الجودة\n\n';
+    const buckets = {'90-100':0,'80-89':0,'70-79':0,'60-69':0,'50-59':0,'40-49':0,'30-39':0,'20-29':0,'10-19':0,'0-9':0};
+    for (const s of scores) {
+      if (s >= 90) buckets['90-100']++;
+      else if (s >= 80) buckets['80-89']++;
+      else if (s >= 70) buckets['70-79']++;
+      else if (s >= 60) buckets['60-69']++;
+      else if (s >= 50) buckets['50-59']++;
+      else if (s >= 40) buckets['40-49']++;
+      else if (s >= 30) buckets['30-39']++;
+      else if (s >= 20) buckets['20-29']++;
+      else if (s >= 10) buckets['10-19']++;
+      else buckets['0-9']++;
+    }
+    for (const [k,v] of Object.entries(buckets)) {
+      if (v > 0) md += '- ' + k + ': ' + v + '\n';
+    }
+
+    md += '\n## توزيع أطوال المقالات\n\n';
+    const lengths = ARTICLES.map(a => (a.body || '').replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length).filter(l => l > 0);
+    if (lengths.length > 0) {
+      const lAvg = lengths.reduce((a,b) => a+b, 0) / lengths.length;
+      md += '- متوسط عدد الكلمات: ' + lAvg.toFixed(0) + '\n';
+      md += '- الأقصر: ' + Math.min(...lengths) + '\n';
+      md += '- الأطول: ' + Math.max(...lengths) + '\n';
+    }
+  } else {
+    md += 'لا توجد مقالات مقيمة بعد.\n';
+  }
+  return md;
+}
+
+function generateInternalLinks() {
+  let md = '# تدقيق الروابط الداخلية\n\nآخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  let totalLinks = 0;
+  const linked = ARTICLES.filter(a => {
+    const links = Array.isArray(a.internal_links) ? a.internal_links.length : 0;
+    totalLinks += links;
+    return links > 0;
+  });
+  md += '## إحصائيات\n\n';
+  md += '- المقالات الكلية: ' + ARTICLES.length + '\n';
+  md += '- مقالات بروابط داخلية: ' + linked.length + '\n';
+  md += '- إجمالي الروابط الداخلية: ' + totalLinks + '\n';
+  md += '- متوسط الروابط لكل مقال: ' + (ARTICLES.length ? (totalLinks / ARTICLES.length).toFixed(1) : 0) + '\n';
+
+  md += '\n## مقالات بدون روابط داخلية\n\n';
+  ARTICLES.filter(a => !Array.isArray(a.internal_links) || a.internal_links.length === 0).slice(0, 20).forEach(a => {
+    md += '- ' + articleTitle(a) + ' (' + a.id + ')\n';
+  });
+
+  return md;
+}
+
+function generateDeploymentStatus() {
+  let md = '# حالة النشر\n\nآخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  md += '## GitHub Pages\n\n';
+  md += '- المستودع: ' + GH_OWNER + '/' + GH_REPO + '\n';
+  md += '- رابط الموقع: ' + (CONFIG.siteUrl || 'https://osamaelfeky567.github.io/techdosenews') + '\n';
+  md += '- حالة النشر: عند الدفع إلى main يتم النشر تلقائياً\n';
+  md += '- حالة آخر نشر: متوقع (تم الدفع إلى main مؤخراً)\n';
+
+  md += '\n## الملفات\n\n';
+  md += '- index.json: ' + ARTICLES.length + ' مقال\n';
+  md += '- categories.json: ' + CATEGORIES.length + ' تصنيف\n';
+  md += '- admin_config.json: إعدادات محفوظة\n';
+
+  return md;
+}
+
+function generateGitHubStatus() {
+  let md = '# حالة GitHub\n\nآخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  md += '## المستودع\n\n';
+  md += '- المالك: ' + GH_OWNER + '\n';
+  md += '- المستودع: ' + GH_REPO + '\n';
+  md += '- الرابط: https://github.com/' + GH_OWNER + '/' + GH_REPO + '\n';
+  md += '- الفرع الرئيسي: main\n';
+
+  const ghToken = CONFIG.ghToken || sessionStorage.getItem('gh_token') || '';
+  md += '- حالة التوكن: ' + (ghToken ? 'موجود' : 'مفقود') + '\n';
+
+  md += '\n## الملفات في المستودع\n\n';
+  md += '- `admin/index.html` — لوحة التحكم\n';
+  md += '- `data/articles/index.json` — جميع المقالات\n';
+  md += '- `data/categories.json` — التصنيفات\n';
+  md += '- `admin_config.json` — إعدادات الموقع\n';
+  md += '- `index.html` — الصفحة الرئيسية\n';
+  md += '- `article.html` — صفحة المقال\n';
+  md += '- `style.css` — التنسيقات\n';
+  md += '- `script.js` — جافاسكريبت الموقع\n';
+  md += '- `robots.txt` — إرشادات محركات البحث\n';
+
+  return md;
+}
+
+function generateTelegramStatus() {
+  let md = '# حالة التليجرام\n\nآخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  const botToken = CONFIG.telegramBotToken || '';
+  const channelId = CONFIG.telegramChannelId || '';
+  md += '## الإعدادات\n\n';
+  md += '- Bot Token: ' + (botToken ? 'موجود (' + botToken.substring(0, 8) + '...)' : 'مفقود') + '\n';
+  md += '- Channel ID: ' + (channelId || 'غير مضبوط') + '\n';
+  md += '- القناة: ' + (CONFIG.telegram_channel || 'غير مضبوطة') + '\n';
+
+  md += '\n## الحالة\n\n';
+  md += '- النشر التلقائي إلى تليجرام: ' + (botToken && channelId ? 'مفعل (عبر n8n)' : 'غير مفعل') + '\n';
+  md += '- مقالات آخر 7 أيام مرسلة إلى تليجرام: ' + ARTICLES.filter(a => {
+    const d = articleDate(a);
+    return d && (Date.now() - new Date(d).getTime()) < 7*86400000;
+  }).length + '\n';
+
+  return md;
+}
+
+/* ───── Settings ───── */
+
+function loadSettings() {
+  document.getElementById('setSiteName').value = CONFIG.siteName || '';
+  document.getElementById('setSiteDesc').value = CONFIG.siteDesc || '';
+  document.getElementById('setSiteUrl').value = CONFIG.siteUrl || 'https://td-arabi.com';
+  document.getElementById('setGhToken').value = CONFIG.ghToken || '';
+  document.getElementById('setTeleBot').value = CONFIG.telegramBotToken || '';
+  document.getElementById('setTeleChan').value = CONFIG.telegramChannelId || '';
+  document.getElementById('setGeminiKey').value = CONFIG.geminiKey || '';
+  document.getElementById('setIndexNowKey').value = CONFIG.indexNowKey || '';
+  document.getElementById('setFacebook').value = CONFIG.facebook || '';
+  document.getElementById('setTwitter').value = CONFIG.twitter || '';
+  document.getElementById('setPassword').value = '';
 }
 
 async function saveSettings() {
@@ -539,25 +1169,18 @@ async function saveSettings() {
     telegramBotToken: document.getElementById('setTeleBot').value.trim(),
     telegramChannelId: document.getElementById('setTeleChan').value.trim(),
     geminiKey: document.getElementById('setGeminiKey').value.trim(),
-    indexNowKey: document.getElementById('setIndexNowKey').value.trim()
+    indexNowKey: document.getElementById('setIndexNowKey').value.trim(),
+    facebook: document.getElementById('setFacebook').value.trim(),
+    twitter: document.getElementById('setTwitter').value.trim()
   };
+  const newPw = document.getElementById('setPassword').value.trim();
   Object.assign(CONFIG, fields);
+  if (newPw) { CONFIG.passwordHash = await sha256(newPw); }
   if (fields.ghToken) sessionStorage.setItem('gh_token', fields.ghToken);
   try {
     await ghPut('admin_config.json', JSON.stringify(CONFIG, null, 2), 'admin: update settings');
     showToast('تم حفظ الإعدادات', 'success');
   } catch(e) { showToast('خطأ في الحفظ: ' + e.message, 'error'); }
-}
-
-function loadSettings() {
-  document.getElementById('setSiteName').value = CONFIG.siteName || '';
-  document.getElementById('setSiteDesc').value = CONFIG.siteDesc || '';
-  document.getElementById('setSiteUrl').value = CONFIG.siteUrl || 'https://td-arabi.com';
-  document.getElementById('setGhToken').value = CONFIG.ghToken || '';
-  document.getElementById('setTeleBot').value = CONFIG.telegramBotToken || '';
-  document.getElementById('setTeleChan').value = CONFIG.telegramChannelId || '';
-  document.getElementById('setGeminiKey').value = CONFIG.geminiKey || '';
-  document.getElementById('setIndexNowKey').value = CONFIG.indexNowKey || '';
 }
 
 function populateCategorySelect() {
@@ -570,12 +1193,13 @@ function showPage(name) {
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('page-' + name).classList.add('active');
   document.querySelector('[data-page="' + name + '"]')?.classList.add('active');
+  if (name === 'reports') renderReports();
 }
 
 async function init() {
+  document.getElementById('headerDate').textContent = new Date().toLocaleDateString('ar-EG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
   await loadArticles();
   await loadCategories();
-  document.getElementById('headerDate').textContent = new Date().toLocaleDateString('ar-EG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
   populateCategorySelect();
   loadSettings();
   renderDashboard();
@@ -586,16 +1210,14 @@ async function init() {
 
 (async function() {
   await loadConfig();
+  if (CONFIG.ghToken) sessionStorage.setItem('gh_token', CONFIG.ghToken);
   const authed = sessionStorage.getItem('tdn_admin_token');
   if (authed) {
     document.getElementById('loginPage').style.display = 'none';
     document.getElementById('app').style.display = 'block';
     init();
   } else {
-    if (!CONFIG.passwordHash) {
-      const h = await sha256('admin123');
-      CONFIG.passwordHash = h;
-    }
+    if (!CONFIG.passwordHash) CONFIG.passwordHash = await sha256('admin123');
   }
 })();
 </script>

@@ -1,563 +1,527 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-  <url>
-    <loc>https://td-arabi.com/</loc>
-    <lastmod>2026-07-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://td-arabi.com/about.html</loc>
-    <lastmod>2026-07-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://td-arabi.com/contact.html</loc>
-    <lastmod>2026-07-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://td-arabi.com/privacy.html</loc>
-    <lastmod>2026-07-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://td-arabi.com/terms.html</loc>
-    <lastmod>2026-07-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://td-arabi.com/disclaimer.html</loc>
-    <lastmod>2026-07-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://td-arabi.com/editorial-policy.html</loc>
-    <lastmod>2026-07-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  <url><loc>https://td-arabi.com/</loc><changefreq>hourly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://td-arabi.com/about.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://td-arabi.com/contact.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://td-arabi.com/privacy.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://td-arabi.com/terms.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://td-arabi.com/disclaimer.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://td-arabi.com/editorial-policy.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1783074620829-roxois</loc>
     <lastmod>2026-07-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-07-03</news:publication_date>
+      <news:publication_date>2026-07-03T10:32:02.048Z</news:publication_date>
       <news:title>ثغرة آيفون تفضح بريدك الإلكتروني المخفي</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782855042504-zoqfjx</loc>
     <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-30</news:publication_date>
+      <news:publication_date>2026-06-30T21:31:04.537Z</news:publication_date>
       <news:title>تسريبات: أداء شريحة Kirin 2026 Pro الجديدة يقترب من قدرات Apple A19</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782851422028-wd0upi</loc>
     <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-30</news:publication_date>
+      <news:publication_date>2026-06-30T20:30:35.195Z</news:publication_date>
       <news:title>تحديث iOS 26.5.2: آبل تحذر من 25 ثغرة أمنية خطيرة في آيفون</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782846021198-huyo37</loc>
     <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-30</news:publication_date>
+      <news:publication_date>2026-06-30T19:00:32.190Z</news:publication_date>
       <news:title>هاتف iPhone Ultra القابل للطي يظهر بتصميم يشبه Galaxy Z Fold7</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782844220939-ujf0au</loc>
     <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-30</news:publication_date>
+      <news:publication_date>2026-06-30T18:31:06.488Z</news:publication_date>
       <news:title>تطبيق OpenClaw يصل إلى هواتف آيفون وأندرويد</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782842421134-frcug3</loc>
     <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-30</news:publication_date>
+      <news:publication_date>2026-06-30T18:00:24.102Z</news:publication_date>
       <news:title>حجز اسم المستخدم في واتساب: ماذا يعني؟</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782838821208-wm1d0s</loc>
     <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-30</news:publication_date>
+      <news:publication_date>2026-06-30T17:00:29.282Z</news:publication_date>
       <news:title>OpenAI سرقت مهندس نظارات آبل</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782837020797-9f7fje</loc>
     <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-30</news:publication_date>
+      <news:publication_date>2026-06-30T16:31:06.155Z</news:publication_date>
       <news:title>DLSS في يونيو: قائمة الألعاب الجديدة التي تدعم تقنية DLSS</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782835221453-0ztowt</loc>
     <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-30</news:publication_date>
+      <news:publication_date>2026-06-30T16:00:34.047Z</news:publication_date>
       <news:title>آبل تتخلى عن رقاقة M6 Pro/Max وتتجه نحو سلسلة M7</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782833421161-39vesg</loc>
     <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-30</news:publication_date>
+      <news:publication_date>2026-06-30T15:30:25.963Z</news:publication_date>
       <news:title>دعوى قضائية ضد سامسونغ وإس كيه هاينكس وميكرون بتهمة التلاعب بأسعار ذاكرة DRAM</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782829820753-cn5q5j</loc>
     <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-30</news:publication_date>
+      <news:publication_date>2026-06-30T14:30:24.466Z</news:publication_date>
       <news:title>سوني في مأزق: جهاز الكونسول PS6 قد يباع بسعر يصل إلى 1000 دولار!</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782829711421-lm1pna</loc>
     <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-30</news:publication_date>
+      <news:publication_date>2026-06-30T14:28:40.149Z</news:publication_date>
       <news:title>جهاز PlayStation 6: هل سيتمكن من تجربة لعب متنقلة؟</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782829609967-gl611i</loc>
     <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-30</news:publication_date>
+      <news:publication_date>2026-06-30T14:26:52.957Z</news:publication_date>
       <news:title>6 مميزات مفيدة في iOS 27 بعيدًا عن الذكاء الاصطناعي</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782828451563-hsokcv</loc>
     <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-30</news:publication_date>
+      <news:publication_date>2026-06-30T14:07:36.467Z</news:publication_date>
       <news:title>Xiaomi 18 Pro Max: تفاصيل هاتف جديد يتنافس مع الأفضل</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782824333688-zrw5x5</loc>
     <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-30</news:publication_date>
+      <news:publication_date>2026-06-30T12:58:57.854Z</news:publication_date>
       <news:title>شركة Valve تُجبر dbrand على سحب غطاء الحماية لمنصة Steam Machine</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782662429368-k8h9dj</loc>
     <lastmod>2026-06-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-28</news:publication_date>
+      <news:publication_date>2026-06-28T16:00:32.342Z</news:publication_date>
       <news:title>لماذا يعتقد وول ستريت أن شركة ميكرون الأمريكية لصناعة الذاكرة هي النڤيديا التالية</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782648398720-gisbhi</loc>
     <lastmod>2026-06-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-28</news:publication_date>
+      <news:publication_date>2026-06-28T12:06:40.994Z</news:publication_date>
       <news:title>لماذا ترتدي أي شيء آخر غير هودي الشمس هذا الصيف؟ اختياراتنا لأفضل هودي الشمس</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782648294337-ruj8z5</loc>
     <lastmod>2026-06-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-28</news:publication_date>
+      <news:publication_date>2026-06-28T12:04:56.946Z</news:publication_date>
       <news:title>الفرق بين الغني والفقير</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782648275087-nshiyw</loc>
     <lastmod>2026-06-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-28</news:publication_date>
+      <news:publication_date>2026-06-28T12:04:37.945Z</news:publication_date>
       <news:title>سيارة كهربائية فاخرة</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782648262971-on44bq</loc>
     <lastmod>2026-06-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-28</news:publication_date>
+      <news:publication_date>2026-06-28T12:04:26.120Z</news:publication_date>
       <news:title>نست تهدف إلى إصلاح جهاز التحكم في درجة الحرارة</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782648250303-nr3tyc</loc>
     <lastmod>2026-06-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-28</news:publication_date>
+      <news:publication_date>2026-06-28T12:04:13.381Z</news:publication_date>
       <news:title>دفع رقمي ذكاء اصطناعي</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782648237835-oc01ih</loc>
     <lastmod>2026-06-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-28</news:publication_date>
+      <news:publication_date>2026-06-28T12:04:00.736Z</news:publication_date>
       <news:title>جوجل تحد من استخدام ميتا لذكاء اصطناعي جيميني</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782648200129-q10hz6</loc>
     <lastmod>2026-06-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-28</news:publication_date>
+      <news:publication_date>2026-06-28T12:03:23.117Z</news:publication_date>
       <news:title>سوريا وحزب الله</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782475220805-jtvj6o</loc>
     <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-26</news:publication_date>
+      <news:publication_date>2026-06-26T12:00:29.345Z</news:publication_date>
       <news:title>تطبيق في كوريا الجنوبية لحماية النساء من الملاحقة، فهل ينجح؟</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782473438169-ql6t3n</loc>
     <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-26</news:publication_date>
+      <news:publication_date>2026-06-26T11:30:40.016Z</news:publication_date>
       <news:title>أدوات ذكاء اصطناعي فريدة</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782473420219-v9qp6m</loc>
     <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-26</news:publication_date>
+      <news:publication_date>2026-06-26T11:30:24.575Z</news:publication_date>
       <news:title>إيران تصف البيان المشترك للولايات المتحدة ومجلس التعاون الخليجي بـ&quot;الاستفزازي&quot;</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782469820154-27yzm4</loc>
     <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-26</news:publication_date>
+      <news:publication_date>2026-06-26T10:30:23.135Z</news:publication_date>
       <news:title>إيران ترد على البيان المشترك</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782468020319-ux8ir7</loc>
     <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-26</news:publication_date>
+      <news:publication_date>2026-06-26T10:00:44.819Z</news:publication_date>
       <news:title>إيران ترد على البيان المشترك</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782460824114-7151re</loc>
     <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-26</news:publication_date>
+      <news:publication_date>2026-06-26T08:00:26.716Z</news:publication_date>
       <news:title>شركة باين تعلن عن شراكة مع جوجل كلاود</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782459991856-2j80y7</loc>
     <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-26</news:publication_date>
+      <news:publication_date>2026-06-26T07:46:55.595Z</news:publication_date>
       <news:title>البيت الأبيض يطلب من OpenAI إبطاء إطلاق نموذجها الجديد</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782459970826-swtw2h</loc>
     <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-26</news:publication_date>
+      <news:publication_date>2026-06-26T07:46:14.056Z</news:publication_date>
       <news:title>دعوة الأمم المتحدة لاعتماد نظام تحقق نووي في إيران</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782446425138-d5gebv</loc>
     <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-26</news:publication_date>
+      <news:publication_date>2026-06-26T04:00:48.680Z</news:publication_date>
       <news:title>جوجل تطور أدوات ذكاء اصطناعي</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782444620332-l0yi0q</loc>
     <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-26</news:publication_date>
+      <news:publication_date>2026-06-26T03:30:44.274Z</news:publication_date>
       <news:title>الأمم المتحدة تعلق إجلاء البحارة بعد هجوم في مضيق هرمز، وسط تباين المواقف حول الاتفاق الأمريكي-الإيراني</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782441050291-nljsx2</loc>
     <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-26</news:publication_date>
+      <news:publication_date>2026-06-26T02:30:53.542Z</news:publication_date>
       <news:title>ريبلينغ تريد أن تكون كلة بياناتك</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782439262830-hnhdrz</loc>
     <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-26</news:publication_date>
+      <news:publication_date>2026-06-26T02:01:06.952Z</news:publication_date>
       <news:title>إكس بوكس ترفع الأسعار</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782437452709-afvjbl</loc>
     <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-26</news:publication_date>
+      <news:publication_date>2026-06-26T01:30:55.201Z</news:publication_date>
       <news:title>باترونوس آي تتلقى 50 مليون دولار</news:title>
     </news:news>
   </url>
   <url>
     <loc>https://td-arabi.com/article.html?id=art-1782435627942-7jj0sl</loc>
     <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <news:news>
       <news:publication>
         <news:name>TD بالعربي</news:name>
         <news:language>ar</news:language>
       </news:publication>
-      <news:publication_date>2026-06-26</news:publication_date>
+      <news:publication_date>2026-06-26T01:00:34.625Z</news:publication_date>
       <news:title>يوتيوب شورتس يصبح أقصر</news:title>
     </news:news>
   </url>

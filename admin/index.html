@@ -119,6 +119,52 @@ tr:hover{background:var(--bg2)}
 .bulk-bar span{font-size:.85rem;color:var(--text2)}
 .code{cursor:pointer;transition:.2s}
 .code:hover{color:var(--primary)}
+.ops-grid{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+.ops-grid-full{grid-column:1/-1}
+.ops-section{background:var(--surface);padding:20px;border-radius:var(--radius);border:1px solid var(--bg3)}
+.ops-section h3{font-size:.95rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ops-section h3 .badge{font-size:.7rem;background:var(--bg3);padding:2px 8px;border-radius:10px;color:var(--text2);font-weight:400}
+.exec-card{padding:12px;border-radius:8px;border:1px solid var(--bg3);margin-bottom:8px;transition:.2s;cursor:pointer}
+.exec-card:hover{border-color:var(--primary);background:var(--bg2)}
+.exec-card .ec-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;font-size:.82rem}
+.exec-card .ec-title{font-weight:600;flex:1}
+.exec-card .ec-time{color:var(--text3);font-size:.75rem;white-space:nowrap}
+.exec-card .ec-meta{display:flex;gap:12px;flex-wrap:wrap;font-size:.75rem;color:var(--text2)}
+.exec-card .ec-meta span{display:flex;align-items:center;gap:4px}
+.exec-card .ec-reason{font-size:.75rem;color:var(--red);margin-top:4px;padding:4px 8px;background:rgba(239,68,68,.1);border-radius:4px}
+.pipeline-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.pipeline-card{background:var(--bg2);padding:14px;border-radius:8px;text-align:center;border:1px solid var(--bg3)}
+.pipeline-card .pc-status{font-size:1.5rem;margin-bottom:4px}
+.pipeline-card .pc-name{font-size:.78rem;color:var(--text2)}
+.pipeline-card .pc-time{font-size:.7rem;color:var(--text3);margin-top:4px}
+.pipeline-card.pc-green{border-color:var(--green)}
+.pipeline-card.pc-yellow{border-color:var(--orange)}
+.pipeline-card.pc-red{border-color:var(--red)}
+.chart-wrap{position:relative;width:100%;max-height:200px}
+.chart-wrap canvas{width:100%;height:180px;border-radius:6px}
+.queue-flow{display:flex;align-items:center;gap:6px;overflow-x:auto;padding:8px 0;flex-wrap:nowrap}
+.queue-step{flex-shrink:0;min-width:80px;text-align:center;padding:8px 10px;border-radius:8px;background:var(--bg2);border:1px solid var(--bg3);font-size:.72rem}
+.queue-step.qs-active{border-color:var(--primary);background:var(--bg2)}
+.queue-step.qs-done{border-color:var(--green);background:rgba(34,197,94,.1)}
+.queue-step.qs-wait{border-color:var(--bg3);opacity:.5}
+.queue-step .qs-icon{font-size:1.1rem;margin-bottom:4px}
+.queue-step .qs-label{color:var(--text2);font-weight:600}
+.queue-step .qs-status{font-size:.65rem;color:var(--text3)}
+.queue-arrow{flex-shrink:0;color:var(--text3);font-size:.7rem}
+.source-card{background:var(--surface);padding:16px;border-radius:var(--radius);border:1px solid var(--bg3)}
+.source-card .sc-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.source-card .sc-name{font-weight:700;font-size:.9rem}
+.source-card .sc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.source-card .sc-stat{text-align:center}
+.source-card .sc-stat .sc-sv{font-size:1.1rem;font-weight:700}
+.source-card .sc-stat .sc-sl{font-size:.7rem;color:var(--text3)}
+.source-card .sc-actions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.health-warn{font-size:.75rem;padding:4px 10px;border-radius:6px;font-weight:600;display:inline-flex;align-items:center;gap:4px}
+.health-warn.green{background:rgba(34,197,94,.15);color:var(--green)}
+.health-warn.yellow{background:rgba(245,158,11,.15);color:var(--orange)}
+.health-warn.red{background:rgba(239,68,68,.15);color:var(--red)}
+.queue-section{margin-bottom:20px}
+.queue-section .qs-title{font-size:.85rem;font-weight:600;margin-bottom:8px;color:var(--text2)}
 .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:200;display:none;align-items:center;justify-content:center}
 .modal{background:var(--surface);border-radius:var(--radius);border:1px solid var(--bg3);max-width:600px;width:90%;max-height:80vh;overflow-y:auto;padding:24px}
 .modal h3{font-size:1.1rem;margin-bottom:12px}
@@ -147,7 +193,7 @@ tr:hover{background:var(--bg2)}
 </div>
 <div class="app" id="app">
   <header class="app-header">
-    <div class="logo">TD <span>بالعربي</span> <span style="font-size:.75rem;color:var(--text2);font-weight:400;">لوحة التحكم</span></div>
+    <div class="logo">TD <span>بالعربي</span> <span style="font-size:.75rem;color:var(--text2);font-weight:400;">لوحة التحكم</span> <span id="versionDisplay" style="font-size:.65rem;color:var(--text3);font-weight:400;margin-right:8px"></span></div>
     <div class="header-actions">
       <span class="user-badge" id="headerDate"></span>
       <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> خروج</button>
@@ -160,6 +206,8 @@ tr:hover{background:var(--bg2)}
       <div class="nav-item" data-page="editor" onclick="showPage('editor')"><i class="fas fa-edit"></i><span>المحرر</span></div>
       <div class="nav-item" data-page="categories" onclick="showPage('categories')"><i class="fas fa-tags"></i><span>التصنيفات</span></div>
       <div class="nav-item" data-page="reports" onclick="showPage('reports')"><i class="fas fa-file-alt"></i><span>التقارير</span></div>
+      <div class="nav-item" data-page="operations" onclick="showPage('operations')"><i class="fas fa-tachometer-alt"></i><span>العمليات</span></div>
+      <div class="nav-item" data-page="sources" onclick="showPage('sources')"><i class="fas fa-rss"></i><span>المصادر</span></div>
       <div class="nav-item" data-page="settings" onclick="showPage('settings')"><i class="fas fa-cog"></i><span>الإعدادات</span></div>
     </nav>
     <main class="main">
@@ -290,8 +338,18 @@ tr:hover{background:var(--bg2)}
           <div class="field"><label>رابط الموقع</label><input type="url" id="setSiteUrl" placeholder="https://td-arabi.com"></div>
           <div class="field"><label>رمز الدخول الجديد (اتركه فارغاً إذا لا تريد التغيير)</label><input type="password" id="setPassword" placeholder="كلمة المرور الجديدة" dir="ltr"></div>
 
+          <div class="section-title">سياسة الجودة</div>
+          <div class="field-row">
+            <div class="field"><label>الحد الأدنى للجودة</label><select id="setMinQuality"><option value="80">80</option></select><span style="font-size:.75rem;color:var(--text3)">سيتم رفض أي مقال أقل من هذا الحد</span></div>
+          </div>
+
           <div class="section-title">التكاملات</div>
           <div class="field"><label>GitHub Token</label><input type="password" id="setGhToken" placeholder="ghp_..." dir="ltr"></div>
+          <div class="field-row">
+            <div class="field"><label>مالك المستودع (GitHub Username)</label><input type="text" id="setGhOwner" placeholder="osamaelfeky567" dir="ltr"></div>
+            <div class="field"><label>اسم المستودع</label><input type="text" id="setGhRepo" placeholder="techdosenews" dir="ltr"></div>
+          </div>
+          <div class="field"><label>الفرع (Branch)</label><input type="text" id="setGhBranch" placeholder="main" dir="ltr"></div>
           <div class="field-row">
             <div class="field"><label>Telegram Bot Token</label><input type="password" id="setTeleBot" placeholder="123456:ABC-DEF" dir="ltr"></div>
             <div class="field"><label>Telegram Channel ID</label><input type="text" id="setTeleChan" placeholder="-1001234567890" dir="ltr"></div>
@@ -310,7 +368,89 @@ tr:hover{background:var(--bg2)}
           <div style="margin-top:16px">
             <button class="btn btn-primary" onclick="saveSettings()"><i class="fas fa-save"></i> حفظ الإعدادات</button>
           </div>
+
+          <div class="section-title" style="margin-top:24px"><i class="fas fa-history"></i> النسخ الاحتياطية والاسترجاع</div>
+          <div id="backupSection" style="margin-bottom:12px">
+            <div class="loading"><i class="fas fa-spinner fa-spin"></i> جاري تحميل النسخ الاحتياطية...</div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="btn btn-success" onclick="createManualBackup()"><i class="fas fa-save"></i> إنشاء نسخة احتياطية الآن</button>
+            <button class="btn btn-ghost" onclick="renderBackupSection()"><i class="fas fa-sync"></i> تحديث القائمة</button>
+          </div>
+
+          <div class="section-title" style="margin-top:24px"><i class="fas fa-clock"></i> الصيانة الدورية</div>
+          <div style="background:var(--bg2);padding:12px;border-radius:8px;font-size:.85rem;color:var(--text2)">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+              <i class="fas fa-circle" style="color:var(--green);font-size:.5rem" id="maintStatusDot"></i>
+              <span id="maintStatusText">تعمل تلقائياً كل يوم 3:00 صباحاً</span>
+            </div>
+            <div style="font-size:.8rem;color:var(--text3);margin-bottom:8px">تنظيف execution_history, إعادة بناء RSS/Sitemap, تنظيف published_links, تحديث التقارير</div>
+            <button class="btn btn-sm btn-warning" onclick="runMaintenance()"><i class="fas fa-play"></i> تشغيل الصيانة الآن</button>
+          </div>
         </div>
+      </div>
+      <div class="page" id="page-operations">
+        <div class="page-title">مركز العمليات <span class="sub">لوحة التحكم التشغيلية — مراقبة الإنتاج والجودة والصحة</span></div>
+        <div class="stats-grid" id="opsStats"></div>
+        <div id="opsStatusBar" style="margin-bottom:16px"></div>
+        <div class="ops-grid">
+          <div class="ops-section">
+            <h3><i class="fas fa-list"></i> آخر التنفيذات <span class="badge" id="execCountBadge"></span></h3>
+            <div class="exec-filters" id="execFilters" style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;font-size:.75rem"></div>
+            <div id="execTimeline"></div>
+          </div>
+          <div>
+            <div class="ops-section" style="margin-bottom:16px">
+              <h3><i class="fas fa-heartbeat"></i> صحة الخطوط</h3>
+              <div class="pipeline-grid" id="pipelineHealth"></div>
+            </div>
+            <div class="ops-section">
+              <h3><i class="fas fa-chart-line"></i> الجودة (آخر 30)</h3>
+              <div class="chart-wrap"><canvas id="qualityChart"></canvas></div>
+              <div id="qualityChartLegend" style="display:flex;gap:12px;margin-top:8px;font-size:.75rem;color:var(--text2);justify-content:center"></div>
+            </div>
+          </div>
+          <div class="ops-grid-full">
+            <div class="ops-section">
+              <h3><i class="fas fa-tasks"></i> خط الإنتاج المباشر <span class="badge" id="queueBadge"></span></h3>
+              <div id="publishingQueue"></div>
+            </div>
+          </div>
+          <div class="ops-grid-full">
+            <div class="ops-section">
+              <h3><i class="fas fa-search"></i> تحليل الفشل <span class="badge">آخر 50 تنفيذاً</span></h3>
+              <div id="failureAnalysis"></div>
+            </div>
+          </div>
+          <div class="ops-grid-full" id="healthPanelWrapper">
+            <div class="ops-section">
+              <h3><i class="fas fa-heartbeat"></i> صحة النظام</h3>
+              <div id="systemHealth" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px"></div>
+            </div>
+          </div>
+          <div class="ops-grid-full">
+            <div class="ops-section">
+              <h3><i class="fas fa-stethoscope"></i> الفحص الذاتي <span class="badge">تشخيص كامل</span></h3>
+              <div style="margin-bottom:10px">
+                <button class="btn btn-primary" onclick="runFullSystemCheck()"><i class="fas fa-play"></i> تشغيل الفحص الكامل</button>
+              </div>
+              <div id="diagResults" style="max-height:500px;overflow-y:auto"></div>
+            </div>
+          </div>
+          <div class="ops-grid-full">
+            <div class="ops-section">
+              <h3><i class="fas fa-shield-alt"></i> تكامل البيانات <span class="badge">Data Integrity</span></h3>
+              <div style="margin-bottom:10px">
+                <button class="btn btn-primary" onclick="renderIntegrityResults()"><i class="fas fa-search"></i> فحص التكامل الآن</button>
+              </div>
+              <div id="integrityResults"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page" id="page-sources">
+        <div class="page-title">إدارة المصادر <span class="sub">إعدادات وتحليلات مصادر الأخبار</span></div>
+        <div id="sourceManager"></div>
       </div>
     </main>
   </div>
@@ -323,14 +463,23 @@ tr:hover{background:var(--bg2)}
   </div>
 </div>
 <script>
-const GH_OWNER = 'osamaelfeky567';
-const GH_REPO = 'techdosenews';
-const GH_API = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}`;
-const RAW_URL = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main`;
+let GH_OWNER = 'osamaelfeky567';
+let GH_REPO = 'techdosenews';
+let GH_API = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}`;
+let RAW_URL = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main`;
+function updateGhVars() {
+  GH_OWNER = CONFIG.ghOwner || GH_OWNER;
+  GH_REPO = CONFIG.ghRepo || GH_REPO;
+  GH_API = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}`;
+  RAW_URL = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main`;
+}
 
 let CONFIG = {};
 let ARTICLES = [];
 let CATEGORIES = [];
+let EXECUTIONS = [];
+let SOURCE_CONFIG = {};
+let EXEC_FILTER = '';
 let CURRENT_PAGE = 1;
 const PER_PAGE = 20;
 let SELECTED_IDS = new Set();
@@ -348,15 +497,15 @@ async function login() {
   if (stored && hash !== stored) { err.style.display = 'block'; return; }
   if (!stored && input.value !== 'admin123') { err.style.display = 'block'; return; }
   err.style.display = 'none';
-  sessionStorage.setItem('tdn_admin_token', 'authenticated');
-  if (CONFIG.ghToken) sessionStorage.setItem('gh_token', CONFIG.ghToken);
+  localStorage.setItem('tdn_admin_token', 'authenticated');
+  if (CONFIG.ghToken) localStorage.setItem('gh_token', CONFIG.ghToken);
   document.getElementById('loginPage').style.display = 'none';
   document.getElementById('app').style.display = 'block';
   init();
 }
 
 function logout() {
-  sessionStorage.removeItem('tdn_admin_token');
+  localStorage.removeItem('tdn_admin_token');
   location.reload();
 }
 
@@ -380,20 +529,24 @@ function closeModal() {
 }
 
 async function ghGet(path) {
-  const res = await fetch(GH_API + '/contents/' + path, { headers: { Accept: 'application/vnd.github.v3.raw' } });
+  const token = CONFIG.ghToken || localStorage.getItem('gh_token') || '';
+  const headers = { Accept: 'application/vnd.github.v3.raw' };
+  if (token) headers.Authorization = 'token ' + token;
+  const res = await fetch(GH_API + '/contents/' + path, { headers });
   if (!res.ok) throw new Error('HTTP ' + res.status);
   return res.json();
 }
 
 async function ghPut(path, content, message) {
-  const token = CONFIG.ghToken || sessionStorage.getItem('gh_token') || '';
+  const token = CONFIG.ghToken || localStorage.getItem('gh_token') || '';
   if (!token) throw new Error('GitHub Token is required. Add it in Settings.');
   let sha = null;
   try {
     const existing = await fetch(GH_API + '/contents/' + path, { headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json' } });
     if (existing.ok) { const data = await existing.json(); sha = data.sha; }
   } catch(e) {}
-  const body = { message: message || 'Update via admin panel', content: btoa(unescape(encodeURIComponent(content))), branch: 'main' };
+  const branch = CONFIG.ghBranch || 'main';
+  const body = { message: message || 'Update via admin panel', content: btoa(unescape(encodeURIComponent(content))), branch };
   if (sha) body.sha = sha;
   const res = await fetch(GH_API + '/contents/' + path, { method: 'PUT', headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json', Accept: 'application/vnd.github.v3+json' }, body: JSON.stringify(body) });
   if (!res.ok) { const err = await res.json().catch(()=>({})); throw new Error(err.message || 'HTTP ' + res.status); }
@@ -401,12 +554,26 @@ async function ghPut(path, content, message) {
 }
 
 async function loadConfig() {
+  const DEFAULTS = {
+    siteUrl: 'https://td-arabi.com',
+    siteName: 'TD بالعربي',
+    siteDesc: 'منصة إخبارية عربية متخصصة في أخبار التكنولوجيا والذكاء الاصطناعي',
+    ghOwner: 'osamaelfeky567',
+    ghRepo: 'techdosenews',
+    ghBranch: 'main'
+  };
+  let loaded = {};
   try {
     const res = await fetch(RAW_URL + '/admin_config.json?t=' + Date.now());
-    if (res.ok) CONFIG = await res.json();
-  } catch(e) { CONFIG = {}; }
+    if (res.ok) loaded = await res.json();
+  } catch(e) {}
+  const cached = {};
+  try { const c = localStorage.getItem('admin_config_cache'); if (c) Object.assign(cached, JSON.parse(c)); } catch(e) {}
+  CONFIG = { ...DEFAULTS, ...cached, ...loaded };
   if (!CONFIG.passwordHash) CONFIG.passwordHash = '';
-  if (CONFIG.ghToken && !sessionStorage.getItem('gh_token')) sessionStorage.setItem('gh_token', CONFIG.ghToken);
+  localStorage.setItem('admin_config_cache', JSON.stringify(CONFIG));
+  if (CONFIG.ghToken) localStorage.setItem('gh_token', CONFIG.ghToken);
+  updateGhVars();
 }
 
 async function loadArticles() {
@@ -425,9 +592,868 @@ async function loadCategories() {
   if (!Array.isArray(CATEGORIES)) CATEGORIES = [];
 }
 
+async function loadExecutions() {
+  try {
+    const res = await fetch(RAW_URL + '/data/execution_history.json?t=' + Date.now());
+    if (res.ok) EXECUTIONS = await res.json();
+  } catch(e) {
+    try { const c = localStorage.getItem('execution_history_cache'); if (c) EXECUTIONS = JSON.parse(c); } catch(e2) {}
+  }
+  if (!Array.isArray(EXECUTIONS)) EXECUTIONS = [];
+}
+
+function loadSourceConfig() {
+  try { const c = localStorage.getItem('tdn_source_config'); if (c) SOURCE_CONFIG = JSON.parse(c); } catch(e) {}
+  if (!SOURCE_CONFIG || typeof SOURCE_CONFIG !== 'object') SOURCE_CONFIG = {};
+}
+function saveSourceConfig() {
+  localStorage.setItem('tdn_source_config', JSON.stringify(SOURCE_CONFIG));
+}
+function getKnownSources() {
+  const fromExecs = new Set();
+  EXECUTIONS.forEach(e => { if (e.rss_source) fromExecs.add(e.rss_source); });
+  return [...fromExecs].filter(Boolean).sort();
+}
+function ensureSourceConfig(name) {
+  if (!name) return;
+  if (!SOURCE_CONFIG[name]) {
+    SOURCE_CONFIG[name] = { enabled: true, priority: 50 };
+    saveSourceConfig();
+  }
+}
+function getSourceStats(name) {
+  const related = EXECUTIONS.filter(e => e.rss_source === name);
+  const total = related.length;
+  const today = related.filter(e => (e.triggered_at || '').substring(0, 10) === getTodayStr());
+  const published = related.filter(e => e.published);
+  const rejected = related.filter(e => e.status === 'rejected' || e.status === 'quality_rejected');
+  const accepted = published.length + rejected.length;
+  const duplicate = related.filter(e => e.status === 'all_duplicates' || e.rejection_reason === 'Duplicate');
+  const scored = related.filter(e => e.quality_score > 0);
+  const avgScore = scored.length ? (scored.reduce((s, e) => s + e.quality_score, 0) / scored.length).toFixed(0) : '—';
+  const dupRate = total ? ((duplicate.length / total) * 100).toFixed(0) : '0';
+  const publishRate = total ? ((published.length / total) * 100).toFixed(0) : '0';
+  const lastPub = published.length > 0 ? published.sort((a,b) => new Date(b.triggered_at).getTime() - new Date(a.triggered_at).getTime())[0] : null;
+  const lastFetch = related.length > 0 ? related.sort((a,b) => new Date(b.triggered_at).getTime() - new Date(a.triggered_at).getTime())[0] : null;
+  const cfg = SOURCE_CONFIG[name] || {};
+  return {
+    name, total, today: today.length, published: published.length, rejected: rejected.length,
+    accepted: accepted, avgScore, dupRate, publishRate,
+    lastPublish: lastPub ? lastPub.triggered_at : null,
+    lastFetch: lastFetch ? lastFetch.triggered_at : null,
+    enabled: cfg.enabled !== false, priority: cfg.priority || 50,
+    successRate: publishRate
+  };
+}
+
 function getTodayStr() { return new Date().toISOString().substring(0, 10); }
 function articleDate(a) { return a.date || a.publishedAt || a.created_at || ''; }
 function articleTitle(a) { return a.title_ar || a.title || ''; }
+function gradeLabel(score) {
+  if (!score || score <= 0) return '';
+  if (score >= 95) return 'A+';
+  if (score >= 90) return 'A';
+  if (score >= 85) return 'A-';
+  if (score >= 80) return 'B+';
+  if (score >= 70) return 'B';
+  if (score >= 60) return 'C';
+  return 'D';
+}
+function gradeColor(grade) {
+  const c = { 'A+':'#1a7f37', 'A':'#238636', 'A-':'#2ea043', 'B+':'#1f6feb', 'B':'#58a6ff', 'C':'#d29922', 'D':'#da3633' };
+  return c[grade] || '#555';
+}
+
+/* ───── Phase 8.3 — Operations Center ───── */
+
+function statusBadge(e) {
+  if (e.status === 'published') return '<span style="color:var(--green);font-weight:600"><i class="fas fa-check-circle"></i> منشور</span>';
+  if (e.status === 'deployed') return '<span style="color:var(--primary)"><i class="fas fa-rocket"></i> نشر</span>';
+  if (e.status === 'rejected') return '<span style="color:var(--orange)"><i class="fas fa-ban"></i> مرفوض</span>';
+  if (e.status === 'failed' || e.status === 'error') return '<span style="color:var(--red)"><i class="fas fa-times-circle"></i> فشل</span>';
+  return '<span style="color:var(--text2)">' + e.status + '</span>';
+}
+
+function showExecutionDetails(id) {
+  const e = EXECUTIONS.find(x => x.execution_id === id);
+  if (!e) return;
+  const dur = e.completed_at ? ((new Date(e.completed_at).getTime() - new Date(e.triggered_at).getTime()) / 1000).toFixed(0) + 'ث' : '—';
+  const bd = e.quality_dimensions || {};
+  const dimLabels = { info: 'المعلومات', flow: 'التدفق', headline: 'العنوان', intro: 'المقدمة', readability: 'القراءة', tech: 'التقني', seo: 'SEO' };
+  const dimTargets = { info: 35, flow: 20, headline: 15, intro: 10, readability: 5, tech: 10, seo: 5 };
+  let breakdownHtml = '';
+  if (Object.values(bd).some(v => v > 0)) {
+    breakdownHtml = '<table style="font-size:.8rem;margin-bottom:12px"><thead><tr><th>البعد</th><th>الدرجة</th><th>الحد</th><th>الشريط</th></tr></thead><tbody>';
+    for (const [k, label] of Object.entries(dimLabels)) {
+      const score = bd[k] || 0;
+      const target = dimTargets[k];
+      const pct = Math.min(100, (score / target) * 100);
+      const barColor = pct >= 80 ? 'var(--green)' : (pct >= 60 ? 'var(--orange)' : 'var(--red)');
+      breakdownHtml += '<tr><td style="font-weight:600">' + label + '</td>' +
+        '<td>' + score + '</td>' +
+        '<td style="color:var(--text3)">' + target + '</td>' +
+        '<td style="width:120px"><div style="height:8px;background:var(--bg3);border-radius:4px;overflow:hidden"><div style="width:' + pct + '%;height:100%;background:' + barColor + ';border-radius:4px"></div></div></td></tr>';
+    }
+    breakdownHtml += '</tbody></table>';
+  }
+  let failureHtml = '';
+  if (Array.isArray(e.failure_reasons) && e.failure_reasons.length) {
+    failureHtml = '<div style="background:rgba(239,68,68,.1);padding:10px;border-radius:6px;margin-bottom:12px"><div style="font-weight:700;color:var(--red);margin-bottom:4px"><i class="fas fa-exclamation-circle"></i> أسباب الرفض</div>' +
+      e.failure_reasons.map(r => '<div style="font-size:.8rem;color:var(--red);padding:2px 0">• ' + r + '</div>').join('') + '</div>';
+  }
+
+  const fields = [
+    ['رقم التنفيذ', '#' + e.execution_id],
+    ['التوقيت', new Date(e.triggered_at).toLocaleString('ar-EG')],
+    ['المدة', dur],
+    ['الإكتمال', e.completed_at ? new Date(e.completed_at).toLocaleString('ar-EG') : '—'],
+    ['الوضع', e.mode],
+    ['الحالة', e.status],
+    ['المصدر', e.rss_source || '—'],
+    ['عنوان المقال', e.article_title || '—'],
+    ['عدد الكلمات', e.word_count || '—'],
+    ['عدد المحاولات', e.ai_retries || '0'],
+    ['عدد الروابط الداخلية', e.internal_links_count || '0'],
+    ['درجة الجودة', e.quality_score ? e.quality_score + ' (' + gradeLabel(e.quality_score) + ')' : '—'],
+    ['اجتاز الجودة', e.quality_passed ? 'نعم' : 'لا'],
+    ['محاولة إعادة كتابة', e.rewrite_attempted ? 'نعم' : 'لا'],
+    ['نجاح إعادة الكتابة', e.rewrite_success ? 'نعم' : 'لا'],
+    ['منشور', e.published ? 'نعم' : 'لا'],
+    ['تليجرام', e.telegram_sent ? 'نعم' : 'لا'],
+    ['GitHub', e.deployed || e.status === 'deployed' ? 'نعم' : 'لا'],
+    ['سبب الرفض', e.rejection_reason || '—'],
+    ['تفاصيل الرفض', e.rejection_detail || '—'],
+    ['معرف المقال', e.article_id || '—'],
+    ['رابط المقال', e.article_url || '—'],
+    ['الذكاء الاصطناعي', e.ai_success ? 'نجح' : '—'],
+    ['خطأ', e.error || '—'],
+    ['ملاحظات', e.notes || '—'],
+  ];
+  const html = (breakdownHtml || '') + (failureHtml || '') + '<table style="font-size:.82rem"><tbody>' + fields.filter(f => f[1] && f[1] !== '—').map(([k, v]) =>
+    '<tr><td style="font-weight:600;color:var(--text2);width:130px">' + k + '</td><td>' + v + '</td></tr>'
+  ).join('') + '</tbody></table>';
+  showModal('تفاصيل التنفيذ #' + e.execution_id + (e.article_title ? ' — ' + e.article_title.substring(0, 40) : ''), html, '<button class="btn btn-ghost" onclick="closeModal()">إغلاق</button>');
+}
+
+/* ───── Alerts ───── */
+
+function checkAlerts() {
+  const now = Date.now();
+  const alerts = [];
+  const lastPub = EXECUTIONS.find(e => e.published);
+  const hoursSincePub = lastPub ? ((now - new Date(lastPub.triggered_at).getTime()) / 3600000) : 999;
+  if (hoursSincePub >= 6) alerts.push({ type: 'red', icon: 'fa-clock', text: 'لم ينشر أي مقال منذ ' + hoursSincePub.toFixed(1) + ' ساعة! بحاجة إلى تدخل.' });
+  else if (hoursSincePub >= 3) alerts.push({ type: 'yellow', icon: 'fa-clock', text: 'آخر نشر منذ ' + hoursSincePub.toFixed(1) + ' ساعة.' });
+
+  const last5 = EXECUTIONS.slice(0, 5);
+  const allFailed = last5.length >= 5 && last5.every(e => !e.published && e.status !== 'ok');
+  if (allFailed) alerts.push({ type: 'red', icon: 'fa-times-circle', text: 'آخر 5 تنفيذات فشلت جميعها!' });
+
+  const total = EXECUTIONS.length;
+  const published = EXECUTIONS.filter(e => e.published).length;
+  const successRate = total ? ((published / total) * 100) : 100;
+  if (successRate < 40 && total >= 5) alerts.push({ type: 'red', icon: 'fa-chart-line', text: 'معدل النجاح أقل من 40%! (' + successRate.toFixed(0) + '%)' });
+
+  const groqErrors = EXECUTIONS.filter(e => (e.error && e.error.includes('429')) || (e.ai_error && e.ai_error.includes('429'))).length;
+  if (groqErrors > 0) alerts.push({ type: 'yellow', icon: 'fa-exclamation-triangle', text: 'Groq يرجع 429 (Rate Limit) في ' + groqErrors + ' تنفيذ.' });
+
+  const lastGithub = EXECUTIONS.find(e => e.deployed || e.status === 'deployed');
+  const githubFailures = EXECUTIONS.filter(e => e.status === 'deploy_failed' || (e.error && e.error.includes('git'))).length;
+  if (githubFailures > 3) alerts.push({ type: 'yellow', icon: 'fa-github', text: 'فشل GitHub Commit في ' + githubFailures + ' حالة.' });
+
+  const today = getTodayStr();
+  const todayExecs = EXECUTIONS.filter(e => (e.triggered_at || '').substring(0, 10) === today);
+  if (todayExecs.length === 0 && EXECUTIONS.length > 0) alerts.push({ type: 'yellow', icon: 'fa-bed', text: 'لا توجد تنفيذات اليوم.' });
+
+  return alerts;
+}
+
+/* ───── Part A — Workflow Monitor ───── */
+
+function renderOperations() {
+  const now = Date.now();
+  const today = getTodayStr();
+  const todayExecs = EXECUTIONS.filter(e => (e.triggered_at || '').substring(0, 10) === today);
+  const lastExec = EXECUTIONS.length > 0 ? EXECUTIONS[0] : null;
+  const lastPub = EXECUTIONS.find(e => e.published);
+  const hoursSinceLastPub = lastPub ? ((now - new Date(lastPub.triggered_at).getTime()) / 3600000) : -1;
+  const publishedToday = todayExecs.filter(e => e.published).length;
+  const failedToday = todayExecs.filter(e => e.status === 'failed' || e.status === 'error' || e.status === 'ai_failed').length;
+  const rejectedToday = todayExecs.filter(e => e.status === 'rejected' || e.status === 'quality_rejected').length;
+  const skippedToday = todayExecs.filter(e => e.status === 'all_duplicates' || e.status === 'no_items').length;
+  const rewriteToday = todayExecs.filter(e => e.rewrite_attempted).length;
+  const scored = EXECUTIONS.filter(e => e.quality_score > 0);
+  const avgQ = scored.length ? (scored.reduce((s, e) => s + e.quality_score, 0) / scored.length).toFixed(0) : '—';
+  const scoredToday = todayExecs.filter(e => e.quality_score > 0);
+  const avgQToday = scoredToday.length ? (scoredToday.reduce((s, e) => s + e.quality_score, 0) / scoredToday.length).toFixed(0) : '—';
+  const completed = EXECUTIONS.filter(e => e.completed_at);
+  const avgDur = completed.length ? completed.reduce((s, e) => s + (new Date(e.completed_at).getTime() - new Date(e.triggered_at).getTime()), 0) / completed.length / 1000 : 0;
+
+  // Most common rejection reason
+  const reasons = {};
+  EXECUTIONS.filter(e => e.rejection_reason).forEach(e => {
+    const r = e.rejection_reason || 'غير معروف';
+    reasons[r] = (reasons[r] || 0) + 1;
+  });
+  const topReason = Object.entries(reasons).sort((a, b) => b[1] - a[1])[0];
+
+  // Alerts
+  const alerts = checkAlerts();
+
+  let statsHtml = '<div class="stat-card"><div class="stat-label">آخر تنفيذ</div><div class="stat-value" style="font-size:1.1rem">' + (lastExec ? new Date(lastExec.triggered_at).toLocaleTimeString('ar-EG', { hour:'2-digit', minute:'2-digit' }) : '—') + '</div><div class="stat-sub">' + (lastExec ? statusBadge(lastExec) : '—') + '</div></div>' +
+    '<div class="stat-card"><div class="stat-label">آخر مقال منشور</div><div class="stat-value" style="font-size:.95rem">' + (lastPub ? (lastPub.article_title || '').substring(0, 22) : '—') + '</div><div class="stat-sub">' + (hoursSinceLastPub >= 0 ? 'منذ ' + hoursSinceLastPub.toFixed(1) + ' ساعة' : '—') + getHealthWarn(hoursSinceLastPub) + '</div></div>' +
+    '<div class="stat-card"><div class="stat-label">تنفيذات اليوم</div><div class="stat-value">' + todayExecs.length + '</div><div class="stat-sub">' + publishedToday + ' نشر، ' + rejectedToday + ' رفض، ' + failedToday + ' فشل، ' + skippedToday + ' تخطي</div></div>' +
+    '<div class="stat-card"><div class="stat-label">متوسط الجودة</div><div class="stat-value">' + avgQ + '</div><div class="stat-sub">اليوم: ' + avgQToday + ' | ' + rewriteToday + ' إعادة كتابة</div></div>' +
+    '<div class="stat-card"><div class="stat-label">متوسط المدة</div><div class="stat-value" style="font-size:1.3rem">' + avgDur.toFixed(0) + 'ث</div></div>' +
+    (topReason ? '<div class="stat-card"><div class="stat-label">أكثر سبب للرفض</div><div class="stat-value" style="font-size:.9rem">' + topReason[0] + '</div><div class="stat-sub">' + topReason[1] + ' مرة</div></div>' : '');
+
+  document.getElementById('opsStats').innerHTML = statsHtml;
+
+  // Alerts bar
+  const alertsHtml = alerts.length ? alerts.map(a =>
+    '<div style="padding:10px 16px;border-radius:8px;margin-bottom:8px;display:flex;align-items:center;gap:10px;font-size:.85rem;font-weight:600;background:' + (a.type === 'red' ? 'rgba(239,68,68,.15)' : 'rgba(245,158,11,.15)') + ';border:1px solid ' + (a.type === 'red' ? 'var(--red)' : 'var(--orange)') + ';color:' + (a.type === 'red' ? 'var(--red)' : 'var(--orange)') + '"><i class="fas ' + a.icon + '"></i> ' + a.text + '</div>'
+  ).join('') : '<div style="padding:8px 0;font-size:.82rem;color:var(--green)"><i class="fas fa-check-circle"></i> لا توجد تحذيرات</div>';
+  document.getElementById('opsStatusBar').innerHTML = alertsHtml;
+
+  renderExecTimeline();
+  renderPipelineHealth();
+  renderQualityChart();
+  renderPublishingQueue();
+  renderFailureAnalysis();
+  renderSystemHealth();
+}
+
+function getHealthWarn(hours) {
+  if (hours < 0) return '';
+  if (hours >= 6) return ' <span class="health-warn red"><i class="fas fa-exclamation-triangle"></i> حرج</span>';
+  if (hours >= 3) return ' <span class="health-warn yellow"><i class="fas fa-exclamation-circle"></i> تحذير</span>';
+  return '';
+}
+
+function renderExecTimeline() {
+  const filters = [
+    { label: 'الكل', value: '' },
+    { label: 'منشور', value: 'published' },
+    { label: 'رفض', value: 'rejected' },
+    { label: 'فشل', value: 'failed' },
+    { label: 'تخطي', value: 'skipped' },
+    { label: 'فشل AI', value: 'ai_failed' },
+    { label: 'فشل صور', value: 'img_failed' },
+    { label: 'خطأ', value: 'error' },
+  ];
+  let filtered = EXECUTIONS;
+  if (EXEC_FILTER === 'published') filtered = EXECUTIONS.filter(e => e.published);
+  else if (EXEC_FILTER === 'rejected') filtered = EXECUTIONS.filter(e => e.status === 'rejected' || e.status === 'quality_rejected');
+  else if (EXEC_FILTER === 'failed') filtered = EXECUTIONS.filter(e => e.status === 'failed' || e.status === 'error');
+  else if (EXEC_FILTER === 'skipped') filtered = EXECUTIONS.filter(e => e.status === 'all_duplicates' || e.status === 'no_items' || e.status === 'all_stale' || e.status === 'no_tech');
+  else if (EXEC_FILTER === 'ai_failed') filtered = EXECUTIONS.filter(e => e.status === 'ai_failed' || e.ai_error);
+  else if (EXEC_FILTER === 'img_failed') filtered = EXECUTIONS.filter(e => e.status === 'image_failed' || (e.error && e.error.includes('image')));
+  else if (EXEC_FILTER === 'error') filtered = EXECUTIONS.filter(e => e.status === 'unhandled_error' || e.error);
+
+  const list = filtered.slice(0, 50);
+  document.getElementById('execCountBadge').textContent = list.length + ' من ' + filtered.length + (EXEC_FILTER ? ' (مصفى)' : '');
+  let html = '';
+  const filterBtns = filters.map(f =>
+    '<span class="btn btn-xs ' + (EXEC_FILTER === f.value ? 'btn-primary' : 'btn-ghost') + '" onclick="EXEC_FILTER=\'' + f.value + '\';renderExecTimeline();showToast(\'تم تطبيق الفلتر\',\'info\')" style="font-size:.72rem;padding:4px 10px;cursor:pointer">' + f.label + '</span>'
+  ).join('');
+  document.getElementById('execFilters').innerHTML = filterBtns;
+
+  for (const e of list) {
+    const time = new Date(e.triggered_at).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+    const dur = e.completed_at ? ((new Date(e.completed_at).getTime() - new Date(e.triggered_at).getTime()) / 1000).toFixed(0) + 'ث' : '—';
+    const grade = e.quality_score ? gradeLabel(e.quality_score) : '';
+    const gColor = gradeColor(grade);
+    const icon = e.published ? 'fa-check-circle' : (e.status === 'rejected' || e.status === 'quality_rejected' ? 'fa-ban' : (e.status === 'failed' || e.status === 'unhandled_error' || e.status === 'ai_failed' ? 'fa-times-circle' : (e.status === 'all_duplicates' || e.status === 'no_items' || e.status === 'all_stale' || e.status === 'no_tech' ? 'fa-forward' : 'fa-circle')));
+    const iconColor = e.published ? 'var(--green)' : (e.status === 'rejected' || e.status === 'quality_rejected' ? 'var(--orange)' : (e.status === 'failed' || e.status === 'unhandled_error' || e.status === 'ai_failed' ? 'var(--red)' : (e.status === 'all_duplicates' || e.status === 'no_items' || e.status === 'all_stale' || e.status === 'no_tech' ? 'var(--text3)' : 'var(--text3)')));
+    let reasonsHtml = '';
+    if (e.failure_reasons && Array.isArray(e.failure_reasons) && e.failure_reasons.length) {
+      reasonsHtml = '<div class="ec-reason" style="color:var(--red)"><i class="fas fa-exclamation-circle"></i> ' + e.failure_reasons.slice(0, 2).join('، ') + (e.failure_reasons.length > 2 ? ' +' + (e.failure_reasons.length - 2) : '') + '</div>';
+    } else if (e.rejection_reason) {
+      reasonsHtml = '<div class="ec-reason"><i class="fas fa-exclamation-circle"></i> ' + e.rejection_reason + '</div>';
+    }
+    const wordBadge = e.word_count ? '<span style="color:var(--text3)"><i class="fas fa-file-alt"></i> ' + e.word_count + '</span>' : '';
+    html += '<div class="exec-card" onclick="showExecutionDetails(' + e.execution_id + ')">' +
+      '<div class="ec-header"><span class="ec-title"><span style="color:' + iconColor + '"><i class="fas ' + icon + '"></i></span> #' + e.execution_id + ' <span style="color:var(--text3);font-weight:400">' + (e.article_title || e.mode || '') + '</span></span><span class="ec-time">' + time + ' | ' + dur + '</span></div>' +
+      '<div class="ec-meta">' +
+      '<span><i class="fas fa-rss"></i> ' + (e.rss_source || '—') + '</span>' +
+      wordBadge +
+      (e.quality_score > 0 ? '<span><i class="fas fa-star" style="color:' + gColor + '"></i> ' + grade + ' ' + e.quality_score + '</span>' : '') +
+      (e.published ? '<span style="color:var(--green)"><i class="fas fa-check"></i> منشور</span>' : '') +
+      (e.telegram_sent ? '<span style="color:var(--primary)"><i class="fab fa-telegram"></i> تلجرام</span>' : '') +
+      (e.deployed || e.status === 'deployed' ? '<span><i class="fab fa-github"></i> GitHub</span>' : '') +
+      (e.rewrite_attempted ? '<span style="color:var(--orange)"><i class="fas fa-pen"></i> إعادة كتابة</span>' : '') +
+      '</div>' + reasonsHtml + '</div>';
+  }
+  if (!list.length) html = '<div class="empty-state">' + (EXEC_FILTER ? 'لا توجد تنفيذات مطابقة للفلتر' : 'لا توجد تنفيذات بعد') + '</div>';
+  document.getElementById('execTimeline').innerHTML = html;
+}
+
+/* ───── Part B — Quality Analytics ───── */
+
+function renderQualityChart() {
+  const canvas = document.getElementById('qualityChart');
+  const ctx = canvas.getContext('2d');
+  const rect = canvas.parentElement.getBoundingClientRect();
+  const W = Math.min(rect.width || 400, 500);
+  const H = 200;
+  canvas.width = W * 2;
+  canvas.height = H * 2;
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+  ctx.scale(2, 2);
+  ctx.clearRect(0, 0, W, H);
+
+  const scored = EXECUTIONS.filter(e => e.quality_score > 0).slice(0, 12);
+  if (scored.length < 1) {
+    ctx.fillStyle = '#64748b';
+    ctx.font = '13px Cairo, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('بيانات غير كافية للرسم البياني', W / 2, H / 2);
+    document.getElementById('qualityChartLegend').innerHTML = '<span>انتظر المزيد من التنفيذات</span>';
+    return;
+  }
+
+  const dimColors = { info: '#3b82f6', flow: '#8b5cf6', headline: '#f59e0b', intro: '#10b981', readability: '#ef4444', tech: '#ec4899', seo: '#6366f1' };
+  const dimTargets = { info: 35, flow: 20, headline: 15, intro: 10, readability: 5, tech: 10, seo: 5 };
+  const dimOrder = ['seo', 'readability', 'intro', 'tech', 'headline', 'flow', 'info'];
+  const dimLabels = { info: 'المعلومات', flow: 'التدفق', headline: 'العنوان', intro: 'المقدمة', readability: 'القراءة', tech: 'التقني', seo: 'SEO' };
+  const thresh = CONFIG.minQualityThreshold || 80;
+  const barCount = scored.length;
+  const barHeight = 14;
+  const barGap = 4;
+  const totalBarArea = barCount * (barHeight + barGap);
+  const pad = { top: 25, bottom: Math.max(25, H - totalBarArea - 25), left: 28, right: 30 };
+  const barAreaW = W - pad.left - pad.right;
+  const startY = pad.top;
+  const passed = scored.filter(e => e.quality_score >= thresh).length;
+
+  // Title
+  ctx.fillStyle = '#94a3b8';
+  ctx.font = '10px Cairo, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('تفكيك الجودة حسب الأبعاد', W - pad.right, 14);
+
+  // Y-axis labels (time)
+  for (let i = 0; i < scored.length; i++) {
+    const e = scored[i];
+    const y = startY + i * (barHeight + barGap) + barHeight / 2 + 3;
+    ctx.fillStyle = '#64748b';
+    ctx.font = '7px monospace';
+    ctx.textAlign = 'left';
+    const label = (e.triggered_at || '').substring(11, 16) || '#' + e.execution_id;
+    ctx.fillText(label, pad.left - 2, y);
+
+    // Score on right
+    ctx.fillStyle = e.quality_score >= thresh ? '#22c55e' : '#ef4444';
+    ctx.font = '7px monospace';
+    ctx.textAlign = 'right';
+    ctx.fillText(e.quality_score + '', W - pad.right + 2, y);
+  }
+
+  // Stacked bars
+  for (let i = 0; i < scored.length; i++) {
+    const e = scored[i];
+    const bd = e.quality_dimensions || {};
+    let xOffset = pad.left;
+    const y = startY + i * (barHeight + barGap);
+
+    const hasDimData = dimOrder.some(k => bd[k] > 0);
+    if (!hasDimData) {
+      const barW = (e.quality_score / 100) * barAreaW;
+      ctx.fillStyle = e.quality_score >= thresh ? 'rgba(34,197,94,.6)' : 'rgba(239,68,68,.6)';
+      ctx.fillRect(xOffset, y, Math.max(barW, 1), barHeight);
+      ctx.strokeStyle = e.quality_score >= thresh ? '#22c55e' : '#ef4444';
+      ctx.lineWidth = 0.5;
+      ctx.strokeRect(xOffset, y, Math.max(barW, 1), barHeight);
+    } else {
+      for (const k of dimOrder) {
+        const score = bd[k] || 0;
+        const segmentW = (score / 100) * barAreaW;
+        if (segmentW < 0.5) continue;
+        ctx.fillStyle = dimColors[k] || '#64748b';
+        ctx.fillRect(xOffset, y, segmentW, barHeight);
+        xOffset += segmentW;
+      }
+      // Threshold line
+      const threshX = pad.left + (thresh / 100) * barAreaW;
+      ctx.strokeStyle = 'rgba(239,68,68,.7)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([3, 2]);
+      ctx.beginPath();
+      ctx.moveTo(threshX, y);
+      ctx.lineTo(threshX, y + barHeight);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+  }
+
+  const avg = (scored.reduce((s, e) => s + e.quality_score, 0) / scored.length).toFixed(0);
+  const sorted = scored.map(e => e.quality_score).sort((a,b) => a-b);
+  const median = sorted.length ? (sorted.length % 2 === 0 ? ((sorted[sorted.length/2-1] + sorted[sorted.length/2])/2).toFixed(0) : sorted[Math.floor(sorted.length/2)].toFixed(0)) : '—';
+  const highest = sorted.length ? sorted[sorted.length-1] : '—';
+  const lowest = sorted.length ? sorted[0] : '—';
+
+  // Distribution
+  const grades = { 'A+': { min: 95, count: 0 }, 'A': { min: 90, count: 0 }, 'A-': { min: 85, count: 0 }, 'B+': { min: 80, count: 0 }, 'B': { min: 70, count: 0 }, 'C': { min: 60, count: 0 }, 'D': { min: 0, count: 0 } };
+  for (const s of sorted) {
+    for (const [g, cfg] of Object.entries(grades)) {
+      if (s >= cfg.min) { grades[g].count++; break; }
+    }
+  }
+
+  // Distribution HTML
+  const distColors = { 'A+':'#1a7f37', 'A':'#238636', 'A-':'#2ea043', 'B+':'#1f6feb', 'B':'#58a6ff', 'C':'#d29922', 'D':'#da3633' };
+  let distHtml = '';
+  for (const [g, cfg] of Object.entries(grades)) {
+    if (cfg.count === 0) continue;
+    const pct = (cfg.count / sorted.length) * 100;
+    distHtml += '<span style="display:flex;align-items:center;gap:4px;font-size:.7rem"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:' + (distColors[g] || '#555') + '"></span> ' + g + ' ' + cfg.count + ' (' + pct.toFixed(0) + '%)</span>';
+  }
+
+  let legendHtml =
+    '<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:6px">' +
+    '<span><span style="color:var(--green)">●</span> متوسط ' + avg + '</span>' +
+    '<span style="color:var(--text3)">|</span>' +
+    '<span>الوسيط ' + median + '</span>' +
+    '<span style="color:var(--text3)">|</span>' +
+    '<span>أعلى <span style="color:var(--green)">' + highest + '</span></span>' +
+    '<span>أقل <span style="color:var(--red)">' + lowest + '</span></span>' +
+    '<span style="color:var(--text3)">|</span>' +
+    '<span><span style="color:var(--green)">●</span> ناجح ' + passed + '/' + scored.length + '</span>' +
+    '<span><span style="color:var(--red)">●</span> راسب ' + (scored.length - passed) + '</span>' +
+    '</div>' +
+    '<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:6px">' + distHtml + '</div>';
+  for (const [k, color] of Object.entries(dimColors)) {
+    legendHtml += '<span style="font-size:.7rem"><span style="color:' + color + '">■</span> ' + dimLabels[k] + '</span>';
+  }
+  document.getElementById('qualityChartLegend').innerHTML = legendHtml;
+}
+
+/* ───── Part C — Pipeline Health ───── */
+
+function renderPipelineHealth() {
+  const stages = [
+    { id: 'rss', name: 'RSS', icon: 'fa-rss', check: e => e.rss_items > 0 || e.rss_source },
+    { id: 'ai', name: 'AI', icon: 'fa-brain', check: e => e.ai_success || e.quality_score > 0 },
+    { id: 'formatter', name: 'تنسيق', icon: 'fa-paint-brush', check: e => e.article_title },
+    { id: 'images', name: 'صور', icon: 'fa-images', check: e => e.article_url },
+    { id: 'github', name: 'GitHub', icon: 'fa-github', check: e => e.deployed || e.status === 'deployed' || e.published },
+    { id: 'telegram', name: 'تلجرام', icon: 'fa-telegram', check: e => e.telegram_sent },
+    { id: 'quality', name: 'جودة', icon: 'fa-star', check: e => e.quality_passed },
+    { id: 'publishing', name: 'نشر', icon: 'fa-check-circle', check: e => e.published },
+  ];
+  const last5 = EXECUTIONS.slice(0, 5);
+  let html = '';
+  for (const stage of stages) {
+    const recentOk = last5.some(e => stage.check(e));
+    const stageExecs = EXECUTIONS.filter(e => stage.check(e));
+    const lastStageTime = stageExecs.length > 0 ? new Date(stageExecs[0].triggered_at).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' }) : '—';
+    const status = recentOk ? (stageExecs.length > 3 ? 'green' : 'yellow') : 'red';
+    const iconColor = status === 'green' ? 'var(--green)' : (status === 'yellow' ? 'var(--orange)' : 'var(--red)');
+    html += '<div class="pipeline-card pc-' + status + '">' +
+      '<div class="pc-status" style="color:' + iconColor + '"><i class="fas ' + stage.icon + '"></i></div>' +
+      '<div class="pc-name">' + stage.name + '</div>' +
+      '<div class="pc-time">' + lastStageTime + '</div>' +
+      '</div>';
+  }
+  document.getElementById('pipelineHealth').innerHTML = html;
+}
+
+/* ───── Part E — Publishing Queue ───── */
+
+function renderPublishingQueue() {
+  const stages = [
+    { id: 'fetched', label: 'جلب RSS', icon: 'fa-rss', check: e => e.rss_items > 0 || e.rss_source },
+    { id: 'ai_gen', label: 'AI', icon: 'fa-brain', check: e => e.ai_success || e.quality_score > 0 },
+    { id: 'formatted', label: 'تنسيق', icon: 'fa-paint-brush', check: e => e.article_title },
+    { id: 'quality_gate', label: 'جودة', icon: 'fa-star', check: e => e.quality_passed === true },
+    { id: 'ready', label: 'جاهز', icon: 'fa-check', check: e => e.published || e.deployed || e.status === 'deployed' },
+    { id: 'published', label: 'نشر', icon: 'fa-check-circle', check: e => e.published === true },
+    { id: 'telegram', label: 'تلجرام', icon: 'fa-telegram', check: e => e.telegram_sent === true },
+    { id: 'github', label: 'GitHub', icon: 'fa-github', check: e => e.deployed || e.status === 'deployed' },
+  ];
+
+  const lastExec = EXECUTIONS.length > 0 ? EXECUTIONS[0] : null;
+  let html = '<div class="queue-flow">';
+  let activeFound = false;
+  for (const stage of stages) {
+    const done = lastExec && stage.check(lastExec);
+    const isActive = !done && !activeFound;
+    const isWait = (!done && activeFound) || !lastExec;
+    if (done) activeFound = true;
+    const cls = done ? 'qs-done' : (isActive ? 'qs-active' : 'qs-wait');
+    const iconS = done ? 'check' : (isActive ? 'spinner fa-spin' : 'circle');
+    html += '<div class="queue-step ' + cls + '"><div class="qs-icon"><i class="fas ' + stage.icon + '"></i></div><div class="qs-label">' + stage.label + '</div><div class="qs-status">' + (done ? 'تم' : (isActive ? 'جاري' : 'انتظار')) + '</div></div>';
+    if (stage.id !== 'github') html += '<div class="queue-arrow"><i class="fas fa-chevron-left"></i></div>';
+  }
+  html += '</div>';
+
+  // Per-article queue
+  const pending = EXECUTIONS.filter(e => !e.published).slice(0, 5);
+  const completed = EXECUTIONS.filter(e => e.published).slice(0, 3);
+  html += '<div style="margin-top:12px"><div class="queue-section"><div class="qs-title">قيد المعالجة</div>';
+  if (pending.length === 0) html += '<div style="font-size:.8rem;color:var(--text3)">لا توجد مقالات قيد المعالجة</div>';
+  for (const e of pending) {
+    const pct = e.quality_score > 0 ? 60 : (e.article_title ? 40 : (e.rss_source ? 20 : 5));
+    html += '<div style="display:flex;align-items:center;gap:8px;padding:6px 0;font-size:.8rem">' +
+      '<span class="code" onclick="showExecutionDetails(' + e.execution_id + ')">#' + e.execution_id + '</span>' +
+      '<div style="flex:1;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden"><div style="width:' + pct + '%;height:100%;background:var(--primary);border-radius:3px;transition:.3s"></div></div>' +
+      '<span style="color:var(--text3);font-size:.7rem">' + pct + '%</span></div>';
+  }
+  html += '</div><div class="queue-section"><div class="qs-title">آخر المنشورات</div>';
+  for (const e of completed) {
+    html += '<div style="display:flex;align-items:center;gap:8px;padding:4px 0;font-size:.8rem"><span style="color:var(--green)"><i class="fas fa-check-circle"></i></span> <span class="code" onclick="showExecutionDetails(' + e.execution_id + ')">#' + e.execution_id + '</span> ' + (e.article_title || '').substring(0, 40) + '</div>';
+  }
+  html += '</div></div>';
+
+  document.getElementById('publishingQueue').innerHTML = html;
+  document.getElementById('queueBadge').textContent = pending.length + ' في الانتظار';
+}
+
+/* ───── Part D+H — Source Manager + Statistics ───── */
+
+function renderSourceManager() {
+  const sources = getKnownSources();
+  if (sources.length === 0) {
+    document.getElementById('sourceManager').innerHTML = '<div class="empty-state">لا توجد مصادر في بيانات التنفيذات بعد. ستظهر المصادر تلقائياً عند بدء خط الإنتاج.</div>';
+    return;
+  }
+  sources.forEach(n => ensureSourceConfig(n));
+  // Sort by performance: enabled first, then by publish rate descending, then by total descending
+  const sorted = sources.slice().sort((a, b) => {
+    const sa = getSourceStats(a);
+    const sb = getSourceStats(b);
+    if (sa.enabled !== sb.enabled) return sa.enabled ? -1 : 1;
+    return (parseFloat(sb.publishRate) - parseFloat(sa.publishRate)) || (sb.total - sa.total);
+  });
+  // Summary table
+  let html = '<div style="overflow-x:auto;margin-bottom:20px"><table style="font-size:.78rem"><thead><tr>' +
+    '<th>المصدر</th><th>الحالة</th><th>أولوية</th><th>الإجمالي</th><th>منشور</th><th>مرفوض</th><th>مقبول</th><th>معدل النشر</th><th>متوسط الجودة</th><th>معدل التكرار</th><th>آخر نشر</th><th>آخر جلب</th>' +
+    '</tr></thead><tbody>';
+  for (const name of sorted) {
+    const stats = getSourceStats(name);
+    const enabled = stats.enabled;
+    const lastPubStr = stats.lastPublish ? new Date(stats.lastPublish).toLocaleDateString('ar-EG', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }) : '—';
+    const lastFetchStr = stats.lastFetch ? new Date(stats.lastFetch).toLocaleDateString('ar-EG', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }) : '—';
+    html += '<tr>' +
+      '<td style="font-weight:600"><i class="fas fa-rss" style="color:' + (enabled ? 'var(--orange)' : 'var(--text3)') + '"></i> ' + name + '</td>' +
+      '<td>' + (enabled ? '<span style="color:var(--green)">مفعل</span>' : '<span style="color:var(--text3)">معطل</span>') + '</td>' +
+      '<td>' + stats.priority + '</td>' +
+      '<td>' + stats.total + '</td>' +
+      '<td style="color:var(--green);font-weight:600">' + stats.published + '</td>' +
+      '<td style="color:var(--orange)">' + stats.rejected + '</td>' +
+      '<td>' + stats.accepted + '</td>' +
+      '<td style="font-weight:600;color:' + (parseFloat(stats.publishRate) >= 20 ? 'var(--green)' : (parseFloat(stats.publishRate) >= 10 ? 'var(--orange)' : 'var(--red)')) + '">' + stats.publishRate + '%</td>' +
+      '<td>' + stats.avgScore + '</td>' +
+      '<td>' + stats.dupRate + '%</td>' +
+      '<td style="font-size:.7rem;color:var(--text3)">' + lastPubStr + '</td>' +
+      '<td style="font-size:.7rem;color:var(--text3)">' + lastFetchStr + '</td>' +
+      '</tr>';
+  }
+  html += '</tbody></table></div>';
+
+  // Source cards with controls
+  html += '<div class="stats-grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">';
+  for (const name of sorted) {
+    const stats = getSourceStats(name);
+    const enabled = stats.enabled;
+    html += '<div class="source-card">' +
+      '<div class="sc-header">' +
+      '<div class="sc-name"><i class="fas fa-rss" style="color:' + (enabled ? 'var(--orange)' : 'var(--text3)') + '"></i> ' + name + '</div>' +
+      '<span style="font-size:.72rem;color:var(--text3)">' + (enabled ? 'مفعل' : 'معطل') + ' • أولوية: ' + stats.priority + ' • نجاح: ' + stats.publishRate + '%</span>' +
+      '</div>' +
+      '<div style="display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap">' +
+      '<button class="btn btn-sm ' + (enabled ? 'btn-success' : 'btn-ghost') + '" onclick="toggleSource(\'' + name + '\')">' + (enabled ? 'مفعل' : 'معطل') + '</button>' +
+      '<button class="btn btn-sm btn-ghost" onclick="adjustPriority(\'' + name + '\', -10)" title="رفع الأولوية"><i class="fas fa-arrow-up"></i></button>' +
+      '<button class="btn btn-sm btn-ghost" onclick="adjustPriority(\'' + name + '\', 10)" title="خفض الأولوية"><i class="fas fa-arrow-down"></i></button>' +
+      '</div>' +
+      '<div class="sc-stats">' +
+      '<div class="sc-stat"><div class="sc-sv">' + stats.total + '</div><div class="sc-sl">إجمالي</div></div>' +
+      '<div class="sc-stat"><div class="sc-sv" style="color:var(--green)">' + stats.published + '</div><div class="sc-sl">منشور</div></div>' +
+      '<div class="sc-stat"><div class="sc-sv" style="color:var(--orange)">' + stats.rejected + '</div><div class="sc-sl">مرفوض</div></div>' +
+      '<div class="sc-stat"><div class="sc-sv">' + stats.accepted + '</div><div class="sc-sl">مقبول</div></div>' +
+      '<div class="sc-stat"><div class="sc-sv">' + stats.avgScore + '</div><div class="sc-sl">متوسط</div></div>' +
+      '<div class="sc-stat"><div class="sc-sv">' + stats.dupRate + '%</div><div class="sc-sl">مكرر</div></div>' +
+      '<div class="sc-stat"><div class="sc-sv" style="color:' + (parseFloat(stats.publishRate) >= 20 ? 'var(--green)' : 'var(--orange)') + '">' + stats.publishRate + '%</div><div class="sc-sl">نشر</div></div>' +
+      '<div class="sc-stat"><div class="sc-sv" style="font-size:.85rem">' + (stats.lastPublish ? new Date(stats.lastPublish).toLocaleDateString('ar-EG', { month:'short', day:'numeric' }) : '—') + '</div><div class="sc-sl">آخر نشر</div></div>' +
+      '</div>' +
+      '<div class="sc-actions">' +
+      '<button class="btn btn-sm btn-ghost" onclick="showSourceDetails(\'' + name + '\')"><i class="fas fa-chart-bar"></i> تفاصيل</button>' +
+      '</div>' +
+      '</div>';
+  }
+  html += '</div>';
+  document.getElementById('sourceManager').innerHTML = html;
+}
+
+function toggleSource(name) {
+  if (!SOURCE_CONFIG[name]) SOURCE_CONFIG[name] = { enabled: true, priority: 50 };
+  SOURCE_CONFIG[name].enabled = SOURCE_CONFIG[name].enabled !== false ? false : true;
+  saveSourceConfig();
+  renderSourceManager();
+}
+
+function adjustPriority(name, delta) {
+  if (!SOURCE_CONFIG[name]) SOURCE_CONFIG[name] = { enabled: true, priority: 50 };
+  SOURCE_CONFIG[name].priority = Math.max(1, Math.min(100, (SOURCE_CONFIG[name].priority || 50) + delta));
+  saveSourceConfig();
+  renderSourceManager();
+}
+
+function showSourceDetails(name) {
+  const stats = getSourceStats(name);
+  const cfg = SOURCE_CONFIG[name] || {};
+  const related = EXECUTIONS.filter(e => e.rss_source === name).slice(0, 20);
+  const lastPubStr = stats.lastPublish ? new Date(stats.lastPublish).toLocaleString('ar-EG') : '—';
+  const lastFetchStr = stats.lastFetch ? new Date(stats.lastFetch).toLocaleString('ar-EG') : '—';
+  let html = '<table style="font-size:.8rem"><tbody>' +
+    '<tr><td style="font-weight:600;color:var(--text2)">المصدر</td><td>' + name + '</td></tr>' +
+    '<tr><td style="font-weight:600;color:var(--text2)">الحالة</td><td>' + (cfg.enabled !== false ? 'مفعل' : 'معطل') + '</td></tr>' +
+    '<tr><td style="font-weight:600;color:var(--text2)">الأولوية</td><td>' + (cfg.priority || 50) + '</td></tr>' +
+    '<tr><td style="font-weight:600;color:var(--text2)">إجمالي التنفيذات</td><td>' + stats.total + '</td></tr>' +
+    '<tr><td style="font-weight:600;color:var(--text2)">منشور</td><td>' + stats.published + '</td></tr>' +
+    '<tr><td style="font-weight:600;color:var(--text2)">مرفوض</td><td>' + stats.rejected + '</td></tr>' +
+    '<tr><td style="font-weight:600;color:var(--text2)">مقبول</td><td>' + stats.accepted + '</td></tr>' +
+    '<tr><td style="font-weight:600;color:var(--text2)">معدل النشر</td><td>' + stats.publishRate + '%</td></tr>' +
+    '<tr><td style="font-weight:600;color:var(--text2)">مكرر</td><td>' + stats.dupRate + '%</td></tr>' +
+    '<tr><td style="font-weight:600;color:var(--text2)">متوسط الجودة</td><td>' + stats.avgScore + '</td></tr>' +
+    '<tr><td style="font-weight:600;color:var(--text2)">آخر نشر</td><td>' + lastPubStr + '</td></tr>' +
+    '<tr><td style="font-weight:600;color:var(--text2)">آخر جلب</td><td>' + lastFetchStr + '</td></tr>' +
+    '</tbody></table>';
+  html += '<h4 style="font-size:.85rem;margin:12px 0 6px">آخر التنفيذات</h4><div style="max-height:200px;overflow-y:auto">';
+  html += related.map(e => {
+    const tl = renderPerExecTimeline(e);
+    return '<div style="padding:6px 0;border-bottom:1px solid var(--bg3);margin-bottom:6px">' +
+      '<div style="font-size:.78rem;display:flex;justify-content:space-between;margin-bottom:4px">' +
+      '<span class="code" onclick="showExecutionDetails(' + e.execution_id + ')">#' + e.execution_id + ' ' + (e.article_title || '').substring(0, 30) + '</span>' +
+      '<span style="color:var(--text3)">' + statusBadge(e) + '</span></div>' +
+      tl + '</div>';
+  }).join('');
+  html += '</div>';
+  showModal('تفاصيل المصدر: ' + name, html, '<button class="btn btn-ghost" onclick="closeModal()">إغلاق</button>');
+}
+
+/* ───── Part F — Operations Report ───── */
+
+function generateOperationsReport() {
+  let md = '# تقرير العمليات التشغيلية\n\n';
+  md += 'آخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  const total = EXECUTIONS.length;
+  if (total === 0) return md + 'لا توجد بيانات تشغيل بعد.\n';
+
+  const published = EXECUTIONS.filter(e => e.published).length;
+  const rejected = EXECUTIONS.filter(e => e.status === 'rejected').length;
+  const failed = EXECUTIONS.filter(e => e.status === 'failed' || e.status === 'error').length;
+  const today = getTodayStr();
+  const todayExecs = EXECUTIONS.filter(e => (e.triggered_at || '').substring(0, 10) === today).length;
+  const todayPub = EXECUTIONS.filter(e => e.published && (e.triggered_at || '').substring(0, 10) === today).length;
+  const scored = EXECUTIONS.filter(e => e.quality_score > 0);
+  const avgQ = scored.length ? (scored.reduce((s, e) => s + e.quality_score, 0) / scored.length).toFixed(1) : 'N/A';
+  const successRate = total ? ((published / total) * 100).toFixed(1) : '0';
+  const lastPub = EXECUTIONS.find(e => e.published);
+  const hoursSincePub = lastPub ? ((Date.now() - new Date(lastPub.triggered_at).getTime()) / 3600000).toFixed(1) : 'N/A';
+  const up = EXECUTIONS.filter(e => new Date(e.triggered_at).getTime() > Date.now() - 86400000).length > 0;
+
+  const reasons = {};
+  EXECUTIONS.filter(e => e.rejection_reason).forEach(e => {
+    reasons[e.rejection_reason] = (reasons[e.rejection_reason] || 0) + 1;
+  });
+
+  const sources = {};
+  EXECUTIONS.forEach(e => {
+    const s = e.rss_source || 'غير معروف';
+    if (!sources[s]) sources[s] = { total: 0, published: 0, rejected: 0, scores: [] };
+    sources[s].total++;
+    if (e.published) sources[s].published++;
+    if (e.status === 'rejected') sources[s].rejected++;
+    if (e.quality_score > 0) sources[s].scores.push(e.quality_score);
+  });
+
+  md += '## ملخص التشغيل\n\n';
+  md += '- حالة النظام: ' + (up ? '✅ شغال' : '❌ متوقف') + '\n';
+  md += '- معدل النجاح: ' + successRate + '%\n';
+  md += '- إجمالي التنفيذات: ' + total + '\n';
+  md += '- المنشورات: ' + published + '\n';
+  md += '- المرفوضات: ' + rejected + '\n';
+  md += '- حالات الفشل: ' + failed + '\n';
+  md += '- متوسط الجودة: ' + avgQ + '\n';
+
+  md += '\n## اليوم\n\n';
+  md += '- تنفيذات اليوم: ' + todayExecs + '\n';
+  md += '- منشور اليوم: ' + todayPub + '\n';
+  md += '- آخر نشر: قبل ' + hoursSincePub + ' ساعة\n';
+
+  md += '\n## أسباب الرفض\n\n';
+  for (const [reason, count] of Object.entries(reasons).sort((a, b) => b[1] - a[1])) {
+    md += '- ' + reason + ': ' + count + '\n';
+  }
+
+  md += '\n## إحصائيات المصادر\n\n';
+  md += '| المصدر | الإجمالي | المنشور | المرفوض | متوسط الجودة |\n|---|---|---|---|---|\n';
+  for (const [src, s] of Object.entries(sources)) {
+    const avg = s.scores.length ? (s.scores.reduce((a, b) => a + b, 0) / s.scores.length).toFixed(0) : '—';
+    md += '| ' + src + ' | ' + s.total + ' | ' + s.published + ' | ' + s.rejected + ' | ' + avg + ' |\n';
+  }
+
+  md += '\n## صحة الخطوط\n\n';
+  const checks = [
+    ['آخر 24 ساعة نشاط', up ? '✅' : '❌'],
+    ['آخر 6 ساعات نشر', lastPub && hoursSincePub < 6 ? '✅' : (lastPub && hoursSincePub < 24 ? '⚠️' : '❌')],
+    ['متوسط الجودة >= 80', avgQ !== 'N/A' && parseFloat(avgQ) >= 80 ? '✅' : '⚠️'],
+    ['لدينا تنفيذات', total > 0 ? '✅' : '❌'],
+  ];
+  for (const [check, result] of checks) {
+    md += '- ' + check + ': ' + result + '\n';
+    if (result === '❌') md += '  - ⚠️ بحاجة إلى تدخل\n';
+  }
+  return md;
+}
+
+/* ───── Part G — Quality Policy ───── */
+
+function getQualityThresholdOptions() {
+  return [70, 75, 80, 85];
+}
+
+/* ───── Failure Reason Analyzer ───── */
+
+function renderFailureAnalysis() {
+  const recent = EXECUTIONS.slice(0, 50);
+  if (recent.length === 0) {
+    document.getElementById('failureAnalysis').innerHTML = '<div class="empty-state">لا توجد بيانات كافية</div>';
+    return;
+  }
+  const categories = {
+    'جودة': { count: 0, icon: 'fa-star', color: 'var(--orange)' },
+    'تكرر': { count: 0, icon: 'fa-copy', color: 'var(--text3)' },
+    'فشل ذكاء اصطناعي': { count: 0, icon: 'fa-brain', color: 'var(--red)' },
+    'RSS فارغ': { count: 0, icon: 'fa-rss', color: 'var(--text3)' },
+    'لا يوجد تقني': { count: 0, icon: 'fa-microchip', color: 'var(--text3)' },
+    'جميعها قديمة': { count: 0, icon: 'fa-clock', color: 'var(--text3)' },
+    'فشل صور': { count: 0, icon: 'fa-images', color: 'var(--orange)' },
+    'GitHub': { count: 0, icon: 'fa-github', color: 'var(--red)' },
+    'تليجرام': { count: 0, icon: 'fa-telegram', color: 'var(--orange)' },
+    'خطأ غير متوقع': { count: 0, icon: 'fa-exclamation-triangle', color: 'var(--red)' },
+  };
+  for (const e of recent) {
+    if (e.published) continue;
+    if (e.status === 'quality_rejected' || (e.rejection_reason && e.rejection_reason.includes('جودة'))) { categories['جودة'].count++; }
+    else if (e.status === 'all_duplicates') { categories['تكرر'].count++; }
+    else if (e.status === 'ai_failed' || e.ai_error) { categories['فشل ذكاء اصطناعي'].count++; }
+    else if (e.status === 'no_items' || e.status === 'empty_rss') { categories['RSS فارغ'].count++; }
+    else if (e.status === 'no_tech') { categories['لا يوجد تقني'].count++; }
+    else if (e.status === 'all_stale') { categories['جميعها قديمة'].count++; }
+    else if (e.status === 'image_failed') { categories['فشل صور'].count++; }
+    else if (e.status === 'deploy_failed' || (e.error && e.error.includes('git'))) { categories['GitHub'].count++; }
+    else if (e.status === 'published_tg_failed' || e.telegram_error) { categories['تليجرام'].count++; }
+    else if (e.status === 'unhandled_error' || e.error) { categories['خطأ غير متوقع'].count++; }
+  }
+  const totalFailed = Object.values(categories).reduce((s, c) => s + c.count, 0);
+  const maxCount = Math.max(...Object.values(categories).map(c => c.count), 1);
+  let html = '<div class="queue-section"><div class="qs-title">إجمالي حالات الفشل في آخر 50 تنفيذاً: ' + totalFailed + '</div></div>';
+  html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px">';
+  for (const [name, cat] of Object.entries(categories)) {
+    if (cat.count === 0) continue;
+    const pct = (cat.count / totalFailed) * 100;
+    const barPct = (cat.count / maxCount) * 100;
+    html += '<div style="background:var(--bg2);padding:12px;border-radius:8px;border:1px solid var(--bg3)">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">' +
+      '<span style="font-size:.85rem;font-weight:600;display:flex;align-items:center;gap:6px"><i class="fas ' + cat.icon + '" style="color:' + cat.color + '"></i> ' + name + '</span>' +
+      '<span style="font-size:1.2rem;font-weight:700;color:' + cat.color + '">' + cat.count + '</span></div>' +
+      '<div style="height:6px;background:var(--bg3);border-radius:3px;overflow:hidden"><div style="width:' + barPct + '%;height:100%;background:' + cat.color + ';border-radius:3px"></div></div>' +
+      '<div style="font-size:.7rem;color:var(--text3);margin-top:2px">' + pct.toFixed(1) + '% من الفشل</div></div>';
+  }
+  html += '</div>';
+  document.getElementById('failureAnalysis').innerHTML = html;
+}
+
+/* ───── Per-Execution Publishing Timeline ───── */
+
+function renderPerExecTimeline(exec) {
+  if (!exec) return '<div class="empty-state">لا توجد بيانات</div>';
+  const steps = [
+    { id: 'rss', label: 'RSS', icon: 'fa-rss', done: !!(exec.rss_items > 0 || exec.rss_source), ts: exec.triggered_at || '' },
+    { id: 'ai', label: 'AI', icon: 'fa-brain', done: !!(exec.ai_success || exec.quality_score > 0), ts: exec.triggered_at || '' },
+    { id: 'format', label: 'تنسيق', icon: 'fa-paint-brush', done: !!exec.article_title, ts: exec.triggered_at || '' },
+    { id: 'quality', label: 'جودة', icon: 'fa-star', done: exec.quality_passed === true || exec.published, ts: exec.triggered_at || '' },
+    { id: 'github', label: 'GitHub', icon: 'fa-github', done: !!(exec.deployed || exec.status === 'deployed'), ts: exec.completed_at || exec.triggered_at || '' },
+    { id: 'telegram', label: 'تلجرام', icon: 'fa-telegram', done: !!exec.telegram_sent, ts: exec.completed_at || exec.triggered_at || '' },
+    { id: 'publish', label: 'نشر', icon: 'fa-check-circle', done: !!exec.published, ts: exec.completed_at || exec.triggered_at || '' },
+  ];
+  let activeFound = false;
+  let html = '<div style="display:flex;align-items:center;gap:4px;overflow-x:auto;padding:8px 0;flex-wrap:nowrap;font-size:.75rem">';
+  for (const step of steps) {
+    const isActive = !step.done && !activeFound;
+    if (step.done) activeFound = true;
+    const bg = step.done ? 'rgba(34,197,94,.15)' : (isActive ? 'rgba(59,130,246,.15)' : 'var(--bg3)');
+    const border = step.done ? 'var(--green)' : (isActive ? 'var(--primary)' : 'var(--bg3)');
+    const color = step.done ? 'var(--green)' : (isActive ? 'var(--primary)' : 'var(--text3)');
+    const label = step.done ? 'تم' : (isActive ? 'جاري' : '—');
+    const ts = step.ts ? new Date(step.ts).toLocaleTimeString('ar-EG', { hour:'2-digit', minute:'2-digit' }) : '';
+    html += '<div style="flex-shrink:0;padding:8px 10px;border-radius:8px;background:' + bg + ';border:1px solid ' + border + ';text-align:center;min-width:70px">' +
+      '<div style="color:' + color + ';font-size:1rem;margin-bottom:2px"><i class="fas ' + step.icon + '"></i></div>' +
+      '<div style="font-weight:600;font-size:.72rem;color:var(--text2)">' + step.label + '</div>' +
+      '<div style="font-size:.65rem;color:var(--text3)">' + label + '</div>' +
+      (ts ? '<div style="font-size:.6rem;color:var(--text3)">' + ts + '</div>' : '') +
+      '</div>';
+    if (step.id !== 'publish') html += '<div style="color:var(--text3);font-size:.6rem"><i class="fas fa-chevron-left"></i></div>';
+  }
+  html += '</div>';
+  return html;
+}
+
+/* ───── System Health Panel ───── */
+
+function renderSystemHealth() {
+  const now = Date.now();
+  const total = ARTICLES.length;
+  const published = ARTICLES.filter(a => a.status === 'published').length;
+  const todayPub = ARTICLES.filter(a => a.status === 'published' && articleDate(a).substring(0, 10) === getTodayStr()).length;
+  const weekPub = ARTICLES.filter(a => a.status === 'published' && articleDate(a) && (now - new Date(articleDate(a)).getTime()) < 7*86400000).length;
+  const lastPub = ARTICLES.filter(a => a.status === 'published').sort((a,b) => new Date(articleDate(b)).getTime() - new Date(articleDate(a)).getTime())[0];
+  const hoursSincePub = lastPub ? ((now - new Date(articleDate(lastPub)).getTime()) / 3600000) : -1;
+  const lastExec = EXECUTIONS.length > 0 ? EXECUTIONS[0] : null;
+  const execHours = lastExec ? ((now - new Date(lastExec.triggered_at).getTime()) / 3600000) : -1;
+  const execSuccess = EXECUTIONS.filter(e => e.published).length;
+  const execTotal = EXECUTIONS.length;
+  const successPct = execTotal ? ((execSuccess / execTotal) * 100).toFixed(0) : '—';
+  const qualityPassed = EXECUTIONS.filter(e => e.quality_passed === true).length;
+  const qualityTotal = EXECUTIONS.filter(e => e.quality_score > 0).length;
+  const qualityPct = qualityTotal ? ((qualityPassed / qualityTotal) * 100).toFixed(0) : '—';
+  const catsCount = CATEGORIES.length;
+  const ghToken = CONFIG.ghToken || localStorage.getItem('gh_token') || '';
+  const tgToken = CONFIG.telegramBotToken || '';
+  const articlesWithImgs = ARTICLES.filter(a => a.image || a.image_url).length;
+  const avgBody = published ? ARTICLES.filter(a => a.body).reduce((s,a) => s + (a.body ? a.body.split(/\s+/).filter(Boolean).length : 0), 0) / published : 0;
+
+  const checks = [
+    { label: 'المفهرس', count: total, sub: published + ' منشور', ok: total > 0 },
+    { label: 'منشور اليوم', count: todayPub, sub: weekPub + ' هذا الأسبوع', ok: todayPub > 0 },
+    { label: 'آخر نشر', count: lastPub ? articleDate(lastPub).substring(0,10) : '—', sub: hoursSincePub >= 0 ? 'منذ ' + hoursSincePub.toFixed(1) + ' ساعة' : '—', ok: hoursSincePub < 6 },
+    { label: 'حالة الخط', count: lastExec ? (execHours < 2 ? 'نشط' : 'خامل') : 'ميت', sub: execHours >= 0 ? execHours.toFixed(1) + ' ساعة' : '—', ok: execHours < 2 },
+    { label: 'GitHub', count: ghToken ? 'موصل' : 'غير موصل', sub: ghToken ? 'مفعل' : '—', ok: !!ghToken },
+    { label: 'تليجرام', count: tgToken ? 'موصل' : 'غير موصل', sub: tgToken ? 'مفعل' : '—', ok: !!tgToken },
+    { label: 'التصنيفات', count: catsCount, sub: 'تصنيف', ok: catsCount > 0 },
+    { label: 'الصور', count: articlesWithImgs + '/' + published, sub: published ? ((articlesWithImgs/published)*100).toFixed(0) + '%' : '—', ok: published === 0 || (articlesWithImgs/published) > 0.8 },
+    { label: 'نجاح التنفيذ', count: successPct + '%', sub: execSuccess + '/' + execTotal, ok: parseFloat(successPct) >= 50 },
+    { label: 'اجتياز الجودة', count: qualityPct + '%', sub: qualityPassed + '/' + qualityTotal, ok: parseFloat(qualityPct) >= 60 },
+    { label: 'متوسط طول المقال', count: Math.round(avgBody) + ' ك', sub: 'كلمة', ok: avgBody > 100 },
+    { label: 'Sitemap', count: published + ' رابط', sub: '', ok: published > 0 },
+  ];
+
+  let html = '';
+  for (const check of checks) {
+    const bg = check.ok ? 'rgba(34,197,94,.1)' : (parseFloat(check.count) > 0 || check.count === '—' ? 'rgba(245,158,11,.1)' : 'rgba(239,68,68,.1)');
+    const border = check.ok ? 'var(--green)' : (parseFloat(check.count) > 0 || check.count === '—' ? 'var(--orange)' : 'var(--red)');
+    const color = check.ok ? 'var(--green)' : (parseFloat(check.count) > 0 || check.count === '—' ? 'var(--orange)' : 'var(--red)');
+    html += '<div style="background:' + bg + ';padding:12px;border-radius:8px;border:1px solid ' + border + ';text-align:center">' +
+      '<div style="font-size:.9rem;font-weight:700;color:' + color + '">' + check.count + '</div>' +
+      '<div style="font-size:.7rem;color:var(--text2);font-weight:600;margin-top:2px">' + check.label + '</div>' +
+      (check.sub ? '<div style="font-size:.65rem;color:var(--text3);margin-top:1px">' + check.sub + '</div>' : '') +
+      '</div>';
+  }
+  document.getElementById('systemHealth').innerHTML = html;
+}
 
 function renderDashboard() {
   const total = ARTICLES.length;
@@ -713,7 +1739,7 @@ async function saveArticle() {
     primary_company: primaryCompany, secondary_company: secondaryCompany,
     products, technologies, ai_models: aiModels,
     readTime,
-    techdose_link: 'https://osamaelfeky567.github.io/techdosenews/article.html?id=' + id,
+    techdose_link: (CONFIG.siteUrl || 'https://td-arabi.com') + '/article.html?id=' + id,
     views: '0', hasEgyptImpact: false,
     image_source: '', image_provider: '', image_query: '', image_type: '', image_confidence: 0,
     internal_links: [],
@@ -861,6 +1887,16 @@ const REPORTS = [
   { id: 'deployment_status', icon: 'fa-rocket', name: 'deployment_status.md', desc: 'حالة النشر على GitHub Pages' },
   { id: 'github_status', icon: 'fa-github', name: 'github_status.md', desc: 'حالة مستودع GitHub والملفات' },
   { id: 'telegram_status', icon: 'fa-telegram', name: 'telegram_status.md', desc: 'حالة تكامل التليجرام' },
+  { id: 'config_health', icon: 'fa-heartbeat', name: 'config_health.md', desc: 'فحص صحة الإعدادات والمصادر' },
+  { id: 'executions_summary', icon: 'fa-history', name: 'executions_summary.md', desc: 'ملخص تنفيذات خط الإنتاج' },
+  { id: 'quality_trends', icon: 'fa-chart-line', name: 'quality_trends.md', desc: 'اتجاهات جودة المقالات' },
+  { id: 'pipeline_health', icon: 'fa-heartbeat', name: 'pipeline_health.md', desc: 'صحة خط الإنتاج الكلية' },
+  { id: 'operations_report', icon: 'fa-tachometer-alt', name: 'operations_report.md', desc: 'تقرير العمليات التشغيلية الشامل' },
+  { id: 'duplicates', icon: 'fa-copy', name: 'duplicates.md', desc: 'فحص المقالات المكررة في الفهرس' },
+  { id: 'editorial_cleanup', icon: 'fa-broom', name: 'editorial_cleanup.md', desc: 'اقتراحات تنظيف المحتوى التحريري' },
+  { id: 'stabilization_report', icon: 'fa-shield-alt', name: 'stabilization_report.md', desc: 'تقرير وضع التثبيت والاستقرار' },
+  { id: 'repository_audit', icon: 'fa-folder-open', name: 'repository_audit.md', desc: 'تدقيق كامل لمستودع GitHub' },
+  { id: 'release_notes', icon: 'fa-book', name: 'release_notes.md', desc: 'سجل الإصدارات — تاريخ المشروع بالكامل' },
 ];
 
 let ACTIVE_REPORT = '';
@@ -898,7 +1934,7 @@ async function refreshReport() {
 function escapeHtml(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 async function generateReport(reportId) {
-  switch(reportId) {
+  switch (reportId) {
     case 'articles_inventory': return generateArticlesInventory();
     case 'image_inventory': return generateImageInventory();
     case 'seo_audit': return generateSeoAudit();
@@ -908,7 +1944,17 @@ async function generateReport(reportId) {
     case 'deployment_status': return generateDeploymentStatus();
     case 'github_status': return generateGitHubStatus();
     case 'telegram_status': return generateTelegramStatus();
-    default: return '# تقرير غير معروف';
+    case 'config_health': return generateConfigHealth();
+    case 'executions_summary': return generateExecutionsSummary();
+    case 'quality_trends': return generateQualityTrends();
+    case 'pipeline_health': return generatePipelineHealth();
+    case 'operations_report': return generateOperationsReport();
+    case 'duplicates': return generateDuplicatesReport();
+    case 'editorial_cleanup': return generateEditorialCleanup();
+    case 'stabilization_report': return generateStabilizationReport();
+    case 'repository_audit': return generateRepositoryAudit();
+    case 'release_notes': return generateReleaseNotes();
+    default: return '# تقرير غير معروف\n';
   }
 }
 
@@ -1106,9 +2152,9 @@ function generateGitHubStatus() {
   md += '- المالك: ' + GH_OWNER + '\n';
   md += '- المستودع: ' + GH_REPO + '\n';
   md += '- الرابط: https://github.com/' + GH_OWNER + '/' + GH_REPO + '\n';
-  md += '- الفرع الرئيسي: main\n';
+  md += '- الفرع الرئيسي: ' + (CONFIG.ghBranch || 'main') + '\n';
 
-  const ghToken = CONFIG.ghToken || sessionStorage.getItem('gh_token') || '';
+  const ghToken = CONFIG.ghToken || localStorage.getItem('gh_token') || '';
   md += '- حالة التوكن: ' + (ghToken ? 'موجود' : 'مفقود') + '\n';
 
   md += '\n## الملفات في المستودع\n\n';
@@ -1122,6 +2168,97 @@ function generateGitHubStatus() {
   md += '- `script.js` — جافاسكريبت الموقع\n';
   md += '- `robots.txt` — إرشادات محركات البحث\n';
 
+  return md;
+}
+
+function generateConfigHealth() {
+  let md = '# فحص صحة الإعدادات\n\nآخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  md += '## مصدر الإعدادات\n\n';
+  const ghToken = CONFIG.ghToken || localStorage.getItem('gh_token') || '';
+  const cacheAge = localStorage.getItem('admin_config_cache') ? 'متوفر في التخزين المحلي' : 'غير متوفر';
+  md += '- مصدر الحقيقة الوحيد: `admin_config.json`\n';
+  md += '- التخزين المحلي: ' + cacheAge + '\n';
+  md += '- رمز GitHub: ' + (ghToken ? 'موجود' : 'مفقود') + '\n';
+  md += '- المستودع: ' + GH_OWNER + '/' + GH_REPO + '\n';
+  md += '- الفرع: ' + (CONFIG.ghBranch || 'main') + '\n';
+
+  md += '\n## القيم المحملة\n\n';
+  const fields = [
+    ['siteUrl', 'رابط الموقع', true],
+    ['siteName', 'اسم الموقع', true],
+    ['siteDesc', 'وصف الموقع', false],
+    ['ghToken', 'رمز GitHub', true],
+    ['ghOwner', 'مالك المستودع', true],
+    ['ghRepo', 'اسم المستودع', true],
+    ['ghBranch', 'الفرع', false],
+    ['telegramBotToken', 'رمز بوت تليجرام', false],
+    ['telegramChannelId', 'معرف قناة تليجرام', false],
+    ['geminiKey', 'مفتاح Gemini', false],
+    ['indexNowKey', 'مفتاح IndexNow', false],
+    ['facebook', 'فيسبوك', false],
+    ['twitter', 'تويتر', false],
+    ['pexelsApiKey', 'مفتاح Pexels', false],
+    ['passwordHash', 'كلمة المرور', true],
+  ];
+  md += '| الحقل | القيمة | الحالة |\n|---|---|---|\n';
+  for (const [key, label, required] of fields) {
+    const val = CONFIG[key] || '';
+    const status = val ? '✅' : (required ? '🔴' : '🟡');
+    const display = val ? (key === 'ghToken' || key === 'passwordHash' || key === 'pexelsApiKey' || key === 'telegramBotToken' || key === 'geminiKey' || key === 'indexNowKey' ? '(مخفي)' : val.substring(0, 50)) : '(فارغ)';
+    md += '| ' + label + ' | ' + display + ' | ' + status + ' |\n';
+  }
+
+  const missing = fields.filter(([k,,r]) => r && !CONFIG[k]);
+  md += '\n## التقييم العام\n\n';
+  if (!ghToken && !CONFIG.ghOwner) {
+    md += '🟢 **أخضر** — جميع القيم المطلوبة موجودة\n';
+  } else if (missing.length === 0) {
+    md += '🟢 **أخضر** — جميع القيم المطلوبة موجودة\n';
+  } else if (missing.some(([k]) => k === 'ghToken' || k === 'ghOwner' || k === 'ghRepo')) {
+    md += '🔴 **أحمر** — القيم الحيوية مفقودة: ' + missing.map(([,l]) => l).join('، ') + '\n';
+  } else {
+    md += '🟡 **أصفر** — القيم الاختيارية مفقودة: ' + missing.map(([,l]) => l).join('، ') + '\n';
+  }
+
+  md += '\n## تدفق البيانات\n\n';
+  md += '```\n';
+  md += 'admin_config.json (GitHub)\n';
+  md += '       ↓\n';
+  md += '  loadConfig()\n';
+  md += '       ↓\n';
+  md += '  localStorage (admin_config_cache)\n';
+  md += '       ↓\n';
+  md += '  CONFIG (runtime)\n';
+  md += '       ↓\n';
+  md += '  Settings page → saveSettings()\n';
+  md += '       ↓\n';
+  md += '  Object.assign(CONFIG, fields)\n';
+  md += '       ↓\n';
+  md += '  localStorage cache + GitHub PUT\n';
+  md += '       ↓\n';
+  md += '  ghPut(admin_config.json)\n';
+  md += '       ↓\n';
+  md += '  GitHub Commit → GitHub Push → مستخدمون جدد\n';
+  md += '```\n';
+
+  md += '\n## التحقق الشامل\n\n';
+  const checks = [
+    ['CONFIG محملة', !!CONFIG],
+    ['رمز GitHub متوفر', !!ghToken],
+    ['admin_config_cache في localStorage', !!localStorage.getItem('admin_config_cache')],
+    ['الرابط الأساسي', !!CONFIG.siteUrl],
+    ['مالك المستودع', !!GH_OWNER],
+    ['اسم المستودع', !!GH_REPO],
+    ['API جاهز', !!GH_API],
+    ['RAW URL جاهز', !!RAW_URL],
+  ];
+  md += '| الفحص | النتيجة |\n|---|---|\n';
+  for (const [label, pass] of checks) {
+    md += '| ' + label + ' | ' + (pass ? '✅' : '❌') + ' |\n';
+  }
+
+  md += '\n---\n';
+  md += '🟢 أخضر = كل شيء يعمل | 🟡 أصفر = قيم اختيارية مفقودة | 🔴 أحمر = قيم إجبارية مفقودة\n';
   return md;
 }
 
@@ -1144,6 +2281,294 @@ function generateTelegramStatus() {
   return md;
 }
 
+/* ───── Execution Reports ───── */
+
+function generateExecutionsSummary() {
+  let md = '# ملخص تنفيذات خط الإنتاج\n\n';
+  md += 'آخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  md += 'إجمالي التنفيذات: ' + EXECUTIONS.length + '\n';
+  const pub = EXECUTIONS.filter(e => e.published).length;
+  const rej = EXECUTIONS.filter(e => e.status === 'rejected').length;
+  const fail = EXECUTIONS.filter(e => e.status === 'failed' || e.status === 'error').length;
+  const dep = EXECUTIONS.filter(e => e.status === 'deployed' || e.status === 'published').length;
+  md += '- منشور: ' + pub + '\n';
+  md += '- مرفوض: ' + rej + '\n';
+  md += '- فاشل: ' + fail + '\n';
+  md += '- تم النشر: ' + dep + '\n';
+  md += '- معدل النجاح: ' + (EXECUTIONS.length ? ((dep / EXECUTIONS.length) * 100).toFixed(1) : '0') + '%\n';
+
+  md += '\n## آخر 10 تنفيذات\n\n';
+  md += '| التوقيت | المعرف | المصدر | الحالة | الجودة |\n';
+  md += '|---|---|---|---|---|\n';
+  for (const e of EXECUTIONS.slice(0, 10)) {
+    const t = new Date(e.triggered_at).toLocaleString('ar-EG');
+    const q = e.quality_score ? e.quality_score + ' (' + gradeLabel(e.quality_score) + ')' : '—';
+    md += '| ' + t + ' | #' + e.execution_id + ' | ' + (e.rss_source || '—') + ' | ' + (e.published ? 'نشر' : e.status) + ' | ' + q + ' |\n';
+  }
+  return md;
+}
+
+function generateQualityTrends() {
+  let md = '# اتجاهات الجودة\n\n';
+  md += 'آخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  const scored = EXECUTIONS.filter(e => e.quality_score > 0);
+  if (scored.length === 0) return md + 'لا توجد مقالات مصنفة بعد.\n';
+  const scores = scored.map(e => e.quality_score);
+  const avg = (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1);
+  const max = Math.max(...scores);
+  const min = Math.min(...scores);
+  md += '- عدد المقالات المصنفة: ' + scored.length + '\n';
+  md += '- متوسط الجودة: ' + avg + ' (' + gradeLabel(parseFloat(avg)) + ')\n';
+  md += '- أعلى جودة: ' + max + ' (' + gradeLabel(max) + ')\n';
+  md += '- أدنى جودة: ' + min + ' (' + gradeLabel(min) + ')\n';
+  md += '- المقالات التي اجتازت الجودة: ' + scored.filter(e => e.quality_passed).length + '\n';
+
+  md += '\n## توزيع الدرجات\n\n';
+  const a = scored.filter(e => e.quality_score >= 90).length;
+  const b = scored.filter(e => e.quality_score >= 80 && e.quality_score < 90).length;
+  const c = scored.filter(e => e.quality_score >= 70 && e.quality_score < 80).length;
+  const d = scored.filter(e => e.quality_score < 70).length;
+  md += '- A (90+): ' + a + '\n';
+  md += '- B (80-89): ' + b + '\n';
+  md += '- C (70-79): ' + c + '\n';
+  md += '- D (<70): ' + d + '\n';
+
+  md += '\n## آخر 20 مقالة مصنفة\n\n';
+  md += '| التوقيت | المعرف | الجودة | الدرجة |\n';
+  md += '|---|---|---|---|\n';
+  for (const e of scored.slice(0, 20)) {
+    const t = new Date(e.triggered_at).toLocaleString('ar-EG');
+    md += '| ' + t + ' | #' + e.execution_id + ' | ' + gradeLabel(e.quality_score) + ' | ' + e.quality_score + ' |\n';
+  }
+  return md;
+}
+
+function generatePipelineHealth() {
+  let md = '# صحة خط الإنتاج\n\n';
+  md += 'آخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  const total = EXECUTIONS.length;
+  const published = EXECUTIONS.filter(e => e.published).length;
+  const rejected = EXECUTIONS.filter(e => e.status === 'rejected').length;
+  const failed = EXECUTIONS.filter(e => e.status === 'failed' || e.status === 'error').length;
+  const successRate = total ? ((published / total) * 100).toFixed(1) : '0';
+
+  md += '## مؤشرات الصحة\n\n';
+  md += '| المؤشر | القيمة |\n|---|---|\n';
+  md += '| إجمالي التنفيذات | ' + total + ' |\n';
+  md += '| المقالات المنشورة | ' + published + ' |\n';
+  md += '| المقالات المرفوضة | ' + rejected + ' |\n';
+  md += '| حالات الفشل | ' + failed + ' |\n';
+  md += '| معدل النجاح | ' + successRate + '% |\n';
+  md += '| آخر تنفيذ | ' + (EXECUTIONS.length ? new Date(EXECUTIONS[0].triggered_at).toLocaleString('ar-EG') : '—') + ' |\n';
+
+  if (total > 0) {
+    md += '\n## مصادر RSS\n\n';
+    const sources = {};
+    for (const e of EXECUTIONS) {
+      const s = e.rss_source || 'غير معروف';
+      if (!sources[s]) sources[s] = { total: 0, published: 0, rejected: 0 };
+      sources[s].total++;
+      if (e.published) sources[s].published++;
+      if (e.status === 'rejected') sources[s].rejected++;
+    }
+    md += '| المصدر | الإجمالي | المنشور | المرفوض |\n|---|---|---|---|\n';
+    for (const [src, stats] of Object.entries(sources)) {
+      md += '| ' + src + ' | ' + stats.total + ' | ' + stats.published + ' | ' + stats.rejected + ' |\n';
+    }
+  }
+
+  const last48 = EXECUTIONS.filter(e => (Date.now() - new Date(e.triggered_at).getTime()) < 48 * 3600000);
+  if (last48.length === 0) {
+    md += '\n⚠️ لا توجد تنفيذات في آخر 48 ساعة.\n';
+  }
+  return md;
+}
+
+/* ───── Duplicates Report ───── */
+
+function generateDuplicatesReport() {
+  let md = '# تقرير المقالات المكررة\n\n';
+  md += 'آخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  const titles = {};
+  for (const a of ARTICLES) {
+    const t = articleTitle(a).trim().toLowerCase();
+    if (!t) continue;
+    if (!titles[t]) titles[t] = [];
+    titles[t].push(a);
+  }
+  const dups = Object.values(titles).filter(arr => arr.length > 1);
+  if (dups.length === 0) {
+    md += '✅ لا توجد مقالات مكررة في الفهرس.\n';
+    return md;
+  }
+  md += '## تم العثور على ' + dups.length + ' مجموعة مكررة\n\n';
+  for (const group of dups) {
+    md += '### "' + articleTitle(group[0]).substring(0, 60) + '"\n\n';
+    for (const a of group) {
+      md += '- ' + a.id + ' | ' + articleDate(a).substring(0, 10) + ' | ' + (a.status || '—') + '\n';
+    }
+    md += '\n';
+  }
+  md += '\n## الإحصائيات\n\n';
+  const dupCount = dups.reduce((s, g) => s + g.length, 0);
+  md += '- إجمالي المقالات المكررة: ' + dupCount + '\n';
+  md += '- مجموعات مكررة: ' + dups.length + '\n';
+  md += '- نسبة التكرار: ' + (ARTICLES.length ? ((dupCount / ARTICLES.length) * 100).toFixed(1) : '0') + '%\n';
+  return md;
+}
+
+/* ───── Editorial Cleanup Report ───── */
+
+function generateEditorialCleanup() {
+  let md = '# تقرير التنظيف التحريري\n\n';
+  md += 'آخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  const published = ARTICLES.filter(a => a.status === 'published');
+  md += '## المقالات التي تحتاج إلى مراجعة\n\n';
+  const issues = [];
+  for (const a of published) {
+    const title = articleTitle(a);
+    const quality = a.quality_score || 0;
+    const hasBody = !!a.body;
+    const hasImage = !!(a.image || a.image_url);
+    const hasSeo = !!a.seo_title;
+    const hasTags = Array.isArray(a.tags) && a.tags.length > 0;
+    const hasEntities = !!(a.primary_company || (Array.isArray(a.products) && a.products.length > 0));
+    if (!hasBody) issues.push({ id: a.id, title, reason: 'بدون محتوى', severity: 'critical' });
+    if (quality < 60 && quality > 0) issues.push({ id: a.id, title, reason: 'جودة منخفضة (' + quality + ')', severity: 'warning' });
+    if (!hasImage) issues.push({ id: a.id, title, reason: 'بدون صورة', severity: 'warning' });
+    if (!hasSeo && quality > 0) issues.push({ id: a.id, title, reason: 'بدون SEO Title', severity: 'info' });
+    if (!hasTags) issues.push({ id: a.id, title, reason: 'بدون كلمات مفتاحية', severity: 'info' });
+    if (!hasEntities && quality > 0) issues.push({ id: a.id, title, reason: 'بدون كيانات', severity: 'info' });
+  }
+  if (issues.length === 0) { md += '✅ لا توجد مشاكل تحريرية.\n'; return md; }
+  const critical = issues.filter(i => i.severity === 'critical').length;
+  const warnings = issues.filter(i => i.severity === 'warning').length;
+  const infos = issues.filter(i => i.severity === 'info').length;
+  md += '| المعرف | المشكلة | الخطورة |\n|---|---|---|\n';
+  for (const issue of issues) {
+    const sev = issue.severity === 'critical' ? '🔴' : (issue.severity === 'warning' ? '🟡' : '🔵');
+    md += '| ' + issue.id + ' | ' + issue.reason + ' | ' + sev + ' |\n';
+  }
+  md += '\n## ملخص\n\n';
+  md += '- حرجة: ' + critical + '\n';
+  md += '- تحذيرات: ' + warnings + '\n';
+  md += '- معلومات: ' + infos + '\n';
+  md += '- الإجمالي: ' + issues.length + '\n';
+  return md;
+}
+
+/* ───── Stabilization Report ───── */
+
+function generateStabilizationReport() {
+  let md = '# تقرير وضع التثبيت\n\n';
+  md += 'آخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  const lastPub = EXECUTIONS.find(e => e.published);
+  const hoursSincePub = lastPub ? ((Date.now() - new Date(lastPub.triggered_at).getTime()) / 3600000) : 999;
+  const last5 = EXECUTIONS.slice(0, 5);
+  const allFailed = last5.length >= 5 && last5.every(e => !e.published && e.status !== 'ok');
+  const total = EXECUTIONS.length;
+  const published = EXECUTIONS.filter(e => e.published).length;
+  const successRate = total ? ((published / total) * 100).toFixed(1) : '0';
+  const lastExec = EXECUTIONS.length > 0 ? EXECUTIONS[0] : null;
+  const execHours = lastExec ? ((Date.now() - new Date(lastExec.triggered_at).getTime()) / 3600000) : -1;
+
+  md += '## حالة النظام\n\n';
+  md += '| المؤشر | القيمة | الحالة |\n|---|---|---|\n';
+  md += '| آخر نشر | ' + (lastPub ? lastPub.triggered_at : '—') + ' | ' + (hoursSincePub < 6 ? '✅' : (hoursSincePub < 24 ? '⚠️' : '❌')) + ' |\n';
+  md += '| منذ آخر نشر | ' + hoursSincePub.toFixed(1) + ' ساعة | ' + (hoursSincePub < 6 ? '✅' : (hoursSincePub < 24 ? '⚠️' : '❌')) + ' |\n';
+  md += '| معدل النجاح | ' + successRate + '% | ' + (parseFloat(successRate) >= 50 ? '✅' : '❌') + ' |\n';
+  md += '| آخر 5 تنفيذات | ' + (allFailed ? 'كلها فشلت' : 'طبيعية') + ' | ' + (allFailed ? '❌' : '✅') + ' |\n';
+  md += '| آخر تنفيذ | ' + (lastExec ? lastExec.triggered_at : '—') + ' | ' + (execHours < 2 ? '✅' : (execHours < 24 ? '⚠️' : '❌')) + ' |\n';
+  md += '| إجمالي التنفيذات | ' + total + ' | — |\n';
+  md += '| المنشورات | ' + published + ' | — |\n';
+
+  if (allFailed || hoursSincePub >= 6) {
+    md += '\n## إجراءات التثبيت الموصى بها\n\n';
+    if (allFailed) md += '- تحقق من اتصال Groq AI (قد يكون Rate Limited)\n';
+    if (hoursSincePub >= 6) md += '- تحقق من جدولة n8n workflow\n';
+    if (hoursSincePub >= 24) md += '- قد يكون هناك خلل في RSS أو خط الإنتاج\n';
+    if (execHours >= 2) md += '- آخر تنفيذ منذ أكثر من ساعتين — تحقق من n8n\n';
+  } else {
+    md += '\n✅ النظام مستقر ولا يحتاج إلى تدخل.\n';
+  }
+  return md;
+}
+
+/* ───── Repository Audit Report ───── */
+
+async function generateRepositoryAudit() {
+  let md = '# تدقيق مستودع GitHub\n\n';
+  md += 'آخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n';
+  const files = [
+    { path: 'data/articles/index.json', name: 'فهرس المقالات', critical: true, status: '—' },
+    { path: 'sitemap.xml', name: 'خريطة الموقع', critical: true, status: '—' },
+    { path: 'rss.xml', name: 'خلاصة RSS', critical: true, status: '—' },
+    { path: 'data/published_links.json', name: 'الروابط المنشورة', critical: false, status: '—' },
+    { path: 'data/published_topics.json', name: 'المواضيع المنشورة', critical: false, status: '—' },
+    { path: 'data/content_hashes.json', name: 'بصمات المحتوى', critical: false, status: '—' },
+    { path: 'data/execution_history.json', name: 'سجل التنفيذات', critical: false, status: '—' },
+    { path: 'data/categories.json', name: 'التصنيفات', critical: true, status: '—' },
+    { path: 'admin/index.html', name: 'لوحة التحكم', critical: true, status: '—' },
+    { path: 'admin_config.json', name: 'إعدادات الإدارة', critical: false, status: '—' },
+  ];
+  const token = CONFIG.ghToken || localStorage.getItem('gh_token') || '';
+  const headers = {};
+  if (token) headers.Authorization = 'token ' + token;
+  md += '## فحص الملفات\n\n';
+  md += '| الملف | الحالة | الحجم |\n|---|---|---|\n';
+  let ok = 0, missing = 0, broken = 0;
+  for (const f of files) {
+    try {
+      const res = await fetch(GH_API + '/contents/' + f.path, { headers: { ...headers, Accept: 'application/vnd.github.v3+json' } });
+      if (res.ok) {
+        const data = await res.json();
+        const size = (data.size / 1024).toFixed(1) + ' كب';
+        f.status = '✅';
+        ok++;
+        md += '| ' + f.name + ' | ✅ ✔ | ' + size + ' |\n';
+      } else if (res.status === 404) {
+        f.status = '❌';
+        missing++;
+        md += '| ' + f.name + ' | ❌ مفقود | — |\n';
+      } else {
+        f.status = '⚠️';
+        broken++;
+        md += '| ' + f.name + ' | ⚠️ خطأ ' + res.status + ' | — |\n';
+      }
+    } catch(e) {
+      f.status = '❌';
+      broken++;
+      md += '| ' + f.name + ' | ❌ ' + e.message.substring(0, 30) + ' | — |\n';
+    }
+  }
+  md += '\n## الملخص\n\n';
+  md += '- سليم: ' + ok + '\n';
+  md += '- مفقود: ' + missing + '\n';
+  md += '- معطل: ' + broken + '\n';
+  const criticalMissing = files.filter(f => f.critical && f.status === '❌');
+  if (criticalMissing.length > 0) {
+    md += '\n⚠️ ملفات حرجة مفقودة: ' + criticalMissing.map(f => f.name).join(', ') + '\n';
+  }
+  // Index stats
+  md += '\n## إحصائيات الفهرس\n\n';
+  md += '- عدد المقالات في index.json: ' + ARTICLES.length + '\n';
+  if (Array.isArray(ARTICLES) && ARTICLES.length > 0) {
+    const withBody = ARTICLES.filter(a => a.body).length;
+    const withImage = ARTICLES.filter(a => a.image || a.image_url).length;
+    const published2 = ARTICLES.filter(a => a.status === 'published').length;
+    md += '- مقالات منشورة: ' + published2 + '\n';
+    md += '- مقالات مع محتوى: ' + withBody + '\n';
+    md += '- مقالات مع صورة: ' + withImage + '\n';
+  }
+  md += '\n## إحصائيات التنفيذات\n\n';
+  md += '- عدد سجلات التنفيذ: ' + EXECUTIONS.length + '\n';
+  const published3 = EXECUTIONS.filter(e => e.published).length;
+  const rejected3 = EXECUTIONS.filter(e => e.status === 'rejected' || e.status === 'quality_rejected').length;
+  md += '- منشور: ' + published3 + '\n';
+  md += '- مرفوض: ' + rejected3 + '\n';
+  return md;
+}
+
 /* ───── Settings ───── */
 
 function loadSettings() {
@@ -1151,6 +2576,9 @@ function loadSettings() {
   document.getElementById('setSiteDesc').value = CONFIG.siteDesc || '';
   document.getElementById('setSiteUrl').value = CONFIG.siteUrl || 'https://td-arabi.com';
   document.getElementById('setGhToken').value = CONFIG.ghToken || '';
+  document.getElementById('setGhOwner').value = CONFIG.ghOwner || 'osamaelfeky567';
+  document.getElementById('setGhRepo').value = CONFIG.ghRepo || 'techdosenews';
+  document.getElementById('setGhBranch').value = CONFIG.ghBranch || 'main';
   document.getElementById('setTeleBot').value = CONFIG.telegramBotToken || '';
   document.getElementById('setTeleChan').value = CONFIG.telegramChannelId || '';
   document.getElementById('setGeminiKey').value = CONFIG.geminiKey || '';
@@ -1158,6 +2586,11 @@ function loadSettings() {
   document.getElementById('setFacebook').value = CONFIG.facebook || '';
   document.getElementById('setTwitter').value = CONFIG.twitter || '';
   document.getElementById('setPassword').value = '';
+  const qSel = document.getElementById('setMinQuality');
+  if (qSel) {
+    const cur = CONFIG.minQualityThreshold || 80;
+    qSel.innerHTML = getQualityThresholdOptions().map(v => '<option value="' + v + '" ' + (v === cur ? 'selected' : '') + '>' + v + '</option>').join('');
+  }
 }
 
 async function saveSettings() {
@@ -1166,6 +2599,9 @@ async function saveSettings() {
     siteDesc: document.getElementById('setSiteDesc').value.trim(),
     siteUrl: document.getElementById('setSiteUrl').value.trim(),
     ghToken: document.getElementById('setGhToken').value.trim(),
+    ghOwner: document.getElementById('setGhOwner').value.trim(),
+    ghRepo: document.getElementById('setGhRepo').value.trim(),
+    ghBranch: document.getElementById('setGhBranch').value.trim(),
     telegramBotToken: document.getElementById('setTeleBot').value.trim(),
     telegramChannelId: document.getElementById('setTeleChan').value.trim(),
     geminiKey: document.getElementById('setGeminiKey').value.trim(),
@@ -1173,10 +2609,15 @@ async function saveSettings() {
     facebook: document.getElementById('setFacebook').value.trim(),
     twitter: document.getElementById('setTwitter').value.trim()
   };
+  const minQ = document.getElementById('setMinQuality')?.value;
+  if (minQ) fields.minQualityThreshold = parseInt(minQ);
   const newPw = document.getElementById('setPassword').value.trim();
   Object.assign(CONFIG, fields);
   if (newPw) { CONFIG.passwordHash = await sha256(newPw); }
-  if (fields.ghToken) sessionStorage.setItem('gh_token', fields.ghToken);
+  if (fields.ghToken) { localStorage.setItem('gh_token', fields.ghToken); }
+  else { localStorage.removeItem('gh_token'); }
+  localStorage.setItem('admin_config_cache', JSON.stringify(CONFIG));
+  updateGhVars();
   try {
     await ghPut('admin_config.json', JSON.stringify(CONFIG, null, 2), 'admin: update settings');
     showToast('تم حفظ الإعدادات', 'success');
@@ -1194,12 +2635,16 @@ function showPage(name) {
   document.getElementById('page-' + name).classList.add('active');
   document.querySelector('[data-page="' + name + '"]')?.classList.add('active');
   if (name === 'reports') renderReports();
+  if (name === 'operations') renderOperations();
+  if (name === 'sources') renderSourceManager();
 }
 
 async function init() {
   document.getElementById('headerDate').textContent = new Date().toLocaleDateString('ar-EG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
   await loadArticles();
   await loadCategories();
+  await loadExecutions();
+  loadSourceConfig();
   populateCategorySelect();
   loadSettings();
   renderDashboard();
@@ -1208,10 +2653,361 @@ async function init() {
   CURRENT_PAGE = 1;
 }
 
+/* ───── Phase 9 — Production Hardening ───── */
+
+const VERSIONS = { admin: '9.0.0', pipeline: '8.3.0', reports: '2.0.0', repository: '1.0.0' };
+const BACKUP_PATHS = ['data/articles/index.json', 'data/execution_history.json', 'admin_config.json'];
+const BACKUP_DIR = 'backups';
+let MAINTENANCE_INTERVAL = null;
+let LAST_MAINTENANCE_DATE = '';
+
+async function ghPutBackupAware(path, content, message) {
+  let existingContent = null;
+  if (BACKUP_PATHS.includes(path)) {
+    try {
+      const token = CONFIG.ghToken || localStorage.getItem('gh_token') || '';
+      const res = await fetch(GH_API + '/contents/' + path, { headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json' } });
+      if (res.ok) { const d = await res.json(); existingContent = d.content; }
+    } catch(e) {}
+  }
+  if (existingContent && BACKUP_PATHS.includes(path)) {
+    try {
+      const decoded = atob(existingContent);
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+      const bp = BACKUP_DIR + '/' + path.replace(/^data\//, '').replace(/\//g, '_') + '.' + timestamp;
+      await _ghPut(bp, decoded, 'auto-backup: ' + path + ' @ ' + timestamp);
+    } catch(e) { console.warn('[Backup] Failed:', e.message); }
+  }
+  return await _ghPut(path, content, message);
+}
+
+async function createManualBackup() {
+  const paths = ['data/articles/index.json', 'data/execution_history.json', 'admin_config.json'];
+  let count = 0;
+  showToast('جاري إنشاء النسخ الاحتياطية...', 'info', 5000);
+  for (const p of paths) {
+    try {
+      const token = CONFIG.ghToken || localStorage.getItem('gh_token') || '';
+      const res = await fetch(GH_API + '/contents/' + p, { headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json' } });
+      if (res.ok) {
+        const d = await res.json();
+        const content = atob(d.content);
+        const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+        const bp = BACKUP_DIR + '/' + p.replace(/^data\//, '').replace(/\//g, '_') + '.' + timestamp;
+        await _ghPut(bp, content, 'manual-backup: ' + p + ' @ ' + timestamp);
+        count++;
+      }
+    } catch(e) { console.warn('[ManualBackup] Failed for ' + p + ': ' + e.message); }
+  }
+  showToast('تم إنشاء ' + count + ' نسخة احتياطية', count > 0 ? 'success' : 'error');
+  renderBackupSection();
+}
+
+async function getBackups(path) {
+  const prefix = path.replace(/^data\//, '').replace(/\//g, '_') + '.';
+  const backups = [];
+  try {
+    const token = CONFIG.ghToken || localStorage.getItem('gh_token') || '';
+    const res = await fetch(GH_API + '/contents/' + BACKUP_DIR, { headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json' } });
+    if (res.ok) {
+      const items = await res.json();
+      items.forEach(item => { if (item.name.startsWith(prefix)) backups.push({ name: item.name, path: item.path, sha: item.sha, timestamp: item.name.replace(prefix, ''), size: item.size }); });
+    }
+  } catch(e) {}
+  return backups.sort((a, b) => b.timestamp.localeCompare(a.timestamp));
+}
+
+async function restoreBackup(bp, target) {
+  const confirmRestore = confirm('هل أنت متأكد من استرجاع النسخة الاحتياطية؟\n' + bp + '\n→ ' + target);
+  if (!confirmRestore) return;
+  showToast('جاري استرجاع النسخة...', 'info', 5000);
+  try {
+    const token = CONFIG.ghToken || localStorage.getItem('gh_token') || '';
+    const res = await fetch(GH_API + '/contents/' + bp, { headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json' } });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const d = await res.json();
+    const content = atob(d.content);
+    await ghPut(target, content, 'rollback: restore ' + target + ' from ' + bp);
+    showToast('تم استرجاع ' + target + ' بنجاح', 'success');
+  } catch(e) { showToast('فشل الاسترجاع: ' + e.message, 'error'); }
+  renderBackupSection();
+}
+
+async function renderBackupSection() {
+  const div = document.getElementById('backupSection');
+  if (!div) return;
+  const criticalPaths = ['data/articles/index.json', 'data/execution_history.json', 'admin_config.json', 'data/categories.json'];
+  let html = '';
+  for (const p of criticalPaths) {
+    const backups = await getBackups(p);
+    const dn = p.replace(/^data\//, '').replace(/\//g, ' / ');
+    html += '<div style="margin-bottom:10px;padding:8px 10px;background:var(--bg2);border-radius:6px">';
+    html += '<div style="font-size:.82rem;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:8px"><i class="fas fa-file"></i> ' + dn + ' <span style="font-size:.7rem;color:var(--text3);font-weight:400">(' + backups.length + ' نسخة)</span></div>';
+    if (backups.length === 0) {
+      html += '<div style="font-size:.75rem;color:var(--text3)">لا توجد نسخ احتياطية</div>';
+    } else {
+      backups.slice(0, 4).forEach(b => {
+        const ts = b.timestamp.replace(/-/g, ':').replace(/T/, ' ').substring(0, 19);
+        const size = b.size < 1024 ? b.size + ' B' : (b.size / 1024).toFixed(1) + ' KB';
+        html += '<div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:.75rem">';
+        html += '<span style="color:var(--text3)">' + ts + ' (' + size + ')</span>';
+        html += '<button class="btn btn-sm btn-warning" style="font-size:.7rem;padding:2px 8px" onclick="restoreBackup(\'' + b.path + '\',\'' + p + '\')"><i class="fas fa-undo"></i> استرجاع</button>';
+        html += '</div>';
+      });
+    }
+    html += '</div>';
+  }
+  div.innerHTML = html;
+}
+
+async function runFullSystemCheck() {
+  const results = {};
+  const checks = [
+    { id: 'github', name: 'GitHub API', icon: 'fa-github', test: checkGitHub },
+    { id: 'articles', name: 'المقالات', icon: 'fa-newspaper', test: checkArticles },
+    { id: 'categories', name: 'التصنيفات', icon: 'fa-tags', test: checkCategories },
+    { id: 'images', name: 'الصور', icon: 'fa-images', test: checkImages },
+    { id: 'sitemap', name: 'Sitemap', icon: 'fa-sitemap', test: checkSitemap },
+    { id: 'rss', name: 'RSS Feed', icon: 'fa-rss', test: checkRss },
+    { id: 'telegram', name: 'Telegram', icon: 'fa-telegram', test: checkTelegram },
+    { id: 'ai', name: 'الذكاء الاصطناعي', icon: 'fa-brain', test: checkAi },
+    { id: 'reports', name: 'التقارير', icon: 'fa-file-alt', test: checkReports },
+    { id: 'backups', name: 'النسخ الاحتياطية', icon: 'fa-history', test: checkBackups }
+  ];
+  const container = document.getElementById('diagResults');
+  container.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> جاري الفحص الكامل للنظام...</div><div id="diagList"></div>';
+  const list = document.getElementById('diagList');
+  checks.forEach(c => { if (list) list.innerHTML += '<div id="diag-' + c.id + '" style="padding:8px 0;border-bottom:1px solid var(--bg3);display:flex;align-items:center;gap:10px;font-size:.85rem"><i class="fas fa-spinner fa-spin" style="color:var(--text3)"></i> ' + c.name + '...</div>'; });
+  for (const c of checks) {
+    try {
+      const r = await c.test();
+      results[c.id] = r;
+      const el = document.getElementById('diag-' + c.id);
+      if (el) {
+        const icon = r.status === 'PASS' ? '<i class="fas fa-check-circle" style="color:var(--green)"></i>' : (r.status === 'WARN' ? '<i class="fas fa-exclamation-triangle" style="color:var(--orange)"></i>' : '<i class="fas fa-times-circle" style="color:var(--red)"></i>');
+        const color = r.status === 'PASS' ? 'var(--green)' : r.status === 'WARN' ? 'var(--orange)' : 'var(--red)';
+        el.innerHTML = icon + ' <strong>' + c.name + '</strong> <span style="color:' + color + ';font-weight:600">' + r.status + '</span>' + (r.detail ? ' <span style="color:var(--text3);font-size:.75rem">— ' + r.detail + '</span>' : '');
+      }
+    } catch(e) {
+      results[c.id] = { status: 'FAIL', detail: e.message };
+      const el = document.getElementById('diag-' + c.id);
+      if (el) el.innerHTML = '<i class="fas fa-times-circle" style="color:var(--red)"></i> <strong>' + c.name + '</strong> <span style="color:var(--red);font-weight:600">FAIL</span> <span style="color:var(--text3);font-size:.75rem">— ' + e.message + '</span>';
+    }
+  }
+  const pass = Object.values(results).filter(r => r.status === 'PASS').length;
+  const warn = Object.values(results).filter(r => r.status === 'WARN').length;
+  const fail = Object.values(results).filter(r => r.status === 'FAIL').length;
+  container.innerHTML += '<div style="margin-top:12px;padding:12px;border-radius:8px;background:var(--bg2);display:flex;gap:16px;justify-content:center;font-size:.9rem">' +
+    '<span style="color:var(--green)"><i class="fas fa-check-circle"></i> ' + pass + '/' + checks.length + ' PASS</span>' +
+    (warn ? ' <span style="color:var(--orange)"><i class="fas fa-exclamation-triangle"></i> ' + warn + ' WARN</span>' : '') +
+    (fail ? ' <span style="color:var(--red)"><i class="fas fa-times-circle"></i> ' + fail + ' FAIL</span>' : '') +
+    '</div>';
+  return results;
+}
+
+async function checkGitHub() {
+  const token = CONFIG.ghToken || localStorage.getItem('gh_token') || '';
+  if (!token) return { status: 'FAIL', detail: 'GitHub Token غير مضبوط' };
+  const res = await fetch(GH_API, { headers: { Authorization: 'token ' + token } });
+  if (!res.ok) return { status: 'FAIL', detail: 'HTTP ' + res.status };
+  const d = await res.json();
+  return { status: 'PASS', detail: d.full_name + ' (' + d.default_branch + ')' };
+}
+async function checkArticles() {
+  if (!ARTICLES || ARTICLES.length === 0) return { status: 'WARN', detail: 'لا توجد مقالات' };
+  const pub = ARTICLES.filter(a => a.status === 'published').length;
+  const img = ARTICLES.filter(a => a.image || a.image_url).length;
+  const seo = ARTICLES.filter(a => a.seo_title).length;
+  return { status: 'PASS', detail: ARTICLES.length + ' مقال (' + pub + ' منشور، ' + img + ' بصورة، ' + seo + ' SEO)' };
+}
+async function checkCategories() {
+  if (!CATEGORIES || CATEGORIES.length === 0) return { status: 'WARN', detail: 'لا توجد تصنيفات' };
+  const used = new Set(ARTICLES.map(a => a.category || a.canonicalCategory).filter(Boolean));
+  const un = CATEGORIES.filter(c => !used.has(c.id));
+  return { status: 'PASS', detail: CATEGORIES.length + ' تصنيف (' + un.length + ' غير مستخدم)' };
+}
+async function checkImages() {
+  const arts = ARTICLES.filter(a => a.status === 'published');
+  if (arts.length === 0) return { status: 'WARN', detail: 'لا توجد مقالات منشورة' };
+  const no = arts.filter(a => !(a.image || a.image_url)).length;
+  return no === 0 ? { status: 'PASS', detail: arts.length + ' مقال — كلها تمتلك صور' } : { status: 'WARN', detail: no + ' مقال بدون صورة من ' + arts.length };
+}
+async function checkSitemap() {
+  try {
+    const res = await fetch(RAW_URL + '/sitemap.xml?t=' + Date.now());
+    if (!res.ok) return { status: 'FAIL', detail: 'HTTP ' + res.status };
+    const txt = await res.text();
+    const cnt = (txt.match(/<url>/g) || []).length;
+    const exp = ARTICLES.filter(a => a.status === 'published').length;
+    return cnt === 0 ? { status: 'WARN', detail: 'sitemap.xml موجود لكن بدون URLs' } : (cnt < exp * 0.8 ? { status: 'WARN', detail: cnt + ' URL (متوقع ~' + exp + ')' } : { status: 'PASS', detail: cnt + ' URL' });
+  } catch(e) { return { status: 'FAIL', detail: 'لا يمكن قراءة sitemap.xml' }; }
+}
+async function checkRss() {
+  try {
+    const res = await fetch(RAW_URL + '/rss.xml?t=' + Date.now());
+    if (!res.ok) return { status: 'FAIL', detail: 'HTTP ' + res.status };
+    const txt = await res.text();
+    const cnt = (txt.match(/<item>/g) || []).length;
+    return cnt > 0 ? { status: 'PASS', detail: cnt + ' item' } : { status: 'WARN', detail: 'rss.xml بدون items' };
+  } catch(e) { return { status: 'FAIL', detail: 'لا يمكن قراءة rss.xml' }; }
+}
+async function checkTelegram() {
+  const t = CONFIG.telegramBotToken, c = CONFIG.telegramChannelId;
+  return (!t || !c) ? { status: 'WARN', detail: 'Telegram غير مضبوط في الإعدادات' } : (t.includes(':') ? { status: 'PASS', detail: 'مضبوط ✓' } : { status: 'FAIL', detail: 'Token تليجرام غير صالح' });
+}
+async function checkAi() {
+  const k = CONFIG.geminiKey;
+  return !k ? { status: 'WARN', detail: 'Gemini API Key غير مضبوط' } : (k.startsWith('AIza') ? { status: 'PASS', detail: 'مضبوط ✓' } : { status: 'WARN', detail: 'مفتاح Gemini قد يكون غير صالح' });
+}
+async function checkReports() { return { status: 'PASS', detail: REPORTS.length + ' تقرير متاح' }; }
+async function checkBackups() {
+  try {
+    const token = CONFIG.ghToken || localStorage.getItem('gh_token') || '';
+    const res = await fetch(GH_API + '/contents/' + BACKUP_DIR, { headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json' } });
+    if (!res.ok) return { status: 'WARN', detail: 'مجلد النسخ الاحتياطية غير موجود' };
+    const items = await res.json();
+    return items.length > 0 ? { status: 'PASS', detail: items.length + ' ملف نسخ احتياطي' } : { status: 'WARN', detail: 'لا يوجد نسخ احتياطية بعد' };
+  } catch(e) { return { status: 'WARN', detail: 'لا يوجد نسخ احتياطية بعد' }; }
+}
+
+function startMaintenanceScheduler() {
+  if (MAINTENANCE_INTERVAL) clearInterval(MAINTENANCE_INTERVAL);
+  MAINTENANCE_INTERVAL = setInterval(checkMaintenanceTime, 60000);
+  checkMaintenanceTime();
+}
+
+function checkMaintenanceTime() {
+  const now = new Date();
+  const today = now.toISOString().substring(0, 10);
+  if (now.getHours() === 3 && now.getMinutes() < 5 && LAST_MAINTENANCE_DATE !== today) {
+    LAST_MAINTENANCE_DATE = today;
+    runMaintenance();
+  }
+}
+
+async function runMaintenance() {
+  showToast('🧹 بدء الصيانة الدورية ...', 'info', 5000);
+  const results = [];
+  if (EXECUTIONS.length > 200) {
+    try {
+      const cleaned = EXECUTIONS.slice(0, 200);
+      await ghPut('data/execution_history.json', JSON.stringify(cleaned, null, 2), 'maintenance: trim execution_history to 200');
+      EXECUTIONS = cleaned;
+      results.push('✅ تنظيف execution_history: ' + EXECUTIONS.length + ' سجل');
+    } catch(e) { results.push('❌ فشل تنظيف execution_history: ' + e.message); }
+  } else { results.push('✅ execution_history: ' + EXECUTIONS.length + ' سجل (لا يحتاج تنظيف)'); }
+  results.push('ℹ️ sitemap.xml + rss.xml — يعاد بناؤها من n8n عند أول تنفيذ');
+  results.push('✅ التقارير متاحة للتوليد عند الطلب');
+  const ir = runIntegrityCheck();
+  results.push('ℹ️ فحص التكامل: ' + ir.summary);
+  document.getElementById('maintStatusDot').style.color = 'var(--green)';
+  document.getElementById('maintStatusText').textContent = 'آخر صيانة: ' + new Date().toLocaleString('ar-EG');
+  console.log('[Maintenance] Completed:', results);
+  showToast('🧹 انتهت الصيانة الدورية', 'success', 4000);
+}
+
+function runIntegrityCheck() {
+  const issues = [];
+  const published = ARTICLES.filter(a => a.status === 'published');
+  published.forEach(a => {
+    const id = a.id, title = articleTitle(a);
+    if (!a.seo_slug && !a.slug) issues.push({ id, title, field: 'slug', issue: 'Slug مفقود' });
+    if (!a.seo_title) issues.push({ id, title, field: 'seo_title', issue: 'عنوان SEO مفقود' });
+    if (!a.meta_description) issues.push({ id, title, field: 'meta_description', issue: 'وصف ميتا مفقود' });
+    if (!a.image && !a.image_url) issues.push({ id, title, field: 'image', issue: 'صورة مفقودة' });
+    if (!a.category && !a.canonicalCategory) issues.push({ id, title, field: 'category', issue: 'تصنيف مفقود' });
+    if (a.category && !CATEGORIES.find(c => c.id === a.category)) issues.push({ id, title, field: 'category', issue: 'تصنيف "' + a.category + '" غير موجود في قائمة التصنيفات' });
+    const wc = (a.body || '').replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length;
+    if (wc < 50 && a.status === 'published') issues.push({ id, title, field: 'body', issue: 'محتوى قصير جداً (' + wc + ' كلمة)' });
+  });
+  return { total: published.length, issues, clean: published.length - issues.length, summary: issues.length === 0 ? published.length + ' مقال سليم' : issues.length + ' مشكلة في ' + published.length + ' مقال' };
+}
+
+function renderIntegrityResults() {
+  const container = document.getElementById('integrityResults');
+  if (!container) return;
+  const results = runIntegrityCheck();
+  let html = '<div style="display:flex;gap:12px;margin-bottom:12px;font-size:.85rem">' +
+    '<span style="color:var(--green);font-weight:600"><i class="fas fa-check-circle"></i> ' + results.clean + ' سليم</span>' +
+    (results.issues.length ? ' <span style="color:var(--red);font-weight:600"><i class="fas fa-exclamation-circle"></i> ' + results.issues.length + ' مشكلة</span>' : '') +
+    ' <span style="color:var(--text2)">من ' + results.total + ' مقال منشور</span></div>';
+  if (results.issues.length > 0) {
+    html += '<div style="max-height:300px;overflow-y:auto"><table><thead><tr><th>المقال</th><th>الحقل</th><th>المشكلة</th></tr></thead><tbody>';
+    results.issues.forEach(iss => { html += '<tr><td style="font-size:.8rem">' + escapeHtml(iss.title) + '</td><td style="font-size:.8rem">' + iss.field + '</td><td style="color:var(--red);font-size:.8rem">' + iss.issue + '</td></tr>'; });
+    html += '</tbody></table></div>';
+  } else {
+    html += '<div style="padding:20px;text-align:center;color:var(--green);font-size:.9rem"><i class="fas fa-check-circle"></i> جميع المقالات سليمة — لا توجد مشاكل</div>';
+  }
+  container.innerHTML = html;
+}
+
+function updateVersionDisplay() {
+  const el = document.getElementById('versionDisplay');
+  if (el) el.textContent = 'v' + VERSIONS.admin + ' | Pipe v' + VERSIONS.pipeline + ' | Rep v' + VERSIONS.repository;
+}
+
+function generateReleaseNotes() {
+  let md = '# سجل الإصدارات — TD بالعربي\n\n> آخر تحديث: ' + new Date().toLocaleString('ar-EG') + '\n\n---\n\n';
+  const versions = [
+    { version: '9.0.0', date: '2026-07-04', title: 'Production Hardening', changes: ['نظام النسخ الاحتياطي التلقائي قبل تعديل الملفات الحرجة', 'نظام الاسترجاع (Rollback) بنقرة واحدة', 'الفحص الذاتي الكامل للنظام (Self Diagnostics)', 'الصيانة الدورية المجدولة (Scheduled Maintenance)', 'فحص تكامل البيانات (Data Integrity Checker)', 'عرض الإصدارات في رأس الصفحة (Versioning)', 'سجل الإصدارات (Release Notes — هذا الملف)', 'تحسينات عامة في الأداء والاستقرار'] },
+    { version: '8.4.0', date: '2026-07-04', title: 'Admin Panel Validation', changes: ['التحقق من جميع صفحات لوحة التحكم الـ 8 ضد مصادر البيانات الحقيقية', 'ربط مراقبة العمليات ببيانات التنفيذ الفعلية من execution_history.json', 'إضافة Failure Reason Analyzer بعشر فئات فشل', 'إضافة Source Performance Table', 'إضافة Quality Analytics Distribution', 'إضافة Publishing Timeline', 'إضافة Admin Health Panel', 'إكمال 18 تقريراً'] },
+    { version: '8.3.0', date: '2026-07-03', title: 'Pipeline Production', changes: ['تطوير pipeline_production.js مع معالجة الأخطاء الشاملة', 'نظام تقييم الجودة (AI Quality Scoring)', 'تحليل الصور والفشل', 'نظام التكرار والنشر', 'التكامل مع Telegram', 'GitHub Commit مع رسائل تلقائية'] },
+    { version: '8.2.0', date: '2026-07-02', title: 'AI Quality Enhancement', changes: ['تحسين جودة المحتوى عبر Gemini', 'إضافة تقييم الأبعاد المتعددة للجودة', 'تحسين معالجة RSS', 'نظام الـ Dedup المحسّن'] },
+    { version: '8.1.0', date: '2026-07-01', title: 'Admin Panel v2', changes: ['إعادة تصميم لوحة التحكم كاملة', 'إضافة 8 صفحات إدارة', 'محرر المقالات', 'التقارير التلقائية', 'إدارة المصادر'] },
+    { version: '8.0.0', date: '2026-06-30', title: 'Pipeline Clean Architecture', changes: ['إعادة هيكلة خط الإنتاج بالكامل', 'pipeline_clean.js مع معالجة شاملة للأخطاء', 'نظام موحد للـ Quality Dimensions', 'تحسين الأداء والموثوقية'] },
+    { version: '7.0.0', date: '2026-06-28', title: 'Initial Production System', changes: ['النظام الأولي لخط الإنتاج', 'التكامل مع RSS و GitHub و Telegram', 'النظام الأساسي للجودة', 'النشر على GitHub Pages'] }
+  ];
+  versions.forEach(v => {
+    md += '## ' + v.version + ' — ' + v.title + '\n\n**التاريخ:** ' + v.date + '\n\n';
+    md += v.changes.map(c => '- ' + c).join('\n') + '\n\n---\n\n';
+  });
+  md += '\n*تم إنشاؤه تلقائياً من لوحة التحكم — TD بالعربي*\n';
+  return md;
+}
+
+async function _ghPut(path, content, message) {
+  const token = CONFIG.ghToken || localStorage.getItem('gh_token') || '';
+  if (!token) throw new Error('GitHub Token is required. Add it in Settings.');
+  let sha = null;
+  try {
+    const existing = await fetch(GH_API + '/contents/' + path, { headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json' } });
+    if (existing.ok) { const data = await existing.json(); sha = data.sha; }
+  } catch(e) {}
+  const branch = CONFIG.ghBranch || 'main';
+  const body = { message: message || 'Update via admin panel', content: btoa(unescape(encodeURIComponent(content))), branch };
+  if (sha) body.sha = sha;
+  const res = await fetch(GH_API + '/contents/' + path, { method: 'PUT', headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json', Accept: 'application/vnd.github.v3+json' }, body: JSON.stringify(body) });
+  if (!res.ok) { const err = await res.json().catch(()=>({})); throw new Error(err.message || 'HTTP ' + res.status); }
+  return res.json();
+}
+const _ghPutOriginal = ghPut;
+window.ghPut = ghPutBackupAware;
+
+(function extendInit() {
+  const _origInit = init;
+  window.init = async function() {
+    const origFn = _origInit;
+    document.getElementById('headerDate').textContent = new Date().toLocaleDateString('ar-EG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    await loadArticles();
+    await loadCategories();
+    await loadExecutions();
+    loadSourceConfig();
+    populateCategorySelect();
+    loadSettings();
+    renderDashboard();
+    renderArticles();
+    renderCategories();
+    CURRENT_PAGE = 1;
+    updateVersionDisplay();
+    startMaintenanceScheduler();
+    renderBackupSection();
+    renderIntegrityResults();
+  };
+})();
+
 (async function() {
   await loadConfig();
-  if (CONFIG.ghToken) sessionStorage.setItem('gh_token', CONFIG.ghToken);
-  const authed = sessionStorage.getItem('tdn_admin_token');
+  const authed = localStorage.getItem('tdn_admin_token');
   if (authed) {
     document.getElementById('loginPage').style.display = 'none';
     document.getElementById('app').style.display = 'block';

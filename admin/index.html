@@ -636,13 +636,29 @@ function getSourceStats(name) {
   const lastPub = published.length > 0 ? published.sort((a,b) => new Date(b.triggered_at).getTime() - new Date(a.triggered_at).getTime())[0] : null;
   const lastFetch = related.length > 0 ? related.sort((a,b) => new Date(b.triggered_at).getTime() - new Date(a.triggered_at).getTime())[0] : null;
   const cfg = SOURCE_CONFIG[name] || {};
+  // Rewrite stats
+  const withRewrite = related.filter(e => e.rewrite_attempted);
+  const rewriteSuccess = withRewrite.filter(e => e.rewrite_success);
+  const rewriteRate = withRewrite.length ? ((rewriteSuccess.length / withRewrite.length) * 100).toFixed(0) : '—';
+  // Weekly trend
+  const weekAgo = Date.now() - 7 * 86400000;
+  const weekExecs = scored.filter(e => new Date(e.triggered_at).getTime() > weekAgo);
+  const weekAvg = weekExecs.length ? (weekExecs.reduce((s, e) => s + e.quality_score, 0) / weekExecs.length).toFixed(0) : '—';
+  const weekTrend = weekExecs.length >= 2 ? (weekExecs[weekExecs.length - 1].quality_score > weekExecs[0].quality_score ? 'ارتفاع' : weekExecs[weekExecs.length - 1].quality_score < weekExecs[0].quality_score ? 'انخفاض' : 'ثبات') : '—';
+  // Most common rejection reason
+  const reasons = {};
+  rejected.forEach(e => { if (e.rejection_reason) reasons[e.rejection_reason] = (reasons[e.rejection_reason] || 0) + 1; });
+  const sortedReasons = Object.entries(reasons).sort((a, b) => b[1] - a[1]);
+  const topReason = sortedReasons.length ? sortedReasons[0][0] : '—';
   return {
     name, total, today: today.length, published: published.length, rejected: rejected.length,
     accepted: accepted, avgScore, dupRate, publishRate,
     lastPublish: lastPub ? lastPub.triggered_at : null,
     lastFetch: lastFetch ? lastFetch.triggered_at : null,
     enabled: cfg.enabled !== false, priority: cfg.priority || 50,
-    successRate: publishRate
+    successRate: publishRate,
+    rewriteRate, weekAvg, weekTrend, topReason,
+    todayFetched: today.length
   };
 }
 
@@ -680,8 +696,8 @@ function showExecutionDetails(id) {
   const dur = e.completed_at ? ((new Date(e.completed_at).getTime() - new Date(e.triggered_at).getTime()) / 1000).toFixed(0) + 'ث' : '—';
   const bd = e.quality_dimensions || {};
   const dimLabels = { info: 'المعلومات', flow: 'التدفق', headline: 'العنوان', intro: 'المقدمة', readability: 'القراءة', tech: 'التقني', seo: 'SEO' };
-  const dimTargets = { info: 35, flow: 20, headline: 15, intro: 10, readability: 5, tech: 10, seo: 5 };
-  const dimSuggest = { info: 'أضف بيانات رقمية وأرقاماً وإحصائيات ومصادر موثوقة', flow: 'حسّن تدفق المقال باستخدام جمل انتقالية وفقرات مترابطة', headline: 'اجعله أكثر تحديداً لجذب القارئ مع احتواء الكلمة المفتاحية', intro: 'ابدأ مباشرة بمعلومة قوية أو سؤال يثير الاهتمام', readability: 'قسّم الجمل الطويلة واستخدم كلمات أبسط وفقرات قصيرة', tech: 'أضف شرْحاً تقنياً أعمق مع مصطلحات ومفاهيم واضحة', seo: 'أضف كلمات مفتاحية في العنوان والوصف والنص' };
+  const dimTargets = { info: 38, flow: 15, headline: 12, intro: 10, readability: 5, tech: 15, seo: 5 };
+  const dimSuggest = { info: 'أضف 10+ أرقاماً وإحصائيات محددة، اذكر الإصدارات، اشرح الأسباب والتأثيرات، قدم مقارنات، اذكر خلفية الحدث وتوقعاته المستقبلية، أضف جهات تنفيذية', flow: 'نوّع أطوال الفقرات، استخدم عبارات الربط المنطقي، حسّن الخاتمة باستنتاج أقوى، تجنب الافتتاحيات المتكررة', headline: 'اجعله قوياً بين 30-65 حرفاً، احتوِ على كيان محدد (شركة/منتج/تقنية)، استخدم فعل حركي، تجنب الكلمات العامة', intro: 'ابدأ مباشرة برقم أو حقيقة محددة، تجنب البدايات المتكررة مثل أعلنت/كشفت', readability: 'قسّم الجمل الطويلة واستخدم كلمات أبسط وفقرات قصيرة', tech: 'أضف شرْحاً تقنياً مفصلاً: كيف تعمل التقنية، الخوارزميات، البنية التقنية، الأجهزة، الإصدارات', seo: 'أضف كلمات مفتاحية في العنوان والوصف والنص' };
   let breakdownHtml = '';
   if (Object.values(bd).some(v => v > 0)) {
     breakdownHtml = '<table style="font-size:.8rem;margin-bottom:12px"><thead><tr><th>البعد</th><th>الدرجة</th><th>الحد</th><th>الشريط</th><th>تحسين</th></tr></thead><tbody>';
@@ -732,6 +748,9 @@ function showExecutionDetails(id) {
     ['معرف المقال', e.article_id || '—'],
     ['رابط المقال', e.article_url || '—'],
     ['الذكاء الاصطناعي', e.ai_success ? 'نجح' : '—'],
+    ['التحسن المقدر بعد إعادة الكتابة', e.estimated_gain_after_rewrite ? '+' + e.estimated_gain_after_rewrite + ' نقطة' : '—'],
+    ['الدرجة المقدرة بعد التحسين', e.estimated_score_after_rewrite || '—'],
+    ['كان سيمر بعد التحسين', e.would_pass_after_rewrite ? 'نعم' : 'لا'],
     ['خطأ', e.error || '—'],
     ['ملاحظات', e.notes || '—'],
   ];
@@ -771,6 +790,30 @@ function checkAlerts() {
   const todayExecs = EXECUTIONS.filter(e => (e.triggered_at || '').substring(0, 10) === today);
   if (todayExecs.length === 0 && EXECUTIONS.length > 0) alerts.push({ type: 'yellow', icon: 'fa-bed', text: 'لا توجد تنفيذات اليوم.' });
 
+  // Low quality streak: last 3 scored below 80
+  const last3Scored = EXECUTIONS.filter(e => e.quality_score > 0).slice(0, 3);
+  if (last3Scored.length >= 3 && last3Scored.every(e => e.quality_score < 80)) {
+    alerts.push({ type: 'red', icon: 'fa-star', text: 'آخر 3 مقالات جودتها أقل من 80! (' + last3Scored.map(e => e.quality_score).join(', ') + ')' });
+  }
+
+  // Rewrite attempted without improvement
+  const rewriteFailures = EXECUTIONS.filter(e => e.rewrite_attempted && !e.rewrite_success).length;
+  if (rewriteFailures >= 5) {
+    alerts.push({ type: 'yellow', icon: 'fa-pen', text: 'فشلت إعادة الكتابة في ' + rewriteFailures + ' تنفيذ متتالية.' });
+  }
+
+  // All sources exhausted (quality_score with multiple source attempts exhausted)
+  const sourceExhausted = EXECUTIONS.filter(e => e.notes && e.notes.includes('Source') && e.notes.includes('exhausted')).length;
+  if (sourceExhausted >= 3) {
+    alerts.push({ type: 'yellow', icon: 'fa-rss', text: 'تم استنفاذ جميع المصادر في ' + sourceExhausted + ' تنفيذ.' });
+  }
+
+  // Would-pass after rewrite but still rejected
+  const wouldPassRejected = EXECUTIONS.filter(e => e.would_pass_after_rewrite === true && e.status === 'quality_rejected').length;
+  if (wouldPassRejected >= 2) {
+    alerts.push({ type: 'yellow', icon: 'fa-lightbulb', text: wouldPassRejected + ' مقالات كان يمكن أن تمر بعد تحسين الأبعاد الضعيفة.' });
+  }
+
   return alerts;
 }
 
@@ -806,7 +849,34 @@ function renderOperations() {
   // Alerts
   const alerts = checkAlerts();
 
-  let statsHtml = '<div class="stat-card"><div class="stat-label">آخر تنفيذ</div><div class="stat-value" style="font-size:1.1rem">' + (lastExec ? new Date(lastExec.triggered_at).toLocaleTimeString('ar-EG', { hour:'2-digit', minute:'2-digit' }) : '—') + '</div><div class="stat-sub">' + (lastExec ? statusBadge(lastExec) : '—') + '</div></div>' +
+  // Production status (Phase 10.2 Part G)
+  const prodStatus = hoursSinceLastPub < 0 ? 'N/A' : hoursSinceLastPub >= 6 ? 'RED' : hoursSinceLastPub >= 3 ? 'YELLOW' : 'GREEN';
+  const prodColor = prodStatus === 'GREEN' ? 'var(--green)' : prodStatus === 'YELLOW' ? 'var(--orange)' : 'var(--red)';
+  const prodIcon = prodStatus === 'GREEN' ? 'fa-check-circle' : prodStatus === 'YELLOW' ? 'fa-exclamation-circle' : 'fa-times-circle';
+
+  // Estimated reason for no publications (last 5 consecutive failures)
+  let estimatedReason = '—';
+  if (hoursSinceLastPub >= 3) {
+    const last5NoPub = EXECUTIONS.filter(e => !e.published).slice(0, 5);
+    if (last5NoPub.length >= 3) {
+      const dupCount = last5NoPub.filter(e => e.status === 'all_duplicates' || e.rejection_reason === 'Duplicate').length;
+      const qualityRej = last5NoPub.filter(e => e.status === 'quality_rejected' || e.rejection_reason === 'Quality Failed').length;
+      const rssEmpty = last5NoPub.filter(e => e.status === 'no_items' || e.status === 'empty_rss' || e.status === 'rss_fetch_failed').length;
+      const rewriteFails = last5NoPub.filter(e => e.rewrite_attempted && !e.rewrite_success).length;
+      if (dupCount >= 3) estimatedReason = 'مصادر RSS تعيد نفس المقالات (Duplicates)';
+      else if (qualityRej >= 3) estimatedReason = 'لا يوجد مقال يتجاوز حد الجودة (' + QUALITY_THRESHOLD + ')';
+      else if (rssEmpty >= 3) estimatedReason = 'مصادر RSS لا تعيد محتوى جديداً';
+      else if (rewriteFails >= 3) estimatedReason = 'فشل إعادة الكتابة في تحسين الجودة';
+      else estimatedReason = 'أسباب متعددة: ' + last5NoPub.map(e => e.status).filter(Boolean).join(', ');
+    }
+  }
+
+  let statsHtml = '<div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;margin-bottom:12px;background:' + prodColor + '15;border:1px solid ' + prodColor + '">' +
+    '<div style="width:48px;height:48px;border-radius:50%;background:' + prodColor + ';display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem"><i class="fas ' + prodIcon + '"></i></div>' +
+    '<div style="flex:1"><div style="font-size:.85rem;font-weight:700;color:' + prodColor + '">' +
+    (prodStatus === 'GREEN' ? 'النشر يعمل بشكل طبيعي' : prodStatus === 'YELLOW' ? 'تحذير: لم ينشر منذ ' + hoursSinceLastPub.toFixed(1) + ' ساعة' : 'حرج: لم ينشر منذ ' + hoursSinceLastPub.toFixed(1) + ' ساعة!') +
+    '</div><div style="font-size:.75rem;color:var(--text3);margin-top:2px">السبب المحتمل: ' + estimatedReason + '</div></div></div>' +
+    '<div class="stat-card"><div class="stat-label">آخر تنفيذ</div><div class="stat-value" style="font-size:1.1rem">' + (lastExec ? new Date(lastExec.triggered_at).toLocaleTimeString('ar-EG', { hour:'2-digit', minute:'2-digit' }) : '—') + '</div><div class="stat-sub">' + (lastExec ? statusBadge(lastExec) : '—') + '</div></div>' +
     '<div class="stat-card"><div class="stat-label">آخر مقال منشور</div><div class="stat-value" style="font-size:.95rem">' + (lastPub ? (lastPub.article_title || '').substring(0, 22) : '—') + '</div><div class="stat-sub">' + (hoursSinceLastPub >= 0 ? 'منذ ' + hoursSinceLastPub.toFixed(1) + ' ساعة' : '—') + getHealthWarn(hoursSinceLastPub) + '</div></div>' +
     '<div class="stat-card"><div class="stat-label">تنفيذات اليوم</div><div class="stat-value">' + todayExecs.length + '</div><div class="stat-sub">' + publishedToday + ' نشر، ' + rejectedToday + ' رفض، ' + failedToday + ' فشل، ' + skippedToday + ' تخطي</div></div>' +
     '<div class="stat-card"><div class="stat-label">متوسط الجودة</div><div class="stat-value">' + avgQ + '</div><div class="stat-sub">اليوم: ' + avgQToday + ' | ' + rewriteToday + ' إعادة كتابة</div></div>' +
@@ -920,7 +990,7 @@ function renderQualityChart() {
   }
 
   const dimColors = { info: '#3b82f6', flow: '#8b5cf6', headline: '#f59e0b', intro: '#10b981', readability: '#ef4444', tech: '#ec4899', seo: '#6366f1' };
-  const dimTargets = { info: 35, flow: 20, headline: 15, intro: 10, readability: 5, tech: 10, seo: 5 };
+  const dimTargets = { info: 38, flow: 15, headline: 12, intro: 10, readability: 5, tech: 15, seo: 5 };
   const dimOrder = ['seo', 'readability', 'intro', 'tech', 'headline', 'flow', 'info'];
   const dimLabels = { info: 'المعلومات', flow: 'التدفق', headline: 'العنوان', intro: 'المقدمة', readability: 'القراءة', tech: 'التقني', seo: 'SEO' };
   const thresh = CONFIG.minQualityThreshold || 80;
@@ -1252,6 +1322,9 @@ function showSourceDetails(name) {
     '<tr><td style="font-weight:600;color:var(--text2)">متوسط الجودة</td><td>' + stats.avgScore + '</td></tr>' +
     '<tr><td style="font-weight:600;color:var(--text2)">آخر نشر</td><td>' + lastPubStr + '</td></tr>' +
     '<tr><td style="font-weight:600;color:var(--text2)">آخر جلب</td><td>' + lastFetchStr + '</td></tr>' +
+    '<tr><td style="font-weight:600;color:var(--text2)">معدل نجاح إعادة الكتابة</td><td>' + (stats.rewriteRate || '—') + '%</td></tr>' +
+    '<tr><td style="font-weight:600;color:var(--text2)">متوسط الجودة الأسبوعي</td><td>' + (stats.weekAvg || '—') + ' (' + (stats.weekTrend || '—') + ')</td></tr>' +
+    '<tr><td style="font-weight:600;color:var(--text2)">سبب الرفض الأكثر شيوعاً</td><td style="font-size:.75rem">' + (stats.topReason || '—') + '</td></tr>' +
     '</tbody></table>';
   html += '<h4 style="font-size:.85rem;margin:12px 0 6px">آخر التنفيذات</h4><div style="max-height:200px;overflow-y:auto">';
   html += related.map(e => {

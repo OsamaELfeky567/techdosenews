@@ -8,6 +8,20 @@
   <url><loc>https://td-arabi.com/disclaimer.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://td-arabi.com/editorial-policy.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url>
+    <loc>https://td-arabi.com/article.html?id=art-1783166420583-24ufc0</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-04T12:02:22.823Z</news:publication_date>
+      <news:title>شاومي 18: أول هاتف بمعالج Snapdragon 8 Elite Gen 6</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/article.html?id=art-1783074620829-roxois</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>

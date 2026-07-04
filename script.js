@@ -36,6 +36,8 @@ async function loadTelegramConfig() {
   try {
     const url = 'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/admin_config.json?t=' + Date.now();
     const res = await fetch(url);
+    // NOTE: If the GitHub owner/repo changes, update the URL above.
+    // For a fully dynamic approach, this URL could be injected at build time.
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const cfg = await res.json();
     TELEGRAM_CONFIG = {

@@ -347,120 +347,6 @@ function editorialFormat(ai) {
   return ai;
 }
 
-function calculateQuality(article) {
-  const body = article.body || "";
-  const title = article.title_ar || "";
-  const excerpt = article.excerpt || "";
-  const words = body.split(/\s+/).filter(Boolean);
-  const wordCount = words.length;
-  const paragraphs = body.split(/\n{2,}/).filter(p => p.trim().length > 20);
-  const paraCount = paragraphs.length;
-  const bodyText = body.replace(/<[^>]*>/g, " ");
-
-  /* ───── 1. Information Value (30 pts) ───── */
-  let infoScore = 0;
-  const digits = (bodyText.match(/\d+(\.\d+)?/g) || []);
-  const uniqueDigits = new Set(digits.filter(d => d.length >= 2));
-  if (uniqueDigits.size >= 12) infoScore += 10;
-  else if (uniqueDigits.size >= 6) infoScore += 7;
-  else if (uniqueDigits.size >= 3) infoScore += 4;
-  else infoScore += 1;
-  if (wordCount >= 700) infoScore += 7;
-  else if (wordCount >= 500) infoScore += 5;
-  else if (wordCount >= 350) infoScore += 3;
-  const hasCompany = !!article.primary_company;
-  const hasProduct = Array.isArray(article.products) && article.products.length > 0;
-  if (hasCompany && hasProduct) infoScore += 5;
-  else if (hasCompany || hasProduct) infoScore += 2;
-  const versionPattern = /[A-Za-z\u0600-\u06FF]+\s*\d+[\d.]*/g;
-  const versions = bodyText.match(versionPattern) || [];
-  const uniqueVersions = new Set(versions.filter(v => /\d{2,}/.test(v)));
-  if (uniqueVersions.size >= 3) infoScore += 8;
-  else if (uniqueVersions.size >= 2) infoScore += 6;
-  else if (uniqueVersions.size >= 1) infoScore += 3;
-
-  /* ───── 2. Editorial Flow (13 pts) ───── */
-  let flowScore = 0;
-  if (paraCount >= 5 && paraCount <= 15) flowScore += 4;
-  else if (paraCount >= 3) flowScore += 2;
-  const openings = paragraphs.map(p => {
-    const t = p.trim().replace(/<[^>]*>/g, "");
-    const m = t.match(/^[^\s]{2,5}/);
-    return m ? m[0] : "";
-  }).filter(Boolean);
-  const openingCounts = {};
-  for (const o of openings) { openingCounts[o] = (openingCounts[o] || 0) + 1; }
-  const maxRepeated = Math.max(...Object.values(openingCounts), 0);
-  if (maxRepeated <= 1) flowScore += 3;
-  else if (maxRepeated === 2) flowScore += 2;
-  const lastPara = paragraphs[paragraphs.length - 1] || "";
-  const lastWords = lastPara.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean);
-  if (lastWords.length >= 25) flowScore += 2;
-  else if (lastWords.length >= 15) flowScore += 1;
-  const cliches = ["في عالم التكنولوجيا المتسارع", "يُعد هذا تطوراً مهماً", "من الجدير بالذكر", "تعرف على", "شهدنا مؤخراً", "في خطوة جديدة", "تشهد الساحة التقنية", "يشهد العالم", "في تطور لافت"];
-  let clicheCount = 0;
-  for (const c of cliches) { if (bodyText.includes(c)) clicheCount++; }
-  flowScore += Math.max(0, 4 - clicheCount * 2);
-
-  /* ───── 3. Headline Quality (12 pts) ───── */
-  let headScore = 0;
-  const titleLen = title.length;
-  if (titleLen >= 30 && titleLen <= 65) headScore += 4;
-  else if (titleLen >= 25 && titleLen <= 75) headScore += 2;
-  const hasEntity = hasCompany || hasProduct || (Array.isArray(article.technologies) && article.technologies.length > 0);
-  if (hasEntity) headScore += 4;
-  if (!title.includes("؟") && !title.includes("?")) headScore += 1;
-  const genericWords = ["جديد", "أحدث", "مهم", "كبير", "قوي"];
-  let isGeneric = true;
-  for (const gw of genericWords) { if (title.includes(gw)) { isGeneric = false; break; } }
-  if (isGeneric) headScore += 3;
-
-  /* ───── 4. Intro Quality (12 pts) ───── */
-  let introScore = 0;
-  const firstPara = (paragraphs[0] || "").replace(/<[^>]*>/g, "");
-  const firstWords = firstPara.split(/\s+/).filter(Boolean);
-  if (firstWords.length >= 25) introScore += 3;
-  else if (firstWords.length >= 12) introScore += 2;
-  const clicheStarts = ["أعلنت", "وكشفت", "أكدت", "صرحت", "أوضحت", "كشفت"];
-  const startsWithCliche = clicheStarts.some(cs => firstPara.trim().startsWith(cs));
-  if (!startsWithCliche) introScore += 4;
-  const hasDigitInIntro = /\d/.test(firstPara);
-  if (hasDigitInIntro) introScore += 2;
-  if (firstPara.length >= 80) introScore += 3;
-
-  /* ───── 5. Readability (13 pts) ───── */
-  let readScore = 0;
-  if (wordCount >= 600) readScore += 5;
-  else if (wordCount >= 450) readScore += 3;
-  else if (wordCount >= 300) readScore += 2;
-  const avgParaWords = paraCount > 0 ? wordCount / paraCount : 0;
-  if (avgParaWords <= 40) readScore += 4;
-  else if (avgParaWords <= 55) readScore += 2;
-  const sentences = bodyText.split(/[.!?؟!]\s+/);
-  const maxSentLen = Math.max(...sentences.map(s => s.split(/\s+/).filter(Boolean).length), 0);
-  if (maxSentLen <= 50) readScore += 4;
-  else if (maxSentLen <= 65) readScore += 2;
-
-  /* ───── 6. Technical Depth (15 pts) ───── */
-  let techScore = 0;
-  if (Array.isArray(article.products) && article.products.length > 0) techScore += 3;
-  if (Array.isArray(article.technologies) && article.technologies.length > 0) techScore += 3;
-  if (Array.isArray(article.ai_models) && article.ai_models.length > 0) techScore += 2;
-  if (article.primary_company) techScore += 2;
-  if (Array.isArray(article.internal_links) && article.internal_links.length >= 3) techScore += 5;
-  else if (Array.isArray(article.internal_links) && article.internal_links.length > 0) techScore += 2;
-
-  /* ───── 7. SEO Completeness (5 pts) ───── */
-  let seoScore = 0;
-  if (article.seo_title && article.seo_title.length >= 35) seoScore += 2;
-  if (article.meta_description && article.meta_description.length >= 100) seoScore += 1;
-  if (article.focus_keyword) seoScore += 1;
-  if (Array.isArray(article.secondary_keywords) && article.secondary_keywords.length >= 2) seoScore += 1;
-
-  const total = infoScore + flowScore + headScore + introScore + readScore + techScore + seoScore;
-  return Math.min(total, 100);
-}
-
 async function aiGenerate(title, fullContent, source) {
   const contentForAI = fullContent || "";
   const userPrompt = "اكتب مقالاً إخبارياً تقنياً أصلياً باللغة العربية عن الخبر التالي. استخدم المحتوى الكامل أدناه كمصدر أساسي للمعلومات، وليس مجرد الوصف المختصر:\n\nالعنوان: " + title + "\n\nالمحتوى الكامل للمقال الأصلي:\n" + contentForAI.substring(0, 4000) + "\n\nالمصدر: " + source + "\n\nالمطلوب بصيغة JSON فقط:\n{\n  \"title_ar\": \"عنوان جذري بالعربية (أقل من 65 حرفاً، طبيعي وليس clickbait)\",\n  \"seo_title\": \"عنوان محسن لمحركات البحث (50-60 حرف)\",\n  \"meta_description\": \"وصف مختصر لمحركات البحث (150-160 حرف)\",\n  \"seo_slug\": \"slug-مناسب-للمقال\",\n  \"excerpt\": \"ملخص مشوق من 2-3 جمل (100-160 حرف)\",\n  \"body\": \"المقال الكامل (700-1200 كلمة) - كل فقرة بسطر منفصل بدون HTML.\",\n  \"telegram_summary\": \"نسخة مختصرة من 3-4 جمل للتليجرام\",\n  \"category\": \"ai | cybersecurity | companies | phones | ev | technology\",\n  \"tags\": [\"تاغ ذو صلة\", \"تاغ ثاني\", \"تاغ ثالث\"],\n  \"focus_keyword\": \"الكلمة المفتاحية الأساسية\",\n  \"secondary_keywords\": [\"كلمة مفتاحية ثانوية\"],\n  \"primary_company\": \"الشركة الأساسية أو null\",\n  \"secondary_company\": \"شركة أخرى أو null\",\n  \"products\": [\"منتج مذكور\"] أو [],\n  \"devices\": [\"جهاز مذكور\"] أو [],\n  \"technologies\": [\"تقنية مذكورة\"] أو [],\n  \"ai_models\": [\"نموذج ذكاء اصطناعي\"] أو [],\n  \"os\": [\"نظام تشغيل\"] أو [],\n  \"chipsets\": [\"معالج أو شريحة\"] أو [],\n  \"browsers\": [\"متصفح\"] أو [],\n  \"cloud_platforms\": [\"منصة سحابية\"] أو [],\n  \"languages\": [\"لغة برمجة\"] أو [],\n  \"opensource_projects\": [\"مشروع مفتوح المصدر\"] أو [],\n  \"executives\": [\"اسم مسؤول تنفيذي\"] أو [],\n  \"markets\": [\"سوق أو قطاع\"] أو [],\n  \"countries\": [\"دولة\"] أو [],\n  \"people\": [\"شخصية\"] أو [],\n  \"stocks\": [\"رمز سهم\"] أو [],\n  \"investors\": [\"مستثمر أو صندوق\"] أو [],\n  \"image_queries\": [\"كلمة بحث رئيسية للصورة\", \"كلمة بديلة\", \"كلمة تقنية عامة\"]\n}";
@@ -498,7 +384,7 @@ async function aiGenerate(title, fullContent, source) {
 
 /* ───── Phase 7.4 — Editorial Quality Calibration ───── */
 
-const QUALITY_TARGETS = { info: 35, flow: 20, headline: 15, intro: 10, tech: 10, readability: 5, seo: 5 };
+const QUALITY_TARGETS = { info: 38, flow: 15, headline: 12, intro: 10, tech: 15, readability: 5, seo: 5 };
 
 function calculateQuality(article) {
   const body = article.body || "";
@@ -511,13 +397,13 @@ function calculateQuality(article) {
   const hasCompany = !!article.primary_company;
   const hasProduct = Array.isArray(article.products) && article.products.length > 0;
 
-  /* ───── 1. Information Value (35 pts) ───── */
+  /* ───── 1. Information Value (38 pts) ───── */
   let infoScore = 0;
   const digits = (bodyText.match(/\d+(\.\d+)?/g) || []);
   const uniqueDigits = new Set(digits.filter(d => d.length >= 2));
-  if (uniqueDigits.size >= 8) infoScore += 8;
-  else if (uniqueDigits.size >= 5) infoScore += 5;
-  else if (uniqueDigits.size >= 3) infoScore += 3;
+  if (uniqueDigits.size >= 10) infoScore += 10;
+  else if (uniqueDigits.size >= 6) infoScore += 7;
+  else if (uniqueDigits.size >= 3) infoScore += 4;
   else infoScore += 1;
   if (wordCount >= 700) infoScore += 5;
   else if (wordCount >= 500) infoScore += 3;
@@ -527,8 +413,8 @@ function calculateQuality(article) {
   const versionPattern = /[A-Za-z\u0600-\u06FF]+\s*\d+[\d.]*/g;
   const versions = bodyText.match(versionPattern) || [];
   const uniqueVersions = new Set(versions.filter(v => /\d{2,}/.test(v)));
-  if (uniqueVersions.size >= 2) infoScore += 4;
-  else if (uniqueVersions.size >= 1) infoScore += 2;
+  if (uniqueVersions.size >= 2) infoScore += 6;
+  else if (uniqueVersions.size >= 1) infoScore += 3;
   const whySig = /يؤدي|يؤثر|بسبب|نتيجة|تأثير|يتسبب|يساهم/i;
   const bgSig = /بدأ|أطلقت|منذ|سابقاً|تأسست|كانت/i;
   const futureSig = /سوف|مستقبل|يتوقع|سيتم|سيشهد/i;
@@ -539,20 +425,21 @@ function calculateQuality(article) {
   if (cmpSig.test(bodyText)) infoScore += 2;
   const techExplain = /يعمل|تقوم|آلية|طريقة|خطوات|مراحل|عملية/i;
   if (techExplain.test(bodyText)) infoScore += 3;
+  if (Array.isArray(article.executives) && article.executives.length > 0) infoScore += 1;
 
-  /* ───── 2. Editorial Flow (20 pts) ───── */
+  /* ───── 2. Editorial Flow (15 pts) ───── */
   let flowScore = 0;
-  if (paraCount >= 3 && paraCount <= 20) flowScore += 4;
+  if (paraCount >= 3 && paraCount <= 20) flowScore += 3;
   else if (paraCount >= 2) flowScore += 2;
   const openings = paragraphs.map(p => { const t = p.trim().replace(/<[^>]*>/g, ""); const m = t.match(/^[^\s]{2,5}/); return m ? m[0] : ""; }).filter(Boolean);
   const openingCounts = {};
   for (const o of openings) { openingCounts[o] = (openingCounts[o] || 0) + 1; }
   const maxRepeated = Math.max(...Object.values(openingCounts), 0);
-  if (maxRepeated <= 1) flowScore += 3;
-  else if (maxRepeated === 2) flowScore += 2;
+  if (maxRepeated <= 1) flowScore += 2;
+  else if (maxRepeated === 2) flowScore += 1;
   const lastPara = paragraphs[paragraphs.length - 1] || "";
   const lastWords = lastPara.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean);
-  if (lastWords.length >= 25) flowScore += 2;
+  if (lastWords.length >= 25) flowScore += 1;
   else if (lastWords.length >= 15) flowScore += 1;
   const cliches = ["في عالم التكنولوجيا المتسارع", "يُعد هذا تطوراً مهماً", "من الجدير بالذكر", "تعرف على", "شهدنا مؤخراً", "في خطوة جديدة", "تشهد الساحة التقنية", "يشهد العالم", "في تطور لافت"];
   let clicheCount = 0;
@@ -565,20 +452,20 @@ function calculateQuality(article) {
     if (variance > 10) flowScore += 3;
   }
   const flowSig = /من ناحية|بالمقابل|علاوة على|فضلاً عن|إضافة إلى|كما أن|بالإضافة/i;
-  if (flowSig.test(bodyText)) flowScore += 4;
+  if (flowSig.test(bodyText)) flowScore += 2;
 
-  /* ───── 3. Headline Quality (15 pts) ───── */
+  /* ───── 3. Headline Quality (12 pts) ───── */
   let headScore = 0;
   const titleLen = title.length;
-  if (titleLen >= 30 && titleLen <= 65) headScore += 5;
-  else if (titleLen >= 25 && titleLen <= 75) headScore += 3;
+  if (titleLen >= 30 && titleLen <= 65) headScore += 4;
+  else if (titleLen >= 25 && titleLen <= 75) headScore += 2;
   const hasEntity = hasCompany || hasProduct || (Array.isArray(article.technologies) && article.technologies.length > 0);
-  if (hasEntity) headScore += 4;
+  if (hasEntity) headScore += 3;
   if (!title.includes("؟") && !title.includes("?")) headScore += 1;
   const genericWords = ["جديد", "أحدث", "مهم", "كبير", "قوي"];
   let isGeneric = true;
   for (const gw of genericWords) { if (title.includes(gw)) { isGeneric = false; break; } }
-  if (isGeneric) headScore += 3;
+  if (isGeneric) headScore += 2;
   const actionWords = /تكشف|تعلن|تطلق|تطرح|تستحوذ/i;
   if (actionWords.test(title)) headScore += 2;
 
@@ -606,16 +493,16 @@ function calculateQuality(article) {
   const maxSentLen = Math.max(...sentences.map(s => s.split(/\s+/).filter(Boolean).length), 0);
   if (maxSentLen <= 50) readScore += 1;
 
-  /* ───── 6. Technical Depth (10 pts) ───── */
+  /* ───── 6. Technical Depth (15 pts) ───── */
   let techScore = 0;
-  if (Array.isArray(article.products) && article.products.length > 0) techScore += 2;
-  if (Array.isArray(article.technologies) && article.technologies.length > 0) techScore += 1;
-  if (Array.isArray(article.ai_models) && article.ai_models.length > 0) techScore += 1;
-  if (article.primary_company) techScore += 1;
+  if (Array.isArray(article.products) && article.products.length > 0) techScore += 3;
+  if (Array.isArray(article.technologies) && article.technologies.length > 0) techScore += 2;
+  if (Array.isArray(article.ai_models) && article.ai_models.length > 0) techScore += 2;
+  if (article.primary_company) techScore += 2;
   if (Array.isArray(article.internal_links) && article.internal_links.length >= 2) techScore += 2;
   else if (Array.isArray(article.internal_links) && article.internal_links.length >= 1) techScore += 1;
   const techExplainWords = /يعمل|تقوم|آلية|بروتوكول|واجهة|خوارزمية|بنية|ذاكرة|معالج/i;
-  if (techExplainWords.test(bodyText)) techScore += 3;
+  if (techExplainWords.test(bodyText)) techScore += 4;
 
   /* ───── 7. SEO Completeness (5 pts) ───── */
   let seoScore = 0;
@@ -630,11 +517,11 @@ function calculateQuality(article) {
 
 async function aiRewrite(original, origTitle, fullContent, source, breakdown) {
   const dimInfo = {
-    info: { name: "المعلومات والأرقام", target: 35, instr: "أضف أرقاماً وإحصائيات محددة، اشرح الأسباب والتأثيرات، قدم مقارنات، اذكر خلفية الحدث وتوقعاته المستقبلية" },
-    flow: { name: "التدفق والبنية", target: 20, instr: "نوّع أطوال الفقرات، استخدم عبارات الربط المنطقي، حسّن الخاتمة باستنتاج أقوى" },
-    headline: { name: "العنوان", target: 15, instr: "اجعله أقوى وأقل من 65 حرفاً، تأكد من احتوائه على كيان محدد (شركة/منتج/تقنية)" },
-    intro: { name: "المقدمة", target: 10, instr: "اجعلها أكثر تشويقاً، ابدأ برقم أو حقيقة محددة، تجنب البدايات المتكررة" },
-    tech: { name: "العمق التقني", target: 10, instr: "أضف شرحاً تقنياً: كيف تعمل التقنية، الخوارزميات، البنية التقنية" },
+    info: { name: "المعلومات والأرقام", target: 38, instr: "أضف 10+ أرقاماً وإحصائيات محددة، اذكر الإصدارات، اشرح الأسباب والتأثيرات، قدم مقارنات، اذكر خلفية الحدث وتوقعاته المستقبلية، أضف جهات تنفيذية" },
+    flow: { name: "التدفق والبنية", target: 15, instr: "نوّع أطوال الفقرات، استخدم عبارات الربط المنطقي، حسّن الخاتمة باستنتاج أقوى، تجنب الافتتاحيات المتكررة" },
+    headline: { name: "العنوان", target: 12, instr: "اجعله قوياً بين 30-65 حرفاً، احتوِ على كيان محدد (شركة/منتج/تقنية)، استخدم فعل حركي، تجنب الكلمات العامة" },
+    intro: { name: "المقدمة", target: 10, instr: "اجعلها أكثر تشويقاً، ابدأ برقم أو حقيقة محددة، تجنب البدايات المتكررة مثل أعلنت/كشفت" },
+    tech: { name: "العمق التقني", target: 15, instr: "أضف شرحاً تقنياً مفصلاً: كيف تعمل التقنية، الخوارزميات، البنية التقنية، الأجهزة، الإصدارات" },
     readability: { name: "قابلية القراءة", target: 5, instr: "قسّم الجمل الطويلة، حقّق توازناً في أطوال الفقرات" },
     seo: { name: "تحسين محركات البحث", target: 5, instr: "حسّن عنوان SEO ووصف الميتا والكلمات المفتاحية" }
   };
@@ -643,6 +530,16 @@ async function aiRewrite(original, origTitle, fullContent, source, breakdown) {
 
   const dimsText = weakDims.map(d => `- ${d.name} (حصل على ${breakdown[Object.keys(dimInfo).find(k => dimInfo[k].name === d.name)]}/${d.target}): ${d.instr}`).join("\n");
   const keptDims = Object.entries(breakdown).filter(([k, v]) => v >= dimInfo[k].target * 0.7).map(([k]) => dimInfo[k].name).join("، ");
+
+  const genImprovements = [];
+  genImprovements.push("- تأكد من وجود فقرة خاتمة قوية تلخص المقال وتقدم استنتاجاً أو نظرة مستقبلية");
+  genImprovements.push("- أضف سياقاً مقارناً: كيف يقارن هذا الحدث بالمنافسين أو الإصدارات السابقة؟");
+  genImprovements.push("- أضف خلفية عن الشركة أو المنتج: تاريخه، إنجازاته السابقة، موقعه في السوق");
+  genImprovements.push("- اشرح أهمية الخبر وتأثيره: لماذا يهم القارئ؟ ما الذي يتغير بعد هذا الإعلان؟");
+  genImprovements.push("- أضف توقعات مستقبلية: ماذا نتوقع بعد هذا الإعلان/الحدث؟");
+  genImprovements.push("- في المقدمة: ابدأ برقم أو حقيقة أو سؤال بلاغي قوي، لا تبدأ بقال/أعلن/كشف");
+  genImprovements.push("- في العنوان: استخدم فعل حركي (تطلق، تكشف، تستحوذ)، اذكر كياناً محدداً، اجعله بين 30-65 حرفاً");
+  const genImprovementsText = genImprovements.join("\n");
 
   const prompt = `أنت محرر تقني متخصص. أنت لا تعيد كتابة المقال كاملاً — فقط تحسّن الأجزاء المحددة أدناه.
 
@@ -660,6 +557,9 @@ async function aiRewrite(original, origTitle, fullContent, source, breakdown) {
 
 الأجزاء التي تحتاج تحسيناً:
 ${dimsText}
+
+تحسينات عامة مطلوبة في كل الأحوال:
+${genImprovementsText}
 
 أخرج JSON كاملاً بنفس الحقول مع تحسين الأجزاء المطلوبة فقط. حافظ على باقي المحتوى دون تغيير.
 الحقول: title_ar, seo_title, meta_description, seo_slug, excerpt, body, telegram_summary, category, tags, focus_keyword, secondary_keywords, primary_company, secondary_company, products, devices, technologies, ai_models, os, chipsets, browsers, cloud_platforms, languages, opensource_projects, executives, markets, countries, people, stocks, investors, image_queries.`;
@@ -1054,42 +954,43 @@ async function main() {
     telegram_sent: false,
     telegram_error: "",
     error: "",
-    notes: ""
+    notes: "",
+    estimated_gain_after_rewrite: 0,
+    estimated_score_after_rewrite: 0,
+    would_pass_after_rewrite: false
   };
 
   try {
-  const srcResult = await fetchSourceRSS();
+  const sourceAttempts = [...RSS_SOURCES.map(s => ({ ...s })), { type: 'google', name: 'Google News', url: GNEWS_URL }];
+  let publishedArticle = false;
+  let prevArticle = null;
+
+  for (let srcIdx = 0; srcIdx < sourceAttempts.length && !publishedArticle; srcIdx++) {
+  const attempt = sourceAttempts[srcIdx];
   let rssItems = [];
-  let usedSource = "";
-  if (srcResult) {
-    usedSource = srcResult.source.name;
-    rssItems = srcResult.items;
-  } else {
-    try {
-      const res = await this.helpers.httpRequest({ method: "GET", url: GNEWS_URL });
-      xml = typeof res === "string" ? res : (res.data || res.body || "");
-      if (!xml || xml.length < 100) {
-        result.status = "empty_rss";
-        return result;
-      }
-      usedSource = "Google News";
-      rssItems = parseRSS(xml);
-    } catch(e) {
-      result.status = "rss_fetch_failed";
-      result.error = e.message;
-      return result;
-    }
+  let usedSource = attempt.name;
+  result.rss_source = usedSource;
+
+  try {
+    const res = await this.helpers.httpRequest({ method: "GET", url: attempt.url });
+    const xml = typeof res === "string" ? res : (res.data || res.body || "");
+    if (!xml || xml.length < (attempt.type === 'google' ? 100 : 200)) continue;
+    rssItems = parseRSS(xml);
+  } catch(e) {
+    if (attempt.type === 'google') { result.status = "rss_fetch_failed"; result.error = e.message; return result; }
+    continue;
   }
+
   result.rss_items = rssItems.length;
-  if (rssItems.length === 0) { result.status = "no_items"; return result; }
+  if (rssItems.length === 0) continue;
 
   const fresh = rssItems.filter(i => isFresh(i.pubDate, 24));
   result.after_freshness = fresh.length;
-  if (fresh.length === 0) { result.status = "all_stale"; return result; }
+  if (fresh.length === 0) continue;
 
-  const tech = usedSource === "Google News" ? fresh.filter(i => isTech(i.title, i.desc)) : fresh;
+  const tech = attempt.type === 'google' ? fresh.filter(i => isTech(i.title, i.desc)) : fresh;
   result.after_tech_filter = tech.length;
-  if (tech.length === 0) { result.status = "no_tech"; return result; }
+  if (tech.length === 0) continue;
 
   let existingHashes = [];
   try {
@@ -1105,9 +1006,9 @@ async function main() {
     }
   }
   result.after_dedup = newItems.length;
-  if (newItems.length === 0) { result.status = "all_duplicates"; return result; }
+  if (newItems.length === 0) continue;
 
-  for (let itemIdx = 0; itemIdx < newItems.length; itemIdx++) {
+  for (let itemIdx = 0; itemIdx < newItems.length && !publishedArticle; itemIdx++) {
   const { item: picked, hash } = newItems[itemIdx];
   const articleId = makeId();
   const sourceName = picked.source || usedSource;
@@ -1254,6 +1155,7 @@ async function main() {
     qualityScore = qResult.total;
     result.quality_score = qualityScore;
     result.quality_dimensions = qResult.breakdown;
+    result.word_count = aiBody.split(/\s+/).filter(Boolean).length;
 
     if (qResult.total >= QUALITY_THRESHOLD) {
       break;
@@ -1349,13 +1251,36 @@ async function main() {
     }
   }
 
+  /* ───── Phase 10.2 Part E: Trusted Source Boost (max +3, only if quality >= 75) ───── */
+  const srcInfo = RSS_SOURCES.find(s => s.name === sourceName);
+  const isTrustedSource = srcInfo && srcInfo.tier === 1;
+  if (qualityScore < QUALITY_THRESHOLD && qualityScore >= 75 && isTrustedSource) {
+    const boost = Math.min(3, QUALITY_THRESHOLD - qualityScore);
+    qualityScore += boost;
+    result.quality_score = qualityScore;
+    result.notes = (result.notes || '') + 'Trusted source boost +' + boost + '. ';
+  }
+
   /* ───── Phase 10 Part C: Smart Quality Gate (Fallback 70-79) ───── */
   if (qualityScore < QUALITY_THRESHOLD && qualityScore >= 70) {
     const fallback = await checkFallbackConditions(qualityScore, sourceName, result.word_count, imageUrl, result.quality_dimensions);
-    if (fallback.metCount >= 3) {
+    if (fallback.metCount >= fallback.total) {
       result.quality_override = true;
       result.quality_override_reason = "Fallback override (" + fallback.metCount + "/" + fallback.total + " conditions) after " + fallback.hoursSinceLastPub.toFixed(1) + "h idle";
       qualityScore = QUALITY_THRESHOLD;
+    }
+  }
+
+  /* ───── Phase 10.2 Part F: Emergency Publishing Policy ───── */
+  if (qualityScore < QUALITY_THRESHOLD && qualityScore >= 75) {
+    const hoursSince = await getHoursSinceLastPublish();
+    if (hoursSince >= 6 && result.rewrite_success && isTrustedSource && result.word_count >= 700) {
+      const techDim = result.quality_dimensions && result.quality_dimensions.tech;
+      if (techDim >= 8) {
+        result.quality_override = true;
+        result.quality_override_reason = "Emergency Publishing Recovery";
+        qualityScore = QUALITY_THRESHOLD;
+      }
     }
   }
 
@@ -1364,11 +1289,10 @@ async function main() {
       result.notes = (result.notes || '') + 'Item ' + itemIdx + ' quality=' + qualityScore + ', trying next. ';
       continue;
     }
-    result.status = "quality_rejected";
     result.quality_passed = false;
     result.rejection_reason = "\u0641\u0634\u0644 \u0627\u0644\u062C\u0648\u062F\u0629 (" + qualityScore + "/" + QUALITY_THRESHOLD + ")";
     const bd = result.quality_dimensions || {};
-    const dimTargets = { info: 35, flow: 20, headline: 15, intro: 10, readability: 5, tech: 10, seo: 5 };
+    const dimTargets = { info: 38, flow: 15, headline: 12, intro: 10, readability: 5, tech: 15, seo: 5 };
     const dimLabels = { info: "\u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062A", flow: "\u0627\u0644\u062A\u062F\u0641\u0642", headline: "\u0627\u0644\u0639\u0646\u0648\u0627\u0646", intro: "\u0627\u0644\u0645\u0642\u062F\u0645\u0629", readability: "\u0627\u0644\u0642\u0631\u0627\u0621\u0629", tech: "\u0627\u0644\u062A\u0642\u0646\u064A", seo: "SEO" };
     const reasons = [];
     for (const [k, target] of Object.entries(dimTargets)) {
@@ -1378,9 +1302,44 @@ async function main() {
     if (reasons.length === 0) reasons.push("\u0627\u0644\u062F\u0631\u062C\u0629 \u0627\u0644\u0625\u062C\u0645\u0627\u0644\u064A\u0629 \u0623\u0642\u0644 \u0645\u0646 \u0627\u0644\u062D\u062F (" + qualityScore + "/" + QUALITY_THRESHOLD + ")");
     result.failure_reasons = reasons;
     result.rejection_detail = reasons.join("\u060C ");
-    return result;
+    if (!prevArticle) prevArticle = { article, ai, articleId, techdoseLink, qResult: { total: qualityScore, breakdown: result.quality_dimensions } };
+    result.notes = (result.notes || '') + 'Source ' + usedSource + ' exhausted, trying next. ';
+    break;
   }
   result.quality_passed = true;
+  publishedArticle = true;
+  result.status = "published";
+  } /* end for(itemIdx) */
+
+  if (!publishedArticle) continue;
+
+  } /* end for(srcIdx) */
+
+  if (!publishedArticle && prevArticle) {
+    const dimTargets = { info: 38, flow: 15, headline: 12, intro: 10, readability: 5, tech: 15, seo: 5 };
+    const bd = prevArticle.qResult.breakdown || {};
+    let estimatedGain = 0;
+    for (const [k, target] of Object.entries(dimTargets)) {
+      const score = bd[k] || 0;
+      if (score < target * 0.7) {
+        const potential = Math.round(target * 0.7);
+        estimatedGain += potential - score;
+      }
+    }
+    const estimatedAfter = Math.min(100, prevArticle.qResult.total + estimatedGain);
+    result.status = "quality_rejected";
+    result.quality_passed = false;
+    result.article_title = prevArticle.article.title_ar;
+    result.quality_score = prevArticle.qResult.total;
+    result.quality_dimensions = prevArticle.qResult.breakdown;
+    result.estimated_gain_after_rewrite = estimatedGain;
+    result.estimated_score_after_rewrite = estimatedAfter;
+    result.would_pass_after_rewrite = estimatedAfter >= QUALITY_THRESHOLD;
+    return result;
+  }
+  if (!publishedArticle) {
+    result.status = "quality_rejected";
+    return result;
   }
 
   let index = [];

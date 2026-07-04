@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  <url><loc>https://td-arabi.com/</loc><changefreq>hourly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://td-arabi.com/about.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://td-arabi.com/contact.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://td-arabi.com/privacy.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://td-arabi.com/terms.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://td-arabi.com/disclaimer.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://td-arabi.com/editorial-policy.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url>
+    <loc>https://td-arabi.com/article.html?id=art-1782469820154-27yzm4</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T10:30:23.135Z</news:publication_date>
+      <news:title>إيران ترد على البيان المشترك</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://td-arabi.com/article.html?id=art-1782468020319-ux8ir7</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T10:00:44.819Z</news:publication_date>
+      <news:title>إيران ترد على البيان المشترك</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://td-arabi.com/article.html?id=art-1782460824114-7151re</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T08:00:26.716Z</news:publication_date>
+      <news:title>شركة باين تعلن عن شراكة مع جوجل كلاود</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://td-arabi.com/article.html?id=art-1782459991856-2j80y7</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T07:46:55.595Z</news:publication_date>
+      <news:title>البيت الأبيض يطلب من OpenAI إبطاء إطلاق نموذجها الجديد</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://td-arabi.com/article.html?id=art-1782459970826-swtw2h</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T07:46:14.056Z</news:publication_date>
+      <news:title>دعوة الأمم المتحدة لاعتماد نظام تحقق نووي في إيران</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://td-arabi.com/article.html?id=art-1782446425138-d5gebv</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T04:00:48.680Z</news:publication_date>
+      <news:title>جوجل تطور أدوات ذكاء اصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://td-arabi.com/article.html?id=art-1782444620332-l0yi0q</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T03:30:44.274Z</news:publication_date>
+      <news:title>الأمم المتحدة تعلق إجلاء البحارة بعد هجوم في مضيق هرمز، وسط تباين المواقف حول الاتفاق الأمريكي-الإيراني</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://td-arabi.com/article.html?id=art-1782441050291-nljsx2</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T02:30:53.542Z</news:publication_date>
+      <news:title>ريبلينغ تريد أن تكون كلة بياناتك</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://td-arabi.com/article.html?id=art-1782439262830-hnhdrz</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T02:01:06.952Z</news:publication_date>
+      <news:title>إكس بوكس ترفع الأسعار</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://td-arabi.com/article.html?id=art-1782437452709-afvjbl</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T01:30:55.201Z</news:publication_date>
+      <news:title>باترونوس آي تتلقى 50 مليون دولار</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://td-arabi.com/article.html?id=art-1782435627942-7jj0sl</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-26T01:00:34.625Z</news:publication_date>
+      <news:title>يوتيوب شورتس يصبح أقصر</news:title>
+    </news:news>
+  </url>
+</urlset>

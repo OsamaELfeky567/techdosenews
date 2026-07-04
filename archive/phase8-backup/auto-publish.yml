@@ -1,0 +1,40 @@
+name: Auto Publish Pipeline
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/articles/index.json'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate sitemap.xml
+        run: node scripts/generate-sitemap.js
+
+      - name: Generate rss.xml
+        run: node tools/generate-rss.mjs
+
+      - name: Commit changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add sitemap.xml rss.xml data/articles/index.json
+          git diff --staged --quiet || git commit -m 'auto: sync db, sitemap and rss [bot]'
+          git push
+
+      - name: Submit to IndexNow
+        run: node scripts/submit-indexnow.js

@@ -1,9 +1,9 @@
 [
   {
     "status": "ai_failed",
-    "execution_id": 1783262265208,
-    "triggered_at": "2026-07-05T14:37:45.208Z",
-    "completed_at": "2026-07-05T14:38:35.985Z",
+    "execution_id": 1783262323543,
+    "triggered_at": "2026-07-05T14:38:43.543Z",
+    "completed_at": "2026-07-05T14:39:32.187Z",
     "mode": "trigger",
     "rss_source": "BBC Arabic",
     "rss_items": 30,
@@ -50,6 +50,6 @@
     "estimated_score_after_rewrite": 0,
     "would_pass_after_rewrite": false,
     "fetched_content_length": 4303,
-    "ai_error": "Request failed with status code 400"
+    "ai_error": "Request failed with status code 429"
   }
 ]

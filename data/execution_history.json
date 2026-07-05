@@ -1,9 +1,9 @@
 [
   {
     "status": "ai_failed",
-    "execution_id": 1783265419112,
-    "triggered_at": "2026-07-05T15:30:19.113Z",
-    "completed_at": "2026-07-05T15:31:42.056Z",
+    "execution_id": 1783269019297,
+    "triggered_at": "2026-07-05T16:30:19.297Z",
+    "completed_at": "2026-07-05T16:32:18.874Z",
     "mode": "trigger",
     "rss_source": "BBC Arabic",
     "rss_items": 30,
@@ -34,7 +34,7 @@
     "override_level": 0,
     "quality_grade": "",
     "internal_links_count": 0,
-    "word_count": 243,
+    "word_count": 264,
     "telegram_sent": false,
     "telegram_message_id": null,
     "telegram_error": "",
@@ -49,7 +49,7 @@
     "estimated_gain_after_rewrite": 0,
     "estimated_score_after_rewrite": 0,
     "would_pass_after_rewrite": false,
-    "fetched_content_length": 4303,
+    "fetched_content_length": 4231,
     "image_source": "original",
     "image_provider": "article_host",
     "image_query": "",
@@ -58,6 +58,6 @@
     "original_candidates": 1,
     "pexels_tried": 0,
     "unsplash_tried": 0,
-    "ai_error": "Request failed with status code 429"
+    "ai_error": "Request failed with status code 400"
   }
 ]

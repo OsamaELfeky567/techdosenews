@@ -1,9 +1,9 @@
 [
   {
     "status": "ai_failed",
-    "execution_id": 1783281619223,
-    "triggered_at": "2026-07-05T20:00:19.223Z",
-    "completed_at": "2026-07-05T20:02:22.551Z",
+    "execution_id": 1783281892883,
+    "triggered_at": "2026-07-05T20:04:52.883Z",
+    "completed_at": "2026-07-05T20:07:15.892Z",
     "mode": "trigger",
     "rss_source": "BBC Arabic",
     "rss_items": 30,
@@ -12,7 +12,7 @@
     "after_dedup": 10,
     "article_title": "",
     "ai_success": true,
-    "quality_score": 33,
+    "quality_score": 34,
     "quality_passed": false,
     "grade": "D",
     "quality_dimensions": {
@@ -21,20 +21,20 @@
       "headline": 7,
       "intro": 8,
       "readability": 1,
-      "tech": 5,
+      "tech": 6,
       "seo": 0
     },
     "quality_capped": false,
     "failure_reasons": [],
     "rewrite_attempted": true,
-    "rewrite_success": false,
+    "rewrite_success": true,
     "ai_retries": 3,
     "quality_override": false,
     "quality_override_reason": "",
     "override_level": 0,
     "quality_grade": "",
-    "internal_links_count": 0,
-    "word_count": 197,
+    "internal_links_count": 5,
+    "word_count": 199,
     "telegram_sent": false,
     "telegram_message_id": null,
     "telegram_error": "",
@@ -45,7 +45,7 @@
     "article_id": null,
     "article_url": null,
     "error": "",
-    "notes": "Item 0 quality=33, trying next. ",
+    "notes": "Item 0 quality=34, trying next. ",
     "estimated_gain_after_rewrite": 0,
     "estimated_score_after_rewrite": 0,
     "would_pass_after_rewrite": false,
@@ -58,6 +58,7 @@
     "original_candidates": 1,
     "pexels_tried": 0,
     "unsplash_tried": 0,
+    "rewrite_error": "body.replace is not a function",
     "ai_error": "Request failed with status code 400"
   }
 ]

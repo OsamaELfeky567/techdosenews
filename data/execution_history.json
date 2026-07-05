@@ -1,9 +1,9 @@
 [
   {
     "status": "ai_failed",
-    "execution_id": 1783278019326,
-    "triggered_at": "2026-07-05T19:00:19.327Z",
-    "completed_at": "2026-07-05T19:03:11.691Z",
+    "execution_id": 1783279819627,
+    "triggered_at": "2026-07-05T19:30:19.627Z",
+    "completed_at": "2026-07-05T19:33:05.053Z",
     "mode": "trigger",
     "rss_source": "BBC Arabic",
     "rss_items": 30,
@@ -12,16 +12,16 @@
     "after_dedup": 10,
     "article_title": "",
     "ai_success": true,
-    "quality_score": 46,
+    "quality_score": 39,
     "quality_passed": false,
     "grade": "D",
     "quality_dimensions": {
-      "info": 20,
+      "info": 12,
       "flow": 7,
       "headline": 7,
       "intro": 10,
-      "readability": 2,
-      "tech": 0,
+      "readability": 1,
+      "tech": 2,
       "seo": 0
     },
     "quality_capped": false,
@@ -33,8 +33,8 @@
     "quality_override_reason": "",
     "override_level": 0,
     "quality_grade": "",
-    "internal_links_count": 0,
-    "word_count": 511,
+    "internal_links_count": 6,
+    "word_count": 241,
     "telegram_sent": false,
     "telegram_message_id": null,
     "telegram_error": "",
@@ -45,11 +45,11 @@
     "article_id": null,
     "article_url": null,
     "error": "",
-    "notes": "Item 0 quality=46, trying next. ",
+    "notes": "Item 0 quality=39, trying next. ",
     "estimated_gain_after_rewrite": 0,
     "estimated_score_after_rewrite": 0,
     "would_pass_after_rewrite": false,
-    "fetched_content_length": 4179,
+    "fetched_content_length": 4254,
     "image_source": "original",
     "image_provider": "article_host",
     "image_query": "",
@@ -58,6 +58,6 @@
     "original_candidates": 1,
     "pexels_tried": 0,
     "unsplash_tried": 0,
-    "ai_error": "Request failed with status code 429"
+    "ai_error": "Request failed with status code 400"
   }
 ]

@@ -1,9 +1,9 @@
 [
   {
     "status": "ai_failed",
-    "execution_id": 1783299619225,
-    "triggered_at": "2026-07-06T01:00:19.225Z",
-    "completed_at": "2026-07-06T01:00:42.683Z",
+    "execution_id": 1783301419091,
+    "triggered_at": "2026-07-06T01:30:19.091Z",
+    "completed_at": "2026-07-06T01:30:24.072Z",
     "mode": "trigger",
     "rss_source": "BBC Arabic",
     "rss_items": 30,
@@ -50,6 +50,6 @@
     "estimated_score_after_rewrite": 0,
     "would_pass_after_rewrite": false,
     "fetched_content_length": 10000,
-    "ai_error": "connect ETIMEDOUT 104.18.38.236:443"
+    "ai_error": "Request failed with status code 400"
   }
 ]

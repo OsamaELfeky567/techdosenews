@@ -1,9 +1,9 @@
 [
   {
     "status": "ai_failed",
-    "execution_id": 1783326619479,
-    "triggered_at": "2026-07-06T08:30:19.479Z",
-    "completed_at": "2026-07-06T08:30:42.706Z",
+    "execution_id": 1783328419770,
+    "triggered_at": "2026-07-06T09:00:19.770Z",
+    "completed_at": "2026-07-06T09:00:47.847Z",
     "mode": "trigger",
     "rss_source": "BBC Arabic",
     "rss_items": 30,
@@ -49,7 +49,7 @@
     "estimated_gain_after_rewrite": 0,
     "estimated_score_after_rewrite": 0,
     "would_pass_after_rewrite": false,
-    "fetched_content_length": 5161,
+    "fetched_content_length": 6689,
     "ai_error": "connect ETIMEDOUT 104.18.38.236:443"
   }
 ]

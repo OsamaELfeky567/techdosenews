@@ -1,9 +1,9 @@
 [
   {
     "status": "ai_failed",
-    "execution_id": 1783351819216,
-    "triggered_at": "2026-07-06T15:30:19.216Z",
-    "completed_at": "2026-07-06T15:30:27.162Z",
+    "execution_id": 1783353620139,
+    "triggered_at": "2026-07-06T16:00:20.140Z",
+    "completed_at": "2026-07-06T16:00:25.841Z",
     "mode": "trigger",
     "rss_source": "BBC Arabic",
     "rss_items": 30,

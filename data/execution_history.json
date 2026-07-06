@@ -1,27 +1,27 @@
 [
   {
     "status": "ai_failed",
-    "execution_id": 1783310419225,
-    "triggered_at": "2026-07-06T04:00:19.225Z",
-    "completed_at": "2026-07-06T04:01:33.876Z",
+    "execution_id": 1783312219153,
+    "triggered_at": "2026-07-06T04:30:19.153Z",
+    "completed_at": "2026-07-06T04:31:02.354Z",
     "mode": "trigger",
     "rss_source": "BBC Arabic",
     "rss_items": 30,
-    "after_freshness": 10,
-    "after_tech_filter": 10,
-    "after_dedup": 10,
+    "after_freshness": 11,
+    "after_tech_filter": 11,
+    "after_dedup": 11,
     "article_title": "",
     "ai_success": true,
-    "quality_score": 24,
+    "quality_score": 42,
     "quality_passed": false,
     "grade": "D",
     "quality_dimensions": {
-      "info": 5,
-      "flow": 3,
+      "info": 12,
+      "flow": 9,
       "headline": 4,
-      "intro": 6,
-      "readability": 1,
-      "tech": 5,
+      "intro": 8,
+      "readability": 3,
+      "tech": 6,
       "seo": 0
     },
     "quality_capped": false,
@@ -33,8 +33,8 @@
     "quality_override_reason": "",
     "override_level": 0,
     "quality_grade": "",
-    "internal_links_count": 0,
-    "word_count": 161,
+    "internal_links_count": 5,
+    "word_count": 345,
     "telegram_sent": false,
     "telegram_message_id": null,
     "telegram_error": "",
@@ -58,6 +58,6 @@
     "original_candidates": 1,
     "pexels_tried": 0,
     "unsplash_tried": 0,
-    "ai_error": "Request failed with status code 400"
+    "ai_error": "connect ETIMEDOUT 104.18.38.236:443"
   }
 ]

@@ -1,9 +1,9 @@
 [
   {
     "status": "ai_failed",
-    "execution_id": 1783380619213,
-    "triggered_at": "2026-07-06T23:30:19.213Z",
-    "completed_at": "2026-07-06T23:31:19.428Z",
+    "execution_id": 1783382419178,
+    "triggered_at": "2026-07-07T00:00:19.178Z",
+    "completed_at": "2026-07-07T00:01:18.868Z",
     "mode": "trigger",
     "rss_source": "BBC Arabic",
     "rss_items": 30,
@@ -34,7 +34,7 @@
     "override_level": 0,
     "quality_grade": "",
     "internal_links_count": 5,
-    "word_count": 441,
+    "word_count": 444,
     "telegram_sent": false,
     "telegram_message_id": null,
     "telegram_error": "",

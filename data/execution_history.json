@@ -1,15 +1,15 @@
 [
   {
     "status": "ai_failed",
-    "execution_id": 1783391419745,
-    "triggered_at": "2026-07-07T02:30:19.746Z",
-    "completed_at": "2026-07-07T02:30:31.481Z",
+    "execution_id": 1783618219631,
+    "triggered_at": "2026-07-09T17:30:19.631Z",
+    "completed_at": "2026-07-09T17:30:40.370Z",
     "mode": "trigger",
     "rss_source": "BBC Arabic",
-    "rss_items": 30,
-    "after_freshness": 10,
-    "after_tech_filter": 10,
-    "after_dedup": 10,
+    "rss_items": 29,
+    "after_freshness": 8,
+    "after_tech_filter": 8,
+    "after_dedup": 8,
     "article_title": "",
     "ai_success": false,
     "quality_score": 0,
@@ -49,7 +49,7 @@
     "estimated_gain_after_rewrite": 0,
     "estimated_score_after_rewrite": 0,
     "would_pass_after_rewrite": false,
-    "fetched_content_length": 5894,
+    "fetched_content_length": 9768,
     "ai_error": "Request failed with status code 400"
   }
 ]

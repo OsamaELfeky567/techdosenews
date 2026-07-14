@@ -1,15 +1,15 @@
 [
   {
-    "status": "rss_fetch_failed",
-    "execution_id": 1784062819219,
-    "triggered_at": "2026-07-14T21:00:19.219Z",
-    "completed_at": "2026-07-14T21:02:43.293Z",
+    "status": "ai_failed",
+    "execution_id": 1784064619388,
+    "triggered_at": "2026-07-14T21:30:19.389Z",
+    "completed_at": "2026-07-14T21:30:39.216Z",
     "mode": "trigger",
-    "rss_source": "Google News",
-    "rss_items": 0,
-    "after_freshness": 0,
-    "after_tech_filter": 0,
-    "after_dedup": 0,
+    "rss_source": "BBC Arabic",
+    "rss_items": 30,
+    "after_freshness": 12,
+    "after_tech_filter": 12,
+    "after_dedup": 12,
     "article_title": "",
     "ai_success": false,
     "quality_score": 0,
@@ -46,10 +46,12 @@
     "rejection_detail": "",
     "article_id": null,
     "article_url": null,
-    "error": "getaddrinfo ENOTFOUND news.google.com",
+    "error": "",
     "notes": "",
     "estimated_gain_after_rewrite": 0,
     "estimated_score_after_rewrite": 0,
-    "would_pass_after_rewrite": false
+    "would_pass_after_rewrite": false,
+    "fetched_content_length": 8830,
+    "ai_error": "Request failed with status code 400"
   }
 ]

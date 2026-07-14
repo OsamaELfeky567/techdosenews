@@ -450,6 +450,13 @@ tr:hover{background:var(--bg2)}
       </div>
       <div class="page" id="page-sources">
         <div class="page-title">إدارة المصادر <span class="sub">إعدادات وتحليلات مصادر الأخبار</span></div>
+        <div id="sourceDashboard"></div>
+        <div id="sourceToolbar" style="display:flex;gap:8px;margin-bottom:12px">
+          <button class="btn btn-success" onclick="showSourceForm(null)"><i class="fas fa-plus"></i> إضافة مصدر</button>
+        </div>
+        <div style="background:var(--surface);padding:12px;border-radius:var(--radius);border:1px solid var(--bg3);margin-bottom:12px;overflow-x:auto">
+          <canvas id="sourceCharts" style="width:100%;height:300px"></canvas>
+        </div>
         <div id="sourceManager"></div>
       </div>
     </main>
@@ -480,6 +487,7 @@ let CATEGORIES = [];
 let EXECUTIONS = [];
 let SOURCE_CONFIG = {};
 let EXEC_FILTER = '';
+let RSS_SOURCES_DATA = [];
 let CURRENT_PAGE = 1;
 const PER_PAGE = 20;
 let SELECTED_IDS = new Set();
@@ -1201,75 +1209,336 @@ function renderPublishingQueue() {
   document.getElementById('queueBadge').textContent = pending.length + ' في الانتظار';
 }
 
-/* ───── Part D+H — Source Manager + Statistics ───── */
+/* ───── Phase 11C: GitHub Source Management ───── */
+
+let RSS_SOURCES_DATA = [];
+
+async function loadRssSources() {
+  try {
+    const res = await fetch(RAW_URL + '/data/rss_sources.json?t=' + Date.now());
+    if (res.ok) RSS_SOURCES_DATA = await res.json();
+  } catch(e) {
+    try { RSS_SOURCES_DATA = JSON.parse(localStorage.getItem('rss_sources_cache') || '[]'); } catch(e2) {}
+  }
+  if (!Array.isArray(RSS_SOURCES_DATA)) RSS_SOURCES_DATA = [];
+  localStorage.setItem('rss_sources_cache', JSON.stringify(RSS_SOURCES_DATA));
+  return RSS_SOURCES_DATA;
+}
+
+async function saveRssSources(sources) {
+  try {
+    await ghPut('data/rss_sources.json', JSON.stringify(sources, null, 2), 'Admin: source update');
+    RSS_SOURCES_DATA = sources;
+    return true;
+  } catch(e) {
+    showToast('فشل حفظ المصادر: ' + e.message, 'error', 5000);
+    return false;
+  }
+}
+
+async function testRssUrl(url) {
+  const result = { valid: false, error: '', itemCount: 0, title: '' };
+  try {
+    const res = await fetch(url, { mode: 'cors' });
+    if (!res.ok) { result.error = 'HTTP ' + res.status + ' - ' + res.statusText; return result; }
+    const text = await res.text();
+    if (!text || text.length < 200) { result.error = 'المحتوى قصير جداً (أقل من 200 حرف)'; return result; }
+    const encoder = new TextEncoder();
+    const bytes = encoder.encode(text);
+    try { decoder.decode(bytes); } catch(e) { result.error = 'ترميز غير صالح (ليس UTF-8)'; return result; }
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(text, 'text/xml');
+    const parseErr = xml.querySelector('parsererror');
+    if (parseErr) { result.error = 'خطأ في صيغة XML: ' + parseErr.textContent.substring(0, 100); return result; }
+    const items = xml.querySelectorAll('item, entry');
+    if (items.length === 0) { result.error = 'لا توجد عناصر RSS في الخلاصة'; return result; }
+    result.itemCount = items.length;
+    const titleEl = xml.querySelector('channel > title, feed > title');
+    if (titleEl) result.title = titleEl.textContent;
+    const lastItem = items[items.length - 1];
+    const pubDate = lastItem.querySelector('pubDate, published\\:published, published, updated') || lastItem.querySelector('pubDate');
+    if (pubDate) {
+      const age = (Date.now() - new Date(pubDate.textContent).getTime()) / 86400000;
+      if (age > 30) result.error = 'آخر تحديث منذ أكثر من 30 يوماً';
+    }
+    result.valid = true;
+  } catch(e) {
+    result.error = 'تعذر الوصول إلى الرابط: ' + (e.message || e);
+  }
+  return result;
+}
+
+function showSourceForm(source) {
+  const isEdit = !!source;
+  const s = source || { id: '', name: '', url: '', language: 'ar', country: 'EG', tier: 2, priority: 50, enabled: true, trust_score: 70, category: 'general', logo: '', description: '' };
+  const langs = { ar: 'العربية', en: 'English' };
+  const tiers = { 1: 'Tier 1 - أساسي', 2: 'Tier 2 - ثانوي', 3: 'Tier 3 - احتياطي' };
+  const cats = { general: 'عام', hardware: 'عتاد', 'deep-tech': 'تقنية عميقة', mobile: 'جوال', ai: 'ذكاء اصطناعي', startups: 'شركات ناشئة', 'consumer-tech': 'تقنية استهلاكية' };
+  const countries = { SA: 'السعودية', AE: 'الإمارات', EG: 'مصر', GB: 'بريطانيا', US: 'أمريكا', BG: 'بلغاريا' };
+  let html = '<form id="sourceForm" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">';
+  html += '<div class="form-group"><label>المعرف (id)</label><input type="text" id="sf_id" value="' + s.id + '" ' + (isEdit ? 'readonly style="background:var(--bg3);color:var(--text3)"' : '') + ' required></div>';
+  html += '<div class="form-group"><label>الاسم</label><input type="text" id="sf_name" value="' + (s.name || '') + '" required></div>';
+  html += '<div class="form-group" style="grid-column:1/3"><label>رابط RSS</label><input type="url" id="sf_url" value="' + (s.url || '') + '" required style="direction:ltr;text-align:left"></div>';
+  html += '<div class="form-group"><label>اللغة</label><select id="sf_lang">' + Object.entries(langs).map(([k,v]) => '<option value="' + k + '" ' + (s.language === k ? 'selected' : '') + '>' + v + '</option>').join('') + '</select></div>';
+  html += '<div class="form-group"><label>الدولة</label><select id="sf_country">' + Object.entries(countries).map(([k,v]) => '<option value="' + k + '" ' + (s.country === k ? 'selected' : '') + '>' + v + '</option>').join('') + '</select></div>';
+  html += '<div class="form-group"><label>المستوى (Tier)</label><select id="sf_tier">' + Object.entries(tiers).map(([k,v]) => '<option value="' + k + '" ' + (String(s.tier) === k ? 'selected' : '') + '>' + v + '</option>').join('') + '</select></div>';
+  html += '<div class="form-group"><label>الأولوية</label><input type="number" id="sf_priority" value="' + (s.priority || 50) + '" min="1" max="100"></div>';
+  html += '<div class="form-group"><label>درجة الثقة</label><input type="number" id="sf_trust" value="' + (s.trust_score || 70) + '" min="1" max="100"></div>';
+  html += '<div class="form-group"><label>التصنيف</label><select id="sf_category">' + Object.entries(cats).map(([k,v]) => '<option value="' + k + '" ' + (s.category === k ? 'selected' : '') + '>' + v + '</option>').join('') + '</select></div>';
+  html += '<div class="form-group" style="grid-column:1/3"><label>وصف</label><textarea id="sf_desc" rows="2">' + (s.description || '') + '</textarea></div>';
+  html += '<div class="form-group" style="grid-column:1/3"><label><input type="checkbox" id="sf_enabled" ' + (s.enabled !== false ? 'checked' : '') + '> مفعل</label></div>';
+  html += '</form>';
+  const actions = '<button class="btn btn-primary" onclick="saveRssSourceForm(\'' + (s.id || '') + '\')"><i class="fas fa-save"></i> حفظ</button><button class="btn btn-ghost" onclick="closeModal()">إلغاء</button>';
+  showModal(isEdit ? 'تعديل المصدر' : 'إضافة مصدر جديد', html, actions);
+}
+
+function generateId(name) {
+  return name.toLowerCase().replace(/[^a-z0-9]/g, '').substring(0, 20) || 'src' + Date.now();
+}
+
+async function saveRssSourceForm(existingId) {
+  const form = document.getElementById('sourceForm');
+  if (!form) return;
+  const id = document.getElementById('sf_id').value.trim();
+  const name = document.getElementById('sf_name').value.trim();
+  const url = document.getElementById('sf_url').value.trim();
+  if (!id || !name || !url) { showToast('يرجى ملء جميع الحقول المطلوبة', 'error'); return; }
+  if (existingId && id !== existingId) { showToast('لا يمكن تغيير المعرف', 'error'); return; }
+  if (!existingId && RSS_SOURCES_DATA.find(s => s.id === id)) { showToast('المعرف موجود مسبقاً', 'error'); return; }
+  const source = {
+    id, name, url,
+    language: document.getElementById('sf_lang').value,
+    country: document.getElementById('sf_country').value,
+    tier: parseInt(document.getElementById('sf_tier').value),
+    priority: parseInt(document.getElementById('sf_priority').value) || 50,
+    trust_score: parseInt(document.getElementById('sf_trust').value) || 70,
+    category: document.getElementById('sf_category').value,
+    description: document.getElementById('sf_desc').value.trim(),
+    enabled: document.getElementById('sf_enabled').checked,
+    dynamic_priority: 999,
+    logo: '',
+    created_at: existingId ? (RSS_SOURCES_DATA.find(s => s.id === id)?.created_at || new Date().toISOString()) : new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    last_success: existingId ? (RSS_SOURCES_DATA.find(s => s.id === id)?.last_success || null) : null,
+    last_failure: existingId ? (RSS_SOURCES_DATA.find(s => s.id === id)?.last_failure || null) : null,
+    last_fetch: existingId ? (RSS_SOURCES_DATA.find(s => s.id === id)?.last_fetch || null) : null
+  };
+  let sources = [...RSS_SOURCES_DATA];
+  if (existingId) {
+    const idx = sources.findIndex(s => s.id === id);
+    if (idx >= 0) sources[idx] = source;
+  } else {
+    sources.unshift(source);
+  }
+  sources.sort((a, b) => a.priority - b.priority);
+  sources.forEach((s, i) => { s.dynamic_priority = s.enabled ? (i + 1) : 999; });
+  const ok = await saveRssSources(sources);
+  if (ok) {
+    closeModal();
+    showToast('تم حفظ المصدر بنجاح', 'success');
+    renderSourceManager();
+  }
+}
+
+async function deleteRssSource(id) {
+  const source = RSS_SOURCES_DATA.find(s => s.id === id);
+  if (!source) return;
+  showModal('تأكيد الحذف', '<p style="color:var(--red)">هل أنت متأكد من حذف المصدر <strong>' + source.name + '</strong>؟</p><p style="font-size:.85rem;color:var(--text3)">لا يمكن التراجع عن هذا الإجراء.</p>',
+    '<button class="btn btn-danger" onclick="confirmDeleteSource(\'' + id + '\')"><i class="fas fa-trash"></i> حذف</button><button class="btn btn-ghost" onclick="closeModal()">إلغاء</button>');
+}
+
+async function confirmDeleteSource(id) {
+  const sources = RSS_SOURCES_DATA.filter(s => s.id !== id);
+  const ok = await saveRssSources(sources);
+  if (ok) {
+    closeModal();
+    showToast('تم حذف المصدر', 'success');
+    renderSourceManager();
+  }
+}
+
+async function duplicateSource(id) {
+  const source = RSS_SOURCES_DATA.find(s => s.id === id);
+  if (!source) return;
+  const dup = { ...source, id: source.id + '_copy', name: source.name + ' (نسخة)', priority: source.priority + 1, enabled: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() };
+  const sources = [...RSS_SOURCES_DATA, dup];
+  const ok = await saveRssSources(sources);
+  if (ok) {
+    showToast('تم نسخ المصدر', 'success');
+    renderSourceManager();
+  }
+}
+
+async function cloneSource(id) {
+  const source = RSS_SOURCES_DATA.find(s => s.id === id);
+  if (!source) return;
+  showSourceForm({ ...source, id: '', name: '', enabled: true });
+}
+
+async function testSource(id) {
+  const source = RSS_SOURCES_DATA.find(s => s.id === id);
+  if (!source) return;
+  showToast('جاري اختبار ' + source.name + '...', 'info', 10000);
+  const result = await testRssUrl(source.url);
+  if (result.valid) {
+    showToast('✓ ' + source.name + ': ' + result.itemCount + ' مقال - ' + result.title, 'success', 5000);
+  } else {
+    showToast('✗ ' + source.name + ': ' + result.error, 'error', 8000);
+  }
+}
+
+async function toggleSourceSource(id) {
+  const source = RSS_SOURCES_DATA.find(s => s.id === id);
+  if (!source) return;
+  source.enabled = !source.enabled;
+  source.updated_at = new Date().toISOString();
+  const ok = await saveRssSources(RSS_SOURCES_DATA);
+  if (ok) {
+    showToast(source.enabled ? 'تم تفعيل ' + source.name : 'تم تعطيل ' + source.name, 'success');
+    renderSourceManager();
+  }
+}
+
+function renderSourceDashboard() {
+  const total = RSS_SOURCES_DATA.length;
+  const enabled = RSS_SOURCES_DATA.filter(s => s.enabled).length;
+  const disabled = RSS_SOURCES_DATA.filter(s => !s.enabled).length;
+  const green = RSS_SOURCES_DATA.filter(s => s.enabled).length;
+  const yellow = 0;
+  const red = 0;
+  const avgTrust = RSS_SOURCES_DATA.length ? Math.round(RSS_SOURCES_DATA.reduce((a, s) => a + (s.trust_score || 0), 0) / RSS_SOURCES_DATA.length) : 0;
+  const top = RSS_SOURCES_DATA.length ? RSS_SOURCES_DATA.slice().sort((a, b) => (b.trust_score || 0) - (a.trust_score || 0))[0] : null;
+  const newest = RSS_SOURCES_DATA.length ? RSS_SOURCES_DATA.slice().sort((a, b) => new Date(b.created_at) - new Date(a.created_at))[0] : null;
+  const oldest = RSS_SOURCES_DATA.length ? RSS_SOURCES_DATA.slice().sort((a, b) => new Date(a.created_at) - new Date(b.created_at))[0] : null;
+  let healthHtml = '<div class="stats-grid" style="margin-bottom:16px">';
+  healthHtml += '<div class="stat-card"><div class="sc-sv">' + total + '</div><div class="sc-sl">إجمالي المصادر</div></div>';
+  healthHtml += '<div class="stat-card"><div class="sc-sv" style="color:var(--green)">' + enabled + '</div><div class="sc-sl">مفعل</div></div>';
+  healthHtml += '<div class="stat-card"><div class="sc-sv" style="color:var(--text3)">' + disabled + '</div><div class="sc-sl">معطل</div></div>';
+  healthHtml += '<div class="stat-card"><div class="sc-sv" style="color:var(--orange)">' + avgTrust + '</div><div class="sc-sl">متوسط الثقة</div></div>';
+  healthHtml += '<div class="stat-card"><div class="sc-sv" style="font-size:.85rem">' + (top ? top.name : '—') + '</div><div class="sc-sl">أعلى مصدر</div></div>';
+  healthHtml += '<div class="stat-card"><div class="sc-sv" style="font-size:.85rem">' + (newest ? newest.name : '—') + '</div><div class="sc-sl">أحدث مصدر</div></div>';
+  healthHtml += '</div>';
+  document.getElementById('sourceDashboard').innerHTML = healthHtml;
+}
+
+function renderSourceCharts() {
+  if (!RSS_SOURCES_DATA.length) return;
+  const canvas = document.getElementById('sourceCharts');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.parentElement.offsetWidth || 800;
+  const H = 300;
+  canvas.width = W * 2; canvas.height = H * 2;
+  canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+  ctx.scale(2, 2);
+  ctx.clearRect(0, 0, W, H);
+
+  const sorted = RSS_SOURCES_DATA.filter(s => s.enabled).sort((a, b) => (b.trust_score || 0) - (a.trust_score || 0));
+  if (!sorted.length) return;
+  const pad = { t: 20, r: 20, b: 40, l: 50 };
+  const chartW = W - pad.l - pad.r;
+  const chartH = H - pad.t - pad.b;
+  const barW = Math.min(30, chartW / sorted.length - 4);
+
+  ctx.fillStyle = '#94a3b8';
+  ctx.font = '10px sans-serif';
+  ctx.textAlign = 'center';
+  sorted.forEach((s, i) => {
+    const x = pad.l + (chartW / sorted.length) * i + (chartW / sorted.length - barW) / 2;
+    const h = (s.trust_score / 100) * chartH;
+    const y = pad.t + chartH - h;
+    const grad = ctx.createLinearGradient(x, y, x, pad.t + chartH);
+    grad.addColorStop(0, s.enabled ? '#22c55e' : '#64748b');
+    grad.addColorStop(1, s.enabled ? '#16a34a' : '#475569');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.roundRect(x, y, barW, h, [3, 3, 0, 0]);
+    ctx.fill();
+    ctx.fillStyle = '#94a3b8';
+    ctx.fillText(s.trust_score, x + barW / 2, y - 4);
+    if (i % 2 === 0 || sorted.length <= 8) {
+      ctx.save();
+      ctx.translate(x + barW / 2, pad.t + chartH + 12);
+      ctx.rotate(-Math.PI / 4);
+      ctx.fillStyle = '#64748b';
+      ctx.font = '9px sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText(s.name.substring(0, 12), 0, 0);
+      ctx.restore();
+    }
+  });
+  ctx.fillStyle = '#64748b';
+  ctx.font = '10px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('ثقة المصادر حسب التقييم', W / 2, H - 4);
+}
 
 function renderSourceManager() {
-  const sources = getKnownSources();
-  if (sources.length === 0) {
-    document.getElementById('sourceManager').innerHTML = '<div class="empty-state">لا توجد مصادر في بيانات التنفيذات بعد. ستظهر المصادر تلقائياً عند بدء خط الإنتاج.</div>';
+  renderSourceDashboard();
+  renderSourceCharts();
+  if (RSS_SOURCES_DATA.length === 0) {
+    document.getElementById('sourceManager').innerHTML = '<div class="empty-state">لم يتم تحميل المصادر بعد. استخدم زر "إضافة مصدر" أعلاه.</div>';
     return;
   }
-  sources.forEach(n => ensureSourceConfig(n));
-  // Sort by performance: enabled first, then by publish rate descending, then by total descending
-  const sorted = sources.slice().sort((a, b) => {
-    const sa = getSourceStats(a);
-    const sb = getSourceStats(b);
-    if (sa.enabled !== sb.enabled) return sa.enabled ? -1 : 1;
-    return (parseFloat(sb.publishRate) - parseFloat(sa.publishRate)) || (sb.total - sa.total);
+  const sorted = RSS_SOURCES_DATA.slice().sort((a, b) => {
+    if (a.enabled !== b.enabled) return a.enabled ? -1 : 1;
+    return (a.dynamic_priority || a.priority) - (b.dynamic_priority || b.priority);
   });
-  // Summary table
-  let html = '<div style="overflow-x:auto;margin-bottom:20px"><table style="font-size:.78rem"><thead><tr>' +
-    '<th>المصدر</th><th>الحالة</th><th>أولوية</th><th>الإجمالي</th><th>منشور</th><th>مرفوض</th><th>مقبول</th><th>معدل النشر</th><th>متوسط الجودة</th><th>معدل التكرار</th><th>آخر نشر</th><th>آخر جلب</th>' +
+  let html = '<div style="overflow-x:auto;margin-bottom:20px"><table style="font-size:.72rem"><thead><tr>' +
+    '<th>المعرف</th><th>المصدر</th><th>الحالة</th><th>المستوى</th><th>أولوية</th><th>ثقة</th><th>تصنيف</th><th>إجراءات</th>' +
     '</tr></thead><tbody>';
-  for (const name of sorted) {
-    const stats = getSourceStats(name);
-    const enabled = stats.enabled;
-    const lastPubStr = stats.lastPublish ? new Date(stats.lastPublish).toLocaleDateString('ar-EG', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }) : '—';
-    const lastFetchStr = stats.lastFetch ? new Date(stats.lastFetch).toLocaleDateString('ar-EG', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }) : '—';
+  for (const s of sorted) {
+    const enabled = s.enabled !== false;
+    const healthColor = enabled ? 'var(--green)' : 'var(--text3)';
     html += '<tr>' +
-      '<td style="font-weight:600"><i class="fas fa-rss" style="color:' + (enabled ? 'var(--orange)' : 'var(--text3)') + '"></i> ' + name + '</td>' +
+      '<td style="font-size:.65rem;color:var(--text3);font-family:monospace">' + s.id + '</td>' +
+      '<td style="font-weight:600"><i class="fas fa-rss" style="color:' + (enabled ? 'var(--orange)' : 'var(--text3)') + '"></i> ' + s.name + '</td>' +
       '<td>' + (enabled ? '<span style="color:var(--green)">مفعل</span>' : '<span style="color:var(--text3)">معطل</span>') + '</td>' +
-      '<td>' + stats.priority + '</td>' +
-      '<td>' + stats.total + '</td>' +
-      '<td style="color:var(--green);font-weight:600">' + stats.published + '</td>' +
-      '<td style="color:var(--orange)">' + stats.rejected + '</td>' +
-      '<td>' + stats.accepted + '</td>' +
-      '<td style="font-weight:600;color:' + (parseFloat(stats.publishRate) >= 20 ? 'var(--green)' : (parseFloat(stats.publishRate) >= 10 ? 'var(--orange)' : 'var(--red)')) + '">' + stats.publishRate + '%</td>' +
-      '<td>' + stats.avgScore + '</td>' +
-      '<td>' + stats.dupRate + '%</td>' +
-      '<td style="font-size:.7rem;color:var(--text3)">' + lastPubStr + '</td>' +
-      '<td style="font-size:.7rem;color:var(--text3)">' + lastFetchStr + '</td>' +
+      '<td>' + (s.tier || '—') + '</td>' +
+      '<td>' + (s.dynamic_priority || s.priority || '—') + '</td>' +
+      '<td style="color:' + ((s.trust_score || 0) >= 80 ? 'var(--green)' : (s.trust_score || 0) >= 60 ? 'var(--orange)' : 'var(--red)') + '">' + (s.trust_score || '—') + '</td>' +
+      '<td>' + (s.category || '—') + '</td>' +
+      '<td>' +
+      '<button class="btn btn-xs ' + (enabled ? 'btn-warning' : 'btn-success') + '" onclick="toggleSourceSource(\'' + s.id + '\')" title="' + (enabled ? 'تعطيل' : 'تفعيل') + '"><i class="fas fa-' + (enabled ? 'pause' : 'play') + '"></i></button> ' +
+      '<button class="btn btn-xs btn-ghost" onclick="showSourceForm(RSS_SOURCES_DATA.find(x=>x.id===\'' + s.id + '\'))" title="تعديل"><i class="fas fa-edit"></i></button> ' +
+      '<button class="btn btn-xs btn-ghost" onclick="duplicateSource(\'' + s.id + '\')" title="نسخ"><i class="fas fa-copy"></i></button> ' +
+      '<button class="btn btn-xs btn-ghost" onclick="testSource(\'' + s.id + '\')" title="اختبار"><i class="fas fa-plug"></i></button> ' +
+      '<button class="btn btn-xs btn-danger" onclick="deleteRssSource(\'' + s.id + '\')" title="حذف"><i class="fas fa-trash"></i></button>' +
+      '</td>' +
       '</tr>';
   }
   html += '</tbody></table></div>';
 
-  // Source cards with controls
-  html += '<div class="stats-grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">';
-  for (const name of sorted) {
-    const stats = getSourceStats(name);
-    const enabled = stats.enabled;
+  html += '<div class="stats-grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr))">';
+  for (const s of sorted) {
+    const enabled = s.enabled !== false;
+    const statsFromExec = getSourceStats(s.name);
+    const execs = EXECUTIONS.filter(e => e.rss_source === s.name);
+    const lastPub = execs.find(e => e.status === 'published');
+    const lastPubStr = lastPub ? new Date(lastPub.created_at || lastPub.triggered_at).toLocaleDateString('ar-EG', { month:'short', day:'numeric' }) : '—';
     html += '<div class="source-card">' +
       '<div class="sc-header">' +
-      '<div class="sc-name"><i class="fas fa-rss" style="color:' + (enabled ? 'var(--orange)' : 'var(--text3)') + '"></i> ' + name + '</div>' +
-      '<span style="font-size:.72rem;color:var(--text3)">' + (enabled ? 'مفعل' : 'معطل') + ' • أولوية: ' + stats.priority + ' • نجاح: ' + stats.publishRate + '%</span>' +
+      '<div class="sc-name"><i class="fas fa-rss" style="color:' + (enabled ? 'var(--orange)' : 'var(--text3)') + '"></i> ' + s.name + '</div>' +
+      '<span style="font-size:.72rem;color:var(--text3)">' + (enabled ? '<span style="color:var(--green)">مفعل</span>' : '<span style="color:var(--text3)">معطل</span>') + ' • أولوية: ' + (s.dynamic_priority || s.priority || '—') + '</span>' +
       '</div>' +
-      '<div style="display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap">' +
-      '<button class="btn btn-sm ' + (enabled ? 'btn-success' : 'btn-ghost') + '" onclick="toggleSource(\'' + name + '\')">' + (enabled ? 'مفعل' : 'معطل') + '</button>' +
-      '<button class="btn btn-sm btn-ghost" onclick="adjustPriority(\'' + name + '\', -10)" title="رفع الأولوية"><i class="fas fa-arrow-up"></i></button>' +
-      '<button class="btn btn-sm btn-ghost" onclick="adjustPriority(\'' + name + '\', 10)" title="خفض الأولوية"><i class="fas fa-arrow-down"></i></button>' +
+      '<div style="font-size:.78rem;color:var(--text3);margin-bottom:8px;direction:ltr;text-align:left;font-family:monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + s.url + '</div>' +
+      (s.description ? '<div style="font-size:.78rem;color:var(--text2);margin-bottom:8px">' + s.description + '</div>' : '') +
+      '<div style="display:flex;gap:4px;margin-bottom:6px;flex-wrap:wrap">' +
+      '<button class="btn btn-xs ' + (enabled ? 'btn-warning' : 'btn-success') + '" onclick="toggleSourceSource(\'' + s.id + '\')">' + (enabled ? 'تعطيل' : 'تفعيل') + '</button> ' +
+      '<button class="btn btn-xs btn-ghost" onclick="showSourceForm(RSS_SOURCES_DATA.find(x=>x.id===\'' + s.id + '\'))"><i class="fas fa-edit"></i> تعديل</button> ' +
+      '<button class="btn btn-xs btn-ghost" onclick="cloneSource(\'' + s.id + '\')"><i class="fas fa-clone"></i> استنساخ</button> ' +
+      '<button class="btn btn-xs btn-ghost" onclick="duplicateSource(\'' + s.id + '\')"><i class="fas fa-copy"></i> تكرار</button> ' +
+      '<button class="btn btn-xs btn-info" onclick="testSource(\'' + s.id + '\')"><i class="fas fa-plug"></i> اختبار</button> ' +
+      '<button class="btn btn-xs btn-danger" onclick="deleteRssSource(\'' + s.id + '\')"><i class="fas fa-trash"></i> حذف</button>' +
       '</div>' +
-      '<div class="sc-stats">' +
-      '<div class="sc-stat"><div class="sc-sv">' + stats.total + '</div><div class="sc-sl">إجمالي</div></div>' +
-      '<div class="sc-stat"><div class="sc-sv" style="color:var(--green)">' + stats.published + '</div><div class="sc-sl">منشور</div></div>' +
-      '<div class="sc-stat"><div class="sc-sv" style="color:var(--orange)">' + stats.rejected + '</div><div class="sc-sl">مرفوض</div></div>' +
-      '<div class="sc-stat"><div class="sc-sv">' + stats.accepted + '</div><div class="sc-sl">مقبول</div></div>' +
-      '<div class="sc-stat"><div class="sc-sv">' + stats.avgScore + '</div><div class="sc-sl">متوسط</div></div>' +
-      '<div class="sc-stat"><div class="sc-sv">' + stats.dupRate + '%</div><div class="sc-sl">مكرر</div></div>' +
-      '<div class="sc-stat"><div class="sc-sv" style="color:' + (parseFloat(stats.publishRate) >= 20 ? 'var(--green)' : 'var(--orange)') + '">' + stats.publishRate + '%</div><div class="sc-sl">نشر</div></div>' +
-      '<div class="sc-stat"><div class="sc-sv" style="font-size:.85rem">' + (stats.lastPublish ? new Date(stats.lastPublish).toLocaleDateString('ar-EG', { month:'short', day:'numeric' }) : '—') + '</div><div class="sc-sl">آخر نشر</div></div>' +
+      '<div class="sc-stats" style="grid-template-columns:repeat(4,1fr)">' +
+      '<div class="sc-stat"><div class="sc-sv" style="color:' + (enabled ? 'var(--green)' : 'var(--text3)') + '">' + (enabled ? 'نشط' : 'معطل') + '</div><div class="sc-sl">حالة</div></div>' +
+      '<div class="sc-stat"><div class="sc-sv">' + (statsFromExec.published || 0) + '</div><div class="sc-sl">منشور</div></div>' +
+      '<div class="sc-stat"><div class="sc-sv" style="color:' + (parseFloat(statsFromExec.publishRate || '0') >= 20 ? 'var(--green)' : 'var(--orange)') + '">' + (statsFromExec.publishRate || '0') + '%</div><div class="sc-sl">نشر</div></div>' +
+      '<div class="sc-stat"><div class="sc-sv" style="font-size:.85rem">' + lastPubStr + '</div><div class="sc-sl">آخر نشر</div></div>' +
       '</div>' +
       '<div class="sc-actions">' +
-      '<button class="btn btn-sm btn-ghost" onclick="showSourceDetails(\'' + name + '\')"><i class="fas fa-chart-bar"></i> تفاصيل</button>' +
+      '<button class="btn btn-sm btn-ghost" onclick="showSourceDetails(\'' + s.name + '\')"><i class="fas fa-chart-bar"></i> تفاصيل</button>' +
       '</div>' +
       '</div>';
   }
@@ -2757,7 +3026,7 @@ function showPage(name) {
   document.querySelector('[data-page="' + name + '"]')?.classList.add('active');
   if (name === 'reports') renderReports();
   if (name === 'operations') renderOperations();
-  if (name === 'sources') renderSourceManager();
+  if (name === 'sources') { loadRssSources(); renderSourceManager(); }
 }
 
 async function init() {
@@ -2765,6 +3034,7 @@ async function init() {
   await loadArticles();
   await loadCategories();
   await loadExecutions();
+  await loadRssSources();
   loadSourceConfig();
   populateCategorySelect();
   loadSettings();

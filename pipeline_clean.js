@@ -1,40 +1,64 @@
 
-const RSS_SOURCES = [
-  { name: "BBC Arabic", url: "https://feeds.bbci.co.uk/arabic/rss.xml", lang: "ar", tier: 1 },
-  { name: "عرب هاردوير", url: "https://arabhardware.net/feed/", lang: "ar", tier: 1 },
-  { name: "التقنية بلا حدود", url: "https://www.tech-wd.com/wd/feed/", lang: "ar", tier: 1 },
-  { name: "TechCrunch", url: "https://techcrunch.com/feed/", lang: "en", tier: 1 },
-  { name: "The Verge", url: "https://www.theverge.com/rss/index.xml", lang: "en", tier: 1 },
-  { name: "Ars Technica", url: "https://feeds.arstechnica.com/arstechnica/index", lang: "en", tier: 1 },
-  { name: "GSMArena", url: "https://www.gsmarena.com/rss-news-reviews.php3", lang: "en", tier: 2 },
-  { name: "Android Authority", url: "https://www.androidauthority.com/feed/", lang: "en", tier: 2 },
-  { name: "Tom's Hardware", url: "https://www.tomshardware.com/feeds/all", lang: "en", tier: 2 },
-  { name: "تك عربي", url: "https://techarabi.com/feed/", lang: "ar", tier: 2 },
-  { name: "تيك العرب", url: "https://techalarab.com/feed/", lang: "ar", tier: 2 },
-  { name: "TECHx Arabic", url: "https://techxmediaarabic.com/feed/", lang: "ar", tier: 2 },
+const DEFAULT_SOURCES = [
+  { id: "bbcar", name: "BBC Arabic", url: "https://feeds.bbci.co.uk/arabic/rss.xml", lang: "ar", tier: 1, priority: 1, enabled: true, trust_score: 98, category: "general" },
+  { id: "arabhd", name: "عرب هاردوير", url: "https://arabhardware.net/feed/", lang: "ar", tier: 1, priority: 2, enabled: true, trust_score: 97, category: "hardware" },
+  { id: "techwd", name: "التقنية بلا حدود", url: "https://www.tech-wd.com/wd/feed/", lang: "ar", tier: 1, priority: 3, enabled: true, trust_score: 96, category: "general" },
+  { id: "aitnews", name: "AIT News", url: "https://aitnews.com/feed", lang: "ar", tier: 1, priority: 4, enabled: true, trust_score: 95, category: "general" },
+  { id: "techcr", name: "TechCrunch", url: "https://techcrunch.com/feed/", lang: "en", tier: 2, priority: 5, enabled: true, trust_score: 90, category: "startups" },
+  { id: "verge", name: "The Verge", url: "https://www.theverge.com/rss/index.xml", lang: "en", tier: 2, priority: 6, enabled: true, trust_score: 88, category: "consumer-tech" },
+  { id: "arstech", name: "Ars Technica", url: "https://feeds.arstechnica.com/arstechnica/index", lang: "en", tier: 2, priority: 7, enabled: true, trust_score: 92, category: "deep-tech" },
+  { id: "gsmarena", name: "GSMArena", url: "https://www.gsmarena.com/rss-news-reviews.php3", lang: "en", tier: 2, priority: 8, enabled: true, trust_score: 85, category: "mobile" },
+  { id: "androidauth", name: "Android Authority", url: "https://www.androidauthority.com/feed/", lang: "en", tier: 2, priority: 9, enabled: true, trust_score: 84, category: "mobile" },
+  { id: "tomshw", name: "Tom's Hardware", url: "https://www.tomshardware.com/feeds/all", lang: "en", tier: 2, priority: 10, enabled: true, trust_score: 86, category: "hardware" },
+  { id: "techxar", name: "TECHx Arabic", url: "https://techxmediaarabic.com/feed/", lang: "ar", tier: 2, priority: 11, enabled: true, trust_score: 87, category: "general" },
+  { id: "mitrev", name: "MIT Technology Review Arabic", url: "https://technologyreview.ae/feed", lang: "ar", tier: 2, priority: 12, enabled: true, trust_score: 93, category: "deep-tech" },
+  { id: "openai", name: "OpenAI Blog", url: "https://openai.com/news/rss.xml", lang: "en", tier: 3, priority: 13, enabled: true, trust_score: 80, category: "ai" },
+  { id: "nvidia", name: "NVIDIA Blog", url: "https://blogs.nvidia.com/feed/", lang: "en", tier: 3, priority: 14, enabled: true, trust_score: 78, category: "hardware" },
+  { id: "msai", name: "Microsoft AI Blog", url: "https://blogs.microsoft.com/feed/", lang: "en", tier: 3, priority: 15, enabled: true, trust_score: 76, category: "ai" },
+  { id: "googleai", name: "Google AI Blog", url: "https://blog.google/technology/ai/rss/", lang: "en", tier: 3, priority: 16, enabled: true, trust_score: 75, category: "ai" },
+  { id: "zdnetai", name: "ZDNet AI", url: "https://www.zdnet.com/news/rss.xml", lang: "en", tier: 3, priority: 17, enabled: true, trust_score: 72, category: "ai" },
 ];
 
-const GNEWS_URL = "https://news.google.com/rss/search?q=(OpenAI+OR+Google+AI+OR+Gemini+OR+ChatGPT+OR+Microsoft+AI+OR+NVIDIA+OR+Tesla+OR+Apple+OR+Cybersecurity+OR+Startup+OR+AI+tools+OR+robotics+OR+developers+OR+programming)&hl=en-US&gl=US&ceid=US:en";
+let RSS_SOURCES = [...DEFAULT_SOURCES];
 
-const GH_TOKEN = process.env.GH_TOKEN || "";
+async function loadSources() {
+  try {
+    const res = await this.helpers.httpRequest({
+      method: "GET",
+      url: GH_API + "/data/rss_sources.json",
+      headers: GH_H
+    });
+    if (res && res.content) {
+      const decoded = JSON.parse(Buffer.from(res.content, "base64").toString("utf-8"));
+      if (Array.isArray(decoded) && decoded.length > 0) {
+        RSS_SOURCES = decoded.map(s => ({ ...s, lang: s.language || s.lang || "ar" }));
+        return;
+      }
+    }
+  } catch(e) {}
+  RSS_SOURCES = [...DEFAULT_SOURCES];
+}
+
+const GH_TOKEN = "" || "";
 const GH_API = "https://api.github.com/repos/osamaelfeky567/techdosenews/contents";
 const GH_H = { "Authorization": "token " + GH_TOKEN, "Accept": "application/vnd.github.v3+json" };
 
-const TG_TOKEN = process.env.TG_TOKEN || "";
+const TG_TOKEN = "" || "";
 const TG_CHAT_ID = "-1003896125398" || "-1003896125398";
 const FRONTEND_URL = "https://osamaelfeky567.github.io/techdosenews";
 
-const GROQ_API_KEY = process.env.GROQ_API_KEY || "";
+const GROQ_API_KEY = "" || "";
 const GROQ_MODEL = "llama-3.1-8b-instant";
 
-const PEXELS_API_KEY = process.env.PEXELS_API_KEY || "";
-const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY || "";
+const PEXELS_API_KEY = "";
+const UNSPLASH_ACCESS_KEY = "";
 
 const TECH_KW = ["ai","artificial intelligence","machine learning","deep learning","llm","gpt","openai","anthropic","claude","gemini","chatbot","software","startup","cybersecurity","security","cloud","saas","mobile","smartphone","developer","programming","coding","api","github","database","blockchain","quantum","robotics","drone","autonomous","self-driving","ev","electric vehicle","chip","processor","gpu","cpu","nvidia","intel","amd","apple","google","microsoft","meta","amazon","aws","iphone","ipad","mac","windows","linux","android","5g","6g","iot","vr","ar","metaverse","tech","technology","innovation","ipo","acquisition","funding","venture capital","silicon valley","robot","automation","digital","privacy","data breach","vulnerability","patch","cyber attack","ransomware"];
 
 const REJ_KW = ["politics","election","president","congress","senate","lifestyle","fashion","beauty","shopping","sports","nfl","nba","soccer","football","basketball","recipe","cooking","restaurant","travel","tourism","celebrity","gossip","entertainment","movie review","top 10","top 5","best ai tools","make money","earn money","passive income","click here","subscribe now"];
 
-const QUALITY_THRESHOLD = 80;
+const QUALITY_THRESHOLD = 65;
+const QUALITY_MODE = "EMERGENCY";
 
 function gradeLabel(score) {
   if (!score || score <= 0) return '';
@@ -130,6 +154,26 @@ function contentHash(title, desc) {
   const t = hi.replace(/[^\w\u0600-\u06FF]/g,"");
   for (let i = 0; i < t.length; i++) { h = ((h << 5) - h) + t.charCodeAt(i); h |= 0; }
   return Math.abs(h).toString(36);
+}
+
+function similarity(a, b) {
+  if (a === b) return 1;
+  if (!a || !b) return 0;
+  const longer = a.length >= b.length ? a : b;
+  const shorter = a.length >= b.length ? b : a;
+  if (longer.length === 0) return 1;
+  const costs = [];
+  for (let i = 0; i <= shorter.length; i++) costs[i] = i;
+  for (let i = 1; i <= longer.length; i++) {
+    let prev = i;
+    for (let j = 1; j <= shorter.length; j++) {
+      const val = shorter[j-1] === longer[i-1] ? costs[j-1] : Math.min(costs[j-1] + 1, prev + 1, costs[j] + 1);
+      costs[j-1] = prev;
+      prev = val;
+    }
+    costs[shorter.length] = prev;
+  }
+  return 1 - costs[shorter.length] / longer.length;
 }
 
 async function ghGet(path) {
@@ -350,7 +394,7 @@ function editorialFormat(ai) {
 
 /* ───── Phase 7.4 — Editorial Quality Calibration ───── */
 
-const QUALITY_TARGETS = { info: 38, flow: 15, headline: 12, intro: 10, tech: 15, readability: 5, seo: 5 };
+const QUALITY_TARGETS = { info: 36, flow: 12, headline: 12, intro: 8, tech: 18, readability: 5, seo: 4 };
 
 function calculateQuality(article) {
   const body = article.body || "";
@@ -363,119 +407,98 @@ function calculateQuality(article) {
   const hasCompany = !!article.primary_company;
   const hasProduct = Array.isArray(article.products) && article.products.length > 0;
 
-  /* ───── 1. Information Value (38 pts) ───── */
+  /* ───── 1. Substance & Journalistic Value (36 pts) ───── */
   let infoScore = 0;
   const digits = (bodyText.match(/\d+(\.\d+)?/g) || []);
   const uniqueDigits = new Set(digits.filter(d => d.length >= 2));
-  if (uniqueDigits.size >= 10) infoScore += 10;
-  else if (uniqueDigits.size >= 6) infoScore += 7;
+  if (uniqueDigits.size >= 5) infoScore += 6;
   else if (uniqueDigits.size >= 3) infoScore += 4;
-  else infoScore += 1;
-  if (wordCount >= 700) infoScore += 5;
-  else if (wordCount >= 500) infoScore += 3;
-  else if (wordCount >= 350) infoScore += 2;
+  else if (uniqueDigits.size >= 1) infoScore += 2;
+  if (wordCount >= 700) infoScore += 7;
+  else if (wordCount >= 500) infoScore += 5;
+  else if (wordCount >= 350) infoScore += 3;
   if (hasCompany && hasProduct) infoScore += 5;
   else if (hasCompany || hasProduct) infoScore += 2;
-  const versionPattern = /[A-Za-z\u0600-\u06FF]+\s*\d+[\d.]*/g;
-  const versions = bodyText.match(versionPattern) || [];
-  const uniqueVersions = new Set(versions.filter(v => /\d{2,}/.test(v)));
-  if (uniqueVersions.size >= 2) infoScore += 6;
-  else if (uniqueVersions.size >= 1) infoScore += 3;
   const whySig = /يؤدي|يؤثر|بسبب|نتيجة|تأثير|يتسبب|يساهم/i;
-  const bgSig = /بدأ|أطلقت|منذ|سابقاً|تأسست|كانت/i;
-  const futureSig = /سوف|مستقبل|يتوقع|سيتم|سيشهد/i;
+  const bgSig = /بدأ|أطلقت|منذ|سابقاً|تأسست|كانت|خلفية/i;
+  const futureSig = /سوف|مستقبل|يتوقع|سيتم|سيشهد|المرحلة/i;
   const cmpSig = /مقارنة|أكبر|أصغر|أسرع|أفضل|أسوأ|مقابل/i;
-  if (whySig.test(bodyText)) infoScore += 2;
-  if (bgSig.test(bodyText)) infoScore += 2;
-  if (futureSig.test(bodyText)) infoScore += 2;
-  if (cmpSig.test(bodyText)) infoScore += 2;
   const techExplain = /يعمل|تقوم|آلية|طريقة|خطوات|مراحل|عملية/i;
-  if (techExplain.test(bodyText)) infoScore += 3;
-  if (Array.isArray(article.executives) && article.executives.length > 0) infoScore += 1;
+  if (whySig.test(bodyText)) infoScore += 5;
+  if (bgSig.test(bodyText)) infoScore += 5;
+  if (futureSig.test(bodyText)) infoScore += 5;
+  if (cmpSig.test(bodyText)) infoScore += 5;
+  if (techExplain.test(bodyText)) infoScore += 5;
 
-  /* ───── 2. Editorial Flow (15 pts) ───── */
+  /* ───── 2. Editorial Flow (12 pts) ───── */
   let flowScore = 0;
   if (paraCount >= 3 && paraCount <= 20) flowScore += 3;
-  else if (paraCount >= 2) flowScore += 2;
-  const openings = paragraphs.map(p => { const t = p.trim().replace(/<[^>]*>/g, ""); const m = t.match(/^[^\s]{2,5}/); return m ? m[0] : ""; }).filter(Boolean);
-  const openingCounts = {};
-  for (const o of openings) { openingCounts[o] = (openingCounts[o] || 0) + 1; }
-  const maxRepeated = Math.max(...Object.values(openingCounts), 0);
-  if (maxRepeated <= 1) flowScore += 2;
-  else if (maxRepeated === 2) flowScore += 1;
-  const lastPara = paragraphs[paragraphs.length - 1] || "";
-  const lastWords = lastPara.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean);
-  if (lastWords.length >= 25) flowScore += 1;
-  else if (lastWords.length >= 15) flowScore += 1;
-  const cliches = ["في عالم التكنولوجيا المتسارع", "يُعد هذا تطوراً مهماً", "من الجدير بالذكر", "تعرف على", "شهدنا مؤخراً", "في خطوة جديدة", "تشهد الساحة التقنية", "يشهد العالم", "في تطور لافت"];
+  else if (paraCount >= 2) flowScore += 1;
+  const cliches = ["في عالم التكنولوجيا المتسارع", "يُعد هذا تطوراً مهماً", "من الجدير بالذكر", "تعرف على", "شهدنا مؤخراً", "في خطوة جديدة", "تشهد الساحة التقنية", "يشهد العالم", "في تطور لافت", "يُشار إلى أن"];
   let clicheCount = 0;
   for (const c of cliches) { if (bodyText.includes(c)) clicheCount++; }
-  flowScore += Math.max(0, 4 - clicheCount * 2);
+  if (clicheCount <= 1) flowScore += 3;
+  else if (clicheCount <= 2) flowScore += 1;
   if (paraCount >= 3) {
     const paraLengths = paragraphs.map(p => p.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean).length);
     const avg = paraLengths.reduce((a, b) => a + b, 0) / paraLengths.length;
     const variance = paraLengths.reduce((sum, len) => sum + Math.abs(len - avg), 0) / paraLengths.length;
-    if (variance > 10) flowScore += 3;
+    if (variance > 8) flowScore += 3;
   }
-  const flowSig = /من ناحية|بالمقابل|علاوة على|فضلاً عن|إضافة إلى|كما أن|بالإضافة/i;
-  if (flowSig.test(bodyText)) flowScore += 2;
+  const flowSig = /من ناحية|بالمقابل|علاوة على|فضلاً عن|إضافة إلى|كما أن|بالإضافة|في سياق/i;
+  if (flowSig.test(bodyText)) flowScore += 3;
 
   /* ───── 3. Headline Quality (12 pts) ───── */
   let headScore = 0;
   const titleLen = title.length;
   if (titleLen >= 30 && titleLen <= 65) headScore += 4;
-  else if (titleLen >= 25 && titleLen <= 75) headScore += 2;
-  const hasEntity = hasCompany || hasProduct || (Array.isArray(article.technologies) && article.technologies.length > 0);
-  if (hasEntity) headScore += 3;
+  else if (titleLen >= 20 && titleLen <= 80) headScore += 2;
+  if (hasCompany || hasProduct || (Array.isArray(article.technologies) && article.technologies.length > 0)) headScore += 3;
   if (!title.includes("؟") && !title.includes("?")) headScore += 1;
   const genericWords = ["جديد", "أحدث", "مهم", "كبير", "قوي"];
-  let isGeneric = true;
-  for (const gw of genericWords) { if (title.includes(gw)) { isGeneric = false; break; } }
-  if (isGeneric) headScore += 2;
-  const actionWords = /تكشف|تعلن|تطلق|تطرح|تستحوذ/i;
-  if (actionWords.test(title)) headScore += 2;
+  if (!genericWords.some(gw => title.includes(gw))) headScore += 2;
+  if (/تكشف|تعلن|تطلق|تطرح|تستحوذ/i.test(title)) headScore += 2;
 
-  /* ───── 4. Intro Quality (10 pts) ───── */
+  /* ───── 4. Intro Quality (8 pts) ───── */
   let introScore = 0;
   const firstPara = (paragraphs[0] || "").replace(/<[^>]*>/g, "");
   const firstWords = firstPara.split(/\s+/).filter(Boolean);
-  if (firstWords.length >= 25) introScore += 2;
-  else if (firstWords.length >= 12) introScore += 1;
+  if (firstWords.length >= 20) introScore += 2;
+  else if (firstWords.length >= 10) introScore += 1;
   const clicheStarts = ["أعلنت", "وكشفت", "أكدت", "صرحت", "أوضحت", "كشفت"];
-  const startsWithCliche = clicheStarts.some(cs => firstPara.trim().startsWith(cs));
-  if (!startsWithCliche) introScore += 3;
-  const hasDigitInIntro = /\d/.test(firstPara);
-  if (hasDigitInIntro) introScore += 2;
-  if (firstPara.length >= 80) introScore += 3;
+  if (!clicheStarts.some(cs => firstPara.trim().startsWith(cs))) introScore += 2;
+  if (/\d/.test(firstPara)) introScore += 2;
+  if (firstPara.length >= 60) introScore += 2;
 
   /* ───── 5. Readability (5 pts) ───── */
   let readScore = 0;
   if (wordCount >= 600) readScore += 2;
   else if (wordCount >= 450) readScore += 1;
   const avgParaWords = paraCount > 0 ? wordCount / paraCount : 0;
-  if (avgParaWords <= 40) readScore += 2;
-  else if (avgParaWords <= 55) readScore += 1;
+  if (avgParaWords <= 50) readScore += 2;
+  else if (avgParaWords <= 65) readScore += 1;
   const sentences = bodyText.split(/[.!?؟!]\s+/);
   const maxSentLen = Math.max(...sentences.map(s => s.split(/\s+/).filter(Boolean).length), 0);
-  if (maxSentLen <= 50) readScore += 1;
+  if (maxSentLen <= 55) readScore += 1;
 
-  /* ───── 6. Technical Depth (15 pts) ───── */
+  /* ───── 6. Technical Depth (18 pts) ───── */
   let techScore = 0;
   if (Array.isArray(article.products) && article.products.length > 0) techScore += 3;
-  if (Array.isArray(article.technologies) && article.technologies.length > 0) techScore += 2;
+  if (Array.isArray(article.technologies) && article.technologies.length > 0) techScore += 3;
   if (Array.isArray(article.ai_models) && article.ai_models.length > 0) techScore += 2;
   if (article.primary_company) techScore += 2;
-  if (Array.isArray(article.internal_links) && article.internal_links.length >= 2) techScore += 2;
-  else if (Array.isArray(article.internal_links) && article.internal_links.length >= 1) techScore += 1;
-  const techExplainWords = /يعمل|تقوم|آلية|بروتوكول|واجهة|خوارزمية|بنية|ذاكرة|معالج/i;
-  if (techExplainWords.test(bodyText)) techScore += 4;
+  if (Array.isArray(article.internal_links) && article.internal_links.length >= 1) techScore += 1;
+  const techExplainWords = /يعمل|تقوم|آلية|بروتوكول|واجهة|خوارزمية|بنية|ذاكرة|معالج|نظام/i;
+  if (techExplainWords.test(bodyText)) techScore += 5;
+  if (article.secondary_company) techScore += 1;
+  if (Array.isArray(article.chipsets) && article.chipsets.length > 0) techScore += 1;
 
-  /* ───── 7. SEO Completeness (5 pts) ───── */
+  /* ───── 7. SEO (4 pts) ───── */
   let seoScore = 0;
-  if (article.seo_title && article.seo_title.length >= 35) seoScore += 2;
-  if (article.meta_description && article.meta_description.length >= 100) seoScore += 1;
+  if (article.seo_title && article.seo_title.length >= 30) seoScore += 1;
+  if (article.meta_description && article.meta_description.length >= 80) seoScore += 1;
   if (article.focus_keyword) seoScore += 1;
-  if (Array.isArray(article.secondary_keywords) && article.secondary_keywords.length >= 2) seoScore += 1;
+  if (Array.isArray(article.secondary_keywords) && article.secondary_keywords.length >= 1) seoScore += 1;
 
   const total = infoScore + flowScore + headScore + introScore + readScore + techScore + seoScore;
   return { total: Math.min(total, 100), breakdown: { info: infoScore, flow: flowScore, headline: headScore, intro: introScore, readability: readScore, tech: techScore, seo: seoScore } };
@@ -492,7 +515,8 @@ async function aiGenerate(title, fullContent, source) {
       const res = await this.helpers.httpRequest({
         method: "POST",
         url: "https://api.groq.com/openai/v1/chat/completions",
-        headers: { "Authorization": "Bearer " + GROQ_API_KEY, "Content-Type": "application/json" },
+        headers: { "Authorization": "Bearer " + GROQ_API_KEY },
+        json: true,
         body: {
           model: GROQ_MODEL,
           messages: [
@@ -510,21 +534,23 @@ async function aiGenerate(title, fullContent, source) {
       if (e.response && typeof e.response === 'object') {
         lastErr.message = (e.response.data || e.response.body || "") + " (HTTP " + e.statusCode + ")";
       }
-      continue;
+      const is429 = e.statusCode === 429 || (e.message && e.message.includes('429'));
+      if (is429) continue;
+      throw e;
     }
   }
-  throw lastErr;
+  return null;
 }
 
 async function aiRewrite(original, origTitle, fullContent, source, breakdown) {
   const dimInfo = {
-    info: { name: "المعلومات والأرقام", target: 38, instr: "أضف 10+ أرقاماً وإحصائيات محددة، اذكر الإصدارات، اشرح الأسباب والتأثيرات، قدم مقارنات، اذكر خلفية الحدث وتوقعاته المستقبلية، أضف جهات تنفيذية" },
-    flow: { name: "التدفق والبنية", target: 15, instr: "نوّع أطوال الفقرات، استخدم عبارات الربط المنطقي، حسّن الخاتمة باستنتاج أقوى، تجنب الافتتاحيات المتكررة" },
-    headline: { name: "العنوان", target: 12, instr: "اجعله قوياً بين 30-65 حرفاً، احتوِ على كيان محدد (شركة/منتج/تقنية)، استخدم فعل حركي، تجنب الكلمات العامة" },
-    intro: { name: "المقدمة", target: 10, instr: "اجعلها أكثر تشويقاً، ابدأ برقم أو حقيقة محددة، تجنب البدايات المتكررة مثل أعلنت/كشفت" },
-    tech: { name: "العمق التقني", target: 15, instr: "أضف شرحاً تقنياً مفصلاً: كيف تعمل التقنية، الخوارزميات، البنية التقنية، الأجهزة، الإصدارات" },
+    info: { name: "المعلومات والتحليل", target: 36, instr: "أضف أرقاماً وإحصائيات، اشرح الأسباب والتأثيرات، قدم مقارنات، اذكر خلفية الحدث وتوقعاته المستقبلية" },
+    flow: { name: "التدفق والبنية", target: 12, instr: "نوّع أطوال الفقرات، استخدم عبارات الربط المنطقي، حسّن الخاتمة باستنتاج أقوى، تجنب الكليشيهات" },
+    headline: { name: "العنوان", target: 12, instr: "اجعله قوياً بين 30-65 حرفاً، احتوِ على كيان محدد (شركة/منتج/تقنية)، استخدم فعل حركي" },
+    intro: { name: "المقدمة", target: 8, instr: "اجعلها مشوقة، ابدأ برقم أو حقيقة محددة، تجنب البدايات المتكررة" },
+    tech: { name: "العمق التقني", target: 18, instr: "أضف شرحاً تقنياً مفصلاً: كيف تعمل التقنية، الخوارزميات، البنية التقنية، الأجهزة" },
     readability: { name: "قابلية القراءة", target: 5, instr: "قسّم الجمل الطويلة، حقّق توازناً في أطوال الفقرات" },
-    seo: { name: "تحسين محركات البحث", target: 5, instr: "حسّن عنوان SEO ووصف الميتا والكلمات المفتاحية" }
+    seo: { name: "تحسين محركات البحث", target: 4, instr: "حسّن عنوان SEO ووصف الميتا والكلمات المفتاحية" }
   };
   const weakDims = Object.entries(breakdown).filter(([k, v]) => v < dimInfo[k].target * 0.7).map(([k]) => dimInfo[k]);
   if (weakDims.length === 0) return original;
@@ -569,18 +595,23 @@ ${genImprovementsText}
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   let lastErr;
   for (let i = 0; i < 3; i++) {
-    if (i > 0) await sleep(5000);
+    if (i > 0) {
+      const delays = [15, 30, 60];
+      await sleep(delays[Math.min(i - 1, delays.length - 1)] * 1000);
+    }
     try {
       const res = await this.helpers.httpRequest({
         method: "POST", url: "https://api.groq.com/openai/v1/chat/completions",
-        headers: { "Authorization": "Bearer " + GROQ_API_KEY, "Content-Type": "application/json" },
+        headers: { "Authorization": "Bearer " + GROQ_API_KEY },
+        json: true,
         body: { model: GROQ_MODEL, messages: [{ role: "system", content: "أنت محرر تقني متخصص في Tech Dose News. تحسّن فقط الأجزاء المطلوبة ولا تغير المحتوى الجيد." }, { role: "user", content: prompt }], temperature: 0.25, max_tokens: 3072, response_format: { type: "json_object" } }
       });
       return JSON.parse(res.choices[0].message.content);
     } catch(e) {
       lastErr = e;
-      if (e.response && typeof e.response === 'object') { lastErr.message = (e.response.data||e.response.body||"") + " (HTTP " + e.statusCode + ")"; }
-      continue;
+      const is429 = e.statusCode === 429 || (e.message && e.message.includes('429'));
+      if (is429) continue;
+      throw e;
     }
   }
   return null;
@@ -953,6 +984,9 @@ async function checkFallbackConditions(qualityScore, rssSource, wordCount, image
 }
 
 async function main() {
+  await loadSources.call(this);
+  const sourceMgmt = await runSourceManagement.call(this);
+  const SOURCE_STATS = sourceMgmt.stats;
   const result = {
     status: "ok",
     execution_id: Date.now(),
@@ -979,6 +1013,8 @@ async function main() {
     quality_override_reason: "",
     override_level: 0,
     quality_grade: "",
+    quality_mode: QUALITY_MODE,
+    quality_policy_threshold: QUALITY_THRESHOLD,
     internal_links_count: 0,
     word_count: 0,
     telegram_sent: false,
@@ -998,55 +1034,94 @@ async function main() {
   };
 
   try {
-  const sourceAttempts = [...RSS_SOURCES.map(s => ({ ...s })), { type: 'google', name: 'Google News', url: GNEWS_URL }];
   let publishedArticle = false;
   let prevArticle = null;
 
-  for (let srcIdx = 0; srcIdx < sourceAttempts.length && !publishedArticle; srcIdx++) {
-  const attempt = sourceAttempts[srcIdx];
-  let rssItems = [];
-  let usedSource = attempt.name;
-  result.rss_source = usedSource;
-
-  try {
-    const res = await this.helpers.httpRequest({ method: "GET", url: attempt.url });
-    const xml = typeof res === "string" ? res : (res.data || res.body || "");
-    if (!xml || xml.length < (attempt.type === 'google' ? 100 : 200)) continue;
-    rssItems = parseRSS(xml);
-  } catch(e) {
-    if (attempt.type === 'google') { result.status = "rss_fetch_failed"; result.error = e.message; return result; }
-    continue;
-  }
-
-  result.rss_items = rssItems.length;
-  if (rssItems.length === 0) continue;
-
-  const fresh = rssItems.filter(i => isFresh(i.pubDate, 24));
-  result.after_freshness = fresh.length;
-  if (fresh.length === 0) continue;
-
-  const tech = attempt.type === 'google' ? fresh.filter(i => isTech(i.title, i.desc)) : fresh;
-  result.after_tech_filter = tech.length;
-  if (tech.length === 0) continue;
-
+  /* ───── Phase 11: Source Pool v2 — Collect candidates from ALL enabled sources ───── */
+  const allCandidates = [];
+  const enabledSources = RSS_SOURCES.filter(s => s.enabled).sort((a, b) => (a.dynamic_priority || a.priority) - (b.dynamic_priority || b.priority));
   let existingHashes = [];
   try {
     const hr = await ghGet("data/content_hashes.json");
     if (hr.content) { const d = b64decode(hr.content); existingHashes = Array.isArray(d) ? d : []; }
   } catch(e) {}
 
-  const newItems = [];
-  for (const item of tech) {
-    const h = contentHash(item.title, item.contentEncoded || item.desc);
-    if (!existingHashes.includes(h)) {
-      newItems.push({ item, hash: h });
+  let totalFetched = 0, totalSources = 0;
+  const sourceFetchResults = {};
+  for (const src of enabledSources) {
+    totalSources++;
+    sourceFetchResults[src.id] = { valid: 0, duplicate: 0, failed: false };
+    try {
+      const res = await this.helpers.httpRequest({ method: "GET", url: src.url, timeout: 15000 });
+      const xml = typeof res === "string" ? res : (res.data || res.body || "");
+      if (!xml || xml.length < 200) { sourceFetchResults[src.id].failed = true; recordSourceFetch(src.id, SOURCE_STATS, "failure"); continue; }
+      const items = parseRSS(xml);
+      if (items.length === 0) { sourceFetchResults[src.id].failed = true; recordSourceFetch(src.id, SOURCE_STATS, "failure"); continue; }
+
+      const fresh = items.filter(i => isFresh(i.pubDate, 24));
+      if (fresh.length === 0) { sourceFetchResults[src.id].failed = true; recordSourceFetch(src.id, SOURCE_STATS, "failure"); continue; }
+
+      for (const item of fresh) {
+        const h = contentHash(item.title, item.contentEncoded || item.desc);
+        if (!existingHashes.includes(h)) {
+          allCandidates.push({
+            item, hash: h,
+            sourceId: src.id, sourceName: src.name, sourceUrl: src.url,
+            trustScore: src.trust_score, tier: src.tier,
+            lang: src.lang, priority: src.priority
+          });
+          totalFetched++;
+          sourceFetchResults[src.id].valid++;
+        } else {
+          sourceFetchResults[src.id].duplicate++;
+          recordSourceFetch(src.id, SOURCE_STATS, "duplicate");
+        }
+      }
+      recordSourceFetch(src.id, SOURCE_STATS, "success", sourceFetchResults[src.id].valid);
+    } catch(e) {
+      sourceFetchResults[src.id].failed = true;
+      recordSourceFetch(src.id, SOURCE_STATS, "failure");
+      continue;
     }
   }
-  result.after_dedup = newItems.length;
-  if (newItems.length === 0) continue;
 
-  for (let itemIdx = 0; itemIdx < newItems.length && !publishedArticle; itemIdx++) {
-  const { item: picked, hash } = newItems[itemIdx];
+  /* ───── Rank candidates by composite score ───── */
+  for (const c of allCandidates) {
+    const ageHours = c.item.pubDate ? (Date.now() - new Date(c.item.pubDate).getTime()) / 3600000 : 24;
+    const freshScore = Math.max(0, 1 - ageHours / 48);
+    const trustScore = c.trustScore / 100;
+    const langScore = c.lang === 'ar' ? 1 : 0.6;
+    const techRelevance = isTech(c.item.title, c.item.desc) ? 1 : 0.5;
+    c.rankScore = freshScore * 0.35 + trustScore * 0.30 + langScore * 0.20 + techRelevance * 0.15;
+  }
+
+  allCandidates.sort((a, b) => b.rankScore - a.rankScore);
+
+  /* ───── Phase 11: Dedup similar titles within ranked candidates ───── */
+  const dedupedCandidates = [];
+  const seenNormTitles = new Set();
+  for (const c of allCandidates) {
+    const normTitle = (c.item.title||"").replace(/[^a-zA-Z0-9\u0600-\u06FF\s]/g, "").trim().toLowerCase().substring(0, 50);
+    let isDup = false;
+    for (const st of seenNormTitles) {
+      const sim = similarity(normTitle, st);
+      if (sim > 0.75) { isDup = true; break; }
+    }
+    if (!isDup) {
+      seenNormTitles.add(normTitle);
+      dedupedCandidates.push(c);
+    }
+  }
+
+  result.rss_sources_attempted = totalSources;
+  result.rss_candidates_raw = allCandidates.length;
+  result.rss_candidates_after_dedup = dedupedCandidates.length;
+
+  const maxCandidates = Math.min(dedupedCandidates.length, 8);
+
+  for (let itemIdx = 0; itemIdx < maxCandidates && !publishedArticle; itemIdx++) {
+  const { item: picked, hash, sourceId: usedSourceId, sourceName: usedSource, trustScore: srcTrust, tier: srcTier } = dedupedCandidates[itemIdx];
+  result.rss_source = usedSource;
   const articleId = makeId();
   const sourceName = picked.source || usedSource;
   result.rss_source = usedSource;
@@ -1083,10 +1158,12 @@ async function main() {
   let stocks = [], investors = [], imageQueries = [];
   let internalLinks = [];
   let imageUrl = "", imageMeta = {};
+  const genStart = Date.now();
 
   while (attempt < maxRetries) {
     try {
       ai = await aiGenerate(picked.title, fullArticleContent, sourceName);
+      if (!ai) throw new Error('AI generation failed after all retries (429)');
       result.ai_success = true;
     } catch(e) {
       result.status = "ai_failed";
@@ -1290,8 +1367,7 @@ async function main() {
   }
 
   /* ───── Phase 10.2 Part E: Trusted Source Boost (max +3, only if quality >= 75) ───── */
-  const srcInfo = RSS_SOURCES.find(s => s.name === sourceName);
-  const isTrustedSource = srcInfo && srcInfo.tier === 1;
+  const isTrustedSource = srcTier === 1;
   if (qualityScore < QUALITY_THRESHOLD && qualityScore >= 75 && isTrustedSource) {
     const boost = Math.min(3, QUALITY_THRESHOLD - qualityScore);
     qualityScore += boost;
@@ -1304,8 +1380,7 @@ async function main() {
     const hoursSinceL1 = await getHoursSinceLastPublish();
     const lastOverrideL1 = await lastPublishedWasOverride();
     if (hoursSinceL1 >= 2 && !lastOverrideL1) {
-      const srcInfoL1 = RSS_SOURCES.find(s => s.name === sourceName);
-      const trustedL1 = srcInfoL1 && (srcInfoL1.tier === 1 || srcInfoL1.tier === 2);
+      const trustedL1 = srcTier === 1 || srcTier === 2;
       const bdL1 = result.quality_dimensions || {};
       const infoOkL1 = (bdL1.info || 0) >= Math.round(38 * 0.6);
       const flowOkL1 = (bdL1.flow || 0) >= Math.round(15 * 0.6);
@@ -1342,18 +1417,18 @@ async function main() {
     result.failure_reasons = reasons;
     result.rejection_reason = 'Quality Failed';
     result.rejection_detail = reasons.join('؛ ');
-    if (!prevArticle) prevArticle = { article, ai, articleId, techdoseLink, qResult: { total: qualityScore, breakdown: result.quality_dimensions } };
+    if (!prevArticle) prevArticle = { article, ai, articleId, techdoseLink, sourceId: usedSourceId, qResult: { total: qualityScore, breakdown: result.quality_dimensions } };
     result.notes = (result.notes || '') + 'Source ' + usedSource + ' exhausted, trying next. ';
     break;
   }
   result.quality_passed = true;
   publishedArticle = true;
   result.status = "published";
+  if (usedSourceId && SOURCE_STATS) {
+    recordSourceFetch(usedSourceId, SOURCE_STATS, "published", qualityScore, Date.now() - genStart, 0);
+  }
   } /* end for(itemIdx) */
 
-  if (!publishedArticle) continue;
-
-  } /* end for(srcIdx) */
 
   if (!publishedArticle && prevArticle) {
     /* ───── Level 2: Force publish best candidate after exhausting all sources ───── */
@@ -1368,6 +1443,9 @@ async function main() {
       result.quality_override_reason = "Level 2 — forced publication after exhausting all sources";
       result.quality_passed = true;
       publishedArticle = true;
+      if (prevArticle.sourceId && SOURCE_STATS) {
+        recordSourceFetch(prevArticle.sourceId, SOURCE_STATS, "published", qualityScore, Date.now() - genStart, 0);
+      }
       article = prevArticle.article;
       articleId = prevArticle.articleId;
       techdoseLink = prevArticle.techdoseLink;
@@ -1546,10 +1624,244 @@ async function main() {
     result.error = e.message;
     return result;
   } finally {
+    if (SOURCE_STATS) { await saveSourceStats.call(this, { stats: SOURCE_STATS, last_ranking_update: sourceMgmt.last_ranking_update }); }
     await saveExecutionHistory(result);
   }
 }
 
 const _r = await main();
 return [{ json: _r }];
+
+/* ───── Phase 11C: Source Statistics & Management ───── */
+
+async function loadSourceStats() {
+  try {
+    const res = await this.helpers.httpRequest({
+      method: "GET", url: GH_API + "/data/source_statistics.json", headers: GH_H
+    });
+    if (res && res.content) {
+      const d = JSON.parse(Buffer.from(res.content, "base64").toString("utf-8"));
+      if (d && d.stats) return d;
+    }
+  } catch(e) {}
+  return { stats: {}, last_ranking_update: null };
+}
+
+async function saveSourceStats(data) {
+  try {
+    const encoded = Buffer.from(JSON.stringify(data, null, 2)).toString("base64");
+    const existing = await this.helpers.httpRequest({
+      method: "GET", url: GH_API + "/data/source_statistics.json", headers: GH_H
+    });
+    await this.helpers.httpRequest({
+      method: "PUT", url: GH_API + "/data/source_statistics.json",
+      headers: { "Authorization": "token " + GH_TOKEN, "Content-Type": "application/json" },
+      body: { message: "Source stats update", content: encoded, sha: (existing && existing.sha) ? existing.sha : undefined, branch: "main" }
+    });
+  } catch(e) {}
+}
+
+function pad(n) { return n < 10 ? "0" + n : "" + n; }
+
+function dStr(d) { return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()); }
+
+function calcPublishRate(stat) {
+  const total = stat.fetch_count || 1;
+  return Math.round(((stat.published_articles || 0) / total) * 100) / 100;
+}
+
+function calcDupRate(stat) {
+  const total = stat.valid_articles || 1;
+  return Math.round(((stat.duplicate_articles || 0) / total) * 100) / 100;
+}
+
+function calcFailRate(stat) {
+  const total = stat.fetch_count || 1;
+  return Math.round(((stat.failed_fetches || 0) / total) * 100) / 100;
+}
+
+function recalcDerivedStats(stat) {
+  stat.publish_rate = calcPublishRate(stat);
+  stat.duplicate_rate = calcDupRate(stat);
+  stat.failure_rate = calcFailRate(stat);
+  if (stat.quality_sum && stat.published_articles > 0) {
+    stat.average_quality = Math.round((stat.quality_sum / stat.published_articles) * 10) / 10;
+  }
+  return stat;
+}
+
+function classifyHealth(src, stat) {
+  if (!src.enabled) return "DISABLED";
+  const fr = stat.failure_rate || 0;
+  const dr = stat.duplicate_rate || 0;
+  const pr = stat.publish_rate || 0;
+  const daysSinceSuccess = stat.last_success ? (Date.now() - new Date(stat.last_success).getTime()) / 86400000 : 99;
+  const consecFails = stat.consecutive_failures || 0;
+  const healthDays = stat.health_history || [];
+  const recentHealth = healthDays.slice(-7).filter(h => h === "RED").length;
+  if (consecFails >= 3 || fr > 0.8 || daysSinceSuccess > 3 || recentHealth >= 4) return "RED";
+  if (consecFails >= 1 || fr > 0.4 || dr > 0.5 || pr < 0.05 || daysSinceSuccess > 1) return "YELLOW";
+  return "GREEN";
+}
+
+function calculateSourceScore(src, stat) {
+  const trust = (src.trust_score || 70) / 10;
+  const pr = (stat.publish_rate || 0) * 50;
+  const aq = stat.average_quality || 0;
+  const dr = (stat.duplicate_rate || 0) * 30;
+  const fr = (stat.failure_rate || 0) * 40;
+  return Math.max(1, Math.round(trust + pr + aq - dr - fr));
+}
+
+async function runSourceManagement() {
+  const srcData = await loadSourceStats.call(this);
+  const stats = srcData.stats;
+  const now = Date.now();
+  let changed = false;
+
+  /* Initialize stats for any new sources */
+  for (const src of RSS_SOURCES) {
+    if (!stats[src.id]) {
+      stats[src.id] = {
+        fetch_count: 0, valid_articles: 0, published_articles: 0,
+        duplicate_articles: 0, rejected_articles: 0, failed_fetches: 0,
+        quality_sum: 0, generation_time_sum: 0, publish_time_sum: 0,
+        consecutive_failures: 0, average_quality: 0, publish_rate: 0,
+        duplicate_rate: 0, failure_rate: 0,
+        last_success: null, last_fetch: null, last_failure: null,
+        health: "GREEN", health_history: [], daily_stats: {}
+      };
+      changed = true;
+    }
+  }
+
+  /* Auto Recovery: retest disabled sources every 24h */
+  for (const src of RSS_SOURCES) {
+    if (!src.enabled) {
+      const stat = stats[src.id];
+      const lastTest = stat.last_fetch;
+      if (!lastTest || (now - new Date(lastTest).getTime()) > 86400000) {
+        try {
+          const res = await this.helpers.httpRequest({ method: "GET", url: src.url, timeout: 10000 });
+          const xml = typeof res === "string" ? res : (res.data || res.body || "");
+          if (xml && xml.length >= 200) {
+            const items = parseRSS(xml);
+            if (items.length > 0) {
+              src.enabled = true;
+              stat.consecutive_failures = 0;
+              stat.last_success = new Date().toISOString();
+              stat.health = "GREEN";
+              changed = true;
+            }
+          }
+        } catch(e) {}
+        stat.last_fetch = new Date().toISOString();
+        changed = true;
+      }
+    }
+  }
+
+  /* Auto disable: 5 consecutive failures or 7 days without valid article */
+  for (const src of RSS_SOURCES) {
+    if (!src.enabled) continue;
+    const stat = stats[src.id];
+    if (stat.consecutive_failures >= 5) {
+      src.enabled = false;
+      stat.health = "RED";
+      changed = true;
+      continue;
+    }
+    if (stat.last_success && (now - new Date(stat.last_success).getTime()) > 604800000) {
+      src.enabled = false;
+      stat.health = "RED";
+      changed = true;
+    }
+  }
+
+  /* Update health classification for all sources */
+  for (const src of RSS_SOURCES) {
+    const stat = stats[src.id];
+    const health = classifyHealth(src, stat);
+    if (health !== stat.health) {
+      stat.health = health;
+      changed = true;
+    }
+    stat.health_history = stat.health_history || [];
+    const today = dStr(new Date());
+    if (stat.health_history.length === 0 || stat.health_history[stat.health_history.length - 1].split(":")[0] !== today) {
+      stat.health_history.push(today + ":" + health);
+      if (stat.health_history.length > 90) stat.health_history.splice(0, stat.health_history.length - 90);
+      changed = true;
+    }
+  }
+
+  /* Dynamic priority recalculation (once per day) */
+  const lastRank = srcData.last_ranking_update;
+  const shouldRank = !lastRank || (now - new Date(lastRank).getTime()) > 86400000;
+  if (shouldRank) {
+    const scores = {};
+    for (const src of RSS_SOURCES) {
+      const stat = stats[src.id];
+      recalcDerivedStats(stat);
+      const score = calculateSourceScore(src, stat);
+      scores[src.id] = score;
+    }
+    const sorted = RSS_SOURCES.filter(s => s.enabled).sort((a, b) => (scores[b.id] || 0) - (scores[a.id] || 0));
+    sorted.forEach((s, i) => { s.dynamic_priority = i + 1; });
+    RSS_SOURCES.filter(s => !s.enabled).forEach(s => { s.dynamic_priority = 999; });
+    srcData.last_ranking_update = new Date().toISOString();
+    changed = true;
+  }
+
+  /* Save updated sources and stats */
+  if (changed) {
+    await saveSourceStats.call(this, srcData);
+    try {
+      const encoded = Buffer.from(JSON.stringify(RSS_SOURCES, null, 2)).toString("base64");
+      const existing = await this.helpers.httpRequest({
+        method: "GET", url: GH_API + "/data/rss_sources.json", headers: GH_H
+      });
+      await this.helpers.httpRequest({
+        method: "PUT", url: GH_API + "/data/rss_sources.json",
+        headers: { "Authorization": "token " + GH_TOKEN, "Content-Type": "application/json" },
+        body: { message: "Auto source management update", content: encoded, sha: (existing && existing.sha) ? existing.sha : undefined, branch: "main" }
+      });
+    } catch(e) {}
+  }
+
+  return srcData;
+}
+
+function recordSourceFetch(srcId, stats, outcome, val1, val2, val3) {
+  if (!stats[srcId]) return;
+  const s = stats[srcId];
+  s.fetch_count = (s.fetch_count || 0) + 1;
+  s.last_fetch = new Date().toISOString();
+  if (outcome === "success") {
+    s.valid_articles = (s.valid_articles || 0) + (val1 || 1);
+    s.consecutive_failures = 0;
+    s.last_success = new Date().toISOString();
+  } else if (outcome === "failure") {
+    s.failed_fetches = (s.failed_fetches || 0) + 1;
+    s.consecutive_failures = (s.consecutive_failures || 0) + 1;
+    s.last_failure = new Date().toISOString();
+  } else if (outcome === "duplicate") {
+    s.duplicate_articles = (s.duplicate_articles || 0) + 1;
+  } else if (outcome === "rejected") {
+    s.rejected_articles = (s.rejected_articles || 0) + 1;
+  } else if (outcome === "published") {
+    s.published_articles = (s.published_articles || 0) + 1;
+    s.quality_sum = (s.quality_sum || 0) + (val1 || 0);
+    s.generation_time_sum = (s.generation_time_sum || 0) + (val2 || 0);
+    s.publish_time_sum = (s.publish_time_sum || 0) + (val3 || 0);
+    s.average_quality = Math.round(((s.quality_sum) / s.published_articles) * 10) / 10;
+    const today = dStr(new Date());
+    s.daily_stats = s.daily_stats || {};
+    s.daily_stats[today] = s.daily_stats[today] || { published: 0, quality_sum: 0, failures: 0, duplicates: 0 };
+    s.daily_stats[today].published++;
+    s.daily_stats[today].quality_sum += (val1 || 0);
+    const keys = Object.keys(s.daily_stats).sort();
+    while (keys.length > 30) { delete s.daily_stats[keys.shift()]; }
+  }
+}
 

@@ -1,9 +1,9 @@
 [
   {
     "status": "ai_failed",
-    "execution_id": 1784037619273,
-    "triggered_at": "2026-07-14T14:00:19.273Z",
-    "completed_at": "2026-07-14T14:02:08.852Z",
+    "execution_id": 1784039419114,
+    "triggered_at": "2026-07-14T14:30:19.114Z",
+    "completed_at": "2026-07-14T14:31:56.766Z",
     "mode": "trigger",
     "rss_source": "BBC Arabic",
     "rss_items": 29,
@@ -35,7 +35,7 @@
     "quality_grade": "",
     "quality_mode": "EMERGENCY",
     "quality_policy_threshold": 65,
-    "internal_links_count": 6,
+    "internal_links_count": 5,
     "word_count": 520,
     "telegram_sent": false,
     "telegram_message_id": null,
@@ -60,6 +60,6 @@
     "original_candidates": 1,
     "pexels_tried": 0,
     "unsplash_tried": 0,
-    "ai_error": "Request failed with status code 400"
+    "ai_error": "AI generation failed after all retries (429)"
   }
 ]

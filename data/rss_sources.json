@@ -17,7 +17,8 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "ar"
   },
   {
     "id": "arabhd",
@@ -37,7 +38,8 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "ar"
   },
   {
     "id": "techwd",
@@ -57,7 +59,8 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "ar"
   },
   {
     "id": "aitnews",
@@ -77,7 +80,8 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "ar"
   },
   {
     "id": "techcr",
@@ -97,7 +101,8 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "en"
   },
   {
     "id": "verge",
@@ -117,7 +122,8 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "en"
   },
   {
     "id": "arstech",
@@ -137,7 +143,8 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "en"
   },
   {
     "id": "gsmarena",
@@ -157,7 +164,8 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "en"
   },
   {
     "id": "androidauth",
@@ -167,7 +175,7 @@
     "country": "US",
     "tier": 2,
     "priority": 9,
-    "dynamic_priority": 9,
+    "dynamic_priority": 12,
     "enabled": true,
     "trust_score": 84,
     "category": "mobile",
@@ -177,7 +185,8 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "en"
   },
   {
     "id": "tomshw",
@@ -187,7 +196,7 @@
     "country": "US",
     "tier": 2,
     "priority": 10,
-    "dynamic_priority": 10,
+    "dynamic_priority": 9,
     "enabled": true,
     "trust_score": 86,
     "category": "hardware",
@@ -197,7 +206,8 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "en"
   },
   {
     "id": "techxar",
@@ -207,7 +217,7 @@
     "country": "AE",
     "tier": 2,
     "priority": 11,
-    "dynamic_priority": 11,
+    "dynamic_priority": 10,
     "enabled": true,
     "trust_score": 87,
     "category": "general",
@@ -217,7 +227,8 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "ar"
   },
   {
     "id": "mitrev",
@@ -227,7 +238,7 @@
     "country": "AE",
     "tier": 2,
     "priority": 12,
-    "dynamic_priority": 12,
+    "dynamic_priority": 11,
     "enabled": true,
     "trust_score": 93,
     "category": "deep-tech",
@@ -237,7 +248,8 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "ar"
   },
   {
     "id": "openai",
@@ -257,7 +269,8 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "en"
   },
   {
     "id": "nvidia",
@@ -277,7 +290,8 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "en"
   },
   {
     "id": "msai",
@@ -297,7 +311,8 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "en"
   },
   {
     "id": "googleai",
@@ -317,7 +332,8 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "en"
   },
   {
     "id": "zdnetai",
@@ -337,6 +353,7 @@
     "updated_at": "2026-07-14T00:00:00Z",
     "last_success": null,
     "last_failure": null,
-    "last_fetch": null
+    "last_fetch": null,
+    "lang": "en"
   }
 ]

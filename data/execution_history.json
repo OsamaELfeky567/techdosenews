@@ -1,15 +1,15 @@
 [
   {
     "status": "ai_failed",
-    "execution_id": 1784064619388,
-    "triggered_at": "2026-07-14T21:30:19.389Z",
-    "completed_at": "2026-07-14T21:30:39.216Z",
+    "execution_id": 1784140223547,
+    "triggered_at": "2026-07-15T18:30:23.548Z",
+    "completed_at": "2026-07-15T18:30:42.105Z",
     "mode": "trigger",
     "rss_source": "BBC Arabic",
-    "rss_items": 30,
-    "after_freshness": 12,
-    "after_tech_filter": 12,
-    "after_dedup": 12,
+    "rss_items": 0,
+    "after_freshness": 0,
+    "after_tech_filter": 0,
+    "after_dedup": 0,
     "article_title": "",
     "ai_success": false,
     "quality_score": 0,
@@ -51,7 +51,18 @@
     "estimated_gain_after_rewrite": 0,
     "estimated_score_after_rewrite": 0,
     "would_pass_after_rewrite": false,
-    "fetched_content_length": 8830,
-    "ai_error": "Request failed with status code 400"
+    "diag_sources_count": 17,
+    "diag_stats_keys": 17,
+    "diag_last_ranking": "2026-07-15T18:30:20.444Z",
+    "rss_sources_attempted": 17,
+    "rss_candidates_raw": 13,
+    "rss_candidates_after_dedup": 1,
+    "fetched_content_length": 8440,
+    "ai_error": "Request failed with status code 401",
+    "diag_before_save_stats": 1784140240795,
+    "diag_after_save_stats": 1784140242104,
+    "diag_save_stats_ok": true,
+    "diag_save_stats_sha": "9255ea9c7989945596c8b526d22d70ec04b76421",
+    "diag_before_exec_history": 1784140242104
   }
 ]

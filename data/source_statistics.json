@@ -43,7 +43,7 @@
       "last_success": null,
       "last_fetch": "2026-07-16T16:00:21.864Z",
       "last_failure": "2026-07-16T16:00:21.864Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-15:RED",
         "2026-07-16:RED"
@@ -68,7 +68,7 @@
       "last_success": null,
       "last_fetch": "2026-07-16T16:00:21.870Z",
       "last_failure": "2026-07-16T16:00:21.870Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-15:RED",
         "2026-07-16:RED"
@@ -93,7 +93,7 @@
       "last_success": null,
       "last_fetch": "2026-07-16T16:00:21.881Z",
       "last_failure": "2026-07-16T16:00:21.881Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-15:RED",
         "2026-07-16:RED"
@@ -118,7 +118,7 @@
       "last_success": null,
       "last_fetch": "2026-07-16T16:00:21.887Z",
       "last_failure": "2026-07-16T16:00:21.887Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-15:RED",
         "2026-07-16:RED"
@@ -143,7 +143,7 @@
       "last_success": null,
       "last_fetch": "2026-07-16T16:00:21.895Z",
       "last_failure": "2026-07-16T16:00:21.895Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-15:RED",
         "2026-07-16:RED"
@@ -168,7 +168,7 @@
       "last_success": null,
       "last_fetch": "2026-07-16T16:00:21.900Z",
       "last_failure": "2026-07-16T16:00:21.900Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-15:RED",
         "2026-07-16:RED"
@@ -193,7 +193,7 @@
       "last_success": null,
       "last_fetch": "2026-07-16T16:00:21.905Z",
       "last_failure": "2026-07-16T16:00:21.905Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-15:RED",
         "2026-07-16:RED"
@@ -218,7 +218,7 @@
       "last_success": null,
       "last_fetch": "2026-07-16T16:00:21.926Z",
       "last_failure": "2026-07-16T16:00:21.926Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-15:RED",
         "2026-07-16:RED"
@@ -243,7 +243,7 @@
       "last_success": null,
       "last_fetch": "2026-07-16T16:00:21.909Z",
       "last_failure": "2026-07-16T16:00:21.909Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-15:RED",
         "2026-07-16:RED"
@@ -268,7 +268,7 @@
       "last_success": null,
       "last_fetch": "2026-07-16T16:00:21.914Z",
       "last_failure": "2026-07-16T16:00:21.914Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-15:RED",
         "2026-07-16:RED"
@@ -293,7 +293,7 @@
       "last_success": null,
       "last_fetch": "2026-07-16T16:00:21.920Z",
       "last_failure": "2026-07-16T16:00:21.920Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-15:RED",
         "2026-07-16:RED"
@@ -318,7 +318,7 @@
       "last_success": null,
       "last_fetch": "2026-07-16T16:00:21.932Z",
       "last_failure": "2026-07-16T16:00:21.933Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-15:RED",
         "2026-07-16:RED"
@@ -343,7 +343,7 @@
       "last_success": null,
       "last_fetch": "2026-07-16T16:00:21.937Z",
       "last_failure": "2026-07-16T16:00:21.937Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-15:RED",
         "2026-07-16:RED"
@@ -368,7 +368,7 @@
       "last_success": null,
       "last_fetch": "2026-07-16T16:00:21.941Z",
       "last_failure": "2026-07-16T16:00:21.941Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-15:RED",
         "2026-07-16:RED"
@@ -393,7 +393,7 @@
       "last_success": null,
       "last_fetch": "2026-07-16T16:00:21.948Z",
       "last_failure": "2026-07-16T16:00:21.948Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-15:RED",
         "2026-07-16:RED"
@@ -418,7 +418,7 @@
       "last_success": null,
       "last_fetch": "2026-07-16T16:00:21.953Z",
       "last_failure": "2026-07-16T16:00:21.953Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-15:RED",
         "2026-07-16:RED"

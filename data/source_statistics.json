@@ -1,8 +1,8 @@
 {
   "stats": {
     "bbcar": {
-      "fetch_count": 18,
-      "valid_articles": 188,
+      "fetch_count": 19,
+      "valid_articles": 198,
       "published_articles": 0,
       "duplicate_articles": 0,
       "rejected_articles": 0,
@@ -15,8 +15,8 @@
       "publish_rate": 0,
       "duplicate_rate": 0,
       "failure_rate": 0,
-      "last_success": "2026-07-17T14:00:21.359Z",
-      "last_fetch": "2026-07-17T14:00:21.359Z",
+      "last_success": "2026-07-17T14:30:20.872Z",
+      "last_fetch": "2026-07-17T14:30:20.872Z",
       "last_failure": null,
       "health": "YELLOW",
       "health_history": [

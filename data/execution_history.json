@@ -1,9 +1,9 @@
 [
   {
     "status": "ai_failed",
-    "execution_id": 1784307620289,
-    "triggered_at": "2026-07-17T17:00:20.289Z",
-    "completed_at": "2026-07-17T17:00:24.248Z",
+    "execution_id": 1784309420142,
+    "triggered_at": "2026-07-17T17:30:20.142Z",
+    "completed_at": "2026-07-17T17:30:31.721Z",
     "mode": "trigger",
     "rss_source": "BBC Arabic",
     "rss_items": 0,
@@ -57,12 +57,12 @@
     "rss_sources_attempted": 1,
     "rss_candidates_raw": 10,
     "rss_candidates_after_dedup": 1,
-    "fetched_content_length": 7691,
+    "fetched_content_length": 8043,
     "ai_error": "Request failed with status code 401",
-    "diag_before_save_stats": 1784307622678,
-    "diag_after_save_stats": 1784307624248,
+    "diag_before_save_stats": 1784309430223,
+    "diag_after_save_stats": 1784309431721,
     "diag_save_stats_ok": true,
-    "diag_save_stats_sha": "7519a7b4df02581bd0b8ca0162d8eb0117fe0100",
-    "diag_before_exec_history": 1784307624248
+    "diag_save_stats_sha": "364c33338857f30ed9e98d27f1e0ad58894995b2",
+    "diag_before_exec_history": 1784309431721
   }
 ]

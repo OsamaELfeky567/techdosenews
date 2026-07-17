@@ -42,7 +42,7 @@
       "duplicate_rate": 0,
       "failure_rate": 1,
       "last_success": null,
-      "last_fetch": "2026-07-16T16:00:21.864Z",
+      "last_fetch": "2026-07-17T16:30:20.324Z",
       "last_failure": "2026-07-16T16:00:21.864Z",
       "health": "DISABLED",
       "health_history": [
@@ -68,7 +68,7 @@
       "duplicate_rate": 0,
       "failure_rate": 1,
       "last_success": null,
-      "last_fetch": "2026-07-16T16:00:21.870Z",
+      "last_fetch": "2026-07-17T16:30:20.326Z",
       "last_failure": "2026-07-16T16:00:21.870Z",
       "health": "DISABLED",
       "health_history": [
@@ -94,7 +94,7 @@
       "duplicate_rate": 0,
       "failure_rate": 1,
       "last_success": null,
-      "last_fetch": "2026-07-16T16:00:21.881Z",
+      "last_fetch": "2026-07-17T16:30:20.327Z",
       "last_failure": "2026-07-16T16:00:21.881Z",
       "health": "DISABLED",
       "health_history": [
@@ -120,7 +120,7 @@
       "duplicate_rate": 0,
       "failure_rate": 1,
       "last_success": null,
-      "last_fetch": "2026-07-16T16:00:21.887Z",
+      "last_fetch": "2026-07-17T16:30:20.330Z",
       "last_failure": "2026-07-16T16:00:21.887Z",
       "health": "DISABLED",
       "health_history": [
@@ -146,7 +146,7 @@
       "duplicate_rate": 0,
       "failure_rate": 1,
       "last_success": null,
-      "last_fetch": "2026-07-16T16:00:21.895Z",
+      "last_fetch": "2026-07-17T16:30:20.331Z",
       "last_failure": "2026-07-16T16:00:21.895Z",
       "health": "DISABLED",
       "health_history": [
@@ -172,7 +172,7 @@
       "duplicate_rate": 0,
       "failure_rate": 1,
       "last_success": null,
-      "last_fetch": "2026-07-16T16:00:21.900Z",
+      "last_fetch": "2026-07-17T16:30:20.333Z",
       "last_failure": "2026-07-16T16:00:21.900Z",
       "health": "DISABLED",
       "health_history": [
@@ -198,7 +198,7 @@
       "duplicate_rate": 0,
       "failure_rate": 1,
       "last_success": null,
-      "last_fetch": "2026-07-16T16:00:21.905Z",
+      "last_fetch": "2026-07-17T16:30:20.334Z",
       "last_failure": "2026-07-16T16:00:21.905Z",
       "health": "DISABLED",
       "health_history": [
@@ -224,7 +224,7 @@
       "duplicate_rate": 0,
       "failure_rate": 1,
       "last_success": null,
-      "last_fetch": "2026-07-16T16:00:21.926Z",
+      "last_fetch": "2026-07-17T16:30:20.336Z",
       "last_failure": "2026-07-16T16:00:21.926Z",
       "health": "DISABLED",
       "health_history": [
@@ -250,7 +250,7 @@
       "duplicate_rate": 0,
       "failure_rate": 1,
       "last_success": null,
-      "last_fetch": "2026-07-16T16:00:21.909Z",
+      "last_fetch": "2026-07-17T16:30:20.337Z",
       "last_failure": "2026-07-16T16:00:21.909Z",
       "health": "DISABLED",
       "health_history": [
@@ -276,7 +276,7 @@
       "duplicate_rate": 0,
       "failure_rate": 1,
       "last_success": null,
-      "last_fetch": "2026-07-16T16:00:21.914Z",
+      "last_fetch": "2026-07-17T16:30:20.340Z",
       "last_failure": "2026-07-16T16:00:21.914Z",
       "health": "DISABLED",
       "health_history": [
@@ -302,7 +302,7 @@
       "duplicate_rate": 0,
       "failure_rate": 1,
       "last_success": null,
-      "last_fetch": "2026-07-16T16:00:21.920Z",
+      "last_fetch": "2026-07-17T16:30:20.342Z",
       "last_failure": "2026-07-16T16:00:21.920Z",
       "health": "DISABLED",
       "health_history": [
@@ -328,7 +328,7 @@
       "duplicate_rate": 0,
       "failure_rate": 1,
       "last_success": null,
-      "last_fetch": "2026-07-16T16:00:21.932Z",
+      "last_fetch": "2026-07-17T16:30:20.343Z",
       "last_failure": "2026-07-16T16:00:21.933Z",
       "health": "DISABLED",
       "health_history": [
@@ -354,7 +354,7 @@
       "duplicate_rate": 0,
       "failure_rate": 1,
       "last_success": null,
-      "last_fetch": "2026-07-16T16:00:21.937Z",
+      "last_fetch": "2026-07-17T16:30:20.345Z",
       "last_failure": "2026-07-16T16:00:21.937Z",
       "health": "DISABLED",
       "health_history": [
@@ -380,7 +380,7 @@
       "duplicate_rate": 0,
       "failure_rate": 1,
       "last_success": null,
-      "last_fetch": "2026-07-16T16:00:21.941Z",
+      "last_fetch": "2026-07-17T16:30:20.346Z",
       "last_failure": "2026-07-16T16:00:21.941Z",
       "health": "DISABLED",
       "health_history": [
@@ -406,7 +406,7 @@
       "duplicate_rate": 0,
       "failure_rate": 1,
       "last_success": null,
-      "last_fetch": "2026-07-16T16:00:21.948Z",
+      "last_fetch": "2026-07-17T16:30:20.348Z",
       "last_failure": "2026-07-16T16:00:21.948Z",
       "health": "DISABLED",
       "health_history": [
@@ -432,7 +432,7 @@
       "duplicate_rate": 0,
       "failure_rate": 1,
       "last_success": null,
-      "last_fetch": "2026-07-16T16:00:21.953Z",
+      "last_fetch": "2026-07-17T16:30:20.352Z",
       "last_failure": "2026-07-16T16:00:21.953Z",
       "health": "DISABLED",
       "health_history": [

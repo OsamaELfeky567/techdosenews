@@ -45,7 +45,7 @@
     "enabled": true,
     "trust_score": 95,
     "category": "general",
-    "dynamic_priority": 4
+    "dynamic_priority": 9
   },
   {
     "id": "techcr",
@@ -57,7 +57,7 @@
     "enabled": true,
     "trust_score": 90,
     "category": "startups",
-    "dynamic_priority": 5
+    "dynamic_priority": 10
   },
   {
     "id": "verge",
@@ -69,7 +69,7 @@
     "enabled": true,
     "trust_score": 88,
     "category": "consumer-tech",
-    "dynamic_priority": 6
+    "dynamic_priority": 4
   },
   {
     "id": "arstech",
@@ -81,7 +81,7 @@
     "enabled": true,
     "trust_score": 92,
     "category": "deep-tech",
-    "dynamic_priority": 7
+    "dynamic_priority": 5
   },
   {
     "id": "gsmarena",
@@ -93,7 +93,7 @@
     "enabled": true,
     "trust_score": 85,
     "category": "mobile",
-    "dynamic_priority": 8
+    "dynamic_priority": 6
   },
   {
     "id": "androidauth",
@@ -105,7 +105,7 @@
     "enabled": true,
     "trust_score": 84,
     "category": "mobile",
-    "dynamic_priority": 12
+    "dynamic_priority": 11
   },
   {
     "id": "tomshw",
@@ -117,7 +117,7 @@
     "enabled": true,
     "trust_score": 86,
     "category": "hardware",
-    "dynamic_priority": 9
+    "dynamic_priority": 12
   },
   {
     "id": "techxar",
@@ -129,7 +129,7 @@
     "enabled": true,
     "trust_score": 87,
     "category": "general",
-    "dynamic_priority": 10
+    "dynamic_priority": 13
   },
   {
     "id": "mitrev",
@@ -141,7 +141,7 @@
     "enabled": true,
     "trust_score": 93,
     "category": "deep-tech",
-    "dynamic_priority": 11
+    "dynamic_priority": 7
   },
   {
     "id": "openai",
@@ -153,7 +153,7 @@
     "enabled": true,
     "trust_score": 80,
     "category": "ai",
-    "dynamic_priority": 13
+    "dynamic_priority": 14
   },
   {
     "id": "nvidia",
@@ -165,7 +165,7 @@
     "enabled": true,
     "trust_score": 78,
     "category": "hardware",
-    "dynamic_priority": 14
+    "dynamic_priority": 15
   },
   {
     "id": "msai",
@@ -177,7 +177,7 @@
     "enabled": false,
     "trust_score": 76,
     "category": "ai",
-    "dynamic_priority": 15
+    "dynamic_priority": 999
   },
   {
     "id": "googleai",
@@ -189,7 +189,7 @@
     "enabled": false,
     "trust_score": 75,
     "category": "ai",
-    "dynamic_priority": 16
+    "dynamic_priority": 999
   },
   {
     "id": "zdnetai",
@@ -201,6 +201,6 @@
     "enabled": true,
     "trust_score": 72,
     "category": "ai",
-    "dynamic_priority": 17
+    "dynamic_priority": 8
   }
 ]

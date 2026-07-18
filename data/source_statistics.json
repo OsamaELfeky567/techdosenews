@@ -20,7 +20,8 @@
       "last_failure": null,
       "health": "YELLOW",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -44,7 +45,8 @@
       "last_failure": null,
       "health": "YELLOW",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -68,7 +70,8 @@
       "last_failure": null,
       "health": "YELLOW",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -92,7 +95,8 @@
       "last_failure": "2026-07-17T19:30:40.969Z",
       "health": "YELLOW",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -116,7 +120,8 @@
       "last_failure": "2026-07-17T19:30:55.985Z",
       "health": "YELLOW",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -140,7 +145,8 @@
       "last_failure": null,
       "health": "YELLOW",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -164,7 +170,8 @@
       "last_failure": null,
       "health": "YELLOW",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -188,7 +195,8 @@
       "last_failure": null,
       "health": "YELLOW",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -212,7 +220,8 @@
       "last_failure": null,
       "health": "YELLOW",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -236,7 +245,8 @@
       "last_failure": "2026-07-17T18:30:28.992Z",
       "health": "YELLOW",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -260,7 +270,8 @@
       "last_failure": null,
       "health": "YELLOW",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -284,7 +295,8 @@
       "last_failure": null,
       "health": "YELLOW",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -308,7 +320,8 @@
       "last_failure": null,
       "health": "YELLOW",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -332,7 +345,8 @@
       "last_failure": "2026-07-17T19:31:22.036Z",
       "health": "YELLOW",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -354,9 +368,10 @@
       "last_success": null,
       "last_fetch": "2026-07-17T20:00:38.781Z",
       "last_failure": "2026-07-17T20:00:38.781Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:DISABLED"
       ],
       "daily_stats": {}
     },
@@ -378,9 +393,10 @@
       "last_success": null,
       "last_fetch": "2026-07-17T20:00:39.545Z",
       "last_failure": "2026-07-17T20:00:39.545Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:DISABLED"
       ],
       "daily_stats": {}
     },
@@ -404,7 +420,8 @@
       "last_failure": null,
       "health": "YELLOW",
       "health_history": [
-        "2026-07-17:RED"
+        "2026-07-17:RED",
+        "2026-07-18:YELLOW"
       ],
       "daily_stats": {}
     }

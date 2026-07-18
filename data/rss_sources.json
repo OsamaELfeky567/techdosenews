@@ -174,7 +174,7 @@
     "lang": "en",
     "tier": 3,
     "priority": 15,
-    "enabled": false,
+    "enabled": true,
     "trust_score": 76,
     "category": "ai",
     "dynamic_priority": 999
@@ -186,7 +186,7 @@
     "lang": "en",
     "tier": 3,
     "priority": 16,
-    "enabled": false,
+    "enabled": true,
     "trust_score": 75,
     "category": "ai",
     "dynamic_priority": 999

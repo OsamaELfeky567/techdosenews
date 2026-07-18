@@ -1,9 +1,9 @@
 [
   {
     "status": "ai_failed",
-    "execution_id": 1784410220320,
-    "triggered_at": "2026-07-18T21:30:20.320Z",
-    "completed_at": "2026-07-18T21:30:50.268Z",
+    "execution_id": 1784413821005,
+    "triggered_at": "2026-07-18T22:30:21.005Z",
+    "completed_at": "2026-07-18T22:30:47.190Z",
     "mode": "trigger",
     "rss_source": "التقنية بلا حدود",
     "rss_items": 0,
@@ -55,14 +55,14 @@
     "diag_stats_keys": 17,
     "diag_last_ranking": "2026-07-18T18:30:21.193Z",
     "rss_sources_attempted": 14,
-    "rss_candidates_raw": 57,
-    "rss_candidates_after_dedup": 24,
+    "rss_candidates_raw": 64,
+    "rss_candidates_after_dedup": 30,
     "fetched_content_length": 10000,
     "ai_error": "Request failed with status code 401",
-    "diag_before_save_stats": 1784410248512,
-    "diag_after_save_stats": 1784410250268,
+    "diag_before_save_stats": 1784413845527,
+    "diag_after_save_stats": 1784413847190,
     "diag_save_stats_ok": true,
-    "diag_save_stats_sha": "c9e7e589036e0e0bc49eb8372a8d993c1c8981a7",
-    "diag_before_exec_history": 1784410250268
+    "diag_save_stats_sha": "68691ee215863413ef118907d9969d0107ceff50",
+    "diag_before_exec_history": 1784413847190
   }
 ]

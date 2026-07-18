@@ -126,7 +126,7 @@
     "lang": "ar",
     "tier": 2,
     "priority": 11,
-    "enabled": true,
+    "enabled": false,
     "trust_score": 87,
     "category": "general",
     "dynamic_priority": 13
@@ -150,7 +150,7 @@
     "lang": "en",
     "tier": 3,
     "priority": 13,
-    "enabled": true,
+    "enabled": false,
     "trust_score": 80,
     "category": "ai",
     "dynamic_priority": 14
@@ -162,7 +162,7 @@
     "lang": "en",
     "tier": 3,
     "priority": 14,
-    "enabled": true,
+    "enabled": false,
     "trust_score": 78,
     "category": "hardware",
     "dynamic_priority": 15

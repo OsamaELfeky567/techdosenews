@@ -1,11 +1,11 @@
 [
   {
     "status": "ai_failed",
-    "execution_id": 1784415620836,
-    "triggered_at": "2026-07-18T23:00:20.836Z",
-    "completed_at": "2026-07-18T23:00:53.109Z",
+    "execution_id": 1784417423773,
+    "triggered_at": "2026-07-18T23:30:23.773Z",
+    "completed_at": "2026-07-18T23:30:42.910Z",
     "mode": "trigger",
-    "rss_source": "التقنية بلا حدود",
+    "rss_source": "عرب هاردوير",
     "rss_items": 0,
     "after_freshness": 0,
     "after_tech_filter": 0,
@@ -54,15 +54,15 @@
     "diag_sources_count": 17,
     "diag_stats_keys": 17,
     "diag_last_ranking": "2026-07-18T18:30:21.193Z",
-    "rss_sources_attempted": 14,
-    "rss_candidates_raw": 54,
+    "rss_sources_attempted": 12,
+    "rss_candidates_raw": 62,
     "rss_candidates_after_dedup": 28,
-    "fetched_content_length": 10000,
+    "fetched_content_length": 3370,
     "ai_error": "Request failed with status code 401",
-    "diag_before_save_stats": 1784415651150,
-    "diag_after_save_stats": 1784415653109,
+    "diag_before_save_stats": 1784417441407,
+    "diag_after_save_stats": 1784417442910,
     "diag_save_stats_ok": true,
-    "diag_save_stats_sha": "e6d4586a60cd1812e2ba5625ac35d67215d4095b",
-    "diag_before_exec_history": 1784415653109
+    "diag_save_stats_sha": "80db2be56521e0910f88cdb532a51fa394b0dc99",
+    "diag_before_exec_history": 1784417442910
   }
 ]

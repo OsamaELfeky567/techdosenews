@@ -22,7 +22,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
-        "2026-07-19:YELLOW"
+        "2026-07-19:YELLOW",
+        "2026-07-20:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -48,7 +49,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
-        "2026-07-19:YELLOW"
+        "2026-07-19:YELLOW",
+        "2026-07-20:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -74,7 +76,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
-        "2026-07-19:YELLOW"
+        "2026-07-19:YELLOW",
+        "2026-07-20:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -100,7 +103,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
-        "2026-07-19:YELLOW"
+        "2026-07-19:YELLOW",
+        "2026-07-20:DISABLED"
       ],
       "daily_stats": {}
     },
@@ -126,7 +130,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
-        "2026-07-19:YELLOW"
+        "2026-07-19:YELLOW",
+        "2026-07-20:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -152,7 +157,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
-        "2026-07-19:YELLOW"
+        "2026-07-19:YELLOW",
+        "2026-07-20:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -178,7 +184,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
-        "2026-07-19:YELLOW"
+        "2026-07-19:YELLOW",
+        "2026-07-20:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -204,7 +211,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
-        "2026-07-19:YELLOW"
+        "2026-07-19:YELLOW",
+        "2026-07-20:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -230,7 +238,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
-        "2026-07-19:YELLOW"
+        "2026-07-19:YELLOW",
+        "2026-07-20:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -256,7 +265,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
-        "2026-07-19:YELLOW"
+        "2026-07-19:YELLOW",
+        "2026-07-20:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -282,7 +292,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
-        "2026-07-19:DISABLED"
+        "2026-07-19:DISABLED",
+        "2026-07-20:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -308,7 +319,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
-        "2026-07-19:YELLOW"
+        "2026-07-19:YELLOW",
+        "2026-07-20:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -334,7 +346,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
-        "2026-07-19:DISABLED"
+        "2026-07-19:DISABLED",
+        "2026-07-20:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -360,7 +373,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
-        "2026-07-19:DISABLED"
+        "2026-07-19:DISABLED",
+        "2026-07-20:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -386,7 +400,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:DISABLED",
-        "2026-07-19:RED"
+        "2026-07-19:RED",
+        "2026-07-20:DISABLED"
       ],
       "daily_stats": {}
     },
@@ -412,7 +427,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:DISABLED",
-        "2026-07-19:RED"
+        "2026-07-19:RED",
+        "2026-07-20:DISABLED"
       ],
       "daily_stats": {}
     },
@@ -438,7 +454,8 @@
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
-        "2026-07-19:YELLOW"
+        "2026-07-19:YELLOW",
+        "2026-07-20:YELLOW"
       ],
       "daily_stats": {}
     }

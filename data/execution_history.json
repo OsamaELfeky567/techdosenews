@@ -1,9 +1,9 @@
 [
   {
     "status": "ai_failed",
-    "execution_id": 1784417423773,
-    "triggered_at": "2026-07-18T23:30:23.773Z",
-    "completed_at": "2026-07-18T23:30:42.910Z",
+    "execution_id": 1784419220890,
+    "triggered_at": "2026-07-19T00:00:20.890Z",
+    "completed_at": "2026-07-19T00:00:37.432Z",
     "mode": "trigger",
     "rss_source": "عرب هاردوير",
     "rss_items": 0,
@@ -59,10 +59,10 @@
     "rss_candidates_after_dedup": 28,
     "fetched_content_length": 3370,
     "ai_error": "Request failed with status code 401",
-    "diag_before_save_stats": 1784417441407,
-    "diag_after_save_stats": 1784417442910,
+    "diag_before_save_stats": 1784419235936,
+    "diag_after_save_stats": 1784419237432,
     "diag_save_stats_ok": true,
-    "diag_save_stats_sha": "80db2be56521e0910f88cdb532a51fa394b0dc99",
-    "diag_before_exec_history": 1784417442910
+    "diag_save_stats_sha": "edf90ee6e21b5b04c2a3386a5b1aab3a9712e560",
+    "diag_before_exec_history": 1784419237432
   }
 ]

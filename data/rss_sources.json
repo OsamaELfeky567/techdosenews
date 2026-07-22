@@ -9,7 +9,7 @@
     "enabled": true,
     "trust_score": 98,
     "category": "general",
-    "dynamic_priority": 1
+    "dynamic_priority": 2
   },
   {
     "id": "arabhd",
@@ -21,7 +21,7 @@
     "enabled": true,
     "trust_score": 97,
     "category": "hardware",
-    "dynamic_priority": 2
+    "dynamic_priority": 1
   },
   {
     "id": "techwd",
@@ -42,10 +42,10 @@
     "lang": "ar",
     "tier": 1,
     "priority": 4,
-    "enabled": false,
+    "enabled": true,
     "trust_score": 95,
     "category": "general",
-    "dynamic_priority": 12
+    "dynamic_priority": 11
   },
   {
     "id": "techcr",
@@ -105,7 +105,7 @@
     "enabled": true,
     "trust_score": 84,
     "category": "mobile",
-    "dynamic_priority": 11
+    "dynamic_priority": 10
   },
   {
     "id": "tomshw",
@@ -117,7 +117,7 @@
     "enabled": true,
     "trust_score": 86,
     "category": "hardware",
-    "dynamic_priority": 10
+    "dynamic_priority": 12
   },
   {
     "id": "techxar",
@@ -126,10 +126,10 @@
     "lang": "ar",
     "tier": 2,
     "priority": 11,
-    "enabled": false,
+    "enabled": true,
     "trust_score": 87,
     "category": "general",
-    "dynamic_priority": 999
+    "dynamic_priority": 13
   },
   {
     "id": "mitrev",
@@ -150,10 +150,10 @@
     "lang": "en",
     "tier": 3,
     "priority": 13,
-    "enabled": false,
+    "enabled": true,
     "trust_score": 80,
     "category": "ai",
-    "dynamic_priority": 999
+    "dynamic_priority": 14
   },
   {
     "id": "nvidia",
@@ -162,10 +162,10 @@
     "lang": "en",
     "tier": 3,
     "priority": 14,
-    "enabled": false,
+    "enabled": true,
     "trust_score": 78,
     "category": "hardware",
-    "dynamic_priority": 999
+    "dynamic_priority": 15
   },
   {
     "id": "msai",
@@ -174,10 +174,10 @@
     "lang": "en",
     "tier": 3,
     "priority": 15,
-    "enabled": false,
+    "enabled": true,
     "trust_score": 76,
     "category": "ai",
-    "dynamic_priority": 999
+    "dynamic_priority": 16
   },
   {
     "id": "googleai",
@@ -186,10 +186,10 @@
     "lang": "en",
     "tier": 3,
     "priority": 16,
-    "enabled": false,
+    "enabled": true,
     "trust_score": 75,
     "category": "ai",
-    "dynamic_priority": 999
+    "dynamic_priority": 17
   },
   {
     "id": "zdnetai",

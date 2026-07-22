@@ -18,7 +18,7 @@
       "last_success": "2026-07-22T23:30:29.731Z",
       "last_fetch": "2026-07-22T23:30:29.731Z",
       "last_failure": null,
-      "health": "RED",
+      "health": "YELLOW",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -46,7 +46,7 @@
       "last_success": "2026-07-22T23:30:29.383Z",
       "last_fetch": "2026-07-22T23:31:09.031Z",
       "last_failure": null,
-      "health": "RED",
+      "health": "GREEN",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -87,7 +87,7 @@
       "last_success": "2026-07-22T23:30:30.984Z",
       "last_fetch": "2026-07-22T23:30:30.984Z",
       "last_failure": null,
-      "health": "RED",
+      "health": "YELLOW",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -143,7 +143,7 @@
       "last_success": "2026-07-22T23:30:47.041Z",
       "last_fetch": "2026-07-22T23:30:47.041Z",
       "last_failure": "2026-07-17T19:30:55.985Z",
-      "health": "RED",
+      "health": "YELLOW",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -171,7 +171,7 @@
       "last_success": "2026-07-22T23:30:31.255Z",
       "last_fetch": "2026-07-22T23:30:31.255Z",
       "last_failure": null,
-      "health": "RED",
+      "health": "YELLOW",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -199,7 +199,7 @@
       "last_success": "2026-07-22T23:30:31.768Z",
       "last_fetch": "2026-07-22T23:30:31.768Z",
       "last_failure": null,
-      "health": "RED",
+      "health": "YELLOW",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -227,7 +227,7 @@
       "last_success": "2026-07-22T23:30:47.897Z",
       "last_fetch": "2026-07-22T23:30:47.897Z",
       "last_failure": "2026-07-19T23:00:43.420Z",
-      "health": "RED",
+      "health": "YELLOW",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -255,7 +255,7 @@
       "last_success": "2026-07-22T23:30:48.283Z",
       "last_fetch": "2026-07-22T23:30:48.283Z",
       "last_failure": "2026-07-18T21:30:43.685Z",
-      "health": "RED",
+      "health": "YELLOW",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -283,7 +283,7 @@
       "last_success": "2026-07-22T23:30:50.721Z",
       "last_fetch": "2026-07-22T23:30:50.721Z",
       "last_failure": "2026-07-19T23:00:58.435Z",
-      "health": "RED",
+      "health": "YELLOW",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -479,7 +479,7 @@
       "last_success": "2026-07-22T23:30:47.423Z",
       "last_fetch": "2026-07-22T23:30:47.423Z",
       "last_failure": null,
-      "health": "RED",
+      "health": "YELLOW",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",

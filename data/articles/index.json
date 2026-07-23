@@ -1,5 +1,132 @@
 [
   {
+    "id": "art-1784835049046-06u4u5",
+    "title": "تعاون AMD وCerebras لتطوير منصة استدلال فائقة",
+    "excerpt": "أعلنت AMD عن شراكة جديدة مع شركة Cerebras لتطوير منصة استدلال فائقة للاستخدام في تطبيقات الذكاء الاصطناعي",
+    "body": "<p>أعلنت <strong>AMD</strong> عن شراكة جديدة مع شركة <strong>Cerebras</strong> لتطوير <strong>منصة استدلال فائقة</strong> للاستخدام في تطبيقات الذكاء الاصطناعي.. وسيتم تطوير هذه المنصة باستخدام <strong>بنية Helios</strong> ومسرّع Wafer-Scale Engine الذي تطوره Cerebras، بهدف تسريع عمليات الاستدلال الخاصة بنماذج الذكاء الاصطناعي الضخمة.</p><p>ومن المقرر إتاحة الحل الجديد عبر سحابة <strong>Cerebras</strong> في وقت لاحق من العام الجاري، قبل طرحه لاحقًا للعملاء الراغبين في نشره داخل بنيتهم التحتية.</p><p>وفي جانب البرمجيات، استعرض فامسي بوبانا أحدث تطورات منصة ROCm، مؤكدًا أن <strong>AMD</strong> تعتمد دورة تطوير سريعة مع إصدار تحديثات كل ستة أسابيع لتسريع وتيرة الابتكار وتحسين تجربة المطورين.</p><p>وأشار إلى أن ROCm تواصل التركيز على البرمجيات مفتوحة المصدر، مع توفير مكتبات وأدوات ولغات برمجة متخصصة لدعم تطوير تطبيقات الذكاء الاصطناعي مفتوحة المصدر، مع ضمان توافق النماذج مع منصات <strong>AMD</strong> منذ اليوم الأول.</p><p>وكشفت الشركة أيضًا عن <strong>منصة ROCm</strong>.AI الجديدة، التي تستخدم وكلاء ذكاء اصطناعي لفهم مكونات منصات <strong>AMD</strong> وتحسين النماذج تلقائيًا من خلال اختيار أفضل المكتبات والإعدادات وأساليب الضبط لكل معالج أو مسرّع رسومي.</p><p>وأوضحت <strong>AMD</strong> أن المنصة تستطيع، على سبيل المثال، تحسين <strong>نموذج MiniMax M3</strong> للعمل بكفاءة على مسرّع MI355X دون تدخل يدوي، إذ يتولى وكيل الذكاء الاصطناعي إدارة عملية التحسين بالكامل، بدءًا من الإعداد وحتى النشر.</p><p>ووفقًا للشركة، نجحت <strong>منصة ROCm</strong>.AI في زيادة إنتاجية الرموز بنسبة 38% عبر التحسين التلقائي، كما يمكنها تحقيق أداء أعلى يصل إلى 3.3 أضعاف مقارنة بعمليات النشر التقليدية، فضلًا عن تحسين كفاءة تدريب نماذج الذكاء الاصطناعي.</p><p>ومن المتوقع أن يؤدي هذا التعاون إلى تحسين أداء تطبيقات الذكاء الاصطناعي وتسريع عمليات الاستدلال، مما يسهل على الشركات استخدام هذه التكنولوجيا في مختلف المجالات.</p><p>## التأثير المتوقع</p><p>ومع ذلك، يظل من المهم متابعة التطورات في هذا المجال وتحليل تأثير هذه التكنولوجيا على صناعة الذكاء الاصطناعي وتطبيقاتها في المستقبل.</p>",
+    "category": " الذكاء الاصطناعي | التكنولوجيا | الشركات | الهواتف | السيارات الكهربائية | التكنولوجيا",
+    "tags": [
+      "ذكاء اصطناعي",
+      "تكنولوجيا",
+      "شركات",
+      "هواتف",
+      "سيارات كهربائية"
+    ],
+    "image": "https://arabhardware.net/storage/uploads/2026-07/6a6259bccf8e1.6810ca6c-3cdc-4735-94c0-e572cd2913f6-1672x941.jpgmain6a6259bcd1409.webp",
+    "image_source": "rss_enclosure",
+    "image_provider": "rss",
+    "image_query": "",
+    "image_type": "article_main",
+    "image_confidence": 85,
+    "date": "2026-07-23T19:30:58.935Z",
+    "readTime": "2 min read",
+    "views": "0",
+    "hasEgyptImpact": false,
+    "source": "عرب هاردوير",
+    "link": "https://arabhardware.net/post-54383",
+    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784835049046-06u4u5",
+    "status": "published",
+    "seo_title": "AMD وCerebras يتعاونان لتطوير منصة استدلال فائقة",
+    "meta_description": "تعاون AMD وCerebras لتطوير منصة استدلال فائقة للاستخدام في تطبيقات الذكاء الاصطناعي",
+    "seo_slug": "amd-cerebras-تعاون-منصة-استدلال-فائقة",
+    "focus_keyword": "ذكاء اصطناعي",
+    "secondary_keywords": [
+      "تكنولوجيا",
+      "شركات",
+      "هواتف",
+      "سيارات كهربائية"
+    ],
+    "primary_company": "AMD",
+    "secondary_company": "Cerebras",
+    "products": [
+      "منصة استدلال فائقة"
+    ],
+    "devices": [
+      "مسرّع Wafer-Scale Engine"
+    ],
+    "technologies": [
+      "بنية Helios",
+      "منصة ROCm"
+    ],
+    "ai_models": [
+      "نموذج MiniMax M3"
+    ],
+    "os": [
+      "نظام تشغيل AMD"
+    ],
+    "chipsets": [
+      "معالج AMD"
+    ],
+    "browsers": [
+      "متصفح"
+    ],
+    "cloud_platforms": [
+      "سحابة Cerebras"
+    ],
+    "languages": [
+      "لغة برمجة"
+    ],
+    "opensource_projects": [
+      "مشروع مفتوح المصدر"
+    ],
+    "executives": [
+      "فامسي بوبانا"
+    ],
+    "markets": [
+      "سوق الذكاء الاصطناعي"
+    ],
+    "countries": [
+      "دولة"
+    ],
+    "people": [
+      "شخصية"
+    ],
+    "stocks": [
+      "رمز سهم"
+    ],
+    "investors": [
+      "مستثمر أو صندوق"
+    ],
+    "image_queries": [
+      "كلمة بحث رئيسية للصورة",
+      "كلمة بديلة",
+      "كلمة تقنية عامة"
+    ],
+    "internal_links": [
+      {
+        "title": "جوجل تدفع ثمن هيمنتها على أندرويد بغرامة قياسية",
+        "id": "art-1784781042703-cdeh20",
+        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784781042703-cdeh20"
+      },
+      {
+        "title": "واشنطن تتهم Moonshot AI بسرقة تقنيات من Anthropic لتطوير نموذج Kimi K3",
+        "id": "art-1784813461572-n11ito",
+        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784813461572-n11ito"
+      },
+      {
+        "title": "حواسيب الذكاء الاصطناعي في الإمارات: لحظة تحول",
+        "id": "art-1784793783876-468nvp",
+        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784793783876-468nvp"
+      },
+      {
+        "title": "AMD تتعاون مع Anthropic لزيادة الطاقة الحوسبية إلى 2 جيجاوات",
+        "id": "art-1784772038781-fcy4vb",
+        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784772038781-fcy4vb"
+      },
+      {
+        "title": "سامسونج تكشف عن Galaxy Watch 9 و Watch Ultra 2",
+        "id": "art-1784765010712-a1xkmn",
+        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784765010712-a1xkmn"
+      },
+      {
+        "title": "شاومي 18: أول هاتف بمعالج Snapdragon 8 Elite Gen 6",
+        "id": "art-1783166420583-24ufc0",
+        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1783166420583-24ufc0"
+      }
+    ],
+    "quality_score": 73
+  },
+  {
     "id": "art-1784813461572-n11ito",
     "title": "واشنطن تتهم Moonshot AI بسرقة تقنيات من Anthropic لتطوير نموذج Kimi K3",
     "excerpt": "تتهم الولايات المتحدة شركة Moonshot AI الصينية بالاستفادة من تقنيات مملوكة لشركة Anthropic الأمريكية لتطوير نموذج الذكاء الاصطناعي Kimi K3",

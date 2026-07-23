@@ -1,5 +1,101 @@
 [
   {
+    "id": "art-1784838697000-0o1axf",
+    "title": "معالجات EPYC Venice الجديدة: تحديات الذكاء الاصطناعي",
+    "excerpt": "كشفت AMD عن معالجات EPYC Venice الجديدة، التي تهدف إلى تلبية متطلبات الذكاء الاصطناعي",
+    "body": "<p>## خلفية الحدث</p><p>كشفت <strong>AMD</strong> عن الجيل الجديد من معالجات الخوادم EPYC \"Venice\". مؤكدةً أنه يمثل أكبر قفزة في تاريخ سلسلة EPYC منذ إطلاقها، مع تصميم يستهدف تلبية المتطلبات المتزايدة لتطبيقات الذكاء الاصطناعي الوكيلي \"Agentic AI\" وأحمال العمل كثيفة المعالجة.</p><p>الذكاء الاصطناعي</p><p>وأوضحت الشركة أن معالجات Venice تضم ما يصل إلى 302 مليار ترانزستور. وتُصنع بدقة 2 نانومتر، مع دعم يصل إلى 256 نواة و512 خيط معالجة لكل مقبس، بما يسمح بتشغيل آلاف وكلاء الذكاء الاصطناعي بكفاءة وسرعة مرتفعتين.</p><p>وأكدت <strong>AMD</strong> أن Venice ليست معالجًا واحدًا، بل عائلة متكاملة من المعالجات تضم عدة فئات موجهة لاستخدامات مختلفة.</p><p>!Image 12: Advancing AI 2026<br>وتشمل السلسلة إصدار Venice-HF المزود بـ 128 نواة وترددات تصل إلى 5 جيجاهرتز. والذي سيُستخدم ضمن أنظمة Helios، إلى جانب إصدار Venice Dense الذي يوفر 256 نواة و512 خيط معالجة لكل معالج، فيما ستطرح الشركة أيضًا إصدار Venice-X المزود بتقنية 3D V-Cache لتعزيز أداء التطبيقات التي تعتمد على الذاكرة المخبأة.</p><p>## أبرز المزايا</p><p>كما استعرضت <strong>AMD</strong> خططها المستقبلية، مشيرةً إلى تطوير منصة \"Verano\" التي ستوفر استهلاكًا أقل للطاقة، ودعمًا لذاكرة منخفضة الاستهلاك، إلى جانب تحسينات في سرعة الربط بين المكونات.</p><p>وأكدت الشركة أن معالجات Venice تحقق أداءً أعلى لكل واط، فضلًا عن زيادة ملحوظة في كثافة الأداء داخل مراكز البيانات.. ووفقًا لاختبارات AMD، توفر المعالجات الجديدة تحسنًا بنسبة 20% في الأداء لكل نواة مقارنة بالمنافسين، بينما يرتفع إجمالي الأداء إلى 2.2 مرة بفضل زيادة عدد الأنوية.</p><p>!Image 13: Advancing AI 2026<br>وأضافت <strong>AMD</strong> أن معمارية x86 لا تزال تحتفظ بميزات تنافسية قوية. ليس فقط من حيث الأداء، بل أيضًا عبر إتاحة خيارات متعددة من عدد الأنوية ومستويات الأداء بما يلائم احتياجات العملاء المختلفة.</p><p>وأشارت الشركة إلى أن <strong>معالجات EPYC</strong> \"Venice\" دخلت بالفعل مرحلة الإنتاج الكامل، على أن يبدأ طرحها التجاري على نطاق واسع خلال الربع الرابع من عام 2026.</p><p>AMDAMD EPYCAMD RYZEN</p><p>![Image 14: أحمد صفوت](https://arabhardware.net/author/%D8%A3%D8%AD%D9%85%D8%AF-%D8%B5%D9%81%D9%88%D8%AA)</p><p>**أحمد صفوت 3 متابع**محرر في قسم الهاردوير</p><p>**اضافة تعليق</p><p>عتاد حاسوب**</p><p>تسجيل الدخول</p><p>_0_ من _350_ المسموح بهم</p><p>اضف تعليق</p><p>**ذات صلة**</p><p>![Image 15: Advancing AI 2026: تعاون بين <strong>AMD</strong> وCerebras لتطوير منصة استدلال فائقة](https://arabhardware.net/news/amd-and-cerebras-advancing-ai)</p><p>### Advancing AI 2026: تعاون بين <strong>AMD</strong> وCerebras لتطوير منصة استدلال فائقة<br>إلى جانب الكشف عن منصة ROCm.AI لتحسين أداء نماذج الذكاء الاصطناعي</p><p>!Image 16: أحمد صفوت</p><p>بقلم أحمد صفوت<br>منذ ساعتين</p><p>![Image 17: Advancing AI 2026: ميتا توسع تعاونها مع <strong>AMD</strong> في مجال البنية التحتية](https://arabhardware.net/ne</p><p>ومن المتوقع أن تكشف الشركة عن مزيد من التفاصيل خلال الفترة المقبلة، مع استمرار المنافسة في هذا القطاع سريع التطور.</p>",
+    "category": "ai | cybersecurity | companies | phones | ev | technology",
+    "tags": [
+      "تاغ ذو صلة",
+      "تاغ ثاني",
+      "تاغ ثالث"
+    ],
+    "image": "https://arabhardware.net/storage/uploads/2026-07/6a6250d4c5d5e.screenshot-2026-07-23-203338.pngmain6a6250d4cd9ca.webp",
+    "image_source": "rss_enclosure",
+    "image_provider": "rss",
+    "image_query": "",
+    "image_type": "article_main",
+    "image_confidence": 85,
+    "date": "2026-07-23T20:32:07.010Z",
+    "readTime": "2 min read",
+    "views": "0",
+    "hasEgyptImpact": false,
+    "source": "عرب هاردوير",
+    "link": "https://arabhardware.net/post-54380",
+    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784838697000-0o1axf",
+    "status": "published",
+    "seo_title": "معالجات EPYC Venice الجديدة: تحديات الذكاء الاصطناعي",
+    "meta_description": "كشفت AMD عن معالجات EPYC Venice الجديدة، التي تهدف إلى تلبية متطلبات الذكاء الاصطناعي",
+    "seo_slug": "maalijat-epyc-venice-al-jadeeda",
+    "focus_keyword": "معالجات EPYC Venice",
+    "secondary_keywords": [
+      "ذكاء اصطناعي",
+      "AMD",
+      "EPYC"
+    ],
+    "primary_company": "AMD",
+    "secondary_company": null,
+    "products": [
+      "معالجات EPYC Venice"
+    ],
+    "devices": [],
+    "technologies": [
+      "ذكاء اصطناعي",
+      "معالجات EPYC"
+    ],
+    "ai_models": [],
+    "os": [],
+    "chipsets": [],
+    "browsers": [],
+    "cloud_platforms": [],
+    "languages": [],
+    "opensource_projects": [],
+    "executives": [],
+    "markets": [],
+    "countries": [],
+    "people": [],
+    "stocks": [],
+    "investors": [],
+    "image_queries": [
+      "معالجات EPYC Venice",
+      "ذكاء اصطناعي",
+      "AMD"
+    ],
+    "internal_links": [
+      {
+        "title": "AMD تكشف عن سلسلة Instinct MI400: مسرعات الذكاء الاصطناعي الجديدة",
+        "id": "art-1784836990070-wf0wdd",
+        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784836990070-wf0wdd"
+      },
+      {
+        "title": "تعاون AMD وCerebras لتطوير منصة استدلال فائقة",
+        "id": "art-1784835049046-06u4u5",
+        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784835049046-06u4u5"
+      },
+      {
+        "title": "AMD تتعاون مع Anthropic لزيادة الطاقة الحوسبية إلى 2 جيجاوات",
+        "id": "art-1784772038781-fcy4vb",
+        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784772038781-fcy4vb"
+      },
+      {
+        "title": "واشنطن تتهم Moonshot AI بسرقة تقنيات من Anthropic لتطوير نموذج Kimi K3",
+        "id": "art-1784813461572-n11ito",
+        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784813461572-n11ito"
+      },
+      {
+        "title": "حواسيب الذكاء الاصطناعي في الإمارات: لحظة تحول",
+        "id": "art-1784793783876-468nvp",
+        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784793783876-468nvp"
+      },
+      {
+        "title": "OpenAI و Hugging Face تحققان في حادثة أمنية غير مسبوقة للذكاء الاصطناعي",
+        "id": "art-1784784823547-rr64yu",
+        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784784823547-rr64yu"
+      }
+    ],
+    "quality_score": 66
+  },
+  {
     "id": "art-1784836990070-wf0wdd",
     "title": "AMD تكشف عن سلسلة Instinct MI400: مسرعات الذكاء الاصطناعي الجديدة",
     "excerpt": "تعلن AMD عن سلسلة Instinct MI400 الجديدة، وهي مسرعات ذكاء اصطناعي متقدمة تهدف إلى تلبية احتياجات مراكز البيانات والمؤسسات التي تعمل على تطوير نماذج الذكاء الاصطناعي",

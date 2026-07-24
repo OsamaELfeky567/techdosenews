@@ -25,7 +25,8 @@
         "2026-07-19:YELLOW",
         "2026-07-20:YELLOW",
         "2026-07-23:RED",
-        "2026-07-24:YELLOW"
+        "2026-07-24:YELLOW",
+        "2026-07-25:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -54,7 +55,8 @@
         "2026-07-19:YELLOW",
         "2026-07-20:YELLOW",
         "2026-07-23:RED",
-        "2026-07-24:GREEN"
+        "2026-07-24:GREEN",
+        "2026-07-25:GREEN"
       ],
       "daily_stats": {
         "2026-07-20": {
@@ -102,7 +104,8 @@
         "2026-07-19:YELLOW",
         "2026-07-20:YELLOW",
         "2026-07-23:RED",
-        "2026-07-24:YELLOW"
+        "2026-07-24:YELLOW",
+        "2026-07-25:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -131,7 +134,8 @@
         "2026-07-19:YELLOW",
         "2026-07-20:DISABLED",
         "2026-07-23:YELLOW",
-        "2026-07-24:YELLOW"
+        "2026-07-24:YELLOW",
+        "2026-07-25:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -160,7 +164,8 @@
         "2026-07-19:YELLOW",
         "2026-07-20:YELLOW",
         "2026-07-23:RED",
-        "2026-07-24:YELLOW"
+        "2026-07-24:YELLOW",
+        "2026-07-25:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -189,7 +194,8 @@
         "2026-07-19:YELLOW",
         "2026-07-20:YELLOW",
         "2026-07-23:RED",
-        "2026-07-24:YELLOW"
+        "2026-07-24:YELLOW",
+        "2026-07-25:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -218,7 +224,8 @@
         "2026-07-19:YELLOW",
         "2026-07-20:YELLOW",
         "2026-07-23:RED",
-        "2026-07-24:YELLOW"
+        "2026-07-24:YELLOW",
+        "2026-07-25:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -247,7 +254,8 @@
         "2026-07-19:YELLOW",
         "2026-07-20:YELLOW",
         "2026-07-23:RED",
-        "2026-07-24:YELLOW"
+        "2026-07-24:YELLOW",
+        "2026-07-25:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -276,7 +284,8 @@
         "2026-07-19:YELLOW",
         "2026-07-20:YELLOW",
         "2026-07-23:RED",
-        "2026-07-24:YELLOW"
+        "2026-07-24:YELLOW",
+        "2026-07-25:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -305,7 +314,8 @@
         "2026-07-19:YELLOW",
         "2026-07-20:YELLOW",
         "2026-07-23:RED",
-        "2026-07-24:YELLOW"
+        "2026-07-24:YELLOW",
+        "2026-07-25:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -334,7 +344,8 @@
         "2026-07-19:DISABLED",
         "2026-07-20:YELLOW",
         "2026-07-23:YELLOW",
-        "2026-07-24:YELLOW"
+        "2026-07-24:YELLOW",
+        "2026-07-25:GREEN"
       ],
       "daily_stats": {
         "2026-07-23": {
@@ -376,7 +387,8 @@
         "2026-07-19:YELLOW",
         "2026-07-20:YELLOW",
         "2026-07-23:RED",
-        "2026-07-24:YELLOW"
+        "2026-07-24:YELLOW",
+        "2026-07-25:YELLOW"
       ],
       "daily_stats": {
         "2026-07-23": {
@@ -412,7 +424,8 @@
         "2026-07-19:DISABLED",
         "2026-07-20:YELLOW",
         "2026-07-23:YELLOW",
-        "2026-07-24:YELLOW"
+        "2026-07-24:YELLOW",
+        "2026-07-25:DISABLED"
       ],
       "daily_stats": {}
     },
@@ -441,7 +454,8 @@
         "2026-07-19:DISABLED",
         "2026-07-20:YELLOW",
         "2026-07-23:YELLOW",
-        "2026-07-24:YELLOW"
+        "2026-07-24:YELLOW",
+        "2026-07-25:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -455,22 +469,23 @@
       "quality_sum": 0,
       "generation_time_sum": 0,
       "publish_time_sum": 0,
-      "consecutive_failures": 5,
+      "consecutive_failures": 0,
       "average_quality": 0,
       "publish_rate": 0,
       "duplicate_rate": 0,
       "failure_rate": 0.71,
-      "last_success": "2026-07-23T08:00:33.342Z",
-      "last_fetch": "2026-07-23T20:30:47.320Z",
+      "last_success": "2026-07-24T21:00:20.785Z",
+      "last_fetch": "2026-07-24T21:00:20.785Z",
       "last_failure": "2026-07-23T20:30:47.320Z",
-      "health": "DISABLED",
+      "health": "YELLOW",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:DISABLED",
         "2026-07-19:RED",
         "2026-07-20:DISABLED",
         "2026-07-23:RED",
-        "2026-07-24:DISABLED"
+        "2026-07-24:DISABLED",
+        "2026-07-25:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -484,22 +499,23 @@
       "quality_sum": 0,
       "generation_time_sum": 0,
       "publish_time_sum": 0,
-      "consecutive_failures": 5,
+      "consecutive_failures": 0,
       "average_quality": 0,
       "publish_rate": 0,
       "duplicate_rate": 0,
       "failure_rate": 0.71,
-      "last_success": "2026-07-23T08:00:34.005Z",
-      "last_fetch": "2026-07-23T20:30:47.942Z",
+      "last_success": "2026-07-24T21:00:21.601Z",
+      "last_fetch": "2026-07-24T21:00:21.601Z",
       "last_failure": "2026-07-23T20:30:47.942Z",
-      "health": "DISABLED",
+      "health": "YELLOW",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:DISABLED",
         "2026-07-19:RED",
         "2026-07-20:DISABLED",
         "2026-07-23:RED",
-        "2026-07-24:DISABLED"
+        "2026-07-24:DISABLED",
+        "2026-07-25:YELLOW"
       ],
       "daily_stats": {}
     },
@@ -528,7 +544,8 @@
         "2026-07-19:YELLOW",
         "2026-07-20:YELLOW",
         "2026-07-23:RED",
-        "2026-07-24:YELLOW"
+        "2026-07-24:YELLOW",
+        "2026-07-25:YELLOW"
       ],
       "daily_stats": {}
     }

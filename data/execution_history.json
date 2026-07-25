@@ -1,5 +1,35 @@
 [
   {
+    "execution_id": 1784961027955,
+    "triggered_at": "2026-07-25T06:30:27.955Z",
+    "completed_at": "2026-07-25T06:30:27.955Z",
+    "status": "quality_rejected",
+    "rss_source": "GSMArena",
+    "article_id": "art-1784960979197-849obb",
+    "article_title": "جوال سامسونج Galaxy Watch9: تحديث صغير",
+    "quality_score": 45,
+    "quality_grade": "D",
+    "quality_dimensions": {
+      "info": 11,
+      "flow": 3,
+      "headline": 10,
+      "intro": 6,
+      "readability": 1,
+      "tech": 11,
+      "seo": 3
+    },
+    "quality_override": false,
+    "override_level": 0,
+    "word_count": 93,
+    "failure_reasons": [
+      "المعلومات ضعيف (11/38)",
+      "التدقق ضعيف (3/15)",
+      "المقدمة ضعيف (6/10)",
+      "القراءة ضعيف (1/5)",
+      "SEO ضعيف (3/5)"
+    ]
+  },
+  {
     "execution_id": 1784960865692,
     "triggered_at": "2026-07-25T06:27:45.692Z",
     "completed_at": "2026-07-25T06:27:45.692Z",

@@ -1,5 +1,21 @@
 [
   {
+    "execution_id": 1784961163941,
+    "triggered_at": "2026-07-25T06:32:43.941Z",
+    "completed_at": "2026-07-25T06:32:43.941Z",
+    "status": "quality_rejected",
+    "rss_source": "AIT News",
+    "article_id": "art-1784961122056-mlyi8v",
+    "article_title": "",
+    "quality_score": 0,
+    "quality_grade": "",
+    "quality_dimensions": {},
+    "quality_override": false,
+    "override_level": 0,
+    "word_count": 0,
+    "failure_reasons": []
+  },
+  {
     "execution_id": 1784961027955,
     "triggered_at": "2026-07-25T06:30:27.955Z",
     "completed_at": "2026-07-25T06:30:27.955Z",

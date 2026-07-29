@@ -1,5 +1,21 @@
 [
   {
+    "execution_id": 1785344931012,
+    "triggered_at": "2026-07-29T17:08:51.012Z",
+    "completed_at": "2026-07-29T17:08:51.012Z",
+    "status": "quality_rejected",
+    "rss_source": "التقنية بلا حدود",
+    "article_id": "art-1785344821326-03rxh6",
+    "article_title": "",
+    "quality_score": 0,
+    "quality_grade": "",
+    "quality_dimensions": {},
+    "quality_override": false,
+    "override_level": 0,
+    "word_count": 0,
+    "failure_reasons": []
+  },
+  {
     "execution_id": 1785344219021,
     "triggered_at": "2026-07-29T16:56:59.021Z",
     "completed_at": "2026-07-29T16:56:59.021Z",

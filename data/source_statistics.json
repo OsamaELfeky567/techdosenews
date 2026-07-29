@@ -51,7 +51,7 @@
       "last_success": "2026-07-29T15:04:27.970Z",
       "last_fetch": "2026-07-29T15:06:37.047Z",
       "last_failure": null,
-      "health": "YELLOW",
+      "health": "GREEN",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -490,7 +490,7 @@
       "last_success": "2026-07-29T15:04:37.765Z",
       "last_fetch": "2026-07-29T15:04:37.765Z",
       "last_failure": "2026-07-27T04:01:02.510Z",
-      "health": "RED",
+      "health": "YELLOW",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",

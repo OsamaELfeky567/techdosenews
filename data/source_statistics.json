@@ -398,7 +398,7 @@
       "last_success": "2026-07-25T12:00:24.823Z",
       "last_fetch": "2026-07-29T15:30:39.547Z",
       "last_failure": "2026-07-29T15:30:39.547Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",

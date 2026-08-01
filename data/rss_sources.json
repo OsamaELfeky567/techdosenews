@@ -162,7 +162,7 @@
     "lang": "en",
     "tier": 3,
     "priority": 14,
-    "enabled": true,
+    "enabled": false,
     "trust_score": 78,
     "category": "hardware",
     "dynamic_priority": 15

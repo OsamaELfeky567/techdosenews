@@ -33,7 +33,7 @@
     "enabled": false,
     "trust_score": 96,
     "category": "general",
-    "dynamic_priority": 12
+    "dynamic_priority": 999
   },
   {
     "id": "aitnews",
@@ -57,7 +57,7 @@
     "enabled": true,
     "trust_score": 90,
     "category": "startups",
-    "dynamic_priority": 13
+    "dynamic_priority": 11
   },
   {
     "id": "verge",
@@ -117,7 +117,7 @@
     "enabled": true,
     "trust_score": 86,
     "category": "hardware",
-    "dynamic_priority": 11
+    "dynamic_priority": 12
   },
   {
     "id": "techxar",
@@ -153,7 +153,7 @@
     "enabled": true,
     "trust_score": 80,
     "category": "ai",
-    "dynamic_priority": 14
+    "dynamic_priority": 13
   },
   {
     "id": "nvidia",
@@ -162,10 +162,10 @@
     "lang": "en",
     "tier": 3,
     "priority": 14,
-    "enabled": false,
+    "enabled": true,
     "trust_score": 78,
     "category": "hardware",
-    "dynamic_priority": 15
+    "dynamic_priority": 14
   },
   {
     "id": "msai",
@@ -177,7 +177,7 @@
     "enabled": true,
     "trust_score": 76,
     "category": "ai",
-    "dynamic_priority": 999
+    "dynamic_priority": 15
   },
   {
     "id": "googleai",
@@ -189,7 +189,7 @@
     "enabled": true,
     "trust_score": 75,
     "category": "ai",
-    "dynamic_priority": 999
+    "dynamic_priority": 16
   },
   {
     "id": "zdnetai",

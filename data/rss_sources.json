@@ -42,7 +42,7 @@
     "lang": "ar",
     "tier": 1,
     "priority": 4,
-    "enabled": false,
+    "enabled": true,
     "trust_score": 95,
     "category": "general",
     "dynamic_priority": 999

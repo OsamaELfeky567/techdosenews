@@ -18,7 +18,7 @@
       "last_success": "2026-08-03T14:00:31.628Z",
       "last_fetch": "2026-08-03T14:00:31.628Z",
       "last_failure": null,
-      "health": "YELLOW",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -34,7 +34,8 @@
         "2026-07-31:YELLOW",
         "2026-08-01:YELLOW",
         "2026-08-02:YELLOW",
-        "2026-08-03:YELLOW"
+        "2026-08-03:YELLOW",
+        "2026-08-08:RED"
       ],
       "daily_stats": {}
     },
@@ -51,12 +52,12 @@
       "consecutive_failures": 0,
       "average_quality": 70.7,
       "publish_rate": 0.14,
-      "duplicate_rate": 0.38,
+      "duplicate_rate": 0.37,
       "failure_rate": 0,
       "last_success": "2026-08-03T14:00:27.381Z",
       "last_fetch": "2026-08-03T14:00:52.074Z",
       "last_failure": null,
-      "health": "GREEN",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -72,7 +73,8 @@
         "2026-07-31:YELLOW",
         "2026-08-01:GREEN",
         "2026-08-02:GREEN",
-        "2026-08-03:GREEN"
+        "2026-08-03:GREEN",
+        "2026-08-08:RED"
       ],
       "daily_stats": {
         "2026-07-20": {
@@ -157,11 +159,11 @@
       "average_quality": 66.3,
       "publish_rate": 0.03,
       "duplicate_rate": 0.03,
-      "failure_rate": 0.16,
+      "failure_rate": 0.17,
       "last_success": "2026-08-02T20:00:33.388Z",
       "last_fetch": "2026-08-03T14:00:31.267Z",
       "last_failure": "2026-08-03T14:00:31.267Z",
-      "health": "YELLOW",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -177,7 +179,8 @@
         "2026-07-31:YELLOW",
         "2026-08-01:YELLOW",
         "2026-08-02:DISABLED",
-        "2026-08-03:YELLOW"
+        "2026-08-03:YELLOW",
+        "2026-08-08:RED"
       ],
       "daily_stats": {
         "2026-08-02": {
@@ -206,7 +209,7 @@
       "last_success": "2026-08-03T14:00:37.151Z",
       "last_fetch": "2026-08-03T14:00:37.151Z",
       "last_failure": "2026-08-02T05:30:30.376Z",
-      "health": "YELLOW",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -222,7 +225,8 @@
         "2026-07-31:YELLOW",
         "2026-08-01:YELLOW",
         "2026-08-02:RED",
-        "2026-08-03:DISABLED"
+        "2026-08-03:DISABLED",
+        "2026-08-08:RED"
       ],
       "daily_stats": {
         "2026-07-31": {
@@ -251,7 +255,7 @@
       "last_success": "2026-08-03T14:00:33.270Z",
       "last_fetch": "2026-08-03T14:00:33.270Z",
       "last_failure": "2026-07-25T12:00:42.016Z",
-      "health": "YELLOW",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -267,7 +271,8 @@
         "2026-07-31:YELLOW",
         "2026-08-01:YELLOW",
         "2026-08-02:YELLOW",
-        "2026-08-03:YELLOW"
+        "2026-08-03:YELLOW",
+        "2026-08-08:RED"
       ],
       "daily_stats": {}
     },
@@ -289,7 +294,7 @@
       "last_success": "2026-08-03T14:00:31.853Z",
       "last_fetch": "2026-08-03T14:00:31.853Z",
       "last_failure": null,
-      "health": "YELLOW",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -305,7 +310,8 @@
         "2026-07-31:YELLOW",
         "2026-08-01:YELLOW",
         "2026-08-02:YELLOW",
-        "2026-08-03:YELLOW"
+        "2026-08-03:YELLOW",
+        "2026-08-08:RED"
       ],
       "daily_stats": {}
     },
@@ -327,7 +333,7 @@
       "last_success": "2026-08-03T14:00:32.135Z",
       "last_fetch": "2026-08-03T14:00:32.135Z",
       "last_failure": "2026-08-02T20:00:29.956Z",
-      "health": "YELLOW",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -343,7 +349,8 @@
         "2026-07-31:YELLOW",
         "2026-08-01:YELLOW",
         "2026-08-02:YELLOW",
-        "2026-08-03:YELLOW"
+        "2026-08-03:YELLOW",
+        "2026-08-08:RED"
       ],
       "daily_stats": {}
     },
@@ -365,7 +372,7 @@
       "last_success": "2026-08-03T14:00:32.628Z",
       "last_fetch": "2026-08-03T14:00:32.628Z",
       "last_failure": "2026-07-23T00:00:42.824Z",
-      "health": "YELLOW",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -381,7 +388,8 @@
         "2026-07-31:YELLOW",
         "2026-08-01:YELLOW",
         "2026-08-02:YELLOW",
-        "2026-08-03:YELLOW"
+        "2026-08-03:YELLOW",
+        "2026-08-08:RED"
       ],
       "daily_stats": {}
     },
@@ -399,11 +407,11 @@
       "average_quality": 65,
       "publish_rate": 0.01,
       "duplicate_rate": 0,
-      "failure_rate": 0.04,
+      "failure_rate": 0.03,
       "last_success": "2026-08-03T14:00:28.047Z",
       "last_fetch": "2026-08-03T14:00:28.047Z",
       "last_failure": "2026-07-18T21:30:43.685Z",
-      "health": "YELLOW",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -419,7 +427,8 @@
         "2026-07-31:YELLOW",
         "2026-08-01:YELLOW",
         "2026-08-02:YELLOW",
-        "2026-08-03:YELLOW"
+        "2026-08-03:YELLOW",
+        "2026-08-08:RED"
       ],
       "daily_stats": {
         "2026-07-25": {
@@ -448,7 +457,7 @@
       "last_success": "2026-08-03T14:00:33.998Z",
       "last_fetch": "2026-08-03T14:00:33.998Z",
       "last_failure": "2026-07-23T10:00:38.384Z",
-      "health": "YELLOW",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -464,7 +473,8 @@
         "2026-07-31:YELLOW",
         "2026-08-01:YELLOW",
         "2026-08-02:YELLOW",
-        "2026-08-03:YELLOW"
+        "2026-08-03:YELLOW",
+        "2026-08-08:RED"
       ],
       "daily_stats": {}
     },
@@ -486,7 +496,7 @@
       "last_success": "2026-08-03T14:00:38.650Z",
       "last_fetch": "2026-08-03T14:00:38.650Z",
       "last_failure": "2026-08-02T13:30:24.677Z",
-      "health": "GREEN",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -502,7 +512,8 @@
         "2026-07-31:GREEN",
         "2026-08-01:GREEN",
         "2026-08-02:GREEN",
-        "2026-08-03:DISABLED"
+        "2026-08-03:DISABLED",
+        "2026-08-08:RED"
       ],
       "daily_stats": {
         "2026-07-23": {
@@ -543,7 +554,7 @@
       "last_success": "2026-08-03T14:00:29.822Z",
       "last_fetch": "2026-08-03T14:00:29.822Z",
       "last_failure": "2026-07-29T15:30:38.119Z",
-      "health": "YELLOW",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -559,7 +570,8 @@
         "2026-07-31:YELLOW",
         "2026-08-01:YELLOW",
         "2026-08-02:YELLOW",
-        "2026-08-03:YELLOW"
+        "2026-08-03:YELLOW",
+        "2026-08-08:RED"
       ],
       "daily_stats": {
         "2026-07-23": {
@@ -596,11 +608,11 @@
       "average_quality": 0,
       "publish_rate": 0,
       "duplicate_rate": 0,
-      "failure_rate": 0.44,
+      "failure_rate": 0.45,
       "last_success": "2026-08-03T14:00:22.553Z",
       "last_fetch": "2026-08-03T14:00:38.930Z",
       "last_failure": "2026-08-03T14:00:38.930Z",
-      "health": "YELLOW",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -616,7 +628,8 @@
         "2026-07-31:YELLOW",
         "2026-08-01:YELLOW",
         "2026-08-02:YELLOW",
-        "2026-08-03:DISABLED"
+        "2026-08-03:DISABLED",
+        "2026-08-08:RED"
       ],
       "daily_stats": {}
     },
@@ -638,7 +651,7 @@
       "last_success": "2026-08-03T14:00:23.097Z",
       "last_fetch": "2026-08-03T14:00:39.221Z",
       "last_failure": "2026-08-03T14:00:39.221Z",
-      "health": "YELLOW",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -654,7 +667,8 @@
         "2026-07-31:RED",
         "2026-08-01:RED",
         "2026-08-02:YELLOW",
-        "2026-08-03:DISABLED"
+        "2026-08-03:DISABLED",
+        "2026-08-08:RED"
       ],
       "daily_stats": {}
     },
@@ -672,11 +686,11 @@
       "average_quality": 0,
       "publish_rate": 0,
       "duplicate_rate": 0,
-      "failure_rate": 0.79,
+      "failure_rate": 0.8,
       "last_success": "2026-08-03T05:30:21.386Z",
       "last_fetch": "2026-08-03T14:00:34.528Z",
       "last_failure": "2026-08-03T14:00:34.528Z",
-      "health": "YELLOW",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:DISABLED",
@@ -692,7 +706,8 @@
         "2026-07-31:YELLOW",
         "2026-08-01:DISABLED",
         "2026-08-02:RED",
-        "2026-08-03:DISABLED"
+        "2026-08-03:DISABLED",
+        "2026-08-08:RED"
       ],
       "daily_stats": {}
     },
@@ -710,11 +725,11 @@
       "average_quality": 0,
       "publish_rate": 0,
       "duplicate_rate": 0,
-      "failure_rate": 0.79,
+      "failure_rate": 0.8,
       "last_success": "2026-08-03T05:30:22.031Z",
       "last_fetch": "2026-08-03T14:00:35.203Z",
       "last_failure": "2026-08-03T14:00:35.203Z",
-      "health": "YELLOW",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:DISABLED",
@@ -730,7 +745,8 @@
         "2026-07-31:YELLOW",
         "2026-08-01:DISABLED",
         "2026-08-02:RED",
-        "2026-08-03:DISABLED"
+        "2026-08-03:DISABLED",
+        "2026-08-08:RED"
       ],
       "daily_stats": {}
     },
@@ -752,7 +768,7 @@
       "last_success": "2026-08-03T14:00:33.046Z",
       "last_fetch": "2026-08-03T14:00:33.046Z",
       "last_failure": "2026-07-24T15:30:42.557Z",
-      "health": "YELLOW",
+      "health": "RED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -768,10 +784,11 @@
         "2026-07-31:YELLOW",
         "2026-08-01:YELLOW",
         "2026-08-02:YELLOW",
-        "2026-08-03:YELLOW"
+        "2026-08-03:YELLOW",
+        "2026-08-08:RED"
       ],
       "daily_stats": {}
     }
   },
-  "last_ranking_update": "2026-08-03T05:30:22.034Z"
+  "last_ranking_update": "2026-08-08T06:00:21.035Z"
 }

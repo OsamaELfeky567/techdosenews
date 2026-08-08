@@ -1,5 +1,92 @@
 [
   {
+    "id": "art-1786221029430-66avtb",
+    "title": "Microsoft تتراجع عن توصية مستخدمي Windows 11 بـ 32 جيجابايت رام",
+    "excerpt": "تتراجع Microsoft عن توصية مستخدمي Windows 11 بامتلاك 32 جيجابايت رام، في خطوة تتزامن مع أزمة نقص الرامات وارتفاع أسعارها.",
+    "body": "<p>## التوقعات المستقبلية</p><p>تتراجع <strong>Microsoft</strong> عن توصية مستخدمي <strong><strong>Windows 11</strong></strong> بامتلاك 32 جيجابايت رام، في خطوة تتزامن مع أزمة نقص الرامات وارتفاع أسعارها.. كانت المعلومات المحذوفة متاحة سابقًا عبر إحدى صفحات الويب التابعة لـ Microsoft، قبل أن تختفي ويُصبح الوصول إليها يؤدي إلى خطأ 404.. وتضمنت الصفحة آنذاك توصيات بشأن احتياجات الألعاب للرامات، حيث أشارت <strong>Microsoft</strong> إلى أن 16 جيجابايت تكفي لمعظم الألعاب، بينما اعتبرت 32 جيجابايت الخيار المثالي للاعبين الذين يشغّلون الألعاب الأكثر تطلبًا أو يُفعّلون أعلى الإعدادات.. كما أوصت الشركة بامتلاك وحدة <strong>SSD</strong> بسعة 1 تيرابايت لمن يحتفظون بمكتبة ألعاب كبيرة.. إلا أن هذه التوصيات أصبحت أكثر صعوبة في التطبيق مع الارتفاع الحاد في أسعار الرامات ووحدات التخزين، نتيجة أزمة الـ DRAM، ما يجعل ترقية الأجهزة إلى سعات مرتفعة مكلفة بالنسبة إلى معظم المستخدمين.. في المقابل، يبدو أن <strong>Microsoft</strong> باتت تولي اهتمامًا أكبر لتحسين كفاءة Windows 11، خصوصًا مع استمرار طرح أجهزة تعتمد على 8 جيجابايت فقط من الرام.. وتكشف أرقام استهلاك الذاكرة عن حجم المشكلة؛ إذ استهلك جهاز يعمل بنظام <strong><strong>Windows 11</strong></strong> نحو 7.8 جيجابايت من أصل 32 جيجابايت من RAM، رغم عدم تشغيل أي برنامج أو متصفح.. ورغم أن جزءًا من هذه الذاكرة يُستخدم في التخزين المؤقت، فإن الاستهلاك المرتفع يظل محل انتقاد، خصوصًا على الأجهزة المزودة بسعة 8 جيجابايت فقط.. وتبدو الصورة أكثر وضوحًا على بعض الحواسيب المحمولة، إذ أُشير إلى أن جهاز Dell XPS 13 يستهلك نحو 70% من الرامات البالغة 8 جيجابايت حتى قبل تشغيل أي تطبيقات في <strong><strong>Windows 11</strong></strong>.. وكان بافان دافولوري Pavan Davuluri. رئيس قطاع Windows والأجهزة في Microsoft، قد أكد أن الشركة تعمل على جعل <strong><strong>Windows 11</strong></strong> أكثر كفاءة في استخدام الذاكرة مستقبلًا، وهو ما قد يخفف الضغط عن ملايين المستخدمين الذين يعتمدون على أجهزة برامات 8 جيجابايت.</p>",
+    "category": "companies | technology | hardware",
+    "tags": [
+      "Microsoft",
+      "Windows 11",
+      "RAM",
+      "DRAM",
+      "Acer"
+    ],
+    "image": "https://arabhardware.net/storage/uploads/2026-08/6a77820800acc.2026080713385467368main6a77820808aaa.webp",
+    "image_source": "rss_enclosure",
+    "image_provider": "rss",
+    "image_query": "",
+    "image_type": "article_main",
+    "image_confidence": 85,
+    "date": "2026-08-08T20:30:33.815Z",
+    "readTime": "2 min read",
+    "views": "0",
+    "hasEgyptImpact": false,
+    "source": "عرب هاردوير",
+    "link": "https://arabhardware.net/post-54523",
+    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786221029430-66avtb",
+    "status": "published",
+    "seo_title": "Microsoft تتراجع عن توصية مستخدمي Windows 11",
+    "meta_description": "تتراجع Microsoft عن توصية مستخدمي Windows 11 بامتلاك 32 جيجابايت رام",
+    "seo_slug": "microsoft-tetrak-3-32-gb-ram",
+    "focus_keyword": "Microsoft تتراجع عن توصية مستخدمي Windows 11",
+    "secondary_keywords": [
+      "Windows 11",
+      "RAM",
+      "DRAM",
+      "Acer"
+    ],
+    "primary_company": "Microsoft",
+    "secondary_company": "Acer",
+    "products": [
+      "Windows 11"
+    ],
+    "devices": [
+      "Dell XPS 13"
+    ],
+    "technologies": [
+      "DRAM",
+      "SSD"
+    ],
+    "ai_models": [],
+    "os": [
+      "Windows 11"
+    ],
+    "chipsets": [],
+    "browsers": [],
+    "cloud_platforms": [],
+    "languages": [],
+    "opensource_projects": [],
+    "executives": [
+      "Pavan Davuluri"
+    ],
+    "markets": [
+      "hardware market"
+    ],
+    "countries": [],
+    "people": [],
+    "stocks": [],
+    "investors": [],
+    "image_queries": [
+      "Microsoft Windows 11 RAM",
+      "DRAM shortage",
+      "Acer hardware"
+    ],
+    "internal_links": [
+      {
+        "title": "نقص ذواكر DRAM يؤثر على إنتاج iPhone 18",
+        "id": "art-1786195836881-3227fh",
+        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786195836881-3227fh"
+      },
+      {
+        "title": "دعوى قضائية ضد سامسونغ وإس كيه هاينكس وميكرون بتهمة التلاعب بأسعار ذاكرة DRAM",
+        "id": "art-1782833421161-39vesg",
+        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782833421161-39vesg"
+      }
+    ],
+    "quality_score": 67
+  },
+  {
     "id": "art-1786195836881-3227fh",
     "title": "نقص ذواكر DRAM يؤثر على إنتاج iPhone 18",
     "excerpt": "تقرير جديد يشير إلى أن Apple تواجه صعوبات في تأمين ذواكر DRAM اللازمة لإنتاج iPhone 18",

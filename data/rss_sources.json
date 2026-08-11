@@ -30,10 +30,10 @@
     "lang": "ar",
     "tier": 1,
     "priority": 3,
-    "enabled": false,
+    "enabled": true,
     "trust_score": 96,
     "category": "general",
-    "dynamic_priority": 4
+    "dynamic_priority": 5
   },
   {
     "id": "aitnews",
@@ -129,7 +129,7 @@
     "enabled": true,
     "trust_score": 87,
     "category": "general",
-    "dynamic_priority": 5
+    "dynamic_priority": 4
   },
   {
     "id": "mitrev",
@@ -174,7 +174,7 @@
     "lang": "en",
     "tier": 3,
     "priority": 15,
-    "enabled": false,
+    "enabled": true,
     "trust_score": 76,
     "category": "ai",
     "dynamic_priority": 16
@@ -186,7 +186,7 @@
     "lang": "en",
     "tier": 3,
     "priority": 16,
-    "enabled": false,
+    "enabled": true,
     "trust_score": 75,
     "category": "ai",
     "dynamic_priority": 17

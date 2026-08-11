@@ -1,8 +1,8 @@
 {
   "stats": {
     "bbcar": {
-      "fetch_count": 89,
-      "valid_articles": 908,
+      "fetch_count": 90,
+      "valid_articles": 920,
       "published_articles": 0,
       "duplicate_articles": 0,
       "rejected_articles": 0,
@@ -15,8 +15,8 @@
       "publish_rate": 0,
       "duplicate_rate": 0,
       "failure_rate": 0,
-      "last_success": "2026-08-11T16:30:30.673Z",
-      "last_fetch": "2026-08-11T16:30:30.673Z",
+      "last_success": "2026-08-11T18:30:42.186Z",
+      "last_fetch": "2026-08-11T18:30:42.186Z",
       "last_failure": null,
       "health": "YELLOW",
       "health_history": [
@@ -42,22 +42,22 @@
       "daily_stats": {}
     },
     "arabhd": {
-      "fetch_count": 300,
-      "valid_articles": 475,
-      "published_articles": 44,
+      "fetch_count": 302,
+      "valid_articles": 479,
+      "published_articles": 45,
       "duplicate_articles": 167,
       "rejected_articles": 0,
       "failed_fetches": 0,
-      "quality_sum": 3102,
-      "generation_time_sum": 1123010,
+      "quality_sum": 3174,
+      "generation_time_sum": 1171147,
       "publish_time_sum": 0,
       "consecutive_failures": 0,
       "average_quality": 70.5,
       "publish_rate": 0.15,
       "duplicate_rate": 0.36,
       "failure_rate": 0,
-      "last_success": "2026-08-11T16:30:24.460Z",
-      "last_fetch": "2026-08-11T16:30:24.460Z",
+      "last_success": "2026-08-11T18:30:21.490Z",
+      "last_fetch": "2026-08-11T18:31:39.734Z",
       "last_failure": null,
       "health": "GREEN",
       "health_history": [
@@ -152,27 +152,33 @@
           "quality_sum": 204,
           "failures": 0,
           "duplicates": 0
+        },
+        "2026-08-11": {
+          "published": 1,
+          "quality_sum": 72,
+          "failures": 0,
+          "duplicates": 0
         }
       }
     },
     "techwd": {
-      "fetch_count": 94,
+      "fetch_count": 95,
       "valid_articles": 457,
       "published_articles": 3,
       "duplicate_articles": 12,
       "rejected_articles": 0,
-      "failed_fetches": 20,
+      "failed_fetches": 21,
       "quality_sum": 199,
       "generation_time_sum": 92522,
       "publish_time_sum": 0,
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "average_quality": 66.3,
       "publish_rate": 0.03,
       "duplicate_rate": 0.03,
       "failure_rate": 0.2,
       "last_success": "2026-08-11T16:00:21.998Z",
-      "last_fetch": "2026-08-11T16:30:28.911Z",
-      "last_failure": "2026-08-11T16:30:28.911Z",
+      "last_fetch": "2026-08-11T18:30:26.841Z",
+      "last_failure": "2026-08-11T18:30:26.841Z",
       "health": "YELLOW",
       "health_history": [
         "2026-07-17:RED",
@@ -204,23 +210,23 @@
       }
     },
     "aitnews": {
-      "fetch_count": 88,
+      "fetch_count": 89,
       "valid_articles": 157,
       "published_articles": 4,
       "duplicate_articles": 9,
       "rejected_articles": 0,
-      "failed_fetches": 27,
+      "failed_fetches": 28,
       "quality_sum": 271,
       "generation_time_sum": 101172,
       "publish_time_sum": 0,
-      "consecutive_failures": 0,
+      "consecutive_failures": 1,
       "average_quality": 67.8,
       "publish_rate": 0.03,
       "duplicate_rate": 0.06,
       "failure_rate": 0.31,
       "last_success": "2026-08-11T16:30:30.408Z",
-      "last_fetch": "2026-08-11T16:32:52.613Z",
-      "last_failure": "2026-08-08T20:30:25.794Z",
+      "last_fetch": "2026-08-11T18:30:41.863Z",
+      "last_failure": "2026-08-11T18:30:41.863Z",
       "health": "YELLOW",
       "health_history": [
         "2026-07-17:RED",
@@ -264,8 +270,8 @@
       }
     },
     "techcr": {
-      "fetch_count": 89,
-      "valid_articles": 1094,
+      "fetch_count": 90,
+      "valid_articles": 1114,
       "published_articles": 0,
       "duplicate_articles": 0,
       "rejected_articles": 0,
@@ -278,8 +284,8 @@
       "publish_rate": 0,
       "duplicate_rate": 0,
       "failure_rate": 0.1,
-      "last_success": "2026-08-11T16:30:32.136Z",
-      "last_fetch": "2026-08-11T16:30:32.136Z",
+      "last_success": "2026-08-11T18:30:43.948Z",
+      "last_fetch": "2026-08-11T18:30:43.948Z",
       "last_failure": "2026-07-25T12:00:42.016Z",
       "health": "YELLOW",
       "health_history": [
@@ -305,8 +311,8 @@
       "daily_stats": {}
     },
     "verge": {
-      "fetch_count": 89,
-      "valid_articles": 734,
+      "fetch_count": 90,
+      "valid_articles": 744,
       "published_articles": 0,
       "duplicate_articles": 0,
       "rejected_articles": 0,
@@ -319,8 +325,8 @@
       "publish_rate": 0,
       "duplicate_rate": 0,
       "failure_rate": 0,
-      "last_success": "2026-08-11T16:30:30.877Z",
-      "last_fetch": "2026-08-11T16:30:30.877Z",
+      "last_success": "2026-08-11T18:30:42.446Z",
+      "last_fetch": "2026-08-11T18:30:42.446Z",
       "last_failure": null,
       "health": "YELLOW",
       "health_history": [
@@ -346,8 +352,8 @@
       "daily_stats": {}
     },
     "arstech": {
-      "fetch_count": 89,
-      "valid_articles": 734,
+      "fetch_count": 90,
+      "valid_articles": 746,
       "published_articles": 0,
       "duplicate_articles": 0,
       "rejected_articles": 0,
@@ -360,8 +366,8 @@
       "publish_rate": 0,
       "duplicate_rate": 0,
       "failure_rate": 0.02,
-      "last_success": "2026-08-11T16:30:31.038Z",
-      "last_fetch": "2026-08-11T16:30:31.038Z",
+      "last_success": "2026-08-11T18:30:42.719Z",
+      "last_fetch": "2026-08-11T18:30:42.719Z",
       "last_failure": "2026-08-02T20:00:29.956Z",
       "health": "YELLOW",
       "health_history": [
@@ -387,8 +393,8 @@
       "daily_stats": {}
     },
     "gsmarena": {
-      "fetch_count": 89,
-      "valid_articles": 1088,
+      "fetch_count": 90,
+      "valid_articles": 1108,
       "published_articles": 0,
       "duplicate_articles": 0,
       "rejected_articles": 0,
@@ -401,8 +407,8 @@
       "publish_rate": 0,
       "duplicate_rate": 0,
       "failure_rate": 0.03,
-      "last_success": "2026-08-11T16:30:31.523Z",
-      "last_fetch": "2026-08-11T16:30:31.523Z",
+      "last_success": "2026-08-11T18:30:43.204Z",
+      "last_fetch": "2026-08-11T18:30:43.204Z",
       "last_failure": "2026-07-23T00:00:42.824Z",
       "health": "YELLOW",
       "health_history": [
@@ -428,8 +434,8 @@
       "daily_stats": {}
     },
     "androidauth": {
-      "fetch_count": 92,
-      "valid_articles": 2239,
+      "fetch_count": 93,
+      "valid_articles": 2275,
       "published_articles": 1,
       "duplicate_articles": 2,
       "rejected_articles": 0,
@@ -442,8 +448,8 @@
       "publish_rate": 0.01,
       "duplicate_rate": 0,
       "failure_rate": 0.03,
-      "last_success": "2026-08-11T16:30:25.016Z",
-      "last_fetch": "2026-08-11T16:30:25.016Z",
+      "last_success": "2026-08-11T18:30:22.170Z",
+      "last_fetch": "2026-08-11T18:30:22.170Z",
       "last_failure": "2026-07-18T21:30:43.685Z",
       "health": "YELLOW",
       "health_history": [
@@ -476,8 +482,8 @@
       }
     },
     "tomshw": {
-      "fetch_count": 89,
-      "valid_articles": 1234,
+      "fetch_count": 90,
+      "valid_articles": 1251,
       "published_articles": 0,
       "duplicate_articles": 0,
       "rejected_articles": 0,
@@ -490,8 +496,8 @@
       "publish_rate": 0,
       "duplicate_rate": 0,
       "failure_rate": 0.09,
-      "last_success": "2026-08-11T16:30:32.760Z",
-      "last_fetch": "2026-08-11T16:30:32.760Z",
+      "last_success": "2026-08-11T18:30:44.758Z",
+      "last_fetch": "2026-08-11T18:30:44.758Z",
       "last_failure": "2026-07-23T10:00:38.384Z",
       "health": "YELLOW",
       "health_history": [
@@ -517,8 +523,8 @@
       "daily_stats": {}
     },
     "techxar": {
-      "fetch_count": 106,
-      "valid_articles": 157,
+      "fetch_count": 107,
+      "valid_articles": 164,
       "published_articles": 6,
       "duplicate_articles": 29,
       "rejected_articles": 0,
@@ -531,8 +537,8 @@
       "publish_rate": 0.06,
       "duplicate_rate": 0.19,
       "failure_rate": 0.21,
-      "last_success": "2026-08-11T16:30:27.577Z",
-      "last_fetch": "2026-08-11T16:30:27.577Z",
+      "last_success": "2026-08-11T18:30:25.285Z",
+      "last_fetch": "2026-08-11T18:30:25.285Z",
       "last_failure": "2026-08-02T13:30:24.677Z",
       "health": "GREEN",
       "health_history": [
@@ -583,8 +589,8 @@
       }
     },
     "mitrev": {
-      "fetch_count": 102,
-      "valid_articles": 115,
+      "fetch_count": 103,
+      "valid_articles": 116,
       "published_articles": 3,
       "duplicate_articles": 10,
       "rejected_articles": 0,
@@ -597,8 +603,8 @@
       "publish_rate": 0.03,
       "duplicate_rate": 0.09,
       "failure_rate": 0.07,
-      "last_success": "2026-08-11T16:30:26.655Z",
-      "last_fetch": "2026-08-11T16:30:26.655Z",
+      "last_success": "2026-08-11T18:30:24.266Z",
+      "last_fetch": "2026-08-11T18:30:24.266Z",
       "last_failure": "2026-07-29T15:30:38.119Z",
       "health": "YELLOW",
       "health_history": [
@@ -643,8 +649,8 @@
       }
     },
     "openai": {
-      "fetch_count": 66,
-      "valid_articles": 77,
+      "fetch_count": 67,
+      "valid_articles": 78,
       "published_articles": 0,
       "duplicate_articles": 0,
       "rejected_articles": 0,
@@ -657,8 +663,8 @@
       "publish_rate": 0,
       "duplicate_rate": 0,
       "failure_rate": 0.43,
-      "last_success": "2026-08-11T16:30:33.119Z",
-      "last_fetch": "2026-08-11T16:30:33.119Z",
+      "last_success": "2026-08-11T18:30:45.113Z",
+      "last_fetch": "2026-08-11T18:30:45.113Z",
       "last_failure": "2026-08-08T20:30:28.786Z",
       "health": "YELLOW",
       "health_history": [
@@ -684,8 +690,8 @@
       "daily_stats": {}
     },
     "nvidia": {
-      "fetch_count": 67,
-      "valid_articles": 48,
+      "fetch_count": 68,
+      "valid_articles": 51,
       "published_articles": 0,
       "duplicate_articles": 0,
       "rejected_articles": 0,
@@ -698,8 +704,8 @@
       "publish_rate": 0,
       "duplicate_rate": 0,
       "failure_rate": 0.53,
-      "last_success": "2026-08-11T16:30:33.547Z",
-      "last_fetch": "2026-08-11T16:30:33.547Z",
+      "last_success": "2026-08-11T18:30:45.847Z",
+      "last_fetch": "2026-08-11T18:30:45.847Z",
       "last_failure": "2026-08-08T09:00:31.723Z",
       "health": "YELLOW",
       "health_history": [
@@ -725,23 +731,23 @@
       "daily_stats": {}
     },
     "msai": {
-      "fetch_count": 45,
+      "fetch_count": 46,
       "valid_articles": 8,
       "published_articles": 0,
       "duplicate_articles": 0,
       "rejected_articles": 0,
-      "failed_fetches": 37,
+      "failed_fetches": 38,
       "quality_sum": 0,
       "generation_time_sum": 0,
       "publish_time_sum": 0,
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "average_quality": 0,
       "publish_rate": 0,
       "duplicate_rate": 0,
       "failure_rate": 0.82,
       "last_success": "2026-08-11T16:00:22.458Z",
-      "last_fetch": "2026-08-11T16:30:33.999Z",
-      "last_failure": "2026-08-11T16:30:33.999Z",
+      "last_fetch": "2026-08-11T18:30:46.288Z",
+      "last_failure": "2026-08-11T18:30:46.288Z",
       "health": "RED",
       "health_history": [
         "2026-07-17:RED",
@@ -766,8 +772,8 @@
       "daily_stats": {}
     },
     "googleai": {
-      "fetch_count": 45,
-      "valid_articles": 8,
+      "fetch_count": 46,
+      "valid_articles": 9,
       "published_articles": 0,
       "duplicate_articles": 0,
       "rejected_articles": 0,
@@ -775,13 +781,13 @@
       "quality_sum": 0,
       "generation_time_sum": 0,
       "publish_time_sum": 0,
-      "consecutive_failures": 1,
+      "consecutive_failures": 0,
       "average_quality": 0,
       "publish_rate": 0,
       "duplicate_rate": 0,
       "failure_rate": 0.82,
-      "last_success": "2026-08-11T16:00:23.300Z",
-      "last_fetch": "2026-08-11T16:30:34.901Z",
+      "last_success": "2026-08-11T18:30:47.117Z",
+      "last_fetch": "2026-08-11T18:30:47.117Z",
       "last_failure": "2026-08-11T16:30:34.901Z",
       "health": "RED",
       "health_history": [
@@ -807,8 +813,8 @@
       "daily_stats": {}
     },
     "zdnetai": {
-      "fetch_count": 89,
-      "valid_articles": 817,
+      "fetch_count": 90,
+      "valid_articles": 827,
       "published_articles": 0,
       "duplicate_articles": 0,
       "rejected_articles": 0,
@@ -821,8 +827,8 @@
       "publish_rate": 0,
       "duplicate_rate": 0,
       "failure_rate": 0.02,
-      "last_success": "2026-08-11T16:30:31.949Z",
-      "last_fetch": "2026-08-11T16:30:31.949Z",
+      "last_success": "2026-08-11T18:30:43.620Z",
+      "last_fetch": "2026-08-11T18:30:43.620Z",
       "last_failure": "2026-08-08T20:30:27.421Z",
       "health": "YELLOW",
       "health_history": [

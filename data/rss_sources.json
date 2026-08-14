@@ -138,7 +138,7 @@
     "lang": "ar",
     "tier": 2,
     "priority": 12,
-    "enabled": true,
+    "enabled": false,
     "trust_score": 93,
     "category": "deep-tech",
     "dynamic_priority": 3
@@ -174,7 +174,7 @@
     "lang": "en",
     "tier": 3,
     "priority": 15,
-    "enabled": true,
+    "enabled": false,
     "trust_score": 76,
     "category": "ai",
     "dynamic_priority": 16

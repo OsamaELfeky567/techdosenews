@@ -1,5 +1,21 @@
 [
   {
+    "execution_id": 1786722431276,
+    "triggered_at": "2026-08-14T15:47:11.276Z",
+    "completed_at": "2026-08-14T15:47:11.276Z",
+    "status": "quality_rejected",
+    "rss_source": "عرب هاردوير",
+    "article_id": "art-1786722273661-82u0k6",
+    "article_title": "",
+    "quality_score": 0,
+    "quality_grade": "",
+    "quality_dimensions": {},
+    "quality_override": false,
+    "override_level": 0,
+    "word_count": 0,
+    "failure_reasons": []
+  },
+  {
     "execution_id": 1786722145920,
     "triggered_at": "2026-08-14T15:42:25.920Z",
     "completed_at": "2026-08-14T15:42:25.920Z",

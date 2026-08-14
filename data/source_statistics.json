@@ -245,7 +245,7 @@
       "last_success": "2026-08-14T13:30:28.022Z",
       "last_fetch": "2026-08-14T14:00:46.085Z",
       "last_failure": "2026-08-14T14:00:46.085Z",
-      "health": "GREEN",
+      "health": "YELLOW",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -652,7 +652,7 @@
       "last_success": "2026-08-12T02:30:23.647Z",
       "last_fetch": "2026-08-14T14:00:27.852Z",
       "last_failure": "2026-08-14T14:00:27.852Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:YELLOW",
@@ -800,7 +800,7 @@
       "last_success": "2026-08-14T06:30:24.923Z",
       "last_fetch": "2026-08-14T14:00:50.677Z",
       "last_failure": "2026-08-14T14:00:50.677Z",
-      "health": "RED",
+      "health": "DISABLED",
       "health_history": [
         "2026-07-17:RED",
         "2026-07-18:DISABLED",

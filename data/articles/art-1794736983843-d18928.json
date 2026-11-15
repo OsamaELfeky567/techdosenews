@@ -1,0 +1,84 @@
+{
+  "id": "art-1794736983843-d18928",
+  "title": "Intel تعلن معالجات Core Ultra 200S بأداء ذكاء اصطناعي محسّن",
+  "excerpt": "أعلنت إنفيديا عن الجيل الجديد من معالجات Core Ultra 200S التي تتميز بوحدة NPU محسّنة لأداء مهام الذكاء الاصطناعي بكفاءة أعلى.",
+  "body": "<p>## الأداء المحسن</p><p>أعلنت <strong>إنفيديا</strong> عن الجيل الجديد من معالجات <strong>Core Ultra 200S</strong> التي تأتي مع تحسينات كبيرة في وحدة المعالجة العصبية (NPU) لتسريع مهام الذكاء الاصطناعي.</p><p>## المواصفات التقنية</p><p>تتميز المعالجات الجديدة بـ:</p><ul><li>بنية Xe2 GPU محسّنة</li><li>وحدة NPU بأداء يصل إلى 48 TOPS</li><li>دعم ذاكرة DDR5-6400</li><li>تقنية Intel Thread Director 2.0</li></ul><p>## التوافر</p><p>من المتوقع أن تصل المعالجات للأسواق في الربع الأول من 2025.</p>",
+  "category": "companies | processors | technology",
+  "tags": [
+    "إنفيديا",
+    "Core Ultra",
+    "NPU",
+    "معالجات",
+    "ذكاء اصطناعي"
+  ],
+  "image": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&auto=format&fit=crop&q=80",
+  "image_source": "unsplash",
+  "image_provider": "unsplash",
+  "image_query": "Intel processor technology",
+  "image_type": "article_main",
+  "image_confidence": 90,
+  "date": "2026-11-15T10:03:03.843561Z",
+  "readTime": "4 min read",
+  "views": 0,
+  "hasEgyptImpact": false,
+  "source": "TechCrunch",
+  "link": "https://techcrunch.com/2024/11/15/intel-core-ultra-200s",
+  "techdose_link": "",
+  "status": "published",
+  "seo_title": "إنفيديا Core Ultra 200S: معالجات بأداء ذكاء اصطناعي محسّن",
+  "meta_description": "أعلنت إنفيديا عن معالجات Core Ultra 200S الجديدة مع وحدة NPU محسّنة لأداء مهام الذكاء الاصطناعي بكفاءة أعلى.",
+  "seo_slug": "nvidia-core-ultra-200s-ai-performance",
+  "focus_keyword": "إنفيديا Core Ultra 200S",
+  "secondary_keywords": [
+    "NPU",
+    "معالجات",
+    "ذكاء اصطناعي",
+    "إنفيديا"
+  ],
+  "primary_company": "NVIDIA",
+  "secondary_company": "",
+  "products": [
+    "Core Ultra 200S"
+  ],
+  "devices": [
+    "لابتوب",
+    "سطح مكتب"
+  ],
+  "technologies": [
+    "NPU",
+    "Xe2 GPU",
+    "DDR5"
+  ],
+  "ai_models": [],
+  "os": [
+    "Windows 11",
+    "Linux"
+  ],
+  "chipsets": [
+    "Core Ultra 200S"
+  ],
+  "browsers": [],
+  "cloud_platforms": [],
+  "languages": [],
+  "opensource_projects": [],
+  "executives": [],
+  "markets": [
+    "معالجات",
+    "ذكاء اصطناعي"
+  ],
+  "countries": [
+    "الولايات المتحدة"
+  ],
+  "people": [],
+  "stocks": [
+    "NVDA"
+  ],
+  "investors": [],
+  "image_queries": [
+    "Intel processor",
+    "NPU",
+    "AI performance"
+  ],
+  "internal_links": [],
+  "quality_score": 85
+}

@@ -1,1 +1,9 @@
-{}
+{
+  "first-article": {
+    "id": "3b1c417a-ff87-4c09-8454-cb90b3008c51",
+    "title": "أول مقال تقني - TD بالعربي",
+    "slug": "first-article",
+    "url": "https://osamaelfeky567.github.io/techdosenews/articles/first-article.json",
+    "publisher_operation_id": "fe0daf55-9c16-5367-88af-9b20be7a64a3"
+  }
+}

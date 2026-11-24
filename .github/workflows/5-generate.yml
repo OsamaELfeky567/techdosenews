@@ -1,0 +1,69 @@
+name: Generate and publish article
+
+on:
+  schedule:
+    - cron: '17 */3 * * *'      # every 3 hours (UTC); the script caps articles per day
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (write nothing, send nothing)'
+        type: boolean
+        default: false
+  push:                          # test run on the work branch: always a dry run
+    branches: [v2-restore-publishing]
+    paths:
+      - 'scripts/generate.mjs'
+      - '.github/workflows/generate.yml'
+
+concurrency:
+  group: generate
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      IS_MAIN: ${{ github.ref == 'refs/heads/main' }}
+      DRY_RUN: ${{ github.ref != 'refs/heads/main' || github.event.inputs.dry_run == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate article
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: node scripts/generate.mjs
+
+      - name: Build sitemap and rss
+        if: env.DRY_RUN != 'true'
+        run: |
+          node scripts/generate-sitemap.js
+          node tools/generate-rss.mjs
+
+      - name: Commit and push
+        if: env.DRY_RUN != 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add data sitemap.xml rss.xml
+          if git diff --staged --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "auto: publish article [bot]"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Notify (Telegram + IndexNow)
+        if: env.DRY_RUN != 'true'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '-1003896125398' }}
+        run: |
+          sleep 60
+          node scripts/notify.mjs

@@ -45,6 +45,19 @@ if (live) {
   } catch (e) { console.log('indexnow error', e.message); }
 }
 
+
+// Web push (OneSignal): one notification per new article to all subscribers. Needs ONESIGNAL_APP_ID (public id) + ONESIGNAL_API_KEY (secret).
+if (live && E.ONESIGNAL_APP_ID && E.ONESIGNAL_API_KEY) {
+  try {
+    const body = { app_id: E.ONESIGNAL_APP_ID, target_channel: 'push', included_segments: ['Subscribed Users'],
+      headings: { en: p.title, ar: p.title }, contents: { en: p.telegram_summary.slice(0, 180), ar: p.telegram_summary.slice(0, 180) },
+      url: p.url, chrome_web_icon: 'https://td-arabi.com/favicon.png', ttl: 43200 };
+    if (p.image && !/og-image\.png$/.test(p.image)) body.chrome_web_image = p.image;
+    const res = await fetch('https://api.onesignal.com/notifications?c=push', { method: 'POST', headers: { 'Content-Type': 'application/json; charset=utf-8', Authorization: 'Key ' + E.ONESIGNAL_API_KEY }, body: JSON.stringify(body) });
+    console.log('onesignal:', res.status, (await res.text()).slice(0, 160));
+  } catch (e) { console.log('onesignal error', e.message); }
+} else if (live) console.log('web push skipped (ONESIGNAL secrets not set)');
+
 // 2. Facebook hook (held until the owner approves; needs FACEBOOK_PAGE_ID + FACEBOOK_PAGE_TOKEN)
 async function postFacebook() {
   if (!live || !E.FACEBOOK_PAGE_ID || !E.FACEBOOK_PAGE_TOKEN || E.FACEBOOK_ENABLED !== '1') return;

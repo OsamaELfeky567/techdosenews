@@ -62,7 +62,8 @@ const HEAD_COMMON = `<meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <link rel="alternate" type="application/rss+xml" title="TD بالعربي - RSS Feed" href="${BASE}/rss.xml">
-<script src="/js/analytics.js" async></script>`;
+<script src="/js/analytics.js" async></script>
+<script src="/js/push.js" defer></script>`;
 const HEADER = `<header class="sb-header"><div class="sb-container">
 <div class="sb-logo-wrap" style="margin:0;font-size:inherit;font-weight:inherit"><a href="/" class="sb-logo">TD <span>بالعربي</span></a></div>
 <nav class="sb-nav" aria-label="القائمة الرئيسية"><a href="/">الرئيسية</a><a href="/news/">كل الأخبار</a><a href="/about.html">من نحن</a><a href="/contact.html">تواصل معنا</a><a href="${esc(site.telegram_url)}" class="sb-telegram-btn" target="_blank" rel="noopener">تيليجرام</a></nav>

@@ -9,5 +9,13 @@
   "author_url": "https://td-arabi.com/about.html",
   "contact_email": "techdose.online@gmail.com",
   "ai_disclosure": "كُتب هذا الخبر بمساعدة الذكاء الاصطناعي اعتمادا على المصدر المذكور أدناه، ويراجع آليا قبل النشر. إن وجدت خطأ، راسلنا من صفحة اتصل بنا.",
-  "logo_url": "https://td-arabi.com/img/og-image.png"
+  "logo_url": "https://td-arabi.com/img/og-image.png",
+  "ads": {
+    "_note": "Adsterra banner keys per size. null = slot is not rendered. Fill after creating zones in Adsterra.",
+    "728x90": "dc29c63238688f937f7bb9cfb4bf3962",
+    "300x250": null,
+    "300x600": null,
+    "320x50": null,
+    "468x60": null
+  }
 }

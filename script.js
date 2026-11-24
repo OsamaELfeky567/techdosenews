@@ -193,6 +193,7 @@ async function loadIndex() {
     const data = await fetchIndex();
     allArticles = Array.isArray(data) ? data : (data.articles || []);
     allArticles = allArticles.filter(a => a.status === 'published');
+    allArticles.forEach(function(a){ if (Array.isArray(a.tags)) a.tags = a.tags.filter(function(t){ return t && !/^\s*تاغ/.test(t); }); });
     if (allArticles.length === 0) throw new Error('No articles');
     allArticles.sort(function(a, b) { return new Date(getPubDate(b) || 0) - new Date(getPubDate(a) || 0); });
     applyTagFilter();
@@ -265,7 +266,7 @@ function renderHero() {
   const a = allArticles[0];
   const pubDate = getPubDate(a);
   const tagsHtml = Array.isArray(a.tags) && a.tags.length > 0
-    ? a.tags.slice(0, 3).map(t => '<span class="sb-tag-pill sb-tag-pill-sm" onclick="event.stopPropagation();filterByTag(\'' + escAttr(t) + '\')" role="button">' + esc(t) + '</span>').join('')
+    ? a.tags.slice(0, 2).map(t => '<span class="sb-tag-pill sb-tag-pill-sm" onclick="event.stopPropagation();filterByTag(\'' + escAttr(t) + '\')" role="button">' + esc(t) + '</span>').join('')
     : '';
   hero.innerHTML = '<div tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
     '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" decoding="async" width="800" height="480" onerror="this.onerror=null;this.src=\'" + ENTITY_IMAGES.default + "\'">' +
@@ -362,7 +363,7 @@ function appendGridItems() {
     card.onclick = function() { goto(a.id); };
     card.onkeydown = function(e) { if (e.key === 'Enter' || e.key === 'Space') { e.preventDefault(); this.click(); } };
     const tagsHtml = Array.isArray(a.tags) && a.tags.length > 0
-      ? a.tags.slice(0, 3).map(t => '<span class="sb-card-tag" onclick="event.stopPropagation();filterByTag(\'' + escAttr(t) + '\')" role="button">' + esc(t) + '</span>').join('')
+      ? a.tags.slice(0, 2).map(t => '<span class="sb-card-tag" onclick="event.stopPropagation();filterByTag(\'' + escAttr(t) + '\')" role="button">' + esc(t) + '</span>').join('')
       : '';
     card.innerHTML = '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" decoding="async" width="400" height="210" onerror="this.onerror=null;this.src=\'" + ENTITY_IMAGES.default + "\'">' +
       '<div class="sb-card-body">' +
@@ -634,7 +635,8 @@ function getFreshnessBadge(dateStr) {
   return '';
 }
 
-function goto(id) { window.location.href = 'article.html?id=' + escId(id); }
+function goto(id) { var p = window.__urlMap && window.__urlMap[id]; window.location.href = p ? p : 'article.html?id=' + escId(id); }
+fetch('/data/articles/url-map.json').then(function(r){return r.json()}).then(function(m){window.__urlMap=m}).catch(function(){});
 
 /* ── Related Articles (Semantic) ── */
 function getRelatedArticles(article, count) {
@@ -968,7 +970,7 @@ async function loadCategory() {
     }
     grid.innerHTML = filtered.map(function(a) {
       var tagsHtml = Array.isArray(a.tags) && a.tags.length > 0
-        ? a.tags.slice(0, 3).map(function(t) { return '<span class="sb-card-tag">' + esc(t) + '</span>'; }).join('')
+        ? a.tags.slice(0, 2).map(function(t) { return '<span class="sb-card-tag">' + esc(t) + '</span>'; }).join('')
         : '';
       return '<div class="sb-card" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
         '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" decoding="async" width="400" height="210" onerror="this.onerror=null;this.src=\'" + ENTITY_IMAGES.default + "\'">' +

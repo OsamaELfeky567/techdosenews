@@ -33,8 +33,10 @@
     if (link) link.href = 'https://td-arabi.com/article.html?id=' + encodeURIComponent(id);
   }
   if (id) {
-    fetch('https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/data/articles/index.json?t=' + Date.now())
-      .then(function(r) { return r.json(); })
+    var idxSources = ['/data/articles/index.json?t=' + Date.now(), 'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/data/articles/index.json?t=' + Date.now()];
+    (function fetchIdx(i) {
+      return fetch(idxSources[i], { cache: 'no-store' }).then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }).catch(function(e) { if (i + 1 < idxSources.length) return fetchIdx(i + 1); throw e; });
+    })(0)
       .then(function(articles) {
         var a = Array.isArray(articles) ? articles.find(function(x) { return x.id === id; }) : null;
         if (!a) return;

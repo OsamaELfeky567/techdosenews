@@ -172,10 +172,20 @@ async function fetchIndex() {
   const spinner = document.getElementById('loading-spinner');
   if (spinner) spinner.style.display = 'block';
   showSkeleton();
-  const url = 'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/data/articles/index.json?t=' + Date.now();
-  const res = await fetch(url);
-  if (!res.ok) throw new Error('HTTP ' + res.status);
-  return res.json();
+  const qs = '?t=' + Date.now();
+  const sources = [
+    '/data/articles/index.json' + qs,
+    'https://raw.githubusercontent.com/osamaelfeky567/techdosenews/main/data/articles/index.json' + qs
+  ];
+  let lastErr = null;
+  for (let i = 0; i < sources.length; i++) {
+    try {
+      const res = await fetch(sources[i], { cache: 'no-store' });
+      if (res.ok) return await res.json();
+      lastErr = new Error('HTTP ' + res.status);
+    } catch (e) { lastErr = e; }
+  }
+  throw lastErr || new Error('fetch failed');
 }
 
 async function loadIndex() {
@@ -760,11 +770,15 @@ async function loadArticle() {
   const id = params.get('id');
   if (!id) { if (spinner) spinner.style.display = 'none'; main.innerHTML = '<div class="sb-container"><div class="sb-loading">⚠ معرف المقال غير موجود</div></div>'; return; }
   try {
-    if (allArticles.length === 0) {
-      const data = await fetchIndex();
-      allArticles = (Array.isArray(data) ? data : (data.articles || [])).filter(a => a.status === 'published');
+    let a = null;
+    for (let attempt = 0; attempt < 4 && !a; attempt++) {
+      if (attempt > 0 || allArticles.length === 0) {
+        if (attempt > 0) await new Promise(function(r) { setTimeout(r, 5000); });
+        const data = await fetchIndex();
+        allArticles = (Array.isArray(data) ? data : (data.articles || [])).filter(function(x) { return x.status === 'published'; });
+      }
+      a = allArticles.find(function(art) { return art.id === id; });
     }
-    const a = allArticles.find(art => art.id === id);
     if (!a) throw new Error('لم يتم العثور على المقال');
     const title = a.title_ar || a.title || '';
     const cleanTitle = esc(title);

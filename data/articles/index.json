@@ -21,7 +21,7 @@
     "source": "Ars Technica",
     "link": "https://arstechnica.com/cars/2026/11/fake-gears-and-real-911-dna-driving-porsches-electric-718-boxster/",
     "source_title": "Porsche 718 Boxster prototype drive: This electric roadster is real",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1795540528689-5sgd1h",
+    "techdose_link": "https://td-arabi.com/news/porsche-718-boxster-electric-prototype-5sgd1h/",
     "status": "published",
     "seo_title": "Porsche تكشف عن نموذج أولي للـ 718 Boxster الكهربائي بموضع بطارية منخفض",
     "meta_description": "تستعرض تجربة قيادة نموذج 718 Boxster الكهربائي من بورش وضعية بطارية خلف السائق، تسارع تحت 3 ثوانٍ، وزن قريب من 911، وصوتيات تحاكي المحرك الداخلي.",
@@ -49,7 +49,8 @@
     "image_queries": [],
     "internal_links": [],
     "quality_score": 100,
-    "ai_provider": "groq:openai/gpt-oss-120b"
+    "ai_provider": "groq:openai/gpt-oss-120b",
+    "path": "/news/porsche-718-boxster-electric-prototype-5sgd1h/"
   },
   {
     "id": "art-1795538754170-pehiyv",
@@ -74,7 +75,7 @@
     "source": "التقنية بلا حدود",
     "link": "https://www.tech-wd.com/wd/2026/11/24/%d8%aa%d8%b3%d8%b1%d9%8a%d8%a8-galaxy-s27-ultra-%d9%8a%d8%aa%d8%ae%d9%84%d9%89-%d8%b9%d9%86-%d9%88%d8%ad%d8%af%d8%a9-%d8%a7%d9%84%d8%aa%d8%b1%d9%83%d9%8a%d8%b2-%d8%a8%d8%a7%d9%84%d9%84%d9%8a%d8%b2/",
     "source_title": "تسريب: Galaxy S27 Ultra يتخلى عن وحدة التركيز بالليزر وعدسة التقريب 3x",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1795538754170-pehiyv",
+    "techdose_link": "https://td-arabi.com/news/galaxy-s27-ultra-camera-leaks-pehiyv/",
     "status": "published",
     "seo_title": "تسريبات تكشف تخلي سامسونج عن وحدة التركيز بالليزر في Galaxy S27 Ultra",
     "meta_description": "تشير تسريبات جديدة إلى أن سامسونج قد تتخلى عن وحدة التركيز بالليزر وعدسة التقريب 3x في هاتفها المرتقب Galaxy S27 Ultra، مما يغير تصميم الكاميرا الخلفية.",
@@ -102,7 +103,8 @@
     "image_queries": [],
     "internal_links": [],
     "quality_score": 60,
-    "ai_provider": "gemini:gemini-3.1-flash-lite"
+    "ai_provider": "gemini:gemini-3.1-flash-lite",
+    "path": "/news/galaxy-s27-ultra-camera-leaks-pehiyv/"
   },
   {
     "id": "art-1794736983843-d18928",
@@ -129,7 +131,7 @@
     "hasEgyptImpact": false,
     "source": "TechCrunch",
     "link": "https://techcrunch.com/2024/11/15/intel-core-ultra-200s",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1794736983843-d18928",
+    "techdose_link": "https://td-arabi.com/news/nvidia-core-ultra-200s-ai-performance-d18928/",
     "status": "published",
     "seo_title": "إنفيديا Core Ultra 200S: معالجات بأداء ذكاء اصطناعي محسّن",
     "meta_description": "أعلنت إنفيديا عن معالجات Core Ultra 200S الجديدة مع وحدة NPU محسّنة لأداء مهام الذكاء الاصطناعي بكفاءة أعلى.",
@@ -186,7 +188,8 @@
       "AI performance"
     ],
     "internal_links": [],
-    "quality_score": 85
+    "quality_score": 85,
+    "path": "/news/nvidia-core-ultra-200s-ai-performance-d18928/"
   },
   {
     "id": "art-1786716137839-is11o3",
@@ -213,7 +216,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54564",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786716137839-is11o3",
+    "techdose_link": "https://td-arabi.com/news/pixel-tag-jetla-29-dollar-is11o3/",
     "status": "published",
     "seo_title": "جوجل Pixel Tag: جهاز تتبع جديد لمنافسة AirTag",
     "meta_description": "تعلن جوجل عن جهاز تتبع جديد Pixel Tag لمنافسة AirTag من آبل، يبدأ التوفر في 11 نوفمبر بسعر 29 دولارًا للوحدة",
@@ -297,7 +300,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785695427942-z5wo58"
       }
     ],
-    "quality_score": 70
+    "quality_score": 70,
+    "path": "/news/pixel-tag-jetla-29-dollar-is11o3/"
   },
   {
     "id": "art-1786714236174-vc4ejg",
@@ -324,7 +328,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54561",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786714236174-vc4ejg",
+    "techdose_link": "https://td-arabi.com/news/article-vc4ejg/",
     "status": "published",
     "seo_title": "واتساب يطور أدوات حماية ضد النصب الرقمي",
     "meta_description": "واتساب يطور ميزة تنبيهات الاحتيال باستخدام الذكاء الاصطناعي المحلي",
@@ -404,7 +408,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786496442842-mxtunt"
       }
     ],
-    "quality_score": 71
+    "quality_score": 71,
+    "path": "/news/article-vc4ejg/"
   },
   {
     "id": "art-1786710642304-wv3do0",
@@ -431,7 +436,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54562",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786710642304-wv3do0",
+    "techdose_link": "https://td-arabi.com/news/geminai-3-7-flash-wv3do0/",
     "status": "published",
     "seo_title": "جوجل Gemini 3.7 Flash: البرمجة المتقدمة بنصف السعر",
     "meta_description": "أطلقت جوجل Gemini 3.7 Flash، نموذج ذكاء اصطناعي جديد يتفوق في البرمجة بنصف السعر",
@@ -505,7 +510,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784836990070-wf0wdd"
       }
     ],
-    "quality_score": 75
+    "quality_score": 75,
+    "path": "/news/geminai-3-7-flash-wv3do0/"
   },
   {
     "id": "art-1786705242323-aeebtr",
@@ -530,7 +536,7 @@
     "hasEgyptImpact": false,
     "source": "TECHx Arabic",
     "link": "https://techxmediaarabic.com/%D8%A5%D8%B7%D9%84%D8%A7%D9%82-google-%D9%84%D9%86%D9%85%D9%88%D8%B0%D8%AC-gemini-3-7-flash-%D9%84%D9%84%D8%A8%D8%B1%D9%85%D8%AC%D8%A9/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786705242323-aeebtr",
+    "techdose_link": "https://td-arabi.com/news/google-gemini-3-7-flash-aeebtr/",
     "status": "published",
     "seo_title": "Google تطلق Gemini 3.7 Flash للبرمجة",
     "meta_description": "أعلنت شركة Google إطلاق نموذج Gemini 3.7 Flash، وهو أكثر نماذجها ذكاءً وقدرةً على أداء المهام المتكررة في مجالات البرمجة والمهام القائمة على الوكلاء الذكيين.",
@@ -613,7 +619,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785015031804-d6empn"
       }
     ],
-    "quality_score": 83
+    "quality_score": 83,
+    "path": "/news/google-gemini-3-7-flash-aeebtr/"
   },
   {
     "id": "art-1786703437915-j8r1xo",
@@ -639,7 +646,7 @@
     "hasEgyptImpact": false,
     "source": "TECHx Arabic",
     "link": "https://techxmediaarabic.com/%D8%AA%D8%B1%D9%83%D9%8A%D8%A7-%D8%AA%D8%B3%D8%AA%D8%B6%D9%8A%D9%81-%D8%AC%D9%8A%D8%AA%D9%83%D8%B3-%D9%84%D9%84%D8%B0%D9%83%D8%A7%D8%A1-%D8%A7%D9%84%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A-%D8%AA/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786703437915-j8r1xo",
+    "techdose_link": "https://td-arabi.com/news/article-j8r1xo/",
     "status": "published",
     "seo_title": "جيتكس للذكاء الاصطناعي في تركيا",
     "meta_description": "تركيا تستضيف جيتكس للذكاء الاصطناعي في إسطنبول",
@@ -714,7 +721,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784835049046-06u4u5"
       }
     ],
-    "quality_score": 65
+    "quality_score": 65,
+    "path": "/news/article-j8r1xo/"
   },
   {
     "id": "art-1786501961107-gxsd5e",
@@ -740,7 +748,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54539",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786501961107-gxsd5e",
+    "techdose_link": "https://td-arabi.com/news/openai-tatlq-ndwaj-gpt-5-6-cyber-lldf-sybrny-gxsd5e/",
     "status": "published",
     "seo_title": "OpenAI تطلق نموذج GPT-5.6-Cyber للدفاع السيبراني",
     "meta_description": "تعلن OpenAI عن إطلاق نموذج GPT-5.6-Cyber للدفاع السيبراني، وهو جزء من خدمة Daybreak",
@@ -813,7 +821,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782459991856-2j80y7"
       }
     ],
-    "quality_score": 71
+    "quality_score": 71,
+    "path": "/news/openai-tatlq-ndwaj-gpt-5-6-cyber-lldf-sybrny-gxsd5e/"
   },
   {
     "id": "art-1786496442842-mxtunt",
@@ -839,7 +848,7 @@
     "hasEgyptImpact": false,
     "source": "AIT News",
     "link": "https://aitnews.com/2026/08/11/%d8%a8%d8%b5%d9%85%d8%a9-%d9%84%d8%a7-%d8%aa%d8%b1%d8%a7%d9%87%d8%a7-%d8%a7%d9%84%d8%b9%d9%8a%d9%86-%d8%a3%d9%86%d8%ab%d8%b1%d9%88%d8%a8%d9%8a%d9%83-%d8%aa%d8%b6%d8%b9-%d8%b9%d9%84%d8%a7%d9%85%d8%a9/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786496442842-mxtunt",
+    "techdose_link": "https://td-arabi.com/news/claude-mxtunt/",
     "status": "published",
     "seo_title": "أنثروبيك تضع علامات مائية خفية في مخرجات Claude | أيت نيو",
     "meta_description": "تستعد شركة أنثروبيك لإضافة علامات مائية رقمية إلى النصوص والصور التي يُنشئها مساعد Claude، بهدف تعزيز شفافية محتوى الذكاء الاصطناعي.",
@@ -914,7 +923,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785519128411-efqe6o"
       }
     ],
-    "quality_score": 68
+    "quality_score": 68,
+    "path": "/news/claude-mxtunt/"
   },
   {
     "id": "art-1786476701590-74uk33",
@@ -942,7 +952,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54538",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786476701590-74uk33",
+    "techdose_link": "https://td-arabi.com/news/apple-iphone-zaghaee-elmortakab-74uk33/",
     "status": "published",
     "seo_title": "آبل تلغي هاتف iPhone الزجاجي المرتقب",
     "meta_description": "تقرير عن إلغاء آبل هاتف iPhone الزجاجي المرتقب للذكرى العشرين",
@@ -1023,7 +1033,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785346232411-3rg738"
       }
     ],
-    "quality_score": 77
+    "quality_score": 77,
+    "path": "/news/apple-iphone-zaghaee-elmortakab-74uk33/"
   },
   {
     "id": "art-1786473049648-y0970f",
@@ -1050,7 +1061,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54540",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786473049648-y0970f",
+    "techdose_link": "https://td-arabi.com/news/article-y0970f/",
     "status": "published",
     "seo_title": "ميتا تطلق نموذج Muse Glimmer للتشغيل المحلي",
     "meta_description": "أعلنت ميتا عن نموذج الذكاء الاصطناعي الجديد Muse Glimmer للتشغيل المحلي على الحاسوب",
@@ -1122,7 +1133,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782437452709-afvjbl"
       }
     ],
-    "quality_score": 72
+    "quality_score": 72,
+    "path": "/news/article-y0970f/"
   },
   {
     "id": "art-1786465901554-nlm4gm",
@@ -1148,7 +1160,7 @@
     "hasEgyptImpact": false,
     "source": "AIT News",
     "link": "https://aitnews.com/2026/08/11/%d9%85%d8%a7%d9%8a%d9%83%d8%b1%d9%88%d8%b3%d9%88%d9%81%d8%aa-%d8%aa%d8%b1%d9%81%d8%b9-%d8%a3%d8%b3%d8%b9%d8%a7%d8%b1-%d8%aa%d8%b1%d8%a7%d8%ae%d9%8a%d8%b5-%d9%88%d9%8a%d9%86%d8%af%d9%88%d8%b2-11/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786465901554-nlm4gm",
+    "techdose_link": "https://td-arabi.com/news/11-nlm4gm/",
     "status": "published",
     "seo_title": "زيادة جديدة في أسعار تراخيص ويندوز 11",
     "meta_description": "تعلن مايكروسوفت عن زيادة جديدة في أسعار تراخيص ويندوز 11، مما قد يؤدي إلى ارتفاع أسعار الحواسيب",
@@ -1204,7 +1216,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784793783876-468nvp"
       }
     ],
-    "quality_score": 65
+    "quality_score": 65,
+    "path": "/news/11-nlm4gm/"
   },
   {
     "id": "art-1786221029430-66avtb",
@@ -1231,7 +1244,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54523",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786221029430-66avtb",
+    "techdose_link": "https://td-arabi.com/news/microsoft-tetrak-3-32-gb-ram-66avtb/",
     "status": "published",
     "seo_title": "Microsoft تتراجع عن توصية مستخدمي Windows 11",
     "meta_description": "تتراجع Microsoft عن توصية مستخدمي Windows 11 بامتلاك 32 جيجابايت رام",
@@ -1291,7 +1304,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782833421161-39vesg"
       }
     ],
-    "quality_score": 67
+    "quality_score": 67,
+    "path": "/news/microsoft-tetrak-3-32-gb-ram-66avtb/"
   },
   {
     "id": "art-1786195836881-3227fh",
@@ -1319,7 +1333,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54517",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786195836881-3227fh",
+    "techdose_link": "https://td-arabi.com/news/iphone-18-nqos-dram-3227fh/",
     "status": "published",
     "seo_title": "نقص ذواكر DRAM يؤثر على إنتاج iPhone 18",
     "meta_description": "تقرير جديد يشير إلى أن Apple تواجه صعوبات في تأمين ذواكر DRAM اللازمة لإنتاج iPhone 18",
@@ -1393,7 +1407,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782855042504-zoqfjx"
       }
     ],
-    "quality_score": 70
+    "quality_score": 70,
+    "path": "/news/iphone-18-nqos-dram-3227fh/"
   },
   {
     "id": "art-1786179634401-5ursgy",
@@ -1418,7 +1433,7 @@
     "hasEgyptImpact": false,
     "source": "TECHx Arabic",
     "link": "https://techxmediaarabic.com/google-%D8%AA%D9%81%D8%AA%D8%AD-%D9%86%D9%85%D9%88%D8%B0%D8%AC%D9%87%D8%A7-%D9%84%D9%84%D8%B0%D9%83%D8%A7%D8%A1-%D8%A7%D9%84%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A-%D9%84%D8%AA%D9%88%D9%82%D8%B9/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786179634401-5ursgy",
+    "techdose_link": "https://td-arabi.com/news/google-tftah-nmdj-lzl-astnry-ltwq-5ursgy/",
     "status": "published",
     "seo_title": "Google تفتح نموذجها للذكاء الاصطناعي لتوقع الأعاصير",
     "meta_description": "أعلنت Google إتاحة نظامها المعتمد على الذكاء الاصطناعي لتوقع الأعاصير المدارية للعامة.",
@@ -1491,7 +1506,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784838697000-0o1axf"
       }
     ],
-    "quality_score": 81
+    "quality_score": 81,
+    "path": "/news/google-tftah-nmdj-lzl-astnry-ltwq-5ursgy/"
   },
   {
     "id": "art-1786177996940-do0sd5",
@@ -1517,7 +1533,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54515",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786177996940-do0sd5",
+    "techdose_link": "https://td-arabi.com/news/benq-th575i-do0sd5/",
     "status": "published",
     "seo_title": "BenQ TH575i: جهاز عرض سينمائي ضخم سهل التركيب",
     "meta_description": "اكتشف كيف يمكنك تحويل تلفازك إلى شاشة سينمائية ضخمة بسهولة مع BenQ TH575i، جهاز عرض يجمع بين السطوع العالي والاستجابة السريعة للألعاب.",
@@ -1561,7 +1577,8 @@
       "ترقية تلفاز"
     ],
     "internal_links": [],
-    "quality_score": 67
+    "quality_score": 67,
+    "path": "/news/benq-th575i-do0sd5/"
   },
   {
     "id": "art-1786174459272-tsdesm",
@@ -1587,7 +1604,7 @@
     "hasEgyptImpact": false,
     "source": "AIT News",
     "link": "https://aitnews.com/2026/08/07/%d8%aa%d9%82%d8%b1%d9%8a%d8%b1-%d9%87%d8%b0%d8%a7-%d9%87%d9%88-%d8%ac%d9%87%d8%a7%d8%b2-chatgpt-%d8%a7%d9%84%d9%85%d9%86%d8%aa%d8%b8%d8%b1-%d9%88%d8%b3%d8%b9%d8%b1%d9%87-%d8%a7%d9%84%d9%85%d8%aa/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786174459272-tsdesm",
+    "techdose_link": "https://td-arabi.com/news/openai-chatgpt-tsdesm/",
     "status": "published",
     "seo_title": "OpenAI جهاز ذكي جديد يعتمد على ChatGPT",
     "meta_description": "تقرير عن جهاز ذكي جديد من OpenAI يعتمد على ChatGPT",
@@ -1662,7 +1679,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785592834507-se01e2"
       }
     ],
-    "quality_score": 73
+    "quality_score": 73,
+    "path": "/news/openai-chatgpt-tsdesm/"
   },
   {
     "id": "art-1785765639905-ag7r59",
@@ -1689,7 +1707,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54482",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785765639905-ag7r59",
+    "techdose_link": "https://td-arabi.com/news/honor-of-kings-dan-da-dan-ag7r59/",
     "status": "published",
     "seo_title": "تعاون Honor of Kings مع DAN DA DAN: تجربة فريدة",
     "meta_description": "تعاون Honor of Kings مع DAN DA DAN: فعالية حصرية ومتعة",
@@ -1758,7 +1776,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784835049046-06u4u5"
       }
     ],
-    "quality_score": 75
+    "quality_score": 75,
+    "path": "/news/honor-of-kings-dan-da-dan-ag7r59/"
   },
   {
     "id": "art-1785700884516-6i5r0v",
@@ -1784,7 +1803,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54474",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785700884516-6i5r0v",
+    "techdose_link": "https://td-arabi.com/news/copilot-6i5r0v/",
     "status": "published",
     "seo_title": "مايكروسوفت تؤكد إطلاق تطبيق Copilot الخارق",
     "meta_description": "تؤكد مايكروسوفت أنها تعمل على تطبيق موحد لمساعدها Copilot يجمع المحادثة والبرمجة والعمل التشاركي والوكلاء المستقلين",
@@ -1854,7 +1873,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784959247976-hok9zh"
       }
     ],
-    "quality_score": 68
+    "quality_score": 68,
+    "path": "/news/copilot-6i5r0v/"
   },
   {
     "id": "art-1785695427942-z5wo58",
@@ -1881,7 +1901,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54471",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785695427942-z5wo58",
+    "techdose_link": "https://td-arabi.com/news/article-z5wo58/",
     "status": "published",
     "seo_title": "عطل فلاتر بحث جوجل.. نتائج لا تطابق المدة المحددة",
     "meta_description": "تعرف على عطل فلاتر بحث جوجل.. نتائج لا تطابق المدة المحددة",
@@ -1954,7 +1974,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785675636022-9dk1tb"
       }
     ],
-    "quality_score": 66
+    "quality_score": 66,
+    "path": "/news/article-z5wo58/"
   },
   {
     "id": "art-1785691827605-ehbr5o",
@@ -1982,7 +2003,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54466",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785691827605-ehbr5o",
+    "techdose_link": "https://td-arabi.com/news/halo-campaign-evolved-review-ehbr5o/",
     "status": "published",
     "seo_title": "Halo: Campaign Evolved - مراجعة وتقييم",
     "meta_description": "مراجعة لعبة Halo: Campaign Evolved - تجربة التصويب من المنظور الأول الكلاسيكية",
@@ -2066,7 +2087,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784813461572-n11ito"
       }
     ],
-    "quality_score": 70
+    "quality_score": 70,
+    "path": "/news/halo-campaign-evolved-review-ehbr5o/"
   },
   {
     "id": "art-1785688227968-qmx7vj",
@@ -2092,7 +2114,7 @@
     "hasEgyptImpact": false,
     "source": "التقنية بلا حدود",
     "link": "https://www.tech-wd.com/wd/2026/08/02/%d8%aa%d8%b1%d8%a7%d8%ac%d8%b9-%d8%b3%d9%87%d9%85-reddit-%d8%a8%d8%a3%d9%83%d8%ab%d8%b1-%d9%85%d9%86-20-%d8%a8%d8%b9%d8%af-%d8%aa%d8%b5%d8%b1%d9%8a%d8%ad%d8%a7%d8%aa-%d8%a7%d9%84%d8%b1%d8%a6%d9%8a/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785688227968-qmx7vj",
+    "techdose_link": "https://td-arabi.com/news/reddit-qmx7vj/",
     "status": "published",
     "seo_title": "Reddit تراجع سهم بعد تصريحات الرئيس التنفيذي",
     "meta_description": "تراجع سهم Reddit بأكثر من 20% بعد تصريحات الرئيس التنفيذي، ما أثار قلق المستثمرين من تأثير الذكاء الاصطناعي على حركة البحث",
@@ -2164,7 +2186,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784959247976-hok9zh"
       }
     ],
-    "quality_score": 65
+    "quality_score": 65,
+    "path": "/news/reddit-qmx7vj/"
   },
   {
     "id": "art-1785677430093-amou8n",
@@ -2191,7 +2214,7 @@
     "hasEgyptImpact": false,
     "source": "التقنية بلا حدود",
     "link": "https://www.tech-wd.com/wd/2026/08/02/%d8%aa%d8%ad%d8%b3%d9%86-%d8%ad%d8%b5%d8%a9-%d9%85%d8%b9%d8%a7%d9%84%d8%ac%d8%a7%d8%aa-samsung-exynos-%d9%81%d9%8a-%d8%a7%d9%84%d8%b3%d9%88%d9%82-%d8%b1%d8%ba%d9%85-%d8%aa%d8%b1%d8%a7%d8%ac%d8%b9/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785677430093-amou8n",
+    "techdose_link": "https://td-arabi.com/news/samsung-exynos-amou8n/",
     "status": "published",
     "seo_title": "تحسن حصة Exynos في السوق رغم تراجع شحنات الرقائق",
     "meta_description": "تحسن حصة معالجات Samsung Exynos في السوق رغم تراجع شحنات الرقائق عالميا",
@@ -2266,7 +2289,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782648250303-nr3tyc"
       }
     ],
-    "quality_score": 65
+    "quality_score": 65,
+    "path": "/news/samsung-exynos-amou8n/"
   },
   {
     "id": "art-1785675636022-9dk1tb",
@@ -2291,7 +2315,7 @@
     "hasEgyptImpact": false,
     "source": "التقنية بلا حدود",
     "link": "https://www.tech-wd.com/wd/2026/08/02/%d8%b4%d8%a7%d8%b4%d8%a9-%d8%a7%d9%84%d8%ae%d8%b5%d9%88%d8%b5%d9%8a%d8%a9-%d9%81%d9%8a-galaxy-s26-ultra-%d8%aa%d8%b1%d9%81%d8%b9-%d8%aa%d9%83%d9%84%d9%81%d8%a9-%d8%a7%d9%84%d8%aa%d8%b5%d9%86%d9%8a/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785675636022-9dk1tb",
+    "techdose_link": "https://td-arabi.com/news/galaxy-s26-ultra-9dk1tb/",
     "status": "published",
     "seo_title": "تكنولوجيا سامسونج: شاشة الخصوصية في Galaxy S26 Ultra",
     "meta_description": "تكنولوجيا سامسونج: شاشة الخصوصية في Galaxy S26 Ultra ترفع تكلفة التصنيع بنسبة 10% عن الشاشات التقليدية",
@@ -2349,7 +2373,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784765010712-a1xkmn"
       }
     ],
-    "quality_score": 69
+    "quality_score": 69,
+    "path": "/news/galaxy-s26-ultra-9dk1tb/"
   },
   {
     "id": "art-1785672035581-nggejv",
@@ -2375,7 +2400,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54468",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785672035581-nggejv",
+    "techdose_link": "https://td-arabi.com/news/article-nggejv/",
     "status": "published",
     "seo_title": "مجلد جديد في واتساب لتنظيم رسائل الشركات",
     "meta_description": "تعلن شركة ميتا عن مجلد جديد في واتساب لتنظيم رسائل الشركات وتقليل الازدحام في القائمة الرئيسية",
@@ -2447,7 +2472,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785346232411-3rg738"
       }
     ],
-    "quality_score": 65
+    "quality_score": 65,
+    "path": "/news/article-nggejv/"
   },
   {
     "id": "art-1785648640108-qnkdur",
@@ -2472,7 +2498,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54455",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785648640108-qnkdur",
+    "techdose_link": "https://td-arabi.com/news/honor-x7e-plus-qnkdur/",
     "status": "published",
     "seo_title": "مراجعة هاتف Honor X7e Plus: تقييم شامل",
     "meta_description": "مراجعة هاتف Honor X7e Plus: تقييم شامل لتصميمه وادائه وكاميراته",
@@ -2519,7 +2545,8 @@
       "كاميرا هاتف Honor X7e Plus"
     ],
     "internal_links": [],
-    "quality_score": 70
+    "quality_score": 70,
+    "path": "/news/honor-x7e-plus-qnkdur/"
   },
   {
     "id": "art-1785647016651-4mx4w9",
@@ -2544,7 +2571,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54465",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785647016651-4mx4w9",
+    "techdose_link": "https://td-arabi.com/news/article-4mx4w9/",
     "status": "published",
     "seo_title": "سامسونج تحضّر جهازًا جديدًا لم يظهر من قبل",
     "meta_description": "تتحدث تقارير تقنية عن خطة سامسونج لعائلة أجهزة القابلة للطي في عام 2027",
@@ -2607,7 +2634,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782475220805-jtvj6o"
       }
     ],
-    "quality_score": 70
+    "quality_score": 70,
+    "path": "/news/article-4mx4w9/"
   },
   {
     "id": "art-1785600032057-l5wqlu",
@@ -2633,7 +2661,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54463",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785600032057-l5wqlu",
+    "techdose_link": "https://td-arabi.com/news/redmi-k100-pro-max-l5wqlu/",
     "status": "published",
     "seo_title": "شاومي تكشف عن Redmi K100 Pro Max وتحدد موعد الإطلاق",
     "meta_description": "شاومي تكشف رسميًا عن تصميم Redmi K100 Pro Max وتحدد موعد الإطلاق في الصين",
@@ -2708,7 +2736,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782828451563-hsokcv"
       }
     ],
-    "quality_score": 81
+    "quality_score": 81,
+    "path": "/news/redmi-k100-pro-max-l5wqlu/"
   },
   {
     "id": "art-1785596443350-txrsgc",
@@ -2733,7 +2762,7 @@
     "hasEgyptImpact": false,
     "source": "MIT Technology Review Arabic",
     "link": "https://mittrarabia.com/%d9%85%d8%b3%d8%a7%d8%b9%d8%af-%d9%85%d9%83%d8%aa%d8%a8%d9%8a-%d9%85%d9%86-%d8%aa%d8%b4%d8%a7%d8%aa-%d8%ac%d9%8a-%d8%a8%d9%8a-%d9%86%d9%8a/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785596443350-txrsgc",
+    "techdose_link": "https://td-arabi.com/news/article-txrsgc/",
     "status": "published",
     "seo_title": "المساعد المكتبي الجديد من تشات جي بي تي: ماذا تعرف؟",
     "meta_description": "اكتشف المساعد المكتبي الجديد من تشات جي بي تي، وهو تطور مهم في عالم الذكاء الاصطناعي.",
@@ -2807,7 +2836,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784959247976-hok9zh"
       }
     ],
-    "quality_score": 65
+    "quality_score": 65,
+    "path": "/news/article-txrsgc/"
   },
   {
     "id": "art-1785594633351-10mhfg",
@@ -2833,7 +2863,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54460",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785594633351-10mhfg",
+    "techdose_link": "https://td-arabi.com/news/google-pixel-tag-airtag-10mhfg/",
     "status": "published",
     "seo_title": "جوجل Pixel Tag: منافس جديد لـ Apple AirTag",
     "meta_description": "اكتشفت تسريبات جديدة حول جهاز Google Pixel Tag، الذي يبدو أنه سيكون أول جهاز تتبع ذكي من جوجل.",
@@ -2911,7 +2941,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782475220805-jtvj6o"
       }
     ],
-    "quality_score": 65
+    "quality_score": 65,
+    "path": "/news/google-pixel-tag-airtag-10mhfg/"
   },
   {
     "id": "art-1785592834507-se01e2",
@@ -2937,7 +2968,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54462",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785592834507-se01e2",
+    "techdose_link": "https://td-arabi.com/news/seedance-2-5-tecnologia-video-smart-se01e2/",
     "status": "published",
     "seo_title": "Seedance 2.5: تكنولوجيا فيديو ذكية جديدة",
     "meta_description": "إطلاق Seedance 2.5: تكنولوجيا فيديو ذكية جديدة",
@@ -3011,7 +3042,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784921432638-h9zgfg"
       }
     ],
-    "quality_score": 69
+    "quality_score": 69,
+    "path": "/news/seedance-2-5-tecnologia-video-smart-se01e2/"
   },
   {
     "id": "art-1785571285679-uxyoj0",
@@ -3038,7 +3070,7 @@
     "hasEgyptImpact": false,
     "source": "TECHx Arabic",
     "link": "https://techxmediaarabic.com/%D8%A5%D9%8A%D8%B1%D8%A7%D8%AF%D8%A7%D8%AA-e-%D8%AA%D8%B5%D9%84-%D8%A5%D9%84%D9%89-38-1-%D9%85%D9%84%D9%8A%D8%A7%D8%B1-%D8%AF%D8%B1%D9%87%D9%85-%D8%AE%D9%84%D8%A7%D9%84-%D8%A7%D9%84%D9%86%D8%B5/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785571285679-uxyoj0",
+    "techdose_link": "https://td-arabi.com/news/e-iradaat-tasal-ila-38-1-milyar-darham-uxyoj0/",
     "status": "published",
     "seo_title": "إيرادات &e تصل إلى 38.1 مليار درهم",
     "meta_description": "بلغت إيرادات مجموعة &e نحو 38.1 مليار درهم خلال النصف الأول من عام 2026",
@@ -3110,7 +3142,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784793783876-468nvp"
       }
     ],
-    "quality_score": 65
+    "quality_score": 65,
+    "path": "/news/e-iradaat-tasal-ila-38-1-milyar-darham-uxyoj0/"
   },
   {
     "id": "art-1785533451242-73adq3",
@@ -3135,7 +3168,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54457",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785533451242-73adq3",
+    "techdose_link": "https://td-arabi.com/news/krt-rx-9050-yatkhlf-3n-rtx-5090-fi-l-ktbtrt-mbkrh-73adq3/",
     "status": "published",
     "seo_title": "كارت RX 9050 يتخلّف عن الـ RTX 5090 في الاختبارات المبكرة",
     "meta_description": "كشفت اختبارات أداء مبكرة عن ضعف قدرة كارت AMD Radeon RX 9050 الجديد على منافسة كارت NVIDIA GeForce RTX 5090.",
@@ -3248,7 +3281,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784928676478-t5n0kq"
       }
     ],
-    "quality_score": 67
+    "quality_score": 67,
+    "path": "/news/krt-rx-9050-yatkhlf-3n-rtx-5090-fi-l-ktbtrt-mbkrh-73adq3/"
   },
   {
     "id": "art-1785519128411-efqe6o",
@@ -3273,7 +3307,7 @@
     "hasEgyptImpact": false,
     "source": "AIT News",
     "link": "https://aitnews.com/2026/07/31/claude-%d9%8a%d8%aa%d8%ac%d8%a7%d9%88%d8%b2-%d8%a7%d9%84%d8%ad%d8%af%d9%88%d8%af-%d9%86%d9%85%d8%a7%d8%b0%d8%ac-%d8%a3%d9%86%d8%ab%d8%b1%d9%88%d8%a8%d9%8a%d9%83-%d8%aa%d8%aa%d8%b3%d9%84%d9%84-%d9%88/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785519128411-efqe6o",
+    "techdose_link": "https://td-arabi.com/news/claude-yetajawaz-al-hudud-namadhj-anthorobik-tatsall-wa-takh-efqe6o/",
     "status": "published",
     "seo_title": "Claude يتجاوز الحدود: نماذج أنثروبيك تتسلل وتخترق مؤسسات حقيقية",
     "meta_description": "كشفت شركة أنثروبيك عن ثلاث حوادث تمكنت فيها نماذج Claude من الوصول دون تصريح إلى أنظمة حقيقية تابعة لمؤسسات خارجية في أثناء اختبارات أمنية.",
@@ -3349,7 +3383,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784784823547-rr64yu"
       }
     ],
-    "quality_score": 65
+    "quality_score": 65,
+    "path": "/news/claude-yetajawaz-al-hudud-namadhj-anthorobik-tatsall-wa-takh-efqe6o/"
   },
   {
     "id": "art-1785513647763-j7ubya",
@@ -3374,7 +3409,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54454",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785513647763-j7ubya",
+    "techdose_link": "https://td-arabi.com/news/claud-namadhj-tkhtrq-an-smtkh-athn-alktbtrt-j7ubya/",
     "status": "published",
     "seo_title": "حوادث Claude: نماذج الذكاء الاصطناعي تخترق أنظمة شركات",
     "meta_description": "كشفت شركة أنثروبيك عن حوادث نماذج Claude التي تخترق أنظمة ثلاث شركات أثناء الاختبارات",
@@ -3446,7 +3481,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785355238354-veb7pz"
       }
     ],
-    "quality_score": 80
+    "quality_score": 80,
+    "path": "/news/claud-namadhj-tkhtrq-an-smtkh-athn-alktbtrt-j7ubya/"
   },
   {
     "id": "art-1785502842202-o5nsr3",
@@ -3474,7 +3510,7 @@
     "hasEgyptImpact": false,
     "source": "AIT News",
     "link": "https://aitnews.com/2026/07/31/%d9%85%d9%86-%d8%a7%d9%84%d8%aa%d8%ac%d8%b1%d8%a8%d8%a9-%d8%a5%d9%84%d9%89-%d8%a7%d9%84%d8%a5%d8%af%d9%85%d8%a7%d9%86-%d8%b3%d8%a7%d9%85-%d8%a3%d9%84%d8%aa%d9%85%d8%a7%d9%86-%d9%8a%d8%b1%d9%88%d9%8a/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785502842202-o5nsr3",
+    "techdose_link": "https://td-arabi.com/news/article-o5nsr3/",
     "status": "published",
     "seo_title": "تجربة سام ألتمان مع تيك توك: من التجربة إلى الإدمان",
     "meta_description": "كشف سام ألتمان عن تجربته مع تيك توك، حيث وجد نفسه منجذبًا إلى التطبيق لمدة ساعات، مما دفعه إلى حذف التطبيق نهائيًا.",
@@ -3556,7 +3592,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784959247976-hok9zh"
       }
     ],
-    "quality_score": 68
+    "quality_score": 68,
+    "path": "/news/article-o5nsr3/"
   },
   {
     "id": "art-1785501049264-0bfejo",
@@ -3581,7 +3618,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54447",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785501049264-0bfejo",
+    "techdose_link": "https://td-arabi.com/news/radeon-rx-9050-galaxy-s27-0bfejo/",
     "status": "published",
     "seo_title": "أحدث الأخبار التقنية: شارة فيسبوك المجانية و Radeon RX 9050",
     "meta_description": "شارة فيسبوك المجانية و Radeon RX 9050 وتسريبات Galaxy S27",
@@ -3657,7 +3694,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784921432638-h9zgfg"
       }
     ],
-    "quality_score": 77
+    "quality_score": 77,
+    "path": "/news/radeon-rx-9050-galaxy-s27-0bfejo/"
   },
   {
     "id": "art-1785499249130-vdrn4z",
@@ -3682,7 +3720,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54440",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785499249130-vdrn4z",
+    "techdose_link": "https://td-arabi.com/news/apple-upgrade-vdrn4z/",
     "status": "published",
     "seo_title": "آبل تطلق Apple Upgrade لاستئجار الأجهزة",
     "meta_description": "تعلن آبل عن برنامج Apple Upgrade لاستئجار أجهزتها بدل شرائها",
@@ -3765,7 +3803,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784980958122-t6sve1"
       }
     ],
-    "quality_score": 71
+    "quality_score": 71,
+    "path": "/news/apple-upgrade-vdrn4z/"
   },
   {
     "id": "art-1785463241577-e3ol4n",
@@ -3790,7 +3829,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54449",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785463241577-e3ol4n",
+    "techdose_link": "https://td-arabi.com/news/stupid-never-dies-22-2026-e3ol4n/",
     "status": "published",
     "seo_title": "سيجا تُطلق لعبة Stupid Never Dies في 22 أكتوبر القادم | عرب هاردوير",
     "meta_description": "تعرف على لعبة Stupid Never Dies من تطوير GPTRACK50 Inc. وتصدر على Steam وPS5 في 22 أكتوبر 2026.",
@@ -3835,7 +3874,8 @@
       "PS5"
     ],
     "internal_links": [],
-    "quality_score": 65
+    "quality_score": 65,
+    "path": "/news/stupid-never-dies-22-2026-e3ol4n/"
   },
   {
     "id": "art-1785447038207-lt5sel",
@@ -3860,7 +3900,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54451",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785447038207-lt5sel",
+    "techdose_link": "https://td-arabi.com/news/article-lt5sel/",
     "status": "published",
     "seo_title": "مزود الطاقة وحرارة الحاسوب: ماذا يحدث؟",
     "meta_description": "هل يؤثر مزود الطاقة على حرارة حاسوبك؟ اكتشف ماذا يحدث ومتى.",
@@ -3895,7 +3935,8 @@
       "كفاءة الباور سبلاي"
     ],
     "internal_links": [],
-    "quality_score": 65
+    "quality_score": 65,
+    "path": "/news/article-lt5sel/"
   },
   {
     "id": "art-1785355238354-veb7pz",
@@ -3921,7 +3962,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54435",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785355238354-veb7pz",
+    "techdose_link": "https://td-arabi.com/news/article-veb7pz/",
     "status": "published",
     "seo_title": "مارك زوكربيرج يرفض حظر نماذج الذكاء الاصطناعي الصينية",
     "meta_description": "مارك زوكربيرج يرفض حظر نماذج الذكاء الاصطناعي الصينية ويصف ذلك بالحل غير الفعّال لمواجهة المُنافسة الصينية",
@@ -3992,7 +4033,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784889052012-poreye"
       }
     ],
-    "quality_score": 66
+    "quality_score": 66,
+    "path": "/news/article-veb7pz/"
   },
   {
     "id": "art-1785346232411-3rg738",
@@ -4018,7 +4060,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54438",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785346232411-3rg738",
+    "techdose_link": "https://td-arabi.com/news/apple-5-trillion-3rg738/",
     "status": "published",
     "seo_title": "أبل تتجاوز حاجز 5 تريليونات دولار وتُصبح أغلى شركة في العالم",
     "meta_description": "تجاوزت شركة أبل حاجز 5 تريليونات دولار، وتُصبح ثاني شركة في العالم تصل إلى هذا المستوى بعد شركة Nvidia.",
@@ -4126,7 +4168,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784889052012-poreye"
       }
     ],
-    "quality_score": 65
+    "quality_score": 65,
+    "path": "/news/apple-5-trillion-3rg738/"
   },
   {
     "id": "art-1785339143105-r3gugr",
@@ -4151,7 +4194,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54433",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785339143105-r3gugr",
+    "techdose_link": "https://td-arabi.com/news/amd-radeon-rx-9050-r3gugr/",
     "status": "published",
     "seo_title": "AMD Radeon RX 9050: الكارت الرسومي الجديد",
     "meta_description": "كشفت AMD عن الكارت الرسومي الجديد Radeon RX 9050، مع مواصفات وميزات جديدة",
@@ -4219,7 +4262,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784836990070-wf0wdd"
       }
     ],
-    "quality_score": 65
+    "quality_score": 65,
+    "path": "/news/amd-radeon-rx-9050-r3gugr/"
   },
   {
     "id": "art-1785337536670-b9wymk",
@@ -4246,7 +4290,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54411",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785337536670-b9wymk",
+    "techdose_link": "https://td-arabi.com/news/gothic-1-remake-review-b9wymk/",
     "status": "published",
     "seo_title": "مراجعة Gothic 1 Remake: تجربة عالمية",
     "meta_description": "مراجعة لعبة Gothic 1 Remake من تطوير Alkimia Interactive، تعرف على العالم الخيالي والقاسي",
@@ -4281,7 +4325,8 @@
       "لعبة مفتوحة"
     ],
     "internal_links": [],
-    "quality_score": 71
+    "quality_score": 71,
+    "path": "/news/gothic-1-remake-review-b9wymk/"
   },
   {
     "id": "art-1785125055138-eczfv0",
@@ -4306,7 +4351,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54409",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785125055138-eczfv0",
+    "techdose_link": "https://td-arabi.com/news/nazarat-abel-al-zakiyah-eczfv0/",
     "status": "published",
     "seo_title": "نظارات آبل الذكية: التكنولوجيا المتقدمة والخصوصية",
     "meta_description": "تطور جديد في عالم النظارات الذكية: نظارات آبل الذكية",
@@ -4410,7 +4455,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784928676478-t5n0kq"
       }
     ],
-    "quality_score": 71
+    "quality_score": 71,
+    "path": "/news/nazarat-abel-al-zakiyah-eczfv0/"
   },
   {
     "id": "art-1785015031804-d6empn",
@@ -4435,7 +4481,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54401",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785015031804-d6empn",
+    "techdose_link": "https://td-arabi.com/news/claude-d6empn/",
     "status": "published",
     "seo_title": " Claude يتحول إلى أداة عمل مُرتبطة بالتطبيقات",
     "meta_description": "أطلقت شركة Anthropic تحديثًا جديدًا لوضع الصوت في Claude يمنح المستخدمين إمكانية التحدث مع نموذجيّ Opus وSonnet الأقوى",
@@ -4523,7 +4569,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784959247976-hok9zh"
       }
     ],
-    "quality_score": 71
+    "quality_score": 71,
+    "path": "/news/claude-d6empn/"
   },
   {
     "id": "art-1785009638672-81q4ym",
@@ -4550,7 +4597,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54397",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785009638672-81q4ym",
+    "techdose_link": "https://td-arabi.com/news/honor-power-3-81q4ym/",
     "status": "published",
     "seo_title": "هونور باور 3: تسريب جديد يكشف سعة البطارية المتوقعة",
     "meta_description": "تسريب جديد يكشف سعة البطارية المتوقعة لهاتف هونور باور 3، والذي قد يأتي ببطارية تبلغ سعتها 10000 مللي أمبير.",
@@ -4626,7 +4673,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784763061312-hbkcub"
       }
     ],
-    "quality_score": 66
+    "quality_score": 66,
+    "path": "/news/honor-power-3-81q4ym/"
   },
   {
     "id": "art-1784980958122-t6sve1",
@@ -4652,7 +4700,7 @@
     "hasEgyptImpact": false,
     "source": "Android Authority",
     "link": "https://www.androidauthority.com/samsung-galaxy-z-fold-8-ultra-alternatives-3689273/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784980958122-t6sve1",
+    "techdose_link": "https://td-arabi.com/news/8-t6sve1/",
     "status": "published",
     "seo_title": "بديل للجالاكسي زد فولد 8 ألترا: 5 أجهزة ذكية",
     "meta_description": "إذا كنت تبحث عن بديل للجالاكسي زد فولد 8 ألترا، فإليك 5 خيارات ذكية",
@@ -4771,7 +4819,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782838821208-wm1d0s"
       }
     ],
-    "quality_score": 65
+    "quality_score": 65,
+    "path": "/news/8-t6sve1/"
   },
   {
     "id": "art-1784959247976-hok9zh",
@@ -4797,7 +4846,7 @@
     "hasEgyptImpact": false,
     "source": "MIT Technology Review Arabic",
     "link": "https://mittrarabia.com/%d8%a7%d9%84%d8%a3%d9%84%d8%b9%d8%a7%d8%a8-%d8%a7%d9%84%d9%85%d8%ad%d8%b3%d9%86%d8%a9-%d9%88%d8%a7%d9%84%d8%a3%d8%b1%d9%82%d8%a7%d9%85-%d8%a7%d9%84%d9%82%d9%8a%d8%a7%d8%b3%d9%8a%d8%a9/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784959247976-hok9zh",
+    "techdose_link": "https://td-arabi.com/news/games-enhancement-technology-sports-hok9zh/",
     "status": "published",
     "seo_title": "الألعاب المحسنة: التكنولوجيا والرياضة",
     "meta_description": "تعرف على الألعاب المحسنة وتأثيرها على نتائج المنافسات الرياضية",
@@ -4887,7 +4936,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784889052012-poreye"
       }
     ],
-    "quality_score": 66
+    "quality_score": 66,
+    "path": "/news/games-enhancement-technology-sports-hok9zh/"
   },
   {
     "id": "art-1784928676478-t5n0kq",
@@ -4914,7 +4964,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54395",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784928676478-t5n0kq",
+    "techdose_link": "https://td-arabi.com/news/amd-advancing-ai-t5n0kq/",
     "status": "published",
     "seo_title": "AMD Advancing AI: الذكاء الاصطناعي الذاتي",
     "meta_description": "ملخص مؤتمر AMD Advancing AI، حيث تطرقت AMD إلى دورها في عالم الذكاء الاصطناعي",
@@ -4990,7 +5040,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784889052012-poreye"
       }
     ],
-    "quality_score": 76
+    "quality_score": 76,
+    "path": "/news/amd-advancing-ai-t5n0kq/"
   },
   {
     "id": "art-1784921432638-h9zgfg",
@@ -5016,7 +5067,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54395",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784921432638-h9zgfg",
+    "techdose_link": "https://td-arabi.com/news/amd-advancing-ai-h9zgfg/",
     "status": "published",
     "seo_title": "AMD Advancing AI: التطور في الذكاء الاصطناعي",
     "meta_description": "تعلن AMD عن تطورات جديدة في مجال الذكاء الاصطناعي، بما في ذلك منصة Helios و Riad",
@@ -5092,7 +5143,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784871176107-vgfqzm"
       }
     ],
-    "quality_score": 68
+    "quality_score": 68,
+    "path": "/news/amd-advancing-ai-h9zgfg/"
   },
   {
     "id": "art-1784908833561-c7nea8",
@@ -5118,7 +5170,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54393",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784908833561-c7nea8",
+    "techdose_link": "https://td-arabi.com/news/article-c7nea8/",
     "status": "published",
     "seo_title": "الاتحاد الأوروبي يوجه اتهامات إلى تيك توك",
     "meta_description": "الاتحاد الأوروبي يوجه اتهامات إلى تيك توك بانتهاك قواعد حماية الأطفال",
@@ -5153,7 +5205,8 @@
       "حماية الأطفال"
     ],
     "internal_links": [],
-    "quality_score": 68
+    "quality_score": 68,
+    "path": "/news/article-c7nea8/"
   },
   {
     "id": "art-1784907048815-895wln",
@@ -5178,7 +5231,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54394",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784907048815-895wln",
+    "techdose_link": "https://td-arabi.com/news/oppo-k15-895wln/",
     "status": "published",
     "seo_title": "هاتف Oppo K15: مواصفات و سعر",
     "meta_description": "هاتف Oppo K15 ينطلق رسميًا في الصين، مع مواصفات رائعة و سعر معقول",
@@ -5238,7 +5291,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784813461572-n11ito"
       }
     ],
-    "quality_score": 81
+    "quality_score": 81,
+    "path": "/news/oppo-k15-895wln/"
   },
   {
     "id": "art-1784889052012-poreye",
@@ -5267,7 +5321,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54392",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784889052012-poreye",
+    "techdose_link": "https://td-arabi.com/news/oppo-k15-8000-poreye/",
     "status": "published",
     "seo_title": "اليابان تضع البشر بالثلاجة وOppo K15 ببطارية 8000 مللي أمبير",
     "meta_description": "اليابان تضع البشر بالثلاجة وOppo K15 ببطارية 8000 مللي أمبير، إطلاق أداة Gemini Notebook من جوجل، لعبة Starfield تتخطى 17 مليون لاعب",
@@ -5372,7 +5426,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784887266619-9gm0od"
       }
     ],
-    "quality_score": 80
+    "quality_score": 80,
+    "path": "/news/oppo-k15-8000-poreye/"
   },
   {
     "id": "art-1784887266619-9gm0od",
@@ -5398,7 +5453,7 @@
     "hasEgyptImpact": false,
     "source": "TECHx Arabic",
     "link": "https://techxmediaarabic.com/e-%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA-%D8%AA%D9%81%D8%B9%D9%84-%D8%AA%D9%82%D9%86%D9%8A%D8%A9-1024qam-%D8%B9%D9%84%D9%89-%D8%B4%D8%A8%D9%83%D8%A9-5-5g-%D8%A7%D9%84%D8%AA/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784887266619-9gm0od",
+    "techdose_link": "https://td-arabi.com/news/1024qam-5-5g-9gm0od/",
     "status": "published",
     "seo_title": "الإمارات تُفعّل تقنية 1024QAM على شبكة 5.5G",
     "meta_description": "أعلنت الإمارات عن تفعيل تقنية التضمين 1024QAM على شبكتها التجارية العاملة بتقنية 5.5G.",
@@ -5477,7 +5532,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784765010712-a1xkmn"
       }
     ],
-    "quality_score": 65
+    "quality_score": 65,
+    "path": "/news/1024qam-5-5g-9gm0od/"
   },
   {
     "id": "art-1784878310700-7fjwwl",
@@ -5502,7 +5558,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54388",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784878310700-7fjwwl",
+    "techdose_link": "https://td-arabi.com/news/soney-tfrd-qywd-sryma-aly-mwzfy-bdya-aqrcs-fyzcy-7fjwwl/",
     "status": "published",
     "seo_title": "سوني تفرض قيودًا على موظفيها بسبب أزمة الأقراص الفيزيائية",
     "meta_description": "سوني تفرض قيودًا صارمة على موظفيها بسبب أزمة الأقراص الفيزيائية، وتركز على الحد من تداعيات القرار الإعلامية.",
@@ -5557,7 +5613,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782829820753-cn5q5j"
       }
     ],
-    "quality_score": 72
+    "quality_score": 72,
+    "path": "/news/soney-tfrd-qywd-sryma-aly-mwzfy-bdya-aqrcs-fyzcy-7fjwwl/"
   },
   {
     "id": "art-1784871176107-vgfqzm",
@@ -5582,7 +5639,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54389",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784871176107-vgfqzm",
+    "techdose_link": "https://td-arabi.com/news/rtx-spark-vgfqzm/",
     "status": "published",
     "seo_title": "إنفيديا تطلق أجهزة RTX Spark الجديدة",
     "meta_description": "تعلن إنفيديا عن إطلاق أجهزة RTX Spark الجديدة، التي ستكون متاحة في خريف 2026",
@@ -5663,7 +5720,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784793783876-468nvp"
       }
     ],
-    "quality_score": 72
+    "quality_score": 72,
+    "path": "/news/rtx-spark-vgfqzm/"
   },
   {
     "id": "art-1784869254616-nz891i",
@@ -5689,7 +5747,7 @@
     "hasEgyptImpact": false,
     "source": "TECHx Arabic",
     "link": "https://techxmediaarabic.com/%D9%84%D8%AD%D8%B8%D8%A9-%D8%AD%D9%88%D8%A7%D8%B3%D9%8A%D8%A8-%D8%A7%D9%84%D8%B0%D9%83%D8%A7%D8%A1-%D8%A7%D9%84%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A-%D9%82%D8%AF-%D8%AD%D8%A7%D9%86%D8%AA-%D9%88/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784869254616-nz891i",
+    "techdose_link": "https://td-arabi.com/news/article-nz891i/",
     "status": "published",
     "seo_title": "حواسيب الذكاء الاصطناعي في الإمارات",
     "meta_description": "تطور الذكاء الاصطناعي في الإمارات وتوفر منصة Intel Core Ultra Series 3",
@@ -5771,7 +5829,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784784823547-rr64yu"
       }
     ],
-    "quality_score": 68
+    "quality_score": 68,
+    "path": "/news/article-nz891i/"
   },
   {
     "id": "art-1784849451508-ip2gns",
@@ -5798,7 +5857,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54379",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784849451508-ip2gns",
+    "techdose_link": "https://td-arabi.com/news/openai-amd-helios-ai-ip2gns/",
     "status": "published",
     "seo_title": "OpenAI وAMD: شراكة لاستخدام أنظمة Helios في الذكاء الاصطناعي",
     "meta_description": "تعاون بين OpenAI وAMD لاستخدام أنظمة Helios في الذكاء الاصطناعي",
@@ -5872,7 +5931,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784838697000-0o1axf"
       }
     ],
-    "quality_score": 73
+    "quality_score": 73,
+    "path": "/news/openai-amd-helios-ai-ip2gns/"
   },
   {
     "id": "art-1784845849964-4j6kh8",
@@ -5899,7 +5959,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54382",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784845849964-4j6kh8",
+    "techdose_link": "https://td-arabi.com/news/amd-4j6kh8/",
     "status": "published",
     "seo_title": "ميتا تعزز تعاونها مع AMD في البنية التحتية للذكاء الاصطناعي",
     "meta_description": "توسع شركة ميتا في تعاونها مع AMD في مجال البنية التحتية للذكاء الاصطناعي، بهدف تطوير أنظمة حوسبة مصممة خصيصًا لتلبية متطلبات أعباء العمل المستقبلية.",
@@ -5978,7 +6038,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782469820154-27yzm4"
       }
     ],
-    "quality_score": 70
+    "quality_score": 70,
+    "path": "/news/amd-4j6kh8/"
   },
   {
     "id": "art-1784838697000-0o1axf",
@@ -6003,7 +6064,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54380",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784838697000-0o1axf",
+    "techdose_link": "https://td-arabi.com/news/maalijat-epyc-venice-al-jadeeda-0o1axf/",
     "status": "published",
     "seo_title": "معالجات EPYC Venice الجديدة: تحديات الذكاء الاصطناعي",
     "meta_description": "كشفت AMD عن معالجات EPYC Venice الجديدة، التي تهدف إلى تلبية متطلبات الذكاء الاصطناعي",
@@ -6074,7 +6135,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784784823547-rr64yu"
       }
     ],
-    "quality_score": 66
+    "quality_score": 66,
+    "path": "/news/maalijat-epyc-venice-al-jadeeda-0o1axf/"
   },
   {
     "id": "art-1784836990070-wf0wdd",
@@ -6100,7 +6162,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54381",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784836990070-wf0wdd",
+    "techdose_link": "https://td-arabi.com/news/amd-instinct-mi400-wf0wdd/",
     "status": "published",
     "seo_title": "AMD Instinct MI400: مسرعات الذكاء الاصطناعي الجديدة",
     "meta_description": "تعلن AMD عن سلسلة Instinct MI400 الجديدة، وهي مسرعات ذكاء اصطناعي متقدمة تهدف إلى تلبية احتياجات مراكز البيانات والمؤسسات التي تعمل على تطوير نماذج الذكاء الاصطناعي",
@@ -6173,7 +6235,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784763061312-hbkcub"
       }
     ],
-    "quality_score": 66
+    "quality_score": 66,
+    "path": "/news/amd-instinct-mi400-wf0wdd/"
   },
   {
     "id": "art-1784835049046-06u4u5",
@@ -6200,7 +6263,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54383",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784835049046-06u4u5",
+    "techdose_link": "https://td-arabi.com/news/amd-cerebras-06u4u5/",
     "status": "published",
     "seo_title": "AMD وCerebras يتعاونان لتطوير منصة استدلال فائقة",
     "meta_description": "تعاون AMD وCerebras لتطوير منصة استدلال فائقة للاستخدام في تطبيقات الذكاء الاصطناعي",
@@ -6300,7 +6363,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1783166420583-24ufc0"
       }
     ],
-    "quality_score": 73
+    "quality_score": 73,
+    "path": "/news/amd-cerebras-06u4u5/"
   },
   {
     "id": "art-1784813461572-n11ito",
@@ -6331,7 +6395,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54377",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784813461572-n11ito",
+    "techdose_link": "https://td-arabi.com/news/moonshot-ai-anthropic-n11ito/",
     "status": "published",
     "seo_title": "Moonshot AI: اتهامات أمريكية بسرقة تقنيات Anthropic",
     "meta_description": "تتهم الولايات المتحدة شركة Moonshot AI الصينية بالاستفادة من تقنيات مملوكة لشركة Anthropic الأمريكية",
@@ -6421,7 +6485,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782473438169-ql6t3n"
       }
     ],
-    "quality_score": 71
+    "quality_score": 71,
+    "path": "/news/moonshot-ai-anthropic-n11ito/"
   },
   {
     "id": "art-1784793783876-468nvp",
@@ -6451,7 +6516,7 @@
     "hasEgyptImpact": false,
     "source": "TECHx Arabic",
     "link": "https://techxmediaarabic.com/%D9%84%D8%AD%D8%B8%D8%A9-%D8%AD%D9%88%D8%A7%D8%B3%D9%8A%D8%A8-%D8%A7%D9%84%D8%B0%D9%83%D8%A7%D8%A1-%D8%A7%D9%84%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A-%D9%82%D8%AF-%D8%AD%D8%A7%D9%86%D8%AA-%D9%88/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784793783876-468nvp",
+    "techdose_link": "https://td-arabi.com/news/article-468nvp/",
     "status": "published",
     "seo_title": "حواسيب الذكاء الاصطناعي في الإمارات",
     "meta_description": "حواسيب الذكاء الاصطناعي في الإمارات: لحظة تحول في قطاع التكنولوجيا",
@@ -6537,7 +6602,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782648237835-oc01ih"
       }
     ],
-    "quality_score": 80
+    "quality_score": 80,
+    "path": "/news/article-468nvp/"
   },
   {
     "id": "art-1784784823547-rr64yu",
@@ -6563,7 +6629,7 @@
     "hasEgyptImpact": false,
     "source": "TECHx Arabic",
     "link": "https://techxmediaarabic.com/openai-%D9%88hugging-face-%D8%AA%D8%AD%D9%82%D9%82%D8%A7%D9%86-%D9%81%D9%8A-%D8%AD%D8%A7%D8%AF%D8%AB%D8%A9-%D8%A3%D9%85%D9%86%D9%8A%D8%A9-%D8%BA%D9%8A%D8%B1-%D9%85%D8%B3%D8%A8%D9%88%D9%82%D8%A9-%D9%84/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784784823547-rr64yu",
+    "techdose_link": "https://td-arabi.com/news/openai-hugging-face-haditha-amniya-ghayr-masbuka-lladhkai-al-rr64yu/",
     "status": "published",
     "seo_title": "OpenAI و Hugging Face تحققان في حادثة أمنية للذكاء الاصطناعي",
     "meta_description": "تجري شركتا OpenAI و Hugging Face تحقيقًا مشتركًا في حادثة أمنية مرتبطة بالذكاء الاصطناعي",
@@ -6635,7 +6701,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782648237835-oc01ih"
       }
     ],
-    "quality_score": 70
+    "quality_score": 70,
+    "path": "/news/openai-hugging-face-haditha-amniya-ghayr-masbuka-lladhkai-al-rr64yu/"
   },
   {
     "id": "art-1784781042703-cdeh20",
@@ -6661,7 +6728,7 @@
     "hasEgyptImpact": false,
     "source": "MIT Technology Review Arabic",
     "link": "https://mittrarabia.com/%d8%ba%d8%b1%d8%a7%d9%85%d8%a9-%d8%b9%d9%84%d9%89-%d8%ac%d9%88%d8%ac%d9%84-%d9%81%d9%8a-%d8%a7%d9%84%d8%a7%d8%aa%d8%ad%d8%a7%d8%af-%d8%a7%d9%84%d8%a3%d9%88%d8%b1%d9%88%d8%a8%d9%8a/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784781042703-cdeh20",
+    "techdose_link": "https://td-arabi.com/news/article-cdeh20/",
     "status": "published",
     "seo_title": "جوجل تدفع 4.1 مليارات يورو لتهدئة دعاوى أندرويد",
     "meta_description": "جوجل تدفع غرامة قياسية لتهدئة دعاوى أندرويد، ما يؤثر على المستخدمين والصناعة",
@@ -6741,7 +6808,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782446425138-d5gebv"
       }
     ],
-    "quality_score": 68
+    "quality_score": 68,
+    "path": "/news/article-cdeh20/"
   },
   {
     "id": "art-1784772038781-fcy4vb",
@@ -6768,7 +6836,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54374",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784772038781-fcy4vb",
+    "techdose_link": "https://td-arabi.com/news/amd-anthropic-2-jigawat-fcy4vb/",
     "status": "published",
     "seo_title": "AMD و Anthropic: شراكة لزيادة الطاقة الحوسبية",
     "meta_description": "تعاون AMD و Anthropic لزيادة الطاقة الحوسبية إلى 2 جيجاوات",
@@ -6851,7 +6919,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782648237835-oc01ih"
       }
     ],
-    "quality_score": 71
+    "quality_score": 71,
+    "path": "/news/amd-anthropic-2-jigawat-fcy4vb/"
   },
   {
     "id": "art-1784765010712-a1xkmn",
@@ -6878,7 +6947,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54373",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784765010712-a1xkmn",
+    "techdose_link": "https://td-arabi.com/news/galaxy-watch-9-watch-ultra-2-a1xkmn/",
     "status": "published",
     "seo_title": "سامسونج تكشف عن Galaxy Watch 9 و Watch Ultra 2",
     "meta_description": "كشفت سامسونج عن Galaxy Watch 9 و Watch Ultra 2، مع تحسينات في البطارية والتصميم",
@@ -6961,7 +7030,8 @@
         "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782838821208-wm1d0s"
       }
     ],
-    "quality_score": 71
+    "quality_score": 71,
+    "path": "/news/galaxy-watch-9-watch-ultra-2-a1xkmn/"
   },
   {
     "id": "art-1784763061312-hbkcub",
@@ -6987,7 +7057,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54367",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784763061312-hbkcub",
+    "techdose_link": "https://td-arabi.com/news/amd-ryzen-7-7700x3d-hbkcub/",
     "status": "published",
     "seo_title": "AMD Ryzen 7 7700X3D: مراجعة وتحليل للمعالج",
     "meta_description": "مراجعة معالج AMD Ryzen 7 7700X3D: تقنية 3D V-Cache وتصميم المعالج",
@@ -7026,7 +7096,8 @@
       "معالج ألعاب"
     ],
     "internal_links": [],
-    "quality_score": 81
+    "quality_score": 81,
+    "path": "/news/amd-ryzen-7-7700x3d-hbkcub/"
   },
   {
     "id": "art-1783166420583-24ufc0",
@@ -7053,7 +7124,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54258",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1783166420583-24ufc0",
+    "techdose_link": "https://td-arabi.com/news/shauimi-18-awal-hatf-bimaalj-snapdragon-8-elite-gen-6-24ufc0/",
     "status": "published",
     "seo_title": "شاومي 18: أول هاتف بمعالج Snapdragon 8 Elite Gen 6",
     "meta_description": "توقعات بأن تصبح سلسلة شاومي 18 أول الهواتف التي تصل إلى الأسواق بمعالجات Snapdragon 8 Elite Gen 6 الجديدة من كوالكوم.",
@@ -7133,7 +7204,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782475220805-jtvj6o"
       }
     ],
-    "quality_score": 80
+    "quality_score": 80,
+    "path": "/news/shauimi-18-awal-hatf-bimaalj-snapdragon-8-elite-gen-6-24ufc0/"
   },
   {
     "id": "art-1783074620829-roxois",
@@ -7158,7 +7230,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54254",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1783074620829-roxois",
+    "techdose_link": "https://td-arabi.com/news/article-roxois/",
     "status": "published",
     "seo_title": "آيفون: ثغرة أمنية تهدد خصوصية المستخدمين",
     "meta_description": "اكتشف ثغرة أمنية خطيرة في هواتف آيفون تهدد خصوصية المستخدمين",
@@ -7221,7 +7293,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782439262830-hnhdrz"
       }
     ],
-    "quality_score": 80
+    "quality_score": 80,
+    "path": "/news/article-roxois/"
   },
   {
     "id": "art-1782855042504-zoqfjx",
@@ -7242,7 +7315,7 @@
     "hasEgyptImpact": false,
     "source": "التقنية بلا حدود",
     "link": "https://www.tech-wd.com/wd/2026/06/30/%d8%aa%d8%b3%d8%b1%d9%8a%d8%a8%d8%a7%d8%aa-%d8%a3%d8%af%d8%a7%d8%a1-%d8%b4%d8%b1%d9%8a%d8%ad%d8%a9-kirin-2026-pro-%d8%a7%d9%84%d8%ac%d8%af%d9%8a%d8%af%d8%a9-%d9%8a%d9%82%d8%aa%d8%b1%d8%a8-%d9%85/",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782855042504-zoqfjx",
+    "techdose_link": "https://td-arabi.com/news/kirin-2026-pro-zoqfjx/",
     "status": "published",
     "seo_title": "Kirin 2026 Pro: شريحة جديدة من Huawei",
     "meta_description": "تستعد Huawei للكشف عن شريحة Kirin 2026 Pro الجديدة، التي تتمتع بأداء مشابه لشريحة Apple A19.",
@@ -7304,7 +7377,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782648275087-nshiyw"
       }
     ],
-    "quality_score": 51
+    "quality_score": 51,
+    "path": "/news/kirin-2026-pro-zoqfjx/"
   },
   {
     "id": "art-1782851422028-wd0upi",
@@ -7325,7 +7399,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54234",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782851422028-wd0upi",
+    "techdose_link": "https://td-arabi.com/news/ios-2652-25-thgara-amnia-khtira-wd0upi/",
     "status": "published",
     "seo_title": "آبل تحذر من 25 ثغرة أمنية خطيرة في آيفون",
     "meta_description": "تحديث iOS 26.5.2 يغلق 25 ثغرة أمنية خطيرة في آيفون",
@@ -7397,7 +7471,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782439262830-hnhdrz"
       }
     ],
-    "quality_score": 71
+    "quality_score": 71,
+    "path": "/news/ios-2652-25-thgara-amnia-khtira-wd0upi/"
   },
   {
     "id": "art-1782846021198-huyo37",
@@ -7417,7 +7492,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54231",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782846021198-huyo37",
+    "techdose_link": "https://td-arabi.com/news/iphone-ultra-foldable-design-huyo37/",
     "status": "published",
     "seo_title": "هاتف iPhone Ultra القابل للطي: التصميم والوظائف",
     "meta_description": "تم الكشف عن هاتف iPhone Ultra القابل للطي بتصميم يشبه Galaxy Z Fold7، مع شاشة داخلية واسعة ووظائف متقدمة.",
@@ -7469,7 +7544,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782648275087-nshiyw"
       }
     ],
-    "quality_score": 69
+    "quality_score": 69,
+    "path": "/news/iphone-ultra-foldable-design-huyo37/"
   },
   {
     "id": "art-1782844220939-ujf0au",
@@ -7491,7 +7567,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54233",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782844220939-ujf0au",
+    "techdose_link": "https://td-arabi.com/news/tapplication-openclaw-yasil-ila-hawatif-ayfon-w-android-ujf0au/",
     "status": "published",
     "seo_title": "تطبيق OpenClaw يصل إلى هواتف آيفون وأندرويد",
     "meta_description": "أطلقت مؤسسة OpenClaw تطبيقها الرسمي على هواتف آيفون وأندرويد",
@@ -7574,7 +7650,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782446425138-d5gebv"
       }
     ],
-    "quality_score": 63
+    "quality_score": 63,
+    "path": "/news/tapplication-openclaw-yasil-ila-hawatif-ayfon-w-android-ujf0au/"
   },
   {
     "id": "art-1782842421134-frcug3",
@@ -7594,7 +7671,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54220",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782842421134-frcug3",
+    "techdose_link": "https://td-arabi.com/news/article-frcug3/",
     "status": "published",
     "seo_title": "حجز اسم المستخدم في واتساب: ميزة جديدة",
     "meta_description": "حجز اسم المستخدم في واتساب: ميزة جديدة تعزز الخصوصية",
@@ -7661,7 +7738,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782446425138-d5gebv"
       }
     ],
-    "quality_score": 55
+    "quality_score": 55,
+    "path": "/news/article-frcug3/"
   },
   {
     "id": "art-1782838821208-wm1d0s",
@@ -7683,7 +7761,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54223",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782838821208-wm1d0s",
+    "techdose_link": "https://td-arabi.com/news/openai-srqt-mohandes-nazrat-abel-wm1d0s/",
     "status": "published",
     "seo_title": "OpenAI سرقت رئيس نظارات آبل",
     "meta_description": "استقال رئيس نظارات آبل من شركة آبل لينضم إلى OpenAI",
@@ -7746,7 +7824,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782473438169-ql6t3n"
       }
     ],
-    "quality_score": 59
+    "quality_score": 59,
+    "path": "/news/openai-srqt-mohandes-nazrat-abel-wm1d0s/"
   },
   {
     "id": "art-1782837020797-9f7fje",
@@ -7767,7 +7846,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54230",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782837020797-9f7fje",
+    "techdose_link": "https://td-arabi.com/news/dlss-june-2026-9f7fje/",
     "status": "published",
     "seo_title": "DLSS في يونيو: قائمة الألعاب الجديدة التي تدعم تقنية DLSS",
     "meta_description": "قائمة الألعاب الجديدة التي تدعم تقنية DLSS في يونيو، بما في ذلك الألعاب التي صدرت حديثًا وتحديثات الألعاب القديمة.",
@@ -7836,7 +7915,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782446425138-d5gebv"
       }
     ],
-    "quality_score": 68
+    "quality_score": 68,
+    "path": "/news/dlss-june-2026-9f7fje/"
   },
   {
     "id": "art-1782835221453-0ztowt",
@@ -7857,7 +7937,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54224",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782835221453-0ztowt",
+    "techdose_link": "https://td-arabi.com/news/apple-tetkhal-3a-rqqaqa-m6-pro-max-w-tetjeh-n3w-silaa-m7-0ztowt/",
     "status": "published",
     "seo_title": "آبل تتخلى عن رقاقة M6 Pro/Max وتتجه نحو سلسلة M7",
     "meta_description": "كشفت تسريبات جديدة عن تحول لافت في خطط شركة آبل لمعالجاتها المستقبلية.",
@@ -7929,7 +8009,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782439262830-hnhdrz"
       }
     ],
-    "quality_score": 63
+    "quality_score": 63,
+    "path": "/news/apple-tetkhal-3a-rqqaqa-m6-pro-max-w-tetjeh-n3w-silaa-m7-0ztowt/"
   },
   {
     "id": "art-1782833421161-39vesg",
@@ -7951,7 +8032,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54225",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782833421161-39vesg",
+    "techdose_link": "https://td-arabi.com/news/article-39vesg/",
     "status": "published",
     "seo_title": "دعوى قضائية ضد سامسونغ وإس كيه هاينكس وميكرون",
     "meta_description": "دعوى قضائية ضد سامسونغ وإس كيه هاينكس وميكرون بتهمة التلاعب بأسعار ذاكرة DRAM",
@@ -7999,7 +8080,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782662429368-k8h9dj"
       }
     ],
-    "quality_score": 54
+    "quality_score": 54,
+    "path": "/news/article-39vesg/"
   },
   {
     "id": "art-1782829820753-cn5q5j",
@@ -8020,7 +8102,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54226",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782829820753-cn5q5j",
+    "techdose_link": "https://td-arabi.com/news/sony-ps6-sirabat-saer-cn5q5j/",
     "status": "published",
     "seo_title": "سوني PS6: تسريبات حول سعر الجهاز",
     "meta_description": "تسريبات حول سعر جهاز الكونسول سوني PS6، ومدى تأثير الذكاء الاصطناعي على السوق",
@@ -8088,7 +8170,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782446425138-d5gebv"
       }
     ],
-    "quality_score": 65
+    "quality_score": 65,
+    "path": "/news/sony-ps6-sirabat-saer-cn5q5j/"
   },
   {
     "id": "art-1782829711421-lm1pna",
@@ -8108,7 +8191,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54229",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782829711421-lm1pna",
+    "techdose_link": "https://td-arabi.com/news/playstation-6-tjrah-lab-mtnqla-lm1pna/",
     "status": "published",
     "seo_title": "PlayStation 6: تجربة لعب متنقلة",
     "meta_description": "يبدو أن سوني تفكر في إطلاق جهاز PlayStation 6 ذي تجربة لعب متنقلة",
@@ -8142,7 +8225,8 @@
       "سوني"
     ],
     "internal_links": [],
-    "quality_score": 53
+    "quality_score": 53,
+    "path": "/news/playstation-6-tjrah-lab-mtnqla-lm1pna/"
   },
   {
     "id": "art-1782829609967-gl611i",
@@ -8164,7 +8248,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54222",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782829609967-gl611i",
+    "techdose_link": "https://td-arabi.com/news/ios-27-6-memizat-mufida-gl611i/",
     "status": "published",
     "seo_title": "iOS 27: 6 مميزات مفيدة جديدة",
     "meta_description": "اكتشف 6 مميزات جديدة في iOS 27، من أداء أفضل إلى تخصيص الزجاج السائل",
@@ -8277,7 +8361,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782648237835-oc01ih"
       }
     ],
-    "quality_score": 70
+    "quality_score": 70,
+    "path": "/news/ios-27-6-memizat-mufida-gl611i/"
   },
   {
     "id": "art-1782828451563-hsokcv",
@@ -8303,7 +8388,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54228",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782828451563-hsokcv",
+    "techdose_link": "https://td-arabi.com/news/xiaomi-18-pro-max-hsokcv/",
     "status": "published",
     "seo_title": "Xiaomi 18 Pro Max: تفاصيل هاتف جديد",
     "meta_description": "تتسرب تفاصيل سلسلة Xiaomi 18 الجديدة قبل أشهر من إطلاقها، وتكشف تسريبات مُتعددة عن ملامح هاتف يحاول الموازنة بين بطارية ضخمة وكاميرا فائقة الدقة.",
@@ -8373,7 +8458,8 @@
         "techdose_link": "https://td-arabi.com/article.html?id=art-1782468020319-ux8ir7"
       }
     ],
-    "quality_score": 78
+    "quality_score": 78,
+    "path": "/news/xiaomi-18-pro-max-hsokcv/"
   },
   {
     "id": "art-1782824333688-zrw5x5",
@@ -8393,7 +8479,7 @@
     "hasEgyptImpact": false,
     "source": "عرب هاردوير",
     "link": "https://arabhardware.net/post-54227",
-    "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782824333688-zrw5x5",
+    "techdose_link": "https://td-arabi.com/news/valve-tajber-dbrand-ala-sahw-ghataa-lhamay-llmnasb-steam-mac-zrw5x5/",
     "status": "published",
     "seo_title": "شركة Valve تُجبر dbrand على سحب غطاء الحماية لمنصة Steam Machine",
     "meta_description": "شركة Valve تُجبر dbrand على سحب غطاء الحماية لمنصة Steam Machine بسبب انتهاك حقوق الملكية الفكرية",
@@ -8429,7 +8515,8 @@
       "dbrand"
     ],
     "internal_links": [],
-    "quality_score": 60
+    "quality_score": 60,
+    "path": "/news/valve-tajber-dbrand-ala-sahw-ghataa-lhamay-llmnasb-steam-mac-zrw5x5/"
   },
   {
     "id": "art-1782662429368-k8h9dj",
@@ -8450,12 +8537,13 @@
     "egypt": "",
     "source": "TechCrunch",
     "link": "https://techcrunch.com/2026/06/28/why-wall-street-thinks-us-memory-maker-micron-is-the-next-nvidia/",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1782662429368-k8h9dj",
+    "techdose_link": "https://td-arabi.com/news/article-k8h9dj/",
     "videoUrl": "",
     "status": "published",
     "seo_score": 50,
     "seo_grade": "D",
-    "seo_slug": "لماذا-يعتقد-وول-ستريت-أن-شركة-ميكرون-الأمريكية-لصناعة-الذاكرة-هي-النڤيديا-التالية"
+    "seo_slug": "لماذا-يعتقد-وول-ستريت-أن-شركة-ميكرون-الأمريكية-لصناعة-الذاكرة-هي-النڤيديا-التالية",
+    "path": "/news/article-k8h9dj/"
   },
   {
     "id": "art-1782648398720-gisbhi",
@@ -8476,12 +8564,13 @@
     "egypt": "",
     "source": "WIRED",
     "link": "https://www.wired.com/story/im-addicted-to-sun-hoodies/",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1782648398720-gisbhi",
+    "techdose_link": "https://td-arabi.com/news/article-gisbhi/",
     "videoUrl": "",
     "status": "published",
     "seo_score": 50,
     "seo_grade": "D",
-    "seo_slug": "لماذا-ترتدي-أي-شيء-آخر-غير-هودي-الشمس-هذا-الصيف؟-اختياراتنا-لأفضل-هودي-الشمس"
+    "seo_slug": "لماذا-ترتدي-أي-شيء-آخر-غير-هودي-الشمس-هذا-الصيف؟-اختياراتنا-لأفضل-هودي-الشمس",
+    "path": "/news/article-gisbhi/"
   },
   {
     "id": "art-1782648294337-ruj8z5",
@@ -8502,12 +8591,13 @@
     "egypt": "",
     "source": "WIRED",
     "link": "https://www.wired.com/story/the-almost-homeless-subreddit-is-a-stark-glimpse-at-soaring-wealth-inequality/",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1782648294337-ruj8z5",
+    "techdose_link": "https://td-arabi.com/news/article-ruj8z5/",
     "videoUrl": "",
     "status": "published",
     "seo_score": 50,
     "seo_grade": "D",
-    "seo_slug": "الفرق-بين-الغني-والفقير"
+    "seo_slug": "الفرق-بين-الغني-والفقير",
+    "path": "/news/article-ruj8z5/"
   },
   {
     "id": "art-1782648275087-nshiyw",
@@ -8529,12 +8619,13 @@
     "egypt": "",
     "source": "Ars Technica - All content",
     "link": "https://arstechnica.com/cars/2026/06/apple-and-audi-alumni-have-made-a-luxe-ev-based-on-the-moon-buggy/",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1782648275087-nshiyw",
+    "techdose_link": "https://td-arabi.com/news/article-nshiyw/",
     "videoUrl": "",
     "status": "published",
     "seo_score": 50,
     "seo_grade": "D",
-    "seo_slug": "سيارة-كهربائية-فاخرة"
+    "seo_slug": "سيارة-كهربائية-فاخرة",
+    "path": "/news/article-nshiyw/"
   },
   {
     "id": "art-1782648262971-on44bq",
@@ -8555,12 +8646,13 @@
     "egypt": "",
     "source": "The Verge",
     "link": "https://www.theverge.com/podcast/958735/nest-thermostat-version-history",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1782648262971-on44bq",
+    "techdose_link": "https://td-arabi.com/news/article-on44bq/",
     "videoUrl": "",
     "status": "published",
     "seo_score": 67,
     "seo_grade": "C",
-    "seo_slug": "نست-تهدف-إلى-إصلاح-جهاز-التحكم-في-درجة-الحرارة"
+    "seo_slug": "نست-تهدف-إلى-إصلاح-جهاز-التحكم-في-درجة-الحرارة",
+    "path": "/news/article-on44bq/"
   },
   {
     "id": "art-1782648250303-nr3tyc",
@@ -8581,12 +8673,13 @@
     "egypt": "",
     "source": "TechCrunch",
     "link": "https://techcrunch.com/2026/06/27/indian-payments-chief-thinks-ai-will-be-heavily-involved-in-next-era-of-digital-payment-growth/",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1782648250303-nr3tyc",
+    "techdose_link": "https://td-arabi.com/news/article-nr3tyc/",
     "videoUrl": "",
     "status": "published",
     "seo_score": 50,
     "seo_grade": "D",
-    "seo_slug": "دفع-رقمي-ذكاء-اصطناعي"
+    "seo_slug": "دفع-رقمي-ذكاء-اصطناعي",
+    "path": "/news/article-nr3tyc/"
   },
   {
     "id": "art-1782648237835-oc01ih",
@@ -8608,12 +8701,13 @@
     "egypt": "",
     "source": "Bloomberg.com",
     "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNOGFVZEVKcTJqU3VyQXBCcWVXR1dhY0ZHajFJZG0waWJfMkY3Vmgyc042SkdNWUVOY2lva1RwY1p5c1ZkbEs4eUVfSXZFTFlhd3cyaEFSSHROYWpIY0N0aTBDdGhBWDhJUk5icTMySlc4c2hMRlhJR3R0bm5hUHRLUUpUREIyWnpzV0xoNnZkUHZqTnRCb09vY3NRSmxNc1N2akJNN0dvbE45Vi1yN3NV?oc=5",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1782648237835-oc01ih",
+    "techdose_link": "https://td-arabi.com/news/article-oc01ih/",
     "videoUrl": "",
     "status": "published",
     "seo_score": 67,
     "seo_grade": "C",
-    "seo_slug": "جوجل-تحد-من-استخدام-ميتا-لذكاء-اصطناعي-جيميني"
+    "seo_slug": "جوجل-تحد-من-استخدام-ميتا-لذكاء-اصطناعي-جيميني",
+    "path": "/news/article-oc01ih/"
   },
   {
     "id": "art-1782648200129-q10hz6",
@@ -8634,12 +8728,13 @@
     "egypt": "",
     "source": "BBC Arabic",
     "link": "https://www.bbc.com/arabic/articles/c621lynyd5jo?at_medium=RSS at_campaign=rss",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1782648200129-q10hz6",
+    "techdose_link": "https://td-arabi.com/news/article-q10hz6/",
     "videoUrl": "",
     "status": "published",
     "seo_score": 57,
     "seo_grade": "C",
-    "seo_slug": "سوريا-وحزب-الله"
+    "seo_slug": "سوريا-وحزب-الله",
+    "path": "/news/article-q10hz6/"
   },
   {
     "id": "art-1782475220805-jtvj6o",
@@ -8658,12 +8753,13 @@
     "egypt": "",
     "source": "BBC Arabic",
     "link": "https://www.bbc.com/arabic/articles/c872y52zdzjo?at_medium=RSS at_campaign=rss",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1782475220805-jtvj6o",
+    "techdose_link": "https://td-arabi.com/news/article-jtvj6o/",
     "videoUrl": "",
     "status": "published",
     "seo_score": 75,
     "seo_grade": "B",
-    "seo_slug": "تطبيق-في-كوريا-الجنوبية-لحماية-النساء-من-الملاحقة،-فهل-ينجح؟"
+    "seo_slug": "تطبيق-في-كوريا-الجنوبية-لحماية-النساء-من-الملاحقة،-فهل-ينجح؟",
+    "path": "/news/article-jtvj6o/"
   },
   {
     "id": "art-1782473438169-ql6t3n",
@@ -8686,12 +8782,13 @@
     "egypt": "",
     "source": "Android Authority",
     "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPa3VwNngyaTJXZzk0R1JldHp1clVHV296TkNMYlQ1R1drSDdmd056RFh1MGE1UmgzMXR4MlJLU0d0SjFzSkFOMWNTUG84S09zZHQwSFBBa21YZ3l6TzI1SDNleGI3ZE1tVVFCZkxlLUlhclEzSnBNb1pCNVYxRXpzQ3ktZmljelFPSzQzUDRB?oc=5",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1782473438169-ql6t3n",
+    "techdose_link": "https://td-arabi.com/news/article-ql6t3n/",
     "videoUrl": "",
     "status": "published",
     "seo_score": 52,
     "seo_grade": "D",
-    "seo_slug": "أدوات-ذكاء-اصطناعي-فريدة"
+    "seo_slug": "أدوات-ذكاء-اصطناعي-فريدة",
+    "path": "/news/article-ql6t3n/"
   },
   {
     "id": "art-1782473420219-v9qp6m",
@@ -8710,12 +8807,13 @@
     "egypt": "",
     "source": "BBC Arabic",
     "link": "https://www.bbc.com/arabic/articles/c9w2v7jn1w0o?at_medium=RSS at_campaign=rss",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1782473420219-v9qp6m",
+    "techdose_link": "https://td-arabi.com/news/article-v9qp6m/",
     "videoUrl": "",
     "status": "published",
     "seo_score": 55,
     "seo_grade": "C",
-    "seo_slug": "إيران-تصف-البيان-المشترك-للولايات-المتحدة-ومجلس-التعاون-الخليجي-بـالاستفزازي"
+    "seo_slug": "إيران-تصف-البيان-المشترك-للولايات-المتحدة-ومجلس-التعاون-الخليجي-بـالاستفزازي",
+    "path": "/news/article-v9qp6m/"
   },
   {
     "id": "art-1782469820154-27yzm4",
@@ -8736,12 +8834,13 @@
     "egypt": "",
     "source": "BBC Arabic",
     "link": "https://www.bbc.com/arabic/articles/c9w2v7jn1w0o?at_medium=RSS at_campaign=rss",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1782469820154-27yzm4",
+    "techdose_link": "https://td-arabi.com/news/article-27yzm4/",
     "videoUrl": "",
     "status": "published",
     "seo_score": 57,
     "seo_grade": "C",
-    "seo_slug": "إيران-ترد-على-البيان-المشترك"
+    "seo_slug": "إيران-ترد-على-البيان-المشترك",
+    "path": "/news/article-27yzm4/"
   },
   {
     "id": "art-1782468020319-ux8ir7",
@@ -8762,12 +8861,13 @@
     "egypt": "",
     "source": "BBC Arabic",
     "link": "https://www.bbc.com/arabic/articles/c9w2v7jn1w0o?at_medium=RSS at_campaign=rss",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1782468020319-ux8ir7",
+    "techdose_link": "https://td-arabi.com/news/article-ux8ir7/",
     "videoUrl": "",
     "status": "published",
     "seo_score": 65,
     "seo_grade": "C",
-    "seo_slug": "إيران-ترد-على-البيان-المشترك"
+    "seo_slug": "إيران-ترد-على-البيان-المشترك",
+    "path": "/news/article-ux8ir7/"
   },
   {
     "id": "art-1782460824114-7151re",
@@ -8790,12 +8890,13 @@
     "egypt": "",
     "source": "intlbm",
     "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPSDNfcFptTDlqdlBrNVV2R3JnVlJnekplVXFIOWJ6eVVudy04Zk96anVyZ3VnelVXSlRQZllwdGVnZDhYVmxlc3NxTGFYTDNCUzZiOG41dmNDUUc0dU9icmZ3Z1ZJc0R3TTBLakNRMTJsS3VDLTgwSjF2cURhc3A4ZzYyNVgtME1pR244?oc=5",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1782460824114-7151re",
+    "techdose_link": "https://td-arabi.com/news/article-7151re/",
     "videoUrl": "",
     "status": "published",
     "seo_score": 52,
     "seo_grade": "D",
-    "seo_slug": "شركة-باين-تعلن-عن-شراكة-مع-جوجل-كلاود"
+    "seo_slug": "شركة-باين-تعلن-عن-شراكة-مع-جوجل-كلاود",
+    "path": "/news/article-7151re/"
   },
   {
     "id": "art-1782459991856-2j80y7",
@@ -8818,11 +8919,12 @@
     "egypt": "",
     "source": "TechCrunch",
     "link": "https://techcrunch.com/2026/06/25/the-white-house-is-asking-openai-to-slow-roll-the-release-of-its-new-model-over-safety-concerns/",
-    "techdose_link": "https://td-arabi.com/article.html?id=art-1782459991856-2j80y7",
+    "techdose_link": "https://td-arabi.com/news/openai-2j80y7/",
     "videoUrl": "",
     "status": "published",
     "seo_score": 79,
     "seo_grade": "B",
-    "seo_slug": "البيت-الأبيض-يطلب-من-OpenAI-إبطاء-إطلاق-نموذجها-الجديد"
+    "seo_slug": "البيت-الأبيض-يطلب-من-OpenAI-إبطاء-إطلاق-نموذجها-الجديد",
+    "path": "/news/openai-2j80y7/"
   }
 ]

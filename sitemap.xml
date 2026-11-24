@@ -8,6 +8,20 @@
   <url><loc>https://td-arabi.com/disclaimer.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://td-arabi.com/editorial-policy.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url>
+    <loc>https://td-arabi.com/article.html?id=art-1795540528689-5sgd1h</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-24T17:15:13.143Z</news:publication_date>
+      <news:title>Porsche تكشف عن نموذج أولي للـ 718 Boxster الكهربائي بموضع بطارية منخفض</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/article.html?id=art-1795538754170-pehiyv</loc>
     <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>

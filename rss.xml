@@ -5,8 +5,17 @@
   <link>https://td-arabi.com/</link>
   <description>جرعتك اليومية من أخبار التقنية والذكاء الاصطناعي</description>
   <language>ar</language>
-  <lastBuildDate>Tue, 24 Nov 2026 17:07:12 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 24 Nov 2026 17:15:28 GMT</lastBuildDate>
   <atom:link href="https://td-arabi.com/rss.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Porsche تكشف عن نموذج أولي للـ 718 Boxster الكهربائي بموضع بطارية منخفض</title>
+    <link>https://td-arabi.com/article.html?id=art-1795540528689-5sgd1h</link>
+    <guid isPermaLink="true">https://td-arabi.com/article.html?id=art-1795540528689-5sgd1h</guid>
+    <description>تظهر تجربة قيادة نموذج 718 Boxster الكهربائي أن بطارية السيارة وُضعت خلف السائق لتقليل ارتفاع الجلوس. التصميم يدمج محركًا خلفيًا يحقق تسارعًا يتجاوز الثلاث ثوانٍ للسرعة 100 كلم/س.</description>
+    <pubDate>Tue, 24 Nov 2026 17:15:13 GMT</pubDate>
+    <source url="https://td-arabi.com/rss.xml">TD بالعربي</source>
+    <enclosure url="https://cdn.arstechnica.net/wp-content/uploads/2026/11/PORSCHE_983_PROTOTYPE_PECLA_006_DSC06879-1152x648.jpg" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>تسريبات تشير إلى تغييرات جذرية في نظام كاميرا هاتف Galaxy S27 Ultra</title>
     <link>https://td-arabi.com/article.html?id=art-1795538754170-pehiyv</link>
@@ -177,15 +186,6 @@
     <pubDate>Sun, 02 Aug 2026 20:02:04 GMT</pubDate>
     <source url="https://td-arabi.com/rss.xml">TD بالعربي</source>
     <enclosure url="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&amp;q=80" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>عطل عالمي في فلاتر بحث جوجل.. نتائج لا تطابق المدة المحددة</title>
-    <link>https://td-arabi.com/article.html?id=art-1785695427942-z5wo58</link>
-    <guid isPermaLink="true">https://td-arabi.com/article.html?id=art-1785695427942-z5wo58</guid>
-    <description>رصدت تقارير حديثة خللًا واسعًا في فلاتر بحث جوجل الزمنية، وهي الأداة التي تتيح حصر النتائج ضمن مدة محددة مثل الساعة الماضية أو الأسبوع الماضي.</description>
-    <pubDate>Sun, 02 Aug 2026 18:30:39 GMT</pubDate>
-    <source url="https://td-arabi.com/rss.xml">TD بالعربي</source>
-    <enclosure url="https://arabhardware.net/storage/uploads/2026-08/6a6f334af1bd3.5ee97b53-df5a-4cef-a09f-88ba6d90237a.pngmain6a6f334b0b656.webp" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>

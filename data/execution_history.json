@@ -1,5 +1,14 @@
 [
   {
+    "at": "2026-11-24T16:45:02.048Z",
+    "status": "published",
+    "title": "تسريبات تشير إلى تغييرات جذرية في نظام كاميرا هاتف Galaxy S27 Ultra",
+    "errors": [
+      "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later"
+    ],
+    "provider": "gemini:gemini-3.1-flash-lite"
+  },
+  {
     "status": "unhandled_error",
     "execution_id": 1788033631716,
     "triggered_at": "2026-08-29T20:00:31.716Z",

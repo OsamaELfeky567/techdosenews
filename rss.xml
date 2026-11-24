@@ -5,8 +5,17 @@
   <link>https://td-arabi.com/</link>
   <description>جرعتك اليومية من أخبار التقنية والذكاء الاصطناعي</description>
   <language>ar</language>
-  <lastBuildDate>Sun, 15 Nov 2026 10:03:20 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 24 Nov 2026 16:45:54 GMT</lastBuildDate>
   <atom:link href="https://td-arabi.com/rss.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>تسريبات تشير إلى تغييرات جذرية في نظام كاميرا هاتف Galaxy S27 Ultra</title>
+    <link>https://td-arabi.com/article.html?id=art-1795538754170-pehiyv</link>
+    <guid isPermaLink="true">https://td-arabi.com/article.html?id=art-1795538754170-pehiyv</guid>
+    <description>تفيد تسريبات تقنية حديثة بأن سامسونج قد تتخلى عن بعض المكونات الأساسية في نظام تصوير هاتفها المرتقب. يأتي ذلك في إطار توجه الشركة نحو إعادة تصميم هيكلية الكاميرا الخلفية.</description>
+    <pubDate>Tue, 24 Nov 2026 16:45:02 GMT</pubDate>
+    <source url="https://td-arabi.com/rss.xml">TD بالعربي</source>
+    <enclosure url="https://www.tech-wd.com/wd/wp-content/uploads/2026/11/galaxy-s27-leak.jpg" type="image/jpeg" length="0"/>
+  </item>
   <item>
     <title>Intel تعلن معالجات Core Ultra 200S بأداء ذكاء اصطناعي محسّن</title>
     <link>https://td-arabi.com/article.html?id=art-1794736983843-d18928</link>
@@ -177,15 +186,6 @@
     <pubDate>Sun, 02 Aug 2026 18:30:39 GMT</pubDate>
     <source url="https://td-arabi.com/rss.xml">TD بالعربي</source>
     <enclosure url="https://arabhardware.net/storage/uploads/2026-08/6a6f334af1bd3.5ee97b53-df5a-4cef-a09f-88ba6d90237a.pngmain6a6f334b0b656.webp" type="image/jpeg" length="0"/>
-  </item>
-  <item>
-    <title>مراجعة لعبة Halo: Campaign Evolved - تحول تاريخي في عالم ألعاب التصويب</title>
-    <link>https://td-arabi.com/article.html?id=art-1785691827605-ehbr5o</link>
-    <guid isPermaLink="true">https://td-arabi.com/article.html?id=art-1785691827605-ehbr5o</guid>
-    <description>تجربة التصويب من المنظور الأول الكلاسيكية في لعبة Halo: Campaign Evolved، مع تقنية إضاءة عالمية وتفاصيل هندسية رسومية</description>
-    <pubDate>Sun, 02 Aug 2026 17:31:26 GMT</pubDate>
-    <source url="https://td-arabi.com/rss.xml">TD بالعربي</source>
-    <enclosure url="https://arabhardware.net/storage/uploads/2026-07/6a69ea0263128.6a30670f9ee4chalo-campaaing-evolvedjpgmain6a30670fabe50main6a69ea0277499.webp" type="image/jpeg" length="0"/>
   </item>
 </channel>
 </rss>

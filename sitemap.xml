@@ -8,6 +8,20 @@
   <url><loc>https://td-arabi.com/disclaimer.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://td-arabi.com/editorial-policy.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url>
+    <loc>https://td-arabi.com/article.html?id=art-1795538754170-pehiyv</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>TD بالعربي</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-24T16:45:02.048Z</news:publication_date>
+      <news:title>تسريبات تشير إلى تغييرات جذرية في نظام كاميرا هاتف Galaxy S27 Ultra</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/article.html?id=art-1794736983843-d18928</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>

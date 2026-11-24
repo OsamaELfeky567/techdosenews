@@ -2,7 +2,7 @@ name: Generate and publish article
 
 on:
   schedule:
-    - cron: '17 */3 * * *'      # every 3 hours (UTC); the script caps articles per day
+    - cron: '17 */3 * * *'      # every 3 hours (UTC); the script caps articles per day - re-saved 2026-11-24 to refresh schedule registration
   workflow_dispatch:
     inputs:
       dry_run:

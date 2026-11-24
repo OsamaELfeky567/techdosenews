@@ -1,13 +1,14 @@
 // TD Arabi: one-article-per-run generator. Runs on GitHub Actions (Node 20, no dependencies).
 // Flow: RSS -> filters -> dedupe -> Gemini (fallback Groq) -> checks -> index.json -> .run/result.json
 import fs from 'fs';
+import { articleUrl } from './lib/urls.mjs';
 
 const E = process.env;
 const DRY_RUN = E.DRY_RUN === 'true';
 const MAX_PER_DAY = +(E.MAX_PER_DAY || 6);
 const FRESH_HOURS = +(E.FRESH_HOURS || 36);
 const MIN_SCORE = +(E.MIN_SCORE || 60);
-const MIN_WORDS = +(E.MIN_WORDS || 200);
+const MIN_WORDS = +(E.MIN_WORDS || 250);
 const BASE = 'https://td-arabi.com';
 const GEMINI_MODELS = (E.GEMINI_MODELS || 'gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-3.6-flash').split(',').map(s => s.trim()).filter(Boolean);
 const GROQ_MODEL = E.GROQ_MODEL || 'openai/gpt-oss-120b';
@@ -64,7 +65,10 @@ const SYSTEM = `أنت محرر أخبار تقنية عربي محترف في �
 - لا تضف أي رقم أو اسم أو تاريخ أو سعر غير موجود في نص المصدر. إذا لم يذكر المصدر شيئا لا تخمنه.
 - اذكر اسم المصدر في الفقرة الأخيرة (مثال: بحسب تقرير لموقع X).
 - العنوان من 40 إلى 100 حرف، بدون علامات تعجب وبدون عبارات إثارة.
-- المقال بين 220 و 450 كلمة، بصيغة HTML بسيطة فقط: <p> و <h2> و <ul><li> و <strong>. بدون <h1> وبدون روابط وبدون صور.
+- بنية المقال بالترتيب: (1) ماذا حدث في فقرة افتتاحية واضحة، (2) لماذا يهم القارئ العربي (استنتاج مبني فقط على وقائع المصدر، بدون اختلاق تأثير على مصر أو الأسواق العربية)، (3) أبرز النقاط في قائمة <ul>، (4) ما الذي لم يتأكد بعد أو ما الخطوة التالية.
+- إن كان الخبر تسريبا أو إشاعة أو معلومات غير رسمية: ضع is_rumor=true، واستخدم صياغة مثل "بحسب تسريبات" و"غير مؤكد رسميا"، ولا تذكر أي مواصفة مسربة كحقيقة، وضع كلمة "تسريبات" أو "غير مؤكد" في العنوان.
+- لا تقدم رأيا ولا توقعات من عندك. إن لم يضف الخبر معلومة جديدة ذات قيمة للقارئ ضع is_duplicate=true.
+- المقال بين 250 و 450 كلمة، بصيغة HTML بسيطة فقط: <p> و <h2> و <ul><li> و <strong>. بدون <h1> وبدون روابط وبدون صور.
 - إن كان الخبر نفسه منشورا سابقا في قائمة العناوين المعطاة، ضع is_duplicate=true.
 - الرد JSON فقط بدون أي نص آخر.`;
 
@@ -78,7 +82,7 @@ ${c.fullText}
 ${recentTitles.map(t => '- ' + t).join('\n')}
 
 أعد JSON بهذه الحقول بالضبط:
-{"is_duplicate":false,"title":"","excerpt":"جملتان","body":"<p>..</p>","category":"واحد من: ${cats.join(', ')}","tags":["3 إلى 6 كلمات"],"seo_title":"","meta_description":"140 إلى 160 حرف","seo_slug":"english-lowercase-slug","focus_keyword":"","primary_company":"","telegram_summary":"سطران بدون وسوم","image_query":"English search words for a stock photo","hasEgyptImpact":false}`;
+{"is_duplicate":false,"title":"","excerpt":"جملتان","body":"<p>..</p>","category":"واحد من: ${cats.join(', ')}","tags":["3 إلى 6 كلمات"],"seo_title":"","meta_description":"140 إلى 160 حرف","seo_slug":"english-lowercase-slug","focus_keyword":"","primary_company":"","telegram_summary":"سطران بدون وسوم","image_query":"English search words for a stock photo","hasEgyptImpact":false,"is_rumor":false}`;
 }
 
 async function callGemini(model, sys, user) {
@@ -142,8 +146,37 @@ function check(a, cats) {
   return { score, reasons, words };
 }
 
+const isRumor = a => a.is_rumor === true || a.is_rumor === 'true';
 // ---------- image ----------
 const BAD_IMG = /logo|avatar|icon|favicon|sprite|badge|pixel|spacer|placeholder|\.svg|\.gif/i;
+function imgSize(buf) {
+  try {
+    if (buf[0] === 0x89 && buf[1] === 0x50) return { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) };
+    if (buf.slice(0, 4).toString() === 'RIFF' && buf.slice(8, 12).toString() === 'WEBP') {
+      const t = buf.slice(12, 16).toString();
+      if (t === 'VP8X') return { w: 1 + buf.readUIntLE(24, 3), h: 1 + buf.readUIntLE(27, 3) };
+      if (t === 'VP8 ') return { w: buf.readUInt16LE(26) & 0x3fff, h: buf.readUInt16LE(28) & 0x3fff };
+      if (t === 'VP8L') { const b = buf.readUInt32LE(21); return { w: (b & 0x3fff) + 1, h: ((b >> 14) & 0x3fff) + 1 }; }
+    }
+    if (buf[0] === 0xff && buf[1] === 0xd8) {
+      let i = 2;
+      while (i < buf.length - 9) {
+        if (buf[i] !== 0xff) { i++; continue; }
+        const m = buf[i + 1];
+        if (m >= 0xc0 && m <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(m)) return { h: buf.readUInt16BE(i + 5), w: buf.readUInt16BE(i + 7) };
+        i += 2 + buf.readUInt16BE(i + 2);
+      }
+    }
+  } catch {}
+  return null;
+}
+async function measure(url) {
+  try {
+    const r = await fetch(url, { headers: { 'User-Agent': UA, Range: 'bytes=0-65535' }, signal: AbortSignal.timeout(12000) });
+    if (!r.ok) return null;
+    return imgSize(Buffer.from(await r.arrayBuffer()));
+  } catch { return null; }
+}
 async function pickImage(c, a) {
   const ok = u => u && /^https?:\/\//.test(u) && !BAD_IMG.test(u);
   if (ok(c.img)) return { url: c.img, source: 'rss' };
@@ -152,7 +185,7 @@ async function pickImage(c, a) {
     const og = (html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)/i) || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i) || [])[1];
     if (ok(og)) return { url: decode(og), source: 'og' };
   } catch {}
-  if (E.PEXELS_API_KEY && a.image_query) {
+  if (E.PEXELS_API_KEY && a.image_query && !isRumor(a)) {
     try {
       const j = JSON.parse(await get('https://api.pexels.com/v1/search?per_page=3&orientation=landscape&query=' + encodeURIComponent(a.image_query), 12000, { Authorization: E.PEXELS_API_KEY }));
       const p = j.photos?.[0]; if (p) return { url: p.src.large || p.src.original, source: 'pexels' };
@@ -229,17 +262,21 @@ async function main() {
     if (q.score < MIN_SCORE) { res.errors.push('quality ' + q.score + ': ' + q.reasons.join(',')); continue; }
 
     const img = await pickImage(c, a);
+    const dims = img.source === 'default' ? null : await measure(img.url);
+    if (isRumor(a) && img.source === 'default') { res.errors.push('rumor without source image'); log('  rumor has no source image, skipping'); continue; }
     const id = 'art-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
     const slug = String(a.seo_slug || '').toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70);
     const entry = {
       id, title: a.title.trim(), excerpt: a.excerpt.trim(), body: a.body, category: a.category, tags: (a.tags || []).slice(0, 6),
       image: img.url, image_source: img.source, image_query: a.image_query || '', date: now.toISOString(),
       readTime: Math.max(2, Math.round(q.words / 200)) + ' min read', views: 0, hasEgyptImpact: !!a.hasEgyptImpact,
-      source: c.sourceName, link: c.link, source_title: c.title, techdose_link: BASE + '/article.html?id=' + id, status: 'published',
+      source: c.sourceName, link: c.link, source_title: c.title, techdose_link: '', status: 'published',
       seo_title: (a.seo_title || a.title).trim(), meta_description: (a.meta_description || a.excerpt).trim(), seo_slug: slug, focus_keyword: a.focus_keyword || '',
       secondary_keywords: [], primary_company: a.primary_company || '', secondary_company: '', products: [], devices: [], technologies: [], ai_models: [], os: [], chipsets: [], browsers: [], cloud_platforms: [], languages: [], opensource_projects: [], executives: [], markets: [], countries: [], people: [], stocks: [], investors: [], image_queries: [], internal_links: [],
+      is_rumor: isRumor(a), image_w: dims?.w || undefined, image_h: dims?.h || undefined,
       quality_score: q.score, ai_provider: a._provider || '',
     };
+    entry.techdose_link = articleUrl(entry); entry.path = entry.techdose_link.replace(BASE, '');
     res.published = { id, title: entry.title, url: entry.techdose_link, telegram_summary: String(a.telegram_summary || entry.excerpt), image: entry.image };
     res.provider = a._provider || '';
     if (DRY_RUN) { log('DRY RUN article:\n', JSON.stringify({ ...entry, body: entry.body.slice(0, 400) + '...' }, null, 2)); return finish('dry_run_ok'); }

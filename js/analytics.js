@@ -32,3 +32,5 @@
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "x9m25ltvs0");
 })();
+window.sc_project=13370055;window.sc_invisible=1;window.sc_security="c8318a65";window.sc_remove_link=1;
+var tdnSc=document.createElement("script");tdnSc.async=true;tdnSc.src="https://www.statcounter.com/counter/counter.js";document.head.appendChild(tdnSc);

@@ -5,7 +5,9 @@ import { articleUrl } from './lib/urls.mjs';
 
 const E = process.env;
 const DRY_RUN = E.DRY_RUN === 'true';
-const MAX_PER_DAY = +(E.MAX_PER_DAY || 6);
+const MAX_PER_DAY = +(E.MAX_PER_DAY || 15);      // hard ceiling approved by the owner
+const BASE_PER_DAY = +(E.BASE_PER_DAY || 6);     // up to this many/day on normal quality; above it only real trends
+const TREND_MIN = +(E.TREND_MIN || 25);          // trend score needed for articles beyond BASE_PER_DAY
 const FRESH_HOURS = +(E.FRESH_HOURS || 36);
 const MIN_SCORE = +(E.MIN_SCORE || 60);
 const MIN_WORDS = +(E.MIN_WORDS || 250);
@@ -194,7 +196,25 @@ async function pickImage(c, a) {
   return { url: BASE + '/img/og-image.png', source: 'default' };
 }
 
+// ---------- trend signal ----------
+// A story is "trending" when several independent sources run it (title clustering) and/or it is high on Hacker News.
+async function hnFront() {
+  try {
+    const j = JSON.parse(await get('https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=60', 12000));
+    return (j.hits || []).map(h => ({ title: h.title || '', points: h.points || 0 }));
+  } catch { return []; }
+}
+function trendScore(c, pool, hn) {
+  const srcs = new Set([c.sourceId]);
+  for (const p of pool) if (p.sourceId !== c.sourceId && jaccard(p.title, c.title) > 0.35) srcs.add(p.sourceId);
+  let hnPts = 0;
+  for (const h of hn) if (jaccard(h.title, c.title) > 0.3) hnPts = Math.max(hnPts, h.points);
+  const score = (srcs.size - 1) * 15 + Math.min(40, Math.round(hnPts / 10));
+  return { score, sources: srcs.size, hn: hnPts };
+}
+
 // ---------- main ----------
+
 async function main() {
   fs.mkdirSync('.run', { recursive: true });
   const now = new Date();
@@ -210,6 +230,7 @@ async function main() {
   const today = now.toISOString().slice(0, 10);
   const todayCount = index.filter(a => (a.date || '').startsWith(today)).length;
   if (todayCount >= MAX_PER_DAY) return finish('skipped_daily_cap');
+  const trendOnly = todayCount >= BASE_PER_DAY; // beyond the base quota only trending stories pass
 
   const cats = rj('data/categories.json', []).map(c => c.id);
   if (!cats.length) cats.push('technology');
@@ -228,6 +249,7 @@ async function main() {
 
   // 2. filter
   let cands = [];
+  const pool = [];
   for (const { s, items } of feeds) for (const it of items) {
     const ageH = (now - it.date) / 36e5;
     if (ageH < -1 || ageH > FRESH_HOURS) continue;
@@ -235,11 +257,16 @@ async function main() {
     if (REJ_RX.test(hay)) continue;
     const isTech = TECH_RX.test(hay);
     if (!isTech) continue;
+    pool.push({ title: it.title, sourceId: s.id });
     if (seenLinks.has(it.link)) continue;
     if ([...recentSrcTitles, ...recentTitles].some(t => jaccard(t, it.title) > 0.55)) continue;
     if (it.text.length < 120) continue;
     cands.push({ ...it, sourceId: s.id, sourceName: s.name, trust: s.trust_score || 50, ageH, score: (s.trust_score || 50) - ageH * 1.5 });
   }
+  const hn = await hnFront();
+  for (const c of cands) { const t = trendScore(c, pool, hn); c.trend = t.score; c.trendSources = t.sources; c.hnPoints = t.hn; c.score += t.score; }
+  if (trendOnly) { cands = cands.filter(c => c.trend >= TREND_MIN); log('trend-only mode (' + todayCount + '/' + MAX_PER_DAY + ' today), trending candidates:', cands.length); }
+  log('top trends:', cands.slice().sort((a, b) => b.trend - a.trend).slice(0, 5).map(c => c.trend + ' [' + c.trendSources + ' src, HN ' + c.hnPoints + '] ' + c.title.slice(0, 60)).join(' || '));
   // remove near-duplicates among candidates, best first
   cands.sort((a, b) => b.score - a.score);
   const uniq = [];
@@ -273,7 +300,7 @@ async function main() {
       source: c.sourceName, link: c.link, source_title: c.title, techdose_link: '', status: 'published',
       seo_title: (a.seo_title || a.title).trim(), meta_description: (a.meta_description || a.excerpt).trim(), seo_slug: slug, focus_keyword: a.focus_keyword || '',
       secondary_keywords: [], primary_company: a.primary_company || '', secondary_company: '', products: [], devices: [], technologies: [], ai_models: [], os: [], chipsets: [], browsers: [], cloud_platforms: [], languages: [], opensource_projects: [], executives: [], markets: [], countries: [], people: [], stocks: [], investors: [], image_queries: [], internal_links: [],
-      is_rumor: isRumor(a), image_w: dims?.w || undefined, image_h: dims?.h || undefined,
+      trend_score: c.trend || 0, trend_sources: c.trendSources || 1, is_rumor: isRumor(a), image_w: dims?.w || undefined, image_h: dims?.h || undefined,
       quality_score: q.score, ai_provider: a._provider || '',
     };
     entry.techdose_link = articleUrl(entry); entry.path = entry.techdose_link.replace(BASE, '');

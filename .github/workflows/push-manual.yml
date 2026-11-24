@@ -1,0 +1,41 @@
+name: Manual push notification
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: 'Notification title'
+        required: true
+      message:
+        description: 'Notification text'
+        required: true
+      url:
+        description: 'Link (must start with https://td-arabi.com)'
+        required: true
+        default: 'https://td-arabi.com/'
+
+permissions:
+  contents: read
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Send
+        env:
+          ONESIGNAL_APP_ID: ${{ secrets.ONESIGNAL_APP_ID }}
+          ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
+          P_TITLE: ${{ github.event.inputs.title }}
+          P_MSG: ${{ github.event.inputs.message }}
+          P_URL: ${{ github.event.inputs.url }}
+        run: |
+          node -e '
+          const E=process.env;
+          if(!E.ONESIGNAL_APP_ID||!E.ONESIGNAL_API_KEY){console.log("secrets missing");process.exit(1)}
+          if(!E.P_URL.startsWith("https://td-arabi.com")){console.log("bad url");process.exit(1)}
+          fetch("https://api.onesignal.com/notifications?c=push",{method:"POST",headers:{"Content-Type":"application/json; charset=utf-8",Authorization:"Key "+E.ONESIGNAL_API_KEY},
+            body:JSON.stringify({app_id:E.ONESIGNAL_APP_ID,target_channel:"push",included_segments:["Subscribed Users"],headings:{en:E.P_TITLE,ar:E.P_TITLE},contents:{en:E.P_MSG,ar:E.P_MSG},url:E.P_URL,chrome_web_icon:"https://td-arabi.com/favicon.png",ttl:43200})})
+          .then(async r=>{console.log(r.status,(await r.text()).slice(0,200));process.exit(r.ok?0:1)})'

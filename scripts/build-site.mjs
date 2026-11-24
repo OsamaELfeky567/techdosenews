@@ -77,7 +77,7 @@ const FOOTER = `<footer class="sb-footer"><div class="sb-container">
 
 const adSlot = (size, cls = '') => {
   const key = site.ads && site.ads[size];
-  if (!key) return '';
+  if (!key || (site.ads_disabled || []).includes(size)) return '';
   const [w, h] = size.split('x');
   return `<div class="td-ad ${cls}" style="min-height:${+h + 24}px"><div class="td-ad-label">إعلان</div><div class="td-ad-box"><script>atOptions={'key':'${key}','format':'iframe','height':${h},'width':${w},'params':{}};</script><script src="https://www.highperformanceformat.com/${key}/invoke.js"></script></div></div>`;
 };
@@ -249,6 +249,16 @@ if (!SITEMAPS_ONLY) {
   for (const a of articles) {
     const rel = a.path.replace(/^\//, '') + 'index.html';
     if (ALL || !fs.existsSync(path.join(OUT, rel))) { write(rel, articlePage(a)); n++; }
+  }
+  // prune pages of articles that were deleted or unpublished (only in the real tree)
+  if (OUT === '.' && fs.existsSync('news')) {
+    const keep = new Set(articles.map(a => a.path.split('/')[2]));
+    let pr = 0;
+    for (const d of fs.readdirSync('news', { withFileTypes: true })) {
+      if (!d.isDirectory() || d.name === 'page' || keep.has(d.name)) continue;
+      if (fs.existsSync(path.join('news', d.name, 'index.html')) && articles.length > 20) { fs.rmSync(path.join('news', d.name), { recursive: true, force: true }); pr++; }
+    }
+    if (pr) console.log('pruned ' + pr + ' stale article pages');
   }
   const PER = 40, pages = Math.max(1, Math.ceil(articles.length / PER));
   for (let p = 1; p <= pages; p++) write(p === 1 ? 'news/index.html' : `news/page/${p}/index.html`, hubPage(articles.slice((p - 1) * PER, p * PER), p, pages));

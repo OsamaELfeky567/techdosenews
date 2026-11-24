@@ -91,7 +91,7 @@ const ENTITY_IMAGES = {
   apple:'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&q=80',
   microsoft:'https://images.unsplash.com/photo-1642132652075-7f2f0ab8f1b0?w=800&q=80',
   nvidia:'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80',
-  samsung:'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=800&q=80',
+  samsung:'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=800&q=80',
   tesla:'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80',
   meta:'https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&q=80',
   amazon:'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=800&q=80',
@@ -121,8 +121,8 @@ const ENTITY_KEYWORDS = [
 ];
 function resolveImage(a) {
   if (!a) return ENTITY_IMAGES.default;
-  if (a.image_url && a.image_url.trim() && a.image_url.includes('raw.githubusercontent.com')) return a.image_url;
-  if (a.image && a.image.trim() && a.image.includes('raw.githubusercontent.com')) return a.image;
+  if (a.image && a.image.trim() && /^https?:/.test(a.image.trim()) && !a.image.includes('photo-1518770660439-4636190af475')) return a.image;
+  if (a.image_url && a.image_url.trim() && /^https?:/.test(a.image_url.trim())) return a.image_url;
   const tagsStr = Array.isArray(a.tags) ? a.tags.join(' ') : (typeof a.tags === 'string' ? a.tags.replace(/,/g,' ') : '');
   const text = ((a.title||'')+' '+(a.source||'')+' '+(a.source_name||'')+' '+tagsStr).toLowerCase();
   for (const [keywords,entity] of ENTITY_KEYWORDS) {
@@ -130,7 +130,6 @@ function resolveImage(a) {
       if (text.includes(kw)) return ENTITY_IMAGES[entity];
     }
   }
-  if (a.image && !a.image.includes('photo-1518770660439-4636190af475')) return a.image;
   return ENTITY_IMAGES.default;
 }
 
@@ -259,7 +258,7 @@ function renderHero() {
     ? a.tags.slice(0, 3).map(t => '<span class="sb-tag-pill sb-tag-pill-sm" onclick="event.stopPropagation();filterByTag(\'' + escAttr(t) + '\')" role="button">' + esc(t) + '</span>').join('')
     : '';
   hero.innerHTML = '<div tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
-    '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" decoding="async" width="800" height="480" onerror="this.style.display=\'none\'">' +
+    '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" decoding="async" width="800" height="480" onerror="this.onerror=null;this.src=\'" + ENTITY_IMAGES.default + "\'">' +
     '<div class="sb-hero-overlay">' +
     getFreshnessBadge(pubDate) +
     '<h2>' + esc(a.title) + '</h2>' +
@@ -276,7 +275,7 @@ function renderHeroSecondary() {
   container.innerHTML = items.map(a => {
     const pubDate = getPubDate(a);
     return '<div class="sb-hero-secondary-item" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
-      '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" decoding="async" width="400" height="240" onerror="this.style.display=\'none\'">' +
+      '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" decoding="async" width="400" height="240" onerror="this.onerror=null;this.src=\'" + ENTITY_IMAGES.default + "\'">' +
       '<div class="sb-hero-overlay">' +
       getFreshnessBadge(pubDate) +
       '<h2>' + esc(a.title) + '</h2>' +
@@ -311,7 +310,7 @@ function renderLatest() {
       ? '<span class="sb-latest-cat">' + esc(a.tags[0]) + '</span>'
       : '';
     return '<div class="sb-latest-item" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
-      '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" decoding="async" width="100" height="70" onerror="this.style.display=\'none\'">' +
+      '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" decoding="async" width="100" height="70" onerror="this.onerror=null;this.src=\'" + ENTITY_IMAGES.default + "\'">' +
       '<div class="sb-latest-info">' + tagsHtml +
       '<h4>' + esc(a.title) + '</h4>' +
       '<span class="sb-latest-date">' + getRelativeTimeHtml(getPubDate(a)) + '</span></div></div>';
@@ -355,7 +354,7 @@ function appendGridItems() {
     const tagsHtml = Array.isArray(a.tags) && a.tags.length > 0
       ? a.tags.slice(0, 3).map(t => '<span class="sb-card-tag" onclick="event.stopPropagation();filterByTag(\'' + escAttr(t) + '\')" role="button">' + esc(t) + '</span>').join('')
       : '';
-    card.innerHTML = '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" decoding="async" width="400" height="210" onerror="this.style.display=\'none\'">' +
+    card.innerHTML = '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" decoding="async" width="400" height="210" onerror="this.onerror=null;this.src=\'" + ENTITY_IMAGES.default + "\'">' +
       '<div class="sb-card-body">' +
       (tagsHtml ? '<div class="sb-card-tags">' + tagsHtml + '</div>' : '') +
       '<h3>' + esc(a.title) + '</h3>' +
@@ -702,7 +701,7 @@ function renderRelatedArticles(article) {
     const hasInternalLink = aiLinks.some(l => l.id === a.id);
     const badgeHtml = hasInternalLink ? '<span class="sb-related-badge">مختار</span>' : '';
     return '<div class="sb-related-item" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
-    '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" decoding="async" width="90" height="65" onerror="this.style.display=\'none\'">' +
+    '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" decoding="async" width="90" height="65" onerror="this.onerror=null;this.src=\'" + ENTITY_IMAGES.default + "\'">' +
     '<div class="sb-related-info">' + badgeHtml + '<span class="sb-related-tag">' + esc(Array.isArray(a.tags) && a.tags.length > 0 ? a.tags[0] : 'تقنية') + '</span>' +
     '<h4>' + esc(a.title) + '</h4></div></div>';
   }).join('');
@@ -838,7 +837,7 @@ async function loadArticle() {
     main.innerHTML = '<div class="sb-container"><article class="sb-article">' +
       breadcrumbHtml +
       shareHtml +
-      '<img src="' + img + '" alt="' + cleanTitle + '" loading="lazy" decoding="async" width="740" height="420" onerror="this.style.display=\'none\'">' +
+      '<img src="' + img + '" alt="' + cleanTitle + '" loading="lazy" decoding="async" width="740" height="420" onerror="this.onerror=null;this.src=\'" + ENTITY_IMAGES.default + "\'">' +
       (tagsHtml ? '<div class="sb-article-tags">' + tagsHtml + '</div>' : '') +
       '<h1>' + cleanTitle + '</h1>' +
       '<div class="sb-article-meta"><div class="sb-article-author"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="border-radius:50%;background:var(--accent,#2563eb);padding:4px"><path d="M14 14c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm0 2c-5.333 0-10 2.686-10 6v2h20v-2c0-3.314-4.667-6-10-6z" fill="#fff"/></svg>فريق TD بالعربي</div><span>' + esc(a.source_name || a.source || 'TD بالعربي') + '</span><span>' + readingTimeStr + '</span></div>' +
@@ -958,7 +957,7 @@ async function loadCategory() {
         ? a.tags.slice(0, 3).map(function(t) { return '<span class="sb-card-tag">' + esc(t) + '</span>'; }).join('')
         : '';
       return '<div class="sb-card" tabindex="0" role="button" onclick="goto(\'' + escId(a.id) + '\')" onkeydown="if(event.key===\'Enter\'||event.key===\'Space\'){event.preventDefault();this.click()}">' +
-        '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" decoding="async" width="400" height="210" onerror="this.style.display=\'none\'">' +
+        '<img src="' + resolveImage(a) + '" alt="' + esc(a.title) + '" loading="lazy" decoding="async" width="400" height="210" onerror="this.onerror=null;this.src=\'" + ENTITY_IMAGES.default + "\'">' +
         '<div class="sb-card-body">' +
         (tagsHtml ? '<div class="sb-card-tags">' + tagsHtml + '</div>' : '') +
         '<h3>' + esc(a.title) + '</h3>' +

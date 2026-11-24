@@ -7,6 +7,7 @@ const DRY_RUN = E.DRY_RUN === 'true';
 const MAX_PER_DAY = +(E.MAX_PER_DAY || 6);
 const FRESH_HOURS = +(E.FRESH_HOURS || 36);
 const MIN_SCORE = +(E.MIN_SCORE || 60);
+const MIN_WORDS = +(E.MIN_WORDS || 200);
 const BASE = 'https://td-arabi.com';
 const GEMINI_MODELS = (E.GEMINI_MODELS || 'gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-3.6-flash').split(',').map(s => s.trim()).filter(Boolean);
 const GROQ_MODEL = E.GROQ_MODEL || 'openai/gpt-oss-120b';
@@ -224,6 +225,7 @@ async function main() {
     a.body = sanitize(String(a.body || ''));
     const q = check(a, cats);
     log('  quality', q.score, q.reasons.join(','), 'words', q.words);
+    if (q.words < MIN_WORDS) { res.errors.push('thin body ' + q.words + 'w < ' + MIN_WORDS); log('  thin body', q.words, '<', MIN_WORDS, '- trying next candidate'); continue; }
     if (q.score < MIN_SCORE) { res.errors.push('quality ' + q.score + ': ' + q.reasons.join(',')); continue; }
 
     const img = await pickImage(c, a);

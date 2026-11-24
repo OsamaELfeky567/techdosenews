@@ -65,7 +65,7 @@ const HEAD_COMMON = `<meta charset="UTF-8">
 <script src="/js/analytics.js" async></script>`;
 const HEADER = `<header class="sb-header"><div class="sb-container">
 <div class="sb-logo-wrap" style="margin:0;font-size:inherit;font-weight:inherit"><a href="/" class="sb-logo">TD <span>بالعربي</span></a></div>
-<nav class="sb-nav" aria-label="القائمة الرئيسية"><a href="/">الرئيسية</a><a href="/news/">كل الأخبار</a><a href="/about.html">من نحن</a><a href="/contact.html">تواصل معنا</a><a href="${esc(site.telegram_url)}" target="_blank" rel="noopener">تيليجرام</a></nav>
+<nav class="sb-nav" aria-label="القائمة الرئيسية"><a href="/">الرئيسية</a><a href="/news/">كل الأخبار</a><a href="/about.html">من نحن</a><a href="/contact.html">تواصل معنا</a><a href="${esc(site.telegram_url)}" class="sb-telegram-btn" target="_blank" rel="noopener">تيليجرام</a></nav>
 </div></header>`;
 const FOOTER = `<footer class="sb-footer"><div class="sb-container">
 <div class="sb-footer-grid"><div class="sb-footer-col"><div class="sb-footer-logo">TD <span>بالعربي</span></div>
@@ -73,6 +73,43 @@ const FOOTER = `<footer class="sb-footer"><div class="sb-container">
 <div class="sb-footer-bottom"><p>© ${new Date().getUTCFullYear()} TD بالعربي — جميع الحقوق محفوظة.</p>
 <p style="margin-top:8px;font-size:.8rem"><a href="/about.html">من نحن</a> · <a href="/contact.html">اتصل بنا</a> · <a href="/privacy.html">سياسة الخصوصية</a> · <a href="/terms.html">شروط الاستخدام</a> · <a href="/disclaimer.html">إخلاء مسؤولية</a> · <a href="/editorial-policy.html">السياسة التحريرية</a></p></div>
 </div></footer>`;
+
+const adSlot = (size, cls = '') => {
+  const key = site.ads && site.ads[size];
+  if (!key) return '';
+  const [w, h] = size.split('x');
+  return `<div class="td-ad ${cls}" style="min-height:${+h + 24}px"><div class="td-ad-label">إعلان</div><div class="td-ad-box"><script>atOptions={'key':'${key}','format':'iframe','height':${h},'width':${w},'params':{}};</script><script src="https://www.highperformanceformat.com/${key}/invoke.js"></script></div></div>`;
+};
+const PAGE_CSS = `<style>
+.td-main{max-width:1160px;margin:0 auto;padding:24px 16px;display:grid;grid-template-columns:minmax(0,760px) 300px;gap:32px;justify-content:center;align-items:start}
+.td-article{background:var(--surface);border:1px solid var(--border-light,#e5e7eb);border-radius:12px;padding:36px;min-width:0}
+.td-article h1{font-size:2rem;line-height:1.5;margin:6px 0 12px;font-weight:800}
+.td-article .sb-article-body{font-size:1.15rem;line-height:2}
+.td-article .sb-article-body p{margin:0 0 1.1em}
+.td-meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.85rem;color:var(--muted);margin-bottom:16px}
+.td-meta b{color:var(--text);font-weight:600}
+.td-fig{margin:0 0 22px}.td-fig img{border-radius:10px;display:block}
+.td-fig figcaption{font-size:.78rem;color:var(--muted);margin-top:6px}
+.td-side{position:sticky;top:76px;display:flex;flex-direction:column;gap:18px}
+.td-card{background:var(--surface);border:1px solid var(--border-light,#e5e7eb);border-radius:12px;padding:16px}
+.td-card h2,.td-card h3{font-size:1.05rem;margin:0 0 10px;font-weight:800}
+.td-side-item{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border-light,#eee);font-size:.9rem;line-height:1.5}
+.td-side-item:last-child{border:0}.td-side-item img{width:72px;height:54px;object-fit:cover;border-radius:6px;flex:none}
+.td-ad{margin:22px auto;text-align:center;max-width:100%;overflow:hidden}
+.td-ad-label{font-size:.65rem;color:var(--muted);margin-bottom:4px}
+.td-ad-box{display:flex;justify-content:center;overflow:hidden}
+.td-inline-rel{margin:18px 0;padding:12px 16px;border-right:4px solid var(--accent);background:var(--surface-2,#f1f5f9);border-radius:8px;font-size:.95rem}
+.td-inline-rel a{color:var(--accent);font-weight:700}
+.td-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+.td-rc{display:block;border:1px solid var(--border-light,#e5e7eb);border-radius:10px;overflow:hidden;background:var(--surface)}
+.td-rc img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}.td-rc span{display:block;padding:10px;font-size:.9rem;line-height:1.5;font-weight:600}
+.td-tg{background:linear-gradient(135deg,#1e40af,#3b82f6);color:#fff;border-radius:12px;padding:22px;text-align:center;margin:24px 0}
+.td-tg a{display:inline-block;background:#fff;color:#1d4ed8;font-weight:800;padding:10px 26px;border-radius:8px;margin-top:8px}
+#td-progress{position:fixed;top:0;right:0;height:3px;width:0;background:var(--accent);z-index:999}
+.td-share{position:sticky;bottom:0;display:none}
+@media(max-width:960px){.td-main{grid-template-columns:minmax(0,1fr);padding:12px}.td-side{position:static}.td-article{padding:18px}.td-article h1{font-size:1.5rem}.td-article .sb-article-body{font-size:1.08rem}.td-cards{grid-template-columns:1fr}.td-ad-d{display:none}}
+@media(min-width:961px){.td-ad-m{display:none}}
+</style>`;
 
 function related(a, n = 5) {
   const same = articles.filter(x => x.id !== a.id && x.category === a.category);
@@ -100,9 +137,20 @@ function articlePage(a) {
     { '@type': 'ListItem', position: 1, name: site.site_name, item: BASE + '/' },
     { '@type': 'ListItem', position: 2, name: 'الأخبار', item: BASE + '/news/' },
     { '@type': 'ListItem', position: 3, name: title, item: u }] };
-  const imgTag = `<img src="${esc(img)}" alt="${esc(title)}" fetchpriority="high" decoding="async"${hasDims ? ` width="${a.image_w}" height="${a.image_h}"` : ''} style="width:100%;height:auto;aspect-ratio:${hasDims ? a.image_w + '/' + a.image_h : '16/9'};object-fit:cover">`;
+  const imgTag = `<img src="${esc(img)}" alt="${esc(title)}" fetchpriority="high" decoding="async"${hasDims ? ` width="${a.image_w}" height="${a.image_h}"` : ''} style="width:100%;height:auto;aspect-ratio:16/9;object-fit:cover">`;
   const credit = a.image_source && !['default', 'pexels'].includes(a.image_source) ? `<figcaption style="font-size:.8rem;color:var(--muted);margin-top:6px">الصورة من موقع المصدر: ${esc(a.source)}</figcaption>` : (a.image_source === 'pexels' ? '<figcaption style="font-size:.8rem;color:var(--muted);margin-top:6px">الصورة: Pexels</figcaption>' : '');
-  const rel = related(a).map(r => `<li><a href="${r.path}">${esc(r.title)}</a></li>`).join('');
+  const relList = related(a, 6);
+  const thumb = r => (r.image && /^https?:/.test(r.image) ? r.image : BASE + '/img/og-image.png');
+  const relCards = relList.slice(0, 3).map(r => `<a class="td-rc" href="${r.path}"><img src="${esc(thumb(r))}" alt="" loading="lazy" width="320" height="180"><span>${esc(r.title)}</span></a>`).join('');
+  const sideItems = related(a, 12).slice(3, 10).map(r => `<a class="td-side-item" href="${r.path}"><img src="${esc(thumb(r))}" alt="" loading="lazy" width="72" height="54"><span>${esc(r.title)}</span></a>`).join('');
+  const bodyWithSlots = a => {
+    const body = sanitize(a.body); const parts = body.split('</p>'); const out = [];
+    parts.forEach((p, i) => { if (!p.trim()) return; out.push(p + '</p>');
+      if (i === 1) out.push(adSlot('300x250', 'td-ad-m'));
+      if (i === 2 && relList[0]) out.push(`<div class="td-inline-rel">اقرأ أيضا: <a href="${relList[0].path}">${esc(relList[0].title)}</a></div>`);
+      if (i === 4) out.push(adSlot('300x250', 'td-ad-m') + (relList[1] ? `<div class="td-inline-rel">قد يهمك: <a href="${relList[1].path}">${esc(relList[1].title)}</a></div>` : '')); });
+    return out.join('');
+  };
   const tags = (a.tags || []).map(t => `<span class="sb-tag" style="display:inline-block;margin:0 0 6px 6px;padding:2px 10px;border-radius:12px;background:var(--surface-2,#eef2f7);font-size:.8rem">${esc(t)}</span>`).join('');
   const enc = encodeURIComponent(u), encT = encodeURIComponent(title);
   return `<!DOCTYPE html>
@@ -132,25 +180,37 @@ ${site.facebook_url ? `<meta property="article:publisher" content="${esc(site.fa
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(desc.slice(0, 200))}">
 <meta name="twitter:image" content="${esc(img)}">
+${PAGE_CSS}
 <script type="application/ld+json">${jsonLd(ld)}</script>
 <script type="application/ld+json">${jsonLd(crumbs)}</script>
 </head>
 <body>
 ${HEADER}
-<main class="sb-article-main"><div class="sb-container">
-<article class="sb-article" itemscope>
-<nav aria-label="مسار التنقل" style="font-size:.85rem;color:var(--muted);margin-bottom:12px"><a href="/">الرئيسية</a> › <a href="/news/">الأخبار</a> › <span>${esc(catLabel(a.category))}</span></nav>
+<div id="td-progress"></div>
+<main class="td-main">
+<article class="td-article">
+<nav aria-label="مسار التنقل" style="font-size:.85rem;color:var(--muted);margin-bottom:8px"><a href="/">الرئيسية</a> › <a href="/news/">الأخبار</a> › <span>${esc(catLabel(a.category))}</span></nav>
 <h1>${esc(title)}</h1>
-${a.is_rumor ? '<p style="display:inline-block;background:#fef3c7;color:#92400e;padding:4px 12px;border-radius:8px;font-weight:700;font-size:.85rem">معلومات غير مؤكدة (تسريبات)</p>' : ''}
-<div class="sb-article-meta"><span class="sb-article-author">${esc(site.author_name)}</span><time datetime="${published}">${fmtDate(a.date)}</time><span>${esc(catLabel(a.category))}</span><span>${esc(String(a.readTime || '').replace('min read', 'دقائق قراءة'))}</span></div>
-<figure style="margin:0 0 20px">${imgTag}${credit}</figure>
-<div class="sb-article-body">${sanitize(a.body)}</div>
+${a.is_rumor ? '<p style="display:inline-block;background:#fef3c7;color:#92400e;padding:4px 12px;border-radius:8px;font-weight:700;font-size:.85rem;margin:0 0 10px">معلومات غير مؤكدة (تسريبات)</p>' : ''}
+<div class="td-meta"><b>${esc(site.author_name)}</b><time datetime="${published}">${fmtDate(a.date)}</time><span>${esc(catLabel(a.category))}</span><span>${esc(String(a.readTime || '').replace('min read', 'دقائق قراءة'))}</span></div>
+<figure class="td-fig">${imgTag}${credit}</figure>
+<div class="td-ad-d">${adSlot('728x90')}</div>
+<div class="sb-article-body">${bodyWithSlots(a)}</div>
+<div class="td-ad-d">${adSlot('728x90')}</div>
+<div class="td-ad-m">${adSlot('300x250')}</div>
 <div style="margin:24px 0;padding:14px 18px;border-radius:12px;background:var(--surface-2,#f1f5f9);font-size:.95rem">المصدر: <a href="${esc(a.link)}" rel="noopener nofollow" target="_blank">${esc(a.source)}</a>${a.source_title ? ' — ' + esc(a.source_title) : ''}<br><span style="color:var(--muted);font-size:.85rem">${esc(site.ai_disclosure || '')}</span></div>
+<div class="td-tg"><b style="font-size:1.1rem">لا يفوتك جديد التقنية</b><br><span style="opacity:.9;font-size:.9rem">أهم الأخبار على قناتنا في تيليجرام أول بأول</span><br><a href="${esc(site.telegram_url)}" target="_blank" rel="noopener">انضم للقناة</a></div>
 <div>${tags}</div>
 <p style="margin-top:18px;font-size:.9rem">شارك: <a href="https://www.facebook.com/sharer/sharer.php?u=${enc}" target="_blank" rel="noopener">فيسبوك</a> · <a href="https://t.me/share/url?url=${enc}&text=${encT}" target="_blank" rel="noopener">تيليجرام</a> · <a href="https://wa.me/?text=${encT}%20${enc}" target="_blank" rel="noopener">واتساب</a> · <a href="https://x.com/intent/post?url=${enc}&text=${encT}" target="_blank" rel="noopener">X</a></p>
+<h2 style="font-size:1.2rem;margin:28px 0 10px">اقرأ أيضا</h2>
+<div class="td-cards">${relCards}</div>
 </article>
-<aside class="sb-article-sidebar"><div class="sb-article" style="padding:20px"><h2 style="font-size:1.1rem;margin-bottom:12px">اقرأ أيضا</h2><ul style="padding-right:18px;line-height:1.9">${rel}</ul></div></aside>
-</div></main>
+<aside class="td-side">
+${adSlot('300x600', 'td-ad-d')}${adSlot('300x250', 'td-ad-d')}
+<div class="td-card"><h3>الأحدث</h3>${sideItems}</div>
+</aside>
+</main>
+<script>(function(){var b=document.getElementById('td-progress');addEventListener('scroll',function(){var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);b.style.width=Math.min(100,p*100)+'%'},{passive:true})})();</script>
 ${FOOTER}
 </body>
 </html>

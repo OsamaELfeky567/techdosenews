@@ -1,4 +1,5 @@
 import { readFileSync, writeFileSync } from 'fs';
+import { articleUrl } from '../scripts/lib/urls.mjs';
 const DB = JSON.parse(readFileSync('data/articles/index.json', 'utf-8'));
 const published = DB.filter(a => a.status === 'published').sort((a,b) => new Date(b.date||b.published_at||b.publishedAt) - new Date(a.date||a.published_at||a.publishedAt)).slice(0,20);
 const BASE = 'https://td-arabi.com';
@@ -14,7 +15,7 @@ xml += '  <atom:link href="' + BASE + '/rss.xml" rel="self" type="application/rs
 for (const a of published) {
   const title = (a.title || a.title_ar || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const desc = (a.excerpt || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  const link = BASE + '/article.html?id=' + encodeURIComponent(a.id);
+  const link = articleUrl(a);
   const date = new Date(a.date || a.published_at || a.publishedAt).toUTCString();
   const img = a.image_url || a.image || '';
   xml += '  <item>\n';
@@ -22,6 +23,7 @@ for (const a of published) {
   xml += '    <link>' + link + '</link>\n';
   xml += '    <guid isPermaLink="true">' + link + '</guid>\n';
   xml += '    <description>' + desc + '</description>\n';
+  xml += '    <content:encoded><![CDATA[' + String(a.body||'').replace(/\]\]>/g,']]&gt;') + ']]></content:encoded>\n';
   xml += '    <pubDate>' + date + '</pubDate>\n';
   xml += '    <source url="' + BASE + '/rss.xml">TD بالعربي</source>\n';
   if (img) xml += '    <enclosure url="' + img.replace(/&/g,'&amp;') + '" type="image/jpeg" length="0"/>\n';

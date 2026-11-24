@@ -10,9 +10,11 @@ on:
         type: boolean
         default: false
   push:                          # test run on the work branch: always a dry run
-    branches: [v2-restore-publishing]
+    branches: [v3-static-pages]
     paths:
-      - 'scripts/generate.mjs'
+      - 'scripts/**'
+      - 'tools/generate-rss.mjs'
+      - 'article.html'
       - '.github/workflows/generate.yml'
 
 concurrency:
@@ -42,10 +44,10 @@ jobs:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: node scripts/generate.mjs
 
-      - name: Build sitemap and rss
+      - name: Build static pages, sitemaps and rss
         if: env.DRY_RUN != 'true'
         run: |
-          node scripts/generate-sitemap.js
+          node scripts/build-site.mjs
           node tools/generate-rss.mjs
 
       - name: Commit and push
@@ -53,7 +55,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add data sitemap.xml rss.xml
+          git add data news sitemap.xml sitemap-pages.xml sitemap-articles.xml news-sitemap.xml rss.xml
           if git diff --staged --quiet; then echo "no changes"; exit 0; fi
           git commit -m "auto: publish article [bot]"
           git pull --rebase origin main
@@ -65,5 +67,4 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '-1003896125398' }}
         run: |
-          sleep 60
           node scripts/notify.mjs

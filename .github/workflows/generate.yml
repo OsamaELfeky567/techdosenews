@@ -47,7 +47,7 @@ jobs:
       - name: Build static pages, sitemaps and rss
         if: env.DRY_RUN != 'true'
         run: |
-          node scripts/build-site.mjs
+          node scripts/build-site.mjs --all
           node tools/generate-rss.mjs
 
       - name: Commit and push

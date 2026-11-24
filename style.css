@@ -459,3 +459,4 @@ img{max-width:100%;height:auto}
 @media(max-width:768px){.ad-desktop-only{display:none!important}}
 .sb-content-row-reverse{display:block}
 .sb-content-row-reverse .sb-content-main{max-width:100%}
+@media(min-width:769px){.ad-mobile-only{display:none!important}}

@@ -13,9 +13,10 @@
   "ads": {
     "_note": "Adsterra banner keys per size. null = slot is not rendered. Fill after creating zones in Adsterra.",
     "728x90": "dc29c63238688f937f7bb9cfb4bf3962",
-    "300x250": null,
+    "300x250": "8650abbaa1fd85a5ced9afc2f1f57777",
     "300x600": null,
-    "320x50": null,
-    "468x60": null
+    "320x50": "e797c00bb296e776bcd5d4a7d65bddd5",
+    "468x60": "d16fa6708cdc77c54597cb74e2951d23",
+    "160x600": "c229277af38c3a4d4544dfc44e87757f"
   }
 }

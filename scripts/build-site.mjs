@@ -195,6 +195,7 @@ ${a.is_rumor ? '<p style="display:inline-block;background:#fef3c7;color:#92400e;
 <div class="td-meta"><b>${esc(site.author_name)}</b><time datetime="${published}">${fmtDate(a.date)}</time><span>${esc(catLabel(a.category))}</span><span>${esc(String(a.readTime || '').replace('min read', 'دقائق قراءة'))}</span></div>
 <figure class="td-fig">${imgTag}${credit}</figure>
 <div class="td-ad-d">${adSlot('728x90')}</div>
+<div class="td-ad-m">${adSlot('320x50')}</div>
 <div class="sb-article-body">${bodyWithSlots(a)}</div>
 <div class="td-ad-d">${adSlot('728x90')}</div>
 <div class="td-ad-m">${adSlot('300x250')}</div>
@@ -206,7 +207,7 @@ ${a.is_rumor ? '<p style="display:inline-block;background:#fef3c7;color:#92400e;
 <div class="td-cards">${relCards}</div>
 </article>
 <aside class="td-side">
-${adSlot('300x600', 'td-ad-d')}${adSlot('300x250', 'td-ad-d')}
+${adSlot('160x600', 'td-ad-d')}${adSlot('300x250', 'td-ad-d')}
 <div class="td-card"><h3>الأحدث</h3>${sideItems}</div>
 </aside>
 </main>

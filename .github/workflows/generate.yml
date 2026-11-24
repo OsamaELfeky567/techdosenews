@@ -2,7 +2,7 @@ name: Generate and publish article
 
 on:
   schedule:
-    - cron: '17 */3 * * *'      # every 3 hours (UTC); the script caps articles per day - re-saved 2026-11-24 to refresh schedule registration
+    - cron: '17 * * * *'      # hourly (UTC); trend-hunter: 6/day base, up to 15/day only for trending stories
   workflow_dispatch:
     inputs:
       dry_run:
@@ -10,7 +10,7 @@ on:
         type: boolean
         default: false
   push:                          # test run on the work branch: always a dry run
-    branches: [v3-static-pages]
+    branches: [v3-static-pages, v3-trend]
     paths:
       - 'scripts/**'
       - 'tools/generate-rss.mjs'

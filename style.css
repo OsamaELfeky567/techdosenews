@@ -460,3 +460,18 @@ img{max-width:100%;height:auto}
 .sb-content-row-reverse{display:block}
 .sb-content-row-reverse .sb-content-main{max-width:100%}
 @media(min-width:769px){.ad-mobile-only{display:none!important}}
+
+/* v3-palette-C "Crimson News" (owner choice 2026-11-25): variables only + badge/CTA accents */
+:root{--bg:#f6f6f7;--accent:#c81e1e;--accent-2:#dc2626;--accent-dark:#991b1b;--accent-light:#fee2e2;--accent-glass:rgba(200,30,30,.08);--navy:#111827}
+[data-theme=dark]{--bg:#0e0f12;--surface:#17181d;--surface-2:#202229;--text:#ececef;--accent:#f87171;--accent-2:#fca5a5;--accent-dark:#ef4444;--accent-light:#4c1d1d;--accent-glass:rgba(248,113,113,.12);--border:#2a2c34;--border-light:#202229;--navy:#0a0a0c}
+.sb-header{background:rgba(17,24,39,.97)}
+[data-theme=dark] .sb-header{background:rgba(10,10,12,.97)}
+.sb-footer{background:var(--navy)}
+.sb-cat-badge,.sb-hero-overlay .sb-cat-badge{background:#c81e1e!important;color:#fff!important}
+[data-theme=dark] .sb-cat-badge,[data-theme=dark] .sb-hero-overlay .sb-cat-badge{background:#dc2626!important}
+.sb-nav .sb-telegram-btn,.sb-telegram-btn{background:#c81e1e;color:#fff}
+.sb-nav .sb-telegram-btn:hover{background:#991b1b}
+.sb-telegram-cta{background:linear-gradient(135deg,#7f1d1d,#c81e1e)}
+.sb-telegram-cta .sb-telegram-btn{background:#fff;color:#991b1b}
+.td-tg{background:linear-gradient(135deg,#7f1d1d,#c81e1e)}
+.td-tg a{color:#991b1b}

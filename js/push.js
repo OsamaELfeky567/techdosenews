@@ -1,9 +1,7 @@
 /* Web push opt-in (OneSignal v16). Polite: custom soft prompt after engagement, never blocks content.
-   Set APP_ID (public, safe in code) after creating the OneSignal app. While it is the placeholder this file does nothing. */
+   App ID (public, safe) is served from /js/onesignal-app-id.txt so it is managed in one place. */
 (function () {
-  var APP_ID = 'PLACEHOLDER-ONESIGNAL-APP-ID';
   var debug = location.search.indexOf('tdpush=debug') > -1;
-  if (APP_ID.indexOf('PLACEHOLDER') === 0 && !debug) return;
   if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
   var ua = navigator.userAgent, iOS = /iPad|iPhone|iPod/.test(ua);
   var standalone = window.navigator.standalone || matchMedia('(display-mode: standalone)').matches;
@@ -16,7 +14,7 @@
   } catch (e) { return; }
 
   var shown = false, loaded = false;
-  function loadSDK(cb) {
+  function loadSDK(APP_ID, cb) {
     if (debug) return cb();
     if (loaded) return cb(); loaded = true;
     window.OneSignalDeferred = window.OneSignalDeferred || [];
@@ -34,7 +32,11 @@
     d.querySelector('#tdp-no').onclick = function () { snooze(14); d.remove(); };
     d.querySelector('#tdp-yes').onclick = function () {
       d.remove(); snooze(3650);
-      loadSDK(function () { if (debug) return; OneSignal.Notifications.requestPermission(); });
+      fetch('/js/onesignal-app-id.txt').then(function (r) { return r.text(); }).then(function (t) {
+        var APP_ID = t.trim();
+        if (!/^[0-9a-f-]{36}$/i.test(APP_ID) && !debug) return;
+        loadSDK(APP_ID, function () { if (debug) return; OneSignal.Notifications.requestPermission(); });
+      }).catch(function () {});
     };
   }
   // Polite trigger: after 25 s AND scrolled 35%, or on the 2nd+ page view after 12 s. Never in the first seconds.

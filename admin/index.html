@@ -1211,8 +1211,6 @@ function renderPublishingQueue() {
 
 /* ───── Phase 11C: GitHub Source Management ───── */
 
-let RSS_SOURCES_DATA = [];
-
 async function loadRssSources() {
   try {
     const res = await fetch(RAW_URL + '/data/rss_sources.json?t=' + Date.now());

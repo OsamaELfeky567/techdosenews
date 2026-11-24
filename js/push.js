@@ -32,11 +32,20 @@
     d.querySelector('#tdp-no').onclick = function () { snooze(14); d.remove(); };
     d.querySelector('#tdp-yes').onclick = function () {
       d.remove(); snooze(3650);
-      fetch('/js/onesignal-app-id.txt').then(function (r) { return r.text(); }).then(function (t) {
-        var APP_ID = t.trim();
-        if (!/^[0-9a-f-]{36}$/i.test(APP_ID) && !debug) return;
-        loadSDK(APP_ID, function () { if (debug) return; OneSignal.Notifications.requestPermission(); });
-      }).catch(function () {});
+      if (debug) return;
+      // Ask natively inside the click gesture; then init OneSignal to register the subscription.
+      var after = function () {
+        if (Notification.permission !== 'granted') return;
+        fetch('/js/onesignal-app-id.txt').then(function (r) { return r.text(); }).then(function (t) {
+          var APP_ID = t.trim();
+          if (!/^[0-9a-f-]{36}$/i.test(APP_ID)) return;
+          loadSDK(APP_ID, function () {});
+        }).catch(function () {});
+      };
+      try {
+        var p = Notification.requestPermission();
+        if (p && p.then) p.then(after); else after();
+      } catch (e) { after(); }
     };
   }
   // Polite trigger: after 25 s AND scrolled 35%, or on the 2nd+ page view after 12 s. Never in the first seconds.

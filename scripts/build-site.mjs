@@ -78,7 +78,7 @@ const HEAD_COMMON = `<meta charset="UTF-8">
 const HEADER = `<header class="sb-header"><div class="sb-container">
 <button class="sb-menu-btn" aria-label="القائمة" aria-expanded="false" onclick="var n=document.querySelector('.sb-nav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
 <div class="sb-logo-wrap" style="margin:0;font-size:inherit;font-weight:inherit"><a href="/" class="sb-logo">TD <span>بالعربي</span></a></div>
-<nav class="sb-nav" aria-label="القائمة الرئيسية"><a href="/">الرئيسية</a><a href="/news/">كل الأخبار</a><a href="/free-tools/">أدوات</a><a href="/about.html">من نحن</a><a href="/contact.html">تواصل معنا</a><a href="${esc(site.telegram_url)}" class="sb-telegram-btn" target="_blank" rel="noopener">تيليجرام</a></nav>
+<nav class="sb-nav" aria-label="القائمة الرئيسية"><a href="/">الرئيسية</a><a href="/news/">كل الأخبار</a><a href="/free-tools/">أدوات</a><a href="/about.html">من نحن</a><a href="/contact.html">تواصل معنا</a>${site.social_verified === true ? `<a href="${esc(site.telegram_url)}" class="sb-telegram-btn" target="_blank" rel="noopener">تيليجرام</a>` : ''}</nav>
 </div></header>`;
 const FOOTER = `<footer class="sb-footer"><div class="sb-container">
 <div class="sb-footer-grid"><div class="sb-footer-col"><div class="sb-footer-logo">TD <span>بالعربي</span></div>
@@ -188,7 +188,7 @@ ${hasDims ? `<meta property="og:image:width" content="${a.image_w}">\n<meta prop
 <meta property="article:modified_time" content="${modified}">
 <meta property="article:section" content="${esc(catLabel(a.category))}">
 ${(a.tags || []).slice(0, 5).map(t => `<meta property="article:tag" content="${esc(t)}">`).join('\n')}
-${site.facebook_url ? `<meta property="article:publisher" content="${esc(site.facebook_url)}">` : ''}
+${site.social_verified === true && site.facebook_url ? `<meta property="article:publisher" content="${esc(site.facebook_url)}">` : ''}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(desc.slice(0, 200))}">
@@ -213,7 +213,7 @@ ${a.is_rumor ? '<p style="display:inline-block;background:#fef3c7;color:#92400e;
 <div class="td-ad-d">${adSlot('728x90')}</div>
 <div class="td-ad-m">${adSlot('300x250')}</div>
 <div style="margin:24px 0;padding:14px 18px;border-radius:12px;background:var(--surface-2,#f1f5f9);font-size:.95rem">المصدر: <a href="${esc(a.link)}" rel="noopener nofollow" target="_blank">${esc(a.source)}</a>${a.source_title ? ' — ' + esc(a.source_title) : ''}<br><span style="color:var(--muted);font-size:.85rem">${esc(site.ai_disclosure || '')}</span></div>
-<div class="td-tg"><b style="font-size:1.1rem">لا يفوتك جديد التقنية</b><br><span style="opacity:.9;font-size:.9rem">أهم الأخبار على قناتنا في تيليجرام أول بأول</span><br><a href="${esc(site.telegram_url)}" target="_blank" rel="noopener">انضم للقناة</a></div>
+${site.social_verified === true ? `<div class="td-tg"><b style="font-size:1.1rem">لا يفوتك جديد التقنية</b><br><span style="opacity:.9;font-size:.9rem">أهم الأخبار على قناتنا في تيليجرام أول بأول</span><br><a href="${esc(site.telegram_url)}" target="_blank" rel="noopener">انضم للقناة</a></div>` : ''}
 <div>${tags}</div>
 <p style="margin-top:18px;font-size:.9rem">شارك: <a href="https://www.facebook.com/sharer/sharer.php?u=${enc}" target="_blank" rel="noopener">فيسبوك</a> · <a href="https://t.me/share/url?url=${enc}&text=${encT}" target="_blank" rel="noopener">تيليجرام</a> · <a href="https://wa.me/?text=${encT}%20${enc}" target="_blank" rel="noopener">واتساب</a> · <a href="https://x.com/intent/post?url=${enc}&text=${encT}" target="_blank" rel="noopener">X</a></p>
 <h2 style="font-size:1.2rem;margin:28px 0 10px">اقرأ أيضا</h2>

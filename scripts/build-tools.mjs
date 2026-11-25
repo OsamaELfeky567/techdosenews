@@ -4,18 +4,19 @@ import fs from 'fs';
 const rj = (p, d) => { try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return d; } };
 const site = { base_url: 'https://td-arabi.com', telegram_url: 'https://t.me/td_arabi', ...rj('data/site.json', {}) };
 const BASE = site.base_url;
+const SOCIAL_OK = site.social_verified === true; // set true in data/site.json once real channel/page URLs are confirmed
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const NAV = `<a href="/">الرئيسية</a><a href="/news/">كل الأخبار</a><a href="/free-tools/">أدوات</a><a href="/about.html">من نحن</a><a href="/contact.html">تواصل معنا</a>`;
 const HEADER = `<header class="sb-header"><div class="sb-container">
 <button class="sb-menu-btn" aria-label="القائمة" aria-expanded="false" onclick="var n=document.querySelector('.sb-nav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
 <div class="sb-logo-wrap" style="margin:0;font-size:inherit;font-weight:inherit"><a href="/" class="sb-logo">TD <span>بالعربي</span></a></div>
-<nav class="sb-nav" aria-label="القائمة الرئيسية">${NAV}<a href="${esc(site.telegram_url)}" class="sb-telegram-btn" target="_blank" rel="noopener">تيليجرام</a></nav>
+<nav class="sb-nav" aria-label="القائمة الرئيسية">${NAV}${SOCIAL_OK ? `<a href="${esc(site.telegram_url)}" class="sb-telegram-btn" target="_blank" rel="noopener">تيليجرام</a>` : ''}</nav>
 </div></header>`;
 const FOOTER = `<footer class="sb-footer"><div class="sb-container">
 <div class="sb-footer-grid"><div class="sb-footer-col"><div class="sb-footer-logo">TD <span>بالعربي</span></div>
 <p>منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي، مع أدوات مجانية تعمل داخل متصفحك.</p></div></div>
 <div class="sb-footer-bottom"><p>© ${new Date().getUTCFullYear()} TD بالعربي — جميع الحقوق محفوظة.</p>
-<p style="margin-top:8px;font-size:.8rem"><a href="${esc(site.telegram_url)}" target="_blank" rel="noopener">تيليجرام</a> · <a href="${esc(site.facebook_url || 'https://facebook.com/techdosenews')}" target="_blank" rel="noopener">فيسبوك</a> · <a href="/free-tools/">أدوات مجانية</a> · <a href="/about.html">من نحن</a> · <a href="/contact.html">اتصل بنا</a> · <a href="/privacy.html">سياسة الخصوصية</a> · <a href="/terms.html">شروط الاستخدام</a> · <a href="/disclaimer.html">إخلاء مسؤولية</a> · <a href="/editorial-policy.html">السياسة التحريرية</a></p></div>
+<p style="margin-top:8px;font-size:.8rem">${SOCIAL_OK ? `<a href="${esc(site.telegram_url)}" target="_blank" rel="noopener">تيليجرام</a> · <a href="${esc(site.facebook_url)}" target="_blank" rel="noopener">فيسبوك</a> · ` : ''}<a href="/free-tools/">أدوات مجانية</a> · <a href="/about.html">من نحن</a> · <a href="/contact.html">اتصل بنا</a> · <a href="/privacy.html">سياسة الخصوصية</a> · <a href="/terms.html">شروط الاستخدام</a> · <a href="/disclaimer.html">إخلاء مسؤولية</a> · <a href="/editorial-policy.html">السياسة التحريرية</a></p></div>
 </div></footer>`;
 const HEAD_COMMON = `<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,7 +64,7 @@ const CSS = `<style>
 @media(max-width:640px){.ft-card{padding:16px}.ft-wrap h1{font-size:1.45rem}.ft-grid2{grid-template-columns:1fr}}
 </style>`;
 
-const FOLLOW = `<div class="ft-follow"><b>تابعنا ليصلك كل جديد</b><p>أخبار التقنية والذكاء الاصطناعي وأدوات جديدة أولا بأول.</p><a class="ft-btn" href="${esc(site.telegram_url)}" target="_blank" rel="noopener">قناتنا على تيليجرام</a> <a class="ft-btn sec" href="${esc(site.facebook_url || 'https://facebook.com/techdosenews')}" target="_blank" rel="noopener">صفحتنا على فيسبوك</a></div>`;
+const FOLLOW = !SOCIAL_OK ? '' : `<div class="ft-follow"><b>تابعنا ليصلك كل جديد</b><p>أخبار التقنية والذكاء الاصطناعي وأدوات جديدة أولا بأول.</p><a class="ft-btn" href="${esc(site.telegram_url)}" target="_blank" rel="noopener">قناتنا على تيليجرام</a> <a class="ft-btn sec" href="${esc(site.facebook_url || 'https://facebook.com/techdosenews')}" target="_blank" rel="noopener">صفحتنا على فيسبوك</a></div>`;
 const TOOLS = rj('free-tools/tools.json', []);
 const jsonLd = o => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`;
 const write = (rel, c) => { fs.mkdirSync(rel.split('/').slice(0, -1).join('/') || '.', { recursive: true }); fs.writeFileSync(rel, c, 'utf8'); };

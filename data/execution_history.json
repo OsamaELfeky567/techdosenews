@@ -1,5 +1,18 @@
 [
   {
+    "at": "2026-11-25T11:05:04.627Z",
+    "status": "no_article_passed",
+    "title": "",
+    "errors": [
+      "thin body 288w < 300",
+      "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later",
+      "thin body 206w < 300",
+      "thin body 242w < 300",
+      "thin body 267w < 300"
+    ],
+    "provider": ""
+  },
+  {
     "at": "2026-11-25T10:03:21.776Z",
     "status": "published",
     "title": "سامسونج تخفض مستهدف شحنات هواتفها الذكية لعام 2027 إلى 210 ملايين وحدة",

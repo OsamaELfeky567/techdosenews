@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/lenovo-launches-ai-server-production-line-dr026p/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-25T12:04:54Z</news:publication_date>
+      <news:title>لينوفو تشغل خط إنتاج جديد في تيانجين بطاقة 100 ألف خادم للذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/samsung-lowers-2027-smartphone-shipment-target-yidok6/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>

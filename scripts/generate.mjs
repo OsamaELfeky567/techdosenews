@@ -2,6 +2,7 @@
 // Flow: RSS -> filters -> dedupe -> Gemini (fallback Groq) -> checks -> index.json -> .run/result.json
 import fs from 'fs';
 import { articleUrl } from './lib/urls.mjs';
+import { cleanBody, hasMarkdownLeak } from './lib/clean-body.mjs';
 
 const E = process.env;
 const DRY_RUN = E.DRY_RUN === 'true';
@@ -172,6 +173,7 @@ function gate(a, c, index) {
   if (/ملخص الأسبوع|حصاد الأسبوع|أبرز أخبار الأسبوع|نشرة الأسبوع|weekly (recap|roundup)/i.test(a.title || '')) problems.push('weekly roundup title');
   if ((t.match(/<|&lt;/g) || []).length) problems.push('markup in text');
   if ((String(a.body).match(/<p[ >]/g) || []).length < 3) problems.push('fewer than 3 paragraphs');
+  if (hasMarkdownLeak(a.body)) problems.push('markdown/scrape leak in body');
   const bt = bodyToks(a.body);
   for (const x of index.slice(0, 120)) {
     if (x.link && x.link === c.link) { problems.push('same source link as ' + x.id); break; }
@@ -322,12 +324,12 @@ async function main() {
     const a = await generate(c, recentTitles.slice(0, 25), cats, res.errors);
     if (!a) { if (!E.MOCK_AI) { return finish('ai_failed'); } continue; } // all providers failed: stop the run, do not burn quota
     if (a.is_duplicate === true || a.is_duplicate === 'true') { log('  duplicate per AI'); seenLinks.add(c.link); if (!DRY_RUN) { const pl = rj('data/published_links.json', []); pl.push(c.link); wj('data/published_links.json', pl); } continue; }
-    a.body = sanitize(String(a.body || ''));
+    a.body = cleanBody(cleanBody(sanitize(String(a.body || ''))));
     let q = check(a, cats);
     log('  quality', q.score, q.reasons.join(','), 'words', q.words);
     if (q.words < MIN_WORDS) {
       const ex = await expandBody(c, a.body, res.errors);
-      if (ex) { a.body = sanitize(ex); q = check(a, cats); log('  after expand: quality', q.score, q.reasons.join(','), 'words', q.words); }
+      if (ex) { a.body = cleanBody(cleanBody(sanitize(ex))); q = check(a, cats); log('  after expand: quality', q.score, q.reasons.join(','), 'words', q.words); }
     }
     if (q.words < MIN_WORDS) { res.errors.push('thin body ' + q.words + 'w < ' + MIN_WORDS); log('  thin body', q.words, '<', MIN_WORDS, '- trying next candidate'); continue; }
     if (q.score < MIN_SCORE) { res.errors.push('quality ' + q.score + ': ' + q.reasons.join(',')); continue; }

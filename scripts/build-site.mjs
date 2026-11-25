@@ -216,11 +216,13 @@ ${a.is_rumor ? '<p style="display:inline-block;background:#fef3c7;color:#92400e;
 ${site.social_verified === true ? `<div class="td-tg"><b style="font-size:1.1rem">لا يفوتك جديد التقنية</b><br><span style="opacity:.9;font-size:.9rem">أهم الأخبار على قناتنا في تيليجرام أول بأول</span><br><a href="${esc(site.telegram_url)}" target="_blank" rel="noopener">انضم للقناة</a></div>` : ''}
 <div>${tags}</div>
 <p style="margin-top:18px;font-size:.9rem">شارك: <a href="https://www.facebook.com/sharer/sharer.php?u=${enc}" target="_blank" rel="noopener">فيسبوك</a> · <a href="https://t.me/share/url?url=${enc}&text=${encT}" target="_blank" rel="noopener">تيليجرام</a> · <a href="https://wa.me/?text=${encT}%20${enc}" target="_blank" rel="noopener">واتساب</a> · <a href="https://x.com/intent/post?url=${enc}&text=${encT}" target="_blank" rel="noopener">X</a></p>
+<div style="margin:26px 0;padding:16px 18px;border-radius:12px;border:1px solid var(--border);background:var(--surface-2,#f1f5f9)"><b style="display:block;margin-bottom:8px">🛠️ أدوات مجانية قد تفيدك</b><a href="/free-tools/remove-background/">إزالة خلفية الصورة</a> · <a href="/free-tools/compress-image/">ضغط الصور</a> · <a href="/free-tools/images-to-pdf/">تحويل الصور إلى PDF</a> · <a href="/free-tools/arabic-ocr/">استخراج النص من الصورة</a> · <a href="/free-tools/">كل الأدوات</a></div>
 <h2 style="font-size:1.2rem;margin:28px 0 10px">اقرأ أيضا</h2>
 <div class="td-cards">${relCards}</div>
 </article>
 <aside class="td-side">
 ${adSlot('160x600', 'td-ad-d')}${adSlot('300x250', 'td-ad-d')}
+<div class="td-card"><h3>أدوات مجانية</h3><p style="margin:0;line-height:2"><a href="/free-tools/remove-background/">إزالة الخلفية</a><br><a href="/free-tools/compress-image/">ضغط الصور</a><br><a href="/free-tools/qr-generator/">مولد QR</a><br><a href="/free-tools/arabic-ocr/">نص من صورة</a></p></div>
 <div class="td-card"><h3>الأحدث</h3>${sideItems}</div>
 </aside>
 </main>

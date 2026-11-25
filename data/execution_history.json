@@ -1,5 +1,14 @@
 [
   {
+    "at": "2026-11-25T19:19:35.324Z",
+    "status": "no_candidates",
+    "title": "",
+    "errors": [
+      "feed techxar: This operation was aborted"
+    ],
+    "provider": ""
+  },
+  {
     "at": "2026-11-25T19:08:48.969Z",
     "status": "no_candidates",
     "title": "",

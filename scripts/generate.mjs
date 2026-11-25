@@ -23,6 +23,9 @@ const wj = (p, v) => fs.writeFileSync(p, JSON.stringify(v, null, 2) + '\n', 'utf
 const log = (...a) => console.log(...a);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
+// Tracked trending topics (owner request): always pass the tech filter, get a trend boost, and may publish beyond the base quota.
+const TRACKED_RX = /\bgta\s?(6|vi)\b|grand theft auto\s?(6|vi)\b|\brockstar games\b|جي ?تي ?اي? ?(6|٦)|جاتا ?(6|٦)|جراند ثيفت أوتو/i;
+const TRACKED_BOOST = 40;
 const TECH_KW = ['ai', 'artificial intelligence', 'machine learning', 'llm', 'gpt', 'openai', 'anthropic', 'claude', 'gemini', 'chatbot', 'software', 'startup', 'cyber', 'security', 'hack', 'breach', 'chip', 'processor', 'nvidia', 'amd', 'intel', 'qualcomm', 'smartphone', 'iphone', 'android', 'samsung', 'pixel', 'windows', 'linux', 'cloud', 'robot', 'tesla', 'electric vehicle', 'ev', 'gpu', 'laptop', 'app', 'google', 'apple', 'microsoft', 'meta', 'amazon', 'chatgpt',
   'ذكاء اصطناعي', 'الذكاء الاصطناعي', 'تقنية', 'تكنولوجيا', 'هاتف', 'آيفون', 'أندرويد', 'سامسونج', 'جوجل', 'أبل', 'مايكروسوفت', 'ميتا', 'أمازون', 'إنفيديا', 'معالج', 'شريحة', 'برمجيات', 'تطبيق', 'سيبراني', 'اختراق', 'روبوت', 'سيارات كهربائية', 'ويندوز', 'لابتوب', 'بطارية'];
 const REJ_KW = ['election', 'president trump', 'senate', 'congress', 'nfl', 'nba', 'soccer', 'football match', 'celebrity', 'horoscope', 'recipe', 'best deals', 'deal alert', 'coupon', 'discount code', 'black friday', 'top 10', 'giveaway', 'review roundup',
@@ -80,7 +83,7 @@ function userPrompt(c, recentTitles, cats) {
 عنوان الخبر الأصلي: ${c.title}
 النص:
 ${c.fullText}
-
+${c.tracked ? '\nتنبيه تحريري: خبر عن GTA 6. اعتمد فقط على ما ورد في المصدر. لو الخبر إشاعة أو ادعاء لاعب أو تسريب غير مؤكد من Rockstar فاكتبه صراحة كادعاء غير مؤكد ولا تذكر تواريخ إصدار أو ميزات كحقائق. لا تخترع تفاصيل.\n' : ''}
 عناوين منشورة حديثا (لتجنب التكرار):
 ${recentTitles.map(t => '- ' + t).join('\n')}
 
@@ -297,16 +300,18 @@ async function main() {
     if (ageH < -1 || ageH > FRESH_HOURS) continue;
     const hay = (it.title + ' ' + it.text.slice(0, 600)).toLowerCase();
     if (REJ_RX.test(hay)) continue;
-    const isTech = TECH_RX.test(hay);
+    const tracked = TRACKED_RX.test(hay);
+    if (s.tracked_only && !tracked) continue;
+    const isTech = tracked || TECH_RX.test(hay);
     if (!isTech) continue;
     pool.push({ title: it.title, sourceId: s.id });
     if (seenLinks.has(it.link)) continue;
     if ([...recentSrcTitles, ...recentTitles].some(t => jaccard(t, it.title) > 0.55)) continue;
     if (it.text.length < 120) continue;
-    cands.push({ ...it, sourceId: s.id, sourceName: s.name, trust: s.trust_score || 50, ageH, score: (s.trust_score || 50) - ageH * 1.5 });
+    cands.push({ ...it, tracked, sourceId: s.id, sourceName: s.name, trust: s.trust_score || 50, ageH, score: (s.trust_score || 50) - ageH * 1.5 });
   }
   const hn = await hnFront();
-  for (const c of cands) { const t = trendScore(c, pool, hn); c.trend = t.score; c.trendSources = t.sources; c.hnPoints = t.hn; c.score += t.score; }
+  for (const c of cands) { const t = trendScore(c, pool, hn); c.trend = t.score; c.trendSources = t.sources; c.hnPoints = t.hn; c.score += t.score; if (c.tracked) { c.trend += TRACKED_BOOST; c.score += TRACKED_BOOST; } }
   if (trendOnly) { cands = cands.filter(c => c.trend >= TREND_MIN); log('trend-only mode (' + todayCount + '/' + MAX_PER_DAY + ' today), trending candidates:', cands.length); }
   log('top trends:', cands.slice().sort((a, b) => b.trend - a.trend).slice(0, 5).map(c => c.trend + ' [' + c.trendSources + ' src, HN ' + c.hnPoints + '] ' + c.title.slice(0, 60)).join(' || '));
   // remove near-duplicates among candidates, best first

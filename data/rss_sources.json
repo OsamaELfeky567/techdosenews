@@ -202,5 +202,31 @@
     "trust_score": 72,
     "category": "ai",
     "dynamic_priority": 17
+  },
+  {
+    "id": "gamespot",
+    "name": "GameSpot",
+    "url": "https://www.gamespot.com/feeds/news/",
+    "lang": "en",
+    "tier": 2,
+    "priority": 6,
+    "enabled": true,
+    "trust_score": 80,
+    "category": "gaming",
+    "dynamic_priority": 6,
+    "tracked_only": true
+  },
+  {
+    "id": "vgc",
+    "name": "VGC",
+    "url": "https://www.videogameschronicle.com/feed/",
+    "lang": "en",
+    "tier": 2,
+    "priority": 6,
+    "enabled": true,
+    "trust_score": 80,
+    "category": "gaming",
+    "dynamic_priority": 6,
+    "tracked_only": true
   }
 ]

@@ -1,5 +1,14 @@
 [
   {
+    "at": "2026-11-25T23:17:33.641Z",
+    "status": "published",
+    "title": "موافقة تنظيمية أمريكية على خطط سبيس إكس لمراكز بيانات الذكاء الاصطناعي",
+    "errors": [
+      "expand gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usu"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-25T23:10:15.759Z",
     "status": "no_candidates",
     "title": "",

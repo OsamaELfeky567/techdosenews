@@ -233,7 +233,8 @@ async function handleFbPost(env, req) {
   if (!page.ok) return json({ ok: false, error: "page not live", status: page.status }, 404);
   const html = await page.text();
   const title = metaOf(html, "og:title"), desc = metaOf(html, "og:description");
-  const message = [title, desc && desc.slice(0, 220), "📢 قناتنا على تيليجرام: https://t.me/td_arabi\n🌐 الموقع: " + env.SITE].filter(Boolean).join("\n\n");
+  // keep the message short and link-free (Facebook limits reach of posts with extra external links); Telegram/site links live in the page About + website fields
+  const message = [title, desc && desc.slice(0, 220)].filter(Boolean).join("\n\n");
   const r = await fetch(`https://graph.facebook.com/v21.0/${env.FB_PAGE_ID}/feed`, {
     method: "POST",
     headers: { "content-type": "application/json" },

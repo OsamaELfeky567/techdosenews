@@ -10,7 +10,7 @@ const BASE_PER_DAY = +(E.BASE_PER_DAY || 6);     // up to this many/day on norma
 const TREND_MIN = +(E.TREND_MIN || 25);          // trend score needed for articles beyond BASE_PER_DAY
 const FRESH_HOURS = +(E.FRESH_HOURS || 36);
 const MIN_SCORE = +(E.MIN_SCORE || 60);
-const MIN_WORDS = +(E.MIN_WORDS || 300);
+const MIN_WORDS = +(E.MIN_WORDS || 280);
 const BASE = 'https://td-arabi.com';
 const GEMINI_MODELS = (E.GEMINI_MODELS || 'gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-3.6-flash').split(',').map(s => s.trim()).filter(Boolean);
 const GROQ_MODEL = E.GROQ_MODEL || 'openai/gpt-oss-120b';

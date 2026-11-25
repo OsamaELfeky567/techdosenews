@@ -1,0 +1,10 @@
+<div id="pt-root" data-mode="merge">
+<div class="ft-drop" tabindex="0" role="button" aria-label="اختر الملفات"><b>اسحب ملفات PDF هنا أو اضغط للاختيار</b><span>اختر ملفين أو أكثر ورتّبها بالأسهم</span></div>
+<input type="file" accept="application/pdf" multiple hidden>
+<div class="ft-status" role="status" aria-live="polite"></div>
+<div class="pt-list"></div>
+
+<div class="ft-row"><button type="button" class="ft-btn pt-go" hidden>دمج الملفات</button></div>
+<div class="pt-out"></div>
+</div>
+<style>.pt-row{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;border:1px solid var(--border);border-radius:10px;padding:8px 12px;margin:6px 0;background:var(--surface-2)}.pt-row b{flex:1 1 160px;word-break:break-all;font-size:.95rem}.pt-row span{font-size:.85rem;color:var(--muted)}.pt-row button{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;width:34px;height:34px;cursor:pointer}.pt-out{margin:12px 0}@media(max-width:640px){.pt-row b{flex-basis:100%}}</style>

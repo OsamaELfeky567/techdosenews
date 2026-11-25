@@ -1,0 +1,10 @@
+<div id="pt-root" data-mode="images">
+<div class="ft-drop" tabindex="0" role="button" aria-label="اختر الملفات"><b>اسحب الصور هنا أو اضغط للاختيار</b><span>JPG أو PNG أو WebP، رتّب الصور كما تريد قبل التحويل</span></div>
+<input type="file" accept="image/png,image/jpeg,image/webp" multiple hidden>
+<div class="ft-status" role="status" aria-live="polite"></div>
+<div class="pt-list"></div>
+<div class="ft-row"><label>حجم الصفحة:</label><select class="pt-page"><option value="a4">A4</option><option value="fit">مطابق لحجم الصورة</option></select><label>الهامش:</label><select class="pt-margin"><option value="0">بدون</option><option value="20" selected>صغير</option><option value="40">كبير</option></select></div>
+<div class="ft-row"><button type="button" class="ft-btn pt-go" hidden>تحويل إلى PDF</button></div>
+<div class="pt-out"></div>
+</div>
+<style>.pt-row{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;border:1px solid var(--border);border-radius:10px;padding:8px 12px;margin:6px 0;background:var(--surface-2)}.pt-row b{flex:1 1 160px;word-break:break-all;font-size:.95rem}.pt-row span{font-size:.85rem;color:var(--muted)}.pt-row button{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;width:34px;height:34px;cursor:pointer}.pt-out{margin:12px 0}@media(max-width:640px){.pt-row b{flex-basis:100%}}</style>

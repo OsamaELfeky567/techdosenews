@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>const theme=localStorage.getItem('td-theme');if(theme==='dark'||(!theme&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.setAttribute('data-theme','dark')</script>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<script src="/js/analytics.js" async></script>
+<title>فصل صفحات PDF واستخراجها أونلاين مجانا | TD بالعربي</title>
+<meta name="description" content="افصل ملف PDF أو استخرج صفحات محددة منه مجانا (مثل 1-3 و5). تعمل داخل متصفحك دون رفع الملف.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://td-arabi.com/free-tools/split-pdf/">
+<link rel="alternate" hreflang="ar" href="https://td-arabi.com/free-tools/split-pdf/">
+<meta property="og:locale" content="ar_AR"><meta property="og:type" content="website"><meta property="og:site_name" content="TD بالعربي">
+<meta property="og:title" content="فصل صفحات PDF واستخراجها أونلاين مجانا | TD بالعربي"><meta property="og:description" content="افصل ملف PDF أو استخرج صفحات محددة منه مجانا (مثل 1-3 و5). تعمل داخل متصفحك دون رفع الملف."><meta property="og:url" content="https://td-arabi.com/free-tools/split-pdf/"><meta property="og:image" content="https://td-arabi.com/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="فصل صفحات PDF واستخراجها أونلاين مجانا | TD بالعربي"><meta name="twitter:description" content="افصل ملف PDF أو استخرج صفحات محددة منه مجانا (مثل 1-3 و5). تعمل داخل متصفحك دون رفع الملف.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"فصل صفحات PDF واستخراجها مجانا","applicationCategory":"MultimediaApplication","operatingSystem":"Any (web browser)","inLanguage":"ar","url":"https://td-arabi.com/free-tools/split-pdf/","description":"افصل ملف PDF أو استخرج صفحات محددة منه مجانا (مثل 1-3 و5). تعمل داخل متصفحك دون رفع الملف.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"كيف أستخرج صفحة واحدة؟","acceptedAnswer":{"@type":"Answer","text":"اختر «استخراج صفحات محددة» واكتب رقمها فقط."}},{"@type":"Question","name":"هل يمكن فصل كل الصفحات دفعة واحدة؟","acceptedAnswer":{"@type":"Answer","text":"نعم، اختر «كل صفحة في ملف مستقل» (حتى 60 صفحة)."}},{"@type":"Question","name":"هل الملف يُرفع إلى الإنترنت؟","acceptedAnswer":{"@type":"Answer","text":"لا، كل شيء داخل متصفحك."}},{"@type":"Question","name":"ملفي محمي بكلمة مرور فماذا أفعل؟","acceptedAnswer":{"@type":"Answer","text":"أزل الحماية منه أولا ثم أعد المحاولة."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://td-arabi.com/"},{"@type":"ListItem","position":2,"name":"أدوات","item":"https://td-arabi.com/free-tools/"},{"@type":"ListItem","position":3,"name":"فصل صفحات PDF واستخراجها مجانا","item":"https://td-arabi.com/free-tools/split-pdf/"}]}</script>
+<style>
+.ft-bar{position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.ft-bar-in{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:14px}
+.ft-bar-title{font-weight:800;font-size:1.05rem;white-space:nowrap;padding:6px 4px;color:var(--text)}.ft-bar-title.on{color:var(--accent)}
+.ft-bar-list{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;flex:1;padding:2px}.ft-bar-list::-webkit-scrollbar{display:none}
+.ft-sq{flex:0 0 auto;width:84px;height:84px;border-radius:16px;border:2px solid var(--border);background:var(--surface-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;transition:transform .15s,border-color .15s;color:var(--text)}
+.ft-sq i{font-style:normal;font-size:1.9rem;line-height:1}.ft-sq span{font-size:.72rem;font-weight:700;line-height:1.3;padding:0 4px}
+.ft-sq:hover{transform:translateY(-2px);border-color:var(--accent)}.ft-sq.on{border-color:var(--accent);background:var(--accent-glass);color:var(--accent)}
+@media(max-width:640px){.ft-bar-in{padding:8px 10px;gap:8px}.ft-bar-title{font-size:.9rem}.ft-sq{width:72px;height:72px;border-radius:14px}.ft-sq i{font-size:1.6rem}}
+.ft-wrap{max-width:900px;margin:0 auto;padding:24px 16px}
+.ft-card{background:var(--surface);border:1px solid var(--border-light,#e5e7eb);border-radius:14px;padding:28px}
+.ft-wrap h1{font-size:1.9rem;line-height:1.5;margin:6px 0 10px;font-weight:800}
+.ft-wrap h2{font-size:1.3rem;margin:28px 0 10px;font-weight:800}
+.ft-wrap p,.ft-wrap li{font-size:1.05rem;line-height:2}
+.ft-crumb{font-size:.85rem;color:var(--muted)}.ft-crumb a{color:var(--accent)}
+.ft-lead{color:var(--text-2)}
+.ft-drop{border:2px dashed var(--accent);border-radius:14px;padding:38px 16px;text-align:center;cursor:pointer;background:var(--accent-glass);transition:background .2s;margin:18px 0}
+.ft-drop.over,.ft-drop:hover,.ft-drop:focus-visible{background:var(--accent-light)}
+.ft-drop b{display:block;font-size:1.2rem;margin-bottom:6px}.ft-drop span{color:var(--muted);font-size:.95rem}
+.ft-btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:10px;padding:11px 24px;font-family:inherit;font-weight:700;font-size:1rem;cursor:pointer;text-decoration:none}
+.ft-btn.sec{background:var(--surface-2);color:var(--text);border:1px solid var(--border)}
+.ft-status{min-height:1.6em;font-size:.98rem;color:var(--text-2);margin:6px 0}.ft-status.err{color:#dc2626;font-weight:700}
+.ft-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.ft-grid2 figure{margin:0;text-align:center}.ft-grid2 figcaption{font-size:.85rem;color:var(--muted);margin-top:4px}
+.ft-grid2 canvas{max-width:100%;height:auto;border-radius:10px;border:1px solid var(--border)}
+.ft-grid2 canvas.checker{background:repeating-conic-gradient(#e5e7eb 0 25%,#fff 0 50%) 0 0/20px 20px}
+.ft-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0}
+.ft-row select,.ft-row input[type=range]{font-family:inherit;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text)}
+.ft-tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:18px 0}
+.ft-tool{display:block;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;transition:transform .15s,box-shadow .15s}
+.ft-tool:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}.ft-tool b{display:block;font-size:1.1rem;margin-bottom:6px}.ft-tool span{color:var(--text-2);font-size:.92rem;line-height:1.8}
+.ft-faq details{border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin:8px 0;background:var(--surface-2)}.ft-faq summary{cursor:pointer;font-weight:700}
+.ft-follow{background:var(--accent-glass);border:1px solid var(--accent);border-radius:14px;padding:16px 18px;margin:22px 0;text-align:center}.ft-follow p{margin:4px 0 12px}.ft-follow .ft-btn{margin:4px}
+.ft-note{background:var(--surface-2);border-right:4px solid var(--accent);border-radius:8px;padding:10px 14px;font-size:.95rem;margin:14px 0}
+.td-ad{margin:22px auto;text-align:center;max-width:100%;overflow:hidden}.td-ad-label{font-size:.65rem;color:var(--muted);margin-bottom:4px}.td-ad-box{display:flex;justify-content:center;overflow:hidden}
+@media(max-width:960px){.td-ad-d{display:none}}@media(min-width:961px){.td-ad-m{display:none}}
+@media(max-width:640px){.ft-card{padding:16px}.ft-wrap h1{font-size:1.45rem}.ft-grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="sb-header"><div class="sb-container">
+<button class="sb-menu-btn" aria-label="القائمة" aria-expanded="false" onclick="var n=document.querySelector('.sb-nav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+<div class="sb-logo-wrap" style="margin:0;font-size:inherit;font-weight:inherit"><a href="/" class="sb-logo">TD <span>بالعربي</span></a></div>
+<nav class="sb-nav" aria-label="القائمة الرئيسية"><a href="/">الرئيسية</a><a href="/news/">كل الأخبار</a><a href="/free-tools/">أدوات</a><a href="/about.html">من نحن</a><a href="/contact.html">تواصل معنا</a></nav>
+</div></header>
+<div class="ft-bar" role="navigation" aria-label="الأدوات"><div class="ft-bar-in"><a class="ft-bar-title" href="/free-tools/">الأدوات</a><div class="ft-bar-list"><a class="ft-sq" href="/free-tools/remove-background/"><i>✂️</i><span>إزالة الخلفية</span></a><a class="ft-sq" href="/free-tools/compress-image/"><i>🗜️</i><span>ضغط الصور</span></a><a class="ft-sq" href="/free-tools/images-to-pdf/"><i>📄</i><span>صور إلى PDF</span></a><a class="ft-sq" href="/free-tools/merge-pdf/"><i>🔗</i><span>دمج PDF</span></a><a class="ft-sq on" href="/free-tools/split-pdf/" aria-current="page"><i>📑</i><span>فصل PDF</span></a></div></div></div>
+<main class="ft-wrap"><div class="ft-card">
+<div class="ft-crumb"><a href="/">الرئيسية</a> › <a href="/free-tools/">أدوات</a> › فصل صفحات PDF واستخراجها مجانا</div>
+<h1>فصل صفحات PDF واستخراجها مجانا</h1>
+<p class="ft-lead">استخرج الصفحات التي تحتاجها من ملف PDF طويل، أو افصل كل صفحة في ملف مستقل. اكتب أرقام الصفحات مثل 1-3, 5 وحمّل النتيجة فورا، دون رفع الملف إلى أي خادم.</p>
+<div id="pt-root" data-mode="split">
+<div class="ft-drop" tabindex="0" role="button" aria-label="اختر الملفات"><b>اسحب ملف PDF هنا أو اضغط للاختيار</b><span>ملف واحد، حتى 100 ميجابايت</span></div>
+<input type="file" accept="application/pdf"  hidden>
+<div class="ft-status" role="status" aria-live="polite"></div>
+<div class="pt-list"></div>
+<div class="pt-split" hidden><p class="pt-pages"></p><div class="ft-row"><label>الطريقة:</label><select class="pt-smode"><option value="range">استخراج صفحات محددة</option><option value="each">كل صفحة في ملف مستقل</option></select><input class="pt-range" type="text" value="1" dir="ltr" placeholder="1-3, 5, 8-" aria-label="نطاق الصفحات" style="padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text)"></div></div>
+<div class="ft-row"><button type="button" class="ft-btn pt-go" hidden>فصل الملف</button></div>
+<div class="pt-out"></div>
+</div>
+<style>.pt-row{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;border:1px solid var(--border);border-radius:10px;padding:8px 12px;margin:6px 0;background:var(--surface-2)}.pt-row b{flex:1 1 160px;word-break:break-all;font-size:.95rem}.pt-row span{font-size:.85rem;color:var(--muted)}.pt-row button{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;width:34px;height:34px;cursor:pointer}.pt-out{margin:12px 0}@media(max-width:640px){.pt-row b{flex-basis:100%}}</style>
+
+<div class="td-ad td-ad-d" style="min-height:114px"><div class="td-ad-label">إعلان</div><div class="td-ad-box"><script>atOptions={'key':'dc29c63238688f937f7bb9cfb4bf3962','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://www.highperformanceformat.com/dc29c63238688f937f7bb9cfb4bf3962/invoke.js"></script></div></div><div class="td-ad td-ad-m" style="min-height:74px"><div class="td-ad-label">إعلان</div><div class="td-ad-box"><script>atOptions={'key':'e797c00bb296e776bcd5d4a7d65bddd5','format':'iframe','height':50,'width':320,'params':{}};</script><script src="https://www.highperformanceformat.com/e797c00bb296e776bcd5d4a7d65bddd5/invoke.js"></script></div></div>
+<h2>كيف تستخدم الأداة في 3 خطوات</h2>
+<ol><li>اختر ملف PDF أو اسحبه إلى المنطقة المخصصة، وسيظهر عدد صفحاته.</li><li>اختر استخراج صفحات محددة (مثل 1-3, 5, 8-) أو فصل كل صفحة في ملف.</li><li>اضغط «فصل الملف» ثم حمّل الناتج.</li></ol>
+<h2>مميزات أداة فصل PDF</h2>
+<ul><li><b>مجانية وبدون علامة مائية.</b></li><li><b>خصوصية تامة:</b> الملفات لا تُرفع إلى أي خادم، فكل المعالجة تتم داخل متصفحك.</li><li><b>نطاقات مرنة:</b> صفحات متفرقة ونطاقات مثل 1-3 وحتى نهاية الملف.</li><li><b>بدون فقدان جودة:</b> تُنسخ الصفحات كما هي.</li></ul>
+<h2>أمثلة على النطاقات</h2><p><b>1-3</b> الصفحات من 1 إلى 3. <b>2, 5</b> الصفحتان 2 و5 فقط. <b>4-</b> من الصفحة 4 إلى النهاية. لدمج ملفات استخدم <a href="/free-tools/merge-pdf/">أداة دمج PDF</a>.</p>
+<div class="ft-note">🔒 <b>خصوصيتك محفوظة:</b> تتم معالجة الملفات بالكامل داخل متصفحك. لا نرفع ولا نحفظ أي صورة أو ملف.</div>
+
+<h2>أسئلة شائعة</h2>
+<div class="ft-faq"><details><summary>كيف أستخرج صفحة واحدة؟</summary><p>اختر «استخراج صفحات محددة» واكتب رقمها فقط.</p></details><details><summary>هل يمكن فصل كل الصفحات دفعة واحدة؟</summary><p>نعم، اختر «كل صفحة في ملف مستقل» (حتى 60 صفحة).</p></details><details><summary>هل الملف يُرفع إلى الإنترنت؟</summary><p>لا، كل شيء داخل متصفحك.</p></details><details><summary>ملفي محمي بكلمة مرور فماذا أفعل؟</summary><p>أزل الحماية منه أولا ثم أعد المحاولة.</p></details></div>
+<div class="td-ad td-ad-d" style="min-height:114px"><div class="td-ad-label">إعلان</div><div class="td-ad-box"><script>atOptions={'key':'dc29c63238688f937f7bb9cfb4bf3962','format':'iframe','height':90,'width':728,'params':{}};</script><script src="https://www.highperformanceformat.com/dc29c63238688f937f7bb9cfb4bf3962/invoke.js"></script></div></div><div class="td-ad td-ad-m" style="min-height:274px"><div class="td-ad-label">إعلان</div><div class="td-ad-box"><script>atOptions={'key':'8650abbaa1fd85a5ced9afc2f1f57777','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://www.highperformanceformat.com/8650abbaa1fd85a5ced9afc2f1f57777/invoke.js"></script></div></div>
+<h2>أدوات أخرى قد تهمك</h2><div class="ft-tools"><a class="ft-tool" href="/free-tools/remove-background/"><b>إزالة الخلفية من الصورة</b><span>احذف خلفية أي صورة بضغطة واحدة واحصل على PNG شفاف. تعمل داخل متصفحك.</span></a><a class="ft-tool" href="/free-tools/compress-image/"><b>ضغط الصور</b><span>صغّر حجم صورك حتى 90% مع الحفاظ على الجودة. بدون رفع ملفاتك.</span></a><a class="ft-tool" href="/free-tools/images-to-pdf/"><b>تحويل الصور إلى PDF</b><span>حوّل صورة أو عدة صور إلى ملف PDF واحد برتّبها كما تريد.</span></a><a class="ft-tool" href="/free-tools/merge-pdf/"><b>دمج ملفات PDF</b><span>ادمج عدة ملفات PDF في ملف واحد بالترتيب الذي تريده.</span></a></div>
+<script src="/free-tools/js/vendor/pdf-lib.min.js"></script><script src="/free-tools/js/pdf-core.js"></script><script src="/free-tools/js/pdf-tools.js" defer></script>
+</div></main>
+<footer class="sb-footer"><div class="sb-container">
+<div class="sb-footer-grid"><div class="sb-footer-col"><div class="sb-footer-logo">TD <span>بالعربي</span></div>
+<p>منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي، مع أدوات مجانية تعمل داخل متصفحك.</p></div></div>
+<div class="sb-footer-bottom"><p>© 2026 TD بالعربي — جميع الحقوق محفوظة.</p>
+<p style="margin-top:8px;font-size:.8rem"><a href="/free-tools/">أدوات مجانية</a> · <a href="/about.html">من نحن</a> · <a href="/contact.html">اتصل بنا</a> · <a href="/privacy.html">سياسة الخصوصية</a> · <a href="/terms.html">شروط الاستخدام</a> · <a href="/disclaimer.html">إخلاء مسؤولية</a> · <a href="/editorial-policy.html">السياسة التحريرية</a></p></div>
+</div></footer>
+</body></html>

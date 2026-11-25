@@ -35,6 +35,14 @@ const adSlot = (size, cls = '') => {
   return `<div class="td-ad ${cls}" style="min-height:${+h + 24}px"><div class="td-ad-label">إعلان</div><div class="td-ad-box"><script>atOptions={'key':'${key}','format':'iframe','height':${h},'width':${w},'params':{}};</script><script src="https://www.highperformanceformat.com/${key}/invoke.js"></script></div></div>`;
 };
 const CSS = `<style>
+.ft-bar{position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.ft-bar-in{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:14px}
+.ft-bar-title{font-weight:800;font-size:1.05rem;white-space:nowrap;padding:6px 4px;color:var(--text)}.ft-bar-title.on{color:var(--accent)}
+.ft-bar-list{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;flex:1;padding:2px}.ft-bar-list::-webkit-scrollbar{display:none}
+.ft-sq{flex:0 0 auto;width:84px;height:84px;border-radius:16px;border:2px solid var(--border);background:var(--surface-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;transition:transform .15s,border-color .15s;color:var(--text)}
+.ft-sq i{font-style:normal;font-size:1.9rem;line-height:1}.ft-sq span{font-size:.72rem;font-weight:700;line-height:1.3;padding:0 4px}
+.ft-sq:hover{transform:translateY(-2px);border-color:var(--accent)}.ft-sq.on{border-color:var(--accent);background:var(--accent-glass);color:var(--accent)}
+@media(max-width:640px){.ft-bar-in{padding:8px 10px;gap:8px}.ft-bar-title{font-size:.9rem}.ft-sq{width:72px;height:72px;border-radius:14px}.ft-sq i{font-size:1.6rem}}
 .ft-wrap{max-width:900px;margin:0 auto;padding:24px 16px}
 .ft-card{background:var(--surface);border:1px solid var(--border-light,#e5e7eb);border-radius:14px;padding:28px}
 .ft-wrap h1{font-size:1.9rem;line-height:1.5;margin:6px 0 10px;font-weight:800}
@@ -66,11 +74,12 @@ const CSS = `<style>
 
 const FOLLOW = !SOCIAL_OK ? '' : `<div class="ft-follow"><b>تابعنا ليصلك كل جديد</b><p>أخبار التقنية والذكاء الاصطناعي وأدوات جديدة أولا بأول.</p><a class="ft-btn" href="${esc(site.telegram_url)}" target="_blank" rel="noopener">قناتنا على تيليجرام</a> <a class="ft-btn sec" href="${esc(site.facebook_url || 'https://facebook.com/techdosenews')}" target="_blank" rel="noopener">صفحتنا على فيسبوك</a></div>`;
 const TOOLS = rj('free-tools/tools.json', []);
+const toolbar = active => `<div class="ft-bar" role="navigation" aria-label="الأدوات"><div class="ft-bar-in"><a class="ft-bar-title${active === '' ? ' on' : ''}" href="/free-tools/">الأدوات</a><div class="ft-bar-list">${TOOLS.map(t => `<a class="ft-sq${active === t.slug ? ' on' : ''}" href="/free-tools/${t.slug}/"${active === t.slug ? ' aria-current="page"' : ''}><i>${t.icon || '🛠️'}</i><span>${esc(t.short || t.name)}</span></a>`).join('')}</div></div></div>`;
 const jsonLd = o => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`;
 const write = (rel, c) => { fs.mkdirSync(rel.split('/').slice(0, -1).join('/') || '.', { recursive: true }); fs.writeFileSync(rel, c, 'utf8'); };
 const ads = (second) => adSlot('728x90', 'td-ad-d') + adSlot(second ? '300x250' : '320x50', 'td-ad-m');
 
-function page({ path, title, desc, h1, body, ld }) {
+function page({ active, path, title, desc, h1, body, ld }) {
   const url = BASE + path;
   return `<!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -89,6 +98,7 @@ ${CSS}
 </head>
 <body>
 ${HEADER}
+${toolbar(active)}
 <main class="ft-wrap"><div class="ft-card">
 <div class="ft-crumb"><a href="/">الرئيسية</a> › <a href="/free-tools/">أدوات</a>${path === '/free-tools/' ? '' : ' › ' + esc(h1)}</div>
 <h1>${esc(h1)}</h1>
@@ -108,7 +118,7 @@ ${ads()}
 ${FOLLOW}
 <div class="ft-note">تحتاج أداة غير موجودة؟ <a href="/contact.html">اقترحها علينا</a> وسنضيفها.</div>`;
 write('free-tools/index.html', page({
-  path: '/free-tools/', title: 'أدوات مجانية أونلاين بالعربية: إزالة الخلفية وضغط الصور وأكثر | TD بالعربي',
+  active: '', path: '/free-tools/', title: 'أدوات مجانية أونلاين بالعربية: إزالة الخلفية وضغط الصور وأكثر | TD بالعربي',
   desc: 'أدوات مجانية بالعربية تعمل داخل المتصفح: إزالة خلفية الصور، ضغط الصور، تحويل الصور إلى PDF وغيرها. بدون تسجيل وبدون رفع ملفاتك.',
   h1: 'أدوات مجانية أونلاين', body: hubBody,
   ld: [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'أدوات مجانية أونلاين', url: BASE + '/free-tools/', inLanguage: 'ar', hasPart: TOOLS.map(t => ({ '@type': 'WebPage', name: t.h1, url: `${BASE}/free-tools/${t.slug}/` })) }],
@@ -134,7 +144,7 @@ ${ads(true)}
 ${others.length ? `<h2>أدوات أخرى قد تهمك</h2><div class="ft-tools">${others.map(o => `<a class="ft-tool" href="/free-tools/${o.slug}/"><b>${esc(o.name)}</b><span>${esc(o.blurb)}</span></a>`).join('')}</div>` : ''}
 <script src="${t.script}" defer></script>`;
   write(`free-tools/${t.slug}/index.html`, page({
-    path: `/free-tools/${t.slug}/`, title: t.title, desc: t.desc, h1: t.h1, body,
+    active: t.slug, path: `/free-tools/${t.slug}/`, title: t.title, desc: t.desc, h1: t.h1, body,
     ld: [
       { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: t.h1, applicationCategory: 'MultimediaApplication', operatingSystem: 'Any (web browser)', inLanguage: 'ar', url: `${BASE}/free-tools/${t.slug}/`, description: t.desc, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
       { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: t.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },

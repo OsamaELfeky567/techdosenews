@@ -3,7 +3,7 @@
   "site_name": "TD بالعربي",
   "base_url": "https://td-arabi.com",
   "telegram_url": "https://t.me/td_arabi",
-  "facebook_url": "https://facebook.com/techdosenews",
+  "facebook_url": "",
   "author_name": "فريق تحرير TD بالعربي",
   "author_type": "Organization",
   "author_url": "https://td-arabi.com/about.html",
@@ -18,5 +18,6 @@
     "320x50": "e797c00bb296e776bcd5d4a7d65bddd5",
     "468x60": "d16fa6708cdc77c54597cb74e2951d23",
     "160x600": "c229277af38c3a4d4544dfc44e87757f"
-  }
+  },
+  "social_verified": true
 }

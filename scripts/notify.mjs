@@ -23,7 +23,7 @@ async function waitLive() {
 const live = await waitLive();
 if (!live) console.log('WARNING: page not live after wait; skipping Telegram/IndexNow so no dead link is shared');
 
-if (live && E.TELEGRAM_BOT_TOKEN && E.TELEGRAM_CHAT_ID && E.TELEGRAM_CHAT_ID.startsWith('@tdarabi')) {
+if (live && E.TELEGRAM_BOT_TOKEN && E.TELEGRAM_CHAT_ID && ['-1003896125398', '@td_arabi', '@tdarabi'].includes(E.TELEGRAM_CHAT_ID)) {
   let caption = `<b>${esc(p.title)}</b>\n\n${esc(p.telegram_summary)}\n\n🔗 ${p.url}`;
   if (caption.length > 1000) caption = `<b>${esc(p.title)}</b>\n\n🔗 ${p.url}`;
   const api = m => `https://api.telegram.org/bot${E.TELEGRAM_BOT_TOKEN}/${m}`;

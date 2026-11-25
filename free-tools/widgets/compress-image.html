@@ -1,0 +1,8 @@
+<div id="ci-drop" class="ft-drop" tabindex="0" role="button" aria-label="اختر صورة"><b>اسحب الصور هنا أو اضغط للاختيار</b><span>JPG أو PNG أو WebP، يمكنك اختيار عدة صور معا</span></div>
+<input type="file" id="ci-file" accept="image/png,image/jpeg,image/webp" multiple hidden>
+<div class="ft-row"><label for="ci-q">الجودة: <b id="ci-qv">75%</b></label><input type="range" id="ci-q" min="20" max="95" value="75">
+<label for="ci-max">الحجم الأقصى:</label><select id="ci-max"><option value="0">الأصلي</option><option value="3000">3000 بكسل</option><option value="1920" selected>1920 بكسل</option><option value="1280">1280 بكسل</option><option value="800">800 بكسل</option></select>
+<label for="ci-type">الصيغة:</label><select id="ci-type"><option value="image/jpeg">JPG</option><option value="image/webp">WebP (أصغر حجما)</option></select></div>
+<div id="ci-status" class="ft-status" role="status" aria-live="polite"></div>
+<div id="ci-list"></div>
+<style>.ci-row{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin:8px 0;background:var(--surface-2)}.ci-name{flex:1 1 160px;word-break:break-all;font-size:.95rem}.ci-info{font-size:.9rem;color:var(--text-2)}.ci-row .ft-btn{padding:7px 18px}</style>

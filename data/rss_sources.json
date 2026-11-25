@@ -214,7 +214,7 @@
     "trust_score": 80,
     "category": "gaming",
     "dynamic_priority": 6,
-    "tracked_only": true
+    "gaming_only": true
   },
   {
     "id": "vgc",
@@ -227,6 +227,6 @@
     "trust_score": 80,
     "category": "gaming",
     "dynamic_priority": 6,
-    "tracked_only": true
+    "gaming_only": true
   }
 ]

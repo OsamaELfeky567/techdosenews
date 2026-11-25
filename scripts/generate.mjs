@@ -25,6 +25,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 // Tracked trending topics (owner request): always pass the tech filter, get a trend boost, and may publish beyond the base quota.
 const TRACKED_RX = /\bgta\s?(6|vi)\b|grand theft auto\s?(6|vi)\b|\brockstar games\b|جي ?تي ?اي? ?(6|٦)|جاتا ?(6|٦)|جراند ثيفت أوتو/i;
+const GAMING_RX = /\b(gta|playstation|ps5|ps6|xbox|nintendo|switch 2|steam deck|steam|rockstar|esports|nvidia geforce|gpu|game pass|call of duty|fortnite|minecraft|elden ring|zelda|mario|battlefield|assassin's creed|resident evil|valve)\b|ألعاب|لعبة|بلايستيشن|إكس بوكس|نينتندو/i;
 const TRACKED_BOOST = 40;
 const TECH_KW = ['ai', 'artificial intelligence', 'machine learning', 'llm', 'gpt', 'openai', 'anthropic', 'claude', 'gemini', 'chatbot', 'software', 'startup', 'cyber', 'security', 'hack', 'breach', 'chip', 'processor', 'nvidia', 'amd', 'intel', 'qualcomm', 'smartphone', 'iphone', 'android', 'samsung', 'pixel', 'windows', 'linux', 'cloud', 'robot', 'tesla', 'electric vehicle', 'ev', 'gpu', 'laptop', 'app', 'google', 'apple', 'microsoft', 'meta', 'amazon', 'chatgpt',
   'ذكاء اصطناعي', 'الذكاء الاصطناعي', 'تقنية', 'تكنولوجيا', 'هاتف', 'آيفون', 'أندرويد', 'سامسونج', 'جوجل', 'أبل', 'مايكروسوفت', 'ميتا', 'أمازون', 'إنفيديا', 'معالج', 'شريحة', 'برمجيات', 'تطبيق', 'سيبراني', 'اختراق', 'روبوت', 'سيارات كهربائية', 'ويندوز', 'لابتوب', 'بطارية'];
@@ -83,7 +84,7 @@ function userPrompt(c, recentTitles, cats) {
 عنوان الخبر الأصلي: ${c.title}
 النص:
 ${c.fullText}
-${c.tracked ? '\nتنبيه تحريري: خبر عن GTA 6. اعتمد فقط على ما ورد في المصدر. لو الخبر إشاعة أو ادعاء لاعب أو تسريب غير مؤكد من Rockstar فاكتبه صراحة كادعاء غير مؤكد ولا تذكر تواريخ إصدار أو ميزات كحقائق. لا تخترع تفاصيل.\n' : ''}
+${(c.tracked || c.gaming) ? '\nتنبيه تحريري: خبر ألعاب/GTA. اعتمد فقط على ما ورد في المصدر. لو الخبر إشاعة أو ادعاء لاعب أو تسريب غير مؤكد من Rockstar فاكتبه صراحة كادعاء غير مؤكد ولا تذكر تواريخ إصدار أو ميزات كحقائق. لا تخترع تفاصيل.\n' : ''}
 عناوين منشورة حديثا (لتجنب التكرار):
 ${recentTitles.map(t => '- ' + t).join('\n')}
 
@@ -301,14 +302,14 @@ async function main() {
     const hay = (it.title + ' ' + it.text.slice(0, 600)).toLowerCase();
     if (REJ_RX.test(hay)) continue;
     const tracked = TRACKED_RX.test(hay);
-    if (s.tracked_only && !tracked) continue;
-    const isTech = tracked || TECH_RX.test(hay);
+    if (s.gaming_only && !tracked && !GAMING_RX.test(hay)) continue;
+    const isTech = tracked || (s.gaming_only) || TECH_RX.test(hay);
     if (!isTech) continue;
     pool.push({ title: it.title, sourceId: s.id });
     if (seenLinks.has(it.link)) continue;
     if ([...recentSrcTitles, ...recentTitles].some(t => jaccard(t, it.title) > 0.55)) continue;
     if (it.text.length < 120) continue;
-    cands.push({ ...it, tracked, sourceId: s.id, sourceName: s.name, trust: s.trust_score || 50, ageH, score: (s.trust_score || 50) - ageH * 1.5 });
+    cands.push({ ...it, tracked, gaming: !!s.gaming_only, sourceId: s.id, sourceName: s.name, trust: s.trust_score || 50, ageH, score: (s.trust_score || 50) - ageH * 1.5 });
   }
   const hn = await hnFront();
   for (const c of cands) { const t = trendScore(c, pool, hn); c.trend = t.score; c.trendSources = t.sources; c.hnPoints = t.hn; c.score += t.score; if (c.tracked) { c.trend += TRACKED_BOOST; c.score += TRACKED_BOOST; } }

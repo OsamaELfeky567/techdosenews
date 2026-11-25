@@ -1,5 +1,16 @@
 [
   {
+    "at": "2026-11-25T14:05:34.137Z",
+    "status": "published",
+    "title": "نماذج GPT‑6 تصمم بروتينات بقدرات داخلية دون نماذج متخصصة",
+    "errors": [
+      "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later",
+      "gemini:gemini-3.1-flash-lite: gemini gemini-3.1-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later",
+      "gemini:gemini-3.6-flash: Unexpected end of JSON input"
+    ],
+    "provider": "groq:openai/gpt-oss-120b"
+  },
+  {
     "at": "2026-11-25T13:05:10.330Z",
     "status": "published",
     "title": "قمة المعرفة 2026 تستعرض مستقبل العمل وتحديات الذكاء الاصطناعي",

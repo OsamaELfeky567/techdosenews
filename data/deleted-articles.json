@@ -1,0 +1,274 @@
+{
+ "note": "Deleted 2026-11-25. Numbers (field no) are never reused; counter in data/article-counter.json only goes up.",
+ "articles": [
+  {
+   "id": "art-1795538754170-pehiyv",
+   "title": "تسريبات تشير إلى تغييرات جذرية في نظام كاميرا هاتف Galaxy S27 Ultra",
+   "date": "2026-11-24T16:45:02.048Z",
+   "path": "/news/galaxy-s27-ultra-camera-leaks-pehiyv/",
+   "link": "https://www.tech-wd.com/wd/2026/11/24/%d8%aa%d8%b3%d8%b1%d9%8a%d8%a8-galaxy-s27-ultra-%d9%8a%d8%aa%d8%ae%d9%84%d9%89-%d8%b9%d9%86-%d9%88%d8%ad%d8%af%d8%a9-%d8%a7%d9%84%d8%aa%d8%b1%d9%83%d9%8a%d8%b2-%d8%a8%d8%a7%d9%84%d9%84%d9%8a%d8%b2/"
+  },
+  {
+   "id": "art-1794736983843-d18928",
+   "title": "Intel تعلن معالجات Core Ultra 200S بأداء ذكاء اصطناعي محسّن",
+   "date": "2026-11-15T10:03:03.843561Z",
+   "path": "/news/nvidia-core-ultra-200s-ai-performance-d18928/",
+   "link": "https://techcrunch.com/2024/11/15/intel-core-ultra-200s"
+  },
+  {
+   "id": "art-1785677430093-amou8n",
+   "title": "تحسن حصة معالجات Samsung Exynos في السوق رغم تراجع شحنات الرقائق",
+   "date": "2026-08-02T13:31:24.640Z",
+   "path": "/news/samsung-exynos-amou8n/",
+   "link": "https://www.tech-wd.com/wd/2026/08/02/%d8%aa%d8%ad%d8%b3%d9%86-%d8%ad%d8%b5%d8%a9-%d9%85%d8%b9%d8%a7%d9%84%d8%ac%d8%a7%d8%aa-samsung-exynos-%d9%81%d9%8a-%d8%a7%d9%84%d8%b3%d9%88%d9%82-%d8%b1%d8%ba%d9%85-%d8%aa%d8%b1%d8%a7%d8%ac%d8%b9/"
+  },
+  {
+   "id": "art-1785346232411-3rg738",
+   "title": "أبل تتجاوز حاجز 5 تريليونات دولار وتُصبح أغلى شركة في العالم",
+   "date": "2026-07-29T17:31:13.964Z",
+   "path": "/news/apple-5-trillion-3rg738/",
+   "link": "https://arabhardware.net/post-54438"
+  },
+  {
+   "id": "art-1782855042504-zoqfjx",
+   "title": "تسريبات: أداء شريحة Kirin 2026 Pro الجديدة يقترب من قدرات Apple A19",
+   "date": "2026-06-30T21:31:04.537Z",
+   "path": "/news/kirin-2026-pro-zoqfjx/",
+   "link": "https://www.tech-wd.com/wd/2026/06/30/%d8%aa%d8%b3%d8%b1%d9%8a%d8%a8%d8%a7%d8%aa-%d8%a3%d8%af%d8%a7%d8%a1-%d8%b4%d8%b1%d9%8a%d8%ad%d8%a9-kirin-2026-pro-%d8%a7%d9%84%d8%ac%d8%af%d9%8a%d8%af%d8%a9-%d9%8a%d9%82%d8%aa%d8%b1%d8%a8-%d9%85/"
+  },
+  {
+   "id": "art-1782842421134-frcug3",
+   "title": "حجز اسم المستخدم في واتساب: ماذا يعني؟",
+   "date": "2026-06-30T18:00:24.102Z",
+   "path": "/news/article-frcug3/",
+   "link": "https://arabhardware.net/post-54220"
+  },
+  {
+   "id": "art-1782835221453-0ztowt",
+   "title": "آبل تتخلى عن رقاقة M6 Pro/Max وتتجه نحو سلسلة M7",
+   "date": "2026-06-30T16:00:34.047Z",
+   "path": "/news/apple-tetkhal-3a-rqqaqa-m6-pro-max-w-tetjeh-n3w-silaa-m7-0ztowt/",
+   "link": "https://arabhardware.net/post-54224"
+  },
+  {
+   "id": "art-1782829609967-gl611i",
+   "title": "6 مميزات مفيدة في iOS 27 بعيدًا عن الذكاء الاصطناعي",
+   "date": "2026-06-30T14:26:52.957Z",
+   "path": "/news/ios-27-6-memizat-mufida-gl611i/",
+   "link": "https://arabhardware.net/post-54222"
+  },
+  {
+   "id": "art-1782662429368-k8h9dj",
+   "title": "لماذا يعتقد وول ستريت أن شركة ميكرون الأمريكية لصناعة الذاكرة هي النڤيديا التالية",
+   "date": "2026-06-28T16:00:32.342Z",
+   "path": "/news/article-k8h9dj/",
+   "link": "https://techcrunch.com/2026/06/28/why-wall-street-thinks-us-memory-maker-micron-is-the-next-nvidia/"
+  },
+  {
+   "id": "art-1782648398720-gisbhi",
+   "title": "لماذا ترتدي أي شيء آخر غير هودي الشمس هذا الصيف؟ اختياراتنا لأفضل هودي الشمس",
+   "date": "2026-06-28T12:06:40.994Z",
+   "path": "/news/article-gisbhi/",
+   "link": "https://www.wired.com/story/im-addicted-to-sun-hoodies/"
+  },
+  {
+   "id": "art-1782648294337-ruj8z5",
+   "title": "الفرق بين الغني والفقير",
+   "date": "2026-06-28T12:04:56.946Z",
+   "path": "/news/article-ruj8z5/",
+   "link": "https://www.wired.com/story/the-almost-homeless-subreddit-is-a-stark-glimpse-at-soaring-wealth-inequality/"
+  },
+  {
+   "id": "art-1782648275087-nshiyw",
+   "title": "سيارة كهربائية فاخرة",
+   "date": "2026-06-28T12:04:37.945Z",
+   "path": "/news/article-nshiyw/",
+   "link": "https://arstechnica.com/cars/2026/06/apple-and-audi-alumni-have-made-a-luxe-ev-based-on-the-moon-buggy/"
+  },
+  {
+   "id": "art-1782648262971-on44bq",
+   "title": "نست تهدف إلى إصلاح جهاز التحكم في درجة الحرارة",
+   "date": "2026-06-28T12:04:26.120Z",
+   "path": "/news/article-on44bq/",
+   "link": "https://www.theverge.com/podcast/958735/nest-thermostat-version-history"
+  },
+  {
+   "id": "art-1782648250303-nr3tyc",
+   "title": "دفع رقمي ذكاء اصطناعي",
+   "date": "2026-06-28T12:04:13.381Z",
+   "path": "/news/article-nr3tyc/",
+   "link": "https://techcrunch.com/2026/06/27/indian-payments-chief-thinks-ai-will-be-heavily-involved-in-next-era-of-digital-payment-growth/"
+  },
+  {
+   "id": "art-1782648237835-oc01ih",
+   "title": "جوجل تحد من استخدام ميتا لذكاء اصطناعي جيميني",
+   "date": "2026-06-28T12:04:00.736Z",
+   "path": "/news/article-oc01ih/",
+   "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNOGFVZEVKcTJqU3VyQXBCcWVXR1dhY0ZHajFJZG0waWJfMkY3Vmgyc042SkdNWUVOY2lva1RwY1p5c1ZkbEs4eUVfSXZFTFlhd3cyaEFSSHROYWpIY0N0aTBDdGhBWDhJUk5icTMySlc4c2hMRlhJR3R0bm5hUHRLUUpUREIyWnpzV0xoNnZkUHZqTnRCb09vY3NRSmxNc1N2akJNN0dvbE45Vi1yN3NV?oc=5"
+  },
+  {
+   "id": "art-1782648200129-q10hz6",
+   "title": "سوريا وحزب الله",
+   "date": "2026-06-28T12:03:23.117Z",
+   "path": "/news/article-q10hz6/",
+   "link": "https://www.bbc.com/arabic/articles/c621lynyd5jo?at_medium=RSS at_campaign=rss"
+  },
+  {
+   "id": "art-1782475220805-jtvj6o",
+   "title": "تطبيق في كوريا الجنوبية لحماية النساء من الملاحقة، فهل ينجح؟",
+   "date": "2026-06-26T12:00:29.345Z",
+   "path": "/news/article-jtvj6o/",
+   "link": "https://www.bbc.com/arabic/articles/c872y52zdzjo?at_medium=RSS at_campaign=rss"
+  },
+  {
+   "id": "art-1782473438169-ql6t3n",
+   "title": "أدوات ذكاء اصطناعي فريدة",
+   "date": "2026-06-26T11:30:40.016Z",
+   "path": "/news/article-ql6t3n/",
+   "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPa3VwNngyaTJXZzk0R1JldHp1clVHV296TkNMYlQ1R1drSDdmd056RFh1MGE1UmgzMXR4MlJLU0d0SjFzSkFOMWNTUG84S09zZHQwSFBBa21YZ3l6TzI1SDNleGI3ZE1tVVFCZkxlLUlhclEzSnBNb1pCNVYxRXpzQ3ktZmljelFPSzQzUDRB?oc=5"
+  },
+  {
+   "id": "art-1782473420219-v9qp6m",
+   "title": "إيران تصف البيان المشترك للولايات المتحدة ومجلس التعاون الخليجي بـ\"الاستفزازي\"",
+   "date": "2026-06-26T11:30:24.575Z",
+   "path": "/news/article-v9qp6m/",
+   "link": "https://www.bbc.com/arabic/articles/c9w2v7jn1w0o?at_medium=RSS at_campaign=rss"
+  },
+  {
+   "id": "art-1782469820154-27yzm4",
+   "title": "إيران ترد على البيان المشترك",
+   "date": "2026-06-26T10:30:23.135Z",
+   "path": "/news/article-27yzm4/",
+   "link": "https://www.bbc.com/arabic/articles/c9w2v7jn1w0o?at_medium=RSS at_campaign=rss"
+  },
+  {
+   "id": "art-1782468020319-ux8ir7",
+   "title": "إيران ترد على البيان المشترك",
+   "date": "2026-06-26T10:00:44.819Z",
+   "path": "/news/article-ux8ir7/",
+   "link": "https://www.bbc.com/arabic/articles/c9w2v7jn1w0o?at_medium=RSS at_campaign=rss"
+  },
+  {
+   "id": "art-1782460824114-7151re",
+   "title": "شركة باين تعلن عن شراكة مع جوجل كلاود",
+   "date": "2026-06-26T08:00:26.716Z",
+   "path": "/news/article-7151re/",
+   "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPSDNfcFptTDlqdlBrNVV2R3JnVlJnekplVXFIOWJ6eVVudy04Zk96anVyZ3VnelVXSlRQZllwdGVnZDhYVmxlc3NxTGFYTDNCUzZiOG41dmNDUUc0dU9icmZ3Z1ZJc0R3TTBLakNRMTJsS3VDLTgwSjF2cURhc3A4ZzYyNVgtME1pR244?oc=5"
+  },
+  {
+   "id": "art-1782459991856-2j80y7",
+   "title": "البيت الأبيض يطلب من OpenAI إبطاء إطلاق نموذجها الجديد",
+   "date": "2026-06-26T07:46:55.595Z",
+   "path": "/news/openai-2j80y7/",
+   "link": "https://techcrunch.com/2026/06/25/the-white-house-is-asking-openai-to-slow-roll-the-release-of-its-new-model-over-safety-concerns/"
+  },
+  {
+   "id": "art-1786705242323-aeebtr",
+   "title": "إطلاق Google لنموذج Gemini 3.7 Flash للبرمجة",
+   "link": "https://techxmediaarabic.com/%D8%A5%D8%B7%D9%84%D8%A7%D9%82-google-%D9%84%D9%86%D9%85%D9%88%D8%B0%D8%AC-gemini-3-7-flash-%D9%84%D9%84%D8%A8%D8%B1%D9%85%D8%AC%D8%A9/",
+   "reason": "dup Gemini 3.7 Flash (weaker, generic image)"
+  },
+  {
+   "id": "art-1786195836881-3227fh",
+   "title": "نقص ذواكر DRAM يؤثر على إنتاج iPhone 18",
+   "link": "https://arabhardware.net/post-54517",
+   "reason": "thin <250w"
+  },
+  {
+   "id": "art-1785688227968-qmx7vj",
+   "title": "تراجع سهم Reddit بعد تصريحات الرئيس التنفيذي",
+   "link": "https://www.tech-wd.com/wd/2026/08/02/%d8%aa%d8%b1%d8%a7%d8%ac%d8%b9-%d8%b3%d9%87%d9%85-reddit-%d8%a8%d8%a3%d9%83%d8%ab%d8%b1-%d9%85%d9%86-20-%d8%a8%d8%b9%d8%af-%d8%aa%d8%b5%d8%b1%d9%8a%d8%ad%d8%a7%d8%aa-%d8%a7%d9%84%d8%b1%d8%a6%d9%8a/",
+   "reason": "thin <250w"
+  },
+  {
+   "id": "art-1785600032057-l5wqlu",
+   "title": "شاومي تكشف رسميًا عن تصميم Redmi K100 Pro Max وتحدد موعد الإطلاق",
+   "link": "https://arabhardware.net/post-54463",
+   "reason": "truncated body"
+  },
+  {
+   "id": "art-1785594633351-10mhfg",
+   "title": "جوجل Pixel Tag يظهر أخيرًا: أول منافس رسمي من جوجل لـ Apple AirTag",
+   "link": "https://arabhardware.net/post-54460",
+   "reason": "dup Pixel Tag (weaker)"
+  },
+  {
+   "id": "art-1785513647763-j7ubya",
+   "title": "نماذج Claude تخترق أنظمة ثلاث شركات أثناء الاختبارات",
+   "link": "https://arabhardware.net/post-54454",
+   "reason": "dup Claude intrusion story"
+  },
+  {
+   "id": "art-1785501049264-0bfejo",
+   "title": "شارة فيسبوك المجانية و Radeon RX 9050 وتسريبات Galaxy S27",
+   "link": "https://arabhardware.net/post-54447",
+   "reason": "weekly roundup collage image"
+  },
+  {
+   "id": "art-1784980958122-t6sve1",
+   "title": "5 أجهزة ذكية بديلة للجالاكسي زد فولد 8 ألترا",
+   "link": "https://www.androidauthority.com/samsung-galaxy-z-fold-8-ultra-alternatives-3689273/",
+   "reason": "broken image (403)"
+  },
+  {
+   "id": "art-1784959247976-hok9zh",
+   "title": "الألعاب المحسنة: ما هي؟ وكيف تحسن نتائج المنافسات الرياضية؟",
+   "link": "https://mittrarabia.com/%d8%a7%d9%84%d8%a3%d9%84%d8%b9%d8%a7%d8%a8-%d8%a7%d9%84%d9%85%d8%ad%d8%b3%d9%86%d8%a9-%d9%88%d8%a7%d9%84%d8%a3%d8%b1%d9%82%d8%a7%d9%85-%d8%a7%d9%84%d9%82%d9%8a%d8%a7%d8%b3%d9%8a%d8%a9/",
+   "reason": "off-topic + unsuitable image"
+  },
+  {
+   "id": "art-1784921432638-h9zgfg",
+   "title": "AMD تقود التطور في الذكاء الاصطناعي",
+   "link": "https://arabhardware.net/post-54395",
+   "reason": "dup of AMD Advancing AI, thin"
+  },
+  {
+   "id": "art-1784889052012-poreye",
+   "title": "اليابان تضع البشر بالثلاجة وOppo K15 ببطارية 8000 مللي أمبير",
+   "link": "https://arabhardware.net/post-54392",
+   "reason": "weekly roundup collage image + dup Oppo K15"
+  },
+  {
+   "id": "art-1784869254616-nz891i",
+   "title": "حواسيب الذكاء الاصطناعي تصل إلى الإمارات",
+   "link": "https://techxmediaarabic.com/%D9%84%D8%AD%D8%B8%D8%A9-%D8%AD%D9%88%D8%A7%D8%B3%D9%8A%D8%A8-%D8%A7%D9%84%D8%B0%D9%83%D8%A7%D8%A1-%D8%A7%D9%84%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A-%D9%82%D8%AF-%D8%AD%D8%A7%D9%86%D8%AA-%D9%88/",
+   "reason": "dup Emirates AI PCs, generic image"
+  },
+  {
+   "id": "art-1784793783876-468nvp",
+   "title": "حواسيب الذكاء الاصطناعي في الإمارات: لحظة تحول",
+   "link": "https://techxmediaarabic.com/%D9%84%D8%AD%D8%B8%D8%A9-%D8%AD%D9%88%D8%A7%D8%B3%D9%8A%D8%A8-%D8%A7%D9%84%D8%B0%D9%83%D8%A7%D8%A1-%D8%A7%D9%84%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A-%D9%82%D8%AF-%D8%AD%D8%A7%D9%86%D8%AA-%D9%88/",
+   "reason": "truncated body + generic image"
+  },
+  {
+   "id": "art-1784781042703-cdeh20",
+   "title": "جوجل تدفع ثمن هيمنتها على أندرويد بغرامة قياسية",
+   "link": "https://mittrarabia.com/%d8%ba%d8%b1%d8%a7%d9%85%d8%a9-%d8%b9%d9%84%d9%89-%d8%ac%d9%88%d8%ac%d9%84-%d9%81%d9%8a-%d8%a7%d9%84%d8%a7%d8%aa%d8%ad%d8%a7%d8%af-%d8%a7%d9%84%d8%a3%d9%88%d8%b1%d9%88%d8%a8%d9%8a/",
+   "reason": "leaked SEO keyword text in body"
+  },
+  {
+   "id": "art-1782824333688-zrw5x5",
+   "title": "شركة Valve تُجبر dbrand على سحب غطاء الحماية لمنصة Steam Machine",
+   "link": "https://arabhardware.net/post-54227",
+   "reason": "single-paragraph body"
+  },
+  {
+   "id": "art-1786221029430-66avtb",
+   "title": "Microsoft تتراجع عن توصية مستخدمي Windows 11 بـ 32 جيجابايت رام",
+   "link": "https://arabhardware.net/post-54523",
+   "reason": "wall of text (<3 paragraphs)"
+  },
+  {
+   "id": "art-1785502842202-o5nsr3",
+   "title": "سام ألتمان: تجربتي مع تيك توك من التجربة إلى الإدمان",
+   "link": "https://aitnews.com/2026/07/31/%d9%85%d9%86-%d8%a7%d9%84%d8%aa%d8%ac%d8%b1%d8%a8%d8%a9-%d8%a5%d9%84%d9%89-%d8%a7%d9%84%d8%a5%d8%af%d9%85%d8%a7%d9%86-%d8%b3%d8%a7%d9%85-%d8%a3%d9%84%d8%aa%d9%85%d8%a7%d9%86-%d9%8a%d8%b1%d9%88%d9%8a/",
+   "reason": "wall of text (<3 paragraphs)"
+  },
+  {
+   "id": "art-1782829711421-lm1pna",
+   "title": "جهاز PlayStation 6: هل سيتمكن من تجربة لعب متنقلة؟",
+   "link": "https://arabhardware.net/post-54229",
+   "reason": "wall of text (<3 paragraphs)"
+  }
+ ]
+}

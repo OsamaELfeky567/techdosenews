@@ -10,7 +10,7 @@ const BASE_PER_DAY = +(E.BASE_PER_DAY || 6);     // up to this many/day on norma
 const TREND_MIN = +(E.TREND_MIN || 25);          // trend score needed for articles beyond BASE_PER_DAY
 const FRESH_HOURS = +(E.FRESH_HOURS || 36);
 const MIN_SCORE = +(E.MIN_SCORE || 60);
-const MIN_WORDS = +(E.MIN_WORDS || 250);
+const MIN_WORDS = +(E.MIN_WORDS || 300);
 const BASE = 'https://td-arabi.com';
 const GEMINI_MODELS = (E.GEMINI_MODELS || 'gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-3.6-flash').split(',').map(s => s.trim()).filter(Boolean);
 const GROQ_MODEL = E.GROQ_MODEL || 'openai/gpt-oss-120b';
@@ -70,7 +70,7 @@ const SYSTEM = `أنت محرر أخبار تقنية عربي محترف في �
 - بنية المقال بالترتيب: (1) ماذا حدث في فقرة افتتاحية واضحة، (2) لماذا يهم القارئ العربي (استنتاج مبني فقط على وقائع المصدر، بدون اختلاق تأثير على مصر أو الأسواق العربية)، (3) أبرز النقاط في قائمة <ul>، (4) ما الذي لم يتأكد بعد أو ما الخطوة التالية.
 - إن كان الخبر تسريبا أو إشاعة أو معلومات غير رسمية: ضع is_rumor=true، واستخدم صياغة مثل "بحسب تسريبات" و"غير مؤكد رسميا"، ولا تذكر أي مواصفة مسربة كحقيقة، وضع كلمة "تسريبات" أو "غير مؤكد" في العنوان.
 - لا تقدم رأيا ولا توقعات من عندك. إن لم يضف الخبر معلومة جديدة ذات قيمة للقارئ ضع is_duplicate=true.
-- طول المقال إلزامي: لا يقل أبداً عن 300 كلمة ولا يزيد عن 450 كلمة. هذا أهم شرط؛ راجع عدد الكلمات قبل الرد. بصيغة HTML بسيطة فقط: <p> و <h2> و <ul><li> و <strong>. بدون <h1> وبدون روابط وبدون صور.
+- طول المقال إلزامي: لا يقل أبداً عن 300 كلمة ولا يزيد عن 450 كلمة. هذا أهم شرط؛ راجع عدد الكلمات قبل الرد. بصيغة HTML بسيطة فقط: <p> و <h2> و <ul><li> و <strong>. أضف من 2 إلى 3 عناوين فرعية <h2> قصيرة وواضحة داخل المقال (إلزامي)، وكل فقرة من 2 إلى 4 جمل. اختم المقال بجملة كاملة تنتهي بنقطة. بدون <h1> وبدون روابط وبدون صور.
 - إن كان الخبر نفسه منشورا سابقا في قائمة العناوين المعطاة، ضع is_duplicate=true.
 - الرد JSON فقط بدون أي نص آخر.`;
 
@@ -162,6 +162,26 @@ function check(a, cats) {
   return { score, reasons, words };
 }
 
+// ---------- quality gate: nothing thin, broken, truncated, duplicate or off-style ships ----------
+const bodyText = h => strip(h || '');
+const bodyToks = h => new Set((bodyText(h).match(/[\p{L}\p{N}]{4,}/gu) || []));
+function gate(a, c, index) {
+  const t = bodyText(a.body), problems = [];
+  if (!/<\/(ul|ol)>\s*$/i.test(String(a.body)) && !/[.!؟?:»"”)…]$/.test(t.trim())) problems.push('truncated body');
+  if (/الكلمات البديلة|الكلمات المفتاحية|الكلمة المفتاحية|الكلمات التقنية العامة|focus keyword|image_query/i.test(t)) problems.push('leaked metadata text');
+  if (/ملخص الأسبوع|حصاد الأسبوع|أبرز أخبار الأسبوع|نشرة الأسبوع|weekly (recap|roundup)/i.test(a.title || '')) problems.push('weekly roundup title');
+  if ((t.match(/<|&lt;/g) || []).length) problems.push('markup in text');
+  if ((String(a.body).match(/<p[ >]/g) || []).length < 3) problems.push('fewer than 3 paragraphs');
+  const bt = bodyToks(a.body);
+  for (const x of index.slice(0, 120)) {
+    if (x.link && x.link === c.link) { problems.push('same source link as ' + x.id); break; }
+    if (jaccard(x.title, a.title) > 0.4) { problems.push('near-duplicate title of ' + x.id); break; }
+    const xt = bodyToks(x.body); let n = 0; for (const w of bt) if (xt.has(w)) n++;
+    if (bt.size && xt.size && n / (bt.size + xt.size - n) >= 0.3) { problems.push('near-duplicate body of ' + x.id); break; }
+  }
+  return problems;
+}
+
 const isRumor = a => a.is_rumor === true || a.is_rumor === 'true';
 // ---------- image ----------
 const BAD_IMG = /logo|avatar|icon|favicon|sprite|badge|pixel|spacer|placeholder|\.svg|\.gif/i;
@@ -188,23 +208,29 @@ function imgSize(buf) {
 }
 async function measure(url) {
   try {
-    const r = await fetch(url, { headers: { 'User-Agent': UA, Range: 'bytes=0-65535' }, signal: AbortSignal.timeout(12000) });
+    const r = await fetch(url, { headers: { 'User-Agent': UA, Referer: BASE + '/', Range: 'bytes=0-65535' }, signal: AbortSignal.timeout(12000) });
     if (!r.ok) return null;
-    return imgSize(Buffer.from(await r.arrayBuffer()));
+    if (!/^image\//i.test(r.headers.get('content-type') || '')) return null;
+    const buf = Buffer.from(await r.arrayBuffer());
+    if (buf.length < 5000) return null;
+    return imgSize(buf);
   } catch { return null; }
 }
+const MIN_IMG_W = 560;
+// an image passes only if it loads with our Referer, is a real image of reasonable size and width
+async function imgOk(url) { const d = await measure(url); return d && d.w >= MIN_IMG_W ? d : null; }
 async function pickImage(c, a) {
   const ok = u => u && /^https?:\/\//.test(u) && !BAD_IMG.test(u);
-  if (ok(c.img)) return { url: c.img, source: 'rss' };
+  if (ok(c.img)) { const d = await imgOk(c.img); if (d) return { url: c.img, source: 'rss', dims: d }; }
   try {
     const html = await get(c.link, 12000);
     const og = (html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)/i) || html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i) || [])[1];
-    if (ok(og)) return { url: decode(og), source: 'og' };
+    if (ok(og)) { const u = decode(og), d = await imgOk(u); if (d) return { url: u, source: 'og', dims: d }; }
   } catch {}
   if (E.PEXELS_API_KEY && a.image_query && !isRumor(a)) {
     try {
       const j = JSON.parse(await get('https://api.pexels.com/v1/search?per_page=3&orientation=landscape&query=' + encodeURIComponent(a.image_query), 12000, { Authorization: E.PEXELS_API_KEY }));
-      const p = j.photos?.[0]; if (p) return { url: p.src.large || p.src.original, source: 'pexels' };
+      for (const p of (j.photos || [])) { const u = p.src.large || p.src.original, d = await imgOk(u); if (d) return { url: u, source: 'pexels', dims: d }; }
     } catch {}
   }
   return { url: BASE + '/img/og-image.png', source: 'default' };
@@ -306,13 +332,18 @@ async function main() {
     if (q.words < MIN_WORDS) { res.errors.push('thin body ' + q.words + 'w < ' + MIN_WORDS); log('  thin body', q.words, '<', MIN_WORDS, '- trying next candidate'); continue; }
     if (q.score < MIN_SCORE) { res.errors.push('quality ' + q.score + ': ' + q.reasons.join(',')); continue; }
 
+    const gp = gate(a, c, index);
+    if (gp.length) { res.errors.push('gate: ' + gp.join('; ')); log('  gate rejected:', gp.join('; ')); continue; }
     const img = await pickImage(c, a);
-    const dims = img.source === 'default' ? null : await measure(img.url);
-    if (isRumor(a) && img.source === 'default') { res.errors.push('rumor without source image'); log('  rumor has no source image, skipping'); continue; }
+    const dims = img.dims || null;
+    if (img.source === 'default') { res.errors.push('no valid image (loads, >=' + MIN_IMG_W + 'px, >=5KB)'); log('  no valid image, skipping'); continue; }
+    if (false && isRumor(a) && img.source === 'default') { res.errors.push('rumor without source image'); log('  rumor has no source image, skipping'); continue; }
+    const ctr = rj('data/article-counter.json', null) || { next: Math.max(0, ...index.map(x => x.no || 0)) + 1 };
+    const no = ctr.next;
     const id = 'art-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
     const slug = String(a.seo_slug || '').toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70);
     const entry = {
-      id, title: a.title.trim(), excerpt: a.excerpt.trim(), body: a.body, category: a.category, tags: (a.tags || []).slice(0, 6),
+      id, no, title: a.title.trim(), excerpt: a.excerpt.trim(), body: a.body, category: a.category, tags: (a.tags || []).slice(0, 6),
       image: img.url, image_source: img.source, image_query: a.image_query || '', date: now.toISOString(),
       readTime: Math.max(2, Math.round(q.words / 200)) + ' min read', views: 0, hasEgyptImpact: !!a.hasEgyptImpact,
       source: c.sourceName, link: c.link, source_title: c.title, techdose_link: '', status: 'published',
@@ -327,6 +358,7 @@ async function main() {
     if (DRY_RUN) { log('DRY RUN article:\n', JSON.stringify({ ...entry, body: entry.body.slice(0, 400) + '...' }, null, 2)); return finish('dry_run_ok'); }
 
     // 4. write data
+    wj('data/article-counter.json', { next: no + 1 });
     const idx = [entry, ...index];
     const KEEP = 200;
     if (idx.length > KEEP) { const arch = rj('data/articles/archive.json', []); wj('data/articles/archive.json', [...arch, ...idx.slice(KEEP)]); }

@@ -56,7 +56,8 @@
     "image_h": 675,
     "quality_score": 100,
     "ai_provider": "gemini:gemini-3.1-flash-lite",
-    "path": "/news/samsung-lowers-2027-smartphone-shipment-target-yidok6/"
+    "path": "/news/samsung-lowers-2027-smartphone-shipment-target-yidok6/",
+    "no": 66
   },
   {
     "id": "art-1795595990535-1401yj",
@@ -114,7 +115,8 @@
     "image_h": 601,
     "quality_score": 100,
     "ai_provider": "gemini:gemini-3.5-flash-lite",
-    "path": "/news/arabic-ai-services-higher-fees-1401yj/"
+    "path": "/news/arabic-ai-services-higher-fees-1401yj/",
+    "no": 65
   },
   {
     "id": "art-1795594881118-tpqo5h",
@@ -173,7 +175,8 @@
     "image_h": 627,
     "quality_score": 100,
     "ai_provider": "gemini:gemini-3.5-flash-lite",
-    "path": "/news/acer-middle-east-market-overview-gitex-tpqo5h/"
+    "path": "/news/acer-middle-east-market-overview-gitex-tpqo5h/",
+    "no": 64
   },
   {
     "id": "art-1795589710525-2bap6h",
@@ -232,7 +235,8 @@
     "image_h": 675,
     "quality_score": 100,
     "ai_provider": "gemini:gemini-3.1-flash-lite",
-    "path": "/news/signal-blocks-screenshots-to-prevent-ai-access-2bap6h/"
+    "path": "/news/signal-blocks-screenshots-to-prevent-ai-access-2bap6h/",
+    "no": 63
   },
   {
     "id": "art-1795547063114-tptm0j",
@@ -289,7 +293,8 @@
     "image_h": 648,
     "quality_score": 100,
     "ai_provider": "gemini:gemini-3.6-flash",
-    "path": "/news/amazon-accelerates-satellite-launches-spacex-falcon9-tptm0j/"
+    "path": "/news/amazon-accelerates-satellite-launches-spacex-falcon9-tptm0j/",
+    "no": 62
   },
   {
     "id": "art-1795540528689-5sgd1h",
@@ -342,7 +347,8 @@
     "internal_links": [],
     "quality_score": 100,
     "ai_provider": "groq:openai/gpt-oss-120b",
-    "path": "/news/porsche-718-boxster-electric-prototype-5sgd1h/"
+    "path": "/news/porsche-718-boxster-electric-prototype-5sgd1h/",
+    "no": 61
   },
   {
     "id": "art-1786716137839-is11o3",
@@ -454,7 +460,8 @@
       }
     ],
     "quality_score": 70,
-    "path": "/news/pixel-tag-jetla-29-dollar-is11o3/"
+    "path": "/news/pixel-tag-jetla-29-dollar-is11o3/",
+    "no": 60
   },
   {
     "id": "art-1786714236174-vc4ejg",
@@ -562,7 +569,8 @@
       }
     ],
     "quality_score": 71,
-    "path": "/news/article-vc4ejg/"
+    "path": "/news/article-vc4ejg/",
+    "no": 59
   },
   {
     "id": "art-1786710642304-wv3do0",
@@ -664,7 +672,8 @@
       }
     ],
     "quality_score": 75,
-    "path": "/news/geminai-3-7-flash-wv3do0/"
+    "path": "/news/geminai-3-7-flash-wv3do0/",
+    "no": 58
   },
   {
     "id": "art-1786703437915-j8r1xo",
@@ -766,7 +775,8 @@
       }
     ],
     "quality_score": 65,
-    "path": "/news/article-j8r1xo/"
+    "path": "/news/article-j8r1xo/",
+    "no": 57
   },
   {
     "id": "art-1786501961107-gxsd5e",
@@ -866,7 +876,8 @@
       }
     ],
     "quality_score": 71,
-    "path": "/news/openai-tatlq-ndwaj-gpt-5-6-cyber-lldf-sybrny-gxsd5e/"
+    "path": "/news/openai-tatlq-ndwaj-gpt-5-6-cyber-lldf-sybrny-gxsd5e/",
+    "no": 56
   },
   {
     "id": "art-1786496442842-mxtunt",
@@ -968,7 +979,8 @@
       }
     ],
     "quality_score": 68,
-    "path": "/news/claude-mxtunt/"
+    "path": "/news/claude-mxtunt/",
+    "no": 55
   },
   {
     "id": "art-1786476701590-74uk33",
@@ -1078,7 +1090,8 @@
       }
     ],
     "quality_score": 77,
-    "path": "/news/apple-iphone-zaghaee-elmortakab-74uk33/"
+    "path": "/news/apple-iphone-zaghaee-elmortakab-74uk33/",
+    "no": 54
   },
   {
     "id": "art-1786473049648-y0970f",
@@ -1178,7 +1191,8 @@
       }
     ],
     "quality_score": 72,
-    "path": "/news/article-y0970f/"
+    "path": "/news/article-y0970f/",
+    "no": 53
   },
   {
     "id": "art-1786465901554-nlm4gm",
@@ -1261,95 +1275,8 @@
       }
     ],
     "quality_score": 65,
-    "path": "/news/11-nlm4gm/"
-  },
-  {
-    "id": "art-1786221029430-66avtb",
-    "title": "Microsoft تتراجع عن توصية مستخدمي Windows 11 بـ 32 جيجابايت رام",
-    "excerpt": "تتراجع Microsoft عن توصية مستخدمي Windows 11 بامتلاك 32 جيجابايت رام، في خطوة تتزامن مع أزمة نقص الرامات وارتفاع أسعارها.",
-    "body": "<p>## التوقعات المستقبلية</p><p>تتراجع <strong>Microsoft</strong> عن توصية مستخدمي <strong><strong>Windows 11</strong></strong> بامتلاك 32 جيجابايت رام، في خطوة تتزامن مع أزمة نقص الرامات وارتفاع أسعارها.. كانت المعلومات المحذوفة متاحة سابقًا عبر إحدى صفحات الويب التابعة لـ Microsoft، قبل أن تختفي ويُصبح الوصول إليها يؤدي إلى خطأ 404.. وتضمنت الصفحة آنذاك توصيات بشأن احتياجات الألعاب للرامات، حيث أشارت <strong>Microsoft</strong> إلى أن 16 جيجابايت تكفي لمعظم الألعاب، بينما اعتبرت 32 جيجابايت الخيار المثالي للاعبين الذين يشغّلون الألعاب الأكثر تطلبًا أو يُفعّلون أعلى الإعدادات.. كما أوصت الشركة بامتلاك وحدة <strong>SSD</strong> بسعة 1 تيرابايت لمن يحتفظون بمكتبة ألعاب كبيرة.. إلا أن هذه التوصيات أصبحت أكثر صعوبة في التطبيق مع الارتفاع الحاد في أسعار الرامات ووحدات التخزين، نتيجة أزمة الـ DRAM، ما يجعل ترقية الأجهزة إلى سعات مرتفعة مكلفة بالنسبة إلى معظم المستخدمين.. في المقابل، يبدو أن <strong>Microsoft</strong> باتت تولي اهتمامًا أكبر لتحسين كفاءة Windows 11، خصوصًا مع استمرار طرح أجهزة تعتمد على 8 جيجابايت فقط من الرام.. وتكشف أرقام استهلاك الذاكرة عن حجم المشكلة؛ إذ استهلك جهاز يعمل بنظام <strong><strong>Windows 11</strong></strong> نحو 7.8 جيجابايت من أصل 32 جيجابايت من RAM، رغم عدم تشغيل أي برنامج أو متصفح.. ورغم أن جزءًا من هذه الذاكرة يُستخدم في التخزين المؤقت، فإن الاستهلاك المرتفع يظل محل انتقاد، خصوصًا على الأجهزة المزودة بسعة 8 جيجابايت فقط.. وتبدو الصورة أكثر وضوحًا على بعض الحواسيب المحمولة، إذ أُشير إلى أن جهاز Dell XPS 13 يستهلك نحو 70% من الرامات البالغة 8 جيجابايت حتى قبل تشغيل أي تطبيقات في <strong><strong>Windows 11</strong></strong>.. وكان بافان دافولوري Pavan Davuluri. رئيس قطاع Windows والأجهزة في Microsoft، قد أكد أن الشركة تعمل على جعل <strong><strong>Windows 11</strong></strong> أكثر كفاءة في استخدام الذاكرة مستقبلًا، وهو ما قد يخفف الضغط عن ملايين المستخدمين الذين يعتمدون على أجهزة برامات 8 جيجابايت.</p>",
-    "category": "companies | technology | hardware",
-    "tags": [
-      "Microsoft",
-      "Windows 11",
-      "RAM",
-      "DRAM",
-      "Acer"
-    ],
-    "image": "https://arabhardware.net/storage/uploads/2026-08/6a77820800acc.2026080713385467368main6a77820808aaa.webp",
-    "image_source": "rss_enclosure",
-    "image_provider": "rss",
-    "image_query": "",
-    "image_type": "article_main",
-    "image_confidence": 85,
-    "date": "2026-08-08T20:30:33.815Z",
-    "readTime": "2 min read",
-    "views": "0",
-    "hasEgyptImpact": false,
-    "source": "عرب هاردوير",
-    "link": "https://arabhardware.net/post-54523",
-    "techdose_link": "https://td-arabi.com/news/microsoft-tetrak-3-32-gb-ram-66avtb/",
-    "status": "published",
-    "seo_title": "Microsoft تتراجع عن توصية مستخدمي Windows 11",
-    "meta_description": "تتراجع Microsoft عن توصية مستخدمي Windows 11 بامتلاك 32 جيجابايت رام",
-    "seo_slug": "microsoft-tetrak-3-32-gb-ram",
-    "focus_keyword": "Microsoft تتراجع عن توصية مستخدمي Windows 11",
-    "secondary_keywords": [
-      "Windows 11",
-      "RAM",
-      "DRAM",
-      "Acer"
-    ],
-    "primary_company": "Microsoft",
-    "secondary_company": "Acer",
-    "products": [
-      "Windows 11"
-    ],
-    "devices": [
-      "Dell XPS 13"
-    ],
-    "technologies": [
-      "DRAM",
-      "SSD"
-    ],
-    "ai_models": [],
-    "os": [
-      "Windows 11"
-    ],
-    "chipsets": [],
-    "browsers": [],
-    "cloud_platforms": [],
-    "languages": [],
-    "opensource_projects": [],
-    "executives": [
-      "Pavan Davuluri"
-    ],
-    "markets": [
-      "hardware market"
-    ],
-    "countries": [],
-    "people": [],
-    "stocks": [],
-    "investors": [],
-    "image_queries": [
-      "Microsoft Windows 11 RAM",
-      "DRAM shortage",
-      "Acer hardware"
-    ],
-    "internal_links": [
-      {
-        "title": "نقص ذواكر DRAM يؤثر على إنتاج iPhone 18",
-        "id": "art-1786195836881-3227fh",
-        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1786195836881-3227fh"
-      },
-      {
-        "title": "دعوى قضائية ضد سامسونغ وإس كيه هاينكس وميكرون بتهمة التلاعب بأسعار ذاكرة DRAM",
-        "id": "art-1782833421161-39vesg",
-        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1782833421161-39vesg"
-      }
-    ],
-    "quality_score": 67,
-    "path": "/news/microsoft-tetrak-3-32-gb-ram-66avtb/"
+    "path": "/news/11-nlm4gm/",
+    "no": 52
   },
   {
     "id": "art-1786179634401-5ursgy",
@@ -1448,7 +1375,8 @@
       }
     ],
     "quality_score": 81,
-    "path": "/news/google-tftah-nmdj-lzl-astnry-ltwq-5ursgy/"
+    "path": "/news/google-tftah-nmdj-lzl-astnry-ltwq-5ursgy/",
+    "no": 51
   },
   {
     "id": "art-1786177996940-do0sd5",
@@ -1519,7 +1447,8 @@
     ],
     "internal_links": [],
     "quality_score": 67,
-    "path": "/news/benq-th575i-do0sd5/"
+    "path": "/news/benq-th575i-do0sd5/",
+    "no": 50
   },
   {
     "id": "art-1786174459272-tsdesm",
@@ -1621,7 +1550,8 @@
       }
     ],
     "quality_score": 73,
-    "path": "/news/openai-chatgpt-tsdesm/"
+    "path": "/news/openai-chatgpt-tsdesm/",
+    "no": 49
   },
   {
     "id": "art-1785765639905-ag7r59",
@@ -1718,7 +1648,8 @@
       }
     ],
     "quality_score": 75,
-    "path": "/news/honor-of-kings-dan-da-dan-ag7r59/"
+    "path": "/news/honor-of-kings-dan-da-dan-ag7r59/",
+    "no": 48
   },
   {
     "id": "art-1785700884516-6i5r0v",
@@ -1815,7 +1746,8 @@
       }
     ],
     "quality_score": 68,
-    "path": "/news/copilot-6i5r0v/"
+    "path": "/news/copilot-6i5r0v/",
+    "no": 47
   },
   {
     "id": "art-1785695427942-z5wo58",
@@ -1916,7 +1848,8 @@
       }
     ],
     "quality_score": 66,
-    "path": "/news/article-z5wo58/"
+    "path": "/news/article-z5wo58/",
+    "no": 46
   },
   {
     "id": "art-1785691827605-ehbr5o",
@@ -2029,7 +1962,8 @@
       }
     ],
     "quality_score": 70,
-    "path": "/news/halo-campaign-evolved-review-ehbr5o/"
+    "path": "/news/halo-campaign-evolved-review-ehbr5o/",
+    "no": 45
   },
   {
     "id": "art-1785675636022-9dk1tb",
@@ -2113,7 +2047,8 @@
       }
     ],
     "quality_score": 69,
-    "path": "/news/galaxy-s26-ultra-9dk1tb/"
+    "path": "/news/galaxy-s26-ultra-9dk1tb/",
+    "no": 44
   },
   {
     "id": "art-1785672035581-nggejv",
@@ -2212,7 +2147,8 @@
       }
     ],
     "quality_score": 65,
-    "path": "/news/article-nggejv/"
+    "path": "/news/article-nggejv/",
+    "no": 43
   },
   {
     "id": "art-1785648640108-qnkdur",
@@ -2285,7 +2221,8 @@
     ],
     "internal_links": [],
     "quality_score": 70,
-    "path": "/news/honor-x7e-plus-qnkdur/"
+    "path": "/news/honor-x7e-plus-qnkdur/",
+    "no": 42
   },
   {
     "id": "art-1785647016651-4mx4w9",
@@ -2374,7 +2311,8 @@
       }
     ],
     "quality_score": 70,
-    "path": "/news/article-4mx4w9/"
+    "path": "/news/article-4mx4w9/",
+    "no": 41
   },
   {
     "id": "art-1785596443350-txrsgc",
@@ -2474,7 +2412,8 @@
       }
     ],
     "quality_score": 65,
-    "path": "/news/article-txrsgc/"
+    "path": "/news/article-txrsgc/",
+    "no": 40
   },
   {
     "id": "art-1785592834507-se01e2",
@@ -2575,7 +2514,8 @@
       }
     ],
     "quality_score": 69,
-    "path": "/news/seedance-2-5-tecnologia-video-smart-se01e2/"
+    "path": "/news/seedance-2-5-tecnologia-video-smart-se01e2/",
+    "no": 39
   },
   {
     "id": "art-1785571285679-uxyoj0",
@@ -2675,7 +2615,8 @@
       }
     ],
     "quality_score": 65,
-    "path": "/news/e-iradaat-tasal-ila-38-1-milyar-darham-uxyoj0/"
+    "path": "/news/e-iradaat-tasal-ila-38-1-milyar-darham-uxyoj0/",
+    "no": 38
   },
   {
     "id": "art-1785533451242-73adq3",
@@ -2814,7 +2755,8 @@
       }
     ],
     "quality_score": 67,
-    "path": "/news/krt-rx-9050-yatkhlf-3n-rtx-5090-fi-l-ktbtrt-mbkrh-73adq3/"
+    "path": "/news/krt-rx-9050-yatkhlf-3n-rtx-5090-fi-l-ktbtrt-mbkrh-73adq3/",
+    "no": 37
   },
   {
     "id": "art-1785519128411-efqe6o",
@@ -2916,118 +2858,8 @@
       }
     ],
     "quality_score": 65,
-    "path": "/news/claude-yetajawaz-al-hudud-namadhj-anthorobik-tatsall-wa-takh-efqe6o/"
-  },
-  {
-    "id": "art-1785502842202-o5nsr3",
-    "title": "سام ألتمان: تجربتي مع تيك توك من التجربة إلى الإدمان",
-    "excerpt": "كشف سام ألتمان، الرئيس التنفيذي لشركة OpenAI، عن تجربته الشخصية مع تطبيق تيك توك، حيث وجد نفسه منجذبًا إلى التطبيق لمدة ساعات، مما دفعه إلى حذف التطبيق نهائيًا.",
-    "body": "<p>## التأثير المتوقع</p><p>كشف سام ألتمان، الرئيس التنفيذي لشركة OpenAI، عن تجربته الشخصية مع تطبيق تيك توك، حيث وجد نفسه منجذبًا إلى التطبيق لمدة ساعات، مما دفعه إلى حذف التطبيق نهائيًا.. قال ألتمان،  خلال حلقة حديثة من بودكاست “Relentless”،  إنه حذف تيك توك؛ لأن التطبيق كان “قويًا للغاية”،  موضحًا أنه تعمّد استخدامه بكثافة لتعرّف آلية عمله. بالتزامن مع تطوير <strong>OpenAI</strong> <strong>تطبيق Sora</strong> لإنشاء مقاطع الفيديو بالذكاء الاصطناعي،  وهو التطبيق الذي تبنّى في السابق مفهومًا قريبًا من منصات الفيديو القصير.. وأضاف ألتمان: “لقد جعلت نفسي مدمنًا على تيك توك؛ لأنني أردت أن أتعلم”. مشيرًا إلى أن التجربة ساعدته في فهم سبب الشهرة الواسعة التي تحظى بها خوارزمية التوصيات في المنصة وقدرتها على جذب المستخدمين إلى المحتوى.. وأوضح ألتمان أنه بدأ باستخدام <strong><strong>تيك توك</strong></strong> لمدة 10 دقائق تقريبًا قبل النوم، معتقدًا أنه قادر على التحكم في الوقت الذي يقضيه داخل التطبيق، لكنه فوجئ بتزايد مدة الاستخدام تدريجيًا.. وقال إن جلسة تصفح امتدت في إحدى الليالي إلى ساعة كاملة، قبل أن يجد نفسه في ظهيرة أحد أيام السبت جالسًا على الأريكة يتصفح <strong><strong>تيك توك</strong></strong> لنحو 3 ساعات متواصلة.. ووصف ألتمان تجربته بأنها كانت ممتعة في اللحظة نفسها “مثل المخدرات”، مع إدراكه أن هذا النمط من الاستخدام لم يكن جيدًا له.. وأضاف أنه نجح لمدة قصيرة في خفض استخدامه مجددًا إلى نحو 5 أو 10 دقائق ليلًا، قبل أن يقرر في النهاية حذف التطبيق نهائيًا.. وتتزامن تجربة ألتمان مع تزايد الاهتمام بتأثير الاستخدام المفرط لتيك توك؛ إذ رصدت مراجعة علمية حديثة شملت 21 دراسة مؤشرات مرتبطة بما يُعرف بـ”الاستخدام الإشكالي لتيك توك”. منها الرغبة الملحّة في التصفح، وصعوبة التحكم في مدة الاستخدام، وتأثر العادات اليومية، مع عدم تصنيف “إدمان <strong><strong>تيك توك</strong></strong>” رسميًا كاضطراب مستقل.. وتصدرت هذه المراجعة عن جامعة كاليفورنيا في لوس أنجلوس، وتم نشرها في مجلة “Cyberpsychology, Behavior, and Social Networking”.. وتمت دراسة 21 دراسة مختلفة، شملت 15 دراسة أمريكية و 6 دراسات أوروبية.. وخلصت المراجعة إلى أن الاستخدام الإشكالي لتيك توك يرتبط بزيادة خطر الإدمان، والاكتئاب، والقلق، ومشكلات النوم، والتوتر.. وتساعد طبيعة مقاطع الفيديو القصيرة وخوارزمية التوصيات الشديدة التخصيص والتدفق المستمر للمحتوى في إبقاء المستخدمين داخل التطبيق. وقد سبق أن أقر تطبيق <strong><strong>تيك توك</strong></strong> بأن تجربة التصفح قد تجعل بعض المستخدمين يفقدون الإحساس بالوقت، مما دفعه إلى توفير أدوات لإدارة الاستخدام للمستخدمين.. وتأتي تصريحات ألتمان بعد أشهر من قرار <strong>OpenAI</strong> إيقاف <strong>تطبيق Sora</strong> الاجتماعي، الذي اعتمد على مشاركة مقاطع الفيديو المُنشأة بالذكاء الاصطناعي.. وكانت <strong>OpenAI</strong> قد أعلنت في مارس 2026 إيقاف التطبيق بعد نحو 6 أشهر من إطلاقه، في خطوة هدفت إلى تركيز موارد الشركة على أولوياتها الأساسية، وسط المنافسة المتسارعة في قطاع الذكاء الاصطناعي التوليدي.. وتصدرت هذه الخطوة بعد أن أثار <strong>تطبيق Sora</strong> اهتمامًا واسعًا عند إطلاقه. وأسهم في إبرام شراكة بارزة مع ديزني، لكن احتياج توليد الفيديو إلى قدر كبير من موارد الحوسبة، في وقت تتصاعد فيه المنافسة بين <strong>OpenAI</strong> وشركات الذكاء الاصطناعي الأخرى، دفع الشركة إلى إيقاف التطبيق.. وتطرق ألتمان إلى تجربته مع <strong><strong>تيك توك</strong></strong> في أثناء حديثه عن سلسلة الأجهزة المدعومة بالذكاء الاصطناعي التي تطورها <strong>OpenAI</strong> بالتعاون مع مصمم آبل الشهير جوني آيف، والتي تعتزم الشركة الكشف عنها قبل نهاية عام 2026.. وسبق أن أشار ألتمان إلى رغبته في تقديم جهاز يقلل الضوضاء الرقمية الناجمة عن الإشعارات والتنبيهات المستمرة في الهواتف الذكية. مشبهًا تجربة استخدام أجهزة مثل آيفون وسط هذا الكم من التنبيهات المزعجة بـ”السير في ميدان تايمز سكوير”.. وتنسجم هذه الرؤية مع موقف <strong>OpenAI</strong> المُعلن بشأن تصميم خدماتها؛ إذ أكدت الشركة سابقًا أن هدف منتجات مثل <strong>ChatGPT</strong> ليس إبقاء المستخدمين داخلها لأطول وقت ممكن.. ووضحت الشركة أن نجاح خدماتها لا يُقاس بعدد النقرات أو الوقت الذي يقضيه المستخدم داخل المنتج، بل بمدى قدرته على إنجاز المهمة التي لجأ إليه من أجلها.</p>",
-    "category": "ai | cybersecurity | companies | phones | ev | technology",
-    "tags": [
-      "تيك توك",
-      "سام ألتمان",
-      "OpenAI",
-      "تطبيق Sora",
-      "تجربة الاستخدام المفرط",
-      "إدمان تيك توك"
-    ],
-    "image": "https://aitnews.com/wp-content/uploads/2026/07/Sam-Altman-TikTok.jpg",
-    "image_source": "original",
-    "image_provider": "article_host",
-    "image_query": "",
-    "image_type": "article_main",
-    "image_confidence": 95,
-    "date": "2026-07-31T13:00:55.693Z",
-    "readTime": "3 min read",
-    "views": "0",
-    "hasEgyptImpact": false,
-    "source": "AIT News",
-    "link": "https://aitnews.com/2026/07/31/%d9%85%d9%86-%d8%a7%d9%84%d8%aa%d8%ac%d8%b1%d8%a8%d8%a9-%d8%a5%d9%84%d9%89-%d8%a7%d9%84%d8%a5%d8%af%d9%85%d8%a7%d9%86-%d8%b3%d8%a7%d9%85-%d8%a3%d9%84%d8%aa%d9%85%d8%a7%d9%86-%d9%8a%d8%b1%d9%88%d9%8a/",
-    "techdose_link": "https://td-arabi.com/news/article-o5nsr3/",
-    "status": "published",
-    "seo_title": "تجربة سام ألتمان مع تيك توك: من التجربة إلى الإدمان",
-    "meta_description": "كشف سام ألتمان عن تجربته مع تيك توك، حيث وجد نفسه منجذبًا إلى التطبيق لمدة ساعات، مما دفعه إلى حذف التطبيق نهائيًا.",
-    "seo_slug": "سام-ألتمان-تجربة-تيك-توك-من-التجربة-إلى-الإدمان",
-    "focus_keyword": "تيك توك",
-    "secondary_keywords": [
-      "سام ألتمان",
-      "OpenAI",
-      "تطبيق Sora",
-      "تجربة الاستخدام المفرط",
-      "إدمان تيك توك"
-    ],
-    "primary_company": "OpenAI",
-    "secondary_company": "تيك توك",
-    "products": [
-      "تيك توك",
-      "تطبيق Sora"
-    ],
-    "devices": [],
-    "technologies": [
-      "ذكاء اصطناعي",
-      "تكنولوجيا المعلومات"
-    ],
-    "ai_models": [
-      "ChatGPT"
-    ],
-    "os": [],
-    "chipsets": [],
-    "browsers": [],
-    "cloud_platforms": [],
-    "languages": [],
-    "opensource_projects": [],
-    "executives": [
-      "سام ألتمان"
-    ],
-    "markets": [
-      "سوق التكنولوجيا",
-      "سوق الذكاء الاصطناعي"
-    ],
-    "countries": [],
-    "people": [],
-    "stocks": [],
-    "investors": [],
-    "image_queries": [
-      "تيك توك",
-      "سام ألتمان",
-      "OpenAI",
-      "تطبيق Sora"
-    ],
-    "internal_links": [
-      {
-        "title": "OpenAI وAMD: شراكة استراتيجية لاستخدام أنظمة Helios في الذكاء الاصطناعي",
-        "id": "art-1784849451508-ip2gns",
-        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784849451508-ip2gns"
-      },
-      {
-        "title": "OpenAI و Hugging Face تحققان في حادثة أمنية غير مسبوقة للذكاء الاصطناعي",
-        "id": "art-1784784823547-rr64yu",
-        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784784823547-rr64yu"
-      },
-      {
-        "title": "أدوات ذكاء اصطناعي فريدة",
-        "id": "art-1782473438169-ql6t3n",
-        "techdose_link": "https://td-arabi.com/article.html?id=art-1782473438169-ql6t3n"
-      },
-      {
-        "title": "مارك زوكربيرج: حظر نماذج الذكاء الاصطناعي الصينية يضر بالابتكار",
-        "id": "art-1785355238354-veb7pz",
-        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785355238354-veb7pz"
-      },
-      {
-        "title": "أبل تتجاوز حاجز 5 تريليونات دولار وتُصبح أغلى شركة في العالم",
-        "id": "art-1785346232411-3rg738",
-        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1785346232411-3rg738"
-      },
-      {
-        "title": "الألعاب المحسنة: ما هي؟ وكيف تحسن نتائج المنافسات الرياضية؟",
-        "id": "art-1784959247976-hok9zh",
-        "techdose_link": "https://osamaelfeky567.github.io/techdosenews/article.html?id=art-1784959247976-hok9zh"
-      }
-    ],
-    "quality_score": 68,
-    "path": "/news/article-o5nsr3/"
+    "path": "/news/claude-yetajawaz-al-hudud-namadhj-anthorobik-tatsall-wa-takh-efqe6o/",
+    "no": 36
   },
   {
     "id": "art-1785499249130-vdrn4z",
@@ -3136,7 +2968,8 @@
       }
     ],
     "quality_score": 71,
-    "path": "/news/apple-upgrade-vdrn4z/"
+    "path": "/news/apple-upgrade-vdrn4z/",
+    "no": 35
   },
   {
     "id": "art-1785463241577-e3ol4n",
@@ -3207,7 +3040,8 @@
     ],
     "internal_links": [],
     "quality_score": 65,
-    "path": "/news/stupid-never-dies-22-2026-e3ol4n/"
+    "path": "/news/stupid-never-dies-22-2026-e3ol4n/",
+    "no": 34
   },
   {
     "id": "art-1785447038207-lt5sel",
@@ -3268,7 +3102,8 @@
     ],
     "internal_links": [],
     "quality_score": 65,
-    "path": "/news/article-lt5sel/"
+    "path": "/news/article-lt5sel/",
+    "no": 33
   },
   {
     "id": "art-1785355238354-veb7pz",
@@ -3366,7 +3201,8 @@
       }
     ],
     "quality_score": 66,
-    "path": "/news/article-veb7pz/"
+    "path": "/news/article-veb7pz/",
+    "no": 32
   },
   {
     "id": "art-1785339143105-r3gugr",
@@ -3460,7 +3296,8 @@
       }
     ],
     "quality_score": 65,
-    "path": "/news/amd-radeon-rx-9050-r3gugr/"
+    "path": "/news/amd-radeon-rx-9050-r3gugr/",
+    "no": 31
   },
   {
     "id": "art-1785337536670-b9wymk",
@@ -3523,7 +3360,8 @@
     ],
     "internal_links": [],
     "quality_score": 71,
-    "path": "/news/gothic-1-remake-review-b9wymk/"
+    "path": "/news/gothic-1-remake-review-b9wymk/",
+    "no": 30
   },
   {
     "id": "art-1785125055138-eczfv0",
@@ -3653,7 +3491,8 @@
       }
     ],
     "quality_score": 71,
-    "path": "/news/nazarat-abel-al-zakiyah-eczfv0/"
+    "path": "/news/nazarat-abel-al-zakiyah-eczfv0/",
+    "no": 29
   },
   {
     "id": "art-1785015031804-d6empn",
@@ -3767,7 +3606,8 @@
       }
     ],
     "quality_score": 71,
-    "path": "/news/claude-d6empn/"
+    "path": "/news/claude-d6empn/",
+    "no": 28
   },
   {
     "id": "art-1785009638672-81q4ym",
@@ -3871,7 +3711,8 @@
       }
     ],
     "quality_score": 66,
-    "path": "/news/honor-power-3-81q4ym/"
+    "path": "/news/honor-power-3-81q4ym/",
+    "no": 27
   },
   {
     "id": "art-1784928676478-t5n0kq",
@@ -3975,7 +3816,8 @@
       }
     ],
     "quality_score": 76,
-    "path": "/news/amd-advancing-ai-t5n0kq/"
+    "path": "/news/amd-advancing-ai-t5n0kq/",
+    "no": 26
   },
   {
     "id": "art-1784908833561-c7nea8",
@@ -4037,7 +3879,8 @@
     ],
     "internal_links": [],
     "quality_score": 68,
-    "path": "/news/article-c7nea8/"
+    "path": "/news/article-c7nea8/",
+    "no": 25
   },
   {
     "id": "art-1784907048815-895wln",
@@ -4123,7 +3966,8 @@
       }
     ],
     "quality_score": 81,
-    "path": "/news/oppo-k15-895wln/"
+    "path": "/news/oppo-k15-895wln/",
+    "no": 24
   },
   {
     "id": "art-1784887266619-9gm0od",
@@ -4229,7 +4073,8 @@
       }
     ],
     "quality_score": 65,
-    "path": "/news/1024qam-5-5g-9gm0od/"
+    "path": "/news/1024qam-5-5g-9gm0od/",
+    "no": 23
   },
   {
     "id": "art-1784878310700-7fjwwl",
@@ -4310,7 +4155,8 @@
       }
     ],
     "quality_score": 72,
-    "path": "/news/soney-tfrd-qywd-sryma-aly-mwzfy-bdya-aqrcs-fyzcy-7fjwwl/"
+    "path": "/news/soney-tfrd-qywd-sryma-aly-mwzfy-bdya-aqrcs-fyzcy-7fjwwl/",
+    "no": 22
   },
   {
     "id": "art-1784871176107-vgfqzm",
@@ -4417,7 +4263,8 @@
       }
     ],
     "quality_score": 72,
-    "path": "/news/rtx-spark-vgfqzm/"
+    "path": "/news/rtx-spark-vgfqzm/",
+    "no": 21
   },
   {
     "id": "art-1784849451508-ip2gns",
@@ -4519,7 +4366,8 @@
       }
     ],
     "quality_score": 73,
-    "path": "/news/openai-amd-helios-ai-ip2gns/"
+    "path": "/news/openai-amd-helios-ai-ip2gns/",
+    "no": 20
   },
   {
     "id": "art-1784845849964-4j6kh8",
@@ -4626,7 +4474,8 @@
       }
     ],
     "quality_score": 70,
-    "path": "/news/amd-4j6kh8/"
+    "path": "/news/amd-4j6kh8/",
+    "no": 19
   },
   {
     "id": "art-1784838697000-0o1axf",
@@ -4723,7 +4572,8 @@
       }
     ],
     "quality_score": 66,
-    "path": "/news/maalijat-epyc-venice-al-jadeeda-0o1axf/"
+    "path": "/news/maalijat-epyc-venice-al-jadeeda-0o1axf/",
+    "no": 18
   },
   {
     "id": "art-1784836990070-wf0wdd",
@@ -4823,7 +4673,8 @@
       }
     ],
     "quality_score": 66,
-    "path": "/news/amd-instinct-mi400-wf0wdd/"
+    "path": "/news/amd-instinct-mi400-wf0wdd/",
+    "no": 17
   },
   {
     "id": "art-1784835049046-06u4u5",
@@ -4951,7 +4802,8 @@
       }
     ],
     "quality_score": 73,
-    "path": "/news/amd-cerebras-06u4u5/"
+    "path": "/news/amd-cerebras-06u4u5/",
+    "no": 16
   },
   {
     "id": "art-1784813461572-n11ito",
@@ -5073,7 +4925,8 @@
       }
     ],
     "quality_score": 71,
-    "path": "/news/moonshot-ai-anthropic-n11ito/"
+    "path": "/news/moonshot-ai-anthropic-n11ito/",
+    "no": 15
   },
   {
     "id": "art-1784784823547-rr64yu",
@@ -5172,7 +5025,8 @@
       }
     ],
     "quality_score": 70,
-    "path": "/news/openai-hugging-face-haditha-amniya-ghayr-masbuka-lladhkai-al-rr64yu/"
+    "path": "/news/openai-hugging-face-haditha-amniya-ghayr-masbuka-lladhkai-al-rr64yu/",
+    "no": 14
   },
   {
     "id": "art-1784772038781-fcy4vb",
@@ -5283,7 +5137,8 @@
       }
     ],
     "quality_score": 71,
-    "path": "/news/amd-anthropic-2-jigawat-fcy4vb/"
+    "path": "/news/amd-anthropic-2-jigawat-fcy4vb/",
+    "no": 13
   },
   {
     "id": "art-1784765010712-a1xkmn",
@@ -5394,7 +5249,8 @@
       }
     ],
     "quality_score": 71,
-    "path": "/news/galaxy-watch-9-watch-ultra-2-a1xkmn/"
+    "path": "/news/galaxy-watch-9-watch-ultra-2-a1xkmn/",
+    "no": 12
   },
   {
     "id": "art-1784763061312-hbkcub",
@@ -5460,7 +5316,8 @@
     ],
     "internal_links": [],
     "quality_score": 81,
-    "path": "/news/amd-ryzen-7-7700x3d-hbkcub/"
+    "path": "/news/amd-ryzen-7-7700x3d-hbkcub/",
+    "no": 11
   },
   {
     "id": "art-1783166420583-24ufc0",
@@ -5568,7 +5425,8 @@
       }
     ],
     "quality_score": 80,
-    "path": "/news/shauimi-18-awal-hatf-bimaalj-snapdragon-8-elite-gen-6-24ufc0/"
+    "path": "/news/shauimi-18-awal-hatf-bimaalj-snapdragon-8-elite-gen-6-24ufc0/",
+    "no": 10
   },
   {
     "id": "art-1783074620829-roxois",
@@ -5657,7 +5515,8 @@
       }
     ],
     "quality_score": 80,
-    "path": "/news/article-roxois/"
+    "path": "/news/article-roxois/",
+    "no": 9
   },
   {
     "id": "art-1782851422028-wd0upi",
@@ -5751,7 +5610,8 @@
       }
     ],
     "quality_score": 71,
-    "path": "/news/ios-2652-25-thgara-amnia-khtira-wd0upi/"
+    "path": "/news/ios-2652-25-thgara-amnia-khtira-wd0upi/",
+    "no": 8
   },
   {
     "id": "art-1782846021198-huyo37",
@@ -5824,7 +5684,8 @@
       }
     ],
     "quality_score": 69,
-    "path": "/news/iphone-ultra-foldable-design-huyo37/"
+    "path": "/news/iphone-ultra-foldable-design-huyo37/",
+    "no": 7
   },
   {
     "id": "art-1782844220939-ujf0au",
@@ -5930,7 +5791,8 @@
       }
     ],
     "quality_score": 63,
-    "path": "/news/tapplication-openclaw-yasil-ila-hawatif-ayfon-w-android-ujf0au/"
+    "path": "/news/tapplication-openclaw-yasil-ila-hawatif-ayfon-w-android-ujf0au/",
+    "no": 6
   },
   {
     "id": "art-1782838821208-wm1d0s",
@@ -6016,7 +5878,8 @@
       }
     ],
     "quality_score": 59,
-    "path": "/news/openai-srqt-mohandes-nazrat-abel-wm1d0s/"
+    "path": "/news/openai-srqt-mohandes-nazrat-abel-wm1d0s/",
+    "no": 5
   },
   {
     "id": "art-1782837020797-9f7fje",
@@ -6107,7 +5970,8 @@
       }
     ],
     "quality_score": 68,
-    "path": "/news/dlss-june-2026-9f7fje/"
+    "path": "/news/dlss-june-2026-9f7fje/",
+    "no": 4
   },
   {
     "id": "art-1782833421161-39vesg",
@@ -6178,7 +6042,8 @@
       }
     ],
     "quality_score": 54,
-    "path": "/news/article-39vesg/"
+    "path": "/news/article-39vesg/",
+    "no": 3
   },
   {
     "id": "art-1782829820753-cn5q5j",
@@ -6268,62 +6133,8 @@
       }
     ],
     "quality_score": 65,
-    "path": "/news/sony-ps6-sirabat-saer-cn5q5j/"
-  },
-  {
-    "id": "art-1782829711421-lm1pna",
-    "title": "جهاز PlayStation 6: هل سيتمكن من تجربة لعب متنقلة؟",
-    "excerpt": "يبدو أن سوني تفكر في إطلاق جهاز PlayStation 6 ذي تجربة لعب متنقلة، مما قد يغير مجرى الألعاب على مدار العامين المقبلين",
-    "body": "<p>## التأثير المتوقع</p><p>في الوقت الذي لا تزال فيه الشائعات تتداول حول جهاز PlayStation 6 و التهديدات التي قد يواجهها عند الإطلاق بسبب ارتفاع تكاليف الذاكرة ووحدات التخزين، تبدو <strong>سوني</strong> متفائلة إلى حدٍ ما بشأن الإمكانيات التي يقدمها.. وبينما لم تعلن <strong>سوني</strong> بعد عن موعد إطلاق جهاز PlayStation 6 أو السعر أو المواصفات، قدم رئيس ومدير عام Sony Interactive Entertainment، هيداكي نيشينو، أول تلميح إلى إمكانية إطلاق جهاز محمول.. وقال خلال فقرة الأسئلة والأجوبة في اجتماع قطاع خدمات الألعاب والشبكات الذي عُقد في وقت سابق من هذا الشهر: \"لطالما ارتبطت PlayStation بفكرة اللعب في غرفة المعيشة.. لكن في السنوات الأخيرة، أصبح المزيد من المستخدمين حول العالم يعتمدون على الشاشات الشخصية.. واستجابةً لذلك،  بدأنا بطرح ملحقات مثل الشاشات ومكبرات الصوت للتخلص من الفكرة التقليدية التي تربط PlayStation بغرفة المعيشة فقط،  وتوسيع سيناريوهات الاستخدام.\" وأضاف: \"بالنسبة لمنصة الجيل القادم. فإن هدفنا لا يقتصر على تقديم بديل لأجهزة الحاسب الشخصي،  بل نسعى إلى تقديم قيمة فريدة لا توفرها سوى PlayStation.. ويشمل ذلك ليس فقط التطورات التقنية. بل أيضاً توسيع أساليب الاستخدام، بما يتيح تجربة سلسة يمكن الاستمتاع بها بشكل طبيعي خارج غرفة المعيشة.\" ويبدو أن الجزء الأخير من حديثه يشير بوضوح إلى جهاز محمول، لكن أقرب في فكرته إلى Nintendo Switch 2، الذي يعمل أيضاً كجهاز منزلي عند وضعه في القاعدة (Dock).. وتنتشر شائعات حول هذا التوجه منذ فترة، بدءاً من دعم <strong>سوني</strong> لوضع توفير الطاقة (Power Saver Mode) في ألعابها، والذي يُقال إنه مخصص للجهاز المحمول المزعوم الخاص بـ PS6.. ووفقاً لآخر التقارير، فإن هذا الطراز المزعوم، إلى جانب النسخة الأساسية من PS6، لا يزال في طريقه للإطلاق خلال موسم العطلات لعام 2027.. كما تشير الشائعات إلى أنه سيتفوق في الأداء على Xbox Series S، خاصة في تقنيات تتبع الأشعة (Ray Tracing) وتتبع المسارات (Path Tracing).. لكن التطورات الأخيرة قد تغير الصورة، إذ أفاد المسرّب Kepler_L2 بأن تكلفة مكونات تصنيع جهاز PlayStation 6 ارتفعت بنحو 200 دولار.. ولا يزال تأثير ذلك على النسخة المحمولة غير معروف، إلا أن تأجيلها لن يكون مجدياً على ما يبدو، لأن المواصفات النهائية قد تم تثبيتها بالفعل.. ومع عدم رغبة <strong>سوني</strong> في بيع أجهزة PlayStation بخسارة \"كبيرة\"، تزداد احتمالية أن يصل سعر الجهاز إلى 999 دولاراً عند الإطلاق.</p>",
-    "category": "tech | companies | gaming",
-    "tags": [
-      "PlayStation 6",
-      "تجربة لعب متنقلة",
-      "سوني"
-    ],
-    "image": "https://arabhardware.net/storage/uploads/2025-08/68b44c4577604.ps6-portable-1.jpgmain68b44c45877f1.webp",
-    "date": "2026-06-30T14:28:40.149Z",
-    "readTime": "2 min read",
-    "views": "0",
-    "hasEgyptImpact": false,
-    "source": "عرب هاردوير",
-    "link": "https://arabhardware.net/post-54229",
-    "techdose_link": "https://td-arabi.com/news/playstation-6-tjrah-lab-mtnqla-lm1pna/",
-    "status": "published",
-    "seo_title": "PlayStation 6: تجربة لعب متنقلة",
-    "meta_description": "يبدو أن سوني تفكر في إطلاق جهاز PlayStation 6 ذي تجربة لعب متنقلة",
-    "seo_slug": "playstation-6-tjrah-lab-mtnqla",
-    "focus_keyword": "PlayStation 6",
-    "secondary_keywords": [
-      "تجربة لعب متنقلة",
-      "سوني"
-    ],
-    "primary_company": "سوني",
-    "secondary_company": null,
-    "products": [],
-    "devices": [],
-    "technologies": [],
-    "ai_models": [],
-    "os": [],
-    "chipsets": [],
-    "browsers": [],
-    "cloud_platforms": [],
-    "languages": [],
-    "opensource_projects": [],
-    "executives": [],
-    "markets": [],
-    "countries": [],
-    "people": [],
-    "stocks": [],
-    "investors": [],
-    "image_queries": [
-      "PlayStation 6",
-      "تجربة لعب متنقلة",
-      "سوني"
-    ],
-    "internal_links": [],
-    "quality_score": 53,
-    "path": "/news/playstation-6-tjrah-lab-mtnqla-lm1pna/"
+    "path": "/news/sony-ps6-sirabat-saer-cn5q5j/",
+    "no": 2
   },
   {
     "id": "art-1782828451563-hsokcv",
@@ -6420,6 +6231,7 @@
       }
     ],
     "quality_score": 78,
-    "path": "/news/xiaomi-18-pro-max-hsokcv/"
+    "path": "/news/xiaomi-18-pro-max-hsokcv/",
+    "no": 1
   }
 ]

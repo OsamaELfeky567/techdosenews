@@ -204,7 +204,7 @@ function artRow(a, withActions) {
   var tr = a.trend_score ? ' <span class="pill warn">ترند ' + a.trend_score + '</span>' : '';
   var rum = a.is_rumor ? ' <span class="pill warn">تسريب</span>' : '';
   var st = a.status !== 'published' ? ' <span class="pill bad">' + esc(a.status) + '</span>' : '';
-  return '<div class="art"><img loading="lazy" src="' + esc(a.image || '') + '" alt=""><div class="tt"><a href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(a.title) + '</a>' + st + rum + tr +
+  return '<div class="art"><img loading="lazy" src="' + esc(a.image || '') + '" alt=""><div class="tt"><a href="' + esc(url) + '" target="_blank" rel="noopener">' + (a.no ? '<span class="pill">#' + a.no + '</span> ' : '') + esc(a.title) + '</a>' + st + rum + tr +
     '<div class="note">' + esc(cairo(a.date)) + ' · ' + esc(catName(a.category)) + ' · ' + esc(a.source || '') + '</div>' +
     (withActions ? '<div class="row" style="margin-top:6px"><button class="btn sec sm" onclick="editArt(\'' + esc(a.id) + '\')">تعديل</button>' +
       (a.status === 'published' ? '<button class="btn sec sm" onclick="setStatus(\'' + esc(a.id) + '\',\'draft\')">إخفاء</button>' : '<button class="btn sec sm" onclick="setStatus(\'' + esc(a.id) + '\',\'published\')">نشر</button>') +
@@ -216,7 +216,7 @@ var AQ = '';
 function rArticles() {
   var q = AQ.toLowerCase();
   var list = D.articles.filter(function (a) { return !q || (a.title || '').toLowerCase().indexOf(q) > -1 || (a.source || '').toLowerCase().indexOf(q) > -1; });
-  $('#t-articles').innerHTML = '<h1 style="margin-bottom:12px">المقالات <span class="note">(' + D.articles.length + ')</span></h1>' +
+  $('#t-articles').innerHTML = '<h1 style="margin-bottom:12px">المقالات <span class="note">(' + D.articles.length + ' منشور · آخر رقم #' + Math.max.apply(null, [0].concat(D.articles.map(function (a) { return a.no || 0; }))) + ')</span></h1>' +
     '<div class="row" style="margin-bottom:12px"><input id="aq" placeholder="بحث بالعنوان أو المصدر" value="' + esc(AQ) + '" style="flex:1;min-width:180px;margin:0"><button class="btn" onclick="newArt()">+ مقال جديد</button></div>' +
     '<div class="card">' + (list.slice(0, 60).map(function (a) { return artRow(a, true); }).join('') || '<p class="note">لا نتائج</p>') + (list.length > 60 ? '<p class="note" style="margin-top:8px">أول 60 نتيجة من ' + list.length + '. استخدم البحث.</p>' : '') + '</div>' +
     '<p class="note" style="margin-top:10px">التعديل والحذف يُحفظان في GitHub ثم يُعاد بناء الصفحات والخرائط تلقائيا خلال دقيقة تقريبا.</p>';
@@ -273,7 +273,8 @@ function newArt() {
     var entry = { id: id, title: t, excerpt: $('#f-ex').value.trim() || t, body: body, category: $('#f-cat').value, tags: [], image: $('#f-img').value.trim(), image_source: 'manual', date: new Date().toISOString(),
       readTime: Math.max(2, Math.round(words / 200)) + ' min read', views: 0, source: $('#f-src').value.trim(), link: $('#f-link').value.trim(), source_title: '', status: 'published',
       seo_title: t, meta_description: $('#f-meta').value.trim() || $('#f-ex').value.trim(), seo_slug: slug, quality_score: 0, ai_provider: 'manual' };
-    closeM(); mutate(function (arr) { return [entry].concat(arr); }, 'Admin: add article ' + id);
+    closeM();
+    (async function () { var c = await readFresh('data/article-counter.json').catch(function () { return null; }); var nx = (c && c.json && c.json.next) || (Math.max.apply(null, [0].concat(D.articles.map(function (a) { return a.no || 0; }))) + 1); entry.no = nx; await commitJSON('data/article-counter.json', { next: nx + 1 }, 'Admin: article counter ' + nx); mutate(function (arr) { return [entry].concat(arr); }, 'Admin: add article #' + nx + ' ' + id); })();
   };
 }
 

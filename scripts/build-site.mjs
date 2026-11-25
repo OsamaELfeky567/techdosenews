@@ -76,14 +76,15 @@ const HEAD_COMMON = `<meta charset="UTF-8">
 <script src="/js/analytics.js" async></script>
 <script src="/js/push.js" defer></script>`;
 const HEADER = `<header class="sb-header"><div class="sb-container">
+<button class="sb-menu-btn" aria-label="القائمة" aria-expanded="false" onclick="var n=document.querySelector('.sb-nav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
 <div class="sb-logo-wrap" style="margin:0;font-size:inherit;font-weight:inherit"><a href="/" class="sb-logo">TD <span>بالعربي</span></a></div>
-<nav class="sb-nav" aria-label="القائمة الرئيسية"><a href="/">الرئيسية</a><a href="/news/">كل الأخبار</a><a href="/about.html">من نحن</a><a href="/contact.html">تواصل معنا</a><a href="${esc(site.telegram_url)}" class="sb-telegram-btn" target="_blank" rel="noopener">تيليجرام</a></nav>
+<nav class="sb-nav" aria-label="القائمة الرئيسية"><a href="/">الرئيسية</a><a href="/news/">كل الأخبار</a><a href="/free-tools/">أدوات</a><a href="/about.html">من نحن</a><a href="/contact.html">تواصل معنا</a><a href="${esc(site.telegram_url)}" class="sb-telegram-btn" target="_blank" rel="noopener">تيليجرام</a></nav>
 </div></header>`;
 const FOOTER = `<footer class="sb-footer"><div class="sb-container">
 <div class="sb-footer-grid"><div class="sb-footer-col"><div class="sb-footer-logo">TD <span>بالعربي</span></div>
 <p>منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي والشركات الناشئة.</p></div></div>
 <div class="sb-footer-bottom"><p>© ${new Date().getUTCFullYear()} TD بالعربي — جميع الحقوق محفوظة.</p>
-<p style="margin-top:8px;font-size:.8rem"><a href="/about.html">من نحن</a> · <a href="/contact.html">اتصل بنا</a> · <a href="/privacy.html">سياسة الخصوصية</a> · <a href="/terms.html">شروط الاستخدام</a> · <a href="/disclaimer.html">إخلاء مسؤولية</a> · <a href="/editorial-policy.html">السياسة التحريرية</a></p></div>
+<p style="margin-top:8px;font-size:.8rem"><a href="/free-tools/">أدوات مجانية</a> · <a href="/about.html">من نحن</a> · <a href="/contact.html">اتصل بنا</a> · <a href="/privacy.html">سياسة الخصوصية</a> · <a href="/terms.html">شروط الاستخدام</a> · <a href="/disclaimer.html">إخلاء مسؤولية</a> · <a href="/editorial-policy.html">السياسة التحريرية</a></p></div>
 </div></footer>`;
 
 const adSlot = (size, cls = '') => {
@@ -279,7 +280,7 @@ if (!SITEMAPS_ONLY) {
 // ---------- sitemaps ----------
 const xml = s => esc(s);
 const now = new Date();
-const staticPages = ['/', '/news/', '/about.html', '/contact.html', '/privacy.html', '/terms.html', '/disclaimer.html', '/editorial-policy.html'];
+const staticPages = ['/', '/news/', '/free-tools/', '/free-tools/remove-background/', '/about.html', '/contact.html', '/privacy.html', '/terms.html', '/disclaimer.html', '/editorial-policy.html'];
 const today = now.toISOString().slice(0, 10);
 write('sitemap-pages.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${staticPages.map(p => `  <url><loc>${BASE}${p}</loc><lastmod>${p === '/' || p === '/news/' ? isoClean(articles[0]?.date || now) : today}</lastmod></url>`).join('\n')}\n</urlset>\n`);
 write('sitemap-articles.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${articles.map(a => `  <url><loc>${xml(url(a))}</loc><lastmod>${isoClean(a.modified || a.date)}</lastmod></url>`).join('\n')}\n</urlset>\n`);

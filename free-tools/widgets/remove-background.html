@@ -1,0 +1,8 @@
+<div id="rb-drop" class="ft-drop" tabindex="0" role="button" aria-label="اختر صورة"><b>اسحب الصورة هنا أو اضغط للاختيار</b><span>JPG أو PNG أو WebP، حتى 20 ميجابايت</span></div>
+<input type="file" id="rb-file" accept="image/png,image/jpeg,image/webp" hidden>
+<div id="rb-status" class="ft-status" role="status" aria-live="polite"></div>
+<div id="rb-out" hidden>
+<div class="ft-grid2"><figure><canvas id="rb-orig"></canvas><figcaption>الصورة الأصلية</figcaption></figure><figure><canvas id="rb-res" class="checker"></canvas><figcaption>بعد إزالة الخلفية</figcaption></figure></div>
+<div class="ft-row"><label for="rb-bg">الخلفية:</label><select id="rb-bg"><option value="transparent">شفافة</option><option value="#ffffff">بيضاء</option><option value="#000000">سوداء</option><option value="#2563eb">زرقاء</option><option value="#f3f4f6">رمادية فاتحة</option></select>
+<a id="rb-dl" class="ft-btn" href="#" download="td-arabi-no-bg.png">تحميل الصورة PNG</a><button id="rb-again" class="ft-btn sec" type="button">صورة أخرى</button></div>
+</div>

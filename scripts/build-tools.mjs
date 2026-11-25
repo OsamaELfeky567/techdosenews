@@ -27,7 +27,8 @@ const HEAD_COMMON = `<meta charset="UTF-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
-<script src="/js/analytics.js" async></script>`;
+<script src="/js/analytics.js" async></script>
+<script src="/js/push.js" defer></script>`;
 const adSlot = (size, cls = '') => {
   const key = site.ads && site.ads[size];
   if (!key || (site.ads_disabled || []).includes(size)) return '';
@@ -40,9 +41,9 @@ const CSS = `<style>
 .ft-bar-title{font-weight:800;font-size:1.05rem;white-space:nowrap;padding:6px 4px;color:var(--text)}.ft-bar-title.on{color:var(--accent)}
 .ft-bar-list{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;flex:1;padding:2px}.ft-bar-list::-webkit-scrollbar{display:none}
 .ft-sq{flex:0 0 auto;width:84px;height:84px;border-radius:16px;border:2px solid var(--border);background:var(--surface-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;transition:transform .15s,border-color .15s;color:var(--text)}
-.ft-sq i{font-style:normal;font-size:1.9rem;line-height:1}.ft-sq span{font-size:.72rem;font-weight:700;line-height:1.3;padding:0 4px}
+.ft-sq i{display:flex;color:var(--accent)}.ft-sq i svg{display:block}.ft-sq span{font-size:.72rem;font-weight:700;line-height:1.3;padding:0 4px}
 .ft-sq:hover{transform:translateY(-2px);border-color:var(--accent)}.ft-sq.on{border-color:var(--accent);background:var(--accent-glass);color:var(--accent)}
-@media(max-width:640px){.ft-bar-in{padding:8px 10px;gap:8px}.ft-bar-title{font-size:.9rem}.ft-sq{width:72px;height:72px;border-radius:14px}.ft-sq i{font-size:1.6rem}}
+@media(max-width:640px){.ft-bar-in{padding:8px 10px;gap:8px}.ft-bar-title{font-size:.9rem}.ft-sq{width:72px;height:72px;border-radius:14px}.ft-sq i svg{width:26px;height:26px}}
 .ft-wrap{max-width:900px;margin:0 auto;padding:24px 16px}
 .ft-card{background:var(--surface);border:1px solid var(--border-light,#e5e7eb);border-radius:14px;padding:28px}
 .ft-wrap h1{font-size:1.9rem;line-height:1.5;margin:6px 0 10px;font-weight:800}
@@ -74,7 +75,7 @@ const CSS = `<style>
 
 const FOLLOW = !SOCIAL_OK ? '' : `<div class="ft-follow"><b>تابعنا ليصلك كل جديد</b><p>أخبار التقنية والذكاء الاصطناعي وأدوات جديدة أولا بأول.</p><a class="ft-btn" href="${esc(site.telegram_url)}" target="_blank" rel="noopener">قناتنا على تيليجرام</a> <a class="ft-btn sec" href="${esc(site.facebook_url || 'https://facebook.com/techdosenews')}" target="_blank" rel="noopener">صفحتنا على فيسبوك</a></div>`;
 const TOOLS = rj('free-tools/tools.json', []);
-const toolbar = active => `<div class="ft-bar" role="navigation" aria-label="الأدوات"><div class="ft-bar-in"><a class="ft-bar-title${active === '' ? ' on' : ''}" href="/free-tools/">الأدوات</a><div class="ft-bar-list">${TOOLS.map(t => `<a class="ft-sq${active === t.slug ? ' on' : ''}" href="/free-tools/${t.slug}/"${active === t.slug ? ' aria-current="page"' : ''}><i>${t.icon || '🛠️'}</i><span>${esc(t.short || t.name)}</span></a>`).join('')}</div></div></div>`;
+const toolbar = active => `<div class="ft-bar" role="navigation" aria-label="الأدوات"><div class="ft-bar-in"><a class="ft-bar-title${active === '' ? ' on' : ''}" href="/free-tools/">الأدوات</a><div class="ft-bar-list">${TOOLS.map(t => `<a class="ft-sq${active === t.slug ? ' on' : ''}" href="/free-tools/${t.slug}/"${active === t.slug ? ' aria-current="page"' : ''}><i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${t.svg || ''}</svg></i><span>${esc(t.short || t.name)}</span></a>`).join('')}</div></div></div><script>addEventListener('load',function(){var a=document.querySelector('.ft-sq.on'),l=document.querySelector('.ft-bar-list');if(!a||!l)return;var d=a.getBoundingClientRect(),b=l.getBoundingClientRect();l.scrollBy({left:(d.left+d.width/2)-(b.left+b.width/2),behavior:'instant'})})</script>`;
 const jsonLd = o => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`;
 const write = (rel, c) => { fs.mkdirSync(rel.split('/').slice(0, -1).join('/') || '.', { recursive: true }); fs.writeFileSync(rel, c, 'utf8'); };
 const ads = (second) => adSlot('728x90', 'td-ad-d') + adSlot(second ? '300x250' : '320x50', 'td-ad-m');

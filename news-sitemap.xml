@@ -48,12 +48,4 @@
       <news:title>Porsche تكشف عن نموذج أولي للـ 718 Boxster الكهربائي بموضع بطارية منخفض</news:title>
     </news:news>
   </url>
-  <url>
-    <loc>https://td-arabi.com/news/galaxy-s27-ultra-camera-leaks-pehiyv/</loc>
-    <news:news>
-      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
-      <news:publication_date>2026-11-24T16:45:02Z</news:publication_date>
-      <news:title>تسريبات تشير إلى تغييرات جذرية في نظام كاميرا هاتف Galaxy S27 Ultra</news:title>
-    </news:news>
-  </url>
 </urlset>

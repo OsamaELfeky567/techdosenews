@@ -1,0 +1,13 @@
+<div id="qr-root">
+<div class="ft-row"><label for="qr-kind">نوع الرمز:</label><select id="qr-kind"><option value="text">رابط أو نص</option><option value="wifi">شبكة واي فاي</option><option value="whatsapp">رسالة واتساب</option></select></div>
+<div id="qr-f-text"><textarea id="qr-text" rows="3" placeholder="اكتب الرابط أو النص هنا، مثال: https://td-arabi.com" style="width:100%" class="qr-in"></textarea></div>
+<div id="qr-f-wifi" hidden><div class="ft-row"><input id="qr-ssid" class="qr-in" placeholder="اسم الشبكة" dir="ltr"><input id="qr-pass" class="qr-in" placeholder="كلمة المرور" dir="ltr"><select id="qr-auth" class="qr-in"><option value="WPA">WPA/WPA2</option><option value="WEP">WEP</option><option value="nopass">بدون كلمة مرور</option></select></div></div>
+<div id="qr-f-whatsapp" hidden><div class="ft-row"><input id="qr-phone" class="qr-in" placeholder="الرقم مع كود الدولة، مثال 201001234567" dir="ltr" inputmode="numeric"><input id="qr-msg" class="qr-in" placeholder="رسالة جاهزة (اختياري)"></div></div>
+<div class="ft-row"><label>الحجم:</label><select id="qr-size" class="qr-in"><option value="300">صغير</option><option value="600" selected>متوسط</option><option value="1200">كبير</option></select>
+<label>التصحيح:</label><select id="qr-ec" class="qr-in"><option value="L">منخفض</option><option value="M" selected>متوسط</option><option value="Q">عال</option><option value="H">أعلى</option></select>
+<label>لون الرمز:</label><input type="color" id="qr-fg" value="#000000"><label>الخلفية:</label><input type="color" id="qr-bg" value="#ffffff"></div>
+<div id="qr-status" class="ft-status" role="status" aria-live="polite"></div>
+<div style="text-align:center"><canvas id="qr-canvas" hidden style="max-width:min(100%,320px);height:auto;border:1px solid var(--border);border-radius:10px"></canvas></div>
+<div class="ft-row" style="justify-content:center"><a id="qr-png" class="ft-btn" hidden href="#">تحميل PNG</a><a id="qr-svg" class="ft-btn sec" hidden href="#">تحميل SVG</a></div>
+</div>
+<style>.qr-in{padding:9px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:inherit;font-size:1rem;flex:1 1 180px;max-width:100%}#qr-f-text textarea{box-sizing:border-box}input[type=color].qr-in,#qr-root input[type=color]{width:44px;height:36px;padding:2px;flex:0 0 auto}</style>

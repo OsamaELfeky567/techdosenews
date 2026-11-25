@@ -280,7 +280,7 @@ if (!SITEMAPS_ONLY) {
 // ---------- sitemaps ----------
 const xml = s => esc(s);
 const now = new Date();
-const staticPages = ['/', '/news/', '/free-tools/', '/free-tools/remove-background/', '/free-tools/compress-image/', '/free-tools/images-to-pdf/', '/free-tools/merge-pdf/', '/free-tools/split-pdf/', '/about.html', '/contact.html', '/privacy.html', '/terms.html', '/disclaimer.html', '/editorial-policy.html'];
+const staticPages = ['/', '/news/', '/free-tools/', '/free-tools/remove-background/', '/free-tools/compress-image/', '/free-tools/images-to-pdf/', '/free-tools/merge-pdf/', '/free-tools/split-pdf/', '/free-tools/qr-generator/', '/about.html', '/contact.html', '/privacy.html', '/terms.html', '/disclaimer.html', '/editorial-policy.html'];
 const today = now.toISOString().slice(0, 10);
 write('sitemap-pages.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${staticPages.map(p => `  <url><loc>${BASE}${p}</loc><lastmod>${p === '/' || p === '/news/' ? isoClean(articles[0]?.date || now) : today}</lastmod></url>`).join('\n')}\n</urlset>\n`);
 write('sitemap-articles.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${articles.map(a => `  <url><loc>${xml(url(a))}</loc><lastmod>${isoClean(a.modified || a.date)}</lastmod></url>`).join('\n')}\n</urlset>\n`);

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/signal-blocks-screenshots-to-prevent-ai-access-2bap6h/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-25T06:54:16Z</news:publication_date>
+      <news:title>تطبيق Signal يعزز خصوصية المستخدمين بحجب لقطات الشاشة لمنع وصول وكلاء الذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/amazon-accelerates-satellite-launches-spacex-falcon9-tptm0j/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>

@@ -1,5 +1,17 @@
 [
   {
+    "at": "2026-11-25T06:54:16.953Z",
+    "status": "published",
+    "title": "تطبيق Signal يعزز خصوصية المستخدمين بحجب لقطات الشاشة لمنع وصول وكلاء الذكاء الاصطناعي",
+    "errors": [
+      "thin body 221w < 250",
+      "thin body 219w < 250",
+      "thin body 241w < 250",
+      "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later"
+    ],
+    "provider": "gemini:gemini-3.1-flash-lite"
+  },
+  {
     "at": "2026-11-25T05:52:16.368Z",
     "status": "no_article_passed",
     "title": "",

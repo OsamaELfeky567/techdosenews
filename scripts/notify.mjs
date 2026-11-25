@@ -58,9 +58,10 @@ if (live && E.ONESIGNAL_APP_ID && E.ONESIGNAL_API_KEY) {
   } catch (e) { console.log('onesignal error', e.message); }
 } else if (live) console.log('web push skipped (ONESIGNAL secrets not set)');
 
-// 2. Facebook hook (held until the owner approves; needs FACEBOOK_PAGE_ID + FACEBOOK_PAGE_TOKEN)
-async function postFacebook() {
-  if (!live || !E.FACEBOOK_PAGE_ID || !E.FACEBOOK_PAGE_TOKEN || E.FACEBOOK_ENABLED !== '1') return;
-  // POST https://graph.facebook.com/v21.0/{PAGE_ID}/feed  { message, link: p.url, access_token }
+// 2. Facebook page post (one per new article). The page token lives only in the Cloudflare worker; we send just the article URL.
+if (live) {
+  try {
+    const res = await fetch('https://td-bot.td-arabi.workers.dev/fbpost', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: p.url }) });
+    console.log('facebook:', res.status, (await res.text()).slice(0, 200));
+  } catch (e) { console.log('facebook error', e.message); }
 }
-await postFacebook();

@@ -215,6 +215,36 @@ async function handleBroadcast(env, req) {
   return json({ ok: true, sent, failed, total: targets.size });
 }
 
+// ---- Facebook page auto-post (called by the site pipeline with just an article URL) ----
+// Safety: only URLs under SITE/news/ that return 200 are posted; each URL is posted once (KV dedupe).
+const metaOf = (html, prop) => {
+  const m = html.match(new RegExp(`<meta[^>]+(?:property|name)=["']${prop}["'][^>]+content=["']([^"']*)["']`, "i")) ||
+            html.match(new RegExp(`<meta[^>]+content=["']([^"']*)["'][^>]+(?:property|name)=["']${prop}["']`, "i"));
+  return m ? m[1].replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'") : "";
+};
+async function handleFbPost(env, req) {
+  if (!env.FB_PAGE_TOKEN || !env.FB_PAGE_ID) return json({ ok: false, error: "fb not configured" }, 503);
+  const body = await req.json().catch(() => ({}));
+  const link = String(body.url || "");
+  if (!link.startsWith(env.SITE + "/news/") || link.length > 300) return json({ ok: false, error: "bad url" }, 400);
+  const key = "fbpost:" + link;
+  if (await env.SUBS.get(key)) return json({ ok: true, skipped: "already posted" });
+  const page = await fetch(link, { headers: { "user-agent": "td-arabi-fb-poster" } });
+  if (!page.ok) return json({ ok: false, error: "page not live", status: page.status }, 404);
+  const html = await page.text();
+  const title = metaOf(html, "og:title"), desc = metaOf(html, "og:description");
+  const message = [title, desc && desc.slice(0, 220)].filter(Boolean).join("\n\n");
+  const r = await fetch(`https://graph.facebook.com/v21.0/${env.FB_PAGE_ID}/feed`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ message, link, access_token: env.FB_PAGE_TOKEN }),
+  });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok || !j.id) return json({ ok: false, error: "graph error", detail: j.error?.message || r.status }, 502);
+  await env.SUBS.put(key, j.id, { expirationTtl: 60 * 60 * 24 * 90 });
+  return json({ ok: true, post_id: j.id });
+}
+
 const json = (o, status = 200) =>
   new Response(JSON.stringify(o), { status, headers: { "content-type": "application/json" } });
 
@@ -228,6 +258,7 @@ export default {
     }
     if (req.method === "POST" && url.pathname === `/broadcast/${env.BROADCAST_SECRET}`)
       return handleBroadcast(env, req);
+    if (req.method === "POST" && url.pathname === "/fbpost") return handleFbPost(env, req);
     if (url.pathname === "/health") return json({ ok: true });
     return new Response("not found", { status: 404 });
   },

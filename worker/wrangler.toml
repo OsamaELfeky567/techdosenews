@@ -11,6 +11,7 @@ id = "a075f1b2d78941188cde4af2c31a2354"
 CHANNEL = "@tdarabi"
 SITE = "https://td-arabi.com"
 DAILY_QUOTA = "3"
+FB_PAGE_ID = "994129860452027"
 
 [triggers]
 crons = ["*/14 * * * *"]

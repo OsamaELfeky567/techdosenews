@@ -51,6 +51,15 @@ const urlMap = Object.fromEntries(articles.map(a => [a.id, a.path]));
 const write = (rel, content) => { const f = path.join(OUT, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, content, 'utf8'); };
 if (OUT === '.') write('data/articles/url-map.json', JSON.stringify(urlMap));
 
+// keep the inline redirect map in article.html fresh (old article.html?id=... URLs -> /news/ pages).
+// Googlebot renders the page before following a JS redirect, so the lookup must need zero network.
+if (OUT === '.') {
+  const ah = 'article.html';
+  let src = fs.readFileSync(ah, 'utf8');
+  const block = '// URLMAP-START\nvar TD_URL_MAP = ' + JSON.stringify(urlMap) + ';\n// URLMAP-END';
+  if (/\/\/ URLMAP-START[\s\S]*?\/\/ URLMAP-END/.test(src)) fs.writeFileSync(ah, src.replace(/\/\/ URLMAP-START[\s\S]*?\/\/ URLMAP-END/, block), 'utf8');
+}
+
 // ---------- shared layout ----------
 const HEAD_COMMON = `<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

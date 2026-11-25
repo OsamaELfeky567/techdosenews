@@ -23,20 +23,13 @@ async function waitLive() {
 const live = await waitLive();
 if (!live) console.log('WARNING: page not live after wait; skipping Telegram/IndexNow so no dead link is shared');
 
-if (live && E.TELEGRAM_BOT_TOKEN && E.TELEGRAM_CHAT_ID && ['-1003896125398', '@td_arabi', '@tdarabi'].includes(E.TELEGRAM_CHAT_ID)) {
-  let caption = `<b>${esc(p.title)}</b>\n\n${esc(p.telegram_summary)}\n\n🔗 ${p.url}`;
-  if (caption.length > 1000) caption = `<b>${esc(p.title)}</b>\n\n🔗 ${p.url}`;
-  const api = m => `https://api.telegram.org/bot${E.TELEGRAM_BOT_TOKEN}/${m}`;
-  const post = async (m, body) => { const res = await fetch(api(m), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: E.TELEGRAM_CHAT_ID, parse_mode: 'HTML', ...body }) }); return [res.ok, await res.json().catch(() => ({}))]; };
+if (live) {
+  // Telegram channel post goes through the worker (bot token lives only there; it posts to our channel only, once per URL)
   try {
-    let ok = false;
-    if (p.image && !/og-image\.png$/.test(p.image)) {
-      let j; [ok, j] = await post('sendPhoto', { photo: p.image, caption });
-      console.log('telegram photo:', ok ? 'sent' : 'failed ' + JSON.stringify(j).slice(0, 200));
-    }
-    if (!ok) { const [ok2, j2] = await post('sendMessage', { text: `<b>${esc(p.title)}</b>\n\n${esc(p.telegram_summary)}\n\n🔗 ${p.url}`, disable_web_page_preview: false }); console.log('telegram text:', ok2 ? 'sent' : 'failed ' + JSON.stringify(j2).slice(0, 200)); }
+    const res = await fetch('https://td-bot.td-arabi.workers.dev/tgpost', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: p.url }) });
+    console.log('telegram:', res.status, (await res.text()).slice(0, 200));
   } catch (e) { console.log('telegram error', e.message); }
-} else if (live) console.log('telegram skipped (secrets not set)');
+}
 
 if (live) {
   try {

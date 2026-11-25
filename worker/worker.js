@@ -1,13 +1,13 @@
 // TD بالعربي Telegram bot - Cloudflare Worker
 // Week 1 tool: AI background removal (deAPI Ben2). Weekly tools plug into TOOLS below.
 // Env secrets: BOT_TOKEN, DEAPI_KEY, BROADCAST_SECRET
-// Env vars: CHANNEL (@tdarabi), SITE (https://td-arabi.com), DAILY_QUOTA (3), WEBHOOK_PATH
+// Env vars: CHANNEL (@td_arabi), SITE (https://td-arabi.com), DAILY_QUOTA (3), WEBHOOK_PATH
 // KV binding: SUBS (subscriber ids + per-user daily counters)
 
 const TG = "https://api.telegram.org";
 const DEAPI = "https://api.deapi.ai";
 
-const FOOTER = "\n\n📢 قناة TD بالعربي: https://t.me/tdarabi\n🌐 أخبار التقنية: https://td-arabi.com";
+const FOOTER = "\n\n📢 قناة TD بالعربي: https://t.me/td_arabi\n🌐 أخبار التقنية: https://td-arabi.com";
 
 const MSG = {
   welcome:
@@ -245,6 +245,26 @@ async function handleFbPost(env, req) {
   return json({ ok: true, post_id: j.id });
 }
 
+// ---- Telegram channel auto-post (same safety rules as /fbpost) ----
+async function handleTgPost(env, req) {
+  const body = await req.json().catch(() => ({}));
+  const link = String(body.url || "");
+  if (!link.startsWith(env.SITE + "/news/") || link.length > 300) return json({ ok: false, error: "bad url" }, 400);
+  const key = "tgpost:" + link;
+  if (await env.SUBS.get(key)) return json({ ok: true, skipped: "already posted" });
+  const page = await fetch(link, { headers: { "user-agent": "td-arabi-tg-poster" } });
+  if (!page.ok) return json({ ok: false, error: "page not live", status: page.status }, 404);
+  const html = await page.text();
+  const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const title = metaOf(html, "og:title"), desc = metaOf(html, "og:description"), img = metaOf(html, "og:image");
+  const text = `<b>${esc(title)}</b>\n\n${esc(desc.slice(0, 220))}\n\n🔗 ${link}`;
+  let r = img && !/og-image\.png$/.test(img) ? await tg(env, "sendPhoto", { chat_id: env.CHANNEL, photo: img, caption: text, parse_mode: "HTML" }) : null;
+  if (!r?.ok) r = await tg(env, "sendMessage", { chat_id: env.CHANNEL, text, parse_mode: "HTML" });
+  if (!r?.ok) return json({ ok: false, error: "telegram error", detail: r?.description }, 502);
+  await env.SUBS.put(key, String(r.result?.message_id || 1), { expirationTtl: 60 * 60 * 24 * 90 });
+  return json({ ok: true, message_id: r.result?.message_id });
+}
+
 const json = (o, status = 200) =>
   new Response(JSON.stringify(o), { status, headers: { "content-type": "application/json" } });
 
@@ -259,6 +279,7 @@ export default {
     if (req.method === "POST" && url.pathname === `/broadcast/${env.BROADCAST_SECRET}`)
       return handleBroadcast(env, req);
     if (req.method === "POST" && url.pathname === "/fbpost") return handleFbPost(env, req);
+    if (req.method === "POST" && url.pathname === "/tgpost") return handleTgPost(env, req);
     if (url.pathname === "/health") return json({ ok: true });
     return new Response("not found", { status: 404 });
   },

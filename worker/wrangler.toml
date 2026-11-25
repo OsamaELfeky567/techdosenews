@@ -8,7 +8,7 @@ binding = "SUBS"
 id = "a075f1b2d78941188cde4af2c31a2354"
 
 [vars]
-CHANNEL = "@tdarabi"
+CHANNEL = "@td_arabi"
 SITE = "https://td-arabi.com"
 DAILY_QUOTA = "3"
 FB_PAGE_ID = "994129860452027"

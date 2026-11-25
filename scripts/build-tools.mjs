@@ -15,7 +15,7 @@ const FOOTER = `<footer class="sb-footer"><div class="sb-container">
 <div class="sb-footer-grid"><div class="sb-footer-col"><div class="sb-footer-logo">TD <span>بالعربي</span></div>
 <p>منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي، مع أدوات مجانية تعمل داخل متصفحك.</p></div></div>
 <div class="sb-footer-bottom"><p>© ${new Date().getUTCFullYear()} TD بالعربي — جميع الحقوق محفوظة.</p>
-<p style="margin-top:8px;font-size:.8rem"><a href="/free-tools/">أدوات مجانية</a> · <a href="/about.html">من نحن</a> · <a href="/contact.html">اتصل بنا</a> · <a href="/privacy.html">سياسة الخصوصية</a> · <a href="/terms.html">شروط الاستخدام</a> · <a href="/disclaimer.html">إخلاء مسؤولية</a> · <a href="/editorial-policy.html">السياسة التحريرية</a></p></div>
+<p style="margin-top:8px;font-size:.8rem"><a href="${esc(site.telegram_url)}" target="_blank" rel="noopener">تيليجرام</a> · <a href="${esc(site.facebook_url || 'https://facebook.com/techdosenews')}" target="_blank" rel="noopener">فيسبوك</a> · <a href="/free-tools/">أدوات مجانية</a> · <a href="/about.html">من نحن</a> · <a href="/contact.html">اتصل بنا</a> · <a href="/privacy.html">سياسة الخصوصية</a> · <a href="/terms.html">شروط الاستخدام</a> · <a href="/disclaimer.html">إخلاء مسؤولية</a> · <a href="/editorial-policy.html">السياسة التحريرية</a></p></div>
 </div></footer>`;
 const HEAD_COMMON = `<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,12 +57,13 @@ const CSS = `<style>
 .ft-tool{display:block;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;transition:transform .15s,box-shadow .15s}
 .ft-tool:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}.ft-tool b{display:block;font-size:1.1rem;margin-bottom:6px}.ft-tool span{color:var(--text-2);font-size:.92rem;line-height:1.8}
 .ft-faq details{border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin:8px 0;background:var(--surface-2)}.ft-faq summary{cursor:pointer;font-weight:700}
-.ft-note{background:var(--surface-2);border-right:4px solid var(--accent);border-radius:8px;padding:10px 14px;font-size:.95rem;margin:14px 0}
+.ft-follow{background:var(--accent-glass);border:1px solid var(--accent);border-radius:14px;padding:16px 18px;margin:22px 0;text-align:center}.ft-follow p{margin:4px 0 12px}.ft-follow .ft-btn{margin:4px}\n.ft-note{background:var(--surface-2);border-right:4px solid var(--accent);border-radius:8px;padding:10px 14px;font-size:.95rem;margin:14px 0}
 .td-ad{margin:22px auto;text-align:center;max-width:100%;overflow:hidden}.td-ad-label{font-size:.65rem;color:var(--muted);margin-bottom:4px}.td-ad-box{display:flex;justify-content:center;overflow:hidden}
 @media(max-width:960px){.td-ad-d{display:none}}@media(min-width:961px){.td-ad-m{display:none}}
 @media(max-width:640px){.ft-card{padding:16px}.ft-wrap h1{font-size:1.45rem}.ft-grid2{grid-template-columns:1fr}}
 </style>`;
 
+const FOLLOW = `<div class="ft-follow"><b>تابعنا ليصلك كل جديد</b><p>أخبار التقنية والذكاء الاصطناعي وأدوات جديدة أولا بأول.</p><a class="ft-btn" href="${esc(site.telegram_url)}" target="_blank" rel="noopener">قناتنا على تيليجرام</a> <a class="ft-btn sec" href="${esc(site.facebook_url || 'https://facebook.com/techdosenews')}" target="_blank" rel="noopener">صفحتنا على فيسبوك</a></div>`;
 const TOOLS = rj('free-tools/tools.json', []);
 const jsonLd = o => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`;
 const write = (rel, c) => { fs.mkdirSync(rel.split('/').slice(0, -1).join('/') || '.', { recursive: true }); fs.writeFileSync(rel, c, 'utf8'); };
@@ -103,6 +104,7 @@ const hubBody = `<p class="ft-lead">مجموعة أدوات مجانية بال�
 ${ads()}
 <h2>لماذا أدوات TD بالعربي؟</h2>
 <ul><li><b>خصوصية كاملة:</b> المعالجة تتم على جهازك، ولا تُرفع صورك أو ملفاتك.</li><li><b>مجانية بالكامل:</b> بدون علامة مائية وبدون حد يومي.</li><li><b>سريعة:</b> تعمل على الهاتف والكمبيوتر دون تثبيت أي برنامج.</li></ul>
+${FOLLOW}
 <div class="ft-note">تحتاج أداة غير موجودة؟ <a href="/contact.html">اقترحها علينا</a> وسنضيفها.</div>`;
 write('free-tools/index.html', page({
   path: '/free-tools/', title: 'أدوات مجانية أونلاين بالعربية: إزالة الخلفية وضغط الصور وأكثر | TD بالعربي',
@@ -124,6 +126,7 @@ ${ads()}
 <ul>${t.features.map(s => `<li>${s}</li>`).join('')}</ul>
 ${t.extra || ''}
 <div class="ft-note">🔒 <b>خصوصيتك محفوظة:</b> تتم معالجة الملفات بالكامل داخل متصفحك. لا نرفع ولا نحفظ أي صورة أو ملف.</div>
+${FOLLOW}
 <h2>أسئلة شائعة</h2>
 <div class="ft-faq">${t.faq.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}</div>
 ${ads()}

@@ -1,0 +1,16 @@
+name = "td-bot"
+main = "worker.js"
+compatibility_date = "2026-11-25"
+account_id = "bf3f4d5c30022c3f7e41d61eb08c90c5"
+
+[[kv_namespaces]]
+binding = "SUBS"
+id = "a075f1b2d78941188cde4af2c31a2354"
+
+[vars]
+CHANNEL = "@tdarabi"
+SITE = "https://td-arabi.com"
+DAILY_QUOTA = "3"
+
+[triggers]
+crons = ["*/14 * * * *"]

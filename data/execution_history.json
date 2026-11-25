@@ -1,5 +1,14 @@
 [
   {
+    "at": "2026-11-25T10:03:21.776Z",
+    "status": "published",
+    "title": "سامسونج تخفض مستهدف شحنات هواتفها الذكية لعام 2027 إلى 210 ملايين وحدة",
+    "errors": [
+      "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later"
+    ],
+    "provider": "gemini:gemini-3.1-flash-lite"
+  },
+  {
     "at": "2026-11-25T08:39:37.656Z",
     "status": "published",
     "title": "أسباب تحمل مستخدمو اللغة العربية تكاليف إضافية لخدمات الذكاء الاصطناعي",

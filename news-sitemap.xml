@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/samsung-lowers-2027-smartphone-shipment-target-yidok6/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-25T10:03:21Z</news:publication_date>
+      <news:title>سامسونج تخفض مستهدف شحنات هواتفها الذكية لعام 2027 إلى 210 ملايين وحدة</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/arabic-ai-services-higher-fees-1401yj/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>

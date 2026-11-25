@@ -7,7 +7,7 @@ import { cleanBody, hasMarkdownLeak } from './lib/clean-body.mjs';
 const E = process.env;
 const DRY_RUN = E.DRY_RUN === 'true';
 const MAX_PER_DAY = +(E.MAX_PER_DAY || 15);      // hard ceiling approved by the owner
-const BASE_PER_DAY = +(E.BASE_PER_DAY || 6);     // up to this many/day on normal quality; above it only real trends
+const BASE_PER_DAY = +(E.BASE_PER_DAY || 15);     // up to this many/day on normal quality; above it only real trends
 const TREND_MIN = +(E.TREND_MIN || 25);          // trend score needed for articles beyond BASE_PER_DAY
 const FRESH_HOURS = +(E.FRESH_HOURS || 36);
 const MIN_SCORE = +(E.MIN_SCORE || 60);

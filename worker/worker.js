@@ -233,7 +233,7 @@ async function handleFbPost(env, req) {
   if (!page.ok) return json({ ok: false, error: "page not live", status: page.status }, 404);
   const html = await page.text();
   const title = metaOf(html, "og:title"), desc = metaOf(html, "og:description");
-  const message = [title, desc && desc.slice(0, 220)].filter(Boolean).join("\n\n");
+  const message = [title, desc && desc.slice(0, 220), "📢 قناتنا على تيليجرام: https://t.me/td_arabi\n🌐 الموقع: " + env.SITE].filter(Boolean).join("\n\n");
   const r = await fetch(`https://graph.facebook.com/v21.0/${env.FB_PAGE_ID}/feed`, {
     method: "POST",
     headers: { "content-type": "application/json" },
@@ -257,7 +257,7 @@ async function handleTgPost(env, req) {
   const html = await page.text();
   const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   const title = metaOf(html, "og:title"), desc = metaOf(html, "og:description"), img = metaOf(html, "og:image");
-  const text = `<b>${esc(title)}</b>\n\n${esc(desc.slice(0, 220))}\n\n🔗 ${link}`;
+  const text = `<b>${esc(title)}</b>\n\n${esc(desc.slice(0, 220))}\n\n🔗 ${link}\n\n📘 فيسبوك: https://www.facebook.com/tdarabi\n🌐 الموقع: ${env.SITE}`;
   let r = img && !/og-image\.png$/.test(img) ? await tg(env, "sendPhoto", { chat_id: env.CHANNEL, photo: img, caption: text, parse_mode: "HTML" }) : null;
   if (!r?.ok) r = await tg(env, "sendMessage", { chat_id: env.CHANNEL, text, parse_mode: "HTML" });
   if (!r?.ok) return json({ ok: false, error: "telegram error", detail: r?.description }, 502);

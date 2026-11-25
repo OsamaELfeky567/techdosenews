@@ -53,7 +53,9 @@ if (OUT === '.') write('data/articles/url-map.json', JSON.stringify(urlMap));
 
 // keep the inline redirect map in article.html fresh (old article.html?id=... URLs -> /news/ pages).
 // Googlebot renders the page before following a JS redirect, so the lookup must need zero network.
-if (OUT === '.') {
+// Skipped in CI: article.html is not in the workflow's git add list, and an unstaged edit breaks its git pull --rebase.
+// Refresh by running a local build and pushing article.html (the fetch fallback in article.html covers anything newer).
+if (OUT === '.' && !process.env.CI) {
   const ah = 'article.html';
   let src = fs.readFileSync(ah, 'utf8');
   const block = '// URLMAP-START\nvar TD_URL_MAP = ' + JSON.stringify(urlMap) + ';\n// URLMAP-END';

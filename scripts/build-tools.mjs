@@ -68,7 +68,7 @@ const FOLLOW = !SOCIAL_OK ? '' : `<div class="ft-follow"><b>تابعنا ليص�
 const TOOLS = rj('free-tools/tools.json', []);
 const jsonLd = o => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`;
 const write = (rel, c) => { fs.mkdirSync(rel.split('/').slice(0, -1).join('/') || '.', { recursive: true }); fs.writeFileSync(rel, c, 'utf8'); };
-const ads = () => adSlot('728x90', 'td-ad-d') + adSlot('300x250', 'td-ad-m');
+const ads = (second) => adSlot('728x90', 'td-ad-d') + adSlot(second ? '300x250' : '320x50', 'td-ad-m');
 
 function page({ path, title, desc, h1, body, ld }) {
   const url = BASE + path;
@@ -120,7 +120,7 @@ for (const t of TOOLS) {
   const others = TOOLS.filter(x => x.slug !== t.slug);
   const body = `<p class="ft-lead">${t.intro}</p>
 ${widget}
-${ads()}
+${ads(false)}
 <h2>كيف تستخدم الأداة في ${t.steps.length} خطوات</h2>
 <ol>${t.steps.map(s => `<li>${s}</li>`).join('')}</ol>
 <h2>${t.featuresTitle}</h2>
@@ -130,7 +130,7 @@ ${t.extra || ''}
 ${FOLLOW}
 <h2>أسئلة شائعة</h2>
 <div class="ft-faq">${t.faq.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}</div>
-${ads()}
+${ads(true)}
 ${others.length ? `<h2>أدوات أخرى قد تهمك</h2><div class="ft-tools">${others.map(o => `<a class="ft-tool" href="/free-tools/${o.slug}/"><b>${esc(o.name)}</b><span>${esc(o.blurb)}</span></a>`).join('')}</div>` : ''}
 <script src="${t.script}" defer></script>`;
   write(`free-tools/${t.slug}/index.html`, page({

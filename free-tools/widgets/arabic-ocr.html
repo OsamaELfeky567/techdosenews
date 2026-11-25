@@ -1,0 +1,7 @@
+<div class="ft-row"><label for="ocr-lang">لغة النص في الصورة:</label><select id="ocr-lang"><option value="ara">العربية</option><option value="ara+eng">العربية والإنجليزية</option><option value="eng">الإنجليزية</option></select></div>
+<div id="ocr-drop" class="ft-drop" tabindex="0" role="button" aria-label="اختر صورة"><b>اسحب صورة فيها نص أو اضغط للاختيار</b><span>JPG أو PNG أو WebP، حتى 15 ميجابايت</span></div>
+<input type="file" id="ocr-file" accept="image/png,image/jpeg,image/webp" hidden>
+<div id="ocr-status" class="ft-status" role="status" aria-live="polite"></div>
+<img id="ocr-prev" alt="الصورة المختارة" hidden style="max-width:100%;max-height:260px;border-radius:10px;border:1px solid var(--border);display:block;margin:8px auto">
+<div id="ocr-res" hidden><textarea id="ocr-text" rows="10" dir="auto" style="width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:inherit;font-size:1.05rem;line-height:1.9"></textarea>
+<div class="ft-row"><button type="button" id="ocr-copy" class="ft-btn">نسخ النص</button><button type="button" id="ocr-dl" class="ft-btn sec">تحميل TXT</button></div></div>

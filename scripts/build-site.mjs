@@ -4,6 +4,7 @@
 //   sitemap.xml (index), sitemap-pages.xml, sitemap-articles.xml, news-sitemap.xml (last 48 h only)
 //   data/articles/url-map.json and entry.path / entry.techdose_link in index.json
 // Usage: node scripts/build-site.mjs [--all] [--sitemaps-only] [--out DIR]
+import { ensureCard } from './lib/og-card.mjs';
 import fs from 'fs';
 import path from 'path';
 import { slugify, shortId, articlePath } from './lib/urls.mjs';
@@ -134,10 +135,13 @@ function articlePage(a) {
   const u = url(a);
   const title = a.title.trim();
   const desc = (a.meta_description || a.excerpt || strip(a.body).slice(0, 155)).trim();
-  const img = a.image && /^https?:/.test(a.image) ? a.image : BASE + '/img/og-image.png';
+  let img = a.image && /^https?:/.test(a.image) ? a.image : BASE + '/img/og-image.png';
+  let cardOk = false;
+  { const out = path.join(OUT, a.path.replace(/^\//, ''), 'og.png'); cardOk = ensureCard(out, a.title, a.category); if (cardOk) img = u + 'og.png'; }
   const published = isoClean(a.date);
   const modified = isoClean(a.modified || a.date);
-  const hasDims = a.image_w && a.image_h;
+  const hasDims = cardOk || (a.image_w && a.image_h);
+  const imgW = cardOk ? 1200 : a.image_w, imgH = cardOk ? 630 : a.image_h;
   const author = { '@type': site.author_type || 'Organization', name: site.author_name, url: site.author_url };
   const ld = {
     '@context': 'https://schema.org', '@type': 'NewsArticle', headline: title.slice(0, 110), description: desc, image: [img],
@@ -183,7 +187,7 @@ ${HEAD_COMMON}
 <meta property="og:description" content="${esc(desc.slice(0, 200))}">
 <meta property="og:url" content="${u}">
 <meta property="og:image" content="${esc(img)}">
-${hasDims ? `<meta property="og:image:width" content="${a.image_w}">\n<meta property="og:image:height" content="${a.image_h}">` : ''}
+${hasDims ? `<meta property="og:image:width" content="${imgW}">\n<meta property="og:image:height" content="${imgH}">` : ''}
 <meta property="article:published_time" content="${published}">
 <meta property="article:modified_time" content="${modified}">
 <meta property="article:section" content="${esc(catLabel(a.category))}">

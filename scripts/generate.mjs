@@ -70,7 +70,7 @@ const SYSTEM = `أنت محرر أخبار تقنية عربي محترف في �
 - بنية المقال بالترتيب: (1) ماذا حدث في فقرة افتتاحية واضحة، (2) لماذا يهم القارئ العربي (استنتاج مبني فقط على وقائع المصدر، بدون اختلاق تأثير على مصر أو الأسواق العربية)، (3) أبرز النقاط في قائمة <ul>، (4) ما الذي لم يتأكد بعد أو ما الخطوة التالية.
 - إن كان الخبر تسريبا أو إشاعة أو معلومات غير رسمية: ضع is_rumor=true، واستخدم صياغة مثل "بحسب تسريبات" و"غير مؤكد رسميا"، ولا تذكر أي مواصفة مسربة كحقيقة، وضع كلمة "تسريبات" أو "غير مؤكد" في العنوان.
 - لا تقدم رأيا ولا توقعات من عندك. إن لم يضف الخبر معلومة جديدة ذات قيمة للقارئ ضع is_duplicate=true.
-- المقال بين 250 و 450 كلمة، بصيغة HTML بسيطة فقط: <p> و <h2> و <ul><li> و <strong>. بدون <h1> وبدون روابط وبدون صور.
+- طول المقال إلزامي: لا يقل أبداً عن 300 كلمة ولا يزيد عن 450 كلمة. هذا أهم شرط؛ راجع عدد الكلمات قبل الرد. بصيغة HTML بسيطة فقط: <p> و <h2> و <ul><li> و <strong>. بدون <h1> وبدون روابط وبدون صور.
 - إن كان الخبر نفسه منشورا سابقا في قائمة العناوين المعطاة، ضع is_duplicate=true.
 - الرد JSON فقط بدون أي نص آخر.`;
 
@@ -125,6 +125,20 @@ async function generate(c, recentTitles, cats, errors) {
   for (const [name, fn] of tries) {
     try { const out = parseJSON(await fn()); out._provider = name; return out; }
     catch (e) { errors.push(name + ': ' + String(e.message).slice(0, 200)); log('  AI failed', name, e.message.slice(0, 120)); await sleep(2000); }
+  }
+  return null;
+}
+
+// One expansion retry when a draft body lands under the word floor: same providers, asks the model to
+// lengthen the same article to 320-450 words using only the source text. Returns a new body or null.
+async function expandBody(c, body, errors) {
+  const user = `المصدر: ${c.sourceName}\nنص المصدر الأصلي:\n${c.fullText}\n\nمسودة المقال الحالية (أقصر من الحد المطلوب):\n${body}\n\nأعد كتابة المقال ليصبح بين 320 و 450 كلمة مع الالتزام بكل القواعد السابقة: لا معلومة أو رقم أو اسم خارج نص المصدر، نفس البنية المطلوبة، واذكر اسم المصدر في الفقرة الأخيرة.\nالرد JSON فقط بهذا الشكل: {"body":"<p>..</p>"}`;
+  const tries = [];
+  if (E.GEMINI_API_KEY) for (const m of GEMINI_MODELS) tries.push(['gemini:' + m, () => callGemini(m, SYSTEM, user)]);
+  if (E.GROQ_API_KEY) tries.push(['groq:' + GROQ_MODEL, () => callGroq(SYSTEM, user)]);
+  for (const [name, fn] of tries) {
+    try { const out = parseJSON(await fn()); if (out && typeof out.body === 'string' && out.body.length > 100) { log('  expanded via', name); return out.body; } }
+    catch (e) { errors.push('expand ' + name + ': ' + String(e.message).slice(0, 160)); log('  expand failed', name, e.message.slice(0, 120)); await sleep(2000); }
   }
   return null;
 }
@@ -283,8 +297,12 @@ async function main() {
     if (!a) { if (!E.MOCK_AI) { return finish('ai_failed'); } continue; } // all providers failed: stop the run, do not burn quota
     if (a.is_duplicate === true || a.is_duplicate === 'true') { log('  duplicate per AI'); seenLinks.add(c.link); if (!DRY_RUN) { const pl = rj('data/published_links.json', []); pl.push(c.link); wj('data/published_links.json', pl); } continue; }
     a.body = sanitize(String(a.body || ''));
-    const q = check(a, cats);
+    let q = check(a, cats);
     log('  quality', q.score, q.reasons.join(','), 'words', q.words);
+    if (q.words < MIN_WORDS) {
+      const ex = await expandBody(c, a.body, res.errors);
+      if (ex) { a.body = sanitize(ex); q = check(a, cats); log('  after expand: quality', q.score, q.reasons.join(','), 'words', q.words); }
+    }
     if (q.words < MIN_WORDS) { res.errors.push('thin body ' + q.words + 'w < ' + MIN_WORDS); log('  thin body', q.words, '<', MIN_WORDS, '- trying next candidate'); continue; }
     if (q.score < MIN_SCORE) { res.errors.push('quality ' + q.score + ': ' + q.reasons.join(',')); continue; }
 

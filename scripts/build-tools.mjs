@@ -75,6 +75,8 @@ const CSS = `<style>
 
 const FOLLOW = !SOCIAL_OK ? '' : `<div class="ft-follow"><b>تابعنا ليصلك كل جديد</b><p>أخبار التقنية والذكاء الاصطناعي وأدوات جديدة أولا بأول.</p><a class="ft-btn" href="${esc(site.telegram_url)}" target="_blank" rel="noopener">قناتنا على تيليجرام</a> ${site.facebook_url ? `<a class="ft-btn sec" href="${esc(site.facebook_url)}" target="_blank" rel="noopener">صفحتنا على فيسبوك</a>` : ''}</div>`;
 const TOOLS = rj('free-tools/tools.json', []);
+const BOTS = rj('free-tools/bots.json', {});
+const botBox = slug => BOTS[slug] ? `<div class="ft-follow"><b>🤖 ${esc(BOTS[slug].name)} على تيليجرام</b><p>تفضّل تستخدم الأداة من تيليجرام مباشرة؟ ابعت الملف للبوت واستلم النتيجة في المحادثة. (البوت بيعالج الملف على خادم، عكس الأداة هنا اللي بتشتغل على جهازك.)</p><a class="ft-btn" href="https://t.me/${BOTS[slug].user}" target="_blank" rel="noopener">افتح @${BOTS[slug].user}</a></div>` : '';
 const toolbar = active => `<div class="ft-bar" role="navigation" aria-label="الأدوات"><div class="ft-bar-in"><a class="ft-bar-title${active === '' ? ' on' : ''}" href="/free-tools/">الأدوات</a><div class="ft-bar-list">${TOOLS.map(t => `<a class="ft-sq${active === t.slug ? ' on' : ''}" href="/free-tools/${t.slug}/"${active === t.slug ? ' aria-current="page"' : ''}><i><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${t.svg || ''}</svg></i><span>${esc(t.short || t.name)}</span></a>`).join('')}</div></div></div><script>addEventListener('load',function(){var a=document.querySelector('.ft-sq.on'),l=document.querySelector('.ft-bar-list');if(!a||!l)return;var d=a.getBoundingClientRect(),b=l.getBoundingClientRect();l.scrollBy({left:(d.left+d.width/2)-(b.left+b.width/2),behavior:'instant'})})</script>`;
 const jsonLd = o => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`;
 const write = (rel, c) => { fs.mkdirSync(rel.split('/').slice(0, -1).join('/') || '.', { recursive: true }); fs.writeFileSync(rel, c, 'utf8'); };
@@ -114,6 +116,7 @@ ${FOOTER}
 const hubBody = `<p class="ft-lead">مجموعة أدوات مجانية بالعربية تعمل مباشرة داخل متصفحك: بدون تسجيل، بدون رفع ملفاتك إلى أي خادم، وبدون أي رسوم.</p>
 <div class="ft-tools">${TOOLS.map(t => `<a class="ft-tool" href="/free-tools/${t.slug}/"><b>${esc(t.name)}</b><span>${esc(t.blurb)}</span></a>`).join('')}</div>
 ${ads()}
+${Object.keys(BOTS).length ? `<h2>بوتات تيليجرام المجانية</h2><p>نفس الأدوات متاحة كبوتات على تيليجرام: ابعت الملف واستلم النتيجة داخل المحادثة.</p><div class="ft-tools">${TOOLS.filter(t => BOTS[t.slug]).map(t => `<a class="ft-tool" href="https://t.me/${BOTS[t.slug].user}" target="_blank" rel="noopener"><b>${esc(BOTS[t.slug].name)}</b><span>@${BOTS[t.slug].user}</span></a>`).join('')}</div>` : ''}
 <h2>لماذا أدوات TD بالعربي؟</h2>
 <ul><li><b>خصوصية كاملة:</b> المعالجة تتم على جهازك، ولا تُرفع صورك أو ملفاتك.</li><li><b>مجانية بالكامل:</b> بدون علامة مائية وبدون حد يومي.</li><li><b>سريعة:</b> تعمل على الهاتف والكمبيوتر دون تثبيت أي برنامج.</li></ul>
 ${FOLLOW}
@@ -138,6 +141,7 @@ ${ads(false)}
 <ul>${t.features.map(s => `<li>${s}</li>`).join('')}</ul>
 ${t.extra || ''}
 <div class="ft-note">🔒 <b>خصوصيتك محفوظة:</b> تتم معالجة الملفات بالكامل داخل متصفحك. لا نرفع ولا نحفظ أي صورة أو ملف.</div>
+${botBox(t.slug)}
 ${FOLLOW}
 <h2>أسئلة شائعة</h2>
 <div class="ft-faq">${t.faq.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}</div>

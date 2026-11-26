@@ -1,0 +1,7 @@
+{
+ "remove-background": {"user": "removebg_ar_bot", "name": "بوت إزالة خلفية الصور"},
+ "arabic-ocr": {"user": "ocr_arabic_bot", "name": "بوت تحويل الصورة إلى نص (OCR عربي)"},
+ "compress-image": {"user": "compress_image_ar_bot", "name": "بوت ضغط الصور"},
+ "images-to-pdf": {"user": "images_to_pdf_ar_bot", "name": "بوت تحويل الصور إلى PDF"},
+ "merge-pdf": {"user": "merge_pdf_ar_bot", "name": "بوت دمج ملفات PDF"}
+}

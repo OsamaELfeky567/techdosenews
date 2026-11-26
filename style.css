@@ -494,13 +494,12 @@ img{max-width:100%;height:auto}
 .tb-head h2{margin:0 0 4px;font-size:1.15rem;font-weight:800;color:var(--text)}
 .tb-head p{margin:0 0 14px;font-size:.85rem;color:var(--text-2);line-height:1.6}
 .tb-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.tb-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:14px;border-radius:14px;border:1px solid var(--border);background:var(--surface);color:var(--text);text-decoration:none;transition:transform .15s,border-color .15s}
-.tb-card:hover{transform:translateY(-3px);border-color:var(--accent)}
-.tb-card i{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:var(--accent);color:#fff}
-.tb-card i svg{width:24px;height:24px}
-.tb-card b{font-size:.98rem;font-weight:800}
-.tb-card span{font-size:.78rem;color:var(--text-2);line-height:1.5;flex:1}
-.tb-card em{font-style:normal;font-size:.8rem;font-weight:800;color:var(--accent)}
+.tb-card{position:relative;display:block;aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md);background:#0e1729;color:#fff;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.tb-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-xl)}
+.tb-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.tb-card::before{content:"";position:absolute;inset:0;background:rgba(14,23,41,.25);z-index:1}
+.tb-card::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,23,41,.85) 0,rgba(14,23,41,0) 62%);z-index:1}
+.tb-card b{position:absolute;right:0;left:0;bottom:0;z-index:2;padding:12px;font-size:.92rem;font-weight:800;line-height:1.5;text-shadow:0 1px 3px rgba(0,0,0,.5)}
 .tb-more{display:inline-block;margin-top:12px;font-size:.85rem;font-weight:700;color:var(--accent);text-decoration:none}
-[data-theme=dark] .tb-card i{color:#111}
-@media(max-width:900px){.tb-grid{grid-template-columns:repeat(2,1fr)}.tb-sec{padding:14px;margin:16px 0}.tb-card:last-of-type{grid-column:1/-1}}
+.tb-credit{margin-inline-start:10px;color:var(--text-2);font-size:.7rem}
+@media(max-width:900px){.tb-grid{grid-template-columns:repeat(2,1fr)}.tb-sec{padding:14px;margin:16px 0}.tb-card:last-of-type{grid-column:1/-1;aspect-ratio:16/9}.tb-card b{font-size:.85rem}}

@@ -266,6 +266,76 @@ async function handleTgPost(env, req) {
   return json({ ok: true, message_id: r.result?.message_id });
 }
 
+
+// ---------- dashboard stats (aggregates only, refreshed by the cron; served at GET /stats) ----------
+const RAWREPO = "https://raw.githubusercontent.com/OsamaELfeky567/techdosenews/main/";
+const TGCHAT = "-1003896125398";
+async function gj(url, init) { try { const r = await fetch(url, init); return r.ok ? await r.json() : null; } catch { return null; } }
+async function gt(url) { try { const r = await fetch(url, { headers: { "user-agent": "Mozilla/5.0" } }); return r.ok ? await r.text() : null; } catch { return null; } }
+function parseCsv(t) {
+  const rows = (t || "").trim().split(/\r?\n/).map((l) => l.split(",").map((x) => x.replace(/^"|"$/g, "")));
+  return rows.slice(1).filter((r) => r.length >= 5).map((r) => ({ date: r[1], pv: +r[2], sessions: +r[3], visitors: +r[4] }));
+}
+async function collectStats(env) {
+  const now = Date.now(), out = { updated: new Date(now).toISOString().slice(0, 19) + "Z", notes: [] };
+  const [idx, runs, gsc, base] = await Promise.all([
+    gj(RAWREPO + "data/articles/index.json?t=" + now), gj("https://api.github.com/repos/OsamaELfeky567/techdosenews/actions/workflows/generate.yml/runs?per_page=40", { headers: { "user-agent": "td-bot" } }),
+    gj(RAWREPO + "data/gsc-status.json?t=" + now), gj(RAWREPO + "data/baseline/2026-11-26.json?t=" + now)]);
+  const arts = Array.isArray(idx) ? idx : [];
+  const ageH = (a) => (now - new Date(a.date).getTime()) / 36e5;
+  const perDay = {}; for (const a of arts) perDay[a.date.slice(0, 10)] = (perDay[a.date.slice(0, 10)] || 0) + 1;
+  out.site = { articles_total: arts.length, last_24h: arts.filter((a) => ageH(a) < 24).length, last_7d: arts.filter((a) => ageH(a) < 168).length,
+    gaming_total: arts.filter((a) => a.category === "gaming").length, per_day: Object.fromEntries(Object.entries(perDay).sort().slice(-14)) };
+  if (runs?.workflow_runs) {
+    const r = runs.workflow_runs.filter((x) => now - new Date(x.created_at).getTime() < 864e5);
+    Object.assign(out.site, { runs_24h: r.length, runs_ok_24h: r.filter((x) => x.conclusion === "success").length, runs_failed_24h: r.filter((x) => x.conclusion === "failure").length, last_run: r[0]?.created_at || null });
+  }
+  const cairo = new Date(now + 2 * 36e5), fmt = (d) => d.toISOString().slice(0, 10).replace(/-/g, "");
+  const daily = parseCsv(await gt(`https://statcounter.com/p13370055/csv/stats/?download&granularity=daily&guest=1&graph-sig=${fmt(new Date(cairo - 29 * 864e5))}_${fmt(cairo)}`));
+  const tdy = cairo.toISOString().slice(0, 10), yst = new Date(cairo - 864e5).toISOString().slice(0, 10);
+  const sm = (rows) => ({ pv: rows.reduce((a, x) => a + x.pv, 0), sessions: rows.reduce((a, x) => a + x.sessions, 0), visitors_sum: rows.reduce((a, x) => a + x.visitors, 0) });
+  out.traffic = { source: "StatCounter (guest)", daily, today: sm(daily.filter((x) => x.date === tdy)), yesterday: sm(daily.filter((x) => x.date === yst)), last_7d: sm(daily.slice(-7)), last_30d: sm(daily) };
+  // facebook
+  const G = "https://graph.facebook.com/v19.0/", P = env.FB_PAGE_ID, T = env.FB_PAGE_TOKEN, fb = { available: !!T };
+  if (T) {
+    const p = (await gj(`${G}${P}?fields=followers_count,fan_count&access_token=${T}`)) || {};
+    fb.followers = p.followers_count ?? null; fb.fans = p.fan_count ?? null;
+    let posts = [], url = `${G}${P}/posts?fields=id,created_time,shares,reactions.summary(true).limit(0),comments.summary(true).limit(100){created_time}&limit=50&access_token=${T}`;
+    for (let i = 0; i < 3 && url; i++) { const j = await gj(url); if (!j?.data) break; posts = posts.concat(j.data); url = j.paging?.next; }
+    const win = (h) => posts.filter((x) => now - new Date(x.created_time.replace("+0000", "Z")).getTime() < h * 36e5);
+    const cm = (h) => posts.reduce((n, x) => n + (x.comments?.data || []).filter((c) => now - new Date(c.created_time.replace("+0000", "Z")).getTime() < h * 36e5).length, 0);
+    const rxn = (h) => win(h).reduce((n, x) => n + (x.reactions?.summary?.total_count || 0), 0);
+    fb.posts = { total: posts.length, last_24h: win(24).length, last_7d: win(168).length };
+    fb.comments = { last_24h: cm(24), last_7d: cm(168), last_30d: cm(720) };
+    fb.reactions_on_posts = { last_24h: rxn(24), last_7d: rxn(168) };
+    fb.shares_on_posts = posts.reduce((n, x) => n + (x.shares?.count || 0), 0);
+    const ins = {};
+    for (const m of ["page_follows", "page_media_view", "page_views_total", "page_post_engagements", "page_total_media_view_unique", "page_daily_follows_unique"]) {
+      const j = await gj(`${G}${P}/insights?metric=${m}&period=day&since=${Math.floor(now / 1000) - 31 * 86400}&access_token=${T}`);
+      const vals = j?.data?.[0]?.values;
+      if (vals?.length) ins[m] = vals.filter((v) => typeof v.value === "number").map((v) => ({ end: v.end_time.slice(0, 10), value: v.value }));
+    }
+    fb.insights = ins;
+    if (!Object.keys(ins).length) out.notes.push("ملاحظة: Meta لا توفر بعد إحصائيات الوصول والمشاهدات لصفحة فيسبوك الجديدة. المتابعون والبوستات والتعليقات والتفاعلات حية.");
+  }
+  out.facebook = fb;
+  const tgm = env.BOT_TOKEN ? await gj(`https://api.telegram.org/bot${env.BOT_TOKEN}/getChatMemberCount?chat_id=${TGCHAT}`) : null;
+  out.telegram = tgm?.ok ? { members: tgm.result } : {};
+  out.gsc = gsc || {}; if (base) out.baseline = base;
+  let hist = JSON.parse((await env.SUBS.get("stats:history")) || "[]");
+  const pt = { t: out.updated.slice(0, 16) + "Z", fb_followers: fb.followers ?? null, tg_members: out.telegram.members ?? null, articles: arts.length, pv_today: out.traffic.today.pv };
+  if (!hist.length || hist[hist.length - 1].t.slice(0, 13) !== pt.t.slice(0, 13)) { hist.push(pt); hist = hist.slice(-24 * 60); await env.SUBS.put("stats:history", JSON.stringify(hist)); }
+  out.history = hist.slice(-72);
+  await env.SUBS.put("stats:latest", JSON.stringify(out));
+  return out;
+}
+async function handleStats(env, ctx) {
+  let t = await env.SUBS.get("stats:latest"), stale = true;
+  if (t) { stale = Date.now() - new Date(JSON.parse(t).updated).getTime() > 20 * 60 * 1000; }
+  if (!t) t = JSON.stringify(await collectStats(env)); else if (stale) ctx.waitUntil(collectStats(env));
+  return new Response(t, { headers: { "content-type": "application/json", "access-control-allow-origin": "*", "cache-control": "public, max-age=60" } });
+}
+
 const json = (o, status = 200) =>
   new Response(JSON.stringify(o), { status, headers: { "content-type": "application/json" } });
 
@@ -281,10 +351,12 @@ export default {
       return handleBroadcast(env, req);
     if (req.method === "POST" && url.pathname === "/fbpost") return handleFbPost(env, req);
     if (req.method === "POST" && url.pathname === "/tgpost") return handleTgPost(env, req);
+    if (req.method === "GET" && url.pathname === "/stats") return handleStats(env, ctx);
     if (url.pathname === "/health") return json({ ok: true });
     return new Response("not found", { status: 404 });
   },
   async scheduled(event, env, ctx) {
+    ctx.waitUntil(collectStats(env).catch((e) => console.log("stats failed:", e.message)));
     // keep the Modal container warm so users never wait on a cold start
     const png = Uint8Array.from(atob("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="), (c) => c.charCodeAt(0));
     ctx.waitUntil(

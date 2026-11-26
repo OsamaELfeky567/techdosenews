@@ -69,6 +69,7 @@ th{color:var(--m);font-weight:600}
   <div class="logo">TD <span>بالعربي</span></div>
   <button data-t="home" class="on">📊 نظرة عامة</button>
   <button data-t="articles">📰 المقالات</button>
+  <button data-t="stats">📈 الإحصائيات</button>
   <button data-t="pipe">⚙️ النشر والترند</button>
   <button data-t="ads">💰 الإعلانات</button>
   <button data-t="push">🔔 الإشعارات</button>
@@ -79,6 +80,7 @@ th{color:var(--m);font-weight:600}
  <main>
   <section id="t-home"></section>
   <section id="t-articles" class="hide"></section>
+  <section id="t-stats" class="hide"></section>
   <section id="t-pipe" class="hide"></section>
   <section id="t-ads" class="hide"></section>
   <section id="t-push" class="hide"></section>
@@ -165,12 +167,59 @@ document.querySelectorAll('nav button[data-t]').forEach(function (b) { b.onclick
 function show(t) {
   document.querySelectorAll('nav button[data-t]').forEach(function (b) { b.classList.toggle('on', b.dataset.t === t); });
   document.querySelectorAll('main section').forEach(function (s) { s.classList.toggle('hide', s.id !== 't-' + t); });
-  ({ home: rHome, articles: rArticles, pipe: rPipe, ads: rAds, push: rPush, health: rHealth, set: rSet })[t]();
+  ({ home: rHome, stats: rStats, articles: rArticles, pipe: rPipe, ads: rAds, push: rPush, health: rHealth, set: rSet })[t]();
   scrollTo(0, 0);
 }
 async function start() {
   $('#login').classList.add('hide'); $('#app').classList.remove('hide');
   $('#t-home').innerHTML = '<p class="note">جاري التحميل…</p>'; await loadAll(); show('home');
+}
+
+
+/* ---- stats dashboard (data/stats.json is refreshed hourly by the autopilot; no secrets in it) ---- */
+var ST = null, STR = 'day';
+function dlt(now, base) { if (now == null || base == null) return ''; var d = now - base; return ' <small style="color:' + (d > 0 ? '#16a34a' : d < 0 ? '#dc2626' : 'var(--m)') + '">' + (d > 0 ? '▲ +' : d < 0 ? '▼ ' : '＝ ') + (d === 0 ? '' : d) + '</small>'; }
+function sbox(v, l, extra) { return '<div class="card stat"><b>' + (v == null ? '—' : v) + (extra || '') + '</b><span>' + l + '</span></div>'; }
+function spark(vals, color) {
+  vals = vals.filter(function (v) { return v != null; }); if (vals.length < 2) return '<p class="note">لا توجد بيانات كافية بعد.</p>';
+  var w = 300, h = 60, mx = Math.max.apply(null, vals), mn = Math.min.apply(null, vals), rg = (mx - mn) || 1;
+  var pts = vals.map(function (v, i) { return (i * w / (vals.length - 1)).toFixed(1) + ',' + (h - 4 - (v - mn) / rg * (h - 8)).toFixed(1); }).join(' ');
+  return '<svg viewBox="0 0 ' + w + ' ' + h + '" style="width:100%;height:60px"><polyline fill="none" stroke="' + color + '" stroke-width="2" points="' + pts + '"/></svg>';
+}
+async function rStats() {
+  var el = $('#t-stats'); el.innerHTML = '<p class="note">جاري التحميل…</p>';
+  try { var sr = await fetch('https://td-bot.td-arabi.workers.dev/stats?t=' + Date.now()); if (!sr.ok) throw new Error('stats HTTP ' + sr.status); ST = await sr.json(); } catch (e) { el.innerHTML = '<div class="alert bad">تعذر تحميل الإحصائيات: ' + esc(e.message) + '</div>'; return; }
+  drawStats();
+}
+function drawStats() {
+  var S = ST, el = $('#t-stats'), b = S.baseline || {}, t = S.traffic || {}, f = S.facebook || {}, tg = S.telegram || {}, g = S.gsc || {}, st = S.site || {};
+  var rng = STR, tr = rng === 'day' ? t.today : rng === 'week' ? t.last_7d : t.last_30d, trl = rng === 'day' ? 'اليوم' : rng === 'week' ? 'آخر 7 أيام' : 'آخر 30 يوم';
+  var cm = (f.comments || {}), cmv = rng === 'day' ? cm.last_24h : rng === 'week' ? cm.last_7d : cm.last_30d;
+  var rx = f.reactions_on_posts || {}, rxv = rng === 'day' ? rx.last_24h : rx.last_7d;
+  var po = f.posts || {}, pov = rng === 'day' ? po.last_24h : po.last_7d;
+  var arts = rng === 'day' ? st.last_24h : rng === 'week' ? st.last_7d : st.articles_total;
+  var ins = f.insights || {}, insKeys = Object.keys(ins);
+  var insHtml = insKeys.length ? '<table><tr><th>المقياس</th><th>آخر قيمة</th><th>مجموع الفترة</th></tr>' + insKeys.map(function (k) {
+      var arr = ins[k], n = rng === 'day' ? 1 : rng === 'week' ? 7 : 30, sl = arr.slice(-n);
+      return '<tr><td>' + esc(k) + '</td><td>' + (arr.length ? arr[arr.length - 1].value : '—') + '</td><td>' + sl.reduce(function (a, x) { return a + x.value; }, 0) + '</td></tr>'; }).join('') + '</table>'
+    : '<p class="note">إحصائيات فيسبوك المتقدمة (الوصول والمشاهدات) لم تتوفر من Meta بعد لأن الصفحة جديدة. ستظهر هنا تلقائيا عند توفرها.</p>';
+  var H = S.history || [];
+  el.innerHTML = '<h1 style="margin-bottom:6px">الإحصائيات</h1><p class="note" style="margin-bottom:12px">آخر تحديث: ' + esc(cairo(S.updated)) + ' (يتحدث تلقائيا كل 14 دقيقة). الأسهم مقارنة بخط الأساس ' + esc((b.taken || '').slice(0, 10)) + '.</p>' +
+    '<div class="row" style="margin-bottom:14px">' + [['day', 'آخر 24 ساعة'], ['week', '7 أيام'], ['month', 'الشهر']].map(function (x) { return '<button class="btn" data-r="' + x[0] + '" style="' + (rng === x[0] ? '' : 'opacity:.55') + '">' + x[1] + '</button>'; }).join(' ') + '</div>' +
+    '<div class="card" style="margin-bottom:14px"><h2>فيسبوك: صفحة TD بالعربي</h2><div class="grid">' +
+      sbox(f.followers, 'المتابعون', dlt(f.followers, b.facebook_followers)) + sbox(pov, 'بوستات منشورة (' + (rng === 'day' ? '24 ساعة' : '7 أيام') + ')') +
+      sbox(cmv, 'تعليقات (' + trl + ')') + sbox(rxv, 'تفاعلات على البوستات') + '</div>' + insHtml + '<div style="margin-top:8px"><small class="note">المتابعون عبر الوقت</small>' + spark(H.map(function (x) { return x.fb_followers; }), '#2563eb') + '</div></div>' +
+    '<div class="card" style="margin-bottom:14px"><h2>الموقع td-arabi.com</h2><div class="grid">' +
+      sbox(tr && tr.pv, 'مشاهدات صفحات (' + trl + ')', '') + sbox(tr && tr.sessions, 'جلسات') + sbox(tr && tr.visitors_sum, 'زوار (مجموع أيام)') +
+      sbox(arts, rng === 'month' ? 'إجمالي المقالات' : 'مقالات منشورة', rng === 'month' ? dlt(st.articles_total, b.articles_total) : '') + '</div>' +
+      '<small class="note">مشاهدات يومية (30 يوم)</small>' + spark((t.daily || []).map(function (x) { return x.pv; }), '#16a34a') + '</div>' +
+    '<div class="card" style="margin-bottom:14px"><h2>تليجرام والفهرسة والنشر</h2><div class="grid">' +
+      sbox(tg.members, 'أعضاء قناة تليجرام', dlt(tg.members, b.telegram_members)) + sbox(g.indexed, 'صفحات مفهرسة (Search Console)', dlt(g.indexed, b.gsc_indexed)) +
+      sbox(g.not_indexed, 'غير مفهرسة', dlt(g.not_indexed, b.gsc_not_indexed)) + sbox(st.runs_ok_24h == null ? null : st.runs_ok_24h + ' / ' + st.runs_24h, 'تشغيلات نشر ناجحة (24 ساعة)') + '</div>' +
+      '<p class="note">Search Console: آخر تحديث للبيانات عند جوجل ' + esc(g.last_update || '—') + '، تم الفحص ' + esc(g.checked_at ? cairo(g.checked_at) : '—') + '. جوجل يؤخر بياناتها، ولا يوجد API لها هنا فيتم الفحص يدويا كل ساعة.</p></div>' +
+    (S.notes && S.notes.length ? '<div class="alert">' + S.notes.map(esc).join('<br>') + '</div>' : '') +
+    '<p class="note">غير متاح حاليا: إحصائيات يوتيوب/Stickman (مستبعدة بطلبك)، ووصول فيسبوك التفصيلي حتى توفره Meta.</p>';
+  el.querySelectorAll('button[data-r]').forEach(function (bt) { bt.onclick = function () { STR = bt.dataset.r; drawStats(); }; });
 }
 
 /* ---- overview ---- */

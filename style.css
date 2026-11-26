@@ -503,3 +503,5 @@ img{max-width:100%;height:auto}
 .tb-more{display:inline-block;margin-top:12px;font-size:.85rem;font-weight:700;color:var(--accent);text-decoration:none}
 .tb-credit{margin-inline-start:10px;color:var(--text-2);font-size:.7rem}
 @media(max-width:900px){.tb-grid{grid-template-columns:repeat(2,1fr)}.tb-sec{padding:14px;margin:16px 0}.tb-card:last-of-type{grid-column:1/-1;aspect-ratio:16/9}.tb-card b{font-size:.85rem}}
+
+@media(max-width:768px){.ad-mobile-only.ad-container{min-height:76px}.sb-ad-label{margin-bottom:2px}.ad-container{margin:6px 0}}

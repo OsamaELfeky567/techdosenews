@@ -25,7 +25,8 @@ const isoClean = d => new Date(d).toISOString().replace(/\.\d{3}Z$/, 'Z');
 const sanitize = h => String(h || '').replace(/<(script|style|iframe|object|embed|form)[\s\S]*?<\/\1>/gi, '').replace(/\son\w+\s*=\s*("[^"]*"|'[^']*')/gi, '').replace(/javascript:/gi, '').replace(/<h1/gi, '<h2').replace(/<\/h1>/gi, '</h2>');
 const strip = h => String(h || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 const CATS = Object.fromEntries(rj('data/categories.json', []).map(c => [c.id, c.name]));
-const catLabel = c => CATS[c] || c || 'تقنية';
+const catLabel = c => { if (CATS[c]) return CATS[c]; const parts = String(c || '').split('|').map(x => x.trim()).filter(Boolean); if (parts.length === 0 || parts.length > 3) return 'تقنية'; return CATS[parts[0]] || parts[0]; };
+const BAD_TAGS = new Set(['تاغ ذو صلة', 'تاغ ثاني', 'تاغ ثالث']);
 const fmtDate = d => new Date(d).toLocaleDateString('ar-EG', { timeZone: 'Africa/Cairo', year: 'numeric', month: 'long', day: 'numeric' });
 
 // ---------- data ----------
@@ -109,7 +110,7 @@ const PAGE_CSS = `<style>
 .td-card h2,.td-card h3{font-size:1.05rem;margin:0 0 10px;font-weight:800}
 .td-side-item{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border-light,#eee);font-size:.9rem;line-height:1.5}
 .td-side-item:last-child{border:0}.td-side-item img{width:72px;height:54px;object-fit:cover;border-radius:6px;flex:none}
-.td-ad{margin:22px auto;text-align:center;max-width:100%;overflow:hidden}
+.td-ad{margin:12px auto;text-align:center;max-width:100%;overflow:hidden}
 .td-ad-label{font-size:.65rem;color:var(--muted);margin-bottom:4px}
 .td-ad-box{display:flex;justify-content:center;overflow:hidden}
 .td-inline-rel{margin:18px 0;padding:12px 16px;border-right:4px solid var(--accent);background:var(--surface-2,#f1f5f9);border-radius:8px;font-size:.95rem}
@@ -172,7 +173,7 @@ function articlePage(a) {
       if (i === 4) out.push(adSlot('300x250', 'td-ad-m') + (relList[1] ? `<div class="td-inline-rel">قد يهمك: <a href="${relList[1].path}">${esc(relList[1].title)}</a></div>` : '')); });
     return out.join('');
   };
-  const tags = (a.tags || []).map(t => `<span class="sb-tag" style="display:inline-block;margin:0 0 6px 6px;padding:2px 10px;border-radius:12px;background:var(--surface-2,#eef2f7);font-size:.8rem">${esc(t)}</span>`).join('');
+  const tags = (a.tags || []).filter(t => !BAD_TAGS.has(t)).map(t => `<span class="sb-tag" style="display:inline-block;margin:0 0 6px 6px;padding:2px 10px;border-radius:12px;background:var(--surface-2,#eef2f7);font-size:.8rem">${esc(t)}</span>`).join('');
   const enc = encodeURIComponent(u), encT = encodeURIComponent(title);
   return `<!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -236,6 +237,7 @@ ${adSlot('160x600', 'td-ad-d')}${adSlot('300x250', 'td-ad-d')}
 </main>
 <script>(function(){var b=document.getElementById('td-progress');addEventListener('scroll',function(){var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);b.style.width=Math.min(100,p*100)+'%'},{passive:true})})();</script>
 ${FOOTER}
+<script>setTimeout(function(){document.querySelectorAll('.td-ad').forEach(function(e){if(!e.querySelector('iframe'))e.style.display='none'})},12000)</script>
 </body>
 </html>
 `;

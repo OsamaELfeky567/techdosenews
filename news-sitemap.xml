@@ -200,12 +200,4 @@
       <news:title>تطبيق Signal يعزز خصوصية المستخدمين بحجب لقطات الشاشة لمنع وصول وكلاء الذكاء الاصطناعي</news:title>
     </news:news>
   </url>
-  <url>
-    <loc>https://td-arabi.com/news/amazon-accelerates-satellite-launches-spacex-falcon9-tptm0j/</loc>
-    <news:news>
-      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
-      <news:publication_date>2026-11-24T19:01:25Z</news:publication_date>
-      <news:title>أمازون تُسرّع إطلاق أقمارها الفضائية مع سبيس إكس بعد تعطل صاروخ فولكان</news:title>
-    </news:news>
-  </url>
 </urlset>

@@ -208,12 +208,4 @@
       <news:title>أمازون تُسرّع إطلاق أقمارها الفضائية مع سبيس إكس بعد تعطل صاروخ فولكان</news:title>
     </news:news>
   </url>
-  <url>
-    <loc>https://td-arabi.com/news/porsche-718-boxster-electric-prototype-5sgd1h/</loc>
-    <news:news>
-      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
-      <news:publication_date>2026-11-24T17:15:13Z</news:publication_date>
-      <news:title>Porsche تكشف عن نموذج أولي للـ 718 Boxster الكهربائي بموضع بطارية منخفض</news:title>
-    </news:news>
-  </url>
 </urlset>

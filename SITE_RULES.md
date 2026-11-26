@@ -5,7 +5,7 @@
 2. Gaming/GTA articles search Pexels with "video game" prepended. If the photo found is clearly irrelevant, set `hero_card: true` on the article to use the card.
 3. The branded card never carries a source caption.
 4. Caption always matches the real image: source image -> "الصورة من موقع المصدر: <source>"; Pexels -> "الصورة: Pexels"; card -> no caption.
-5. Social previews (og:image, twitter:image, Telegram/Facebook) always use the branded 1200x630 card (news/<slug>/og.png).
+5. Social previews (og:image, twitter:image, Telegram/Facebook) use news/<slug>/og-v2.jpg: the article real image as background under a light (about 16%) brand tint with the title, logo and category; the plain branded card only when the article has no real image. Never a bare raw copy of the source image.
 
 ## Trending topics
 - GTA 6 is a tracked topic (boost, bypasses the tech filter). Gaming is a standing category ("ألعاب") with GameSpot and VGC feeds, gated to gaming keywords.

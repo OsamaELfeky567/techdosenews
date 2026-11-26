@@ -139,7 +139,7 @@ function articlePage(a) {
   let cardOk = false;
   { const out = path.join(OUT, a.path.replace(/^\//, ''), 'og.png'); cardOk = ensureCard(out, a.title, a.category); if (cardOk) img = u + 'og.png'; }
   // Hero: real image from the source when we have one; otherwise (stock/fallback) the branded card. Social previews always use the card.
-  const realHero = a.image && /^https?:/.test(a.image) && !['pexels', 'fallback', 'default', 'og'].includes(a.image_source || '');
+  const realHero = !a.hero_card && a.image && /^https?:/.test(a.image) && !['fallback', 'default'].includes(a.image_source || '');
   const heroImg = realHero || !cardOk ? (a.image && /^https?:/.test(a.image) ? a.image : img) : img;
   const heroIsCard = !realHero && cardOk;
   const published = isoClean(a.date);

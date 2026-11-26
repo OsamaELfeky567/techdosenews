@@ -235,7 +235,7 @@ async function pickImage(c, a) {
   } catch {}
   if (E.PEXELS_API_KEY && a.image_query && !isRumor(a)) {
     try {
-      const j = JSON.parse(await get('https://api.pexels.com/v1/search?per_page=3&orientation=landscape&query=' + encodeURIComponent(a.image_query), 12000, { Authorization: E.PEXELS_API_KEY }));
+      const j = JSON.parse(await get('https://api.pexels.com/v1/search?per_page=3&orientation=landscape&query=' + encodeURIComponent((c.gaming || c.tracked ? 'video game ' : '') + a.image_query), 12000, { Authorization: E.PEXELS_API_KEY }));
       for (const p of (j.photos || [])) { const u = p.src.large || p.src.original, d = await imgOk(u); if (d) return { url: u, source: 'pexels', dims: d }; }
     } catch {}
   }

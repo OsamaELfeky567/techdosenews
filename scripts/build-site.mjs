@@ -137,7 +137,7 @@ function articlePage(a) {
   const desc = (a.meta_description || a.excerpt || strip(a.body).slice(0, 155)).trim();
   let img = a.image && /^https?:/.test(a.image) ? a.image : BASE + '/img/og-image.png';
   let cardOk = false;
-  { const out = path.join(OUT, a.path.replace(/^\//, ''), 'og.png'); cardOk = ensureCard(out, a.title, a.category); if (cardOk) img = u + 'og.png'; }
+  { const out = path.join(OUT, a.path.replace(/^\//, ''), 'og-v2.jpg'); const bgSrc = (a.image && /^https?:/.test(a.image) && !['fallback', 'default'].includes(a.image_source || '') && !a.hero_card) ? a.image : null; cardOk = ensureCard(out, a.title, a.category, bgSrc); if (cardOk) img = u + 'og-v2.jpg'; }
   // Hero: real image from the source when we have one; otherwise (stock/fallback) the branded card. Social previews always use the card.
   const realHero = !a.hero_card && a.image && /^https?:/.test(a.image) && !['fallback', 'default'].includes(a.image_source || '');
   const heroImg = realHero || !cardOk ? (a.image && /^https?:/.test(a.image) ? a.image : img) : img;

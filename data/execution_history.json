@@ -1,5 +1,14 @@
 [
   {
+    "at": "2026-11-26T08:14:32.656Z",
+    "status": "published",
+    "title": "نموذج Claude يتيح تحويل العناصر إلى تطبيقات مستقلة لأنظمة التشغيل",
+    "errors": [
+      "thin body 244w < 280"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-26T07:14:08.365Z",
     "status": "published",
     "title": "تحذير رسمي من هجمات التصيد الاحتيالي بعد اختراق أمني في شركة 1Password",

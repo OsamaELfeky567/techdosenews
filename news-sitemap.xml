@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/amazon-considers-allowing-meta-muse-shopping-agent-uz5xzc/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-26T09:14:57Z</news:publication_date>
+      <news:title>أمازون تدرس رفع الحظر عن وكيل Meta Muse للذكاء الاصطناعي</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/claude-artifacts-to-standalone-apps-8d68i4/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>

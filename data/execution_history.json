@@ -1,5 +1,14 @@
 [
   {
+    "at": "2026-11-26T09:14:57.361Z",
+    "status": "published",
+    "title": "أمازون تدرس رفع الحظر عن وكيل Meta Muse للذكاء الاصطناعي",
+    "errors": [
+      "thin body 185w < 280"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-26T08:14:32.656Z",
     "status": "published",
     "title": "نموذج Claude يتيح تحويل العناصر إلى تطبيقات مستقلة لأنظمة التشغيل",

@@ -1,5 +1,16 @@
 [
   {
+    "at": "2026-11-26T12:39:46.485Z",
+    "status": "published",
+    "title": "إنفيديا تعلق شحن خوادم الذكاء الاصطناعي إلى أربع دول آسيوية",
+    "errors": [
+      "thin body 193w < 280",
+      "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later",
+      "expand gemini:gemini-3.5-flash-lite: Unexpected end of JSON input"
+    ],
+    "provider": "gemini:gemini-3.1-flash-lite"
+  },
+  {
     "at": "2026-11-26T12:16:01.207Z",
     "status": "published",
     "title": "الصين تعلن خطة رسمية لتطوير شبكات الجيل السادس والإنترنت الفضائي بحلول عام 2030",

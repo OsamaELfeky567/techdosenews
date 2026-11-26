@@ -1,5 +1,16 @@
 [
   {
+    "at": "2026-11-26T12:16:01.207Z",
+    "status": "published",
+    "title": "الصين تعلن خطة رسمية لتطوير شبكات الجيل السادس والإنترنت الفضائي بحلول عام 2030",
+    "errors": [
+      "thin body 257w < 280",
+      "thin body 240w < 280",
+      "expand gemini:gemini-3.5-flash-lite: Unexpected end of JSON input"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-26T11:15:41.104Z",
     "status": "published",
     "title": "فولفو تبدأ تدريب روبوتات بشرية في مصنعها ببلجيكا استعداداً للإنتاج عام 2027",

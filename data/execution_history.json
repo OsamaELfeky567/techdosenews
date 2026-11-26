@@ -1,5 +1,18 @@
 [
   {
+    "at": "2026-11-26T10:15:13.746Z",
+    "status": "published",
+    "title": "كوريا الجنوبية تُحدث شبكة الواي فاي المجانية في نحو 33 ألف حافلة إلى معيار Wi‑Fi 7",
+    "errors": [
+      "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later",
+      "gemini:gemini-3.1-flash-lite: gemini gemini-3.1-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later",
+      "gemini:gemini-3.6-flash: gemini gemini-3.6-flash HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later",
+      "thin body 250w < 280",
+      "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later"
+    ],
+    "provider": "groq:openai/gpt-oss-120b"
+  },
+  {
     "at": "2026-11-26T09:14:57.361Z",
     "status": "published",
     "title": "أمازون تدرس رفع الحظر عن وكيل Meta Muse للذكاء الاصطناعي",

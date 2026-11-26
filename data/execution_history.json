@@ -1,5 +1,15 @@
 [
   {
+    "at": "2026-11-26T02:52:25.425Z",
+    "status": "published",
+    "title": "استعراض مستوى صعوبة لعبة جي تي إيه 6 وتوجهات شركة روكستار",
+    "errors": [
+      "expand gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usu",
+      "expand gemini:gemini-3.1-flash-lite: gemini gemini-3.1-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usu"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-26T02:11:25.241Z",
     "status": "published",
     "title": "قفزة كبيرة بمبيعات أجهزة بلايستيشن وإكس بوكس قبيل طرح لعبة جي تي إيه 6",

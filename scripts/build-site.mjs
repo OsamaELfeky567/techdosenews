@@ -138,6 +138,10 @@ function articlePage(a) {
   let img = a.image && /^https?:/.test(a.image) ? a.image : BASE + '/img/og-image.png';
   let cardOk = false;
   { const out = path.join(OUT, a.path.replace(/^\//, ''), 'og.png'); cardOk = ensureCard(out, a.title, a.category); if (cardOk) img = u + 'og.png'; }
+  // Hero: real image from the source when we have one; otherwise (stock/fallback) the branded card. Social previews always use the card.
+  const realHero = a.image && /^https?:/.test(a.image) && !['pexels', 'fallback', 'default', 'og'].includes(a.image_source || '');
+  const heroImg = realHero || !cardOk ? (a.image && /^https?:/.test(a.image) ? a.image : img) : img;
+  const heroIsCard = !realHero && cardOk;
   const published = isoClean(a.date);
   const modified = isoClean(a.modified || a.date);
   const hasDims = cardOk || (a.image_w && a.image_h);
@@ -154,8 +158,8 @@ function articlePage(a) {
     { '@type': 'ListItem', position: 1, name: site.site_name, item: BASE + '/' },
     { '@type': 'ListItem', position: 2, name: 'الأخبار', item: BASE + '/news/' },
     { '@type': 'ListItem', position: 3, name: title, item: u }] };
-  const imgTag = `<img src="${esc(img)}" alt="${esc(title)}" fetchpriority="high" decoding="async"${hasDims ? ` width="${a.image_w}" height="${a.image_h}"` : ''} style="width:100%;height:auto;aspect-ratio:16/9;object-fit:cover">`;
-  const credit = a.image_source && !['default', 'pexels'].includes(a.image_source) ? `<figcaption style="font-size:.8rem;color:var(--muted);margin-top:6px">الصورة من موقع المصدر: ${esc(a.source)}</figcaption>` : (a.image_source === 'pexels' ? '<figcaption style="font-size:.8rem;color:var(--muted);margin-top:6px">الصورة: Pexels</figcaption>' : '');
+  const imgTag = `<img src="${esc(heroImg)}" alt="${esc(title)}" fetchpriority="high" decoding="async"${heroIsCard ? ' width="1200" height="630"' : (a.image_w && a.image_h ? ` width="${a.image_w}" height="${a.image_h}"` : '')} style="width:100%;height:auto;aspect-ratio:16/9;object-fit:cover">`;
+  const credit = heroIsCard ? '' : a.image_source && !['default', 'pexels'].includes(a.image_source) ? `<figcaption style="font-size:.8rem;color:var(--muted);margin-top:6px">الصورة من موقع المصدر: ${esc(a.source)}</figcaption>` : (a.image_source === 'pexels' ? '<figcaption style="font-size:.8rem;color:var(--muted);margin-top:6px">الصورة: Pexels</figcaption>' : '');
   const relList = related(a, 6);
   const thumb = r => (r.image && /^https?:/.test(r.image) ? r.image : BASE + '/img/og-image.png');
   const relCards = relList.slice(0, 3).map(r => `<a class="td-rc" href="${r.path}"><img src="${esc(thumb(r))}" alt="" loading="lazy" width="320" height="180"><span>${esc(r.title)}</span></a>`).join('');

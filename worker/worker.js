@@ -229,6 +229,10 @@ async function handleFbPost(env, req) {
   if (!link.startsWith(env.SITE + "/news/") || link.length > 300) return json({ ok: false, error: "bad url" }, 400);
   const key = "fbpost:" + link;
   if (await env.SUBS.get(key)) return json({ ok: true, skipped: "already posted" });
+  // pacing: a new page with few followers looks spammy if it posts every hour. Max 4 posts per day (Cairo), at least 4h apart.
+  const dayKey = "fbday:" + new Date(Date.now() + 2 * 3600e3).toISOString().slice(0, 10);
+  const dayCount = +(await env.SUBS.get(dayKey) || 0), lastAt = +(await env.SUBS.get("fblast") || 0);
+  if (dayCount >= 4 || Date.now() - lastAt < 4 * 3600e3) return json({ ok: true, skipped: "paced", day_count: dayCount });
   const page = await fetch(link, { headers: { "user-agent": "td-arabi-fb-poster" } });
   if (!page.ok) return json({ ok: false, error: "page not live", status: page.status }, 404);
   const html = await page.text();
@@ -243,6 +247,8 @@ async function handleFbPost(env, req) {
   const j = await r.json().catch(() => ({}));
   if (!r.ok || !j.id) return json({ ok: false, error: "graph error", detail: j.error?.message || r.status }, 502);
   await env.SUBS.put(key, j.id, { expirationTtl: 60 * 60 * 24 * 90 });
+  await env.SUBS.put(dayKey, String(dayCount + 1), { expirationTtl: 172800 });
+  await env.SUBS.put("fblast", String(Date.now()), { expirationTtl: 172800 });
   return json({ ok: true, post_id: j.id });
 }
 

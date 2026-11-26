@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/gta-6-pc-modders-struggle-c9yght/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-26T05:13:12Z</news:publication_date>
+      <news:title>محاولات تعديل جعبة حواسيب لعبة جي تي إيه 6 تواجه عقبات</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/gta-6-fake-tunnel-trick-5lshof/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>

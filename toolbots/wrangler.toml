@@ -1,0 +1,16 @@
+name = "td-tools-bots"
+main = "worker.js"
+compatibility_date = "2026-11-25"
+account_id = "bf3f4d5c30022c3f7e41d61eb08c90c5"
+
+[[kv_namespaces]]
+binding = "SUBS"
+id = "a075f1b2d78941188cde4af2c31a2354"
+
+[vars]
+CHANNEL = "@td_arabi"
+SITE = "https://td-arabi.com"
+FB_URL = "https://www.facebook.com/tdarabi"
+DAILY_QUOTA = "10"
+MODAL = "https://omarassistant10--td-tools"
+BG_URL = "https://omarassistant10--td-bg-removal-remove.us-east.modal.run"

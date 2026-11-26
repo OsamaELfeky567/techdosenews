@@ -1,0 +1,142 @@
+[
+ {
+  "repo": "obsproject/obs-studio",
+  "name": "OBS Studio",
+  "desc": "تسجيل الشاشة والبث المباشر بدون علامة مائية",
+  "url": "https://obsproject.com",
+  "license": "GPL-2.0"
+ },
+ {
+  "repo": "upscayl/upscayl",
+  "name": "Upscayl",
+  "desc": "تكبير الصور وتحسين جودتها بالذكاء الاصطناعي",
+  "url": "https://upscayl.org",
+  "license": "AGPL-3.0"
+ },
+ {
+  "repo": "LibreOffice/core",
+  "name": "LibreOffice",
+  "desc": "بديل مجاني لمايكروسوفت أوفيس (وورد وإكسل وبوربوينت)",
+  "url": "https://www.libreoffice.org/download/download-libreoffice/",
+  "license": "GPL-3.0 / MPL-2.0"
+ },
+ {
+  "repo": "videolan/vlc",
+  "name": "VLC",
+  "desc": "مشغل فيديو وصوت يفتح أي صيغة بدون أكواد إضافية",
+  "url": "https://www.videolan.org/vlc/",
+  "license": "GPL-2.0"
+ },
+ {
+  "repo": "GNOME/gimp",
+  "name": "GIMP",
+  "desc": "تعديل الصور باحتراف، بديل مجاني لفوتوشوب",
+  "url": "https://www.gimp.org",
+  "license": "GPL-3.0"
+ },
+ {
+  "repo": "KDE/krita",
+  "name": "Krita",
+  "desc": "برنامج رسم رقمي احترافي ومجاني",
+  "url": "https://krita.org",
+  "license": "GPL-3.0"
+ },
+ {
+  "repo": "inkscape/inkscape",
+  "name": "Inkscape",
+  "desc": "تصميم الشعارات والرسومات المتجهة، بديل إليستريتور",
+  "url": "https://inkscape.org",
+  "license": "GPL-3.0"
+ },
+ {
+  "repo": "KDE/kdenlive",
+  "name": "Kdenlive",
+  "desc": "مونتاج فيديو مجاني بدون علامة مائية",
+  "url": "https://kdenlive.org",
+  "license": "GPL-3.0"
+ },
+ {
+  "repo": "HandBrake/HandBrake",
+  "name": "HandBrake",
+  "desc": "تحويل وضغط الفيديو بجودة عالية",
+  "url": "https://handbrake.fr",
+  "license": "GPL-2.0"
+ },
+ {
+  "repo": "ShareX/ShareX",
+  "name": "ShareX",
+  "desc": "لقطات الشاشة وتسجيلها مع أدوات تحرير وشرح (ويندوز)",
+  "url": "https://getsharex.com",
+  "license": "GPL-3.0"
+ },
+ {
+  "repo": "flameshot-org/flameshot",
+  "name": "Flameshot",
+  "desc": "لقطات شاشة سريعة مع رسم وكتابة على الصورة",
+  "url": "https://flameshot.org",
+  "license": "GPL-3.0"
+ },
+ {
+  "repo": "keepassxreboot/keepassxc",
+  "name": "KeePassXC",
+  "desc": "مدير كلمات مرور آمن يعمل بدون إنترنت",
+  "url": "https://keepassxc.org",
+  "license": "GPL-2.0/3.0"
+ },
+ {
+  "repo": "qbittorrent/qBittorrent",
+  "name": "qBittorrent",
+  "desc": "برنامج تحميل تورنت بدون إعلانات",
+  "url": "https://www.qbittorrent.org",
+  "license": "GPL-2.0"
+ },
+ {
+  "repo": "notepad-plus-plus/notepad-plus-plus",
+  "name": "Notepad++",
+  "desc": "محرر نصوص وأكواد سريع وخفيف (ويندوز)",
+  "url": "https://notepad-plus-plus.org",
+  "license": "GPL-3.0"
+ },
+ {
+  "repo": "jitsi/jitsi-meet",
+  "name": "Jitsi Meet",
+  "desc": "اجتماعات فيديو مجانية بدون حساب",
+  "url": "https://meet.jit.si",
+  "license": "Apache-2.0"
+ },
+ {
+  "repo": "syncthing/syncthing",
+  "name": "Syncthing",
+  "desc": "مزامنة الملفات بين أجهزتك مباشرة بدون سحابة",
+  "url": "https://syncthing.net",
+  "license": "MPL-2.0"
+ },
+ {
+  "repo": "blender/blender",
+  "name": "Blender",
+  "desc": "نمذجة ثلاثية الأبعاد وأنيميشن ومونتاج مجاناً",
+  "url": "https://www.blender.org",
+  "license": "GPL-3.0"
+ },
+ {
+  "repo": "ollama/ollama",
+  "name": "Ollama",
+  "desc": "شغّل نماذج ذكاء اصطناعي على جهازك مجاناً",
+  "url": "https://ollama.com",
+  "license": "MIT"
+ },
+ {
+  "repo": "openai/whisper",
+  "name": "Whisper",
+  "desc": "تحويل الصوت إلى نص بدقة عالية ويدعم العربية",
+  "url": "https://github.com/openai/whisper",
+  "license": "MIT"
+ },
+ {
+  "repo": "comfyanonymous/ComfyUI",
+  "name": "ComfyUI",
+  "desc": "توليد الصور بالذكاء الاصطناعي على جهازك",
+  "url": "https://www.comfy.org",
+  "license": "GPL-3.0"
+ }
+]

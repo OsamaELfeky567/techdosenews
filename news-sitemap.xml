@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/1password-data-breach-phishing-warning-slaj1l/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-26T07:14:08Z</news:publication_date>
+      <news:title>تحذير رسمي من هجمات التصيد الاحتيالي بعد اختراق أمني في شركة 1Password</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/cd-projekt-red-the-witcher-4-ambitions-08h6vg/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>

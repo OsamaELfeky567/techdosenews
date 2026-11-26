@@ -1,5 +1,15 @@
 [
   {
+    "at": "2026-11-26T07:14:08.365Z",
+    "status": "published",
+    "title": "تحذير رسمي من هجمات التصيد الاحتيالي بعد اختراق أمني في شركة 1Password",
+    "errors": [
+      "thin body 217w < 280",
+      "thin body 220w < 280"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-26T06:13:46.797Z",
     "status": "published",
     "title": "استوديو التطوير يطمح لتحقيق نقلة نوعية كبرى في لعبة ذا ويتشر 4",

@@ -1,5 +1,12 @@
 [
   {
+    "at": "2026-11-27T12:29:03.172Z",
+    "status": "published",
+    "title": "تداعيات أمنية واقتصادية لهجمات الحوثيين الأخيرة في المملكة",
+    "errors": [],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-27T11:29:03.081Z",
     "status": "published",
     "title": "أماكن معامل المخدرات الخفية في لعبة جي تي إيه 6 وطريقة فتحها",
@@ -515,18 +522,5 @@
       "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later"
     ],
     "provider": "gemini:gemini-3.1-flash-lite"
-  },
-  {
-    "at": "2026-11-25T05:52:16.368Z",
-    "status": "no_article_passed",
-    "title": "",
-    "errors": [
-      "thin body 150w < 250",
-      "thin body 195w < 250",
-      "thin body 175w < 250",
-      "thin body 246w < 250",
-      "thin body 161w < 250"
-    ],
-    "provider": ""
   }
 ]

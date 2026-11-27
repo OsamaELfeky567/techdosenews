@@ -135,7 +135,13 @@ function related(a, n = 5) {
 function articlePage(a) {
   const u = url(a);
   const title = a.title.trim();
-  const desc = (a.meta_description || a.excerpt || strip(a.body).slice(0, 155)).trim();
+  let desc = (a.meta_description || a.excerpt || strip(a.body).slice(0, 155)).trim();
+  if (desc.length < 120) { // short meta descriptions are flagged by Bing: extend with the start of the body, cut at a word boundary
+    const bt = strip(a.body);
+    let ext = bt.startsWith(desc.slice(0, 40)) ? bt : (desc + ' ' + bt);
+    if (ext.length > 158) ext = ext.slice(0, 158).replace(/\s+\S*$/, '');
+    if (ext.length > desc.length) desc = ext.trim();
+  }
   let img = a.image && /^https?:/.test(a.image) ? a.image : BASE + '/img/og-image.png';
   let cardOk = false;
   { const out = path.join(OUT, a.path.replace(/^\//, ''), 'og-v2.jpg'); const bgSrc = (a.image && /^https?:/.test(a.image) && !['fallback', 'default'].includes(a.image_source || '') && !a.hero_card) ? a.image : null; cardOk = ensureCard(out, a.title, a.category, bgSrc); if (cardOk) img = u + 'og-v2.jpg'; }

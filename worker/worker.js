@@ -273,6 +273,60 @@ async function handleTgPost(env, req) {
 }
 
 
+
+// ---------- daily free / open-source tools post (Facebook page + Telegram channel) ----------
+async function dailyTools(env, force) {
+  const cairo = new Intl.DateTimeFormat("en-CA", { timeZone: "Africa/Cairo", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
+  const g = (t) => cairo.find((p) => p.type === t).value;
+  const day = `${g("year")}-${g("month")}-${g("day")}`, hour = +g("hour");
+  const dkey = "daily:" + day;
+  if (!force && (hour < 19 || (await env.SUBS.get(dkey)))) return { skipped: true };
+  if (await env.SUBS.get(dkey)) return { skipped: "already posted" };
+  const poolRes = await fetch(env.SITE + "/data/daily-tools.json?c=" + Date.now());
+  if (!poolRes.ok) return { error: "pool unavailable" };
+  const pool = await poolRes.json();
+  const n0 = Math.floor(Date.now() / 86400000), picks = [];
+  for (let i = 0; i < pool.length && picks.length < 3; i++) {
+    const t = pool[(n0 * 3 + i) % pool.length];
+    try {
+      const gh = await fetch("https://api.github.com/repos/" + t.repo, { headers: { "user-agent": "td-arabi-daily" } });
+      if (gh.ok) { const j = await gh.json(); if (j.archived) continue; }
+      const u = await fetch(t.url, { redirect: "follow", headers: { "user-agent": "Mozilla/5.0" } });
+      if (u.status === 404 || u.status >= 500) continue;
+      picks.push(t);
+    } catch { /* skip tools that cannot be verified */ }
+  }
+  if (picks.length < 3) return { error: "not enough verified tools" };
+  const text = "🛠 أدوات مجانية ومفتوحة المصدر النهارده:\n" + picks.map((t) => `• ${t.name}: ${t.desc}. ${t.url}`).join("\n") + "\nأدوات ببلاش على تيليجرام كمان: " + env.SITE + "/free-tools/";
+  const res = { day, tools: picks.map((t) => t.name) };
+  // Telegram channel
+  const r = await tg(env, "sendMessage", { chat_id: env.CHANNEL, text, disable_web_page_preview: true });
+  res.telegram = !!r?.ok;
+  // Facebook page: counts in the 4 posts/day cap
+  const dayKey = "fbday:" + day, dayCount = +(await env.SUBS.get(dayKey) || 0);
+  if (env.FB_PAGE_TOKEN && dayCount < 4) {
+    const f = await fetch(`https://graph.facebook.com/v21.0/${env.FB_PAGE_ID}/feed`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: text, link: env.SITE + "/free-tools/", access_token: env.FB_PAGE_TOKEN }) });
+    const fj = await f.json().catch(() => ({}));
+    res.facebook = !!fj.id;
+    if (fj.id) { await env.SUBS.put(dayKey, String(dayCount + 1), { expirationTtl: 172800 }); await env.SUBS.put("fblast", String(Date.now()), { expirationTtl: 172800 }); }
+  }
+  if (res.telegram || res.facebook) await env.SUBS.put(dkey, JSON.stringify(res), { expirationTtl: 172800 });
+  return res;
+}
+
+
+// ---------- self-dispatch: starts the article workflow when GitHub's own cron has not (needs GH_DISPATCH_TOKEN secret) ----------
+async function autoDispatch(env) {
+  if (!env.GH_DISPATCH_TOKEN) return { skipped: "no token" };
+  const repo = "OsamaELfeky567/techdosenews", H = { authorization: "Bearer " + env.GH_DISPATCH_TOKEN, "user-agent": "td-bot", accept: "application/vnd.github+json" };
+  const r = await fetch(`https://api.github.com/repos/${repo}/actions/workflows/generate.yml/runs?per_page=1`, { headers: H });
+  if (!r.ok) return { error: "runs " + r.status };
+  const run = (await r.json()).workflow_runs?.[0];
+  if (run && (Date.now() - new Date(run.created_at).getTime() < 55 * 60000 || run.status !== "completed")) return { skipped: "recent run" };
+  const d = await fetch(`https://api.github.com/repos/${repo}/actions/workflows/generate.yml/dispatches`, { method: "POST", headers: H, body: JSON.stringify({ ref: "main" }) });
+  return { dispatched: d.status };
+}
+
 // ---------- dashboard stats (aggregates only, refreshed by the cron; served at GET /stats) ----------
 const RAWREPO = "https://raw.githubusercontent.com/OsamaELfeky567/techdosenews/main/";
 const TGCHAT = "-1003896125398";
@@ -362,6 +416,8 @@ export default {
     return new Response("not found", { status: 404 });
   },
   async scheduled(event, env, ctx) {
+    ctx.waitUntil(dailyTools(env, false).then((r) => console.log('daily tools:', JSON.stringify(r))).catch((e) => console.log('daily tools failed:', e.message)));
+    ctx.waitUntil(autoDispatch(env).then((r) => console.log('auto dispatch:', JSON.stringify(r))).catch((e) => console.log('auto dispatch failed:', e.message)));
     ctx.waitUntil(collectStats(env).catch((e) => console.log("stats failed:", e.message)));
     // keep the Modal container warm so users never wait on a cold start
     const png = Uint8Array.from(atob("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="), (c) => c.charCodeAt(0));

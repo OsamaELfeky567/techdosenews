@@ -1,5 +1,12 @@
 [
   {
+    "at": "2026-11-27T16:15:04.003Z",
+    "status": "skipped_daily_cap",
+    "title": "",
+    "errors": [],
+    "provider": ""
+  },
+  {
     "at": "2026-11-27T15:08:32.920Z",
     "status": "published",
     "title": "ضغوط الإدارة الأمريكية على إنتل للتنازل عن حصة مالية مقابل المنح",
@@ -511,14 +518,5 @@
       "thin body 267w < 300"
     ],
     "provider": ""
-  },
-  {
-    "at": "2026-11-25T10:03:21.776Z",
-    "status": "published",
-    "title": "سامسونج تخفض مستهدف شحنات هواتفها الذكية لعام 2027 إلى 210 ملايين وحدة",
-    "errors": [
-      "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later"
-    ],
-    "provider": "gemini:gemini-3.1-flash-lite"
   }
 ]

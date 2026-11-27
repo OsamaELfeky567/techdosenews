@@ -15,7 +15,7 @@ const HEADER = `<header class="sb-header"><div class="sb-container">
 const FOOTER = `<footer class="sb-footer"><div class="sb-container">
 <div class="sb-footer-grid"><div class="sb-footer-col"><div class="sb-footer-logo">TD <span>بالعربي</span></div>
 <p>منصة عربية متخصصة في تغطية أخبار التقنية والذكاء الاصطناعي، مع أدوات مجانية تعمل داخل متصفحك.</p></div></div>
-<div class="sb-footer-bottom"><p>© ${new Date().getUTCFullYear()} TD بالعربي — جميع الحقوق محفوظة.</p>
+<div class="sb-footer-bottom"><p class="sb-social" style="margin:0 0 10px;font-size:.95rem">تابعنا: <a href="https://t.me/td_arabi" target="_blank" rel="noopener">تيليجرام</a> · <a href="https://www.facebook.com/tdarabi" target="_blank" rel="noopener">فيسبوك</a> · <a href="https://www.instagram.com/td_arabi/" target="_blank" rel="noopener">إنستجرام</a></p><p>© ${new Date().getUTCFullYear()} TD بالعربي — جميع الحقوق محفوظة.</p>
 <p style="margin-top:8px;font-size:.8rem">${SOCIAL_OK ? `<a href="${esc(site.telegram_url)}" target="_blank" rel="noopener">تيليجرام</a> · ${site.facebook_url ? `<a href="${esc(site.facebook_url)}" target="_blank" rel="noopener">فيسبوك</a> · ` : ''}` : ''}<a href="/free-tools/">أدوات مجانية</a> · <a href="/about.html">من نحن</a> · <a href="/contact.html">اتصل بنا</a> · <a href="/privacy.html">سياسة الخصوصية</a> · <a href="/terms.html">شروط الاستخدام</a> · <a href="/disclaimer.html">إخلاء مسؤولية</a> · <a href="/editorial-policy.html">السياسة التحريرية</a></p></div>
 </div></footer>`;
 const HEAD_COMMON = `<meta charset="UTF-8">

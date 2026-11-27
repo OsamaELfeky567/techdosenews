@@ -1,5 +1,18 @@
 [
   {
+    "at": "2026-11-27T10:29:03.412Z",
+    "status": "no_article_passed",
+    "title": "",
+    "errors": [
+      "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later",
+      "thin body 197w < 280",
+      "thin body 257w < 280",
+      "thin body 238w < 280",
+      "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later"
+    ],
+    "provider": ""
+  },
+  {
     "at": "2026-11-27T09:29:09.105Z",
     "status": "published",
     "title": "نصائح مفيدة لتحسين تشغيل الألعاب الكلاسيكية والحديثة على الهواتف",
@@ -519,19 +532,6 @@
       "thin body 210w < 250",
       "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later",
       "thin body 194w < 250"
-    ],
-    "provider": ""
-  },
-  {
-    "at": "2026-11-25T01:33:27.149Z",
-    "status": "no_article_passed",
-    "title": "",
-    "errors": [
-      "thin body 160w < 250",
-      "thin body 131w < 250",
-      "thin body 192w < 250",
-      "thin body 171w < 250",
-      "thin body 146w < 250"
     ],
     "provider": ""
   }

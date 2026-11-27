@@ -1,5 +1,12 @@
 [
   {
+    "at": "2026-11-27T22:15:03.497Z",
+    "status": "skipped_daily_cap",
+    "title": "",
+    "errors": [],
+    "provider": ""
+  },
+  {
     "at": "2026-11-27T21:15:06.644Z",
     "status": "skipped_daily_cap",
     "title": "",
@@ -487,13 +494,6 @@
   },
   {
     "at": "2026-11-25T17:07:20.203Z",
-    "status": "no_candidates",
-    "title": "",
-    "errors": [],
-    "provider": ""
-  },
-  {
-    "at": "2026-11-25T16:06:59.673Z",
     "status": "no_candidates",
     "title": "",
     "errors": [],

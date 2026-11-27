@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/gta-6-anthropic-ipo-tech-news-mwtl4q/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-27T00:21:55Z</news:publication_date>
+      <news:title>إطلاق لعبة جي تي إيه 6 يتزامن مع طرح شركة أنثروبيك للاكتتاب العام</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/earning-money-from-stealing-cars-in-gta-6-ayl8u7/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>

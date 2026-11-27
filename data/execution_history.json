@@ -1,5 +1,14 @@
 [
   {
+    "at": "2026-11-27T00:21:55.073Z",
+    "status": "published",
+    "title": "إطلاق لعبة جي تي إيه 6 يتزامن مع طرح شركة أنثروبيك للاكتتاب العام",
+    "errors": [
+      "thin body 269w < 280"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-26T23:21:29.961Z",
     "status": "skipped_daily_cap",
     "title": "",

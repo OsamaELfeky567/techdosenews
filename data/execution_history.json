@@ -1,5 +1,16 @@
 [
   {
+    "at": "2026-11-27T06:31:00.214Z",
+    "status": "published",
+    "title": "تحديث جديد لتطبيق رسائل سامسونج يمهد لدعم مهام الذكاء الاصطناعي",
+    "errors": [
+      "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later",
+      "thin body 194w < 280",
+      "expand gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usu"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-27T05:23:19.583Z",
     "status": "no_article_passed",
     "title": "",
@@ -532,16 +543,5 @@
       "gemini:gemini-3.1-flash-lite: gemini gemini-3.1-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later"
     ],
     "provider": "gemini:gemini-3.6-flash"
-  },
-  {
-    "at": "2026-11-24T17:15:13.143Z",
-    "status": "published",
-    "title": "Porsche تكشف عن نموذج أولي للـ 718 Boxster الكهربائي بموضع بطارية منخفض",
-    "errors": [
-      "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later",
-      "gemini:gemini-3.1-flash-lite: gemini gemini-3.1-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later",
-      "gemini:gemini-3.6-flash: gemini gemini-3.6-flash HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later"
-    ],
-    "provider": "groq:openai/gpt-oss-120b"
   }
 ]

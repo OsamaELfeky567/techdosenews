@@ -1,5 +1,15 @@
 [
   {
+    "at": "2026-11-27T05:05:11.943Z",
+    "status": "published",
+    "title": "تسريبات غير مؤكدة: هواوي تطور هاتفاً عريضاً جديداً بشاشة مسطحة",
+    "errors": [
+      "thin body 241w < 280",
+      "thin body 219w < 280"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-27T04:23:05.767Z",
     "status": "published",
     "title": "تسريبات غير مؤكدة حول هاتف Vivo X500s ومعالج Dimensity المخصص",
@@ -532,14 +542,5 @@
       "gemini:gemini-3.6-flash: gemini gemini-3.6-flash HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later"
     ],
     "provider": ""
-  },
-  {
-    "at": "2026-11-24T16:45:02.048Z",
-    "status": "published",
-    "title": "تسريبات تشير إلى تغييرات جذرية في نظام كاميرا هاتف Galaxy S27 Ultra",
-    "errors": [
-      "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later"
-    ],
-    "provider": "gemini:gemini-3.1-flash-lite"
   }
 ]

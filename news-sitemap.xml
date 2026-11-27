@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/huawei-new-wide-phone-leak-9e9ij5/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-27T05:05:11Z</news:publication_date>
+      <news:title>تسريبات غير مؤكدة: هواوي تطور هاتفاً عريضاً جديداً بشاشة مسطحة</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/vivo-x500s-dimensity-9600-pro-leak-vtzdck/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>

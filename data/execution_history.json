@@ -1,5 +1,14 @@
 [
   {
+    "at": "2026-11-27T08:31:26.368Z",
+    "status": "published",
+    "title": "إطلاق دليل وطني لأولياء الأمور حول الذكاء الاصطناعي بالتعليم في الإمارات",
+    "errors": [
+      "thin body 225w < 280"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-27T07:31:16.854Z",
     "status": "published",
     "title": "إطلاق سلسلة هواتف هواوي نوفا 16 إس في الإمارات بأسعار تبدأ من 1,799 درهماً",
@@ -525,19 +534,6 @@
       "thin body 219w < 250",
       "thin body 202w < 250",
       "thin body 201w < 250"
-    ],
-    "provider": ""
-  },
-  {
-    "at": "2026-11-24T23:01:42.626Z",
-    "status": "no_article_passed",
-    "title": "",
-    "errors": [
-      "thin body 162w < 250",
-      "thin body 161w < 250",
-      "thin body 163w < 250",
-      "thin body 163w < 250",
-      "thin body 165w < 250"
     ],
     "provider": ""
   }

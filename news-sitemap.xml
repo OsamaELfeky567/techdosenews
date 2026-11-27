@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/uae-parents-guide-ai-education-9trk9i/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-27T08:31:26Z</news:publication_date>
+      <news:title>إطلاق دليل وطني لأولياء الأمور حول الذكاء الاصطناعي بالتعليم في الإمارات</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/huawei-nova-16s-uae-launch-dn59l1/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
@@ -246,14 +254,6 @@
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
       <news:publication_date>2026-11-25T08:39:37Z</news:publication_date>
       <news:title>أسباب تحمل مستخدمو اللغة العربية تكاليف إضافية لخدمات الذكاء الاصطناعي</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://td-arabi.com/news/acer-middle-east-market-overview-gitex-tpqo5h/</loc>
-    <news:news>
-      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
-      <news:publication_date>2026-11-25T08:21:05Z</news:publication_date>
-      <news:title>استعراض ملامح سوق الحوسبة في الشرق الأوسط وخطط آيسر المستقبلية</news:title>
     </news:news>
   </url>
 </urlset>

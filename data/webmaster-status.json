@@ -1,5 +1,28 @@
 {
-  "updated": "2026-11-27T13:45:00+02:00",
-  "bing": {"clicks": 0, "impressions": 21, "indexed_pages": null, "sitemaps": 4, "sitemap_errors": 0, "urls_discovered": 110, "indexnow_submitted_total": 597, "issues": ["short meta descriptions (fixed 27 Nov)", "few quality backlinks"]},
-  "yandex": {"clicks": null, "impressions": null, "pages_in_search": null, "site_problems": 0, "recommendations": ["duplicate descriptions on article.html (fixed 27 Nov)", "favicon (exists, stale check from June)"], "reindex_sent_today": 31, "note": "Yandex Summary and crawl statistics are down on Yandex side on 27 Nov"}
+ "updated": "2026-11-27T21:53:00+02:00",
+ "bing": {
+  "clicks": 0,
+  "impressions": 21,
+  "indexed_pages": null,
+  "sitemaps": 4,
+  "sitemap_errors": 0,
+  "urls_discovered": 249,
+  "indexnow_submitted_total": 597,
+  "issues": [
+   "short meta descriptions (fixed 27 Nov)",
+   "few quality backlinks"
+  ]
+ },
+ "yandex": {
+  "clicks": null,
+  "impressions": null,
+  "pages_in_search": null,
+  "site_problems": 0,
+  "recommendations": [
+   "duplicate descriptions on article.html (fixed 27 Nov)",
+   "favicon (exists, stale check from June)"
+  ],
+  "reindex_sent_today": 31,
+  "note": "Yandex Summary, pages in search and crawl stats still down on Yandex side on 27 Nov 21:50"
+ }
 }

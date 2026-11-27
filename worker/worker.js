@@ -232,7 +232,7 @@ async function handleFbPost(env, req) {
   // pacing: a new page with few followers looks spammy if it posts every hour. Max 4 posts per day (Cairo), at least 4h apart.
   const dayKey = "fbday:" + new Date(Date.now() + 2 * 3600e3).toISOString().slice(0, 10);
   const dayCount = +(await env.SUBS.get(dayKey) || 0), lastAt = +(await env.SUBS.get("fblast") || 0);
-  if (dayCount >= 4 || Date.now() - lastAt < 4 * 3600e3) return json({ ok: true, skipped: "paced", day_count: dayCount });
+  if (dayCount >= 6 || Date.now() - lastAt < 2.5 * 3600e3) return json({ ok: true, skipped: "paced", day_count: dayCount });
   const page = await fetch(link, { headers: { "user-agent": "td-arabi-fb-poster" } });
   if (!page.ok) return json({ ok: false, error: "page not live", status: page.status }, 404);
   const html = await page.text();
@@ -252,39 +252,92 @@ async function handleFbPost(env, req) {
   return json({ ok: true, post_id: j.id });
 }
 
-// ---- Instagram auto-post (td_arabi business account linked to the Page). Same pacing idea as /fbpost: max 3/day, 4h apart ----
-async function handleIgPost(env, req) {
+// ---- Instagram daily carousel (built by .github/workflows/carousel.yml, posted here). One per Cairo day, fixed evening slot. ----
+const cairoNow = () => {
+  const f = (o) => new Intl.DateTimeFormat("en-CA", { timeZone: "Africa/Cairo", ...o }).format(new Date());
+  const hm = new Intl.DateTimeFormat("en-GB", { timeZone: "Africa/Cairo", hour: "2-digit", minute: "2-digit", hour12: false }).format(new Date());
+  return { date: f({}), min: +hm.slice(0, 2) * 60 + +hm.slice(3, 5) };
+};
+const IG_SLOT_MIN = 20 * 60 + 30; // 20:30 Cairo
+const igG = "https://graph.facebook.com/v21.0/";
+async function igStatus(env, id) {
+  let st = "";
+  for (let i = 0; i < 10; i++) {
+    await new Promise((r) => setTimeout(r, 2500));
+    const s = await (await fetch(igG + id + "?fields=status_code&access_token=" + env.IG_PAGE_TOKEN)).json().catch(() => ({}));
+    st = s.status_code; if (st === "FINISHED" || st === "ERROR" || st === "EXPIRED") break;
+  }
+  return st;
+}
+async function postJson(url, body) { return (await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) })).json().catch(() => ({})); }
+async function handleIgCarousel(env, req) {
   if (!env.IG_PAGE_TOKEN || !env.IG_USER_ID) return json({ ok: false, error: "ig not configured" }, 503);
   const body = await req.json().catch(() => ({}));
-  const link = String(body.url || "");
-  if (!link.startsWith(env.SITE + "/news/") || link.length > 300) return json({ ok: false, error: "bad url" }, 400);
-  const key = "igpost:" + link;
+  const date = String(body.date || "");
+  if (date !== cairoNow().date) return json({ ok: false, error: "date is not today (Cairo)" }, 400);
+  const key = "igcar:" + date;
   if (await env.SUBS.get(key)) return json({ ok: true, skipped: "already posted" });
-  const dayKey = "igday:" + new Date(Date.now() + 2 * 3600e3).toISOString().slice(0, 10);
-  const dayCount = +(await env.SUBS.get(dayKey) || 0), lastAt = +(await env.SUBS.get("iglast") || 0);
-  if (dayCount >= 3 || Date.now() - lastAt < 4 * 3600e3) return json({ ok: true, skipped: "paced", day_count: dayCount });
-  const page = await fetch(link, { headers: { "user-agent": "td-arabi-ig-poster" } });
-  if (!page.ok) return json({ ok: false, error: "page not live", status: page.status }, 404);
-  const html = await page.text();
-  const title = metaOf(html, "og:title"), desc = metaOf(html, "og:description"), image = metaOf(html, "og:image");
-  if (!image || !/\.jpe?g(\?|$)/i.test(image)) return json({ ok: false, error: "no jpeg image" }, 422);
-  const caption = [title, desc && desc.slice(0, 220), "🔗 الرابط في البايو: td-arabi.com"].filter(Boolean).join("\n\n");
-  const G = "https://graph.facebook.com/v21.0/";
-  const c = await (await fetch(G + env.IG_USER_ID + "/media", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ image_url: image, caption, access_token: env.IG_PAGE_TOKEN }) })).json().catch(() => ({}));
-  if (!c.id) return json({ ok: false, error: "container error", detail: c.error?.message }, 502);
-  let st = "";
-  for (let i = 0; i < 8; i++) {
-    await new Promise((r) => setTimeout(r, 2000));
-    const s = await (await fetch(G + c.id + "?fields=status_code&access_token=" + env.IG_PAGE_TOKEN)).json().catch(() => ({}));
-    st = s.status_code; if (st === "FINISHED" || st === "ERROR") break;
+  const base = `${env.SITE}/carousel/${date}/`;
+  const mr = await fetch(base + "meta.json?c=" + Date.now());
+  if (!mr.ok) return json({ ok: false, error: "meta not live", status: mr.status }, 404);
+  const meta = await mr.json();
+  const slides = (meta.slides || []).slice(0, 10);
+  if (slides.length < 5) return json({ ok: false, error: "too few slides" }, 422);
+  const fail = async (error, detail) => { await env.SUBS.put("igcar-last", JSON.stringify({ date, ok: false, error, detail: String(detail || "").slice(0, 200), at: new Date().toISOString() }), { expirationTtl: 60 * 60 * 24 * 14 }); return json({ ok: false, error, detail }, 502); };
+  const kids = await Promise.all(slides.map((s) => postJson(igG + env.IG_USER_ID + "/media", { image_url: base + s, is_carousel_item: true, access_token: env.IG_PAGE_TOKEN })));
+  if (kids.some((k) => !k.id)) return fail("child container error", kids.find((k) => !k.id)?.error?.message);
+  for (const k of kids) { const st = await igStatus(env, k.id); if (st !== "FINISHED") return fail("child not ready", st); }
+  const c = await postJson(igG + env.IG_USER_ID + "/media", { media_type: "CAROUSEL", children: kids.map((k) => k.id).join(","), caption: String(meta.caption || "").slice(0, 2000), access_token: env.IG_PAGE_TOKEN });
+  if (!c.id) return fail("carousel container error", c.error?.message);
+  const st = await igStatus(env, c.id);
+  if (st !== "FINISHED") return fail("carousel not ready", st);
+  const p = await postJson(igG + env.IG_USER_ID + "/media_publish", { creation_id: c.id, access_token: env.IG_PAGE_TOKEN });
+  if (!p.id) return fail("publish error", p.error?.message);
+  await env.SUBS.put(key, p.id, { expirationTtl: 60 * 60 * 24 * 30 });
+  let permalink = "";
+  try { permalink = (await (await fetch(igG + p.id + "?fields=permalink&access_token=" + env.IG_PAGE_TOKEN)).json()).permalink || ""; } catch {}
+  await env.SUBS.put("igcar-last", JSON.stringify({ date, ok: true, media_id: p.id, permalink, slides: slides.length, at: new Date().toISOString() }), { expirationTtl: 60 * 60 * 24 * 14 });
+  // one native Facebook photo post a day, no link: the cover slide with the headlines
+  let fbNative = false;
+  if (env.FB_PAGE_TOKEN && !(await env.SUBS.get("fbnative:" + date))) {
+    const heads = (meta.stories || []).slice(0, 5).map((s, i) => `${i + 1}. ${s.title}`).join("\n");
+    const f = await postJson(`https://graph.facebook.com/v21.0/${env.FB_PAGE_ID}/photos`, { url: base + slides[0], message: "أهم أخبار التقنية اليوم:\n\n" + heads, access_token: env.FB_PAGE_TOKEN });
+    if (f.id) { fbNative = true; await env.SUBS.put("fbnative:" + date, f.id, { expirationTtl: 172800 }); }
   }
-  if (st !== "FINISHED") return json({ ok: false, error: "container not ready", status: st }, 502);
-  const p = await (await fetch(G + env.IG_USER_ID + "/media_publish", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ creation_id: c.id, access_token: env.IG_PAGE_TOKEN }) })).json().catch(() => ({}));
-  if (!p.id) return json({ ok: false, error: "publish error", detail: p.error?.message }, 502);
-  await env.SUBS.put(key, p.id, { expirationTtl: 60 * 60 * 24 * 90 });
-  await env.SUBS.put(dayKey, String(dayCount + 1), { expirationTtl: 172800 });
-  await env.SUBS.put("iglast", String(Date.now()), { expirationTtl: 172800 });
-  return json({ ok: true, media_id: p.id });
+  return json({ ok: true, media_id: p.id, permalink, fb_native: fbNative });
+}
+// Telegram evening digest: top 5 of the day's carousel stories (notification ON; article posts are silent)
+async function handleTgDigest(env, req) {
+  const body = await req.json().catch(() => ({}));
+  const date = String(body.date || "");
+  if (date !== cairoNow().date) return json({ ok: false, error: "date is not today (Cairo)" }, 400);
+  const key = "tgdigest:" + date;
+  if (await env.SUBS.get(key)) return json({ ok: true, skipped: "already posted" });
+  const mr = await fetch(`${env.SITE}/carousel/${date}/meta.json?c=${Date.now()}`);
+  if (!mr.ok) return json({ ok: false, error: "meta not live" }, 404);
+  const meta = await mr.json();
+  const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const items = (meta.stories || []).slice(0, 5);
+  if (items.length < 3) return json({ ok: false, error: "too few stories" }, 422);
+  const text = `<b>🗞 أهم ${items.length} أخبار التقنية اليوم</b>\n\n` + items.map((s, i) => `${i + 1}. <a href="${s.url}">${esc(s.title)}</a>`).join("\n\n") + `\n\n🌐 ${env.SITE}`;
+  const r = await tg(env, "sendMessage", { chat_id: env.CHANNEL, text, parse_mode: "HTML", disable_web_page_preview: true });
+  if (!r?.ok) return json({ ok: false, error: "telegram error", detail: r?.description }, 502);
+  await env.SUBS.put(key, String(r.result?.message_id || 1), { expirationTtl: 172800 });
+  return json({ ok: true, message_id: r.result?.message_id });
+}
+// cron: start the carousel workflow from 20:30 Cairo if today's carousel is not posted (retries every ~30 min, max 3 runs, until 22:30)
+async function igCarouselCron(env) {
+  if (!env.GH_DISPATCH_TOKEN) return { skipped: "no token" };
+  const { date, min } = cairoNow();
+  if (min < IG_SLOT_MIN || min > 22 * 60 + 30) return { skipped: "outside slot" };
+  if (await env.SUBS.get("igcar:" + date)) return { skipped: "posted" };
+  const dk = "igcar-disp:" + date, d = JSON.parse((await env.SUBS.get(dk)) || '{"n":0,"t":0}');
+  if (d.n >= 3 || Date.now() - d.t < 28 * 60000) return { skipped: "wait", n: d.n };
+  const repo = "OsamaELfeky567/techdosenews";
+  const r = await fetch(`https://api.github.com/repos/${repo}/actions/workflows/carousel.yml/dispatches`, { method: "POST", headers: { authorization: "Bearer " + env.GH_DISPATCH_TOKEN, "user-agent": "td-bot", accept: "application/vnd.github+json" }, body: JSON.stringify({ ref: "main" }) });
+  await env.SUBS.put(dk, JSON.stringify({ n: d.n + 1, t: Date.now() }), { expirationTtl: 172800 });
+  if (r.status !== 204) await env.SUBS.put("igcar-last", JSON.stringify({ date, ok: false, error: "dispatch " + r.status, at: new Date().toISOString() }), { expirationTtl: 60 * 60 * 24 * 14 });
+  return { dispatched: r.status, n: d.n + 1 };
 }
 
 // ---- Telegram channel auto-post (same safety rules as /fbpost) ----
@@ -300,8 +353,8 @@ async function handleTgPost(env, req) {
   const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   const title = metaOf(html, "og:title"), desc = metaOf(html, "og:description"), img = metaOf(html, "og:image");
   const text = `<b>${esc(title)}</b>\n\n${esc(desc.slice(0, 220))}\n\n🔗 ${link}\n\n📘 فيسبوك: https://www.facebook.com/tdarabi\n🌐 الموقع: ${env.SITE}`;
-  let r = img && !/og-image\.png$/.test(img) ? await tg(env, "sendPhoto", { chat_id: env.CHANNEL, photo: img, caption: text, parse_mode: "HTML" }) : null;
-  if (!r?.ok) r = await tg(env, "sendMessage", { chat_id: env.CHANNEL, text, parse_mode: "HTML" });
+  let r = img && !/og-image\.png$/.test(img) ? await tg(env, "sendPhoto", { chat_id: env.CHANNEL, photo: img, caption: text, parse_mode: "HTML", disable_notification: true }) : null;
+  if (!r?.ok) r = await tg(env, "sendMessage", { chat_id: env.CHANNEL, text, parse_mode: "HTML", disable_notification: true });
   if (!r?.ok) return json({ ok: false, error: "telegram error", detail: r?.description }, 502);
   await env.SUBS.put(key, String(r.result?.message_id || 1), { expirationTtl: 60 * 60 * 24 * 90 });
   return json({ ok: true, message_id: r.result?.message_id });
@@ -414,6 +467,10 @@ async function collectStats(env) {
     if (!Object.keys(ins).length) out.notes.push("ملاحظة: Meta لا توفر بعد إحصائيات الوصول والمشاهدات لصفحة فيسبوك الجديدة. المتابعون والبوستات والتعليقات والتفاعلات حية.");
   }
   out.facebook = fb;
+  if (env.IG_PAGE_TOKEN && env.IG_USER_ID) {
+    const ig = await gj(`https://graph.facebook.com/v21.0/${env.IG_USER_ID}?fields=username,followers_count,media_count&access_token=${env.IG_PAGE_TOKEN}`);
+    out.instagram = { ...(ig && !ig.error ? { username: ig.username, followers: ig.followers_count, media_count: ig.media_count } : { error: "ig read failed" }), last_carousel: JSON.parse((await env.SUBS.get("igcar-last")) || "null") };
+  }
   const tgm = env.BOT_TOKEN ? await gj(`https://api.telegram.org/bot${env.BOT_TOKEN}/getChatMemberCount?chat_id=${TGCHAT}`) : null;
   out.telegram = tgm?.ok ? { members: tgm.result } : {};
   out.gsc = gsc || {}; if (base) out.baseline = base;
@@ -445,7 +502,8 @@ export default {
     if (req.method === "POST" && url.pathname === `/broadcast/${env.BROADCAST_SECRET}`)
       return handleBroadcast(env, req);
     if (req.method === "POST" && url.pathname === "/fbpost") return handleFbPost(env, req);
-    if (req.method === "POST" && url.pathname === "/igpost") return handleIgPost(env, req);
+    if (req.method === "POST" && url.pathname === "/igcarousel") return handleIgCarousel(env, req);
+    if (req.method === "POST" && url.pathname === "/tgdigest") return handleTgDigest(env, req);
     if (req.method === "POST" && url.pathname === "/tgpost") return handleTgPost(env, req);
     if (req.method === "GET" && url.pathname === "/stats") return handleStats(env, ctx);
     if (url.pathname === "/health") return json({ ok: true });
@@ -453,6 +511,7 @@ export default {
   },
   async scheduled(event, env, ctx) {
     ctx.waitUntil(dailyTools(env, false).then((r) => console.log('daily tools:', JSON.stringify(r))).catch((e) => console.log('daily tools failed:', e.message)));
+    ctx.waitUntil(igCarouselCron(env).then((r) => console.log('ig carousel cron:', JSON.stringify(r))).catch((e) => console.log('ig carousel cron failed:', e.message)));
     ctx.waitUntil(autoDispatch(env).then((r) => console.log('auto dispatch:', JSON.stringify(r))).catch((e) => console.log('auto dispatch failed:', e.message)));
     ctx.waitUntil(collectStats(env).catch((e) => console.log("stats failed:", e.message)));
     // keep the Modal container warm so users never wait on a cold start

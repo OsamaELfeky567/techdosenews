@@ -1,0 +1,62 @@
+name: Instagram daily carousel
+
+# Started by the td-bot Cloudflare worker cron (20:30 Cairo). Renders slides, publishes them to the site,
+# then asks the worker to post the carousel to Instagram and the evening digest to Telegram.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: carousel
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  carousel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Render slides
+        id: render
+        run: |
+          node scripts/ig-carousel.mjs | tee /tmp/car.json
+          echo "ok=$(jq -r '.ok' /tmp/car.json)" >> "$GITHUB_OUTPUT"
+          echo "date=$(jq -r '.date // empty' /tmp/car.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Publish slides to the site
+        if: steps.render.outputs.ok == 'true'
+        run: |
+          # keep only the last 7 days of slides
+          ls -d carousel/*/ 2>/dev/null | sort | head -n -7 | xargs -r rm -rf
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add carousel
+          if git diff --staged --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "auto: instagram carousel ${{ steps.render.outputs.date }} [bot]"
+          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done
+
+      - name: Wait until the slides are live
+        if: steps.render.outputs.ok == 'true'
+        run: |
+          D=${{ steps.render.outputs.date }}
+          for i in $(seq 1 30); do
+            c=$(curl -s -o /dev/null -w '%{http_code}' "https://td-arabi.com/carousel/$D/s1.jpg?c=$RANDOM")
+            m=$(curl -s -o /dev/null -w '%{http_code}' "https://td-arabi.com/carousel/$D/meta.json?c=$RANDOM")
+            [ "$c" = 200 ] && [ "$m" = 200 ] && exit 0
+            sleep 10
+          done
+          echo "slides not live in time"; exit 1
+
+      - name: Post to Instagram and Telegram (via worker)
+        if: steps.render.outputs.ok == 'true'
+        run: |
+          D=${{ steps.render.outputs.date }}
+          curl -s -X POST https://td-bot.td-arabi.workers.dev/igcarousel -H 'content-type: application/json' -d "{\"date\":\"$D\"}" | tee /tmp/ig.out
+          curl -s -X POST https://td-bot.td-arabi.workers.dev/tgdigest -H 'content-type: application/json' -d "{\"date\":\"$D\"}" | tee /tmp/tg.out
+          jq -e '.ok == true' /tmp/ig.out

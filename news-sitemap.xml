@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/gta-6-furry-rescue-mission-details-v4xvqs/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-27T02:22:35Z</news:publication_date>
+      <news:title>تفاصيل مهمة لإنقاذ شخصية تعود لمجتمع في لعبة جي تي إيه 6</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/rockstar-gta-6-unionization-vote-fails-52482h/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>

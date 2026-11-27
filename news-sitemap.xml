@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/gta-vi-different-ending-details-75o1vn/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-27T14:29:04Z</news:publication_date>
+      <news:title>تفاصيل جديدة حول طبيعة نهاية لعبة جراند ثفت أوتو 6 واستبعاد النهايات التقليدية</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/indian-police-rescue-cyber-fraud-victims-ck3qzi/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
@@ -246,14 +254,6 @@
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
       <news:publication_date>2026-11-25T23:17:33Z</news:publication_date>
       <news:title>موافقة تنظيمية أمريكية على خطط سبيس إكس لمراكز بيانات الذكاء الاصطناعي</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://td-arabi.com/news/gpt-6-protein-design-capabilities-vyr87b/</loc>
-    <news:news>
-      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
-      <news:publication_date>2026-11-25T14:05:34Z</news:publication_date>
-      <news:title>نماذج GPT‑6 تصمم بروتينات بقدرات داخلية دون نماذج متخصصة</news:title>
     </news:news>
   </url>
 </urlset>

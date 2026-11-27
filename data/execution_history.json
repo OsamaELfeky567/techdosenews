@@ -1,5 +1,14 @@
 [
   {
+    "at": "2026-11-27T07:31:16.854Z",
+    "status": "published",
+    "title": "إطلاق سلسلة هواتف هواوي نوفا 16 إس في الإمارات بأسعار تبدأ من 1,799 درهماً",
+    "errors": [
+      "thin body 187w < 280"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-27T06:31:00.214Z",
     "status": "published",
     "title": "تحديث جديد لتطبيق رسائل سامسونج يمهد لدعم مهام الذكاء الاصطناعي",
@@ -531,17 +540,5 @@
       "thin body 165w < 250"
     ],
     "provider": ""
-  },
-  {
-    "at": "2026-11-24T19:01:25.872Z",
-    "status": "published",
-    "title": "أمازون تُسرّع إطلاق أقمارها الفضائية مع سبيس إكس بعد تعطل صاروخ فولكان",
-    "errors": [
-      "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later",
-      "thin body 207w < 250",
-      "gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later",
-      "gemini:gemini-3.1-flash-lite: gemini gemini-3.1-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later"
-    ],
-    "provider": "gemini:gemini-3.6-flash"
   }
 ]

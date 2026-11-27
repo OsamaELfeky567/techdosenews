@@ -1,5 +1,16 @@
 [
   {
+    "at": "2026-11-27T09:29:09.105Z",
+    "status": "published",
+    "title": "نصائح مفيدة لتحسين تشغيل الألعاب الكلاسيكية والحديثة على الهواتف",
+    "errors": [
+      "thin body 236w < 280",
+      "thin body 238w < 280",
+      "thin body 276w < 280"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-27T08:31:26.368Z",
     "status": "published",
     "title": "إطلاق دليل وطني لأولياء الأمور حول الذكاء الاصطناعي بالتعليم في الإمارات",
@@ -521,19 +532,6 @@
       "thin body 192w < 250",
       "thin body 171w < 250",
       "thin body 146w < 250"
-    ],
-    "provider": ""
-  },
-  {
-    "at": "2026-11-24T23:38:10.844Z",
-    "status": "no_article_passed",
-    "title": "",
-    "errors": [
-      "thin body 214w < 250",
-      "thin body 185w < 250",
-      "thin body 219w < 250",
-      "thin body 202w < 250",
-      "thin body 201w < 250"
     ],
     "provider": ""
   }

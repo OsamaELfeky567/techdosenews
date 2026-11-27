@@ -58,3 +58,11 @@ if (live) {
     console.log('facebook:', res.status, (await res.text()).slice(0, 200));
   } catch (e) { console.log('facebook error', e.message); }
 }
+
+// 3. Instagram post (td_arabi, same pacing rules, token only in the worker)
+if (live) {
+  try {
+    const res = await fetch('https://td-bot.td-arabi.workers.dev/igpost', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: p.url }) });
+    console.log('instagram:', res.status, (await res.text()).slice(0, 200));
+  } catch (e) { console.log('instagram error', e.message); }
+}

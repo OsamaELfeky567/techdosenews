@@ -252,6 +252,41 @@ async function handleFbPost(env, req) {
   return json({ ok: true, post_id: j.id });
 }
 
+// ---- Instagram auto-post (td_arabi business account linked to the Page). Same pacing idea as /fbpost: max 3/day, 4h apart ----
+async function handleIgPost(env, req) {
+  if (!env.IG_PAGE_TOKEN || !env.IG_USER_ID) return json({ ok: false, error: "ig not configured" }, 503);
+  const body = await req.json().catch(() => ({}));
+  const link = String(body.url || "");
+  if (!link.startsWith(env.SITE + "/news/") || link.length > 300) return json({ ok: false, error: "bad url" }, 400);
+  const key = "igpost:" + link;
+  if (await env.SUBS.get(key)) return json({ ok: true, skipped: "already posted" });
+  const dayKey = "igday:" + new Date(Date.now() + 2 * 3600e3).toISOString().slice(0, 10);
+  const dayCount = +(await env.SUBS.get(dayKey) || 0), lastAt = +(await env.SUBS.get("iglast") || 0);
+  if (dayCount >= 3 || Date.now() - lastAt < 4 * 3600e3) return json({ ok: true, skipped: "paced", day_count: dayCount });
+  const page = await fetch(link, { headers: { "user-agent": "td-arabi-ig-poster" } });
+  if (!page.ok) return json({ ok: false, error: "page not live", status: page.status }, 404);
+  const html = await page.text();
+  const title = metaOf(html, "og:title"), desc = metaOf(html, "og:description"), image = metaOf(html, "og:image");
+  if (!image || !/\.jpe?g(\?|$)/i.test(image)) return json({ ok: false, error: "no jpeg image" }, 422);
+  const caption = [title, desc && desc.slice(0, 220), "🔗 الرابط في البايو: td-arabi.com"].filter(Boolean).join("\n\n");
+  const G = "https://graph.facebook.com/v21.0/";
+  const c = await (await fetch(G + env.IG_USER_ID + "/media", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ image_url: image, caption, access_token: env.IG_PAGE_TOKEN }) })).json().catch(() => ({}));
+  if (!c.id) return json({ ok: false, error: "container error", detail: c.error?.message }, 502);
+  let st = "";
+  for (let i = 0; i < 8; i++) {
+    await new Promise((r) => setTimeout(r, 2000));
+    const s = await (await fetch(G + c.id + "?fields=status_code&access_token=" + env.IG_PAGE_TOKEN)).json().catch(() => ({}));
+    st = s.status_code; if (st === "FINISHED" || st === "ERROR") break;
+  }
+  if (st !== "FINISHED") return json({ ok: false, error: "container not ready", status: st }, 502);
+  const p = await (await fetch(G + env.IG_USER_ID + "/media_publish", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ creation_id: c.id, access_token: env.IG_PAGE_TOKEN }) })).json().catch(() => ({}));
+  if (!p.id) return json({ ok: false, error: "publish error", detail: p.error?.message }, 502);
+  await env.SUBS.put(key, p.id, { expirationTtl: 60 * 60 * 24 * 90 });
+  await env.SUBS.put(dayKey, String(dayCount + 1), { expirationTtl: 172800 });
+  await env.SUBS.put("iglast", String(Date.now()), { expirationTtl: 172800 });
+  return json({ ok: true, media_id: p.id });
+}
+
 // ---- Telegram channel auto-post (same safety rules as /fbpost) ----
 async function handleTgPost(env, req) {
   const body = await req.json().catch(() => ({}));
@@ -410,6 +445,7 @@ export default {
     if (req.method === "POST" && url.pathname === `/broadcast/${env.BROADCAST_SECRET}`)
       return handleBroadcast(env, req);
     if (req.method === "POST" && url.pathname === "/fbpost") return handleFbPost(env, req);
+    if (req.method === "POST" && url.pathname === "/igpost") return handleIgPost(env, req);
     if (req.method === "POST" && url.pathname === "/tgpost") return handleTgPost(env, req);
     if (req.method === "GET" && url.pathname === "/stats") return handleStats(env, ctx);
     if (url.pathname === "/health") return json({ ok: true });

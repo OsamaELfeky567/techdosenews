@@ -22,8 +22,12 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install ImageMagick
+        run: sudo apt-get install -y -qq imagemagick
+
       - name: Render slides
         id: render
+        shell: bash
         run: |
           node scripts/ig-carousel.mjs | tee /tmp/car.json
           echo "ok=$(jq -r '.ok' /tmp/car.json)" >> "$GITHUB_OUTPUT"

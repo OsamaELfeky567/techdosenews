@@ -1,5 +1,15 @@
 [
   {
+    "at": "2026-11-27T01:22:13.903Z",
+    "status": "published",
+    "title": "رفض تشكيل نقابة عمالية لمطوري لعبة جراند ثفت أوتو 6 في شركة روكستار",
+    "errors": [
+      "thin body 243w < 280",
+      "expand gemini:gemini-3.5-flash-lite: Unexpected end of JSON input"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-27T00:21:55.073Z",
     "status": "published",
     "title": "إطلاق لعبة جي تي إيه 6 يتزامن مع طرح شركة أنثروبيك للاكتتاب العام",

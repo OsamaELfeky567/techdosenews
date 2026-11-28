@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/anthropic-denies-claude-sabotage-claims-o5j4c7/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-28T10:57:03Z</news:publication_date>
+      <news:title>أنثروبيك تنفي تدريب نموذج كلود على التخريب وتقر بمشكلة الحذر المفرط</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/us-air-force-cloud-one-platform-breach-mcoat0/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
@@ -230,14 +238,6 @@
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
       <news:publication_date>2026-11-26T11:15:41Z</news:publication_date>
       <news:title>فولفو تبدأ تدريب روبوتات بشرية في مصنعها ببلجيكا استعداداً للإنتاج عام 2027</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://td-arabi.com/news/south-korea-upgrades-bus-wifi-to-wifi7-hsvy0w/</loc>
-    <news:news>
-      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
-      <news:publication_date>2026-11-26T10:15:13Z</news:publication_date>
-      <news:title>كوريا الجنوبية تُحدث شبكة الواي فاي المجانية في نحو 33 ألف حافلة إلى معيار Wi‑Fi 7</news:title>
     </news:news>
   </url>
 </urlset>

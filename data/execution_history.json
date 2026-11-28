@@ -1,5 +1,12 @@
 [
   {
+    "at": "2026-11-28T06:29:03.679Z",
+    "status": "published",
+    "title": "سامسونج تطور ميزات جديدة لتطبيق الكاميرا في تحديث البرمجيات القادم",
+    "errors": [],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-28T05:29:06.441Z",
     "status": "published",
     "title": "تخفيض سعر قرص التخزين المحمول سانديسك بسعة 2 تيرابايت بنسبة 33 بالمئة",
@@ -494,15 +501,6 @@
     "status": "published",
     "title": "أسباب غياب ميزة إعادة المهام في لعبة GTA 6 وتوجه الشركة المطورة",
     "errors": [],
-    "provider": "gemini:gemini-3.5-flash-lite"
-  },
-  {
-    "at": "2026-11-25T23:17:33.641Z",
-    "status": "published",
-    "title": "موافقة تنظيمية أمريكية على خطط سبيس إكس لمراكز بيانات الذكاء الاصطناعي",
-    "errors": [
-      "expand gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usu"
-    ],
     "provider": "gemini:gemini-3.5-flash-lite"
   }
 ]

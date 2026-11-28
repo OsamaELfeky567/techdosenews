@@ -1,5 +1,17 @@
 [
   {
+    "at": "2026-11-28T11:57:02.103Z",
+    "status": "published",
+    "title": "مقارنة تفصيلية بين تطبيق جوجل أثنتيكيتور وبديله إنته أث",
+    "errors": [
+      "thin body 249w < 280",
+      "thin body 233w < 280",
+      "thin body 248w < 280",
+      "thin body 262w < 280"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-28T10:57:03.698Z",
     "status": "published",
     "title": "أنثروبيك تنفي تدريب نموذج كلود على التخريب وتقر بمشكلة الحذر المفرط",
@@ -511,12 +523,5 @@
       "expand gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usu"
     ],
     "provider": "gemini:gemini-3.1-flash-lite"
-  },
-  {
-    "at": "2026-11-26T03:12:18.124Z",
-    "status": "published",
-    "title": "حقيقة حصرية لعبة ذا ويتشر 4 على أجهزة بلايستيشن بعد صفقة التسويق الجديدة",
-    "errors": [],
-    "provider": "gemini:gemini-3.5-flash-lite"
   }
 ]

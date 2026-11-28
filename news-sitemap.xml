@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/galaxy-s27-ultra-night-photography-leaks-qpmg3y/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-28T04:29:02Z</news:publication_date>
+      <news:title>تسريبات غير مؤكدة حول تحسينات التصوير الليلي في هاتف سامسونج القادم</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/chatgpt-android-calls-texts-rumors-30qp3x/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
@@ -230,14 +238,6 @@
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
       <news:publication_date>2026-11-26T05:13:12Z</news:publication_date>
       <news:title>محاولات تعديل جعبة حواسيب لعبة جي تي إيه 6 تواجه عقبات</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://td-arabi.com/news/gta-6-fake-tunnel-trick-5lshof/</loc>
-    <news:news>
-      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
-      <news:publication_date>2026-11-26T04:12:07Z</news:publication_date>
-      <news:title>خدعة بصرية في لعبة GTA 6 تتسبب في تحطم سيارات اللاعبين</news:title>
     </news:news>
   </url>
 </urlset>

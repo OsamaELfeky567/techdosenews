@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/nvidia-blackwell-chips-in-china-vhgkdz/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-28T02:29:04Z</news:publication_date>
+      <news:title>وثائق تكشف وجود رقاقات إنفيديا بلاكويل الخاضعة لقيود التصدير في الصين</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/openai-countersues-apple-trade-secrets-h3982z/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
@@ -238,14 +246,6 @@
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
       <news:publication_date>2026-11-26T02:52:25Z</news:publication_date>
       <news:title>استعراض مستوى صعوبة لعبة جي تي إيه 6 وتوجهات شركة روكستار</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://td-arabi.com/news/ps5-xbox-sales-surge-before-gta-6-2xsdq6/</loc>
-    <news:news>
-      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
-      <news:publication_date>2026-11-26T02:11:25Z</news:publication_date>
-      <news:title>قفزة كبيرة بمبيعات أجهزة بلايستيشن وإكس بوكس قبيل طرح لعبة جي تي إيه 6</news:title>
     </news:news>
   </url>
 </urlset>

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/us-air-force-cloud-one-platform-breach-mcoat0/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-28T09:57:02Z</news:publication_date>
+      <news:title>اختراق منصة Cloud One السحابية التابعة للقوات الجوية الأمريكية</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/iphone-18-production-delayed-rumors-miuypr/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
@@ -230,14 +238,6 @@
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
       <news:publication_date>2026-11-26T10:15:13Z</news:publication_date>
       <news:title>كوريا الجنوبية تُحدث شبكة الواي فاي المجانية في نحو 33 ألف حافلة إلى معيار Wi‑Fi 7</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://td-arabi.com/news/amazon-considers-allowing-meta-muse-shopping-agent-uz5xzc/</loc>
-    <news:news>
-      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
-      <news:publication_date>2026-11-26T09:14:57Z</news:publication_date>
-      <news:title>أمازون تدرس رفع الحظر عن وكيل Meta Muse للذكاء الاصطناعي</news:title>
     </news:news>
   </url>
 </urlset>

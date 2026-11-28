@@ -1,5 +1,12 @@
 [
   {
+    "at": "2026-11-28T00:29:04.505Z",
+    "status": "published",
+    "title": "منصة تايدال تحظر الموسيقى المولّدة بالذكاء الاصطناعي وتزيل ملايين المقاطع",
+    "errors": [],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-27T23:28:58.966Z",
     "status": "skipped_daily_cap",
     "title": "",
@@ -490,13 +497,6 @@
     "errors": [
       "feed techxar: This operation was aborted"
     ],
-    "provider": ""
-  },
-  {
-    "at": "2026-11-25T19:08:48.969Z",
-    "status": "no_candidates",
-    "title": "",
-    "errors": [],
     "provider": ""
   }
 ]

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/iphone-18-production-delayed-rumors-miuypr/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-28T08:57:03Z</news:publication_date>
+      <news:title>تسريبات غير مؤكدة حول تأجيل إنتاج هاتفي آيفون 18 وآيفون 18إي الجديدين</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/iphone-18-pro-max-vs-pixel-11-pro-xl-dzm0cq/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
@@ -230,14 +238,6 @@
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
       <news:publication_date>2026-11-26T09:14:57Z</news:publication_date>
       <news:title>أمازون تدرس رفع الحظر عن وكيل Meta Muse للذكاء الاصطناعي</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://td-arabi.com/news/claude-artifacts-to-standalone-apps-8d68i4/</loc>
-    <news:news>
-      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
-      <news:publication_date>2026-11-26T08:14:32Z</news:publication_date>
-      <news:title>نموذج Claude يتيح تحويل العناصر إلى تطبيقات مستقلة لأنظمة التشغيل</news:title>
     </news:news>
   </url>
 </urlset>

@@ -1,5 +1,16 @@
 [
   {
+    "at": "2026-11-28T08:57:03.827Z",
+    "status": "published",
+    "title": "تسريبات غير مؤكدة حول تأجيل إنتاج هاتفي آيفون 18 وآيفون 18إي الجديدين",
+    "errors": [
+      "thin body 210w < 280",
+      "thin body 216w < 280",
+      "thin body 214w < 280"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-28T07:52:38.864Z",
     "status": "no_article_passed",
     "title": "",
@@ -503,13 +514,6 @@
     "at": "2026-11-26T02:11:25.241Z",
     "status": "published",
     "title": "قفزة كبيرة بمبيعات أجهزة بلايستيشن وإكس بوكس قبيل طرح لعبة جي تي إيه 6",
-    "errors": [],
-    "provider": "gemini:gemini-3.5-flash-lite"
-  },
-  {
-    "at": "2026-11-26T01:10:58.098Z",
-    "status": "published",
-    "title": "تأجيل إطلاق لعبة لوردز أوف ذا فالن 2 إلى موعد جديد",
     "errors": [],
     "provider": "gemini:gemini-3.5-flash-lite"
   }

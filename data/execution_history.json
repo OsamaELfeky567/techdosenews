@@ -1,5 +1,12 @@
 [
   {
+    "at": "2026-11-28T14:57:04.258Z",
+    "status": "published",
+    "title": "دليل شراء هواتف آيفون المتاحة وتحديد الطراز الأنسب لك",
+    "errors": [],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-28T13:57:06.230Z",
     "status": "published",
     "title": "تخفيض سعر جهاز العرض ساوندكور نيبيلا بي 1 بمقدار مائتي وخمسين دولاراً",
@@ -514,13 +521,6 @@
       "thin body 217w < 280",
       "thin body 220w < 280"
     ],
-    "provider": "gemini:gemini-3.5-flash-lite"
-  },
-  {
-    "at": "2026-11-26T06:13:46.797Z",
-    "status": "published",
-    "title": "استوديو التطوير يطمح لتحقيق نقلة نوعية كبرى في لعبة ذا ويتشر 4",
-    "errors": [],
     "provider": "gemini:gemini-3.5-flash-lite"
   }
 ]

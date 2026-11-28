@@ -1,5 +1,12 @@
 [
   {
+    "at": "2026-11-28T01:29:04.936Z",
+    "status": "published",
+    "title": "دعوى قضائية مضادة من أوبن إيه آي ضد آبل بشأن الأسرار التجارية والتصنيع",
+    "errors": [],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-28T00:29:04.505Z",
     "status": "published",
     "title": "منصة تايدال تحظر الموسيقى المولّدة بالذكاء الاصطناعي وتزيل ملايين المقاطع",
@@ -488,15 +495,6 @@
     "status": "no_candidates",
     "title": "",
     "errors": [],
-    "provider": ""
-  },
-  {
-    "at": "2026-11-25T19:19:35.324Z",
-    "status": "no_candidates",
-    "title": "",
-    "errors": [
-      "feed techxar: This operation was aborted"
-    ],
     "provider": ""
   }
 ]

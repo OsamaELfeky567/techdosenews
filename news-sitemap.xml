@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/openai-countersues-apple-trade-secrets-h3982z/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-28T01:29:04Z</news:publication_date>
+      <news:title>دعوى قضائية مضادة من أوبن إيه آي ضد آبل بشأن الأسرار التجارية والتصنيع</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/tidal-bans-ai-generated-music-apcl6m/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
@@ -238,14 +246,6 @@
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
       <news:publication_date>2026-11-26T02:11:25Z</news:publication_date>
       <news:title>قفزة كبيرة بمبيعات أجهزة بلايستيشن وإكس بوكس قبيل طرح لعبة جي تي إيه 6</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://td-arabi.com/news/lords-of-the-fallen-2-delayed-again-wr2t14/</loc>
-    <news:news>
-      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
-      <news:publication_date>2026-11-26T01:10:58Z</news:publication_date>
-      <news:title>تأجيل إطلاق لعبة لوردز أوف ذا فالن 2 إلى موعد جديد</news:title>
     </news:news>
   </url>
 </urlset>

@@ -1,5 +1,16 @@
 [
   {
+    "at": "2026-11-28T13:57:06.230Z",
+    "status": "published",
+    "title": "تخفيض سعر جهاز العرض ساوندكور نيبيلا بي 1 بمقدار مائتي وخمسين دولاراً",
+    "errors": [
+      "thin body 279w < 280",
+      "thin body 223w < 280",
+      "thin body 223w < 280"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-28T12:57:03.565Z",
     "status": "published",
     "title": "مراجعة جهاز كيندل بايبروايت لعام 2026 مع عودة أزرار تقليب الصفحات",
@@ -510,15 +521,6 @@
     "status": "published",
     "title": "استوديو التطوير يطمح لتحقيق نقلة نوعية كبرى في لعبة ذا ويتشر 4",
     "errors": [],
-    "provider": "gemini:gemini-3.5-flash-lite"
-  },
-  {
-    "at": "2026-11-26T05:13:12.955Z",
-    "status": "published",
-    "title": "محاولات تعديل جعبة حواسيب لعبة جي تي إيه 6 تواجه عقبات",
-    "errors": [
-      "expand gemini:gemini-3.5-flash-lite: gemini gemini-3.5-flash-lite HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usu"
-    ],
     "provider": "gemini:gemini-3.5-flash-lite"
   }
 ]

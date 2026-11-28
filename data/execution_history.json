@@ -1,5 +1,16 @@
 [
   {
+    "at": "2026-11-28T07:29:02.406Z",
+    "status": "published",
+    "title": "مقارنة تقنية بين هاتفي أبل آيفون 18 برو ماكس وجوجل بيكسل 11 برو إكس إل",
+    "errors": [
+      "thin body 206w < 280",
+      "thin body 224w < 280",
+      "thin body 257w < 280"
+    ],
+    "provider": "gemini:gemini-3.5-flash-lite"
+  },
+  {
     "at": "2026-11-28T06:29:03.679Z",
     "status": "published",
     "title": "سامسونج تطور ميزات جديدة لتطبيق الكاميرا في تحديث البرمجيات القادم",
@@ -493,13 +504,6 @@
     "at": "2026-11-25T23:56:05.076Z",
     "status": "published",
     "title": "ممثلة شخصية ماندي في لعبة جي تي إيه 6 تعلق على التفاعل الرقمي",
-    "errors": [],
-    "provider": "gemini:gemini-3.5-flash-lite"
-  },
-  {
-    "at": "2026-11-25T23:54:01.643Z",
-    "status": "published",
-    "title": "أسباب غياب ميزة إعادة المهام في لعبة GTA 6 وتوجه الشركة المطورة",
     "errors": [],
     "provider": "gemini:gemini-3.5-flash-lite"
   }

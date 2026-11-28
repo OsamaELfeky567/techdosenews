@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://td-arabi.com/news/iphone-18-pro-max-vs-pixel-11-pro-xl-dzm0cq/</loc>
+    <news:news>
+      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
+      <news:publication_date>2026-11-28T07:29:02Z</news:publication_date>
+      <news:title>مقارنة تقنية بين هاتفي أبل آيفون 18 برو ماكس وجوجل بيكسل 11 برو إكس إل</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://td-arabi.com/news/samsung-working-on-vision-mode-and-auto-portrait-6vamx6/</loc>
     <news:news>
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
@@ -230,14 +238,6 @@
       <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
       <news:publication_date>2026-11-26T08:14:32Z</news:publication_date>
       <news:title>نموذج Claude يتيح تحويل العناصر إلى تطبيقات مستقلة لأنظمة التشغيل</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://td-arabi.com/news/1password-data-breach-phishing-warning-slaj1l/</loc>
-    <news:news>
-      <news:publication><news:name>TD بالعربي</news:name><news:language>ar</news:language></news:publication>
-      <news:publication_date>2026-11-26T07:14:08Z</news:publication_date>
-      <news:title>تحذير رسمي من هجمات التصيد الاحتيالي بعد اختراق أمني في شركة 1Password</news:title>
     </news:news>
   </url>
 </urlset>

@@ -1,5 +1,12 @@
 [
   {
+    "at": "2026-11-28T15:57:03.446Z",
+    "status": "skipped_daily_cap",
+    "title": "",
+    "errors": [],
+    "provider": ""
+  },
+  {
     "at": "2026-11-28T14:57:04.258Z",
     "status": "published",
     "title": "دليل شراء هواتف آيفون المتاحة وتحديد الطراز الأنسب لك",
@@ -510,16 +517,6 @@
     "title": "نموذج Claude يتيح تحويل العناصر إلى تطبيقات مستقلة لأنظمة التشغيل",
     "errors": [
       "thin body 244w < 280"
-    ],
-    "provider": "gemini:gemini-3.5-flash-lite"
-  },
-  {
-    "at": "2026-11-26T07:14:08.365Z",
-    "status": "published",
-    "title": "تحذير رسمي من هجمات التصيد الاحتيالي بعد اختراق أمني في شركة 1Password",
-    "errors": [
-      "thin body 217w < 280",
-      "thin body 220w < 280"
     ],
     "provider": "gemini:gemini-3.5-flash-lite"
   }
